@@ -1,0 +1,426 @@
+fileFormatVersion: 2
+guid: 6c8eba774a473704d90b33e61729c54c
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2634513467506057286
+    second: townAtlas_0
+  - first:
+      213: 3799858956480889531
+    second: townAtlas_1
+  - first:
+      213: 7376140763690283233
+    second: townAtlas_2
+  - first:
+      213: 6911634294832785417
+    second: townAtlas_3
+  - first:
+      213: 559974473110441684
+    second: townAtlas_4
+  - first:
+      213: 298056223733689800
+    second: townAtlas_5
+  - first:
+      213: 536257845962034371
+    second: townAtlas_6
+  - first:
+      213: -3091836770724968434
+    second: townAtlas_7
+  - first:
+      213: -1536867919056583524
+    second: townAtlas_8
+  - first:
+      213: -2764291820743767855
+    second: townAtlas_9
+  - first:
+      213: 66034799362735813
+    second: townAtlas_10
+  - first:
+      213: 6693106511925173996
+    second: townAtlas_11
+  - first:
+      213: -6063699466262277885
+    second: townAtlas_12
+  - first:
+      213: -69489771711724589
+    second: townAtlas_13
+  - first:
+      213: -6178376781240255065
+    second: townAtlas_14
+  - first:
+      213: -3934228459229307709
+    second: townAtlas_15
+  - first:
+      213: -5819035674194248280
+    second: townAtlas_0
+  - first:
+      213: 5005707218085575892
+    second: townAtlas_1
+  - first:
+      213: 1038031483571038905
+    second: townAtlas_2
+  - first:
+      213: 5246630912822805646
+    second: townAtlas_3
+  - first:
+      213: 6299933327594652721
+    second: townAtlas_5
+  - first:
+      213: 6909540101512516027
+    second: townAtlas_6
+  - first:
+      213: 7792122647561895644
+    second: townAtlas_8
+  - first:
+      213: -6427409093172582612
+    second: townAtlas_10
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: townAtlas_7
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 272
+        width: 103
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e08827996d69715d0800000000000000
+      internalID: -3091836770724968434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: townAtlas_11
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 152
+        width: 55
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cee572739e0b2ec50800000000000000
+      internalID: 6693106511925173996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: townAtlas_1
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 387
+        width: 120
+        height: 111
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb241a1a69fcbb430800000000000000
+      internalID: 3799858956480889531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: townAtlas_2
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 390
+        width: 96
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e0b901b1f05d5660800000000000000
+      internalID: 7376140763690283233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: townAtlas_3
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 398
+        width: 114
+        height: 91
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9086ae095ce0bef50800000000000000
+      internalID: 6911634294832785417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: townAtlas_4
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 392
+        width: 103
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4dec80101dd65c700800000000000000
+      internalID: 559974473110441684
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: townAtlas_5
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 264
+        width: 110
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8cdadba6e88e22400800000000000000
+      internalID: 298056223733689800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: townAtlas_6
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 274
+        width: 112
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3cc45907bab217700800000000000000
+      internalID: 536257845962034371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: townAtlas_8
+      rect:
+        serializedVersion: 2
+        x: 395
+        y: 266
+        width: 99
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9440f135c2fbaae0800000000000000
+      internalID: -1536867919056583524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: townAtlas_9
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 198
+        width: 98
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d8cc012c3343a9d0800000000000000
+      internalID: -2764291820743767855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: d36a8ffa02d606c4e8ace7de91de087d
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      townAtlas_2: 7376140763690283233
+      townAtlas_8: -1536867919056583524
+      townAtlas_5: 298056223733689800
+      townAtlas_7: -3091836770724968434
+      townAtlas_4: 559974473110441684
+      townAtlas_3: 6911634294832785417
+      townAtlas_11: 6693106511925173996
+      townAtlas_6: 536257845962034371
+      townAtlas_1: 3799858956480889531
+      townAtlas_9: -2764291820743767855
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
