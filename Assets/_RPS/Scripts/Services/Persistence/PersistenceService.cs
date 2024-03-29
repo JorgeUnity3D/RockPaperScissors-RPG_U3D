@@ -36,7 +36,7 @@ namespace Kapibara.RPS
         {
             Debug.Log($"[PersistenceService] SaveGame() ->");
             string json = JsonConvert.SerializeObject(gameContext);
-            File.WriteAllText(Path.Combine(_saveDirectory, gameContext.gameName), json);
+            File.WriteAllText(Path.Combine(_saveDirectory, gameContext.GameName), json);
         }
         
         public void UpdateSaveGame(GameContext gameContext)
@@ -44,7 +44,7 @@ namespace Kapibara.RPS
 	        Debug.Log($"[PersistenceService] SaveGame() ->");
 	        string json = JsonConvert.SerializeObject(gameContext);
 	        
-	        File.WriteAllText(Path.Combine(_saveDirectory, gameContext.gameName), json);
+	        File.WriteAllText(Path.Combine(_saveDirectory, gameContext.GameName), json);
         }
         
         public void LoadGame(string filename, UnityAction<GameContext> OnFinishCallback)

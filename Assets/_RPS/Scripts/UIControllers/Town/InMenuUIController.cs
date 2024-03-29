@@ -35,14 +35,13 @@ namespace Kapibara.RPS
 		
 		public void SetData(TownView townView, TownData townData)
 		{
-			Debug.Log($"[InMenuUIController] SetData() -> townView {townView.name}");
-			_menuNameText.text = townView.name;
-			_menuLevelText.text = townView.level.ToString();
+			Debug.Log($"[InMenuUIController] SetData() -> townView {townView.Name}");
+			_menuNameText.text = townView.Name;
+			_menuLevelText.text = townView.Level.ToString();
 			_menuLevelSlider.value = townView.LevelProgress;
-			//_menuNPCHolder.SetActive(townView.npc);
-			_menuNPCText.text = townView.message + (townView.npcUnlocked ? "" : " but there's no NPC here!");
-			_menuNPCImage.sprite = townView.npcUnlocked ? townData.npcIcon : townData.npcNotFoundIcon;
-			
+			_menuNPCHolder.SetActive(townView.HasNpc);
+			_menuNPCText.text = townView.Message + (townView.NpcUnlocked ? "" : " but there's no NPC here!");
+			_menuNPCImage.sprite = townView.NpcUnlocked ? townData.npcIcon : townData.npcNotFoundIcon;
 		}
 
 		#endregion

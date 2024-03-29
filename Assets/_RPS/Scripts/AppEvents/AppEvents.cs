@@ -13,7 +13,7 @@ namespace Kapibara.RPS
         public static UnityAction OnIntroCompleted;
         
         //01_MainMenu
-        public static UnityAction OnContinueGame;
+        public static UnityAction OnConfirmContinueGame;
         public static UnityAction OnNewGameMenu;
         public static UnityAction OnLoadGameMenu;
         public static UnityAction OnBackToMainMenu;

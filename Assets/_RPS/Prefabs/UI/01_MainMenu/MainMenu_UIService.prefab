@@ -160,7 +160,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4379994309050788709, guid: dba0a8be57dc7c241888d5c55e1c2c74, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.000025689602
+      value: 0.000004658696
       objectReference: {fileID: 0}
     - target: {fileID: 4502256936021237895, guid: dba0a8be57dc7c241888d5c55e1c2c74, type: 3}
       propertyPath: serializationData.Prefab

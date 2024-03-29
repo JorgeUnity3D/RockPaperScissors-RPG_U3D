@@ -43,16 +43,16 @@ namespace Kapibara.RPS
 			for (int i = 0; i < townViews.Count; i++)
 			{
 				TownView townView = townViews[i];
-				TownData townData = townDatas.Find(td => td.townMenu == townView.townMenu);
+				TownData townData = townDatas.Find(td => td.townMenu == townView.TownMenu);
 				UpdateTownButton(townView, townData);
 			}
 		}
 
 		public void UpdateTownButton(TownView townView, TownData townData)
 		{
-			Debug.Log($"[TownUIController] UpdateTownButton() -> townView: {townView.townMenu}");
-			UIButton townButton = _townDictionary[townView.townMenu];
-			townButton.GetComponent<Image>().sprite = townView.isUnlocked ? townData.buildingIcon : townData.notBuiltIcon;
+			Debug.Log($"[TownUIController] UpdateTownButton() -> townView: {townView.TownMenu}");
+			UIButton townButton = _townDictionary[townView.TownMenu];
+			townButton.GetComponent<Image>().sprite = townView.IsUnlocked ? townData.buildingIcon : townData.notBuiltIcon;
 		}
 		
         #endregion

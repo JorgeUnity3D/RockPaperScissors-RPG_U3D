@@ -51,7 +51,7 @@ namespace Kapibara.RPS
         #region CONTROL
 
 		public abstract void SetUp();
-
+		
 		public void ShowCanvas()
 		{
 			ShowCanvas(CanvasGroup);

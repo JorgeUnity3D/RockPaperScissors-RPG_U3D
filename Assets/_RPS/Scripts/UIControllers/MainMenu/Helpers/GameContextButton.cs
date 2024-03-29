@@ -26,7 +26,7 @@ namespace Kapibara.RPS
         public void SetData(GameContext gameContext, UnityAction<GameContext, UIButton> OnSelectedCallback)
         {
             _gameContext = gameContext;
-            _gameIDText.text = _gameContext.gameName;
+            _gameIDText.text = _gameContext.GameName;
             _selectButton.AddListener(() =>
             {
                 OnSelectedCallback?.Invoke(_gameContext, _selectButton);

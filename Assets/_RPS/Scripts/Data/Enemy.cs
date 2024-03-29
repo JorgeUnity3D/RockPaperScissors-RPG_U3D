@@ -116,7 +116,7 @@ namespace Kapibara.RPS {
         #region ROLLS
 
         public override int MentalityRollAgainst(Character other) {
-            int mentalityRoll = (VariabilityRoll() + this.storedMentality) - ((Player) other).mentality;
+            int mentalityRoll = (VariabilityRoll() + this.storedMentality) - ((PlayerOld) other).mentality;
             Debug.Log("[Enemy] MentalityRollAgainst() -> mentalityRoll: " + mentalityRoll.ToString());
             return mentalityRoll;
         }
@@ -178,7 +178,7 @@ namespace Kapibara.RPS {
         }
 
         //TODO: Programar tirada de acción contra la acción concreta del Player
-        public void ActionRollAgainst(Player player) {
+        public void ActionRollAgainst(PlayerOld player) {
             CompareActionsAndSetMultiplier(player);
             if (currentMultiplier > 1) { //Si NPC está ganando
                 //1. comportamiento base -> si puedo critico, hago critico ya seleccionado

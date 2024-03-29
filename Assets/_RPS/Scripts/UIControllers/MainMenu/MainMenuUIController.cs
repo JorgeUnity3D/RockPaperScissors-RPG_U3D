@@ -39,7 +39,7 @@ namespace Kapibara.RPS
 	    private void ContinueGame()
 	    {
 		    Debug.Log($"[MainMenuUIController] ContinueGame() -> Invoking: AppEvents.OnContinueGame");
-		    AppEvents.OnContinueGame?.Invoke();
+		    AppEvents.OnConfirmContinueGame?.Invoke();
 	    }
 	    
         void NewGameMenu()

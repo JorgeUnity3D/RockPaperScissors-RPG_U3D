@@ -38,12 +38,12 @@ namespace Kapibara.RPS
 		
 		public void SetData(TownView townView, TownData townData)
 		{
-			Debug.Log($"[UnlockMenuUIController] SetData() -> TownView: {townView.townMenu}");
+			Debug.Log($"[UnlockMenuUIController] SetData() -> TownView: {townView.TownMenu}");
 			_currentTownView = townView;
 			_buildingImage.sprite = townData.buildingIcon;
-			_buildingText.text = _currentTownView.name;
-			_costText.text = _currentTownView.cost.ToString();
-			_confirmUnlockButton.interactable = AppContext.Player.currentGold >= townView.cost;
+			_buildingText.text = _currentTownView.Name;
+			_costText.text = _currentTownView.Cost.ToString();
+			_confirmUnlockButton.interactable = AppContext.Player.Gold >= townView.Cost;
 		}
 
 		#endregion

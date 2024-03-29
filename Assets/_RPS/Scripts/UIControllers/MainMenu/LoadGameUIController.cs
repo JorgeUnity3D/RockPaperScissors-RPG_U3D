@@ -67,10 +67,10 @@ namespace Kapibara.RPS
 		private void SelectGame(GameContext gameContext, UIButton button)
 		{
 	        Debug.Log($"[LoadGameUIController] SelectGame() -> ");	
-			_timestampText.text = gameContext.timestamp;
-			_dateText.text = gameContext.date;
-			_gamenameText.text = gameContext.gameName;
-			_playernameText.text = gameContext.player.name;
+			_timestampText.text = gameContext.Timestamp;
+			_dateText.text = gameContext.Date;
+			_gamenameText.text = gameContext.GameName;
+			_playernameText.text = gameContext.Player.Name;
 			_loadSelectedButton.interactable = true;
 			_loadSelectedButton.AddListener(() =>
 			{

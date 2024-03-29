@@ -13,6 +13,15 @@ namespace Kapibara.RPS
 		LOAD = 5
 	}
 
+	public enum Stat
+	{
+		ROCK = 0,
+		PAPER = 1,
+		SCISSORS = 2,
+		DEFENSE = 3,
+		ENERGY = 4
+	}
+	
 	[Serializable]
 	public enum TownMenu
 	{
