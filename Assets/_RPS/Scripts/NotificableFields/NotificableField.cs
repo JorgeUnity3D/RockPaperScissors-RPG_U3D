@@ -9,7 +9,7 @@ namespace Kapibara.RPS
 	{
 		[SerializeField] private T _value;
 
-		public T? Value
+		public T Value
 		{
 			get => _value;
 			set

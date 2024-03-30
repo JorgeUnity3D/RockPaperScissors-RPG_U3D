@@ -1,7 +1,9 @@
-﻿namespace Kapibara.RPS
+﻿using UnityEngine;
+namespace Kapibara.RPS
 {
 	public class TrainingHouseUIController : BaseUIController
 	{
+		
 		#region UNITY_LIFECYCLE
 
 		private void Awake()

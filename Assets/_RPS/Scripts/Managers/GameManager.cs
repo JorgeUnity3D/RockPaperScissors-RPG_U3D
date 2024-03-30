@@ -10,9 +10,9 @@ namespace Kapibara.RPS
 {
 	public class GameManager : BaseManager
 	{
-		[SerializeField, ReadOnly] private static PersistenceService _persistenceService;
-		[SerializeField, ReadOnly] private static SceneService _sceneService;
-		[SerializeField, ReadOnly] private static GameContext _gameContext;
+		[SerializeField, ReadOnly] private PersistenceService _persistenceService;
+		[SerializeField, ReadOnly] private SceneService _sceneService;
+		[SerializeField, ReadOnly] private GameContext _gameContext;
 	
         #region SETUP
 
@@ -109,6 +109,7 @@ namespace Kapibara.RPS
 		{
 			Debug.Log($"[GameManager] LoadSelectedGame() -> ");
 			AppContext.GameContext = gameContext;
+			_gameContext = AppContext.GameContext;
 			_sceneService.LoadScene(GameScenes.TOWN);
 			AppEvents.OnGameContextUpdated += UpdateSaveGame;
 		}
@@ -121,11 +122,10 @@ namespace Kapibara.RPS
 		
 		private void UpdateSaveGame()
 		{
-			Debug.Log($"[GameManager] DeleteSelectedGame() -> ");
-			AppContext.GameContext.Date = RPSTimestamp.ConvertTimestampToDateTime(RPSTimestamp.GetTimestamp()).ToString(CultureInfo.InvariantCulture);
+			Debug.Log($"[GameManager] UpdateSaveGame() -> ");
 			ServiceLocator.Instance.GetService<PersistenceService>().UpdateSaveGame(AppContext.GameContext);
 		}
-
+		
         #endregion
 	}
 }

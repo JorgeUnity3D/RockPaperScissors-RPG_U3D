@@ -20,6 +20,7 @@ namespace Kapibara.RPS
 		SCISSORS = 2,
 		DEFENSE = 3,
 		ENERGY = 4
+		
 	}
 	
 	[Serializable]

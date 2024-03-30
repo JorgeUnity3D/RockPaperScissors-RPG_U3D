@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -11,27 +12,36 @@ namespace Kapibara.RPS
 	{
 		#region FIELDS
 
-		private NotificableField<string> _name;
-		private NotificableField<int> _level;
-		private NotificableField<int> _gold;
-		private NotificableField<int> _currentHealth;
-		private NotificableField<int> _maxHealth;
-		private NotificableField<int> _mentality;
-		private NotificableField<int> _rock;
-		private NotificableField<int> _rockCost;
-		private NotificableField<int> _paper;
-		private NotificableField<int> _paperCost;
-		private NotificableField<int> _scissor;
-		private NotificableField<int> _scissorCost;
-		private NotificableField<int> _defense;
-		private NotificableField<int> _defenseCost;
-		private NotificableField<int> _thorns;
-		private NotificableField<int> _currentEnergy;
-		private NotificableField<int> _maxEnergy;
-		private NotificableField<int> _initialEnergy;
-		private NotificableField<int> _energyRecovery;
-		private NotificableField<int> _crit;
-		private NotificableField<int> _superpower;
+		//General
+		[SerializeField] private NotificableField<string> _name;
+		[SerializeField] private NotificableField<int> _level;
+		[SerializeField] private NotificableField<int> _gold;
+		//Health
+		[SerializeField] private NotificableField<int> _currentHealth;
+		[SerializeField] private NotificableField<int> _maxHealth;
+		//Mentality
+		[SerializeField] private NotificableField<int> _mentality;
+		//Rock
+		[SerializeField] private NotificableField<Attribute> _rock;
+		[SerializeField] private NotificableField<int> _rockCost;
+		//Paper
+		[SerializeField] private NotificableField<Attribute> _paper;
+		[SerializeField] private NotificableField<int> _paperCost;
+		//Scissors
+		[SerializeField] private NotificableField<Attribute> _scissor;
+		[SerializeField] private NotificableField<int> _scissorCost;
+		//Defense
+		[SerializeField] private NotificableField<Attribute> _defense;
+		[SerializeField] private NotificableField<int> _defenseCost;
+		[SerializeField] private NotificableField<int> _thorns;
+		//Energy
+		[SerializeField] private NotificableField<int> _currentEnergy;
+		[SerializeField] private NotificableField<int> _maxEnergy;
+		[SerializeField] private NotificableField<int> _initialEnergy;
+		[SerializeField] private NotificableField<int> _energyRecovery;
+		//Crit & SuperPower
+		[SerializeField] private NotificableField<int> _crit;
+		[SerializeField] private NotificableField<int> _superpower;
 
 		#endregion
 
@@ -73,19 +83,19 @@ namespace Kapibara.RPS
 			set => _mentality.Value = value;
 		}
 
-		public int Rock
+		public Attribute Rock
 		{
 			get => _rock.Value;
 			set => _rock.Value = value;
 		}
-
+		
 		public int RockCost
 		{
 			get => _rockCost.Value;
 			set => _rockCost.Value = value;
 		}
 
-		public int Paper
+		public Attribute Paper
 		{
 			get => _paper.Value;
 			set => _paper.Value = value;
@@ -97,7 +107,7 @@ namespace Kapibara.RPS
 			set => _paperCost.Value = value;
 		}
 
-		public int Scissor
+		public Attribute Scissor
 		{
 			get => _scissor.Value;
 			set => _scissor.Value = value;
@@ -109,7 +119,7 @@ namespace Kapibara.RPS
 			set => _scissorCost.Value = value;
 		}
 
-		public int Defense
+		public Attribute Defense
 		{
 			get => _defense.Value;
 			set => _defense.Value = value;
@@ -165,6 +175,8 @@ namespace Kapibara.RPS
 
 		#endregion
 
+		#region CONSTRUCTORS
+
 		public Player(Player player) { }
 
 		public Player(string playername)
@@ -172,9 +184,15 @@ namespace Kapibara.RPS
 			_name = new NotificableField<string> { Value = playername };
 			_level = new NotificableField<int> { Value = 1 };
 			_gold = new NotificableField<int> { Value = 100 };
-			_rock = new NotificableField<int> { Value = 3 };
-			_paper = new NotificableField<int> { Value = 3 };
-			_scissor = new NotificableField<int> { Value = 3 };
+			_rock = new NotificableField<Attribute> { Value = new Attribute(3) };
+			_rock.Value.AddModifier(new TrainingModifier(1));
+			_rock.Value.AddModifier(new SkillTreeModifier(2));
+			_paper = new NotificableField<Attribute> { Value = new Attribute(4) };
+			_paper.Value.AddModifier(new TrainingModifier(3));
+			_paper.Value.AddModifier(new SkillTreeModifier(4));
+			_scissor = new NotificableField<Attribute> { Value = new Attribute(5) };
+			_scissor.Value.AddModifier(new TrainingModifier(5));
+			_scissor.Value.AddModifier(new SkillTreeModifier(6));
 			_currentHealth = new NotificableField<int> { Value = 10 };
 			_maxHealth = new NotificableField<int> { Value = 10 };
 			//
@@ -182,7 +200,7 @@ namespace Kapibara.RPS
 			_rockCost = new NotificableField<int> { Value = 5 };
 			_paperCost = new NotificableField<int> { Value = 5 };
 			_scissorCost = new NotificableField<int> { Value = 5 };
-			_defense = new NotificableField<int> { Value = 0 };
+			_defense = new NotificableField<Attribute> { Value = new Attribute(0) };
 			_defenseCost = new NotificableField<int> { Value = 0 };
 			_thorns = new NotificableField<int> { Value = 0 };
 			_currentEnergy = new NotificableField<int> { Value = 0 };
@@ -194,9 +212,9 @@ namespace Kapibara.RPS
 		}
 
 		[JsonConstructor]
-		public Player(string name, int level, int currentGold, int currentHealth, int maxHealth, int mentality, int rock, int rockCost, int paper,
-			int paperCost, int scissor, int scissorCost, int defense, int defenseCost, int thorns, int currentEnergy, int maxEnergy,
-			int initialEnergy, int energyRecovery, int crit, int superpower)
+		public Player(string name, int level, int currentGold, int currentHealth, int maxHealth, int mentality, Attribute rock, 
+			int rockCost, Attribute paper, int paperCost, Attribute scissor, int scissorCost, Attribute defense, int defenseCost,
+			int thorns, int currentEnergy, int maxEnergy, int initialEnergy, int energyRecovery, int crit, int superpower)
 		{
 			_name = new NotificableField<string> { Value = name };
 			_level = new NotificableField<int> { Value = level };
@@ -204,13 +222,13 @@ namespace Kapibara.RPS
 			_currentHealth = new NotificableField<int> { Value = currentHealth };
 			_maxHealth = new NotificableField<int> { Value = maxHealth };
 			_mentality = new NotificableField<int> { Value = mentality };
-			_rock = new NotificableField<int> { Value = rock };
+			_rock = new NotificableField<Attribute> { Value = rock };
 			_rockCost = new NotificableField<int> { Value = rockCost };
-			_paper = new NotificableField<int> { Value = paper };
+			_paper = new NotificableField<Attribute> { Value = paper };
 			_paperCost = new NotificableField<int> { Value = paperCost };
-			_scissor = new NotificableField<int> { Value = scissor };
+			_scissor = new NotificableField<Attribute> { Value = scissor };
 			_scissorCost = new NotificableField<int> { Value = scissorCost };
-			_defense = new NotificableField<int> { Value = defense };
+			_defense = new NotificableField<Attribute> { Value =  defense };
 			_defenseCost = new NotificableField<int> { Value = defenseCost };
 			_thorns = new NotificableField<int> { Value = thorns };
 			_currentEnergy = new NotificableField<int> { Value = currentEnergy };
@@ -220,6 +238,8 @@ namespace Kapibara.RPS
 			_crit = new NotificableField<int> { Value = crit };
 			_superpower = new NotificableField<int> { Value = superpower };
 		}
+
+		#endregion
 	}
 
 	[Serializable]

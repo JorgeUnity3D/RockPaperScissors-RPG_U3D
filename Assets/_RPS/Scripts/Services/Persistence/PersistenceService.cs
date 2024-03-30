@@ -1,9 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using Kapibara.RPS;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
@@ -43,7 +45,9 @@ namespace Kapibara.RPS
         {
 	        Debug.Log($"[PersistenceService] SaveGame() ->");
 	        string json = JsonConvert.SerializeObject(gameContext);
-	        
+	        JObject jsonObj = JsonConvert.DeserializeObject<JObject>(json);
+	        jsonObj["Date"] = RPSTimestamp.ConvertTimestampToDateTime(RPSTimestamp.GetTimestamp()).ToString(CultureInfo.InvariantCulture);
+	        json = jsonObj.ToString();
 	        File.WriteAllText(Path.Combine(_saveDirectory, gameContext.GameName), json);
         }
         
