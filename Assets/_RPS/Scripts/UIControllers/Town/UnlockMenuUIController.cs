@@ -15,7 +15,7 @@ namespace Kapibara.RPS
 		[SerializeField] private UIButton _confirmUnlockButton;
 		[SerializeField] private UIButton _cancelUnlockButton;
 
-		[SerializeField] private TownView _currentTownView;
+		[FormerlySerializedAs("currentTownData2"),FormerlySerializedAs("_currentTownView"),SerializeField] private TownData currentTownData;
 		
 		#region UNITY_LIFECYCLE
 
@@ -36,14 +36,14 @@ namespace Kapibara.RPS
 			_cancelUnlockButton.AddListener(CancelUnlockButton);
 		}
 		
-		public void SetData(TownView townView, TownData townData)
+		public void SetData(TownData townData, TownView townView)
 		{
-			Debug.Log($"[UnlockMenuUIController] SetData() -> TownView: {townView.TownMenu}");
-			_currentTownView = townView;
-			_buildingImage.sprite = townData.buildingIcon;
-			_buildingText.text = _currentTownView.Name;
-			_costText.text = _currentTownView.Cost.ToString();
-			_confirmUnlockButton.interactable = AppContext.Player.Gold >= townView.Cost;
+			Debug.Log($"[UnlockMenuUIController] SetData() -> TownView: {townData.TownMenu}");
+			currentTownData = townData;
+			_buildingImage.sprite = townView.buildingIcon;
+			_buildingText.text = currentTownData.Name;
+			_costText.text = currentTownData.Cost.ToString();
+			_confirmUnlockButton.interactable = AppContext.Player.Gold >= townData.Cost;
 		}
 
 		#endregion
@@ -53,7 +53,7 @@ namespace Kapibara.RPS
 		private void ConfirmUnlockButton()
 		{
 			Debug.Log($"[UnlockMenuUIController] ConfirmUnlockButton() -> ");
-			AppEvents.OnConfirmUnlock?.Invoke(_currentTownView);
+			AppEvents.OnConfirmUnlock?.Invoke(currentTownData);
 			Close();
 		}
 
@@ -67,7 +67,7 @@ namespace Kapibara.RPS
 		private void Close()
 		{
 			HideCanvas();
-			_currentTownView = null;
+			currentTownData = null;
 		}
 		
 		#endregion

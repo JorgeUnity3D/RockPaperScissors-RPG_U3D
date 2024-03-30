@@ -9,15 +9,15 @@ namespace Kapibara.RPS
 	{
 		#region FIELDS
 
-		[SerializeField] protected NotificableField<int> _modifier;
-		[SerializeField] protected NotificableField<int> _level;
-		[SerializeField] protected NotificableField<int> _experience;
+		[SerializeField] protected NInt _modifier;
+		[SerializeField] protected NInt _level;
+		[SerializeField] protected NInt _experience;
 
 		#endregion
 
 		#region PROPERTIES
 		
-		public int ObjType { get; set; }
+		public ModifierType ModifierType { get; set; }
 		
 		public int Modifier
 		{

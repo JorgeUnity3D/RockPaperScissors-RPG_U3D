@@ -1,14 +1,15 @@
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Kapibara.RPS
 {
 	public class TownManager : BaseManager
 	{
-		[SerializeField] private TownViewDataObject _townViewDataObject;
-		[SerializeField, ReadOnly] private List<TownView> _townViews;
-		[SerializeField, ReadOnly] private List<TownData> _townDatas;
+		[FormerlySerializedAs("townViewSo"),FormerlySerializedAs("_townViewDataObject"),SerializeField] private TownViewScrObj townViewScrObj;
+		[SerializeField, ReadOnly] private List<TownData> _townViews;
+		[SerializeField, ReadOnly] private List<TownView> _townDatas;
 		
 		[SerializeField, ReadOnly] private UIService _uiService;
 		[SerializeField, ReadOnly] private TownUIController _townUIController;
@@ -32,7 +33,7 @@ namespace Kapibara.RPS
 			_houseUIController = _uiService.GetController<HouseUIController>();
 			_inMenuUIController = _uiService.GetController<InMenuUIController>();
 			_townViews = AppContext.TownViews;
-			_townDatas = _townViewDataObject.Data;
+			_townDatas = townViewScrObj.Data;
 		}
 
 		protected override void Subscribe()
@@ -57,34 +58,34 @@ namespace Kapibara.RPS
 		public override void Initialize()
 		{
 			Debug.Log($"[TownManager] Initialize() -> ");
-			_townUIController.SetData(_townViews, _townViewDataObject.Data);
+			_townUIController.SetData(_townViews, townViewScrObj.Data);
 			_playerUIController.UpdatePlayerGold(AppContext.Player.Gold);
 		}
 		
 		private void OpenTownMenu(TownMenu townMenu)
 		{
 			Debug.Log($"[TownManager] OpenTownMenu() -> TownMenu: {townMenu}");
-			TownView townView = _townViews.Find(tv => tv.TownMenu == townMenu);
-			if (townView == null)
+			TownData townData = _townViews.Find(tv => tv.TownMenu == townMenu);
+			if (townData == null)
 			{
 				Debug.Log($"[TownManager] OpenTownMenu() -> Error: No TownView with {townMenu} flag");
 				return;
 			}
-			TownData townData = _townDatas.Find(td => td.townMenu == townView.TownMenu);
-			if (townView.IsUnlocked)
+			TownView townView = _townDatas.Find(td => td.townMenu == townData.TownMenu);
+			if (townData.IsUnlocked)
 			{
-				GoToTownMenu(townView, townData);
+				GoToTownMenu(townData, townView);
 			}
 			else
 			{
-				GoToUnlockMenu(townView, townData);
+				GoToUnlockMenu(townData, townView);
 			}
 		}
 		
-		private void GoToTownMenu(TownView townView, TownData townData)
+		private void GoToTownMenu(TownData townData, TownView townView)
 		{
-			Debug.Log($"[TownManager] GoToTownMenu() -> TownView: {townView.TownMenu}");
-			switch (townView.TownMenu)
+			Debug.Log($"[TownManager] GoToTownMenu() -> TownView: {townData.TownMenu}");
+			switch (townData.TownMenu)
 			{
 				case TownMenu.LIBRARY:
 					_currentTownUIController = _uiService.GetController<LibraryUIController>();
@@ -117,14 +118,14 @@ namespace Kapibara.RPS
 			}
 			_currentTownUIController.ShowCanvas();
 			_inMenuUIController.ShowCanvas();
-			_inMenuUIController.SetData(townView, townData);
+			_inMenuUIController.SetData(townData, townView);
 		}
 		
-		private void GoToUnlockMenu(TownView townView, TownData townData)
+		private void GoToUnlockMenu(TownData townData, TownView townView)
 		{
-			Debug.Log($"[TownManager] GoToUnlockMenu() -> TownView: {townView.TownMenu} - Cost: {townView.Cost}");
+			Debug.Log($"[TownManager] GoToUnlockMenu() -> TownView: {townData.TownMenu} - Cost: {townData.Cost}");
 			_unlockMenuUIController.ShowCanvas();
-			_unlockMenuUIController.SetData(townView, townData);
+			_unlockMenuUIController.SetData(townData, townView);
 		}
 		
 		private void BackFromTownMenu()
@@ -134,13 +135,13 @@ namespace Kapibara.RPS
 			_inMenuUIController.HideCanvas();
 		}
 
-		private void UnlockTownMenu(TownView townView)
+		private void UnlockTownMenu(TownData townData)
 		{
-			Debug.Log($"[TownManager] UnlockTownMenu() -> TownView: {townView.TownMenu} - Cost: {townView.Cost}");
-			AppContext.Player.Gold = Mathf.Max(0, AppContext.Player.Gold - townView.Cost);
-			townView.IsUnlocked = true;
-			TownData townData = _townDatas.Find(td => td.townMenu == townView.TownMenu);
-			_townUIController.UpdateTownButton(townView, townData);
+			Debug.Log($"[TownManager] UnlockTownMenu() -> TownView: {townData.TownMenu} - Cost: {townData.Cost}");
+			AppContext.Player.Gold = Mathf.Max(0, AppContext.Player.Gold - townData.Cost);
+			townData.IsUnlocked = true;
+			TownView townView = _townDatas.Find(td => td.townMenu == townData.TownMenu);
+			_townUIController.UpdateTownButton(townData, townView);
 			_playerUIController.UpdatePlayerGold(AppContext.Player.Gold);
 		}
 

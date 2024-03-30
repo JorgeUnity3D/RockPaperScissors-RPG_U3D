@@ -13,6 +13,7 @@ namespace Kapibara.RPS
 		LOAD = 5
 	}
 
+	[Serializable]
 	public enum Stat
 	{
 		ROCK = 0,
@@ -20,7 +21,13 @@ namespace Kapibara.RPS
 		SCISSORS = 2,
 		DEFENSE = 3,
 		ENERGY = 4
-		
+	}
+
+	[Serializable]
+	public enum ModifierType
+	{
+		TRAINING = 0,
+		SKILLTREE = 1
 	}
 	
 	[Serializable]

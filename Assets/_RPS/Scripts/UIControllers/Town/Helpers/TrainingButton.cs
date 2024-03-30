@@ -11,10 +11,10 @@ namespace Kapibara.RPS {
         public List<Image> levels;
         public Image selectionOverlay;
 
-        public void SetButtonData(TrainingStat trainingStat) {
-            SetImage(trainingStat.isAvailable ? trainingStat.icon : null);
-            SetLevel(trainingStat.currentLevel);
-            SetSelectionOverlay(trainingStat.isTraining);
+        public void SetButtonData(TrainingView trainingView) {
+            // SetImage(trainingStat.isAvailable ? trainingStat.icon : null);
+            // SetLevel(trainingStat.currentLevel);
+            // SetSelectionOverlay(trainingStat.isTraining);
         }
 
         public void SetImage(Sprite newSprite) {

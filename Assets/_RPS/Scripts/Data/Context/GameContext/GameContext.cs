@@ -14,13 +14,13 @@ namespace Kapibara.RPS
 	    #region FIELDS
 
 		//Generic Game Data
-		[SerializeField] private NotificableField<string> _gameName;
-		[SerializeField] private NotificableField<string> _timestamp;
-		[SerializeField] private NotificableField<string> _date;
+		[SerializeField] private NString _gameName;
+		[SerializeField] private NString _timestamp;
+		[SerializeField] private NString _date;
 		//Player Data
 		[SerializeField] private NotificableField<Player> _player;
 		//Town Data
-		[SerializeField] private NotificableField<List<TownView>> _townViews;
+		[SerializeField] private NList<TownData> _townViews;
 
 		#endregion
 
@@ -50,7 +50,7 @@ namespace Kapibara.RPS
 			set => _player.Value = value;
 		}
 
-		public List<TownView> TownViews
+		public List<TownData> TownViews
 		{
 			get => _townViews.Value;
 			set => _townViews.Value = value;
@@ -63,13 +63,13 @@ namespace Kapibara.RPS
 		public GameContext() { }
 
 		[JsonConstructor]
-		public GameContext(string gameName, string timestamp, string date, Player player, List<TownView> townViews)
+		public GameContext(string gameName, string timestamp, string date, Player player, List<TownData> townViews)
 		{
-			_gameName = new NotificableField<string> { Value = gameName };
-			_timestamp = new NotificableField<string> { Value = timestamp };
-			_date = new NotificableField<string> { Value = date };
+			_gameName = new NString(gameName);
+			_timestamp = new NString(timestamp);
+			_date = new NString(date);
 			_player = new NotificableField<Player> { Value = player };
-			_townViews = new NotificableField<List<TownView>> { Value = townViews };
+			_townViews = new NList<TownData>() { Value = townViews };
 		}
 
 		#endregion

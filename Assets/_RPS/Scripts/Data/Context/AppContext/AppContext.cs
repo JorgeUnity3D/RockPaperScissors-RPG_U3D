@@ -19,6 +19,6 @@ namespace Kapibara.RPS
 
         public static string TimeStamp => _gameContext.Timestamp;
         public static Player Player => _gameContext.Player;
-        public static List<TownView> TownViews => _gameContext.TownViews;
+        public static List<TownData> TownViews => _gameContext.TownViews;
     }
 }

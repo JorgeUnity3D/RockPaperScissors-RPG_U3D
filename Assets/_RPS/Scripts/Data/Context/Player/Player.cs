@@ -13,35 +13,35 @@ namespace Kapibara.RPS
 		#region FIELDS
 
 		//General
-		[SerializeField] private NotificableField<string> _name;
-		[SerializeField] private NotificableField<int> _level;
-		[SerializeField] private NotificableField<int> _gold;
+		[SerializeField] private NString _name;
+		[SerializeField] private NInt _level;
+		[SerializeField] private NInt _gold;
 		//Health
-		[SerializeField] private NotificableField<int> _currentHealth;
-		[SerializeField] private NotificableField<int> _maxHealth;
+		[SerializeField] private NInt _currentHealth;
+		[SerializeField] private NInt _maxHealth;
 		//Mentality
-		[SerializeField] private NotificableField<int> _mentality;
+		[SerializeField] private NInt _mentality;
 		//Rock
-		[SerializeField] private NotificableField<Attribute> _rock;
-		[SerializeField] private NotificableField<int> _rockCost;
+		[SerializeField] private NAttribute _rock;
+		[SerializeField] private NInt _rockCost;
 		//Paper
-		[SerializeField] private NotificableField<Attribute> _paper;
-		[SerializeField] private NotificableField<int> _paperCost;
+		[SerializeField] private NAttribute _paper;
+		[SerializeField] private NInt _paperCost;
 		//Scissors
-		[SerializeField] private NotificableField<Attribute> _scissor;
-		[SerializeField] private NotificableField<int> _scissorCost;
+		[SerializeField] private NAttribute _scissor;
+		[SerializeField] private NInt _scissorCost;
 		//Defense
-		[SerializeField] private NotificableField<Attribute> _defense;
-		[SerializeField] private NotificableField<int> _defenseCost;
-		[SerializeField] private NotificableField<int> _thorns;
+		[SerializeField] private NAttribute _defense;
+		[SerializeField] private NInt _defenseCost;
+		[SerializeField] private NInt _thorns;
 		//Energy
-		[SerializeField] private NotificableField<int> _currentEnergy;
-		[SerializeField] private NotificableField<int> _maxEnergy;
-		[SerializeField] private NotificableField<int> _initialEnergy;
-		[SerializeField] private NotificableField<int> _energyRecovery;
+		[SerializeField] private NInt _currentEnergy;
+		[SerializeField] private NInt _maxEnergy;
+		[SerializeField] private NInt _initialEnergy;
+		[SerializeField] private NInt _energyRecovery;
 		//Crit & SuperPower
-		[SerializeField] private NotificableField<int> _crit;
-		[SerializeField] private NotificableField<int> _superpower;
+		[SerializeField] private NInt _crit;
+		[SerializeField] private NInt _superpower;
 
 		#endregion
 
@@ -52,7 +52,7 @@ namespace Kapibara.RPS
 			get => _name.Value;
 			set => _name.Value = value;
 		}
-
+		
 		public int Level
 		{
 			get => _level.Value;
@@ -173,6 +173,20 @@ namespace Kapibara.RPS
 			set => _superpower.Value = value;
 		}
 
+		public List<Attribute> Attributes
+		{
+			get
+			{
+				return new List<Attribute>
+				{
+					_rock.Value,
+					_paper.Value,
+					_scissor.Value,
+					_defense.Value
+				};
+			}
+		}
+		
 		#endregion
 
 		#region CONSTRUCTORS
@@ -181,34 +195,34 @@ namespace Kapibara.RPS
 
 		public Player(string playername)
 		{
-			_name = new NotificableField<string> { Value = playername };
-			_level = new NotificableField<int> { Value = 1 };
-			_gold = new NotificableField<int> { Value = 100 };
-			_rock = new NotificableField<Attribute> { Value = new Attribute(3) };
+			_name = new NString(playername);
+			_level = new NInt(1);
+			_gold = new NInt(100);
+			_rock = new NAttribute(3);
 			_rock.Value.AddModifier(new TrainingModifier(1));
 			_rock.Value.AddModifier(new SkillTreeModifier(2));
-			_paper = new NotificableField<Attribute> { Value = new Attribute(4) };
+			_paper = new NAttribute(4);
 			_paper.Value.AddModifier(new TrainingModifier(3));
 			_paper.Value.AddModifier(new SkillTreeModifier(4));
-			_scissor = new NotificableField<Attribute> { Value = new Attribute(5) };
+			_scissor = new NAttribute(5);
 			_scissor.Value.AddModifier(new TrainingModifier(5));
 			_scissor.Value.AddModifier(new SkillTreeModifier(6));
-			_currentHealth = new NotificableField<int> { Value = 10 };
-			_maxHealth = new NotificableField<int> { Value = 10 };
+			_currentHealth = new NInt(10);
+			_maxHealth = new NInt(1 );
 			//
-			_mentality = new NotificableField<int> { Value = 1 };
-			_rockCost = new NotificableField<int> { Value = 5 };
-			_paperCost = new NotificableField<int> { Value = 5 };
-			_scissorCost = new NotificableField<int> { Value = 5 };
-			_defense = new NotificableField<Attribute> { Value = new Attribute(0) };
-			_defenseCost = new NotificableField<int> { Value = 0 };
-			_thorns = new NotificableField<int> { Value = 0 };
-			_currentEnergy = new NotificableField<int> { Value = 0 };
-			_maxEnergy = new NotificableField<int> { Value = 0 };
-			_initialEnergy = new NotificableField<int> { Value = 0 };
-			_energyRecovery = new NotificableField<int> { Value = 0 };
-			_crit = new NotificableField<int> { Value = 0 };
-			_superpower = new NotificableField<int> { Value = 0 };
+			_mentality = new NInt(1);
+			_rockCost = new NInt(5);
+			_paperCost = new NInt(5);
+			_scissorCost = new NInt(5);
+			_defense = new NAttribute(0);
+			_defenseCost = new NInt(0);
+			_thorns = new NInt(0);
+			_currentEnergy = new NInt(0);
+			_maxEnergy = new NInt(0);
+			_initialEnergy = new NInt(0);
+			_energyRecovery = new NInt(0);
+			_crit = new NInt(0);
+			_superpower = new NInt(0);
 		}
 
 		[JsonConstructor]
@@ -216,27 +230,27 @@ namespace Kapibara.RPS
 			int rockCost, Attribute paper, int paperCost, Attribute scissor, int scissorCost, Attribute defense, int defenseCost,
 			int thorns, int currentEnergy, int maxEnergy, int initialEnergy, int energyRecovery, int crit, int superpower)
 		{
-			_name = new NotificableField<string> { Value = name };
-			_level = new NotificableField<int> { Value = level };
-			_gold = new NotificableField<int> { Value = currentGold };
-			_currentHealth = new NotificableField<int> { Value = currentHealth };
-			_maxHealth = new NotificableField<int> { Value = maxHealth };
-			_mentality = new NotificableField<int> { Value = mentality };
-			_rock = new NotificableField<Attribute> { Value = rock };
-			_rockCost = new NotificableField<int> { Value = rockCost };
-			_paper = new NotificableField<Attribute> { Value = paper };
-			_paperCost = new NotificableField<int> { Value = paperCost };
-			_scissor = new NotificableField<Attribute> { Value = scissor };
-			_scissorCost = new NotificableField<int> { Value = scissorCost };
-			_defense = new NotificableField<Attribute> { Value =  defense };
-			_defenseCost = new NotificableField<int> { Value = defenseCost };
-			_thorns = new NotificableField<int> { Value = thorns };
-			_currentEnergy = new NotificableField<int> { Value = currentEnergy };
-			_maxEnergy = new NotificableField<int> { Value = maxEnergy };
-			_initialEnergy = new NotificableField<int> { Value = initialEnergy };
-			_energyRecovery = new NotificableField<int> { Value = energyRecovery };
-			_crit = new NotificableField<int> { Value = crit };
-			_superpower = new NotificableField<int> { Value = superpower };
+			_name = new NString(name);
+			_level = new NInt(level);
+			_gold = new NInt(currentGold);
+			_currentHealth = new NInt(currentHealth);
+			_maxHealth = new NInt(maxHealth);
+			_mentality = new NInt(mentality);
+			_rock = new NAttribute(rock);
+			_rockCost = new NInt(rockCost);
+			_paper = new NAttribute(paper);
+			_paperCost = new NInt(paperCost);
+			_scissor = new NAttribute(scissor);
+			_scissorCost = new NInt(scissorCost);
+			_defense = new NAttribute( defense);
+			_defenseCost = new NInt(defenseCost);
+			_thorns = new NInt(thorns);
+			_currentEnergy = new NInt(currentEnergy);
+			_maxEnergy = new NInt(maxEnergy);
+			_initialEnergy = new NInt(initialEnergy);
+			_energyRecovery = new NInt(energyRecovery);
+			_crit = new NInt(crit);
+			_superpower = new NInt(superpower);
 		}
 
 		#endregion

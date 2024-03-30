@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace Kapibara.RPS
@@ -6,12 +7,12 @@ namespace Kapibara.RPS
 	{
         #region SCENES
 
-        const string INTRO_SCENE = "00_Intro";
-        const string MAIN_MENU_SCENE = "01_MainMenu";
-        const string TOWN_SCENE = "02_Town";
-        const string MAP_SCENE = "03_Map";
-        const string COMBAT_SCENE = "04_Combat";
-        const string LOADING_SCENE = "05_Loading";
+        public const string INTRO_SCENE = "00_Intro";
+        public const string MAIN_MENU_SCENE = "01_MainMenu";
+        public const string TOWN_SCENE = "02_Town";
+        public const string MAP_SCENE = "03_Map";
+        public const string COMBAT_SCENE = "04_Combat";
+        public const string LOADING_SCENE = "05_Loading";
         
         public static readonly Dictionary<GameScenes, string> SceneNames = new Dictionary<GameScenes, string>()
         {
@@ -58,5 +59,15 @@ namespace Kapibara.RPS
         };
 
         #endregion
-    }
+
+		#region ATTRIBUTE_MODIFIER
+
+		public static readonly Dictionary<Type, ModifierType> ATTRIBUTE_TYPE_VALUE = new Dictionary<Type, ModifierType>()
+		{
+			{ typeof(TrainingModifier), ModifierType.TRAINING },
+			{ typeof(SkillTreeModifier), ModifierType.SKILLTREE }
+		};
+
+		#endregion
+	}
 }

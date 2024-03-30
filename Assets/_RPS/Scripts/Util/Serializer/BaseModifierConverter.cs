@@ -10,7 +10,10 @@ namespace Kapibara.RPS
 {
 	public class BaseModifierConverter : JsonConverter
 	{
-		static JsonSerializerSettings SpecifiedSubclassConversion = new JsonSerializerSettings() { ContractResolver = new BaseSpecifiedConcreteClassConverter() };
+		static JsonSerializerSettings SpecifiedSubclassConversion = new JsonSerializerSettings()
+		{
+			ContractResolver = new BaseSpecifiedConcreteClassConverter()
+		};
 
 		public override bool CanConvert(Type objectType)
 		{
@@ -20,11 +23,11 @@ namespace Kapibara.RPS
 		public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
 		{
 			JObject jo = JObject.Load(reader);
-			switch (jo["ObjType"].Value<int>())
+			switch (jo["ModifierType"].Value<ModifierType>())
 			{
-				case 0:
+				case ModifierType.TRAINING:
 					return JsonConvert.DeserializeObject<TrainingModifier>(jo.ToString(), SpecifiedSubclassConversion);
-				case 1:
+				case ModifierType.SKILLTREE:
 					return JsonConvert.DeserializeObject<SkillTreeModifier>(jo.ToString(), SpecifiedSubclassConversion);
 				default:
 					throw new Exception();

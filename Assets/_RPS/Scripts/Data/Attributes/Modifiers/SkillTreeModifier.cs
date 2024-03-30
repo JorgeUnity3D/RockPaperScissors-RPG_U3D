@@ -7,7 +7,7 @@ namespace Kapibara.RPS
 	[Serializable]
 	public class SkillTreeModifier : BaseModifier
 	{
-		private NotificableField<bool> _skillTreeData;
+		private NBool _skillTreeData;
 
 		public bool SkillTreeData
 		{
@@ -19,21 +19,21 @@ namespace Kapibara.RPS
 
 		public SkillTreeModifier(int initialModifier)
 		{
-			ObjType = 1;
-			_modifier = new NotificableField<int>() { Value = initialModifier };
-			_level = new NotificableField<int>() { Value = 1 };
-			_experience = new NotificableField<int>() { Value = 0 };
-			_skillTreeData = new NotificableField<bool>() { Value = false };
+			ModifierType = GameConsts.ATTRIBUTE_TYPE_VALUE[this.GetType()];;
+			_modifier = new NInt(initialModifier);
+			_level = new NInt(1);
+			_experience = new NInt(0);
+			_skillTreeData = new NBool(false);
 		}
 
 		[JsonConstructor]
 		public SkillTreeModifier(int modifier, int level, int experience, bool skillTreeData)
 		{
-			ObjType = 1;
-			_modifier = new NotificableField<int>() { Value = modifier };
-			_level = new NotificableField<int>() { Value = level };
-			_experience = new NotificableField<int>() { Value = experience };
-			_skillTreeData = new NotificableField<bool>() { Value = skillTreeData };
+			ModifierType = GameConsts.ATTRIBUTE_TYPE_VALUE[this.GetType()];;
+			_modifier = new NInt(modifier);
+			_level = new NInt(level);
+			_experience = new NInt(experience);
+			_skillTreeData = new NBool(skillTreeData);
 		}
 
 		#endregion

@@ -11,8 +11,8 @@ namespace Kapibara.RPS
 	{
 		#region FIELDS
 
-		[SerializeField] private NotificableField<int> _attributeValue;
-		[SerializeField] private NotificableField<List<BaseModifier>> _modifiers;
+		[SerializeField] private NInt _attributeValue;
+		[HideInInspector] private NList<BaseModifier> _modifiers;
 
 		#endregion
 
@@ -28,6 +28,20 @@ namespace Kapibara.RPS
 		{
 			get => _modifiers.Value;
 			set => _modifiers.Value = value;
+		}
+		
+		[JsonIgnore]
+		public TrainingModifier TrainingModifiers
+		{
+			get => GetModifier<TrainingModifier>();
+			set => AddModifier(value);
+		}
+		
+		[JsonIgnore]
+		public SkillTreeModifier SkillTreeModifiers
+		{
+			get => GetModifier<SkillTreeModifier>();
+			set => AddModifier(value);
 		}
 
 		public int TotalValue
@@ -49,15 +63,15 @@ namespace Kapibara.RPS
 
 		public Attribute(int attributeValue)
 		{
-			_attributeValue = new NotificableField<int>() { Value = attributeValue };
-			_modifiers = new NotificableField<List<BaseModifier>>(){ Value = new List<BaseModifier>() };
+			_attributeValue = new NInt(attributeValue);
+			_modifiers = new NList<BaseModifier>(){ Value = new List<BaseModifier>() };
 		}
 
 		[JsonConstructor]
 		public Attribute(int attributeValue, List<BaseModifier> modifiers)
 		{
-			_attributeValue = new NotificableField<int>() { Value = attributeValue };
-			_modifiers = new NotificableField<List<BaseModifier>>() { Value = new List<BaseModifier>(modifiers) };
+			_attributeValue = new NInt(attributeValue);
+			_modifiers = new NList<BaseModifier>() { Value = new List<BaseModifier>(modifiers) };
 		}
 
 		#endregion

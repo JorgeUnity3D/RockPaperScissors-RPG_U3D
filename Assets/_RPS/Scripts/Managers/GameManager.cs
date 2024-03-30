@@ -79,17 +79,17 @@ namespace Kapibara.RPS
 			string timestamp = RPSTimestamp.GetTimestamp();
 			string date = RPSTimestamp.ConvertTimestampToDateTime(RPSTimestamp.GetTimestamp()).ToString(CultureInfo.InvariantCulture);
 			Player player = new Player(playername);
-			List<TownView> townViews = new List<TownView>()
+			List<TownData> townViews = new List<TownData>()
 			{
-				new TownView(TownMenu.LIBRARY),
-				new TownView(TownMenu.PAPER_TREE),
-				new TownView(TownMenu.SCISSORS),
-				new TownView(TownMenu.STABLES),
-				new TownView(TownMenu.STONE_SMITHY),
-				new TownView(TownMenu.THEATER),
-				new TownView(TownMenu.TRAINING_HOUSE),
-				new TownView(TownMenu.TRAVEL),
-				new TownView(TownMenu.HOUSE, true, false, false, false, false)
+				new TownData(TownMenu.LIBRARY),
+				new TownData(TownMenu.PAPER_TREE),
+				new TownData(TownMenu.SCISSORS),
+				new TownData(TownMenu.STABLES),
+				new TownData(TownMenu.STONE_SMITHY),
+				new TownData(TownMenu.THEATER),
+				new TownData(TownMenu.TRAINING_HOUSE),
+				new TownData(TownMenu.TRAVEL),
+				new TownData(TownMenu.HOUSE, true, false, false, false, false)
 			};
 			GameContext gameContext = new GameContext(gameName, timestamp, date, player, townViews);
 			_persistenceService.SaveGame(gameContext);

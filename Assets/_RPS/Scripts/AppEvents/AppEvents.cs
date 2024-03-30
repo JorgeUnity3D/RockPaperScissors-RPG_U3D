@@ -26,8 +26,8 @@ namespace Kapibara.RPS
         public static UnityAction<TownMenu> OnOpenTownMenu;
         public static UnityAction OnBackFromTownMenu;
         //Town Unlock Menus
-        public static UnityAction<TownView> OnConfirmUnlock;
-        public static UnityAction<TownView> OnPayUnlock;
+        public static UnityAction<TownData> OnConfirmUnlock;
+        public static UnityAction<TownData> OnPayUnlock;
         public static UnityAction OnCancelUnlock;
         
 

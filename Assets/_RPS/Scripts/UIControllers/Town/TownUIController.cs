@@ -37,22 +37,22 @@ namespace Kapibara.RPS
 			}
 		}
 
-		public void SetData(List<TownView> townViews, List<TownData> townDatas)
+		public void SetData(List<TownData> townViews, List<TownView> townDatas)
 		{
 			Debug.Log($"[TownUIController] SetData() -> ");
 			for (int i = 0; i < townViews.Count; i++)
 			{
-				TownView townView = townViews[i];
-				TownData townData = townDatas.Find(td => td.townMenu == townView.TownMenu);
-				UpdateTownButton(townView, townData);
+				TownData townData = townViews[i];
+				TownView townView = townDatas.Find(td => td.townMenu == townData.TownMenu);
+				UpdateTownButton(townData, townView);
 			}
 		}
 
-		public void UpdateTownButton(TownView townView, TownData townData)
+		public void UpdateTownButton(TownData townData, TownView townView)
 		{
-			Debug.Log($"[TownUIController] UpdateTownButton() -> townView: {townView.TownMenu}");
-			UIButton townButton = _townDictionary[townView.TownMenu];
-			townButton.GetComponent<Image>().sprite = townView.IsUnlocked ? townData.buildingIcon : townData.notBuiltIcon;
+			Debug.Log($"[TownUIController] UpdateTownButton() -> townView: {townData.TownMenu}");
+			UIButton townButton = _townDictionary[townData.TownMenu];
+			townButton.GetComponent<Image>().sprite = townData.IsUnlocked ? townView.buildingIcon : townView.notBuiltIcon;
 		}
 		
         #endregion
