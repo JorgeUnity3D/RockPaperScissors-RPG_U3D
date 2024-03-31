@@ -13,13 +13,29 @@ namespace Kapibara.RPS
 		[SerializeField, ReadOnly] private PersistenceService _persistenceService;
 		[SerializeField, ReadOnly] private SceneService _sceneService;
 		[SerializeField, ReadOnly] private GameContext _gameContext;
-	
+
+		[SerializeField] private bool _testContext = true;
+		
         #region SETUP
 
 		public override void SetUp()
 		{
 			_persistenceService = ServiceLocator.Instance.GetService<PersistenceService>();
 			_sceneService = ServiceLocator.Instance.GetService<SceneService>();
+			if (_testContext)
+			{
+				RunTest();
+			}
+		}
+
+		private void RunTest()
+		{
+			_persistenceService.LoadGameList((gameContexts) =>
+			{
+				AppContext.GameContext = gameContexts[0];
+				_gameContext = AppContext.GameContext;
+				AppEvents.OnGameContextUpdated += UpdateSaveGame;
+			});
 		}
 		
 		protected override void Subscribe()

@@ -23,7 +23,7 @@ namespace Kapibara.RPS
 		public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
 		{
 			JObject jo = JObject.Load(reader);
-			switch (jo["ModifierType"].Value<ModifierType>())
+			switch ((ModifierType)jo["ModifierType"].Value<int>())
 			{
 				case ModifierType.TRAINING:
 					return JsonConvert.DeserializeObject<TrainingModifier>(jo.ToString(), SpecifiedSubclassConversion);

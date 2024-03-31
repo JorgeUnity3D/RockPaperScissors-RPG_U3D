@@ -6,9 +6,9 @@ namespace Kapibara.RPS
 	public class TownView
 	{
 		public TownMenu townMenu;
-		[PreviewField] public Sprite buildingIcon;
-		[PreviewField] public Sprite notBuiltIcon;
-		[PreviewField] public Sprite npcIcon;
-		[PreviewField] public Sprite npcNotFoundIcon;
+		[HorizontalGroup("Icons"), PreviewField] public Sprite buildingIcon;
+		[HorizontalGroup("Icons"), PreviewField] public Sprite notBuiltIcon;
+		[HorizontalGroup("Icons"), PreviewField] public Sprite npcIcon;
+		[HorizontalGroup("Icons"), PreviewField] public Sprite npcNotFoundIcon;
 	}
 }

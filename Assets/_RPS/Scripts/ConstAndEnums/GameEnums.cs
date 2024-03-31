@@ -14,13 +14,18 @@ namespace Kapibara.RPS
 	}
 
 	[Serializable]
-	public enum Stat
-	{
-		ROCK = 0,
-		PAPER = 1,
-		SCISSORS = 2,
-		DEFENSE = 3,
-		ENERGY = 4
+	public enum Stats {
+		HEALTH,
+		MENTALITY,
+		ROCK,
+		PAPER,
+		SCISSOR,
+		DEFENSE,
+		THORNS,
+		ENERGY_BASE,
+		ENERGY_RECOVERY,
+		CRIT,
+		SUPERPOWER
 	}
 
 	[Serializable]

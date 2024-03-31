@@ -6,8 +6,8 @@ using UnityEngine;
 
 namespace Kapibara.RPS {
 	public class TrainingView {
+		[HorizontalGroup("TrainingView")]
 		public Stats stat;
-		[PreviewField, HideLabel]
-		public Sprite icon;
+		[HorizontalGroup("TrainingView"), PreviewField] public Sprite icon;
 	}
 }

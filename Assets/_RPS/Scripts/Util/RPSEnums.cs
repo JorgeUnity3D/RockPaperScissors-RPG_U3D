@@ -16,19 +16,7 @@
         DEV
     }
 
-    public enum Stats {
-        HEALTH,
-        MENTALITY,
-        ROCK,
-        PAPER,
-        SCISSOR,
-        DEFENSE,
-        THORNS,
-        ENERGY_BASE,
-        ENERGY_RECOVERY,
-        CRIT,
-        SUPERPOWER
-    }
+    
 
     public enum ItemType {
         HEALTH_POTION,
