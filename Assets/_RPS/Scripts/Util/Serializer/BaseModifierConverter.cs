@@ -25,10 +25,12 @@ namespace Kapibara.RPS
 			JObject jo = JObject.Load(reader);
 			switch ((ModifierType)jo["ModifierType"].Value<int>())
 			{
-				case ModifierType.TRAINING:
-					return JsonConvert.DeserializeObject<TrainingModifier>(jo.ToString(), SpecifiedSubclassConversion);
-				case ModifierType.SKILLTREE:
-					return JsonConvert.DeserializeObject<SkillTreeModifier>(jo.ToString(), SpecifiedSubclassConversion);
+				case ModifierType.TRAININGHOUSE_MOD:
+					return JsonConvert.DeserializeObject<TrainingHouseModifier>(jo.ToString(), SpecifiedSubclassConversion);
+				case ModifierType.PAPERTREE_MOD:
+					return JsonConvert.DeserializeObject<PaperTreeModifier>(jo.ToString(), SpecifiedSubclassConversion);
+				case ModifierType.SCISSORBONFIRE_MOD:
+					return JsonConvert.DeserializeObject<ScissorBonfireModifier>(jo.ToString(), SpecifiedSubclassConversion);
 				default:
 					throw new Exception();
 			}

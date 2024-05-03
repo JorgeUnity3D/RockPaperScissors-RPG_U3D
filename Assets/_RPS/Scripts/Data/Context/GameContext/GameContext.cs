@@ -1,10 +1,8 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
+using System.Globalization;
 using Newtonsoft.Json;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Kapibara.RPS
 {
@@ -20,7 +18,7 @@ namespace Kapibara.RPS
 		//Player Data
 		[SerializeField] private NotificableField<Player> _player;
 		//Town Data
-		[SerializeField] private NList<TownData> _townViews;
+		[SerializeField] private NList<TownData> _townData;
 
 		#endregion
 
@@ -50,10 +48,10 @@ namespace Kapibara.RPS
 			set => _player.Value = value;
 		}
 
-		public List<TownData> TownViews
+		public List<TownData> TownData
 		{
-			get => _townViews.Value;
-			set => _townViews.Value = value;
+			get => _townData.Value;
+			set => _townData.Value = value;
 		}
 
 		#endregion
@@ -62,6 +60,29 @@ namespace Kapibara.RPS
 
 		public GameContext() { }
 
+		public GameContext(string gameName, string playerName)
+		{
+			_gameName = new NString(gameName);
+			_timestamp = new NString(RPSTimestamp.GetTimestamp());
+			_date = new NString(RPSTimestamp.ConvertTimestampToDateTime(RPSTimestamp.GetTimestamp()).ToString(CultureInfo.InvariantCulture));
+			_player = new NotificableField<Player> { Value = new Player(playerName) };
+			_townData = new NList<TownData>()
+			{
+				Value = new List<TownData>()
+				{
+					new TownData(TownMenu.LIBRARY),
+					new TownData(TownMenu.PAPER_TREE),
+					new TownData(TownMenu.SCISSORS),
+					new TownData(TownMenu.STABLES),
+					new TownData(TownMenu.STONE_SMITHY),
+					new TownData(TownMenu.THEATER),
+					new TownData(TownMenu.TRAINING_HOUSE),
+					new TownData(TownMenu.TRAVEL),
+					new TownData(TownMenu.HOUSE, true, false, false, false, false)
+				}
+			};
+		}
+
 		[JsonConstructor]
 		public GameContext(string gameName, string timestamp, string date, Player player, List<TownData> townViews)
 		{
@@ -69,7 +90,7 @@ namespace Kapibara.RPS
 			_timestamp = new NString(timestamp);
 			_date = new NString(date);
 			_player = new NotificableField<Player> { Value = player };
-			_townViews = new NList<TownData>() { Value = townViews };
+			_townData = new NList<TownData>() { Value = townViews };
 		}
 
 		#endregion

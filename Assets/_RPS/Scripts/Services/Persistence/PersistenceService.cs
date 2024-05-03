@@ -11,7 +11,6 @@ using UnityEngine;
 using UnityEngine.Events;
 namespace Kapibara.RPS
 {
-
     public class PersistenceService : ServiceSubscriber<PersistenceService>
     {
         [SerializeField] string _subfolder;
@@ -97,7 +96,9 @@ namespace Kapibara.RPS
         {
             if (Directory.Exists(_saveDirectory))
             {
-                return Directory.GetFiles(_saveDirectory).Length.ToString("D2");
+	            string[] files = Directory.GetFiles(_saveDirectory);
+	            string[] gameFiles = Array.FindAll(files, file => !file.Contains("Test"));
+	            return gameFiles.Length.ToString("D2");
             }
             return 0.ToString("D2");
         }

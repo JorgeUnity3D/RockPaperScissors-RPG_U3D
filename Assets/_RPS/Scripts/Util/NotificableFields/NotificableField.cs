@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Kapibara.RPS
 {
@@ -8,7 +8,8 @@ namespace Kapibara.RPS
 	public class NotificableField<T>
 	{
 		[SerializeField] private T _value;
-
+		public event UnityAction<T> OnValueChanged;
+		
 		public T Value
 		{
 			get => _value;
@@ -18,6 +19,7 @@ namespace Kapibara.RPS
 				{
 					_value = value;
 					AppEvents.OnGameContextUpdated?.Invoke();
+					OnValueChanged?.Invoke(_value);
 				}
 			}
 		}

@@ -1,5 +1,5 @@
 using System;
-using UnityEngine;
+using System.ComponentModel;
 
 namespace Kapibara.RPS
 {
@@ -15,24 +15,25 @@ namespace Kapibara.RPS
 
 	[Serializable]
 	public enum Stats {
-		HEALTH,
-		MENTALITY,
-		ROCK,
-		PAPER,
-		SCISSOR,
-		DEFENSE,
-		THORNS,
-		ENERGY_BASE,
-		ENERGY_RECOVERY,
-		CRIT,
-		SUPERPOWER
+		[Description("Health")] HEALTH = 0,
+		[Description("Mental")] MENTALITY = 1,
+		[Description("Rock")] ROCK = 2,
+		[Description("Paper")] PAPER = 3,
+		[Description("Scisso")] SCISSOR = 4,
+		[Description("Defens")] DEFENSE = 5,
+		[Description("Thorns")] THORNS = 6,
+		[Description("En_Bse")] ENERGY_BASE = 7,
+		[Description("En_Rec")] ENERGY_RECOVERY = 8,
+		[Description("Crit")] CRIT = 9,
+		[Description("Sp_Pow")] SUPERPOWER = 10
 	}
 
 	[Serializable]
 	public enum ModifierType
 	{
-		TRAINING = 0,
-		SKILLTREE = 1
+		TRAININGHOUSE_MOD = 0,
+		PAPERTREE_MOD = 1,
+		SCISSORBONFIRE_MOD = 2
 	}
 	
 	[Serializable]

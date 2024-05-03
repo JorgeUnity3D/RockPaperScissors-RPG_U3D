@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Kapibara.RPS
 {
-
 	[Serializable]
 	public class Player
 	{
@@ -17,10 +17,10 @@ namespace Kapibara.RPS
 		[SerializeField] private NInt _level;
 		[SerializeField] private NInt _gold;
 		//Health
-		[SerializeField] private NInt _currentHealth;
-		[SerializeField] private NInt _maxHealth;
+		[SerializeField, JsonIgnore] private NInt _currentHealth;
+		[SerializeField] private NAttribute _maxHealth;
 		//Mentality
-		[SerializeField] private NInt _mentality;
+		[SerializeField] private NAttribute _mentality;
 		//Rock
 		[SerializeField] private NAttribute _rock;
 		[SerializeField] private NInt _rockCost;
@@ -33,15 +33,18 @@ namespace Kapibara.RPS
 		//Defense
 		[SerializeField] private NAttribute _defense;
 		[SerializeField] private NInt _defenseCost;
-		[SerializeField] private NInt _thorns;
+		[SerializeField] private NAttribute _thorns;
 		//Energy
 		[SerializeField] private NInt _currentEnergy;
-		[SerializeField] private NInt _maxEnergy;
+		[SerializeField] private NAttribute _baseEnergy;
 		[SerializeField] private NInt _initialEnergy;
-		[SerializeField] private NInt _energyRecovery;
+		[SerializeField] private NAttribute _energyRecovery;
 		//Crit & SuperPower
-		[SerializeField] private NInt _crit;
-		[SerializeField] private NInt _superpower;
+		[SerializeField] private NAttribute _crit;
+		[SerializeField] private NAttribute _superpower;
+
+		//Helpers
+		[JsonIgnore] private Dictionary<Stats, NAttribute> _statAttributes;
 
 		#endregion
 
@@ -52,7 +55,7 @@ namespace Kapibara.RPS
 			get => _name.Value;
 			set => _name.Value = value;
 		}
-		
+
 		public int Level
 		{
 			get => _level.Value;
@@ -65,19 +68,20 @@ namespace Kapibara.RPS
 			set => _gold.Value = value;
 		}
 
+		[JsonIgnore]
 		public int CurrentHealth
 		{
 			get => _currentHealth.Value;
 			set => _currentHealth.Value = value;
 		}
 
-		public int MaxHealth
+		public Attribute MaxHealth
 		{
 			get => _maxHealth.Value;
 			set => _maxHealth.Value = value;
 		}
 
-		public int Mentality
+		public Attribute Mentality
 		{
 			get => _mentality.Value;
 			set => _mentality.Value = value;
@@ -88,7 +92,7 @@ namespace Kapibara.RPS
 			get => _rock.Value;
 			set => _rock.Value = value;
 		}
-		
+
 		public int RockCost
 		{
 			get => _rockCost.Value;
@@ -131,22 +135,23 @@ namespace Kapibara.RPS
 			set => _defenseCost.Value = value;
 		}
 
-		public int Thorns
+		public Attribute Thorns
 		{
 			get => _thorns.Value;
 			set => _thorns.Value = value;
 		}
 
+		[JsonIgnore]
 		public int CurrentEnergy
 		{
 			get => _currentEnergy.Value;
 			set => _currentEnergy.Value = value;
 		}
 
-		public int MaxEnergy
+		public Attribute BaseEnergy
 		{
-			get => _maxEnergy.Value;
-			set => _maxEnergy.Value = value;
+			get => _baseEnergy.Value;
+			set => _baseEnergy.Value = value;
 		}
 
 		public int InitialEnergy
@@ -155,38 +160,55 @@ namespace Kapibara.RPS
 			set => _initialEnergy.Value = value;
 		}
 
-		public int EnergyRecovery
+		public Attribute EnergyRecovery
 		{
 			get => _energyRecovery.Value;
 			set => _energyRecovery.Value = value;
 		}
 
-		public int Crit
+		public Attribute Crit
 		{
 			get => _crit.Value;
 			set => _crit.Value = value;
 		}
 
-		public int Superpower
+		public Attribute Superpower
 		{
 			get => _superpower.Value;
 			set => _superpower.Value = value;
 		}
 
+		[JsonIgnore]
 		public List<Attribute> Attributes
 		{
 			get
 			{
 				return new List<Attribute>
 				{
+					_maxHealth.Value,
+					_mentality.Value,
 					_rock.Value,
 					_paper.Value,
 					_scissor.Value,
-					_defense.Value
+					_defense.Value,
+					_thorns.Value,
+					_baseEnergy.Value,
+					_energyRecovery.Value,
+					_crit.Value,
+					_superpower.Value
 				};
 			}
 		}
-		
+
+		//indexer operator this[] overload
+		public Attribute this[Stats stat]
+		{
+			get
+			{
+				return _statAttributes[stat].Value;
+			}
+		}
+
 		#endregion
 
 		#region CONSTRUCTORS
@@ -197,63 +219,131 @@ namespace Kapibara.RPS
 		{
 			_name = new NString(playername);
 			_level = new NInt(1);
-			_gold = new NInt(100);
-			_rock = new NAttribute(3);
-			_rock.Value.AddModifier(new TrainingModifier(1));
-			_rock.Value.AddModifier(new SkillTreeModifier(2));
-			_paper = new NAttribute(4);
-			_paper.Value.AddModifier(new TrainingModifier(3));
-			_paper.Value.AddModifier(new SkillTreeModifier(4));
-			_scissor = new NAttribute(5);
-			_scissor.Value.AddModifier(new TrainingModifier(5));
-			_scissor.Value.AddModifier(new SkillTreeModifier(6));
+			_gold = new NInt(1000);
+			//Health
 			_currentHealth = new NInt(10);
-			_maxHealth = new NInt(1 );
-			//
-			_mentality = new NInt(1);
+			_maxHealth = new NAttribute(Stats.HEALTH, 10);
+			_maxHealth.Value.AddModifier(new ScissorBonfireModifier(Stats.HEALTH));
+			//Mentality
+			_mentality = new NAttribute(Stats.MENTALITY, 1);
+			//Rock
+			_rock = new NAttribute(Stats.ROCK, 3);
+			_rock.Value.AddModifier(new ScissorBonfireModifier(Stats.ROCK));
 			_rockCost = new NInt(5);
+			//Paper
+			_paper = new NAttribute(Stats.PAPER, 4);
+			_paper.Value.AddModifier(new ScissorBonfireModifier(Stats.PAPER));
 			_paperCost = new NInt(5);
+			//Scissor
+			_scissor = new NAttribute(Stats.SCISSOR, 5);
+			_scissor.Value.AddModifier(new ScissorBonfireModifier(Stats.SCISSOR));
 			_scissorCost = new NInt(5);
-			_defense = new NAttribute(0);
+			//Defense
+			_defense = new NAttribute(Stats.DEFENSE, 0);
+			_defense.Value.AddModifier(new ScissorBonfireModifier(Stats.DEFENSE));
 			_defenseCost = new NInt(0);
-			_thorns = new NInt(0);
+			//Thorns
+			_thorns = new NAttribute(Stats.THORNS, 0);
+			_thorns.Value.AddModifier(new ScissorBonfireModifier(Stats.THORNS));
+			//Energy & Recovery
 			_currentEnergy = new NInt(0);
-			_maxEnergy = new NInt(0);
+			_baseEnergy = new NAttribute(Stats.ENERGY_BASE, 0);
+			_baseEnergy.Value.AddModifier(new ScissorBonfireModifier(Stats.ENERGY_BASE));
 			_initialEnergy = new NInt(0);
-			_energyRecovery = new NInt(0);
-			_crit = new NInt(0);
-			_superpower = new NInt(0);
+			_energyRecovery = new NAttribute(Stats.ENERGY_RECOVERY, 0);
+			//Crit & SuperPower
+			_crit = new NAttribute(Stats.CRIT, 0);
+			_crit.Value.AddModifier(new ScissorBonfireModifier(Stats.CRIT));
+			_superpower = new NAttribute(Stats.SUPERPOWER, 0);
+			_superpower.Value.AddModifier(new ScissorBonfireModifier(Stats.SUPERPOWER));
+
+			//Helpers
+			_statAttributes = new Dictionary<Stats, NAttribute>
+			{
+				{ Stats.HEALTH, _maxHealth },
+				{ Stats.MENTALITY, _mentality },
+				{ Stats.ROCK, _rock },
+				{ Stats.PAPER, _paper },
+				{ Stats.SCISSOR, _scissor },
+				{ Stats.DEFENSE, _defense },
+				{ Stats.THORNS, _thorns },
+				{ Stats.ENERGY_BASE, _baseEnergy },
+				{ Stats.ENERGY_RECOVERY, _energyRecovery },
+				{ Stats.CRIT, _crit },
+				{ Stats.SUPERPOWER, _superpower }
+			};
 		}
 
 		[JsonConstructor]
-		public Player(string name, int level, int currentGold, int currentHealth, int maxHealth, int mentality, Attribute rock, 
-			int rockCost, Attribute paper, int paperCost, Attribute scissor, int scissorCost, Attribute defense, int defenseCost,
-			int thorns, int currentEnergy, int maxEnergy, int initialEnergy, int energyRecovery, int crit, int superpower)
+		public Player(string name, int level, int currentGold, int currentHealth, Attribute maxHealth, Attribute mentality, Attribute rock,
+			int rockCost, Attribute paper, int paperCost, Attribute scissor, int scissorCost, Attribute defense, int defenseCost, Attribute thorns,
+			int currentEnergy, Attribute baseEnergy, int initialEnergy, Attribute energyRecovery, Attribute crit, Attribute superpower)
 		{
 			_name = new NString(name);
 			_level = new NInt(level);
 			_gold = new NInt(currentGold);
+			//Health
 			_currentHealth = new NInt(currentHealth);
-			_maxHealth = new NInt(maxHealth);
-			_mentality = new NInt(mentality);
+			_maxHealth = new NAttribute(maxHealth);
+			//Mentality
+			_mentality = new NAttribute(mentality);
+			//Rock
 			_rock = new NAttribute(rock);
 			_rockCost = new NInt(rockCost);
+			//Paper
 			_paper = new NAttribute(paper);
 			_paperCost = new NInt(paperCost);
+			//Scissor
 			_scissor = new NAttribute(scissor);
 			_scissorCost = new NInt(scissorCost);
-			_defense = new NAttribute( defense);
+			//Defense
+			_defense = new NAttribute(defense);
 			_defenseCost = new NInt(defenseCost);
-			_thorns = new NInt(thorns);
+			//Thorns
+			_thorns = new NAttribute(thorns);
+			//Energy & Recovery
 			_currentEnergy = new NInt(currentEnergy);
-			_maxEnergy = new NInt(maxEnergy);
+			_baseEnergy = new NAttribute(baseEnergy);
 			_initialEnergy = new NInt(initialEnergy);
-			_energyRecovery = new NInt(energyRecovery);
-			_crit = new NInt(crit);
-			_superpower = new NInt(superpower);
+			_energyRecovery = new NAttribute(energyRecovery);
+			//Crit & SuperPower
+			_crit = new NAttribute(crit);
+			_superpower = new NAttribute(superpower);
+
+			//Helpers
+			_statAttributes = new Dictionary<Stats, NAttribute>
+			{
+				{ Stats.HEALTH, _maxHealth },
+				{ Stats.MENTALITY, _mentality },
+				{ Stats.ROCK, _rock },
+				{ Stats.PAPER, _paper },
+				{ Stats.SCISSOR, _scissor },
+				{ Stats.DEFENSE, _defense },
+				{ Stats.THORNS, _thorns },
+				{ Stats.ENERGY_BASE, _baseEnergy },
+				{ Stats.ENERGY_RECOVERY, _energyRecovery },
+				{ Stats.CRIT, _crit },
+				{ Stats.SUPERPOWER, _superpower }
+			};
 		}
 
 		#endregion
+
+		#region EVENTS
+
+		public event UnityAction<int> OnGoldValueChanged
+		{
+			add { _gold.OnValueChanged += value; }
+			remove { _gold.OnValueChanged -= value; }
+		}
+
+		public event UnityAction<int> OnLevelValueChanged
+		{
+			add { _level.OnValueChanged += value; }
+			remove { _level.OnValueChanged -= value; }
+
+		#endregion
+		}
 	}
 
 	[Serializable]

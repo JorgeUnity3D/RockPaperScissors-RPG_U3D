@@ -11,12 +11,19 @@ namespace Kapibara.RPS
 	{
 		#region FIELDS
 
+		[SerializeField] private Stats _stat;
 		[SerializeField] private NInt _attributeValue;
 		[HideInInspector] private NList<BaseModifier> _modifiers;
 
 		#endregion
 
 		#region PROPERTIES
+
+		public Stats Stat
+		{
+			get => _stat;
+			set => _stat = value;
+		}
 
 		public int AttributeValue
 		{
@@ -29,20 +36,6 @@ namespace Kapibara.RPS
 			get => _modifiers.Value;
 			set => _modifiers.Value = value;
 		}
-		
-		[JsonIgnore]
-		public TrainingModifier TrainingModifiers
-		{
-			get => GetModifier<TrainingModifier>();
-			set => AddModifier(value);
-		}
-		
-		[JsonIgnore]
-		public SkillTreeModifier SkillTreeModifiers
-		{
-			get => GetModifier<SkillTreeModifier>();
-			set => AddModifier(value);
-		}
 
 		public int TotalValue
 		{
@@ -51,7 +44,7 @@ namespace Kapibara.RPS
 				int total = _attributeValue.Value;
 				foreach (BaseModifier modifier in _modifiers.Value)
 				{
-					total = modifier.Apply(total);
+					total += modifier.TotaModifier;
 				}
 				return total;
 			}
@@ -61,15 +54,17 @@ namespace Kapibara.RPS
 
 		#region CONSTRUCTORS
 
-		public Attribute(int attributeValue)
+		public Attribute(Stats stat, int attributeValue)
 		{
+			_stat = stat;
 			_attributeValue = new NInt(attributeValue);
-			_modifiers = new NList<BaseModifier>(){ Value = new List<BaseModifier>() };
+			_modifiers = new NList<BaseModifier>() { Value = new List<BaseModifier>() };
 		}
 
 		[JsonConstructor]
-		public Attribute(int attributeValue, List<BaseModifier> modifiers)
+		public Attribute(Stats stat, int attributeValue, List<BaseModifier> modifiers = null)
 		{
+			_stat = stat;
 			_attributeValue = new NInt(attributeValue);
 			_modifiers = new NList<BaseModifier>() { Value = new List<BaseModifier>(modifiers) };
 		}
@@ -97,7 +92,6 @@ namespace Kapibara.RPS
 			{
 				_modifiers.Value.Remove(existingModifier);
 			}
-
 			_modifiers.Value.Add(baseModifier);
 		}
 

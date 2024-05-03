@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 namespace Kapibara.RPS
 {
@@ -14,15 +15,16 @@ namespace Kapibara.RPS
 		[SerializeField, ReadOnly] private SceneService _sceneService;
 		[SerializeField, ReadOnly] private GameContext _gameContext;
 
-		[SerializeField] private bool _testContext = true;
-		
+		[SerializeField] private bool _runTest = true;
+		[SerializeField] private bool _runCleanTest = true;
+
         #region SETUP
 
 		public override void SetUp()
 		{
 			_persistenceService = ServiceLocator.Instance.GetService<PersistenceService>();
 			_sceneService = ServiceLocator.Instance.GetService<SceneService>();
-			if (_testContext)
+			if (_runTest)
 			{
 				RunTest();
 			}
@@ -32,12 +34,26 @@ namespace Kapibara.RPS
 		{
 			_persistenceService.LoadGameList((gameContexts) =>
 			{
-				AppContext.GameContext = gameContexts[0];
+				if (_runCleanTest)
+				{
+					AppContext.GameContext = new GameContext("Game_Test", "Player_Test");
+				}
+				else
+				{
+					if (gameContexts.Exists(gc => gc.GameName == "Game_Test"))
+					{
+						AppContext.GameContext = gameContexts.Find(gc => gc.GameName == "Game_Test");
+					}
+					else
+					{
+						AppContext.GameContext = new GameContext("Game_Test", "Player_Test");
+					}
+				}
 				_gameContext = AppContext.GameContext;
 				AppEvents.OnGameContextUpdated += UpdateSaveGame;
 			});
 		}
-		
+
 		protected override void Subscribe()
 		{
 			Debug.Log($"[GameManager] Subscribe() -> ");
@@ -88,26 +104,11 @@ namespace Kapibara.RPS
 			}
 		}
 
-		private void ConfirmNewGame(string playername)
+		private void ConfirmNewGame(string playerName)
 		{
 			Debug.Log($"[GameManager] ConfirmNewGame() -> ");
 			string gameName = "Game_" + _persistenceService.GetGamesCount();
-			string timestamp = RPSTimestamp.GetTimestamp();
-			string date = RPSTimestamp.ConvertTimestampToDateTime(RPSTimestamp.GetTimestamp()).ToString(CultureInfo.InvariantCulture);
-			Player player = new Player(playername);
-			List<TownData> townViews = new List<TownData>()
-			{
-				new TownData(TownMenu.LIBRARY),
-				new TownData(TownMenu.PAPER_TREE),
-				new TownData(TownMenu.SCISSORS),
-				new TownData(TownMenu.STABLES),
-				new TownData(TownMenu.STONE_SMITHY),
-				new TownData(TownMenu.THEATER),
-				new TownData(TownMenu.TRAINING_HOUSE),
-				new TownData(TownMenu.TRAVEL),
-				new TownData(TownMenu.HOUSE, true, false, false, false, false)
-			};
-			GameContext gameContext = new GameContext(gameName, timestamp, date, player, townViews);
+			GameContext gameContext = new GameContext(gameName, playerName);
 			_persistenceService.SaveGame(gameContext);
 			LoadSelectedGame(gameContext);
 		}
@@ -120,7 +121,7 @@ namespace Kapibara.RPS
 				LoadSelectedGame(gameContexts[0]);
 			});
 		}
-		
+
 		private void LoadSelectedGame(GameContext gameContext)
 		{
 			Debug.Log($"[GameManager] LoadSelectedGame() -> ");
@@ -129,19 +130,19 @@ namespace Kapibara.RPS
 			_sceneService.LoadScene(GameScenes.TOWN);
 			AppEvents.OnGameContextUpdated += UpdateSaveGame;
 		}
-		
+
 		private void DeleteSelectedGame(GameContext gameContext)
 		{
 			Debug.Log($"[GameManager] DeleteSelectedGame() -> ");
 			_persistenceService.DeleteGame(gameContext.GameName);
 		}
-		
+
 		private void UpdateSaveGame()
 		{
 			Debug.Log($"[GameManager] UpdateSaveGame() -> ");
 			ServiceLocator.Instance.GetService<PersistenceService>().UpdateSaveGame(AppContext.GameContext);
 		}
-		
+
         #endregion
 	}
 }

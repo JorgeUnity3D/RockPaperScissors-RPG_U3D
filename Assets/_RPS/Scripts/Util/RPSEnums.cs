@@ -16,8 +16,6 @@
         DEV
     }
 
-    
-
     public enum ItemType {
         HEALTH_POTION,
         SHURIKEN,

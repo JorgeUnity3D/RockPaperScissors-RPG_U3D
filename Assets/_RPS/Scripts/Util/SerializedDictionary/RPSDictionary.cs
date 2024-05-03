@@ -8,4 +8,7 @@ namespace Kapibara.RPS {
     [Serializable] public class ServiceDictionary : UnitySerializedDictionary<System.Type, Component> { }
     [Serializable] public class ManagerDictionary : UnitySerializedDictionary<System.Type, BaseManager> { }
     [Serializable] public class TownDictionary : UnitySerializedDictionary<TownMenu, UIButton> { }
+    [Serializable] public class IconsDictionary : UnitySerializedDictionary<Stats, Sprite> { }
+    [Serializable] public class TrainingDictionary : UnitySerializedDictionary<Stats, TrainingButton> { }
+    [Serializable] public class ScissorBonfireDictionary : UnitySerializedDictionary<Stats, ScissorBonfireVariation> { }
 }
