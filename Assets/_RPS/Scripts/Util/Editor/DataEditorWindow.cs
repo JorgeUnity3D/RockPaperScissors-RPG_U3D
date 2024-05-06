@@ -11,25 +11,10 @@ namespace Kapibara.RPS {
 
         protected override OdinMenuTree BuildMenuTree() {
             OdinMenuTree tree = new OdinMenuTree();
-            tree.AddAllAssetsAtPath("Game States", "Assets/_Game/ScriptableObjects/GameStates",
+            tree.AddAllAssetsAtPath("Player", "Assets/_RPS/ScriptableObjects/Player",
                 typeof(SerializedScriptableObject), true, true);
-            tree.AddAllAssetsAtPath("Player Data", "Assets/_Game/ScriptableObjects/Player",
+            tree.AddAllAssetsAtPath("Town", "Assets/_RPS/ScriptableObjects/Town",
                 typeof(SerializedScriptableObject), true, true);
-            tree.AddAllAssetsAtPath("Enemies Data", "Assets/_Game/ScriptableObjects/Enemies",
-                typeof(SerializedScriptableObject), true, true);
-            tree.AddAllAssetsAtPath("Languages", "Assets/_Game/ScriptableObjects/Languages",
-                typeof(SerializedScriptableObject), true, true);
-            tree.AddAllAssetsAtPath("Town Views", "Assets/_Game/ScriptableObjects/TownViews",
-                typeof(SerializedScriptableObject), true, true);
-            tree.AddAllAssetsAtPath("Town Views", "Assets/_Game/ScriptableObjects/TrainingStats",
-                typeof(SerializedScriptableObject), true, true);
-            tree.AddAllAssetsAtPath("Town Views", "Assets/_Game/ScriptableObjects/Items",
-                typeof(SerializedScriptableObject), true, true);
-            tree.AddAllAssetsAtPath("Map Levels", "Assets/_Game/ScriptableObjects/MapLevels",
-                typeof(SerializedScriptableObject), true, true);
-            tree.AddAllAssetsAtPath("Stats", "Assets/_Game/ScriptableObjects/Stats",
-                typeof(SerializedScriptableObject), true, true);
-            
             return tree;
         }
     }

@@ -90,16 +90,16 @@ namespace Kapibara.RPS
 		
 		public static readonly List<ScissorBonfireModLevel> SCISSOR_MODS = new List<ScissorBonfireModLevel>
 		{
-			new ScissorBonfireModLevel(0, 1, -1, 0, 2, -1, 0, 3, -1),
-			new ScissorBonfireModLevel(1, -1, 0, 2, -1, 0, 3, -1, 0),
-			new ScissorBonfireModLevel(-1, 0, 1, -1, 0, 2, -1, 0, 3),
-			new ScissorBonfireModLevel(0, 2, -1, 0, 1, -1, 0, 3, -1),
-			new ScissorBonfireModLevel(2, -1, 0, 1, -1, 0, 3, -1, 0),
-			new ScissorBonfireModLevel(-1, 0, 2, -1, 0, 1, -1, 0, 3),
-			new ScissorBonfireModLevel(0, 3, -1, 0, 2, -1, 0, 1, -1),
-			new ScissorBonfireModLevel(3, -1, 0, 2, -1, 0, 1, -1, 0),
-			new ScissorBonfireModLevel(-1, 0, 3, -1, 0, 2, -1, 0, 1),
-			new ScissorBonfireModLevel(1, 0, -1, 3, 0, -1, 2, 0, -1)
+			new ScissorBonfireModLevel(0, 1, -1, 0, 2, 2, 0, 3, 3),
+			new ScissorBonfireModLevel(1, -1, 0, 2, 2, 0, 3, 3, 0),
+			new ScissorBonfireModLevel(-1, 0, 1, 2, 0, 2, 3, 0, 3),
+			new ScissorBonfireModLevel(0, 2, 2, 0, 1, -1, 0, 3, 3),
+			new ScissorBonfireModLevel(2, 3, 0, 1, -1, 0, 3, 2, 0),
+			new ScissorBonfireModLevel(2, 0, 2, 3, 0, 1, -1, 0, 3),
+			new ScissorBonfireModLevel(0, 3, 2, 0, 2, 3, 0, 1, -1),
+			new ScissorBonfireModLevel(3, 3, 0, 2, 2, 0, 1, -1, 0),
+			new ScissorBonfireModLevel(2, 0, 3, 2, 0, 2, -1, 0, 1),
+			new ScissorBonfireModLevel(1, 0, 2, 3, 0, 3, 2, 0, -1)
 		};
 		
 		public static List<int> LEVEL_PRICES_AUX = new List<int>()

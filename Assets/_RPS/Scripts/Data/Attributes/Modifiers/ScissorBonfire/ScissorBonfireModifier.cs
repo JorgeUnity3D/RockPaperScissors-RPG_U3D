@@ -26,12 +26,13 @@ namespace Kapibara.RPS
 		}
 
 		[JsonConstructor]
-		public ScissorBonfireModifier(Stats stat, int modifier, int level, int experience, bool isUnlocked, bool isTraining)
+		public ScissorBonfireModifier(Stats stat, int modifier, int level, int experience)
 		{
 			ModifierType = GameConsts.ATTRIBUTE_TYPE_VALUE[this.GetType()];;
 			_stat = stat;
 			_modifier = new NInt(modifier);
 			_level = new NInt(level);
+			_experience = new NInt(experience);
 		}
 
 		#endregion

@@ -98,7 +98,7 @@ namespace Kapibara.RPS
 					break;
 				case TownMenu.PAPER_TREE:
 					_currentTownUIController = _uiService.GetController<PaperTreeUIController>();
-					// targetManager = _managerService.GetManager<PaperTreeManager>();
+					targetManager = _managerService.GetManager<PaperTreeManager>();
 					break;
 				case TownMenu.SCISSORS:
 					_currentTownUIController = _uiService.GetController<ScissorsBonfireUIController>();

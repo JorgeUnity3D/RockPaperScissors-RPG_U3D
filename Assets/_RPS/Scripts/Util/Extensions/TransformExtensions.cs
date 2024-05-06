@@ -30,5 +30,17 @@ namespace Kapibara.RPS.Extensions
 				Object.Destroy(child.gameObject);
 			}
 		}
+		
+		public static void DestroyChildren<T>(this Transform parent) where T : MonoBehaviour
+		{
+			foreach (Transform child in parent)
+			{
+				T component = child.GetComponent<T>();
+				if (component != null)
+				{
+					Object.Destroy(component.gameObject);
+				}
+			}
+		}
 	}
 }

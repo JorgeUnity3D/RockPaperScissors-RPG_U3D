@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace Kapibara.RPS
 {
+	[DefaultExecutionOrder(-9989)]
     public class UIService : ServiceSubscriber<UIService> 
 	{
         List<BaseUIController> _uiControllers;

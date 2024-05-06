@@ -2,6 +2,7 @@
 
 namespace Kapibara.RPS
 {
+	[DefaultExecutionOrder(-9989)]
 	public abstract class ServiceSubscriber<T> : MonoBehaviour where T : MonoBehaviour
 	{
 		#region UNITY_LIFECYCLE

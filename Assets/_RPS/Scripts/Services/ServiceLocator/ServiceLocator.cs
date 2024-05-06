@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Kapibara.RPS
 {
-	[DefaultExecutionOrder(-20)]
+	[DefaultExecutionOrder(-9999)]
 	public class ServiceLocator : SingletonMonoBehaviour<ServiceLocator>
 	{
 		[SerializeField, ReadOnly] private ServiceDictionary _services;

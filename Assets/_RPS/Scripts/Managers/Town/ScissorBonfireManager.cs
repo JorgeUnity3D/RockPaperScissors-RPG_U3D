@@ -54,9 +54,13 @@ namespace Kapibara.RPS
 			List<Attribute> attributes = AppContext.Player.Attributes.FindAll(att => att.GetModifier<ScissorBonfireModifier>() != null);
 			attributes.ForEach(att =>
 			{
+				Debug.Log($"[ScissorBonfireManager] ConfirmLevelUp() -> Stat {att.GetModifier<ScissorBonfireModifier>().Stat} currently is: {att.GetModifier<ScissorBonfireModifier>().Modifier}");
 				att.GetModifier<ScissorBonfireModifier>().Level = AppContext.Player.Level;
 				int statVariation = GameConsts.SCISSOR_MODS[AppContext.Player.Level][att.Stat];
+				Debug.Log($"[ScissorBonfireManager] ConfirmLevelUp() -> Adding {statVariation}");
 				att.GetModifier<ScissorBonfireModifier>().Modifier += statVariation;
+				Debug.Log($"[ScissorBonfireManager] ConfirmLevelUp() -> Stat {att.GetModifier<ScissorBonfireModifier>().Stat} upgraded to: {att.GetModifier<ScissorBonfireModifier>().Modifier}");
+
 			});
 			Debug.Log($"[ScissorBonfireManager] ConfirmLevelUp() -> New Level: {AppContext.Player.Level}");
 		}

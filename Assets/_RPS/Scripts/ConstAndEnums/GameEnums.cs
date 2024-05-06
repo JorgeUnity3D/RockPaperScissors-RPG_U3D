@@ -14,7 +14,8 @@ namespace Kapibara.RPS
 	}
 
 	[Serializable]
-	public enum Stats {
+	public enum Stats
+	{
 		[Description("Health")] HEALTH = 0,
 		[Description("Mental")] MENTALITY = 1,
 		[Description("Rock")] ROCK = 2,
@@ -35,7 +36,7 @@ namespace Kapibara.RPS
 		PAPERTREE_MOD = 1,
 		SCISSORBONFIRE_MOD = 2
 	}
-	
+
 	[Serializable]
 	public enum TownMenu
 	{
@@ -50,5 +51,75 @@ namespace Kapibara.RPS
 		TRAVEL = 8,
 		HOUSE = 9,
 		UNLOCK = 10
+	}
+
+	[Serializable]
+	public enum SkillNode
+	{
+		//Rock-Nodes
+		R01,
+		R02,
+		R03,
+		R04,
+		R05,
+		R06,
+		R07,
+		R08,
+		R09,
+		R10,
+		R11,
+		R12,
+		//Paper-Nodes
+		P01,
+		P02,
+		P03,
+		P04,
+		P05,
+		P06,
+		P07,
+		P08,
+		P09,
+		P10,
+		P11,
+		P12,
+		//Scissor-Nodes
+		S01,
+		S02,
+		S03,
+		S04,
+		S05,
+		S06,
+		S07,
+		S08,
+		S09,
+		S10,
+		S11,
+		S12,
+		//Defense-Nodes
+		D01,
+		D02,
+		D03,
+		D04,
+		D05,
+		D06,
+		D07,
+		D08,
+		D09,
+		D10,
+		D11,
+		D12,
+		//EnergyRecovery-Nodes
+		E01,
+		E02,
+		E03,
+		E04,
+		E05,
+		E06,
+		E07,
+		E08,
+		E09,
+		E10,
+		E11,
+		E12
 	}
 }

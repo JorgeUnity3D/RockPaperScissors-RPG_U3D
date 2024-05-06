@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Kapibara.RPS
 {
-	[DefaultExecutionOrder(-10)]
+	[DefaultExecutionOrder(-9989)]
 	public class ManagerService : ServiceSubscriber<ManagerService>
 	{
 		[SerializeField, ReadOnly] private List<BaseManager> _managers;

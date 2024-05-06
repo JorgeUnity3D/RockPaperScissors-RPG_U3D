@@ -44,7 +44,7 @@ namespace Kapibara.RPS
 					case Stats.SUPERPOWER:
 						return _superPowerMod;
 					default:
-						throw new ArgumentException("Invalid stat");
+						throw new ArgumentException("[ScissorBonfireMod] Invalid stat");
 				}
 			}
 		}
