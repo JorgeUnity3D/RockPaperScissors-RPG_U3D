@@ -1,4 +1,6 @@
-﻿namespace Kapibara.RPS
+﻿using UnityEngine;
+
+namespace Kapibara.RPS
 {
 	public class TheaterUIController : BaseUIController
 	{
@@ -15,6 +17,7 @@
 
 		public override void SetUp()
 		{
+			Debug.Log($"[TheaterUIController] SetUp() -> ");
 			HideCanvas(0);
 		}		
 

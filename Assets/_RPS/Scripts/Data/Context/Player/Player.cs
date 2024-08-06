@@ -201,6 +201,11 @@ namespace Kapibara.RPS
 		}
 
 		//indexer operator this[] overload
+		/*
+			dictList = lista.CreateDictionary(x => x.name, x => x);
+			dicList<string, object>
+			lista<object>
+		*/
 		public Attribute this[Stats stat]
 		{
 			get

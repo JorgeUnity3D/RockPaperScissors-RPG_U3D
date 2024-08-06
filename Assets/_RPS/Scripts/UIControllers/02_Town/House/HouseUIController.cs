@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
-using Sirenix.Utilities;
 using TMPro;
 using UnityEngine;
+
 namespace Kapibara.RPS
 {
 	public class HouseUIController : BaseUIController

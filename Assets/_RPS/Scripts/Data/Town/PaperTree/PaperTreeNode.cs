@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Kapibara.RPS
@@ -41,29 +40,37 @@ namespace Kapibara.RPS
 			set => _isUnlocked = value;
 		}
 
+		public bool CanUnlock
+		{
+			get
+			{
+				return _previousNodes.TrueForAll(ptn => ptn.IsUnlocked);
+			}
+		}
+
 		public int Cost
 		{
-			get => _cost;			
+			get => _cost;
 		}
 
 		public List<PaperTreeNode> NextNodes
 		{
-			get => _nextNodes;			
+			get => _nextNodes;
 		}
 
 		public List<PaperTreeNode> PreviousNodes
 		{
-			get => _previousNodes;			
+			get => _previousNodes;
 		}
 
 		public List<SkillNode> NextNodesIDs
 		{
-			get => _nextNodesIDs;			
+			get => _nextNodesIDs;
 		}
 
 		public List<SkillNode> PreviousNodesIDs
 		{
-			get => _previousNodesIDs;			
+			get => _previousNodesIDs;
 		}
 
 		public PaperTreeNode()

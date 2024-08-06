@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Kapibara.RPS.Extensions;
 using Sirenix.OdinInspector;
@@ -11,6 +12,7 @@ namespace Kapibara.RPS
 		[SerializeField] private PaperTreeScrObj _paperTreeScrObj;
 		[SerializeField] private IconsScrObj _iconsScrObj;
 		[SerializeField] private GameObject _linePrefab;
+		[SerializeField] private List<Color> _lineColors;
 		[SerializeField] private List<PaperTreeButton> _rockPaperTreeButtons;
 		[SerializeField] private List<PaperTreeButton> _paperPaperTreeButtons;
 		[SerializeField] private List<PaperTreeButton> _scissorsPaperTreeButtons;
@@ -51,11 +53,16 @@ namespace Kapibara.RPS
 			Debug.Log($"[PaperTreeUIController] SetData() -> ");
 			SetUpPaperTreeUI(_rockPaperTreeButtons, _rockSkillTree);
 			SetUpPaperTreeUI(_paperPaperTreeButtons, _paperSkillTree);
+			SetUpPaperTreeUI(_scissorsPaperTreeButtons, _scissorsSkillTree);
+			SetUpPaperTreeUI(_defensePaperTreeButtons, _defenseSkillTree);
+			SetUpPaperTreeUI(_energyRecPaperTreeButtons, _energyRecSkillTree);
 		}
 
 		#endregion
 		
 		#region CONTROL
+
+		
 
 		private void SetUpPaperTreeUI(List<PaperTreeButton> paperTreeButtons, List<PaperTreeNode> paperTreeSkillTree)
 		{
@@ -84,25 +91,45 @@ namespace Kapibara.RPS
 			Transform parentPanel = paperTreeButtons[0].transform.parent;
 			parentPanel.DestroyChildren<PaperTreeLine>();
 			
-			foreach (PaperTreeNode paperTreeNode in paperTreeSkillTree)
+			foreach (PaperTreeNode currentNode in paperTreeSkillTree)
 			{
-				PaperTreeButton currentPaperTreeButton = paperTreeButtons.Find(ptb => ptb.NodeID == paperTreeNode.NodeID);
+				PaperTreeButton currentPaperTreeButton = paperTreeButtons.Find(ptb => ptb.NodeID == currentNode.NodeID);
 				Vector3 pointA = currentPaperTreeButton.ExitPoint;
-				foreach (PaperTreeNode nextNode in paperTreeNode.NextNodes)
+				foreach (PaperTreeNode nextNode in currentNode.NextNodes)
 				{
 					PaperTreeButton nextPaperTreeButton = paperTreeButtons.Find(ptb => ptb.NodeID == nextNode.NodeID);
 					Vector3 pointB = nextPaperTreeButton.EntryPoint;
 					PaperTreeLine paperTreeLine = Instantiate(_linePrefab, parentPanel).GetComponent<PaperTreeLine>();
 					paperTreeLine.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
 					paperTreeLine.SetPosition(pointA, pointB);
-					paperTreeLine.SetStatus(nextNode.IsUnlocked ? Color.green : Color.red);
+					Color lineColor;
+					if (nextNode.IsUnlocked && currentNode.IsUnlocked)
+					{
+						lineColor = _lineColors[0];
+					}
+					else if (nextNode.CanUnlock)
+					{
+						if (AppContext.Player.Gold >= nextNode.Cost)
+						{
+							lineColor = _lineColors[1];
+						}
+						else
+						{
+							lineColor = _lineColors[2];
+						}
+					}
+					else
+					{
+						lineColor = _lineColors[3];
+					}
+					paperTreeLine.SetStatus(lineColor);
 				}
 			}
 		}
 
-		private void SelectPaperTreeButton()
+		private void SelectPaperTreeButton(PaperTreeNode selectedNode)
 		{
-			throw new System.NotImplementedException();
+			
 		}
 		
 		#endregion

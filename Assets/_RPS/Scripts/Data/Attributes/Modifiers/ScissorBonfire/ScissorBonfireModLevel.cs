@@ -7,7 +7,6 @@ namespace Kapibara.RPS
 
 	public class ScissorBonfireModLevel
 	{
-		
 		private int _healthMod;
 		private int _energyMod;
 		private int _rockMod;

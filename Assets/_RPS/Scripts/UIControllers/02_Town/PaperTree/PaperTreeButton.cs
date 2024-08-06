@@ -51,12 +51,12 @@ namespace Kapibara.RPS
 
 		#region SETUP
 
-		public void SetUp(PaperTreeNode paperTreeNode, Sprite statIcon, UnityAction OnClickAction)
+		public void SetUp(PaperTreeNode paperTreeNode, Sprite statIcon, UnityAction<PaperTreeNode> OnClickAction)
 		{
 			_paperTreeNode = paperTreeNode;
 			_unlockedIcon = statIcon;
 			_iconImage.sprite = _paperTreeNode.IsUnlocked ? _unlockedIcon : _lockedIcon;
-			_button.AddListener(OnClickAction);
+			_button.AddListener(() => OnClickAction?.Invoke(_paperTreeNode));
 		}	
 
 		#endregion
