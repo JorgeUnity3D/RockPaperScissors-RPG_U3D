@@ -30,8 +30,8 @@ namespace Doozy.Editor.UIManager.Editors.Components
     [CanEditMultipleObjects]
     public class UISliderEditor : UISelectableBaseEditor
     {
-        public override Color accentColor => EditorColors.Default.UIComponent;
-        public override EditorSelectableColorInfo selectableAccentColor => EditorSelectableColors.Default.UIComponent;
+        public override Color accentColor => EditorColors.UIManager.UIComponent;
+        public override EditorSelectableColorInfo selectableAccentColor => EditorSelectableColors.UIManager.UIComponent;
 
         public UISlider castedTarget => (UISlider)target;
         public IEnumerable<UISlider> castedTargets => targets.Cast<UISlider>();
@@ -296,9 +296,9 @@ namespace Doozy.Editor.UIManager.Editors.Components
                         .AddFieldContent
                         (
                             DesignUtils.row
-                                .AddSpaceBlock()
+                                .AddChild(DesignUtils.spaceBlock)
                                 .AddChild(valueSlider)
-                                .AddSpaceBlock(2)
+                                .AddChild(DesignUtils.spaceBlock2X)
                                 .AddChild(valueFloatField)
                         );
 
@@ -395,7 +395,7 @@ namespace Doozy.Editor.UIManager.Editors.Components
                         (
                             DesignUtils.row
                                 .AddChild(FluidField.Get("Default (Reset) Value").AddFieldContent(defaultValueFloatField))
-                                .AddSpaceBlock()
+                                .AddChild(DesignUtils.spaceBlock)
                                 .AddChild(resetValueOnEnableToggleCheckbox)
                         );
 
@@ -406,7 +406,7 @@ namespace Doozy.Editor.UIManager.Editors.Components
                     (
                         DesignUtils.row
                             .AddChild(interactableCheckbox)
-                            .AddSpaceBlock()
+                            .AddChild(DesignUtils.spaceBlock)
                             .AddChild(deselectAfterPressCheckbox)
                     )
                     .AddContent(DesignUtils.spaceBlock)
@@ -414,7 +414,7 @@ namespace Doozy.Editor.UIManager.Editors.Components
                     (
                         DesignUtils.row
                             .AddChild(fieldRectFluidField)
-                            .AddSpaceBlock()
+                            .AddChild(DesignUtils.spaceBlock)
                             .AddChild(handleRectFieldField)
                     )
                     .AddContent(DesignUtils.spaceBlock2X)
@@ -422,11 +422,11 @@ namespace Doozy.Editor.UIManager.Editors.Components
                     (
                         DesignUtils.row
                             .AddChild(directionFluidField)
-                            .AddSpaceBlock()
+                            .AddChild(DesignUtils.spaceBlock)
                             .AddChild(minValueFluidField)
-                            .AddSpaceBlock()
+                            .AddChild(DesignUtils.spaceBlock)
                             .AddChild(maxValueFluidField)
-                            .AddSpaceBlock()
+                            .AddChild(DesignUtils.spaceBlock)
                             .AddChild(wholeNumbersFluidField)
                     )
                     .AddContent(DesignUtils.spaceBlock)
@@ -504,9 +504,9 @@ namespace Doozy.Editor.UIManager.Editors.Components
                         (
                             DesignUtils.row
                                 .AddChild(FluidField.Get("Value Label").AddFieldContent(valueLabelObjectField))
-                                .AddSpaceBlock()
+                                .AddChild(DesignUtils.spaceBlock)
                                 .AddChild(FluidField.Get("Min Value Label").AddFieldContent(minValueLabelObjectField))
-                                .AddSpaceBlock()
+                                .AddChild(DesignUtils.spaceBlock)
                                 .AddChild(FluidField.Get("Max Value Label").AddFieldContent(maxValueLabelObjectField))
                         );
 
@@ -535,7 +535,7 @@ namespace Doozy.Editor.UIManager.Editors.Components
                         (
                             DesignUtils.row
                                 .AddChild(FluidField.Get("Target Progressor").AddFieldContent(targetProgressorObjectField))
-                                .AddSpaceBlock()
+                                .AddChild(DesignUtils.spaceBlock)
                                 .AddChild(instantProgressorUpdateToggleCheckbox)
                         );
 
@@ -551,19 +551,19 @@ namespace Doozy.Editor.UIManager.Editors.Components
         {
             toolbarContainer
                 .AddChild(settingsTab)
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(advancedTab)
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(statesTab)
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(behavioursTab)
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(callbacksTab)
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(navigationTab)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(DesignUtils.flexibleSpace)
-                .AddSpaceBlock(2);
+                .AddChild(DesignUtils.spaceBlock2X);
 
             if (castedTarget != null)
             {
@@ -576,7 +576,7 @@ namespace Doozy.Editor.UIManager.Editors.Components
                             () => $"Toggle - {castedTarget.Id.Name}"
                         )
                     )
-                    .AddSpaceBlock();
+                    .AddChild(DesignUtils.spaceBlock);
             }
 
             toolbarContainer
@@ -611,11 +611,11 @@ namespace Doozy.Editor.UIManager.Editors.Components
                 .AddChild(reactionControls)
                 .AddChild(componentHeader)
                 .AddChild(Toolbar())
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(Content())
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(idField)
-                .AddEndOfLineSpace();
+                .AddChild(DesignUtils.endOfLineBlock);
         }
     }
 }

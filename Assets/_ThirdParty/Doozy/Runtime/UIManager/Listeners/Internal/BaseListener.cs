@@ -21,7 +21,7 @@ namespace Doozy.Runtime.UIManager.Listeners.Internal
 
         protected override void ProcessSignal(Signal signal)
         {
-            Callback?.Execute();
+            Callback?.Execute(signal);
         }
     }
 }

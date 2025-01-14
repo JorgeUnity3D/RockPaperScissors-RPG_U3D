@@ -3,15 +3,8 @@ using System.Linq;
 using Doozy.Editor.Common.ScriptableObjects;
 using Doozy.Editor.EditorUI.Components;
 using Doozy.Editor.EditorUI.ScriptableObjects.Colors;
-using Doozy.Editor.EditorUI.ScriptableObjects.Fonts;
-using Doozy.Editor.EditorUI.ScriptableObjects.Layouts;
-using Doozy.Editor.EditorUI.ScriptableObjects.MicroAnimations;
-using Doozy.Editor.EditorUI.ScriptableObjects.SpriteSheets;
-using Doozy.Editor.EditorUI.ScriptableObjects.Styles;
-using Doozy.Editor.EditorUI.ScriptableObjects.Textures;
 using Doozy.Editor.EditorUI.Utils;
 using Doozy.Editor.EditorUI.Windows;
-using Doozy.Runtime.Common.Attributes;
 using Doozy.Runtime.UIElements.Extensions;
 using UnityEditor;
 using UnityEngine;
@@ -25,46 +18,8 @@ namespace Doozy.Editor.EditorUI.ScriptableObjects
     {
         public bool AutoRefresh;
 
-        [RestoreData(nameof(EditorUISettings))]
-        public static EditorUISettings RestoreData() =>
-            instance;
-
-        [MenuItem("Tools/Doozy/Refresh/EditorUI/Refresh All", priority = -450)]
-        public static void Refresh()
-        {
-            if (EditorUtility.DisplayDialog
-                (
-                    $"Refresh the all the Editor UI databases?",
-                    "This will regenerate all the databases with the latest registered items, from the source files." +
-                    "\n\n" +
-                    "Takes a few minutes, depending on the number of source files and your computer's performance." +
-                    "\n\n" +
-                    "This operation cannot be undone!",
-                    "Yes",
-                    "No"
-                )
-               )
-            {
-               ExecuteRefresh();
-            }
-        }
-
-        [RefreshData(nameof(EditorUISettings))]
-        public static void RefreshData() =>
-            ExecuteRefresh();
-        
-        private static void ExecuteRefresh()
-        {
-            EditorDataColorDatabase.instance.RefreshDatabase();
-            EditorDataFontDatabase.instance.RefreshDatabase();
-            EditorDataLayoutDatabase.instance.RefreshDatabase();
-            EditorDataMicroAnimationDatabase.instance.RefreshDatabase();
-            EditorDataSelectableColorDatabase.instance.RefreshDatabase();
-            EditorDataSpriteSheetDatabase.instance.RefreshDatabase();
-            EditorDataStyleDatabase.instance.RefreshDatabase();
-            EditorDataTextureDatabase.instance.RefreshDatabase();
-        }
-
+        public void Refresh() => 
+            EditorUIWindow.Refresh();
     }
 
     [CustomEditor(typeof(EditorUISettings))]
@@ -136,7 +91,7 @@ namespace Doozy.Editor.EditorUI.ScriptableObjects
         {
             root
                 .AddChild(componentHeader)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild
                 (
                     DesignUtils.row
@@ -144,7 +99,7 @@ namespace Doozy.Editor.EditorUI.ScriptableObjects
                         .AddChild(autoRefreshCheckbox)
                         .AddChild(DesignUtils.flexibleSpace)
                         .AddChild(saveButton)
-                        .AddSpaceBlock()
+                        .AddChild(DesignUtils.spaceBlock)
                 );
         }
     }

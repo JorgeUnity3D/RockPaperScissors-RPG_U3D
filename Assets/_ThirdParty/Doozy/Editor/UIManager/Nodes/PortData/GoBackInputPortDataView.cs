@@ -10,7 +10,6 @@ using Doozy.Runtime.Nody;
 using Doozy.Runtime.UIElements.Extensions;
 using Doozy.Runtime.UIManager.Nodes.PortData;
 using UnityEditor;
-using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace Doozy.Editor.UIManager.Nodes.PortData
@@ -27,7 +26,7 @@ namespace Doozy.Editor.UIManager.Nodes.PortData
                 .ClearOnValueChanged()
                 .SetIsOn(false, false);
         }
-
+        
         public override void Dispose()
         {
             base.Dispose();
@@ -76,19 +75,10 @@ namespace Doozy.Editor.UIManager.Nodes.PortData
             Add(enabledIndicator);
         }
 
-        private void GetDataFromPort()
-        {
-            // data = port.GetValue<GoBackInputPortData>(); // this uses reflection and is slow
-
-            data ??= new GoBackInputPortData();
-            JsonUtility.FromJsonOverwrite(port.value, data); // this is faster than the reflection method above
-        }
-
         public GoBackInputPortDataView SetPort(FlowPort p)
         {
             port = p;
-
-            GetDataFromPort();
+            data = port.GetValue<GoBackInputPortData>();
 
             enabledIndicator
                 .Toggle(data.CanGoBack, false);

@@ -202,13 +202,13 @@ namespace Doozy.Editor.Reactor.Editors
                         (
                             DesignUtils.row
                                 .SetStyleAlignItems(Align.Center)
-                                .AddSpaceBlock(2)
+                                .AddChild(DesignUtils.spaceBlock2X)
                                 .AddChild(DesignUtils.fieldLabel.SetStyleFontSize(10).SetText("0"))
-                                .AddSpaceBlock()
+                                .AddChild(DesignUtils.spaceBlock)
                                 .AddChild(progressBar)
-                                .AddSpaceBlock()
+                                .AddChild(DesignUtils.spaceBlock)
                                 .AddChild(DesignUtils.fieldLabel.SetStyleFontSize(10).SetText("1"))
-                                .AddSpaceBlock(2)
+                                .AddChild(DesignUtils.spaceBlock2X)
                         );
 
                 settingsAnimatedContainer
@@ -308,13 +308,13 @@ namespace Doozy.Editor.Reactor.Editors
             return
                 toolbarContainer
                     .AddChild(settingsTab)
-                    .AddSpaceBlock(2)
+                    .AddChild(DesignUtils.spaceBlock2X)
                     .AddChild(callbacksTab)
-                    .AddSpaceBlock(2)
+                    .AddChild(DesignUtils.spaceBlock2X)
                     .AddChild(progressTargetsTab)
-                    .AddSpaceBlock(2)
+                    .AddChild(DesignUtils.spaceBlock2X)
                     .AddChild(progressorsTab)
-                    .AddSpaceBlock()
+                    .AddChild(DesignUtils.spaceBlock)
                     .AddChild(DesignUtils.flexibleSpace);
         }
 
@@ -333,9 +333,9 @@ namespace Doozy.Editor.Reactor.Editors
             root
                 .AddChild(componentHeader)
                 .AddChild(Toolbar())
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(Content())
-                .AddEndOfLineSpace();
+                .AddChild(DesignUtils.endOfLineBlock);
         }
     }
 }

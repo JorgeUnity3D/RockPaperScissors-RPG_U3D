@@ -145,9 +145,9 @@ namespace Doozy.Editor.Reactor.Components
                         .SetStyleFlexGrow(0)
                         .SetStyleAlignItems(Align.Center)
                         .AddChild(ReactionControls.GetResetButton(resetCallback))
-                        .AddSpaceBlock()
+                        .AddChild(DesignUtils.spaceBlock)
                         .AddChild(DesignUtils.dividerVertical)
-                        .AddSpaceBlock();
+                        .AddChild(DesignUtils.spaceBlock);
             
             return target
                 .AddItem(editorOnlyContainer)

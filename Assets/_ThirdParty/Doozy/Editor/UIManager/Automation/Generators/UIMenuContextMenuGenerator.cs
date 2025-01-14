@@ -33,7 +33,7 @@ namespace Doozy.Editor.UIManager.Automation.Generators
             return true;
         }
 
-        private static string InjectContent(string data)
+        private static string InjectContent(string templateData)
         {
             var menuStringBuilder = new StringBuilder();
 
@@ -73,10 +73,8 @@ namespace Doozy.Editor.UIManager.Automation.Generators
                 menuStringBuilder.AppendLine("        }");
             }
 
-            data = data.Replace("//MENU//", menuStringBuilder.ToString().RemoveLast(Environment.NewLine.Length));
-            
-            data += Environment.NewLine;
-            return data;
+            templateData = templateData.Replace("//MENU//", menuStringBuilder.ToString().RemoveLast(Environment.NewLine.Length));
+            return templateData;
         }
     }
 }

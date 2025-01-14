@@ -74,7 +74,7 @@ namespace Doozy.Editor.UIManager.Editors.Content
                     (
                         DesignUtils.row
                             .AddChild(infoLabel)
-                            .AddSpaceBlock()
+                            .AddChild(DesignUtils.spaceBlock)
                             .AddChild(DesignUtils.flexibleSpace)
                     );
 
@@ -185,21 +185,21 @@ namespace Doozy.Editor.UIManager.Editors.Content
                                     (
                                         DesignUtils.row
                                             .AddChild(FluidField.Get("Year").AddFieldContent(yearsField))
-                                            .AddSpaceBlock()
+                                            .AddChild(DesignUtils.spaceBlock)
                                             .AddChild(FluidField.Get("Month").AddFieldContent(monthsField))
-                                            .AddSpaceBlock()
+                                            .AddChild(DesignUtils.spaceBlock)
                                             .AddChild(FluidField.Get("").AddFieldContent(daysField))
                                     )
-                                    .AddSpaceBlock()
+                                    .AddChild(DesignUtils.spaceBlock)
                                     .AddChild
                                     (
                                         DesignUtils.row
                                             .AddChild(FluidField.Get("Hour").AddFieldContent(hoursField))
-                                            .AddSpaceBlock()
+                                            .AddChild(DesignUtils.spaceBlock)
                                             .AddChild(FluidField.Get("Minute").AddFieldContent(minutesField))
-                                            .AddSpaceBlock()
+                                            .AddChild(DesignUtils.spaceBlock)
                                             .AddChild(FluidField.Get("Second").AddFieldContent(secondsField))
-                                            .AddSpaceBlock()
+                                            .AddChild(DesignUtils.spaceBlock)
                                             .AddChild(FluidField.Get("Millisecond").AddFieldContent(millisecondsField))
                                     )
                             )
@@ -247,7 +247,7 @@ namespace Doozy.Editor.UIManager.Editors.Content
                             (
                                 DesignUtils.row
                                     .AddChild(standardFormatButton)
-                                    .AddSpaceBlock()
+                                    .AddChild(DesignUtils.spaceBlock)
                                     .AddChild(customFormatButton)
                             )
                     )
@@ -260,19 +260,19 @@ namespace Doozy.Editor.UIManager.Editors.Content
         {
             root
                 .AddChild(GetControlButtons())
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild
                 (
                     DesignUtils.row
                         .AddSpace(44, 0)
                         .AddChild(infoFluidField)
                 )
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(componentHeader)
                 .AddChild(Toolbar())
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(Content())
-                .AddEndOfLineSpace();
+                .AddChild(DesignUtils.endOfLineBlock);
         }
     }
 }

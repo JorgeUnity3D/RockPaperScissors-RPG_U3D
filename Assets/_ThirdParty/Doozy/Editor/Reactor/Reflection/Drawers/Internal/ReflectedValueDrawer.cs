@@ -26,8 +26,8 @@ namespace Doozy.Editor.Reactor.Reflection.Drawers.Internal
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label) {}
 
         private static IEnumerable<Texture2D> linkIconTextures => EditorSpriteSheets.EditorUI.Icons.Link;
-
-        public override VisualElement CreatePropertyGUI(SerializedProperty property)
+        
+         public override VisualElement CreatePropertyGUI(SerializedProperty property)
         {
             var target = property.GetTargetObjectOfProperty() as T;
             var drawer = new VisualElement();
@@ -78,6 +78,12 @@ namespace Doozy.Editor.Reactor.Reflection.Drawers.Internal
             propertyNameTextField.SetEnabled(false);
             fieldNameTextField.SetEnabled(false);
 
+            invisibleTargetValueTypeEnumField.RegisterValueChangedCallback(evt =>
+            {
+                if (evt?.newValue == null) return;
+                UpdateDrawer((ValueDetails)evt.newValue);
+            });
+
             targetObjectField.RegisterValueChangedCallback(evt =>
             {
                 if (evt == null) return;
@@ -100,33 +106,6 @@ namespace Doozy.Editor.Reactor.Reflection.Drawers.Internal
             });
 
             UpdateDrawer((ValueDetails)propertyTargetValueType.enumValueIndex);
-
-            invisibleTargetValueTypeEnumField.RegisterValueChangedCallback(evt =>
-            {
-                if (evt?.newValue == null) return;
-                UpdateDrawer((ValueDetails)evt.newValue);
-            });
-
-            drawer.schedule.Execute(() =>
-            {
-                propertyNameTextField.RegisterValueChangedCallback(evt =>
-                {
-                    if (evt?.newValue == null) return;
-                    var valueDetails = (ValueDetails)propertyTargetValueType.enumValueIndex;
-                    if (valueDetails != ValueDetails.IsProperty) return;
-                    if (evt.previousValue == evt.newValue) return;
-                    EditorUtility.SetDirty(property.serializedObject.targetObject);
-                });
-
-                fieldNameTextField.RegisterValueChangedCallback(evt =>
-                {
-                    if (evt?.newValue == null) return;
-                    var valueDetails = (ValueDetails)propertyTargetValueType.enumValueIndex;
-                    if (valueDetails != ValueDetails.IsField) return;
-                    if (evt.previousValue == evt.newValue) return;
-                    EditorUtility.SetDirty(property.serializedObject.targetObject);
-                });
-            });
 
             return drawer
                     .AddChild(targetFluidField)

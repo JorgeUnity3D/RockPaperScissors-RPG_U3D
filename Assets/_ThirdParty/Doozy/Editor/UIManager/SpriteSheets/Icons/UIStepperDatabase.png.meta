@@ -191,6 +191,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -835,36 +847,36 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ~UIStepperDatabase_000: 2127084386897647855
-      ~UIStepperDatabase_001: -3719253241038689223
-      ~UIStepperDatabase_002: 1682019830932491219
-      ~UIStepperDatabase_003: -972608215458592057
-      ~UIStepperDatabase_004: 1814910659077877383
-      ~UIStepperDatabase_005: -5463941167320519262
-      ~UIStepperDatabase_006: -8681822014760726632
-      ~UIStepperDatabase_007: 6406727909916482496
-      ~UIStepperDatabase_008: -2752719506831740605
-      ~UIStepperDatabase_009: -8315499758367205395
-      ~UIStepperDatabase_010: 2666688577151336943
-      ~UIStepperDatabase_011: 3953957910310883056
-      ~UIStepperDatabase_012: 1524851695542502997
-      ~UIStepperDatabase_013: 7510367888183477966
       ~UIStepperDatabase_014: -3405613984397860560
-      ~UIStepperDatabase_015: 6608281907189243959
-      ~UIStepperDatabase_016: -1690699647546700313
-      ~UIStepperDatabase_017: 1738667263974228733
-      ~UIStepperDatabase_018: 2816147492752958531
-      ~UIStepperDatabase_019: -4833444063023474573
-      ~UIStepperDatabase_020: 6705180814760070070
-      ~UIStepperDatabase_021: -4718433068666357200
-      ~UIStepperDatabase_022: 2254533701285295008
-      ~UIStepperDatabase_023: -313225971172153324
-      ~UIStepperDatabase_024: -8510395254913462181
-      ~UIStepperDatabase_025: 203017550229186072
       ~UIStepperDatabase_026: 5586025012942341741
-      ~UIStepperDatabase_027: 2588595526140994973
+      ~UIStepperDatabase_000: 2127084386897647855
+      ~UIStepperDatabase_003: -972608215458592057
+      ~UIStepperDatabase_021: -4718433068666357200
+      ~UIStepperDatabase_006: -8681822014760726632
+      ~UIStepperDatabase_015: 6608281907189243959
+      ~UIStepperDatabase_009: -8315499758367205395
+      ~UIStepperDatabase_023: -313225971172153324
+      ~UIStepperDatabase_018: 2816147492752958531
+      ~UIStepperDatabase_008: -2752719506831740605
+      ~UIStepperDatabase_017: 1738667263974228733
+      ~UIStepperDatabase_012: 1524851695542502997
+      ~UIStepperDatabase_004: 1814910659077877383
+      ~UIStepperDatabase_011: 3953957910310883056
+      ~UIStepperDatabase_016: -1690699647546700313
       ~UIStepperDatabase_028: 8192655394057144702
+      ~UIStepperDatabase_002: 1682019830932491219
+      ~UIStepperDatabase_024: -8510395254913462181
+      ~UIStepperDatabase_005: -5463941167320519262
+      ~UIStepperDatabase_025: 203017550229186072
+      ~UIStepperDatabase_013: 7510367888183477966
       ~UIStepperDatabase_029: -2601162097776855167
+      ~UIStepperDatabase_019: -4833444063023474573
+      ~UIStepperDatabase_027: 2588595526140994973
+      ~UIStepperDatabase_010: 2666688577151336943
+      ~UIStepperDatabase_020: 6705180814760070070
+      ~UIStepperDatabase_007: 6406727909916482496
+      ~UIStepperDatabase_001: -3719253241038689223
+      ~UIStepperDatabase_022: 2254533701285295008
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -340,15 +340,15 @@ namespace Doozy.Editor.UIManager.UIMenu
         {
             root
                 .AddChild(componentHeader)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild
                 (
                     DesignUtils.row
                         .AddChild(snapshotTargetFluidField)
-                        .AddSpaceBlock()
+                        .AddChild(DesignUtils.spaceBlock)
                         .AddChild(snapshotCameraFluidField)
                 )
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild
                 (
                     DesignUtils.row
@@ -356,87 +356,87 @@ namespace Doozy.Editor.UIManager.UIMenu
                         .AddChild(takeSnapshotButton)
                         .AddChild(DesignUtils.flexibleSpace)
                 )
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild
                 (
                     DesignUtils.row
                         .AddChild(generateSpriteSheetSwitch)
-                        .AddSpaceBlock()
+                        .AddChild(DesignUtils.spaceBlock)
                         .AddChild(multiShotFluidField)
                 )
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild
                 (
                     DesignUtils.row
                         .SetStyleAlignItems(Align.Center)
                         .AddChild(customMultiShotDurationFluidField)
-                        .AddSpaceBlock()
+                        .AddChild(DesignUtils.spaceBlock)
                         .AddChild(recordCustomMultiShotButton)
                 )
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild
                 (
                     DesignUtils.row
                         .SetStyleAlignItems(Align.Center)
                         .AddChild(targetUIContainerFluidField)
-                        .AddSpaceBlock()
+                        .AddChild(DesignUtils.spaceBlock)
                         .AddChild(uiContainerShowDelayFluidField)
-                        .AddSpaceBlock()
+                        .AddChild(DesignUtils.spaceBlock)
                         .AddChild(recordUIContainerButton)
                 )
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild
                 (
                     DesignUtils.row
                         .SetStyleAlignItems(Align.Center)
                         .AddChild(targetUIToggleFluidField)
-                        .AddSpaceBlock()
+                        .AddChild(DesignUtils.spaceBlock)
                         .AddChild(uiToggleAnimationDurationFluidField)
-                        .AddSpaceBlock()
+                        .AddChild(DesignUtils.spaceBlock)
                         .AddChild(recordUIToggleButton)
                 )
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild
                 (
                     DesignUtils.row
                         .SetStyleAlignItems(Align.Center)
                         .AddChild(targetUISelectableFluidField)
-                        .AddSpaceBlock()
+                        .AddChild(DesignUtils.spaceBlock)
                         .AddChild(uiSelectableStateDurationFluidField)
-                        .AddSpaceBlock()
+                        .AddChild(DesignUtils.spaceBlock)
                         .AddChild(recordUISelectableButton)
                 )
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild
                 (
                     DesignUtils.row
                         .SetStyleAlignItems(Align.Center)
                         .AddChild(targetReactorControllerFluidField)
-                        .AddSpaceBlock()
+                        .AddChild(DesignUtils.spaceBlock)
                         .AddChild(recordReactorControllerButton)
                 )
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild
                 (
                     DesignUtils.row
                         .SetStyleAlignItems(Align.Center)
                         .AddChild(targetAnimatorFluidField)
-                        .AddSpaceBlock()
+                        .AddChild(DesignUtils.spaceBlock)
                         .AddChild(recordAnimatorButton)
                 )
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild
                 (
                     DesignUtils.row
                         .SetStyleAlignItems(Align.Center)
                         .AddChild(targetProgressorFluidField)
-                        .AddSpaceBlock()
+                        .AddChild(DesignUtils.spaceBlock)
                         .AddChild(recordProgressorButton)
                 )
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(targetPathFluidField)
                 .AddChild(autoDeleteFilesFromTargetPathSwitch)
-                .AddEndOfLineSpace();
+                .AddChild(DesignUtils.endOfLineBlock);
         }
     }
 }

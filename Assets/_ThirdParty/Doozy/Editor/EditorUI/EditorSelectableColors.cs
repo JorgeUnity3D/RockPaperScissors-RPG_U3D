@@ -77,26 +77,17 @@ namespace Doozy.Editor.EditorUI
             {
                 Action,
                 Add,
-                AudioComponent,
                 ButtonContainer,
                 ButtonIcon,
                 ButtonText,
-                DataComponent,
-                DateTime,
-                InputComponent,
-                LayoutComponent,
-                ListenerComponent,
                 MenuButtonBackgroundLevel0,
                 MenuButtonBackgroundLevel1,
                 MenuButtonBackgroundLevel2,
                 Remove,
-                SettingsComponent,
                 ToggleOffIcon,
                 ToggleOffText,
-                UIComponent,
                 UnityTheme,
-                UnityThemeInversed,
-                VisualComponent
+                UnityThemeInversed
             }
             
 
@@ -104,24 +95,12 @@ namespace Doozy.Editor.EditorUI
             public static EditorSelectableColorInfo Action => s_Action ?? (s_Action = GetSelectableColorInfo(ColorName.Action));
             private static EditorSelectableColorInfo s_Add;
             public static EditorSelectableColorInfo Add => s_Add ?? (s_Add = GetSelectableColorInfo(ColorName.Add));
-            private static EditorSelectableColorInfo s_AudioComponent;
-            public static EditorSelectableColorInfo AudioComponent => s_AudioComponent ?? (s_AudioComponent = GetSelectableColorInfo(ColorName.AudioComponent));
             private static EditorSelectableColorInfo s_ButtonContainer;
             public static EditorSelectableColorInfo ButtonContainer => s_ButtonContainer ?? (s_ButtonContainer = GetSelectableColorInfo(ColorName.ButtonContainer));
             private static EditorSelectableColorInfo s_ButtonIcon;
             public static EditorSelectableColorInfo ButtonIcon => s_ButtonIcon ?? (s_ButtonIcon = GetSelectableColorInfo(ColorName.ButtonIcon));
             private static EditorSelectableColorInfo s_ButtonText;
             public static EditorSelectableColorInfo ButtonText => s_ButtonText ?? (s_ButtonText = GetSelectableColorInfo(ColorName.ButtonText));
-            private static EditorSelectableColorInfo s_DataComponent;
-            public static EditorSelectableColorInfo DataComponent => s_DataComponent ?? (s_DataComponent = GetSelectableColorInfo(ColorName.DataComponent));
-            private static EditorSelectableColorInfo s_DateTime;
-            public static EditorSelectableColorInfo DateTime => s_DateTime ?? (s_DateTime = GetSelectableColorInfo(ColorName.DateTime));
-            private static EditorSelectableColorInfo s_InputComponent;
-            public static EditorSelectableColorInfo InputComponent => s_InputComponent ?? (s_InputComponent = GetSelectableColorInfo(ColorName.InputComponent));
-            private static EditorSelectableColorInfo s_LayoutComponent;
-            public static EditorSelectableColorInfo LayoutComponent => s_LayoutComponent ?? (s_LayoutComponent = GetSelectableColorInfo(ColorName.LayoutComponent));
-            private static EditorSelectableColorInfo s_ListenerComponent;
-            public static EditorSelectableColorInfo ListenerComponent => s_ListenerComponent ?? (s_ListenerComponent = GetSelectableColorInfo(ColorName.ListenerComponent));
             private static EditorSelectableColorInfo s_MenuButtonBackgroundLevel0;
             public static EditorSelectableColorInfo MenuButtonBackgroundLevel0 => s_MenuButtonBackgroundLevel0 ?? (s_MenuButtonBackgroundLevel0 = GetSelectableColorInfo(ColorName.MenuButtonBackgroundLevel0));
             private static EditorSelectableColorInfo s_MenuButtonBackgroundLevel1;
@@ -130,20 +109,14 @@ namespace Doozy.Editor.EditorUI
             public static EditorSelectableColorInfo MenuButtonBackgroundLevel2 => s_MenuButtonBackgroundLevel2 ?? (s_MenuButtonBackgroundLevel2 = GetSelectableColorInfo(ColorName.MenuButtonBackgroundLevel2));
             private static EditorSelectableColorInfo s_Remove;
             public static EditorSelectableColorInfo Remove => s_Remove ?? (s_Remove = GetSelectableColorInfo(ColorName.Remove));
-            private static EditorSelectableColorInfo s_SettingsComponent;
-            public static EditorSelectableColorInfo SettingsComponent => s_SettingsComponent ?? (s_SettingsComponent = GetSelectableColorInfo(ColorName.SettingsComponent));
             private static EditorSelectableColorInfo s_ToggleOffIcon;
             public static EditorSelectableColorInfo ToggleOffIcon => s_ToggleOffIcon ?? (s_ToggleOffIcon = GetSelectableColorInfo(ColorName.ToggleOffIcon));
             private static EditorSelectableColorInfo s_ToggleOffText;
             public static EditorSelectableColorInfo ToggleOffText => s_ToggleOffText ?? (s_ToggleOffText = GetSelectableColorInfo(ColorName.ToggleOffText));
-            private static EditorSelectableColorInfo s_UIComponent;
-            public static EditorSelectableColorInfo UIComponent => s_UIComponent ?? (s_UIComponent = GetSelectableColorInfo(ColorName.UIComponent));
             private static EditorSelectableColorInfo s_UnityTheme;
             public static EditorSelectableColorInfo UnityTheme => s_UnityTheme ?? (s_UnityTheme = GetSelectableColorInfo(ColorName.UnityTheme));
             private static EditorSelectableColorInfo s_UnityThemeInversed;
             public static EditorSelectableColorInfo UnityThemeInversed => s_UnityThemeInversed ?? (s_UnityThemeInversed = GetSelectableColorInfo(ColorName.UnityThemeInversed));
-            private static EditorSelectableColorInfo s_VisualComponent;
-            public static EditorSelectableColorInfo VisualComponent => s_VisualComponent ?? (s_VisualComponent = GetSelectableColorInfo(ColorName.VisualComponent));
             
         }
 
@@ -439,6 +412,58 @@ namespace Doozy.Editor.EditorUI
 
             private static EditorSelectableColorInfo s_Color;
             public static EditorSelectableColorInfo Color => s_Color ?? (s_Color = GetSelectableColorInfo(ColorName.Color));
+            
+        }
+
+        public static class UIManager
+        {
+            private static EditorDataSelectableColorPalette s_selectableColorPalette;
+            private static EditorDataSelectableColorPalette selectableColorPalette =>
+                s_selectableColorPalette != null
+                    ? s_selectableColorPalette
+                    : s_selectableColorPalette = EditorDataSelectableColorDatabase.GetSelectableColorPalette("UIManager");
+
+            public static Color GetColor(ColorName colorName, SelectionState state) =>
+                selectableColorPalette.GetColor(colorName.ToString(), state);
+
+            public static EditorThemeColor GetThemeColor(ColorName colorName, SelectionState state) =>
+                selectableColorPalette.GetThemeColor(colorName.ToString(), state);
+
+            public static EditorSelectableColorInfo GetSelectableColorInfo(ColorName colorName) =>
+                selectableColorPalette.GetSelectableColorInfo(colorName.ToString());
+            
+            public enum ColorName
+            {
+                AudioComponent,
+                DataComponent,
+                DateTime,
+                InputComponent,
+                LayoutComponent,
+                ListenerComponent,
+                Settings,
+                UIComponent,
+                VisualComponent
+            }
+            
+
+            private static EditorSelectableColorInfo s_AudioComponent;
+            public static EditorSelectableColorInfo AudioComponent => s_AudioComponent ?? (s_AudioComponent = GetSelectableColorInfo(ColorName.AudioComponent));
+            private static EditorSelectableColorInfo s_DataComponent;
+            public static EditorSelectableColorInfo DataComponent => s_DataComponent ?? (s_DataComponent = GetSelectableColorInfo(ColorName.DataComponent));
+            private static EditorSelectableColorInfo s_DateTime;
+            public static EditorSelectableColorInfo DateTime => s_DateTime ?? (s_DateTime = GetSelectableColorInfo(ColorName.DateTime));
+            private static EditorSelectableColorInfo s_InputComponent;
+            public static EditorSelectableColorInfo InputComponent => s_InputComponent ?? (s_InputComponent = GetSelectableColorInfo(ColorName.InputComponent));
+            private static EditorSelectableColorInfo s_LayoutComponent;
+            public static EditorSelectableColorInfo LayoutComponent => s_LayoutComponent ?? (s_LayoutComponent = GetSelectableColorInfo(ColorName.LayoutComponent));
+            private static EditorSelectableColorInfo s_ListenerComponent;
+            public static EditorSelectableColorInfo ListenerComponent => s_ListenerComponent ?? (s_ListenerComponent = GetSelectableColorInfo(ColorName.ListenerComponent));
+            private static EditorSelectableColorInfo s_Settings;
+            public static EditorSelectableColorInfo Settings => s_Settings ?? (s_Settings = GetSelectableColorInfo(ColorName.Settings));
+            private static EditorSelectableColorInfo s_UIComponent;
+            public static EditorSelectableColorInfo UIComponent => s_UIComponent ?? (s_UIComponent = GetSelectableColorInfo(ColorName.UIComponent));
+            private static EditorSelectableColorInfo s_VisualComponent;
+            public static EditorSelectableColorInfo VisualComponent => s_VisualComponent ?? (s_VisualComponent = GetSelectableColorInfo(ColorName.VisualComponent));
             
         }
 

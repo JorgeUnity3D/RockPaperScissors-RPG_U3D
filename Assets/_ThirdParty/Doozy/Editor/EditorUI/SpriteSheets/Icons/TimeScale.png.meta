@@ -191,6 +191,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -835,36 +847,36 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ~TimeScale_000: -2774845974071951138
-      ~TimeScale_001: -2627298190467659611
-      ~TimeScale_002: 2403044292064248286
-      ~TimeScale_003: 5719876122459266884
-      ~TimeScale_004: 8890926123481521473
-      ~TimeScale_005: 3039162101658035368
       ~TimeScale_006: -8878656995727212628
-      ~TimeScale_007: 2079991587083355266
-      ~TimeScale_008: 3792122608147726806
-      ~TimeScale_009: 3983721102840827951
-      ~TimeScale_010: -5157485014767351875
-      ~TimeScale_011: 2772551458379274073
-      ~TimeScale_012: -4142488030056343761
-      ~TimeScale_013: -4369361154521841349
-      ~TimeScale_014: 6729487795501033322
-      ~TimeScale_015: 5966817247192171752
-      ~TimeScale_016: -8749715980940028519
-      ~TimeScale_017: 4194864950223296679
       ~TimeScale_018: 8306415456094567939
-      ~TimeScale_019: 2433002409975082855
-      ~TimeScale_020: -7542822533659277713
+      ~TimeScale_007: 2079991587083355266
+      ~TimeScale_005: 3039162101658035368
       ~TimeScale_021: 644117227012736176
-      ~TimeScale_022: 1983083787245384052
+      ~TimeScale_003: 5719876122459266884
+      ~TimeScale_014: 6729487795501033322
+      ~TimeScale_002: 2403044292064248286
+      ~TimeScale_001: -2627298190467659611
+      ~TimeScale_004: 8890926123481521473
       ~TimeScale_023: 7663480660082788157
+      ~TimeScale_010: -5157485014767351875
+      ~TimeScale_008: 3792122608147726806
       ~TimeScale_024: 2552615982356921226
-      ~TimeScale_025: 7048346136654369831
-      ~TimeScale_026: -6584002363663782783
-      ~TimeScale_027: 2378671943271484596
+      ~TimeScale_017: 4194864950223296679
+      ~TimeScale_020: -7542822533659277713
+      ~TimeScale_019: 2433002409975082855
       ~TimeScale_028: 7999097477556871846
+      ~TimeScale_025: 7048346136654369831
+      ~TimeScale_011: 2772551458379274073
+      ~TimeScale_009: 3983721102840827951
+      ~TimeScale_012: -4142488030056343761
+      ~TimeScale_015: 5966817247192171752
+      ~TimeScale_013: -4369361154521841349
+      ~TimeScale_000: -2774845974071951138
       ~TimeScale_029: 3441555326729541608
+      ~TimeScale_026: -6584002363663782783
+      ~TimeScale_016: -8749715980940028519
+      ~TimeScale_022: 1983083787245384052
+      ~TimeScale_027: 2378671943271484596
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

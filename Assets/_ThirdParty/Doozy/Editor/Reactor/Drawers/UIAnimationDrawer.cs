@@ -269,16 +269,16 @@ namespace Doozy.Editor.Reactor.Drawers
 
             toolbarContainer
                 .AddChild(moveTab)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(rotateTab)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(scaleTab)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(fadeTab)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(callbacksTab)
-                .AddSpaceBlock()
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(DesignUtils.flexibleSpace)
                 .AddChild(presetsTab);
 
@@ -289,7 +289,7 @@ namespace Doozy.Editor.Reactor.Drawers
             drawer
                 .AddChild(componentHeader)
                 .AddChild(toolbarContainer)
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild
                 (
                     contentContainer

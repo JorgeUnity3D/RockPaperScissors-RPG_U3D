@@ -9,7 +9,6 @@ using Doozy.Editor.Common;
 using Doozy.Editor.Common.ScriptableObjects;
 using Doozy.Editor.EditorUI.Automation.Generators;
 using Doozy.Runtime.Common;
-using Doozy.Runtime.Common.Attributes;
 using Doozy.Runtime.Common.Extensions;
 using UnityEditor;
 using UnityEngine;

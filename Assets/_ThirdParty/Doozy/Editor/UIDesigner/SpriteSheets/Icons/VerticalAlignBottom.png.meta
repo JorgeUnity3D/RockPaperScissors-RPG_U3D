@@ -191,6 +191,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -835,36 +847,36 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ~VerticalAlignBottom_000: 6473708714743714019
-      ~VerticalAlignBottom_001: -6830441385629629943
       ~VerticalAlignBottom_002: 5755355870133346746
-      ~VerticalAlignBottom_003: 7399263407601225226
-      ~VerticalAlignBottom_004: 5701597218486363402
-      ~VerticalAlignBottom_005: -7823734608568592453
+      ~VerticalAlignBottom_024: 2708536821911611
       ~VerticalAlignBottom_006: 4378554287680680697
-      ~VerticalAlignBottom_007: 1692975449975035706
-      ~VerticalAlignBottom_008: 6974320298357789152
+      ~VerticalAlignBottom_020: -3475794155636028018
+      ~VerticalAlignBottom_011: -4811175392416475613
+      ~VerticalAlignBottom_022: 1934067976931811372
+      ~VerticalAlignBottom_014: 75344508984503438
+      ~VerticalAlignBottom_016: 7196531009297227205
       ~VerticalAlignBottom_009: -7101838249585768129
       ~VerticalAlignBottom_010: 6828464225692214386
-      ~VerticalAlignBottom_011: -4811175392416475613
-      ~VerticalAlignBottom_012: -8637486026348749745
-      ~VerticalAlignBottom_013: -7696012271068640571
-      ~VerticalAlignBottom_014: 75344508984503438
-      ~VerticalAlignBottom_015: 6288501649001147882
-      ~VerticalAlignBottom_016: 7196531009297227205
-      ~VerticalAlignBottom_017: -5477321704314474620
-      ~VerticalAlignBottom_018: -5279416072890168072
-      ~VerticalAlignBottom_019: -4659112019529520467
-      ~VerticalAlignBottom_020: -3475794155636028018
-      ~VerticalAlignBottom_021: -1229299632457497961
-      ~VerticalAlignBottom_022: 1934067976931811372
+      ~VerticalAlignBottom_004: 5701597218486363402
+      ~VerticalAlignBottom_007: 1692975449975035706
+      ~VerticalAlignBottom_003: 7399263407601225226
+      ~VerticalAlignBottom_008: 6974320298357789152
+      ~VerticalAlignBottom_000: 6473708714743714019
+      ~VerticalAlignBottom_005: -7823734608568592453
       ~VerticalAlignBottom_023: -5380727104073995972
-      ~VerticalAlignBottom_024: 2708536821911611
-      ~VerticalAlignBottom_025: -4318533280989528559
-      ~VerticalAlignBottom_026: -2431261221653578869
-      ~VerticalAlignBottom_027: 2766018948837793175
       ~VerticalAlignBottom_028: 4801813752374056057
+      ~VerticalAlignBottom_025: -4318533280989528559
+      ~VerticalAlignBottom_027: 2766018948837793175
+      ~VerticalAlignBottom_012: -8637486026348749745
+      ~VerticalAlignBottom_021: -1229299632457497961
+      ~VerticalAlignBottom_015: 6288501649001147882
+      ~VerticalAlignBottom_017: -5477321704314474620
+      ~VerticalAlignBottom_026: -2431261221653578869
+      ~VerticalAlignBottom_013: -7696012271068640571
+      ~VerticalAlignBottom_019: -4659112019529520467
       ~VerticalAlignBottom_029: 4097623948868506081
+      ~VerticalAlignBottom_018: -5279416072890168072
+      ~VerticalAlignBottom_001: -6830441385629629943
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

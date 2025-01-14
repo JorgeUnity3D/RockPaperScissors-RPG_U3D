@@ -191,6 +191,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -835,36 +847,36 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ~EventsOnFinish_000: 8118962725676452159
-      ~EventsOnFinish_001: 7042682096031886728
-      ~EventsOnFinish_002: -9042508193321512889
       ~EventsOnFinish_003: -6306251211312291183
-      ~EventsOnFinish_004: 1873365680923321388
-      ~EventsOnFinish_005: 8504998181442636346
-      ~EventsOnFinish_006: 5628114535976784031
-      ~EventsOnFinish_007: 6320055038159555372
-      ~EventsOnFinish_008: -2325548264861659736
-      ~EventsOnFinish_009: -2106338454843999618
-      ~EventsOnFinish_010: 3164271581487789410
-      ~EventsOnFinish_011: -4172213757304946405
-      ~EventsOnFinish_012: -2579692927545264591
+      ~EventsOnFinish_029: -8714210431201325937
       ~EventsOnFinish_013: -4939862318737952410
-      ~EventsOnFinish_014: -6110024879086380497
-      ~EventsOnFinish_015: -9002143767596851329
-      ~EventsOnFinish_016: 6996808720793456430
       ~EventsOnFinish_017: -4601294625003678642
       ~EventsOnFinish_018: 2870966454358697773
-      ~EventsOnFinish_019: 3354435094885212340
       ~EventsOnFinish_020: 136388614670893484
-      ~EventsOnFinish_021: -1988878873187191786
-      ~EventsOnFinish_022: -4925974557386221329
-      ~EventsOnFinish_023: -3582306419426201730
-      ~EventsOnFinish_024: 9114783076968153313
+      ~EventsOnFinish_014: -6110024879086380497
+      ~EventsOnFinish_008: -2325548264861659736
+      ~EventsOnFinish_005: 8504998181442636346
+      ~EventsOnFinish_012: -2579692927545264591
+      ~EventsOnFinish_001: 7042682096031886728
+      ~EventsOnFinish_004: 1873365680923321388
+      ~EventsOnFinish_019: 3354435094885212340
+      ~EventsOnFinish_011: -4172213757304946405
+      ~EventsOnFinish_016: 6996808720793456430
+      ~EventsOnFinish_009: -2106338454843999618
       ~EventsOnFinish_025: -907486508558575158
+      ~EventsOnFinish_002: -9042508193321512889
+      ~EventsOnFinish_000: 8118962725676452159
+      ~EventsOnFinish_021: -1988878873187191786
+      ~EventsOnFinish_015: -9002143767596851329
+      ~EventsOnFinish_024: 9114783076968153313
       ~EventsOnFinish_026: 3480813466789861456
-      ~EventsOnFinish_027: 2756082488836249202
+      ~EventsOnFinish_006: 5628114535976784031
+      ~EventsOnFinish_010: 3164271581487789410
+      ~EventsOnFinish_007: 6320055038159555372
       ~EventsOnFinish_028: 2452817821799469429
-      ~EventsOnFinish_029: -8714210431201325937
+      ~EventsOnFinish_027: 2756082488836249202
+      ~EventsOnFinish_023: -3582306419426201730
+      ~EventsOnFinish_022: -4925974557386221329
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

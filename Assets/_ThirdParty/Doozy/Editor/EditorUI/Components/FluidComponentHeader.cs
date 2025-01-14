@@ -112,8 +112,7 @@ namespace Doozy.Editor.EditorUI.Components
             Add(templateContainer = EditorLayouts.EditorUI.FluidComponentHeader.CloneTree());
             templateContainer
                 .AddStyle(EditorStyles.EditorUI.FluidComponentHeader)
-                .SetStyleFlexShrink(0)
-                .SetStyleOverflow(Overflow.Hidden);
+                .SetStyleFlexShrink(0);
 
             layoutContainer = templateContainer.Q<VisualElement>(nameof(layoutContainer));
             iconContainer = layoutContainer.Q<VisualElement>(nameof(iconContainer));

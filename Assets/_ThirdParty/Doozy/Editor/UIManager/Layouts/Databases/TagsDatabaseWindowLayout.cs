@@ -18,14 +18,14 @@ using Object = UnityEngine.Object;
 
 namespace Doozy.Editor.UIManager.Layouts.Databases
 {
-    public class TagsDatabaseWindowLayout : CategoryNameGroupWindowLayout, IDashboardDatabaseWindowLayout
+    public class TagsDatabaseWindowLayout : CategoryNameGroupWindowLayout, IDashboardDatabaseWindowLayout, IUIManagerDatabaseWindowLayout
     {
         public int order => 0;
         
         public override string layoutName => "Tags";
         public sealed override List<Texture2D> animatedIconTextures => EditorSpriteSheets.UIManager.Icons.UITagDatabase;
-        public override Color accentColor => EditorColors.Default.UIComponent;
-        public sealed override EditorSelectableColorInfo selectableAccentColor => EditorSelectableColors.Default.UIComponent;
+        public override Color accentColor => EditorColors.UIManager.UIComponent;
+        public sealed override EditorSelectableColorInfo selectableAccentColor => EditorSelectableColors.UIManager.UIComponent;
 
         protected override Object targetObject => UITagIdDatabase.instance;
         protected override UnityAction onUpdateCallback => UITagIdDatabase.instance.onUpdateCallback;

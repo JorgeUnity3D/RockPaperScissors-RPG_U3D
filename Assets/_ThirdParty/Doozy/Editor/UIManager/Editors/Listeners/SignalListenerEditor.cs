@@ -21,8 +21,8 @@ namespace Doozy.Editor.UIManager.Editors.Listeners
     [CustomEditor(typeof(SignalListener), true)]
     public class SignalListenerEditor : UnityEditor.Editor
     {
-        protected static Color accentColor => EditorColors.Default.ListenerComponent;
-        protected static EditorSelectableColorInfo selectableAccentColor => EditorSelectableColors.Default.ListenerComponent;
+        protected static Color accentColor => EditorColors.UIManager.ListenerComponent;
+        protected static EditorSelectableColorInfo selectableAccentColor => EditorSelectableColors.UIManager.ListenerComponent;
 
         private SignalListener castedTarget => (SignalListener)target;
         private IEnumerable<SignalListener> castedTargets => targets.Cast<SignalListener>();
@@ -104,13 +104,13 @@ namespace Doozy.Editor.UIManager.Editors.Listeners
         {
             root
                 .AddChild(componentHeader)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(idFluidField)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(callbackFluidField)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(onSignalFluidField)
-                .AddEndOfLineSpace()
+                .AddChild(DesignUtils.endOfLineBlock)
                 ;
         }
     }

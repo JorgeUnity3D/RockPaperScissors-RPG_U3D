@@ -25,8 +25,8 @@ namespace Doozy.Editor.UIManager.Editors.Layouts
     {
         private static IEnumerable<Texture2D> radialLayoutIconTextures => EditorSpriteSheets.UIManager.Icons.UIRadialLayout;
 
-        private static Color accentColor => EditorColors.Default.LayoutComponent;
-        private static EditorSelectableColorInfo selectableAccentColor => EditorSelectableColors.Default.LayoutComponent;
+        private static Color accentColor => EditorColors.UIManager.LayoutComponent;
+        private static EditorSelectableColorInfo selectableAccentColor => EditorSelectableColors.UIManager.LayoutComponent;
 
         private UIRadialLayout castedTarget => (UIRadialLayout)target;
         private IEnumerable<UIRadialLayout> castedTargets => targets.Cast<UIRadialLayout>();
@@ -211,7 +211,7 @@ namespace Doozy.Editor.UIManager.Editors.Layouts
                     (
                         DesignUtils.row
                             .AddChild(radiusSlider)
-                            .AddSpaceBlock()
+                            .AddChild(DesignUtils.spaceBlock)
                             .AddChild(radiusFloatField)
                     );
 
@@ -228,7 +228,7 @@ namespace Doozy.Editor.UIManager.Editors.Layouts
                     (
                         DesignUtils.row
                             .AddChild(minAngleSlider)
-                            .AddSpaceBlock()
+                            .AddChild(DesignUtils.spaceBlock)
                             .AddChild(minAngleFloatField)
                     );
 
@@ -239,7 +239,7 @@ namespace Doozy.Editor.UIManager.Editors.Layouts
                     (
                         DesignUtils.row
                             .AddChild(maxAngleSlider)
-                            .AddSpaceBlock()
+                            .AddChild(DesignUtils.spaceBlock)
                             .AddChild(maxAngleFloatField)
                     );
 
@@ -250,7 +250,7 @@ namespace Doozy.Editor.UIManager.Editors.Layouts
                     (
                         DesignUtils.row
                             .AddChild(startAngleSlider)
-                            .AddSpaceBlock()
+                            .AddChild(DesignUtils.spaceBlock)
                             .AddChild(startAngleFloatField)
                     );
 
@@ -262,9 +262,9 @@ namespace Doozy.Editor.UIManager.Editors.Layouts
                     (
                         DesignUtils.row
                             .AddChild(rotateChildrenSwitch)
-                            .AddSpaceBlock()
+                            .AddChild(DesignUtils.spaceBlock)
                             .AddChild(childRotationSlider)
-                            .AddSpaceBlock()
+                            .AddChild(DesignUtils.spaceBlock)
                             .AddChild(childRotationFloatField)
                     );
 
@@ -277,7 +277,7 @@ namespace Doozy.Editor.UIManager.Editors.Layouts
                     (
                         DesignUtils.row
                             .AddChild(controlChildWidthSwitch)
-                            .AddSpaceBlock()
+                            .AddChild(DesignUtils.spaceBlock)
                             .AddChild(childWidthFloatField)
                     );
 
@@ -289,9 +289,9 @@ namespace Doozy.Editor.UIManager.Editors.Layouts
                     (
                         DesignUtils.row
                             .AddChild(radiusControlsWidthSwitch)
-                            .AddSpaceBlock()
+                            .AddChild(DesignUtils.spaceBlock)
                             .AddChild(radiusWidthFactorSlider)
-                            .AddSpaceBlock()
+                            .AddChild(DesignUtils.spaceBlock)
                             .AddChild(radiusWidthFactorFloatField)
                     );
             
@@ -303,7 +303,7 @@ namespace Doozy.Editor.UIManager.Editors.Layouts
                     (
                         DesignUtils.row
                             .AddChild(controlChildHeightSwitch)
-                            .AddSpaceBlock()
+                            .AddChild(DesignUtils.spaceBlock)
                             .AddChild(childHeightFloatField)
                     );
 
@@ -315,9 +315,9 @@ namespace Doozy.Editor.UIManager.Editors.Layouts
                     (
                         DesignUtils.row
                             .AddChild(radiusControlsHeightSwitch)
-                            .AddSpaceBlock()
+                            .AddChild(DesignUtils.spaceBlock)
                             .AddChild(radiusHeightFactorSlider)
-                            .AddSpaceBlock()
+                            .AddChild(DesignUtils.spaceBlock)
                             .AddChild(radiusHeightFactorFloatField)
                     );
 
@@ -374,55 +374,55 @@ namespace Doozy.Editor.UIManager.Editors.Layouts
         {
             root
                 .AddChild(componentHeader)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild
                 (
                     DesignUtils.row
                         .SetStyleMarginLeft(40)
                         .AddChild(clockwiseSwitch)
-                        .AddSpaceBlock()
+                        .AddChild(DesignUtils.spaceBlock)
                         .AddChild(autoRebuildSwitch)
-                        .AddSpaceBlock()
+                        .AddChild(DesignUtils.spaceBlock)
                         .AddChild(DesignUtils.flexibleSpace)
-                        .AddSpaceBlock()
+                        .AddChild(DesignUtils.spaceBlock)
                         .AddChild(spacingField)
                 )
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild
                 (
                     DesignUtils.row
                         .AddChild(radiusField)
-                        .AddSpaceBlock()
+                        .AddChild(DesignUtils.spaceBlock)
                         .AddChild(maxRadiusField)
                 )
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(minAngleField)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(maxAngleField)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(startAngleField)
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(childRotationHeader) //child rotation
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(childRotationField)
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(childWidthHeader) //child width
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild
                 (
                     DesignUtils.row
                         .AddChild(childWidthField)
-                        .AddSpaceBlock()
+                        .AddChild(DesignUtils.spaceBlock)
                         .AddChild(radiusWidthFactorField)
                 )
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(childHeightHeader) //child height
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild
                 (
                     DesignUtils.row
                         .AddChild(childHeightField)
-                        .AddSpaceBlock()
+                        .AddChild(DesignUtils.spaceBlock)
                         .AddChild(radiusHeightFactorField)
                 )
                 ;

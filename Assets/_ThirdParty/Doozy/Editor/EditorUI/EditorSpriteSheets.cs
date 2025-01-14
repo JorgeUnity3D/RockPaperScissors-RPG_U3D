@@ -125,7 +125,6 @@ namespace Doozy.Editor.EditorUI
                     AutoDisable,
                     Back,
                     Binoculars,
-                    Boards,
                     BookOpen,
                     Border,
                     ButtonClick,
@@ -143,7 +142,6 @@ namespace Doozy.Editor.EditorUI
                     Cooldown,
                     Copy,
                     Cut,
-                    Dashboard,
                     Debug,
                     DelayBetweenLoops,
                     Deselected,
@@ -216,7 +214,6 @@ namespace Doozy.Editor.EditorUI
                     Popout,
                     Portrait,
                     Prefab,
-                    Pro,
                     QuestionMark,
                     RawImage,
                     Recent,
@@ -278,7 +275,6 @@ namespace Doozy.Editor.EditorUI
                 public static List<Texture2D> AutoDisable => GetTextures(SpriteSheetName.AutoDisable);
                 public static List<Texture2D> Back => GetTextures(SpriteSheetName.Back);
                 public static List<Texture2D> Binoculars => GetTextures(SpriteSheetName.Binoculars);
-                public static List<Texture2D> Boards => GetTextures(SpriteSheetName.Boards);
                 public static List<Texture2D> BookOpen => GetTextures(SpriteSheetName.BookOpen);
                 public static List<Texture2D> Border => GetTextures(SpriteSheetName.Border);
                 public static List<Texture2D> ButtonClick => GetTextures(SpriteSheetName.ButtonClick);
@@ -296,7 +292,6 @@ namespace Doozy.Editor.EditorUI
                 public static List<Texture2D> Cooldown => GetTextures(SpriteSheetName.Cooldown);
                 public static List<Texture2D> Copy => GetTextures(SpriteSheetName.Copy);
                 public static List<Texture2D> Cut => GetTextures(SpriteSheetName.Cut);
-                public static List<Texture2D> Dashboard => GetTextures(SpriteSheetName.Dashboard);
                 public static List<Texture2D> Debug => GetTextures(SpriteSheetName.Debug);
                 public static List<Texture2D> DelayBetweenLoops => GetTextures(SpriteSheetName.DelayBetweenLoops);
                 public static List<Texture2D> Deselected => GetTextures(SpriteSheetName.Deselected);
@@ -369,7 +364,6 @@ namespace Doozy.Editor.EditorUI
                 public static List<Texture2D> Popout => GetTextures(SpriteSheetName.Popout);
                 public static List<Texture2D> Portrait => GetTextures(SpriteSheetName.Portrait);
                 public static List<Texture2D> Prefab => GetTextures(SpriteSheetName.Prefab);
-                public static List<Texture2D> Pro => GetTextures(SpriteSheetName.Pro);
                 public static List<Texture2D> QuestionMark => GetTextures(SpriteSheetName.QuestionMark);
                 public static List<Texture2D> RawImage => GetTextures(SpriteSheetName.RawImage);
                 public static List<Texture2D> Recent => GetTextures(SpriteSheetName.Recent);
@@ -1164,4 +1158,3 @@ namespace Doozy.Editor.EditorUI
         
     }
 }
-

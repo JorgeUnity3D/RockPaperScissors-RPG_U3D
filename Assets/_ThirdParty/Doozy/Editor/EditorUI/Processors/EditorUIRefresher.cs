@@ -43,7 +43,7 @@ namespace Doozy.Editor.EditorUI.Processors
             }
 
             EditorUISettings.instance.AutoRefresh = false;
-            EditorUISettings.Refresh();
+            EditorUISettings.instance.Refresh();
             EditorUtility.SetDirty(EditorUISettings.instance);
             AssetDatabase.SaveAssetIfDirty(EditorUISettings.instance);
         }

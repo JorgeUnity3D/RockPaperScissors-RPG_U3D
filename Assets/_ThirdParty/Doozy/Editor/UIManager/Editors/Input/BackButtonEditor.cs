@@ -19,8 +19,8 @@ namespace Doozy.Editor.UIManager.Editors.Input
     [CustomEditor(typeof(BackButton), true)]
     public class BackButtonEditor : UnityEditor.Editor
     {
-        private static Color accentColor => EditorColors.Default.UIComponent;
-        private static EditorSelectableColorInfo selectableAccentColor => EditorSelectableColors.Default.UIComponent;
+        private static Color accentColor => EditorColors.UIManager.UIComponent;
+        private static EditorSelectableColorInfo selectableAccentColor => EditorSelectableColors.UIManager.UIComponent;
 
         private static IEnumerable<Texture2D> backIconTextures => EditorSpriteSheets.EditorUI.Icons.Back;
         private static IEnumerable<Texture2D> disabledEnabledTextures => EditorSpriteSheets.EditorUI.Icons.DisabledEnabled;
@@ -78,7 +78,7 @@ namespace Doozy.Editor.UIManager.Editors.Input
                     .SetStyleFlexGrow(1)
                     .AddChild(DesignUtils.flexibleSpace)
                     .AddChild(stateIndicator)
-                    .AddSpaceBlock(2)
+                    .AddChild(DesignUtils.spaceBlock2X)
                     .SetStyleMarginTop(-25)
                     .SetStyleMarginBottom(13)
                     .SetStyleDisplay(EditorApplication.isPlayingOrWillChangePlaymode ? DisplayStyle.Flex : DisplayStyle.None);

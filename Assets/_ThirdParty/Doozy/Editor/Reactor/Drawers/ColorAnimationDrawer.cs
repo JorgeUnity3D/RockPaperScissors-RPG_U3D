@@ -159,9 +159,9 @@ namespace Doozy.Editor.Reactor.Drawers
             
             toolbarContainer
                 .AddChild(settingsTab)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(callbacksTab)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(DesignUtils.flexibleSpace);
 
             #endregion
@@ -171,7 +171,7 @@ namespace Doozy.Editor.Reactor.Drawers
             drawer
                 .AddChild(componentHeader)
                 .AddChild(toolbarContainer)
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild
                 (
                     contentContainer
@@ -374,11 +374,11 @@ namespace Doozy.Editor.Reactor.Drawers
                     // .SetStyleFlexGrow(1)
                     .SetName("From Offset")
                     .AddChild(fromHueOffsetFluidField)
-                    .AddSpaceBlock()
+                    .AddChild(DesignUtils.spaceBlock)
                     .AddChild(fromSaturationOffsetFluidField)
-                    .AddSpaceBlock()
+                    .AddChild(DesignUtils.spaceBlock)
                     .AddChild(fromLightnessOffsetFluidField)
-                    .AddSpaceBlock()
+                    .AddChild(DesignUtils.spaceBlock)
                     .AddChild(fromAlphaOffsetFluidField);
 
 
@@ -387,11 +387,11 @@ namespace Doozy.Editor.Reactor.Drawers
                     // .SetStyleFlexGrow(1)
                     .SetName("To Offset")
                     .AddChild(toHueOffsetFluidField)
-                    .AddSpaceBlock()
+                    .AddChild(DesignUtils.spaceBlock)
                     .AddChild(toSaturationOffsetFluidField)
-                    .AddSpaceBlock()
+                    .AddChild(DesignUtils.spaceBlock)
                     .AddChild(toLightnessOffsetFluidField)
-                    .AddSpaceBlock()
+                    .AddChild(DesignUtils.spaceBlock)
                     .AddChild(toAlphaOffsetFluidField);
 
             VisualElement foldoutContent =
@@ -414,24 +414,24 @@ namespace Doozy.Editor.Reactor.Drawers
                                         DesignUtils.column
                                             .SetName("From Settings")
                                             .AddChild(fromReferenceValueFluidField)
-                                            .AddSpaceBlock()
+                                            .AddChild(DesignUtils.spaceBlock)
                                             .AddChild(fromOffsetContainer)
                                             .AddChild(fromCustomValueFluidField)
                                     )
-                                    .AddSpaceBlock()
+                                    .AddChild(DesignUtils.spaceBlock)
                                     .AddChild
                                     (
                                         DesignUtils.column
                                             .SetName("To Settings")
                                             .AddChild(toReferenceValueFluidField)
-                                            .AddSpaceBlock()
+                                            .AddChild(DesignUtils.spaceBlock)
                                             .AddChild(toOffsetContainer)
                                             .AddChild(toCustomValueFluidField)
                                     )
                             )
-                            .AddSpaceBlock()
+                            .AddChild(DesignUtils.spaceBlock)
                             .AddChild(settingsPropertyField)
-                            .AddEndOfLineSpace()
+                            .AddChild(DesignUtils.endOfLineBlock)
                     );
 
             void Update()
@@ -475,7 +475,7 @@ namespace Doozy.Editor.Reactor.Drawers
                     DesignUtils.row
                         .SetStyleJustifyContent(Justify.Center)
                         .AddChild(label)
-                        .AddSpaceBlock(2)
+                        .AddChild(DesignUtils.spaceBlock2X)
                         .AddChild(slider)
                         .AddChild
                         (

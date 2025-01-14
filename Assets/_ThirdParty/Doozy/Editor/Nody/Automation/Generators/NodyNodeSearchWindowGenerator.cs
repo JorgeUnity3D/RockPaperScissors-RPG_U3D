@@ -27,7 +27,6 @@ namespace Doozy.Editor.Nody.Automation.Generators
         {
             string data = FileGenerator.GetFile(templateFilePath);
             data = InjectContent(data);
-            data += Environment.NewLine;
             bool result = FileGenerator.WriteFile(targetFilePath, data, silent);
             if (!result) return false;
             if (saveAssets) AssetDatabase.SaveAssets();

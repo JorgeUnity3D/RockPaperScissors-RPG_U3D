@@ -191,6 +191,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -835,36 +847,36 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ~UIStopwatch_000: 3225881913185115075
-      ~UIStopwatch_001: 899194550460961927
-      ~UIStopwatch_002: -564864190749647047
+      ~UIStopwatch_017: -9006710863017972701
+      ~UIStopwatch_029: 1939875617891441970
       ~UIStopwatch_003: 6291751429532770853
       ~UIStopwatch_004: -1673429176331422225
-      ~UIStopwatch_005: -2610522501971258430
-      ~UIStopwatch_006: -702567140411737935
-      ~UIStopwatch_007: 5169230748860639671
-      ~UIStopwatch_008: 4278474887663448474
-      ~UIStopwatch_009: -18199383587457150
       ~UIStopwatch_010: -9033437368275186832
+      ~UIStopwatch_002: -564864190749647047
+      ~UIStopwatch_006: -702567140411737935
+      ~UIStopwatch_018: 468229734041181662
+      ~UIStopwatch_005: -2610522501971258430
       ~UIStopwatch_011: 9040428979520174492
+      ~UIStopwatch_015: -1118180358686005380
+      ~UIStopwatch_026: -8563382589734084934
+      ~UIStopwatch_028: -1350138357234482540
+      ~UIStopwatch_001: 899194550460961927
+      ~UIStopwatch_016: -7086467451136113443
+      ~UIStopwatch_022: 5050435595026045587
       ~UIStopwatch_012: 8413942312713302995
       ~UIStopwatch_013: 5685774585733475671
-      ~UIStopwatch_014: 6478708341014822523
-      ~UIStopwatch_015: -1118180358686005380
-      ~UIStopwatch_016: -7086467451136113443
-      ~UIStopwatch_017: -9006710863017972701
-      ~UIStopwatch_018: 468229734041181662
-      ~UIStopwatch_019: 2528531546406591240
+      ~UIStopwatch_025: 9024486523387131268
       ~UIStopwatch_020: 5362364825755879608
       ~UIStopwatch_021: -4329924550760974038
-      ~UIStopwatch_022: 5050435595026045587
-      ~UIStopwatch_023: 3800380887838813146
-      ~UIStopwatch_024: 5980235302444789193
-      ~UIStopwatch_025: 9024486523387131268
-      ~UIStopwatch_026: -8563382589734084934
+      ~UIStopwatch_014: 6478708341014822523
+      ~UIStopwatch_000: 3225881913185115075
+      ~UIStopwatch_019: 2528531546406591240
+      ~UIStopwatch_007: 5169230748860639671
+      ~UIStopwatch_009: -18199383587457150
       ~UIStopwatch_027: 4045233600658446652
-      ~UIStopwatch_028: -1350138357234482540
-      ~UIStopwatch_029: 1939875617891441970
+      ~UIStopwatch_023: 3800380887838813146
+      ~UIStopwatch_008: 4278474887663448474
+      ~UIStopwatch_024: 5980235302444789193
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

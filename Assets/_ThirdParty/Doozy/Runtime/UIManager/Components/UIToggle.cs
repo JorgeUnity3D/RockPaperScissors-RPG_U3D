@@ -2,6 +2,7 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Doozy.Runtime.Common.Attributes;
@@ -96,8 +97,6 @@ namespace Doozy.Runtime.UIManager.Components
             get => IsOn;
             set
             {
-                if (isLocked) return;
-
                 bool previousValue = IsOn;
                 IsOn = value;
 
@@ -109,14 +108,6 @@ namespace Doozy.Runtime.UIManager.Components
 
                 ValueChanged(previousValue: previousValue, newValue: value, animateChange: true, triggerValueChanged: true);
             }
-        }
-
-        [SerializeField] protected bool IsLocked;
-        /// <summary> TRUE if the toggle is locked, FALSE otherwise. A locked toggle cannot be toggled and will maintain its current isOn value even if the user clicks on it </summary>
-        public bool isLocked
-        {
-            get => IsLocked;
-            set => IsLocked = value;
         }
 
         /// <summary> Internal flag to track if the toggle has been initialized </summary>
@@ -197,9 +188,8 @@ namespace Doozy.Runtime.UIManager.Components
         /// <summary> Toggle the toggle's value </summary>
         protected virtual void ToggleValue()
         {
-            if (isLocked) return; //if the toggle is locked, we don't toggle it
-            isOn = !isOn;         //toggle the toggle's value
-            StartCooldown();      //start the cooldown
+            isOn = !isOn;
+            StartCooldown();
         }
 
         /// <summary> Adds this toggle to the specified toggle group </summary>
@@ -208,13 +198,8 @@ namespace Doozy.Runtime.UIManager.Components
         {
             if (targetToggleGroup == null)
                 return;
-
-            if (inToggleGroup && targetToggleGroup != toggleGroup) //if the toggle is already in a toggle group, we remove it from that group
-                RemoveFromToggleGroup();                           //remove from the previous toggle group
-
-            if (isLocked)         //check if the toggle is locked because we don't want to add locked toggles to a toggle group 
-                isLocked = false; // if the toggle is locked, we unlock it to allow the toggle group to take control of it
-
+            if (inToggleGroup && targetToggleGroup != toggleGroup)
+                RemoveFromToggleGroup();
             targetToggleGroup.AddToggle(this);
         }
 
@@ -223,7 +208,6 @@ namespace Doozy.Runtime.UIManager.Components
         {
             if (toggleGroup == null)
                 return;
-
             toggleGroup.RemoveToggle(this);
         }
 
@@ -233,8 +217,6 @@ namespace Doozy.Runtime.UIManager.Components
         /// <param name="triggerValueChanged"> TRUE if the value changed callback should be triggered, FALSE otherwise </param>
         protected internal virtual void UpdateValueFromGroup(bool newValue, bool animateChange, bool triggerValueChanged = true)
         {
-            if (isLocked) isLocked = false; //if the toggle is locked, we unlock it to allow the toggle group to take control of it
-
             bool previousValue = IsOn;
             IsOn = newValue;
             ValueChanged(previousValue, newValue, animateChange, triggerValueChanged);
@@ -335,8 +317,6 @@ namespace Doozy.Runtime.UIManager.Components
         /// <param name="triggerValueChanged"> TRUE if the value changed callback should be triggered, FALSE otherwise </param>
         public static T SetIsOn<T>(this T target, bool newValue, bool animateChange = true, bool triggerValueChanged = true) where T : UIToggle
         {
-            if (target.isLocked) return target;
-
             bool previousValue = target.isOn;
             target.IsOn = newValue;
             if (target.inToggleGroup)
@@ -345,24 +325,6 @@ namespace Doozy.Runtime.UIManager.Components
                 return target;
             }
             target.ValueChanged(previousValue, newValue, animateChange, triggerValueChanged);
-            return target;
-        }
-
-        /// <summary> Lock the toggle from having its isOn value changed, preventing it from being changed </summary>
-        /// <param name="target"> Target toggle </param>
-        public static T Lock<T>(this T target) where T : UIToggle
-        {
-            target.isLocked = true;
-            return target;
-        }
-
-        /// <summary>
-        /// Unlock the toggle from having its isOn value changed, allowing it to be changed again
-        /// </summary>
-        /// <param name="target"> Target toggle </param>
-        public static T Unlock<T>(this T target) where T : UIToggle
-        {
-            target.isLocked = false;
             return target;
         }
     }

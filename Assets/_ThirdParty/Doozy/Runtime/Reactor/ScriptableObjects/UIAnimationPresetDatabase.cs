@@ -3,7 +3,6 @@
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
 using System;
-using Doozy.Runtime.Common.Attributes;
 using Doozy.Runtime.Common.Extensions;
 using Doozy.Runtime.Reactor.ScriptableObjects.Internal;
 using UnityEngine;
@@ -18,7 +17,7 @@ namespace Doozy.Runtime.Reactor.ScriptableObjects
         // private static string assetFolderPath => $"{RuntimePath.path}/_Data/Resources/";
         private static string assetFolderPath => $"{RuntimePath.path}/Data";
         private static string assetFilePath => $"{assetFolderPath}/{assetFileName}";
-
+        
         private static UIAnimationPresetDatabase s_instance;
 
         public static UIAnimationPresetDatabase instance
@@ -43,7 +42,7 @@ namespace Doozy.Runtime.Reactor.ScriptableObjects
                 return s_instance;
             }
         }
-
+        
         public static string defaultCategoryName => UIAnimationPresetGroup.defaultCategoryName;
         public static string defaultPresetName => UIAnimationPresetGroup.defaultPresetName;
 
@@ -52,19 +51,19 @@ namespace Doozy.Runtime.Reactor.ScriptableObjects
 
         [SerializeField] private UIAnimationPresetGroup HidePresets = new UIAnimationPresetGroup(UIAnimationType.Hide);
         public UIAnimationPresetGroup hidePresets => HidePresets;
-
+        
         [SerializeField] private UIAnimationPresetGroup LoopPresets = new UIAnimationPresetGroup(UIAnimationType.Loop);
         public UIAnimationPresetGroup loopPresets => LoopPresets;
-
+        
         [SerializeField] private UIAnimationPresetGroup ButtonPresets = new UIAnimationPresetGroup(UIAnimationType.Button);
         public UIAnimationPresetGroup buttonPresets => ButtonPresets;
-
+        
         [SerializeField] private UIAnimationPresetGroup StatePresets = new UIAnimationPresetGroup(UIAnimationType.State);
         public UIAnimationPresetGroup statePresets => StatePresets;
-
+        
         [SerializeField] private UIAnimationPresetGroup ResetPresets = new UIAnimationPresetGroup(UIAnimationType.Reset);
         public UIAnimationPresetGroup resetPresets => ResetPresets;
-
+        
         [SerializeField] private UIAnimationPresetGroup CustomPresets = new UIAnimationPresetGroup(UIAnimationType.Custom);
         public UIAnimationPresetGroup customPresets => CustomPresets;
 
@@ -83,10 +82,6 @@ namespace Doozy.Runtime.Reactor.ScriptableObjects
                 default: throw new ArgumentOutOfRangeException(nameof(animationType), animationType, null);
             }
         }
-
-        [RefreshData(nameof(UIAnimationPresetDatabase))]
-        public static void RefreshData() =>
-            instance.RefreshDatabase();
 
         public void RefreshDatabase(bool saveAssets = true, bool refreshAssetDatabase = false)
         {
@@ -112,7 +107,7 @@ namespace Doozy.Runtime.Reactor.ScriptableObjects
                 {
                     string guid = guids[i];
                     string assetPath = UnityEditor.AssetDatabase.GUIDToAssetPath(guid);
-                    UnityEditor.EditorUtility.DisplayProgressBar(title, $"{assetPath}", 0.2f + 0.6f * ((i + 1f) / foundPresetsCount));
+                    UnityEditor.EditorUtility.DisplayProgressBar(title, $"{assetPath}", 0.2f + 0.6f * ((i + 1f)/foundPresetsCount));
                     AddPreset(UnityEditor.AssetDatabase.LoadAssetAtPath<UIAnimationPreset>(assetPath), false, true);
                 }
 
@@ -175,7 +170,7 @@ namespace Doozy.Runtime.Reactor.ScriptableObjects
 
         public UIAnimationPreset GetDefaultPreset(UIAnimationType animationType) =>
             GetPresetGroup(animationType).GetPreset(defaultCategoryName, defaultPresetName);
-
+        
         public UIAnimationPreset GetPreset(UIAnimationType animationType, string category, string presetName) =>
             GetPresetGroup(animationType).GetPreset(category, presetName);
 
@@ -195,7 +190,7 @@ namespace Doozy.Runtime.Reactor.ScriptableObjects
         {
             if (!(preset.category.IsNullOrEmpty() | preset.presetName.IsNullOrEmpty()))
                 return true;
-
+            
             #if UNITY_EDITOR
             UnityEditor.AssetDatabase.MoveAssetToTrash(UnityEditor.AssetDatabase.GetAssetPath(preset));
             #endif

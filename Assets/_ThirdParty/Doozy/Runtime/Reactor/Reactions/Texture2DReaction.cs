@@ -15,19 +15,12 @@ namespace Doozy.Runtime.Reactor.Reactions
     [Serializable]
     public class Texture2DReaction : DynamicReaction<Texture2D, int>
     {
-        public const int DEFAULT_CAPACITY = 100;
-
         public List<Texture2D> textures { get; private set; }
         public int numberOfFrames => textures?.Count ?? 0;
         public int firstFrame => 0;
         public int lastFrame => textures == null ? 0 : numberOfFrames - 1;
         public int currentFrame => CurrentValue;
-        public Texture2D current =>
-            textures == null
-                ? null
-                : textures.Count == 0
-                    ? null
-                    : textures[Mathf.Clamp(currentFrame, 0, lastFrame)];
+        public Texture2D current => textures?[Mathf.Clamp(currentFrame, 0, lastFrame)];
 
         public ReactionCallback<Texture2D> OnFrameChangedCallback;
 
@@ -49,14 +42,8 @@ namespace Doozy.Runtime.Reactor.Reactions
         {
             base.Reset();
             this.SetEase(Ease.Linear);
-            if (textures == null)
-            {
-                textures = new List<Texture2D>(DEFAULT_CAPACITY);
-            }
-            else
-            {
-                textures.Clear();
-            }
+            textures ??= new List<Texture2D>();
+            textures.Clear();
             textures.Add(null);
             OnFrameChangedCallback = null;
         }
@@ -66,7 +53,7 @@ namespace Doozy.Runtime.Reactor.Reactions
 
         public override void UpdateCurrentValue()
         {
-
+    
             // CurrentValue = (int)Mathf.Lerp(FromValue, ToValue, easedProgress);
             CurrentValue = (int)Mathf.Lerp(cycleFrom, cycleTo, currentCycleEasedProgress);
             CurrentValue = Mathf.Clamp(CurrentValue, firstFrame, lastFrame);
@@ -117,6 +104,7 @@ namespace Doozy.Runtime.Reactor.Reactions
             base.PlayFromToProgress(fromProgress, toProgress);
         }
 
+
         public override void PlayToProgress(float toProgress)
         {
             FromValue = firstFrame;
@@ -139,13 +127,11 @@ namespace Doozy.Runtime.Reactor.Reactions
         public Texture2DReaction SetFrame(int frameNumber) =>
             (Texture2DReaction)SetValue(frameNumber);
 
+
         /// <summary> Order descending the textures by filename </summary>
         public Texture2DReaction ReverseTexturesOrder()
         {
-            int count = textures.Count;
-            for (int i = 0; i < count / 2; i++)
-                (textures[i], textures[count - i - 1]) = (textures[count - i - 1], textures[i]);
-            // textures = textures.OrderByDescending(t => t.name).ToList();
+            textures = textures.OrderByDescending(t => t.name).ToList();
             setter?.Invoke(current);
             return this;
         }
@@ -156,36 +142,7 @@ namespace Doozy.Runtime.Reactor.Reactions
         {
             _ = textures2D ?? throw new ArgumentNullException(nameof(textures2D));
             if (isActive) Stop(true);
-
-            textures ??= new List<Texture2D>(DEFAULT_CAPACITY);
-            int allocatedSlots = textures.Count;
-            int numberOfAddedTextures = 0;
-
-            // Reuse the existing list and resize it accordingly
-            foreach (Texture2D texture in textures2D)
-            {
-                if (numberOfAddedTextures < allocatedSlots)
-                {
-                    textures[numberOfAddedTextures] = texture;
-                }
-                else
-                {
-                    textures.Add(texture);
-                }
-                numberOfAddedTextures++;
-            }
-
-            // If the new texture list is smaller, remove the excess elements
-            if (numberOfAddedTextures < allocatedSlots)
-            {
-                textures.RemoveRange(numberOfAddedTextures, allocatedSlots - numberOfAddedTextures);
-            }
-            else if (numberOfAddedTextures > textures.Capacity)
-            {
-                // Increase the capacity only if the new texture list is larger than the current capacity
-                textures.Capacity = numberOfAddedTextures;
-            }
-
+            textures = textures2D.ToList();
             ToValue = lastFrame;
             SetFirstFrame();
             return this;

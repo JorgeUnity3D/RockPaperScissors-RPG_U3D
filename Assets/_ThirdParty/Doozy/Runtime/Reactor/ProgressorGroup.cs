@@ -2,6 +2,7 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,7 @@ using Doozy.Runtime.Common.Utils;
 using Doozy.Runtime.Reactor.ScriptableObjects;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 // ReSharper disable MemberCanBePrivate.Global
 
 namespace Doozy.Runtime.Reactor

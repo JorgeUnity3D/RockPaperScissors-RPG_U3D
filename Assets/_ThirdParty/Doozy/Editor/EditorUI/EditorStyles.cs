@@ -45,27 +45,6 @@ namespace Doozy.Editor.EditorUI
         }
 
 
-        public static class Dashboard
-        {
-            private static EditorDataStyleGroup s_styleGroup;
-            private static EditorDataStyleGroup styleGroup =>
-                s_styleGroup != null
-                    ? s_styleGroup
-                    : s_styleGroup = EditorDataStyleDatabase.GetStyleGroup("Dashboard");
-
-            public static StyleSheet GetStyleSheet(StyleName styleName) =>
-                styleGroup.GetStyleSheet(styleName.ToString());
-
-            public enum StyleName
-            {
-                DashboardWindow
-            }
-            
-            private static StyleSheet s_DashboardWindow;
-            public static StyleSheet DashboardWindow => s_DashboardWindow ? s_DashboardWindow : s_DashboardWindow = GetStyleSheet(StyleName.DashboardWindow);            
-        }
-
-
         public static class EditorUI
         {
             private static EditorDataStyleGroup s_styleGroup;
@@ -313,11 +292,14 @@ namespace Doozy.Editor.EditorUI
 
             public enum StyleName
             {
+                DoozyDashboardWindow,
                 UIManagerWindow,
                 UIMenuItemButton,
                 UIMenuWindow
             }
             
+            private static StyleSheet s_DoozyDashboardWindow;
+            public static StyleSheet DoozyDashboardWindow => s_DoozyDashboardWindow ? s_DoozyDashboardWindow : s_DoozyDashboardWindow = GetStyleSheet(StyleName.DoozyDashboardWindow);
             private static StyleSheet s_UIManagerWindow;
             public static StyleSheet UIManagerWindow => s_UIManagerWindow ? s_UIManagerWindow : s_UIManagerWindow = GetStyleSheet(StyleName.UIManagerWindow);
             private static StyleSheet s_UIMenuItemButton;
@@ -328,4 +310,3 @@ namespace Doozy.Editor.EditorUI
 
     }
 }
-

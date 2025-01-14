@@ -34,10 +34,10 @@ namespace Doozy.Editor.EditorUI.Components
             emptySearchPlaceholder?.Recycle();
         }
 
-        private const int k_RefreshInterval = 100;
-        private const int k_ListMinimumHeight = 120;
-        private const int k_ListItemHeight = 20;
-        private const float k_PlaceholderAnimationDuration = 1f;
+        private const int REFRESH_INTERVAL = 100;
+        private const int LIST_MINIMUM_HEIGHT = 120;
+        private const int LIST_ITEM_HEIGHT = 20;
+        private const float PLACEHOLDER_ANIMATION_DURATION = 1f;
 
         //ACTIONS
         public UnityAction AddNewItemButtonCallback;
@@ -188,12 +188,12 @@ namespace Doozy.Editor.EditorUI.Components
             };
 
             //LIST VIEW
-            preferredListHeight = k_ListMinimumHeight;
+            preferredListHeight = LIST_MINIMUM_HEIGHT;
 
             #if UNITY_2021_2_OR_NEWER
-            listView.fixedItemHeight = k_ListItemHeight;
+            listView.fixedItemHeight = LIST_ITEM_HEIGHT;
             #else
-            listView.itemHeight = k_ListItemHeight;
+            listView.itemHeight = LIST_ITEM_HEIGHT;
             #endif
 
             // listView.RegisterCallback<AttachToPanelEvent>(evt => Undo.undoRedoPerformed += Update);
@@ -226,13 +226,6 @@ namespace Doozy.Editor.EditorUI.Components
             emptySearchPlaceholder.AddManipulator(emptySearchPlaceholderClickable);
 
             VisualUpdate();
-
-            listViewVerticalScroller.RegisterCallback<ChangeEvent<DisplayStyle>>((evt) =>
-            {
-                //update the (plus) button position if the vertical scroller is visible
-                float margin = evt.newValue == DisplayStyle.None ? 0 : 12;
-                addItemButton.SetStyleMarginRight(margin);
-            });
         }
 
         public void Update()
@@ -277,7 +270,7 @@ namespace Doozy.Editor.EditorUI.Components
             if (listViewIsEmpty & disableToolbarWhenEmpty)
             {
                 //do not disable toolbar if in search mode
-                if (inSearchMode == false)
+                if (inSearchMode == false) 
                     toolbarContainer.DisableElement();
             }
             else
@@ -289,15 +282,15 @@ namespace Doozy.Editor.EditorUI.Components
         private void VisualUpdate_ListViewHeight()
         {
             #if UNITY_2021_2_OR_NEWER
-            int listHeight = (int)Mathf.Max(listView.fixedItemHeight * listViewItemsCount, k_ListItemHeight);
+            int listHeight = (int)Mathf.Max(listView.fixedItemHeight * listViewItemsCount, LIST_ITEM_HEIGHT);
             #else
-            int listHeight = Mathf.Max(listView.itemHeight * listViewItemsCount, k_ListItemHeight);
+            int listHeight = Mathf.Max(listView.itemHeight * listViewItemsCount, LIST_ITEM_HEIGHT);
             #endif
 
             int dynamicHeight = (int)listViewContainer.resolvedStyle.height;
             int calculatedHeight =
                 listViewItemsCount == 0
-                    ? k_ListMinimumHeight
+                    ? LIST_MINIMUM_HEIGHT
                     : Mathf.Min(listHeight, hasDynamicHeight ? dynamicHeight : preferredListHeight);
 
             listView.SetStyleHeight(calculatedHeight);
@@ -328,11 +321,8 @@ namespace Doozy.Editor.EditorUI.Components
             //update the (plus) button position if the vertical scroller is visible
             addItemButton.schedule.Execute
                 (
-                    () =>
-                    {
-                        float margin = listViewVerticalScroller.GetStyleDisplay() == DisplayStyle.None ? 0 : 12;
-                        addItemButton.SetStyleMarginRight(margin);
-                    })
+                    () => addItemButton.SetStyleMarginRight(listViewVerticalScroller.visible ? 12 : 0)
+                )
                 .ExecuteLater(10); //add a small delay for safety
         }
 
@@ -365,7 +355,7 @@ namespace Doozy.Editor.EditorUI.Components
             VisualUpdate_Toolbar();
             return this;
         }
-
+        
         public FluidListView SetFooterLabelText(string text)
         {
             footerLabel.text = text;
@@ -420,7 +410,7 @@ namespace Doozy.Editor.EditorUI.Components
 
         public FluidListView SetPreferredListHeight(int height)
         {
-            preferredListHeight = Mathf.Max(k_ListMinimumHeight, height);
+            preferredListHeight = Mathf.Max(LIST_MINIMUM_HEIGHT, height);
             VisualUpdate_ListViewHeight();
             return this;
         }

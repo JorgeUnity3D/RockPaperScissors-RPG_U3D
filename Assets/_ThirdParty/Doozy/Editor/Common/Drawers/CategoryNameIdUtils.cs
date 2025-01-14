@@ -188,18 +188,11 @@ namespace Doozy.Editor.Common.Drawers
 
             void Refresh()
             {
-                if (property.serializedObject?.targetObject == null)
+                if (property.serializedObject.targetObject == null)
                     return;
 
-                try
-                {
-                    if (custom.boolValue) //Custom ENABLED --> stop here 
-                        return;
-                }
-                catch
-                {
+                if (custom.boolValue) //Custom ENABLED --> stop here 
                     return;
-                }
 
                 //Custom DISABLED --> update popups
                 RefreshCategories();
@@ -226,24 +219,10 @@ namespace Doozy.Editor.Common.Drawers
                 property.serializedObject.ApplyModifiedProperties();
             }
 
-            drawer.schedule.Execute(Refresh); //First refresh
+            drawer.schedule.Execute(Refresh).Every(200);
 
-            IVisualElementScheduledItem autoRefresh = drawer.schedule.Execute(Refresh).Every(200);
-            autoRefresh.Pause(); //Pause auto refresh
-
-            //Resume auto refresh when attached to panel
-            drawer.RegisterCallback<AttachToPanelEvent>(evt =>
-            {
-                databaseUpdateCallback.AddOnUpdateCallback(Refresh);
-                autoRefresh.Resume();
-            });
-
-            //Pause auto refresh when detached from panel
-            drawer.RegisterCallback<DetachFromPanelEvent>(evt =>
-            {
-                databaseUpdateCallback.RemoveOnUpdateCallback(Refresh);
-                autoRefresh.Pause();
-            });
+            drawer.RegisterCallback<AttachToPanelEvent>(evt => databaseUpdateCallback.AddOnUpdateCallback(Refresh));
+            drawer.RegisterCallback<DetachFromPanelEvent>(evt => databaseUpdateCallback.RemoveOnUpdateCallback(Refresh));
 
             Label GetLabel(string text) =>
                 DesignUtils.NewFieldNameLabel(text).SetStyleMarginBottom(2);
@@ -257,7 +236,7 @@ namespace Doozy.Editor.Common.Drawers
                         .AddChild(categoryPopup.SetStyleFlexGrow(1))
                         .AddChild(categoryTextField.SetStyleFlexGrow(1).SetStyleMarginBottom(1))
                 )
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild
                 (
                     DesignUtils.column
@@ -302,7 +281,7 @@ namespace Doozy.Editor.Common.Drawers
             {
                 categories.Clear();
                 categories.AddRange(getCategories.Invoke());
-                if (!categories.Contains(CategoryNameId.defaultCategory))
+                if(!categories.Contains(CategoryNameId.defaultCategory))
                     categories.Insert(0, CategoryNameId.defaultCategory);
             }
 
@@ -317,7 +296,7 @@ namespace Doozy.Editor.Common.Drawers
             {
                 names.Clear();
                 names.AddRange(getNames.Invoke(targetCategory));
-                if (!names.Contains(CategoryNameId.defaultName))
+                if(!names.Contains(CategoryNameId.defaultName))
                     names.Insert(0, CategoryNameId.defaultName);
             }
 
@@ -478,7 +457,7 @@ namespace Doozy.Editor.Common.Drawers
                         .AddChild(categoryPopup.SetStyleFlexGrow(1))
                         .AddChild(categoryTextField.SetStyleFlexGrow(1).SetStyleMarginBottom(1))
                 )
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild
                 (
                     DesignUtils.column

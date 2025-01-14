@@ -24,8 +24,8 @@ namespace Doozy.Editor.UIManager.Editors.Listeners
     {
         private static IEnumerable<Texture2D> componentIconTextures => EditorSpriteSheets.UIManager.Icons.UIButtonListener;
 
-        private static Color accentColor => EditorColors.Default.ListenerComponent;
-        private static EditorSelectableColorInfo selectableAccentColor => EditorSelectableColors.Default.ListenerComponent;
+        private static Color accentColor => EditorColors.UIManager.ListenerComponent;
+        private static EditorSelectableColorInfo selectableAccentColor => EditorSelectableColors.UIManager.ListenerComponent;
 
         private UIButtonListener castedTarget => (UIButtonListener)target;
         private IEnumerable<UIButtonListener> castedTargets => targets.Cast<UIButtonListener>();
@@ -117,9 +117,9 @@ namespace Doozy.Editor.UIManager.Editors.Listeners
         {
             root
                 .AddChild(componentHeader)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(idField)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(callbackField)
                 .AddChild(multiplayerInfoField)
                 ;

@@ -4,8 +4,8 @@
 
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
+using Doozy.Editor.Common;
 using Doozy.Editor.EditorUI;
 using Doozy.Editor.EditorUI.Components;
 using Doozy.Editor.EditorUI.Components.Internal;
@@ -16,7 +16,7 @@ using Doozy.Editor.Interfaces;
 using Doozy.Editor.Reactor.Internal;
 using Doozy.Editor.UIElements;
 using Doozy.Runtime.Common.Extensions;
-using Doozy.Runtime.Reactor;
+using Doozy.Runtime.Reactor.Easings;
 using Doozy.Runtime.Reactor.Extensions;
 using Doozy.Runtime.Reactor.Internal;
 using Doozy.Runtime.Reactor.Reactions;
@@ -31,30 +31,26 @@ namespace Doozy.Editor.Dashboard.Windows
 {
     public class DoozyDashboardWindow : FluidWindow<DoozyDashboardWindow>
     {
-        private const string k_WindowTitle = "Dashboard";
-        public const string WINDOW_MENU_PATH = "Tools/Doozy/Dashboard";
+        private const string WINDOW_TITLE = "Doozy Dashboard";
+        public const string k_WindowMenuPath = "Tools/Doozy/Dashboard";
 
-        [MenuItem(WINDOW_MENU_PATH, priority = -2000)]
-        public static void Open() => InternalOpenWindow(k_WindowTitle);
+        [MenuItem(k_WindowMenuPath, priority = -2000)]
+        public static void Open() => InternalOpenWindow(WINDOW_TITLE);
 
         private TemplateContainer templateContainer { get; set; }
         private VisualElement layoutContainer { get; set; }
         private VisualElement sideMenuContainer { get; set; }
         private VisualElement contentContainer { get; set; }
 
-        private const float k_MaxIconSize = 64f;
-        private const float k_MinIconSize = 32f;
-        private const int k_TitleFontSize = 18;
-        private const int k_SubtitleFontSize = 14;
+        private const float MAX_ICON_SIZE = 64f;
+        private const float MIN_ICON_SIZE = 32f;
 
         private string selectedTab { get; set; }
         private string selectedTabKey => EditorPrefsKey($"{nameof(selectedTab)}");
 
-        private static IEnumerable<Texture2D> dashboardIconTextures => EditorSpriteSheets.EditorUI.Icons.Dashboard;
-        private Image dashboardIconImage { get; set; }
-        private VisualElement dashboardTitleContainer { get; set; }
-        private Label dashboardTitleLabel { get; set; }
-        private Label dashboardSubtitleLabel { get; set; }
+        private static IEnumerable<Texture2D> doozyIconTextures => EditorSpriteSheets.UIManager.Icons.UIManagerIcon;
+        private Image doozyIconImage { get; set; }
+        private Texture2DReaction doozyIconImageReaction { get; set; }
 
         private ScrollView contentScrollView { get; set; }
         private VisualElement itemsContainer { get; set; }
@@ -66,6 +62,9 @@ namespace Doozy.Editor.Dashboard.Windows
 
         private VisualElement footerContainer { get; set; }
         private FluidPlaceholder emptyPlaceholder { get; set; }
+
+        private ProductInfo m_DoozyProductInfo;
+        private ProductInfo doozyProductInfo => m_DoozyProductInfo ??= m_DoozyProductInfo = ProductInfo.Get("Doozy UI Manager");
 
         // protected override void OnEnable()
         // {
@@ -83,11 +82,11 @@ namespace Doozy.Editor.Dashboard.Windows
         {
             root
                 .RecycleAndClear()
-                .Add(templateContainer = EditorLayouts.Dashboard.DashboardWindow.CloneTree());
+                .Add(templateContainer = EditorLayouts.UIManager.DoozyDashboardWindow.CloneTree());
 
             templateContainer
                 .SetStyleFlexGrow(1)
-                .AddStyle(EditorUI.EditorStyles.Dashboard.DashboardWindow);
+                .AddStyle(EditorUI.EditorStyles.UIManager.DoozyDashboardWindow);
 
             layoutContainer = templateContainer.Q<VisualElement>(nameof(layoutContainer));
             sideMenuContainer = layoutContainer.Q<VisualElement>(nameof(sideMenuContainer));
@@ -101,38 +100,28 @@ namespace Doozy.Editor.Dashboard.Windows
 
         private void InitializeDoozyIcon()
         {
-            dashboardTitleLabel =
-                DesignUtils.NewLabel("Dashboard")
-                    .SetStyleColor(EditorColors.Default.TextTitle)
-                    .SetStyleFontSize(k_TitleFontSize);
-
-            dashboardSubtitleLabel =
-                DesignUtils.NewLabel("Hub")
-                    .SetStyleColor(EditorColors.Default.TextSubtitle)
-                    .SetStyleFontSize(k_SubtitleFontSize);
-
-            dashboardIconImage =
+            doozyIconImage =
                 new Image()
                     .SetStyleFlexShrink(0)
                     .SetStyleMargins(DesignUtils.k_Spacing)
                     .SetStyleAlignSelf(Align.Center);
 
-            Texture2DReaction reaction =
-                dashboardIconImage
-                    .GetTexture2DReaction(dashboardIconTextures)
+            doozyIconImageReaction =
+                doozyIconImage
+                    .GetTexture2DReaction(doozyIconTextures)
                     .SetEditorHeartbeat();
 
-            root.schedule.Execute(() => UpdateDoozyIconSize(EditorPrefs.GetBool(sideMenuIsCollapsedKey, false) ? k_MinIconSize : sideMenu.customWidth));
+            root.schedule.Execute(() => UpdateDoozyIconSize(EditorPrefs.GetBool(sideMenuIsCollapsedKey, false) ? MIN_ICON_SIZE : sideMenu.customWidth));
 
-            dashboardIconImage.RegisterCallback<PointerEnterEvent>(evt => reaction?.Play());
-            dashboardIconImage.AddManipulator(new Clickable(() => reaction?.Play()));
+            doozyIconImage.RegisterCallback<PointerEnterEvent>(evt => doozyIconImageReaction?.Play());
+            doozyIconImage.AddManipulator(new Clickable(() => doozyIconImageReaction?.Play()));
         }
 
         private void UpdateDoozyIconSize(float size)
         {
-            size = Mathf.Max(k_MinIconSize, size);
-            size = Mathf.Min(k_MaxIconSize, size);
-            dashboardIconImage.SetStyleSize(size);
+            size = Mathf.Max(MIN_ICON_SIZE, size);
+            size = Mathf.Min(MAX_ICON_SIZE, size);
+            doozyIconImage.SetStyleSize(size);
         }
 
         private void InitializeSideMenu()
@@ -144,50 +133,22 @@ namespace Doozy.Editor.Dashboard.Windows
                     .IsCollapsable(true)
                     .SetCustomWidth(EditorPrefs.GetInt(sideMenuWidthKey, 200));
 
-            //link expand/collapse reaction to affect the doozy icon size
-            FloatReaction titleFontSizeReaction =
-                Reaction.Get<FloatReaction>()
-                    .SetEditorHeartbeat()
-                    .SetDuration(FluidSideMenu.EXPAND_COLLAPSE_DURATION * 0.5f)
-                    .SetEase(FluidSideMenu.EXPAND_COLLAPSE_EASE);
-
-            sideMenu.expandCollapseReaction.AddOnUpdateCallback(() =>
-            {
-                float value = sideMenu.expandCollapseReaction.currentValue;
-                dashboardTitleContainer.SetStyleOpacity(value);
-                dashboardIconImage.SetStyleLeft(DesignUtils.k_Spacing * (1 - value));
-            });
-
-            sideMenu.OnCollapse += () => EditorPrefs.SetBool(sideMenuIsCollapsedKey, true);
-            sideMenu.OnExpand += () => EditorPrefs.SetBool(sideMenuIsCollapsedKey, false);
-
             bool sideMenuIsCollapsed = EditorPrefs.GetBool(sideMenuIsCollapsedKey, false);
             //update side menu collapse state
             if (sideMenu.isCollapsable) sideMenu.ToggleMenu(!sideMenuIsCollapsed, false);
+            sideMenu.OnCollapse += () => EditorPrefs.SetBool(sideMenuIsCollapsedKey, true);
+            sideMenu.OnExpand += () => EditorPrefs.SetBool(sideMenuIsCollapsedKey, false);
 
             //add doozy icon to the side menu header
-            dashboardTitleContainer =
-                DesignUtils.column
-                    .AddChild(dashboardTitleLabel)
-                    .AddChild(dashboardSubtitleLabel);
-
             sideMenu.headerContainer
                 .SetStyleDisplay(DisplayStyle.Flex)
-                .AddChild
-                (
-                    DesignUtils.row
-                        .SetStyleOverflow(Overflow.Hidden)
-                        .SetStyleAlignSelf(Align.Center)
-                        .SetStyleAlignItems(Align.Center)
-                        .AddChild(dashboardIconImage)
-                        .AddChild(dashboardTitleContainer)
-                );
+                .AddChild(doozyIconImage);
 
             //connect the doozy icon size to the side menu expand/collapse reaction
             sideMenu.expandCollapseReaction.AddOnUpdateCallback(() =>
             {
                 float currentValue = sideMenu.expandCollapseReaction.currentValue;
-                float size = Mathf.LerpUnclamped(k_MinIconSize, sideMenu.customWidth, currentValue);
+                float size = Mathf.LerpUnclamped(MIN_ICON_SIZE, sideMenu.customWidth, currentValue);
                 UpdateDoozyIconSize(size);
             });
 
@@ -233,9 +194,6 @@ namespace Doozy.Editor.Dashboard.Windows
             //add buttons to side menu
             foreach (IDashboardWindowLayout l in layouts)
             {
-                //VALIDATE LAYOUT - check if the layout is valid and can be added to the side menu
-                if (!l.isValid) continue; //if the layout is not valid, skip it
-
                 //INJECT SPACE
                 if (l.order > 0 && l.order - previousOrder >= 50) //if the layout order difference is greater or equal than 50
                     sideMenu.AddSpaceBetweenButtons();            //add a vertical space between side menu buttons
@@ -350,30 +308,12 @@ namespace Doozy.Editor.Dashboard.Windows
                     .SetStyleFlexShrink(0)
                     .SetOnClick(() => Application.OpenURL("https://doozyui.com"));
 
-            bool proVersionExists = Directory.Exists($"{EditorPath.path}/UIManager/Pro");
-            if (proVersionExists)
-            {
-                Image proImage =
-                    new Image()
-                        .SetStyleBackgroundImage(EditorTextures.EditorUI.Icons.Pro)
-                        .SetStyleBackgroundImageTintColor(EditorColors.Default.Icon)
-                        .SetStyleBackgroundScaleMode(ScaleMode.ScaleAndCrop)
-                        .SetStyleSize(32);
-
-                VisualElement proContainer =
-                    new VisualElement()
-                        .SetStylePosition(Position.Absolute)
-                        .SetStyleLeft(0)
-                        .SetStyleRight(0)
-                        .SetStyleTop(0)
-                        .SetStyleBottom(0)
-                        .SetStyleAlignItems(Align.Center)
-                        .SetStyleJustifyContent(Justify.Center)
-                        .AddChild(proImage);
-                
-                footerContainer
-                    .AddChild(proContainer);
-            }
+            var doozyUiVersionLabel =
+                DesignUtils.fieldLabel
+                    .SetStyleFlexShrink(0)
+                    .SetText(doozyProductInfo.nameAndVersion)
+                    .SetStyleTextAlign(TextAnchor.MiddleRight)
+                    .SetStyleFontSize(11);
 
             footerContainer
                 .AddChild(youtubeButton)
@@ -381,7 +321,10 @@ namespace Doozy.Editor.Dashboard.Windows
                 .AddChild(facebookButton)
                 .AddChild(discordButton)
                 .AddFlexibleSpace()
-                .AddChild(doozyWebsiteButton);
+                .AddChild(doozyWebsiteButton)
+                .AddFlexibleSpace()
+                .AddChild(doozyUiVersionLabel)
+                ;
         }
 
         private void Compose()

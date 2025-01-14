@@ -191,6 +191,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -835,36 +847,36 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ~RootCanvas_000: 692325025351254174
-      ~RootCanvas_001: 575599897966074008
-      ~RootCanvas_002: -2556149841391021021
-      ~RootCanvas_003: -5728943120063074755
-      ~RootCanvas_004: 6438550048915371851
-      ~RootCanvas_005: 8920251276853593384
-      ~RootCanvas_006: -7017304117905848376
-      ~RootCanvas_007: -2275796046766087431
-      ~RootCanvas_008: 3345310928075422300
-      ~RootCanvas_009: 6772541886294208445
-      ~RootCanvas_010: -7975569676451815536
-      ~RootCanvas_011: 4319790997174293648
-      ~RootCanvas_012: 227646567688346516
-      ~RootCanvas_013: 1656925444609692022
-      ~RootCanvas_014: -8985595376911030062
-      ~RootCanvas_015: -2048894133812589957
-      ~RootCanvas_016: -1808254761436794905
-      ~RootCanvas_017: 8877782946080377733
+      ~RootCanvas_029: 11920342149636701
       ~RootCanvas_018: -4317812973934312002
-      ~RootCanvas_019: 8841547230663467873
-      ~RootCanvas_020: 6862821377377578161
-      ~RootCanvas_021: -6359049540570632083
-      ~RootCanvas_022: -2477062440389175360
+      ~RootCanvas_012: 227646567688346516
+      ~RootCanvas_028: -1961887142228204116
       ~RootCanvas_023: -6155769229876937642
+      ~RootCanvas_019: 8841547230663467873
+      ~RootCanvas_010: -7975569676451815536
+      ~RootCanvas_006: -7017304117905848376
+      ~RootCanvas_004: 6438550048915371851
+      ~RootCanvas_027: -5085550294390438533
+      ~RootCanvas_002: -2556149841391021021
+      ~RootCanvas_014: -8985595376911030062
+      ~RootCanvas_008: 3345310928075422300
+      ~RootCanvas_022: -2477062440389175360
+      ~RootCanvas_005: 8920251276853593384
       ~RootCanvas_024: -1463923256134060473
+      ~RootCanvas_013: 1656925444609692022
+      ~RootCanvas_020: 6862821377377578161
+      ~RootCanvas_001: 575599897966074008
+      ~RootCanvas_007: -2275796046766087431
+      ~RootCanvas_021: -6359049540570632083
+      ~RootCanvas_015: -2048894133812589957
+      ~RootCanvas_011: 4319790997174293648
       ~RootCanvas_025: -5190998678268735253
       ~RootCanvas_026: -6429839067837939933
-      ~RootCanvas_027: -5085550294390438533
-      ~RootCanvas_028: -1961887142228204116
-      ~RootCanvas_029: 11920342149636701
+      ~RootCanvas_009: 6772541886294208445
+      ~RootCanvas_000: 692325025351254174
+      ~RootCanvas_003: -5728943120063074755
+      ~RootCanvas_016: -1808254761436794905
+      ~RootCanvas_017: 8877782946080377733
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

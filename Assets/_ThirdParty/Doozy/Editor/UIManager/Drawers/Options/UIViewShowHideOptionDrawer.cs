@@ -39,7 +39,7 @@ namespace Doozy.Editor.UIManager.Drawers
                     ViewsDatabaseWindow.Open,
                     "Open Views Database Window",
                     UIViewIdDatabase.instance,
-                    EditorSelectableColors.Default.UIComponent
+                    EditorSelectableColors.UIManager.UIComponent
                 );
 
             id.Q<FluidButton>().SetStyleDisplay(DisplayStyle.None);

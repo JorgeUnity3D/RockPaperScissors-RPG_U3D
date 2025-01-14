@@ -225,26 +225,26 @@ namespace Doozy.Editor.UIManager.UIMenu
 
             prefabTypeContainer = DesignUtils.column.SetStyleWidth(128, 128, 128)
                 .AddChild(GetLabel("Prefab Type"))
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(prefabTypeEnumField);
 
             prefabTypeNameContainer = DesignUtils.column
                 .AddChild(GetLabel("Prefab Type Name"))
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(prefabTypeNameTextField);
 
             prefabCategoryContainer = DesignUtils.column
                 .AddChild(GetLabel("Prefab Category"))
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(prefabCategoryTextField);
 
             prefabNameContainer = DesignUtils.column
                 .AddChild(GetLabel("Prefab Name"))
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(prefabNameTextField);
 
             instantiateModeContainer = DesignUtils.column.SetStyleFlexGrow(0).AddChild(GetLabel("Instantiate Mode"))
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild
                 (
                     DesignUtils.row
@@ -255,7 +255,7 @@ namespace Doozy.Editor.UIManager.UIMenu
 
             infoTagContainer = DesignUtils.column.SetStyleFlexGrow(0)
                 .AddChild(GetLabel("Info Tag"))
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(infoTagTextField);
 
 
@@ -661,7 +661,7 @@ namespace Doozy.Editor.UIManager.UIMenu
                 .SetStyleMargins(50, -4, DesignUtils.k_Spacing2X, DesignUtils.k_Spacing2X)
                 .AddChild(DesignUtils.flexibleSpace)
                 .AddChild(saveButton)
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(renameAssetButton);
 
             iconContainer = GetIconContainer();
@@ -670,22 +670,22 @@ namespace Doozy.Editor.UIManager.UIMenu
             root
                 .AddChild(componentHeader)
                 .AddChild(headerToolbar)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(prefabFluidField)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(prefabInfoFluidField)
-                .AddEndOfLineSpace()
+                .AddChild(DesignUtils.endOfLineBlock)
                 .AddChild(iconContainer)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild
                 (
                     DesignUtils.row
                         .AddChild(colorizeSwitch.SetStyleMarginRight(DesignUtils.k_Spacing))
                         .AddChild(animationDurationFluidField)
                 )
-                .AddEndOfLineSpace()
+                .AddChild(DesignUtils.endOfLineBlock)
                 .AddChild(tagsContainer)
-                .AddEndOfLineSpace();
+                .AddChild(DesignUtils.endOfLineBlock);
         }
 
         /// <summary> Used by the UIMenu Generator to use this editor as a settings panel for bulk items creation </summary>

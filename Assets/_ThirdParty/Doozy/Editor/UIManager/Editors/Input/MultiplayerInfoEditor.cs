@@ -24,29 +24,26 @@ namespace Doozy.Editor.UIManager.Editors.Input
     {
         private static IEnumerable<Texture2D> multiplayerInfoIconTextures => EditorSpriteSheets.UIManager.Icons.MultiplayerInfo;
 
-        private static Color accentColor => EditorColors.Default.InputComponent;
-        private static EditorSelectableColorInfo selectableAccentColor => EditorSelectableColors.Default.InputComponent;
+        private static Color accentColor => EditorColors.UIManager.InputComponent;
+        private static EditorSelectableColorInfo selectableAccentColor => EditorSelectableColors.UIManager.InputComponent;
 
         private MultiplayerInfo castedTarget => (MultiplayerInfo)target;
         private IEnumerable<MultiplayerInfo> castedTargets => targets.Cast<MultiplayerInfo>();
 
         private VisualElement root { get; set; }
 
-        #if INPUT_SYSTEM_PACKAGE
         private PropertyField playerInputPropertyField { get; set; }
-        private FluidField playerInputField { get; set; }
-        private SerializedProperty propertyPlayerInput { get; set; }
-        #endif
-
         private IntegerField customPlayerIndexIntegerField { get; set; }
 
         private FluidComponentHeader componentHeader { get; set; }
         private FluidToggleSwitch autoUpdateSwitch { get; set; }
-
+        private FluidField playerInputField { get; set; }
         private FluidField customPlayerIndexField { get; set; }
         private FluidToggleSwitch useCustomPlayerIndexSwitch { get; set; }
 
+
         private SerializedProperty propertyAutoUpdate { get; set; }
+        private SerializedProperty propertyPlayerInput { get; set; }
         private SerializedProperty propertyCustomPlayerIndex { get; set; }
         private SerializedProperty propertyUseCustomPlayerIndex { get; set; }
 
@@ -59,21 +56,17 @@ namespace Doozy.Editor.UIManager.Editors.Input
 
         private void OnDestroy()
         {
-            #if INPUT_SYSTEM_PACKAGE
-            playerInputField?.Recycle();
-            #endif
-            autoUpdateSwitch?.Recycle();
             componentHeader?.Recycle();
+            autoUpdateSwitch?.Recycle();
+            playerInputField?.Recycle();
             customPlayerIndexField?.Recycle();
             useCustomPlayerIndexSwitch?.Recycle();
         }
 
         private void FindProperties()
         {
-            #if INPUT_SYSTEM_PACKAGE
-            propertyPlayerInput = serializedObject.FindProperty("PlayerInput");
-            #endif
             propertyAutoUpdate = serializedObject.FindProperty("AutoUpdate");
+            propertyPlayerInput = serializedObject.FindProperty("PlayerInput");
             propertyCustomPlayerIndex = serializedObject.FindProperty("CustomPlayerIndex");
             propertyUseCustomPlayerIndex = serializedObject.FindProperty("UseCustomPlayerIndex");
         }
@@ -99,12 +92,10 @@ namespace Doozy.Editor.UIManager.Editors.Input
                     .SetStyleMarginLeft(40)
                     .BindToProperty(propertyAutoUpdate);
 
-            #if INPUT_SYSTEM_PACKAGE
             playerInputPropertyField =
                 DesignUtils.NewPropertyField(propertyPlayerInput)
                     .TryToHideLabel()
                     .SetStyleFlexGrow(1);
-            #endif
 
             customPlayerIndexIntegerField =
                 DesignUtils.NewIntegerField(propertyCustomPlayerIndex)
@@ -118,13 +109,11 @@ namespace Doozy.Editor.UIManager.Editors.Input
                     .BindToProperty(propertyUseCustomPlayerIndex);
 
             useCustomPlayerIndexSwitch.SetOnValueChanged(evt => customPlayerIndexIntegerField.SetEnabled(evt.newValue));
-
-            #if INPUT_SYSTEM_PACKAGE
+            
             playerInputField =
                 FluidField.Get()
                     .SetLabelText("Player Input")
                     .AddFieldContent(playerInputPropertyField);
-            #endif
 
             customPlayerIndexField =
                 FluidField.Get()
@@ -135,7 +124,7 @@ namespace Doozy.Editor.UIManager.Editors.Input
                     (
                         DesignUtils.row
                             .AddChild(useCustomPlayerIndexSwitch)
-                            .AddSpaceBlock()
+                            .AddChild(DesignUtils.spaceBlock)
                             .AddChild(customPlayerIndexIntegerField)
                     );
         }
@@ -145,14 +134,12 @@ namespace Doozy.Editor.UIManager.Editors.Input
             root
                 .AddChild(componentHeader)
                 .AddChild(autoUpdateSwitch)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild
                 (
-                    DesignUtils.row.SetStyleMarginLeft(40)
-                #if INPUT_SYSTEM_PACKAGE
+                    DesignUtils.row
                         .AddChild(playerInputField)
-                        .AddSpaceBlock()
-                #endif
+                        .AddChild(DesignUtils.spaceBlock)
                         .AddChild(customPlayerIndexField)
                 )
                 ;

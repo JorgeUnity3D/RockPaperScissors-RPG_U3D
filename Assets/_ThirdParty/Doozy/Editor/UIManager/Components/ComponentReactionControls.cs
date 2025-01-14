@@ -71,9 +71,9 @@ namespace Doozy.Editor.UIManager.Components
                     .SetStyleFlexGrow(0)
                     .SetStyleAlignItems(Align.Center)
                     .AddChild(GetResetButton(resetCallback))
-                    .AddSpaceBlock()
+                    .AddChild(DesignUtils.spaceBlock)
                     .AddChild(DesignUtils.dividerVertical)
-                    .AddSpaceBlock(2);
+                    .AddChild(DesignUtils.spaceBlock2X);
 
             FluidTab GetTab(string labelText, UnityAction callback)
             {
@@ -140,7 +140,7 @@ namespace Doozy.Editor.UIManager.Components
                 .AddItem(disabledTab)
                 .AddSpaceBlock2X()
                 .AddChild(DesignUtils.dividerVertical)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddFlexibleSpace()
                 .AddItem(icon);
         }

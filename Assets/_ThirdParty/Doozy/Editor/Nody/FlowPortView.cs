@@ -69,6 +69,7 @@ namespace Doozy.Editor.Nody
             connectorBoxCap = connectorBox.Q<VisualElement>("cap"); //get cap
             this.Q<Label>().RemoveFromHierarchy();                  //remove label
 
+
             //create a container
             portInfoContainer =
                 new VisualElement()
@@ -117,15 +118,15 @@ namespace Doozy.Editor.Nody
                 .SetDuration(0.6f);
 
 
-            RegisterCallback<PointerEnterEvent>(_ =>
+            RegisterCallback<PointerEnterEvent>(evt =>
             {
                 capacityIconReaction?.Play();
                 capacityIcon.SetStyleBackgroundImageTintColor(connectorBox.GetStyleBackgroundColor());
             });
 
-            RegisterCallback<PointerLeaveEvent>(_ =>
+            RegisterCallback<PointerLeaveEvent>(evt =>
             {
-                // capacityIconReaction?.Play();
+                capacityIconReaction?.Play();
                 UpdateCapacityIcon();
             });
 
@@ -135,7 +136,7 @@ namespace Doozy.Editor.Nody
             m_EdgeConnector = new EdgeConnector<FlowEdgeView>(connectorListener);
             this.AddManipulator(m_EdgeConnector);
             this.AddManipulator(new ContextualMenuManipulator(BuildContextualMenu));
-            this.RegisterCallback<CustomStyleResolvedEvent>(_ => UpdateCapacityIcon());
+            this.RegisterCallback<CustomStyleResolvedEvent>(evt => UpdateCapacityIcon());
         }
 
         /// <summary>
@@ -185,6 +186,7 @@ namespace Doozy.Editor.Nody
         {
             schedule.Execute(() =>
             {
+
                 capacityIcon
                     .SetStyleBackgroundImageTintColor
                     (

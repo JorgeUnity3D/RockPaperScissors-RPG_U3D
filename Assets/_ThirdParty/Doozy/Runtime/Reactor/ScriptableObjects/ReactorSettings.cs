@@ -3,7 +3,6 @@
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
 using System;
-using Doozy.Runtime.Common.Attributes;
 using Doozy.Runtime.Common.ScriptableObjects;
 using UnityEngine;
 
@@ -45,9 +44,5 @@ namespace Doozy.Runtime.Reactor.ScriptableObjects
         
         public static float GetRuntimeTickInterval() => GetTickInterval(runtimeFPS);
         public static float GetEditorTickInterval() => GetTickInterval(editorFPS);
-        
-        [RestoreData(nameof(ReactorSettings))]
-        public static ReactorSettings Get() =>
-            instance;
     }
 }

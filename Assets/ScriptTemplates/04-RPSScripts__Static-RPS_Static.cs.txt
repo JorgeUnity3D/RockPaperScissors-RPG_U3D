@@ -1,0 +1,9 @@
+using UnityEngine;
+#NOTRIM#
+namespace Kapibara.RPS
+{
+    public static class #SCRIPTNAME# 
+	{
+    #NOTRIM#        
+    }
+}

@@ -191,6 +191,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -835,36 +847,36 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ~VerticalAlignCenter_000: -8545962593149193684
-      ~VerticalAlignCenter_001: -1156282374910048514
-      ~VerticalAlignCenter_002: 2351421041437397957
-      ~VerticalAlignCenter_003: -2452119018770428052
-      ~VerticalAlignCenter_004: -2723217932115752603
-      ~VerticalAlignCenter_005: 1041981951994031152
-      ~VerticalAlignCenter_006: 932879831376877614
-      ~VerticalAlignCenter_007: -9181636338116826061
-      ~VerticalAlignCenter_008: 3940094287534120552
-      ~VerticalAlignCenter_009: 9080864936987636264
-      ~VerticalAlignCenter_010: 4354035913047596472
-      ~VerticalAlignCenter_011: -4946442763637467570
-      ~VerticalAlignCenter_012: -7191746881275492486
       ~VerticalAlignCenter_013: 7168810882386048609
-      ~VerticalAlignCenter_014: -2686373192669952172
-      ~VerticalAlignCenter_015: 3197718355662325870
-      ~VerticalAlignCenter_016: 3160355321936841752
-      ~VerticalAlignCenter_017: -3570547106645074015
-      ~VerticalAlignCenter_018: 7310278978944431813
+      ~VerticalAlignCenter_027: -4958898269205747328
       ~VerticalAlignCenter_019: -773600433582325181
+      ~VerticalAlignCenter_010: 4354035913047596472
+      ~VerticalAlignCenter_024: 6283376784751696505
+      ~VerticalAlignCenter_001: -1156282374910048514
+      ~VerticalAlignCenter_005: 1041981951994031152
+      ~VerticalAlignCenter_012: -7191746881275492486
+      ~VerticalAlignCenter_016: 3160355321936841752
       ~VerticalAlignCenter_020: -2682607491430241663
-      ~VerticalAlignCenter_021: 2536300207658577643
+      ~VerticalAlignCenter_007: -9181636338116826061
+      ~VerticalAlignCenter_026: -3676346020459463533
+      ~VerticalAlignCenter_028: 8948311410756815546
+      ~VerticalAlignCenter_003: -2452119018770428052
+      ~VerticalAlignCenter_025: 492234983163970923
+      ~VerticalAlignCenter_000: -8545962593149193684
+      ~VerticalAlignCenter_002: 2351421041437397957
+      ~VerticalAlignCenter_006: 932879831376877614
+      ~VerticalAlignCenter_004: -2723217932115752603
+      ~VerticalAlignCenter_018: 7310278978944431813
+      ~VerticalAlignCenter_015: 3197718355662325870
       ~VerticalAlignCenter_022: -9067663167539464081
       ~VerticalAlignCenter_023: -5458962805969456311
-      ~VerticalAlignCenter_024: 6283376784751696505
-      ~VerticalAlignCenter_025: 492234983163970923
-      ~VerticalAlignCenter_026: -3676346020459463533
-      ~VerticalAlignCenter_027: -4958898269205747328
-      ~VerticalAlignCenter_028: 8948311410756815546
       ~VerticalAlignCenter_029: 300553254382503023
+      ~VerticalAlignCenter_017: -3570547106645074015
+      ~VerticalAlignCenter_011: -4946442763637467570
+      ~VerticalAlignCenter_014: -2686373192669952172
+      ~VerticalAlignCenter_021: 2536300207658577643
+      ~VerticalAlignCenter_008: 3940094287534120552
+      ~VerticalAlignCenter_009: 9080864936987636264
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

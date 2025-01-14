@@ -160,7 +160,7 @@ namespace Doozy.Editor.UIManager.UIMenu
 
         public void ZoomIn()
         {
-            if (Math.Abs(layoutContainer.GetStyleWidth() - UIMenuSettings.MAX_ITEM_SIZE) < 0.001f)
+            if (Math.Abs(layoutContainer.GetStyleWidth() - UIMenuSettings.k_MaxItemSize) < 0.001f)
                 return;
 
             if (resizeReaction == null)
@@ -177,7 +177,7 @@ namespace Doozy.Editor.UIManager.UIMenu
                 }
             });
             resizeReaction.SetFrom(UIMenuSettings.instance.itemSize);
-            resizeReaction.SetTo(UIMenuSettings.MAX_ITEM_SIZE);
+            resizeReaction.SetTo(UIMenuSettings.k_MaxItemSize);
             resizeReaction.Play();
         }
 
@@ -245,7 +245,7 @@ namespace Doozy.Editor.UIManager.UIMenu
             layoutContainer.SetStyleSize(value);
             previewImage.SetStyleSize(value);
 
-            if (value <= UIMenuSettings.MIN_ITEM_SIZE)
+            if (value <= UIMenuSettings.k_MinItemSize)
             {
                 prefabNameLabel.SetStyleFontSize(8);
                 infoTag.SetStyleFontSize(8);

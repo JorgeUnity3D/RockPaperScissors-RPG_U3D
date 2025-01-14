@@ -123,8 +123,6 @@ namespace Doozy.Runtime.Reactor.Reflection.Internal
 
                 var list = new List<KeyValuePair<string, UnityAction>>();
 
-                // ReSharper disable once ForCanBeConvertedToForeach
-                // ReSharper disable once LoopCanBeConvertedToQuery
                 for (int i = 0; i < fields.Count; i++)
                 {
                     string f = fields[i];
@@ -136,8 +134,6 @@ namespace Doozy.Runtime.Reactor.Reflection.Internal
                     }));
                 }
 
-                // ReSharper disable once ForCanBeConvertedToForeach
-                // ReSharper disable once LoopCanBeConvertedToQuery
                 for (int i = 0; i < properties.Count; i++)
                 {
                     string p = properties[i];

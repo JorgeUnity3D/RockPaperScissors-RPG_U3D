@@ -25,8 +25,8 @@ namespace Doozy.Editor.UIManager.Editors.Audio
         public UIToggleAudio castedTarget => (UIToggleAudio)target;
         public IEnumerable<UIToggleAudio> castedTargets => targets.Cast<UIToggleAudio>();
         
-        protected override Color accentColor => EditorColors.Default.AudioComponent;
-        protected override EditorSelectableColorInfo selectableAccentColor => EditorSelectableColors.Default.AudioComponent;
+        protected override Color accentColor => EditorColors.UIManager.AudioComponent;
+        protected override EditorSelectableColorInfo selectableAccentColor => EditorSelectableColors.UIManager.AudioComponent;
         
         private SerializedProperty propertyAudioSource { get; set; }
         private SerializedProperty propertyOnAudioClip { get; set; }
@@ -85,15 +85,15 @@ namespace Doozy.Editor.UIManager.Editors.Audio
         {
             root
                 .AddChild(componentHeader)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(BaseUIContainerAnimatorEditor.GetController(propertyController))
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(audioSourceFluidField)
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(onAudioClipFluidField)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(offAudioClipFluidField)
-                .AddEndOfLineSpace()
+                .AddChild(DesignUtils.endOfLineBlock)
                 ;
         }
     }

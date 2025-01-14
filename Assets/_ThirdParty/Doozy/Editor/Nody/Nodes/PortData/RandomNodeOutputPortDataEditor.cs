@@ -3,7 +3,6 @@
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
 using System;
-using System.Collections.Generic;
 using Doozy.Editor.EditorUI;
 using Doozy.Editor.EditorUI.Components;
 using Doozy.Editor.EditorUI.Utils;
@@ -34,25 +33,13 @@ namespace Doozy.Editor.Nody.Nodes.PortData
         {
             this.port = port;
             this.nodeView = nodeView;
+            data = this.port.GetValue<RandomNodeOutputPortData>();
             
-            GetDataFromPort();
-
             InitializeEditor();
             Compose();
-
-            // Undo.undoRedoPerformed -= RefreshData;
-            // Undo.undoRedoPerformed += RefreshData;
-        }
-
-        /// <summary>
-        /// Gets the data from the port
-        /// </summary>
-        private void GetDataFromPort()
-        {
-            // data = port.GetValue<RandomNodeOutputPortData>(); // this uses reflection and is slow
-
-            data ??= new RandomNodeOutputPortData();
-            JsonUtility.FromJsonOverwrite(port.value, data); // this is faster than the reflection method above
+            
+            Undo.undoRedoPerformed -= RefreshData;
+            Undo.undoRedoPerformed += RefreshData;
         }
 
         private void RefreshData()
@@ -60,7 +47,7 @@ namespace Doozy.Editor.Nody.Nodes.PortData
             if (port == null) return;
             if (port.node == null) return;
             connectionIndicator.Toggle(port.isConnected, true);
-            GetDataFromPort();
+            data = port.GetValue<RandomNodeOutputPortData>();
             {
                 valueLabel.SetText($"{data.Weight}");
                 slider.SetValueWithoutNotify(data.Weight);
@@ -88,7 +75,7 @@ namespace Doozy.Editor.Nody.Nodes.PortData
                     .SetStyleAlignSelf(Align.Center)
                     .SetStyleTextAlign(TextAnchor.MiddleRight)
                     .SetStyleWidth(24);
-
+                
             slider.RegisterValueChangedCallback(evt =>
             {
                 Undo.RecordObject(port.node, "Set weight");
@@ -99,7 +86,7 @@ namespace Doozy.Editor.Nody.Nodes.PortData
                 port.RefreshPortView();
             });
         }
-
+        
         private void Compose()
         {
             this
@@ -110,9 +97,9 @@ namespace Doozy.Editor.Nody.Nodes.PortData
                 .SetStylePadding(DesignUtils.k_Spacing)
                 .SetStyleMarginBottom(DesignUtils.k_Spacing)
                 .AddChild(connectionIndicator)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(valueLabel)
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(slider)
                 .AddChild
                 (

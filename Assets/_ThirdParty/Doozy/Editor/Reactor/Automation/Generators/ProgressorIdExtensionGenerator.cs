@@ -2,21 +2,22 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Doozy.Editor.Common.Utils;
 using Doozy.Editor.Reactor.ScriptableObjects;
+using Doozy.Editor.UIManager.ScriptableObjects;
 using Doozy.Runtime;
 using Doozy.Runtime.Common;
 using Doozy.Runtime.Common.Extensions;
 using Doozy.Runtime.Reactor;
 using UnityEditor;
-
 namespace Doozy.Editor.Reactor.Automation.Generators
 {
-    public static class ProgressorIdExtensionGenerator
+    public class ProgressorIdExtensionGenerator
     {
         private static string templateName => nameof(ProgressorIdExtensionGenerator).Replace("Generator", "");
         private static string templateNameWithExtension => $"{templateName}.cst";
@@ -39,7 +40,7 @@ namespace Doozy.Editor.Reactor.Automation.Generators
             return true;
         }
         
-         private static string InjectContent(string data, Func<IEnumerable<string>> getCategories, Func<string, IEnumerable<string>> getNames)
+         private static string InjectContent(string templateData, Func<IEnumerable<string>> getCategories, Func<string, IEnumerable<string>> getNames)
         {
             var accessorStringBuilder = new StringBuilder();
             var dataStringBuilder = new StringBuilder();
@@ -71,11 +72,9 @@ namespace Doozy.Editor.Reactor.Automation.Generators
                 }
             }
 
-            data = data.Replace("//ACCESSOR//", accessorStringBuilder.ToString().RemoveLast(Environment.NewLine.Length));
-            data = data.Replace("//DATA//", dataStringBuilder.ToString().RemoveLast(Environment.NewLine.Length));
-            
-            data += Environment.NewLine;
-            return data;
+            templateData = templateData.Replace("//ACCESSOR//", accessorStringBuilder.ToString().RemoveLast(Environment.NewLine.Length));
+            templateData = templateData.Replace("//DATA//", dataStringBuilder.ToString().RemoveLast(Environment.NewLine.Length));
+            return templateData;
         }
     }
 }

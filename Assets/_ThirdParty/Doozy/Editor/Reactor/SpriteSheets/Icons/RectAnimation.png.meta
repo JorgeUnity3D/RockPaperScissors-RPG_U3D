@@ -191,6 +191,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -835,36 +847,36 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ~RectAnimation_000: -838950588614138908
-      ~RectAnimation_001: 4367944454825447326
+      ~RectAnimation_006: -5534342892468995717
+      ~RectAnimation_011: -7358346522796376204
+      ~RectAnimation_014: 8994083254785857699
       ~RectAnimation_002: -4299772382853338344
       ~RectAnimation_003: -6484817535784494314
+      ~RectAnimation_013: 5478267606542901757
+      ~RectAnimation_027: -8497475094059662392
+      ~RectAnimation_025: -2662538007897287973
       ~RectAnimation_004: 2007757464511879808
       ~RectAnimation_005: -8939805086984312803
-      ~RectAnimation_006: -5534342892468995717
-      ~RectAnimation_007: 7748262291764194742
-      ~RectAnimation_008: -9075619019335497351
-      ~RectAnimation_009: -9195141415484609526
-      ~RectAnimation_010: 4800352955173932170
-      ~RectAnimation_011: -7358346522796376204
-      ~RectAnimation_012: 5814070717599396029
-      ~RectAnimation_013: 5478267606542901757
-      ~RectAnimation_014: 8994083254785857699
-      ~RectAnimation_015: 6232737761277755058
-      ~RectAnimation_016: -1258679945256689136
-      ~RectAnimation_017: -2219863414402901720
-      ~RectAnimation_018: 366160461993647831
-      ~RectAnimation_019: -9047885667327818514
-      ~RectAnimation_020: -1698438028352781401
-      ~RectAnimation_021: -2353219485797564900
-      ~RectAnimation_022: -5103027755704252621
-      ~RectAnimation_023: -1128592884974681821
-      ~RectAnimation_024: 5491608285393364881
-      ~RectAnimation_025: -2662538007897287973
-      ~RectAnimation_026: 7235580428068444504
-      ~RectAnimation_027: -8497475094059662392
       ~RectAnimation_028: -7084583816192933675
+      ~RectAnimation_008: -9075619019335497351
       ~RectAnimation_029: -9124025871959271587
+      ~RectAnimation_000: -838950588614138908
+      ~RectAnimation_010: 4800352955173932170
+      ~RectAnimation_012: 5814070717599396029
+      ~RectAnimation_024: 5491608285393364881
+      ~RectAnimation_015: 6232737761277755058
+      ~RectAnimation_020: -1698438028352781401
+      ~RectAnimation_026: 7235580428068444504
+      ~RectAnimation_017: -2219863414402901720
+      ~RectAnimation_019: -9047885667327818514
+      ~RectAnimation_001: 4367944454825447326
+      ~RectAnimation_021: -2353219485797564900
+      ~RectAnimation_009: -9195141415484609526
+      ~RectAnimation_016: -1258679945256689136
+      ~RectAnimation_007: 7748262291764194742
+      ~RectAnimation_023: -1128592884974681821
+      ~RectAnimation_018: 366160461993647831
+      ~RectAnimation_022: -5103027755704252621
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

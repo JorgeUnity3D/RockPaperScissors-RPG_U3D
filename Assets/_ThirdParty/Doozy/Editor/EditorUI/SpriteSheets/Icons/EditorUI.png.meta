@@ -191,6 +191,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -835,36 +847,36 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ~EditorUI_000: 6999974410606443811
-      ~EditorUI_001: 5169497738685330625
-      ~EditorUI_002: -1872880948287618849
-      ~EditorUI_003: 954751649000951508
-      ~EditorUI_004: 169165120889118165
-      ~EditorUI_005: -7219959353350437873
-      ~EditorUI_006: 6566010625163199206
-      ~EditorUI_007: -639128534094275198
-      ~EditorUI_008: 1711490350285161586
-      ~EditorUI_009: -8812016639437504495
-      ~EditorUI_010: 1375287223571255484
-      ~EditorUI_011: -6085482802909952101
-      ~EditorUI_012: 2094492753633585476
-      ~EditorUI_013: -3804723628765606916
-      ~EditorUI_014: -4428807236056566956
-      ~EditorUI_015: 3211344932687928464
-      ~EditorUI_016: -60460862429687399
-      ~EditorUI_017: 3622202025803849387
-      ~EditorUI_018: 6245798247544293586
-      ~EditorUI_019: -8174106514312306260
-      ~EditorUI_020: -6316178093428399528
-      ~EditorUI_021: -2669543890955911472
       ~EditorUI_022: 7447607061264779027
-      ~EditorUI_023: -5239369294117686566
-      ~EditorUI_024: -5645168355586660853
-      ~EditorUI_025: -5431333100121013952
-      ~EditorUI_026: -3800948792068064096
-      ~EditorUI_027: 1484174847335796160
-      ~EditorUI_028: -5459359671164722509
       ~EditorUI_029: 5444673791564659349
+      ~EditorUI_014: -4428807236056566956
+      ~EditorUI_006: 6566010625163199206
+      ~EditorUI_009: -8812016639437504495
+      ~EditorUI_005: -7219959353350437873
+      ~EditorUI_007: -639128534094275198
+      ~EditorUI_025: -5431333100121013952
+      ~EditorUI_002: -1872880948287618849
+      ~EditorUI_004: 169165120889118165
+      ~EditorUI_010: 1375287223571255484
+      ~EditorUI_026: -3800948792068064096
+      ~EditorUI_018: 6245798247544293586
+      ~EditorUI_024: -5645168355586660853
+      ~EditorUI_027: 1484174847335796160
+      ~EditorUI_021: -2669543890955911472
+      ~EditorUI_000: 6999974410606443811
+      ~EditorUI_013: -3804723628765606916
+      ~EditorUI_020: -6316178093428399528
+      ~EditorUI_028: -5459359671164722509
+      ~EditorUI_017: 3622202025803849387
+      ~EditorUI_003: 954751649000951508
+      ~EditorUI_012: 2094492753633585476
+      ~EditorUI_016: -60460862429687399
+      ~EditorUI_023: -5239369294117686566
+      ~EditorUI_011: -6085482802909952101
+      ~EditorUI_015: 3211344932687928464
+      ~EditorUI_001: 5169497738685330625
+      ~EditorUI_019: -8174106514312306260
+      ~EditorUI_008: 1711490350285161586
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

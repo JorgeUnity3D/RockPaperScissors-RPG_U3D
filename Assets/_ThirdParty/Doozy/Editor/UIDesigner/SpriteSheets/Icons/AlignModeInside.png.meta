@@ -191,6 +191,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -835,36 +847,36 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ~AlignModeInside_000: -3352155006926282412
-      ~AlignModeInside_001: 4344897799120137367
-      ~AlignModeInside_002: -6776779781106673655
-      ~AlignModeInside_003: -2919042969996616536
-      ~AlignModeInside_004: -703658655785643945
-      ~AlignModeInside_005: -8466353083120948110
-      ~AlignModeInside_006: -1533071065061387987
-      ~AlignModeInside_007: 3717002549619434569
-      ~AlignModeInside_008: -7216133101890841531
       ~AlignModeInside_009: 7032390502949555956
-      ~AlignModeInside_010: -3275385329202466974
-      ~AlignModeInside_011: 2790618342451866063
-      ~AlignModeInside_012: 1475317180435731680
-      ~AlignModeInside_013: 1790366725156882232
-      ~AlignModeInside_014: -1506394473915921165
-      ~AlignModeInside_015: 7522468562081420991
-      ~AlignModeInside_016: -3000908083575993362
-      ~AlignModeInside_017: -7208383854644452712
-      ~AlignModeInside_018: 7135357817339262612
-      ~AlignModeInside_019: -5734271022020207558
+      ~AlignModeInside_001: 4344897799120137367
+      ~AlignModeInside_000: -3352155006926282412
       ~AlignModeInside_020: 3255253932551576729
-      ~AlignModeInside_021: -8193988129091035380
+      ~AlignModeInside_005: -8466353083120948110
+      ~AlignModeInside_013: 1790366725156882232
+      ~AlignModeInside_004: -703658655785643945
+      ~AlignModeInside_010: -3275385329202466974
+      ~AlignModeInside_008: -7216133101890841531
       ~AlignModeInside_022: -5657442275688216334
-      ~AlignModeInside_023: 3824710703583787618
-      ~AlignModeInside_024: 3467854716785700884
-      ~AlignModeInside_025: 3333633410153126435
-      ~AlignModeInside_026: -6069082393607256316
-      ~AlignModeInside_027: 201157991503412032
       ~AlignModeInside_028: 5523344689426224349
+      ~AlignModeInside_012: 1475317180435731680
       ~AlignModeInside_029: 4599326469534109015
+      ~AlignModeInside_006: -1533071065061387987
+      ~AlignModeInside_011: 2790618342451866063
+      ~AlignModeInside_017: -7208383854644452712
+      ~AlignModeInside_014: -1506394473915921165
+      ~AlignModeInside_021: -8193988129091035380
+      ~AlignModeInside_003: -2919042969996616536
+      ~AlignModeInside_007: 3717002549619434569
+      ~AlignModeInside_026: -6069082393607256316
+      ~AlignModeInside_002: -6776779781106673655
+      ~AlignModeInside_016: -3000908083575993362
+      ~AlignModeInside_025: 3333633410153126435
+      ~AlignModeInside_027: 201157991503412032
+      ~AlignModeInside_018: 7135357817339262612
+      ~AlignModeInside_015: 7522468562081420991
+      ~AlignModeInside_019: -5734271022020207558
+      ~AlignModeInside_024: 3467854716785700884
+      ~AlignModeInside_023: 3824710703583787618
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

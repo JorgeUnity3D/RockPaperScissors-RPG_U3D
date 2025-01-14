@@ -33,9 +33,9 @@ namespace Doozy.Editor.UIManager.Components
                     .SetStyleFlexGrow(0)
                     .SetStyleAlignItems(Align.Center)
                     .AddChild(GetResetButton(resetCallback))
-                    .AddSpaceBlock()
+                    .AddChild(DesignUtils.spaceBlock)
                     .AddChild(DesignUtils.dividerVertical)
-                    .AddSpaceBlock(2);
+                    .AddChild(DesignUtils.spaceBlock2X);
             
             VisualElement editorOnlyContainer =
                 DesignUtils.row
@@ -44,7 +44,7 @@ namespace Doozy.Editor.UIManager.Components
                     .SetStyleFlexGrow(0)
                     .SetStyleAlignItems(Align.Center)
                     .AddChild(DesignUtils.dividerVertical)
-                    .AddSpaceBlock(2)
+                    .AddChild(DesignUtils.spaceBlock2X)
                     .AddChild
                     (
                         //Reverse Show button
@@ -54,7 +54,7 @@ namespace Doozy.Editor.UIManager.Components
                             .SetButtonStyle(ButtonStyle.Contained)
                             .SetOnClick(reverseShowCallback)
                     )
-                    .AddSpaceBlock()
+                    .AddChild(DesignUtils.spaceBlock)
                     .AddChild
                     (
                         //Reverse Hide button
@@ -64,9 +64,9 @@ namespace Doozy.Editor.UIManager.Components
                             .SetButtonStyle(ButtonStyle.Contained)
                             .SetOnClick(reverseHideCallback)
                     )
-                    .AddSpaceBlock(2)
+                    .AddChild(DesignUtils.spaceBlock2X)
                     .AddChild(DesignUtils.dividerVertical)
-                    .AddSpaceBlock()
+                    .AddChild(DesignUtils.spaceBlock)
                     ;
 
             if (searchForAnimatorsCallback != null)
@@ -78,7 +78,7 @@ namespace Doozy.Editor.UIManager.Components
                         GetNewButton(EditorSpriteSheets.EditorUI.Icons.Refresh, "Search for Animators\nUse this after you've added a new animator")
                             .SetOnClick(searchForAnimatorsCallback)
                     )
-                    .AddSpaceBlock();
+                    .AddChild(DesignUtils.spaceBlock);
             }
 
             return this

@@ -42,7 +42,7 @@ namespace Doozy.Editor.UIManager.Nodes
             base.Compose();
 
             root
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(DesignUtils.NewPropertyField(propertyPayload));
         }
     }

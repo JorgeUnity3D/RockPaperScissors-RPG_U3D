@@ -4,12 +4,12 @@
 
 using System;
 using System.Collections.Generic;
-using Doozy.Runtime.Common.Layouts;
-using Doozy.Runtime.Common.Utils;
 using Doozy.Runtime.Reactor;
 using Doozy.Runtime.Reactor.Animations;
 using Doozy.Runtime.Reactor.Ticker;
 using Doozy.Runtime.UIManager.Components;
+using Doozy.Runtime.UIManager.Layouts;
+using Doozy.Runtime.UIManager.Utils;
 using UnityEngine;
 using UnityEngine.UI;
 // ReSharper disable UnusedMember.Global

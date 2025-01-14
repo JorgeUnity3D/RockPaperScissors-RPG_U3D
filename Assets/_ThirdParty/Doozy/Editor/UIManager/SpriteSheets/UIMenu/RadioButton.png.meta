@@ -191,6 +191,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -835,36 +847,36 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ~RadioButton_000: 224945877733799986
-      ~RadioButton_001: 6128654966144218959
-      ~RadioButton_002: 7914734181344522031
-      ~RadioButton_003: 487424000090565139
       ~RadioButton_004: 7094964144872148580
-      ~RadioButton_005: -1204174789616232947
-      ~RadioButton_006: -8901250940119714195
-      ~RadioButton_007: 2977593428414463291
-      ~RadioButton_008: 5011035459715026566
-      ~RadioButton_009: -2741401111299552425
       ~RadioButton_010: 3067218000213644587
-      ~RadioButton_011: -4829079506998352983
-      ~RadioButton_012: -1738251450766408442
-      ~RadioButton_013: -1554104234954802108
-      ~RadioButton_014: -7289643075228960214
-      ~RadioButton_015: -3795917489555522178
-      ~RadioButton_016: 5890416979498130625
-      ~RadioButton_017: -5213549060339235424
-      ~RadioButton_018: 3836119119859188016
-      ~RadioButton_019: 3853099611796065091
-      ~RadioButton_020: 4442858202354039233
-      ~RadioButton_021: 6219769411632823967
-      ~RadioButton_022: 6628546726844395552
-      ~RadioButton_023: 9112443474648498376
-      ~RadioButton_024: -6835993903625244395
-      ~RadioButton_025: -6149018988325286383
-      ~RadioButton_026: -1614775918267162231
-      ~RadioButton_027: -4160906286524009969
       ~RadioButton_028: 7484963215077916740
+      ~RadioButton_012: -1738251450766408442
+      ~RadioButton_014: -7289643075228960214
       ~RadioButton_029: -4621884939171478619
+      ~RadioButton_011: -4829079506998352983
+      ~RadioButton_019: 3853099611796065091
+      ~RadioButton_015: -3795917489555522178
+      ~RadioButton_006: -8901250940119714195
+      ~RadioButton_018: 3836119119859188016
+      ~RadioButton_027: -4160906286524009969
+      ~RadioButton_025: -6149018988325286383
+      ~RadioButton_009: -2741401111299552425
+      ~RadioButton_026: -1614775918267162231
+      ~RadioButton_003: 487424000090565139
+      ~RadioButton_007: 2977593428414463291
+      ~RadioButton_021: 6219769411632823967
+      ~RadioButton_005: -1204174789616232947
+      ~RadioButton_017: -5213549060339235424
+      ~RadioButton_022: 6628546726844395552
+      ~RadioButton_016: 5890416979498130625
+      ~RadioButton_002: 7914734181344522031
+      ~RadioButton_024: -6835993903625244395
+      ~RadioButton_023: 9112443474648498376
+      ~RadioButton_008: 5011035459715026566
+      ~RadioButton_001: 6128654966144218959
+      ~RadioButton_000: 224945877733799986
+      ~RadioButton_013: -1554104234954802108
+      ~RadioButton_020: 4442858202354039233
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

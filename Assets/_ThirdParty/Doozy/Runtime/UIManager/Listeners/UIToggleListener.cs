@@ -81,7 +81,7 @@ namespace Doozy.Runtime.UIManager.Listeners
             if (multiplayerMode && playerIndex != data.playerIndex) return;    //check player index (if multiplayer)
 
             signalCallback?.Invoke(data);
-            Callback?.Execute();
+            Callback?.Execute(signal);
         }
     }
 }

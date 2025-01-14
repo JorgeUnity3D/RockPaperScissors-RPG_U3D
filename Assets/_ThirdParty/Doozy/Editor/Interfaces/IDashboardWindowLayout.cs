@@ -8,9 +8,5 @@ namespace Doozy.Editor.Interfaces
 {
     public interface IDashboardWindowLayout : IWindowLayout
     {
-        /// <summary>
-        /// Check if the layout is valid and can be used
-        /// </summary>
-        bool isValid { get; }
     }
 }

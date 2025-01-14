@@ -27,8 +27,8 @@ namespace Doozy.Editor.UIManager.Editors.Visual
         public UIToggleSpriteSwapper castedTarget => (UIToggleSpriteSwapper)target;
         public IEnumerable<UIToggleSpriteSwapper> castedTargets => targets.Cast<UIToggleSpriteSwapper>();
         
-        protected override Color accentColor => EditorColors.Default.AudioComponent;
-        protected override EditorSelectableColorInfo selectableAccentColor => EditorSelectableColors.Default.AudioComponent;
+        protected override Color accentColor => EditorColors.UIManager.AudioComponent;
+        protected override EditorSelectableColorInfo selectableAccentColor => EditorSelectableColors.UIManager.AudioComponent;
         
         private SerializedProperty propertySpriteTarget { get; set; }
         private SerializedProperty propertyOnSprite { get; set; }
@@ -109,15 +109,15 @@ namespace Doozy.Editor.UIManager.Editors.Visual
         {
             root
                 .AddChild(componentHeader)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(BaseUIToggleAnimatorEditor.GetController(propertyController))
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(spriteTargetFluidField)
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(onSpriteFluidField)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(offSpriteFluidField)
-                .AddEndOfLineSpace()
+                .AddChild(DesignUtils.endOfLineBlock)
                 ;
         }
     }

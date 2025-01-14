@@ -330,7 +330,7 @@ namespace Doozy.Editor.Reactor.Editors
                     (
                         DesignUtils.row
                             .AddChild(fromValueFluidField)
-                            .AddSpaceBlock()
+                            .AddChild(DesignUtils.spaceBlock)
                             .AddChild(toValueFluidField)
                     )
                     .AddContent(DesignUtils.spaceBlock)
@@ -340,7 +340,7 @@ namespace Doozy.Editor.Reactor.Editors
                     (
                         DesignUtils.row
                             .AddChild(resetValueOnEnableFluidField)
-                            .AddSpaceBlock()
+                            .AddChild(DesignUtils.spaceBlock)
                             .AddChild(customResetValueFluidField)
                     )
                     .Bind(serializedObject);
@@ -442,13 +442,13 @@ namespace Doozy.Editor.Reactor.Editors
             return
                 toolbarContainer
                     .AddChild(settingsTab)
-                    .AddSpaceBlock(2)
+                    .AddChild(DesignUtils.spaceBlock2X)
                     .AddChild(callbacksTab)
-                    .AddSpaceBlock(2)
+                    .AddChild(DesignUtils.spaceBlock2X)
                     .AddChild(progressTargetsTab)
-                    .AddSpaceBlock(2)
+                    .AddChild(DesignUtils.spaceBlock2X)
                     .AddChild(progressorsTab)
-                    .AddSpaceBlock()
+                    .AddChild(DesignUtils.spaceBlock)
                     .AddChild(DesignUtils.flexibleSpace);
         }
 
@@ -468,11 +468,11 @@ namespace Doozy.Editor.Reactor.Editors
                 .AddChild(reactionControls)
                 .AddChild(componentHeader)
                 .AddChild(Toolbar())
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(Content())
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(idField)
-                .AddEndOfLineSpace();
+                .AddChild(DesignUtils.endOfLineBlock);
         }
     }
 }

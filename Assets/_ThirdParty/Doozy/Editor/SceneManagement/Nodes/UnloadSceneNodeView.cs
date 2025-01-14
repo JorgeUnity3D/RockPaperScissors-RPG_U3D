@@ -92,7 +92,7 @@ namespace Doozy.Editor.SceneManagement.Nodes
                 .SetStyleBorderRadius(DesignUtils.k_Spacing)
                 .SetStyleJustifyContent(Justify.Center)
                 .AddChild(sceneInfoLabel)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(waitInfoLabel);
         }
 

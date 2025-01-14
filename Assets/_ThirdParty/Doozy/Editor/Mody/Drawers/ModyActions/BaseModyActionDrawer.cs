@@ -119,27 +119,27 @@ namespace Doozy.Editor.Mody.Drawers.ModyActions
             VisualElement content =
                 DesignUtils.column
                     .AddChild(GetTriggersListView(property))
-                    .AddSpaceBlock()
+                    .AddChild(DesignUtils.spaceBlock)
                     .AddChild
                     (
                         DesignUtils.row
                             .AddChild(GetStartDelayFluidField(property))
-                            .AddSpaceBlock()
+                            .AddChild(DesignUtils.spaceBlock)
                             .AddChild(GetDurationFluidField(property))
-                            .AddSpaceBlock()
+                            .AddChild(DesignUtils.spaceBlock)
                             .AddChild(GetCooldownFluidField(property))
                     )
-                    .AddSpaceBlock()
+                    .AddChild(DesignUtils.spaceBlock)
                     .AddChild
                     (
                         DesignUtils.row
                             .AddChild(GetTimescaleFluidField(property))
-                            .AddSpaceBlock()
+                            .AddChild(DesignUtils.spaceBlock)
                             .AddChild(GetStopAllActionsOnStartFluidField(property))
                     )
-                    .AddSpaceBlock()
+                    .AddChild(DesignUtils.spaceBlock)
                     .AddChild(GetOnStartFluidField(property))
-                    .AddSpaceBlock()
+                    .AddChild(DesignUtils.spaceBlock)
                     .AddChild(GetOnFinishPropertyField(property))
                 ;
 

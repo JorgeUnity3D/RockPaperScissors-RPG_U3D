@@ -191,6 +191,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -835,36 +847,36 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ~ValueTrigger_000: 5997241528777891655
+      ~ValueTrigger_021: 2258564649374035784
+      ~ValueTrigger_028: 7902907540929967185
+      ~ValueTrigger_015: -2344863007996177456
+      ~ValueTrigger_020: -9110679035570068469
+      ~ValueTrigger_029: -8719750971929373870
       ~ValueTrigger_001: 5039325348663086939
-      ~ValueTrigger_002: -4755603478616400479
-      ~ValueTrigger_003: -7104370510688874849
-      ~ValueTrigger_004: -3869930496717472376
-      ~ValueTrigger_005: 3981434008333719818
-      ~ValueTrigger_006: 887612226851167438
-      ~ValueTrigger_007: 3342910712222562205
       ~ValueTrigger_008: 8954101277500139001
       ~ValueTrigger_009: 2830679208898663464
-      ~ValueTrigger_010: 8969749966143747845
+      ~ValueTrigger_022: 7747802442012500904
+      ~ValueTrigger_006: 887612226851167438
+      ~ValueTrigger_026: -3235349210487840406
+      ~ValueTrigger_004: -3869930496717472376
       ~ValueTrigger_011: -7692833758032593560
+      ~ValueTrigger_007: 3342910712222562205
+      ~ValueTrigger_002: -4755603478616400479
+      ~ValueTrigger_010: 8969749966143747845
+      ~ValueTrigger_016: -3704441291368613708
+      ~ValueTrigger_003: -7104370510688874849
+      ~ValueTrigger_014: -478020344623038207
+      ~ValueTrigger_027: 6682494628530216614
+      ~ValueTrigger_019: 7265717176388168074
+      ~ValueTrigger_005: 3981434008333719818
+      ~ValueTrigger_017: -1841661808400825970
+      ~ValueTrigger_025: 3196093260726568443
+      ~ValueTrigger_000: 5997241528777891655
       ~ValueTrigger_012: 8740501457479712407
       ~ValueTrigger_013: -8938869234898803579
-      ~ValueTrigger_014: -478020344623038207
-      ~ValueTrigger_015: -2344863007996177456
-      ~ValueTrigger_016: -3704441291368613708
-      ~ValueTrigger_017: -1841661808400825970
       ~ValueTrigger_018: 7764181863750059161
-      ~ValueTrigger_019: 7265717176388168074
-      ~ValueTrigger_020: -9110679035570068469
-      ~ValueTrigger_021: 2258564649374035784
-      ~ValueTrigger_022: 7747802442012500904
       ~ValueTrigger_023: -4159823990671217875
       ~ValueTrigger_024: -7697774870064551152
-      ~ValueTrigger_025: 3196093260726568443
-      ~ValueTrigger_026: -3235349210487840406
-      ~ValueTrigger_027: 6682494628530216614
-      ~ValueTrigger_028: 7902907540929967185
-      ~ValueTrigger_029: -8719750971929373870
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

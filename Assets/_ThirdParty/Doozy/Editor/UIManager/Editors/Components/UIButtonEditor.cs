@@ -25,8 +25,8 @@ namespace Doozy.Editor.UIManager.Editors.Components
     [CanEditMultipleObjects]
     public sealed class UIButtonEditor : UISelectableBaseEditor
     {
-        public override Color accentColor => EditorColors.Default.UIComponent;
-        public override EditorSelectableColorInfo selectableAccentColor => EditorSelectableColors.Default.UIComponent;
+        public override Color accentColor => EditorColors.UIManager.UIComponent;
+        public override EditorSelectableColorInfo selectableAccentColor => EditorSelectableColors.UIManager.UIComponent;
 
         public UIButton castedTarget => (UIButton)target;
         public IEnumerable<UIButton> castedTargets => targets.Cast<UIButton>();
@@ -131,9 +131,9 @@ namespace Doozy.Editor.UIManager.Editors.Components
                             DesignUtils.row
                                 .SetStyleAlignItems(Align.Center)
                                 .AddChild(DesignUtils.NewFloatField(propertyCooldown).SetStyleWidth(40))
-                                .AddSpaceBlock()
+                                .AddChild(DesignUtils.spaceBlock)
                                 .AddChild(DesignUtils.fieldLabel.SetText("seconds"))
-                                .AddSpaceBlock(2)
+                                .AddChild(DesignUtils.spaceBlock2X)
                                 .AddChild(disableWhenInCooldownCheckbox)
                         );
 
@@ -144,7 +144,7 @@ namespace Doozy.Editor.UIManager.Editors.Components
                     (
                         DesignUtils.row
                             .AddChild(interactableCheckbox)
-                            .AddSpaceBlock()
+                            .AddChild(DesignUtils.spaceBlock)
                             .AddChild(deselectAfterPressCheckbox)
                     )
                     .AddContent(DesignUtils.spaceBlock2X)
@@ -158,15 +158,15 @@ namespace Doozy.Editor.UIManager.Editors.Components
         {
             toolbarContainer
                 .AddChild(settingsTab)
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(statesTab)
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(behavioursTab)
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(navigationTab)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(DesignUtils.flexibleSpace)
-                .AddSpaceBlock(2);
+                .AddChild(DesignUtils.spaceBlock2X);
 
             if (castedTarget != null)
             {
@@ -179,7 +179,7 @@ namespace Doozy.Editor.UIManager.Editors.Components
                             () => $"Button - {castedTarget.Id.Name}"
                         )
                     )
-                    .AddSpaceBlock();
+                    .AddChild(DesignUtils.spaceBlock);
             }
 
             toolbarContainer
@@ -202,11 +202,11 @@ namespace Doozy.Editor.UIManager.Editors.Components
                 .AddChild(reactionControls)
                 .AddChild(componentHeader)
                 .AddChild(Toolbar())
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(Content())
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(idField)
-                .AddEndOfLineSpace();
+                .AddChild(DesignUtils.endOfLineBlock);
         }
     }
 }

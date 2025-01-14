@@ -4,6 +4,7 @@
 
 using System;
 using System.IO;
+using Doozy.Editor.UIManager;
 using Doozy.Runtime.Common;
 using Doozy.Runtime.Common.Extensions;
 // ReSharper disable MemberCanBePrivate.Global
@@ -12,6 +13,25 @@ namespace Doozy.Editor.Common.Utils
 {
     public static class FileGenerator
     {
+        public static class Markers
+        {
+            internal const string k_Class = "%CLASS%";
+            internal const string k_Content = "%CONTENT%";
+            internal const string k_Namespace = "%NAMESPACE%";
+            internal const string k_Using = "%USING%";
+        }
+
+        public static string templatesFolderPath => EditorUIManagerPath.automationTemplatesFolderPath;
+
+        public static string GetTemplateFilePath(string fileName) =>
+            $"{templatesFolderPath}/{fileName}";
+
+        public static string GetTemplate(string fileName)
+        {
+            string templatePath = GetTemplateFilePath(fileName);
+            return GetFile(templatePath);
+        }
+
         public static string GetFile(string path)
         {
             if (File.Exists(path)) return File.ReadAllText(path);

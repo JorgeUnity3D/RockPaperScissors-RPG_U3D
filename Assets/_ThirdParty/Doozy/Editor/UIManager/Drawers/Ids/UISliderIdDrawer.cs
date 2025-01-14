@@ -28,7 +28,7 @@ namespace Doozy.Editor.UIManager.Drawers
                 SlidersDatabaseWindow.Open,
                 "Open Sliders Database Window",
                 UISliderIdDatabase.instance,
-                EditorSelectableColors.Default.UIComponent
+                EditorSelectableColors.UIManager.UIComponent
             );
     }
 }

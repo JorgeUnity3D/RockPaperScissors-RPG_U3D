@@ -18,14 +18,14 @@ using Object = UnityEngine.Object;
 
 namespace Doozy.Editor.UIManager.Layouts.Databases
 {
-    public sealed class ViewsDatabaseWindowLayout : CategoryNameGroupWindowLayout, IDashboardDatabaseWindowLayout
+    public sealed class ViewsDatabaseWindowLayout : CategoryNameGroupWindowLayout, IDashboardDatabaseWindowLayout, IUIManagerDatabaseWindowLayout
     {
         public int order => 0;
         
         public override string layoutName => "Views";
         public override List<Texture2D> animatedIconTextures => EditorSpriteSheets.UIManager.Icons.UIViewDatabase;
-        public override Color accentColor => EditorColors.Default.UIComponent;
-        public override EditorSelectableColorInfo selectableAccentColor => EditorSelectableColors.Default.UIComponent;
+        public override Color accentColor => EditorColors.UIManager.UIComponent;
+        public override EditorSelectableColorInfo selectableAccentColor => EditorSelectableColors.UIManager.UIComponent;
 
         protected override Object targetObject => UIViewIdDatabase.instance;
         protected override UnityAction onUpdateCallback => UIViewIdDatabase.instance.onUpdateCallback;

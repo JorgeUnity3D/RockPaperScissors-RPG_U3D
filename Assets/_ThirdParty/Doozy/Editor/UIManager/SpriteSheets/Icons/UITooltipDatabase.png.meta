@@ -191,6 +191,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -835,36 +847,36 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ~UITooltipDatabase_000: 5471315422032445875
-      ~UITooltipDatabase_001: -1713977823750396721
-      ~UITooltipDatabase_002: 5740897606886727518
-      ~UITooltipDatabase_003: -8689375829944599053
-      ~UITooltipDatabase_004: -7051747851643344281
-      ~UITooltipDatabase_005: -3549015043519562861
-      ~UITooltipDatabase_006: -7598136276579512105
       ~UITooltipDatabase_007: 7949855089628268858
-      ~UITooltipDatabase_008: -1403858980440302648
-      ~UITooltipDatabase_009: 9125862806949749391
-      ~UITooltipDatabase_010: -63507037592768636
-      ~UITooltipDatabase_011: -4682531519488666003
-      ~UITooltipDatabase_012: -5140606203683466111
-      ~UITooltipDatabase_013: -4382374061204591362
-      ~UITooltipDatabase_014: 1634720737569970488
-      ~UITooltipDatabase_015: 1661683578331167717
-      ~UITooltipDatabase_016: 2654167614130667505
+      ~UITooltipDatabase_006: -7598136276579512105
+      ~UITooltipDatabase_026: -2753971733750271575
+      ~UITooltipDatabase_000: 5471315422032445875
       ~UITooltipDatabase_017: -4098503392287208052
       ~UITooltipDatabase_018: 7198921716196199794
-      ~UITooltipDatabase_019: -6728130927444852919
-      ~UITooltipDatabase_020: -2841483183289113598
       ~UITooltipDatabase_021: 3591841994931422618
-      ~UITooltipDatabase_022: -1835940836232335426
-      ~UITooltipDatabase_023: 3908584294698415736
       ~UITooltipDatabase_024: -1219756658420646898
-      ~UITooltipDatabase_025: -3264273523345001186
-      ~UITooltipDatabase_026: -2753971733750271575
-      ~UITooltipDatabase_027: 5316378397132441097
+      ~UITooltipDatabase_013: -4382374061204591362
+      ~UITooltipDatabase_020: -2841483183289113598
+      ~UITooltipDatabase_023: 3908584294698415736
+      ~UITooltipDatabase_014: 1634720737569970488
+      ~UITooltipDatabase_004: -7051747851643344281
       ~UITooltipDatabase_028: -7615890314328957369
+      ~UITooltipDatabase_002: 5740897606886727518
+      ~UITooltipDatabase_011: -4682531519488666003
+      ~UITooltipDatabase_012: -5140606203683466111
+      ~UITooltipDatabase_009: 9125862806949749391
+      ~UITooltipDatabase_027: 5316378397132441097
+      ~UITooltipDatabase_025: -3264273523345001186
+      ~UITooltipDatabase_016: 2654167614130667505
+      ~UITooltipDatabase_022: -1835940836232335426
+      ~UITooltipDatabase_019: -6728130927444852919
+      ~UITooltipDatabase_003: -8689375829944599053
+      ~UITooltipDatabase_008: -1403858980440302648
+      ~UITooltipDatabase_010: -63507037592768636
       ~UITooltipDatabase_029: 588608526799201135
+      ~UITooltipDatabase_005: -3549015043519562861
+      ~UITooltipDatabase_015: 1661683578331167717
+      ~UITooltipDatabase_001: -1713977823750396721
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

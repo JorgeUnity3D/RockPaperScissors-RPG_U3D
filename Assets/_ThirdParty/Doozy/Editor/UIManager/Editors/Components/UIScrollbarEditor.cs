@@ -29,8 +29,8 @@ namespace Doozy.Editor.UIManager.Editors.Components
     [CanEditMultipleObjects]
     public class UIScrollbarEditor : UISelectableBaseEditor
     {
-        public override Color accentColor => EditorColors.Default.UIComponent;
-        public override EditorSelectableColorInfo selectableAccentColor => EditorSelectableColors.Default.UIComponent;
+        public override Color accentColor => EditorColors.UIManager.UIComponent;
+        public override EditorSelectableColorInfo selectableAccentColor => EditorSelectableColors.UIManager.UIComponent;
 
         public UIScrollbar castedTarget => (UIScrollbar)target;
         public IEnumerable<UIScrollbar> castedTargets => targets.Cast<UIScrollbar>();
@@ -229,9 +229,9 @@ namespace Doozy.Editor.UIManager.Editors.Components
                         .AddFieldContent
                         (
                             DesignUtils.row
-                                .AddSpaceBlock()
+                                .AddChild(DesignUtils.spaceBlock)
                                 .AddChild(numberOfStepsSliderInt)
-                                .AddSpaceBlock(2)
+                                .AddChild(DesignUtils.spaceBlock2X)
                                 .AddChild(numberOfStepsIntegerField)
                         );
 
@@ -264,9 +264,9 @@ namespace Doozy.Editor.UIManager.Editors.Components
                         .AddFieldContent
                         (
                             DesignUtils.row
-                                .AddSpaceBlock()
+                                .AddChild(DesignUtils.spaceBlock)
                                 .AddChild(sizeSlider)
-                                .AddSpaceBlock(2)
+                                .AddChild(DesignUtils.spaceBlock2X)
                                 .AddChild(sizeFloatField)
                         );
 
@@ -299,9 +299,9 @@ namespace Doozy.Editor.UIManager.Editors.Components
                         .AddFieldContent
                         (
                             DesignUtils.row
-                                .AddSpaceBlock()
+                                .AddChild(DesignUtils.spaceBlock)
                                 .AddChild(valueSlider)
-                                .AddSpaceBlock(2)
+                                .AddChild(DesignUtils.spaceBlock2X)
                                 .AddChild(valueFloatField)
                         );
 
@@ -329,7 +329,7 @@ namespace Doozy.Editor.UIManager.Editors.Components
                     (
                         DesignUtils.row
                             .AddChild(interactableCheckbox)
-                            .AddSpaceBlock()
+                            .AddChild(DesignUtils.spaceBlock)
                             .AddChild(deselectAfterPressCheckbox)
                     )
                     .AddContent(DesignUtils.spaceBlock)
@@ -339,9 +339,9 @@ namespace Doozy.Editor.UIManager.Editors.Components
                     (
                         DesignUtils.row
                             .AddChild(directionFluidField)
-                            .AddSpaceBlock()
+                            .AddChild(DesignUtils.spaceBlock)
                             .AddChild(numberOfStepsFluidField)
-                            .AddSpaceBlock()
+                            .AddChild(DesignUtils.spaceBlock)
                             .AddChild(sizeFluidField)
                     )
                     .AddContent(DesignUtils.spaceBlock)
@@ -381,17 +381,17 @@ namespace Doozy.Editor.UIManager.Editors.Components
             return
                 toolbarContainer
                     .AddChild(settingsTab)
-                    .AddSpaceBlock(2)
+                    .AddChild(DesignUtils.spaceBlock2X)
                     .AddChild(statesTab)
-                    .AddSpaceBlock(2)
+                    .AddChild(DesignUtils.spaceBlock2X)
                     .AddChild(behavioursTab)
-                    .AddSpaceBlock(2)
+                    .AddChild(DesignUtils.spaceBlock2X)
                     .AddChild(callbacksTab)
-                    .AddSpaceBlock(2)
+                    .AddChild(DesignUtils.spaceBlock2X)
                     .AddChild(navigationTab)
-                    .AddSpaceBlock()
+                    .AddChild(DesignUtils.spaceBlock)
                     .AddChild(DesignUtils.flexibleSpace)
-                    .AddSpaceBlock(2)
+                    .AddChild(DesignUtils.spaceBlock2X)
                     .AddChild
                     (
                         DesignUtils.SystemButton_SortComponents

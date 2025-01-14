@@ -397,7 +397,7 @@ namespace Doozy.Editor.UIDesigner.Windows
                                     .SetStyleFlexDirection(FlexDirection.Row)
                                     .SetStylePadding(DesignUtils.k_Spacing2X)
                                     .AddChild(snapToIntervalCheckbox)
-                                    .AddSpaceBlock()
+                                    .AddChild(DesignUtils.spaceBlock)
                                     .AddChild(snapIntervalFloatField)
                             )
                             .AddChild
@@ -418,9 +418,9 @@ namespace Doozy.Editor.UIDesigner.Windows
         {
             root
                 .AddChild(rotationZeroToNegative180FluidField)
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(rotation180ToZeroFluidField)
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(optionsFluidField);
         }
 

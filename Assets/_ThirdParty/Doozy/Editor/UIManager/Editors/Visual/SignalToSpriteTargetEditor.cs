@@ -25,8 +25,8 @@ namespace Doozy.Editor.UIManager.Editors.Visual
         private SignalToSpriteTarget castedTarget => (SignalToSpriteTarget)target;
         private IEnumerable<SignalToSpriteTarget> castedTargets => targets.Cast<SignalToSpriteTarget>();
 
-        private static Color accentColor => EditorColors.Default.VisualComponent;
-        private static EditorSelectableColorInfo selectableAccentColor => EditorSelectableColors.Default.VisualComponent;
+        private static Color accentColor => EditorColors.UIManager.VisualComponent;
+        private static EditorSelectableColorInfo selectableAccentColor => EditorSelectableColors.UIManager.VisualComponent;
 
         private static IEnumerable<Texture2D> componentIconTextures => EditorSpriteSheets.UIManager.Icons.SignalToSpriteTarget;
         private static IEnumerable<Texture2D> spriteTargetIconTextures => EditorSpriteSheets.Reactor.Icons.SpriteTarget;
@@ -115,11 +115,11 @@ namespace Doozy.Editor.UIManager.Editors.Visual
         {
             root
                 .AddChild(componentHeader)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(streamIdFluidField)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(spriteTargetFluidField)
-                .AddEndOfLineSpace()
+                .AddChild(DesignUtils.endOfLineBlock)
                 ;
         }
     }

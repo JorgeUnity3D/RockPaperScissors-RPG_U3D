@@ -24,8 +24,8 @@ namespace Doozy.Editor.UIManager.Editors.Listeners
     {
         private static IEnumerable<Texture2D> componentIconTextures => EditorSpriteSheets.UIManager.Icons.UIToggleListener;
 
-        private static Color accentColor => EditorColors.Default.ListenerComponent;
-        private static EditorSelectableColorInfo selectableAccentColor => EditorSelectableColors.Default.ListenerComponent;
+        private static Color accentColor => EditorColors.UIManager.ListenerComponent;
+        private static EditorSelectableColorInfo selectableAccentColor => EditorSelectableColors.UIManager.ListenerComponent;
 
         private UIToggleListener castedTarget => (UIToggleListener)target;
         private IEnumerable<UIToggleListener> castedTargets => targets.Cast<UIToggleListener>();
@@ -103,7 +103,7 @@ namespace Doozy.Editor.UIManager.Editors.Listeners
                     (
                         DesignUtils.row
                             .AddChild(toggleIdPropertyField)
-                            .AddSpaceBlock()
+                            .AddChild(DesignUtils.spaceBlock)
                             .AddChild(commandEnumField)
                     );
 
@@ -130,9 +130,9 @@ namespace Doozy.Editor.UIManager.Editors.Listeners
         {
             root
                 .AddChild(componentHeader)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(idField)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(callbackField)
                 .AddChild(multiplayerInfoField)
                 ;

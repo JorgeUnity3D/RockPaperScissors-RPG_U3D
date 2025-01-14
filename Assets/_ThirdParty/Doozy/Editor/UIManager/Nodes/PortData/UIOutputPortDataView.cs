@@ -8,7 +8,6 @@ using Doozy.Editor.EditorUI;
 using Doozy.Editor.EditorUI.Components;
 using Doozy.Editor.EditorUI.Utils;
 using Doozy.Editor.Reactor.Internal;
-using Doozy.Runtime.Common.Attributes;
 using Doozy.Runtime.Nody;
 using Doozy.Runtime.Reactor.Extensions;
 using Doozy.Runtime.Reactor.Reactions;
@@ -35,16 +34,16 @@ namespace Doozy.Editor.UIManager.Nodes.PortData
             Reset();
             RemoveFromHierarchy();
         }
-
+        
         private FlowPort port { get; set; }
         private UIOutputPortData data { get; set; }
-
+        
         public Image icon { get; }
         public Texture2DReaction iconReaction { get; }
         private Label label { get; }
 
         public bool isBackButton => data.isBackButton;
-
+        
         public UIOutputPortDataView()
         {
             icon =
@@ -57,7 +56,7 @@ namespace Doozy.Editor.UIManager.Nodes.PortData
 
             iconReaction =
                 icon.GetTexture2DReaction().SetEditorHeartbeat();
-
+            
             label =
                 DesignUtils.fieldLabel
                     .SetStyleAlignSelf(Align.Center)
@@ -81,23 +80,12 @@ namespace Doozy.Editor.UIManager.Nodes.PortData
             RefreshData();
             return this;
         }
-
-        /// <summary>
-        /// Gets the data from the port
-        /// </summary>
-        private void GetDataFromPort()
-        {
-            // data = port.GetValue<UIOutputPortData>(); // this uses reflection and is slow
-
-            data ??= new UIOutputPortData();
-            JsonUtility.FromJsonOverwrite(port.value, data); // this is faster than the reflection method above
-        }
-
+        
         public UIOutputPortDataView RefreshData()
         {
-            GetDataFromPort();
+            data = port.GetValue<UIOutputPortData>();
             icon.SetTooltip($"{data.Trigger}");
-            iconReaction.SetTextures(GetTextures(data.Trigger));
+            iconReaction.SetTextures(GetTextures(data.Trigger)).Play();
             label.SetText(data.ToString());
             return this;
         }
@@ -106,12 +94,18 @@ namespace Doozy.Editor.UIManager.Nodes.PortData
         {
             switch (trigger)
             {
-                case UIOutputPortData.TriggerCondition.TimeDelay: return EditorSpriteSheets.EditorUI.Icons.Hourglass;
-                case UIOutputPortData.TriggerCondition.Signal: return EditorSpriteSheets.Signals.Icons.SignalStream;
-                case UIOutputPortData.TriggerCondition.UIButton: return EditorSpriteSheets.UIManager.Icons.UIButton;
-                case UIOutputPortData.TriggerCondition.UIToggle: return EditorSpriteSheets.UIManager.Icons.UIToggle;
-                case UIOutputPortData.TriggerCondition.UIView: return EditorSpriteSheets.UIManager.Icons.UIView;
-                default: throw new ArgumentOutOfRangeException(nameof(trigger), trigger, null);
+                case UIOutputPortData.TriggerCondition.TimeDelay:
+                    return EditorSpriteSheets.EditorUI.Icons.Hourglass;
+                case UIOutputPortData.TriggerCondition.Signal:
+                    return EditorSpriteSheets.Signals.Icons.SignalStream;
+                case UIOutputPortData.TriggerCondition.UIButton:
+                    return EditorSpriteSheets.UIManager.Icons.UIButton;
+                case UIOutputPortData.TriggerCondition.UIToggle:
+                    return EditorSpriteSheets.UIManager.Icons.UIToggle;
+                case UIOutputPortData.TriggerCondition.UIView:
+                    return EditorSpriteSheets.UIManager.Icons.UIView;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(trigger), trigger, null);
             }
         }
     }

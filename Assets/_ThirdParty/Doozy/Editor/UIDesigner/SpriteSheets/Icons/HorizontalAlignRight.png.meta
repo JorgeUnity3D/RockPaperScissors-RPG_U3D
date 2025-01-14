@@ -191,6 +191,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -835,36 +847,36 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ~HorizontalAlignRight_000: 8453894765424013058
-      ~HorizontalAlignRight_001: -1280274504701819248
-      ~HorizontalAlignRight_002: 1149597856129973608
-      ~HorizontalAlignRight_003: -5846134345870590144
-      ~HorizontalAlignRight_004: 2202023028383220780
-      ~HorizontalAlignRight_005: 6781484830734228096
-      ~HorizontalAlignRight_006: 5104305295592236390
-      ~HorizontalAlignRight_007: -3552791174042586545
-      ~HorizontalAlignRight_008: -2625909437742989130
-      ~HorizontalAlignRight_009: -7136375154460953186
-      ~HorizontalAlignRight_010: -6012501074909156479
-      ~HorizontalAlignRight_011: -4838407971311858211
       ~HorizontalAlignRight_012: -8544252260197058467
-      ~HorizontalAlignRight_013: 7024883604263687519
-      ~HorizontalAlignRight_014: 5144078741092236
-      ~HorizontalAlignRight_015: -3773943684804531846
-      ~HorizontalAlignRight_016: 8070478760790973167
-      ~HorizontalAlignRight_017: -7527783550683880608
-      ~HorizontalAlignRight_018: 2239225708340219879
-      ~HorizontalAlignRight_019: -3677176127928738045
-      ~HorizontalAlignRight_020: 609930346469426079
-      ~HorizontalAlignRight_021: -4279907236684145407
-      ~HorizontalAlignRight_022: -8215583118322619518
-      ~HorizontalAlignRight_023: -8330207805627935278
       ~HorizontalAlignRight_024: -4596278737190950112
       ~HorizontalAlignRight_025: -9018572147500480484
+      ~HorizontalAlignRight_015: -3773943684804531846
+      ~HorizontalAlignRight_005: 6781484830734228096
+      ~HorizontalAlignRight_023: -8330207805627935278
+      ~HorizontalAlignRight_006: 5104305295592236390
+      ~HorizontalAlignRight_007: -3552791174042586545
+      ~HorizontalAlignRight_017: -7527783550683880608
+      ~HorizontalAlignRight_000: 8453894765424013058
       ~HorizontalAlignRight_026: -4573763893461062313
-      ~HorizontalAlignRight_027: -4173861126291413365
+      ~HorizontalAlignRight_013: 7024883604263687519
+      ~HorizontalAlignRight_014: 5144078741092236
+      ~HorizontalAlignRight_018: 2239225708340219879
       ~HorizontalAlignRight_028: -5188176579202152920
+      ~HorizontalAlignRight_002: 1149597856129973608
+      ~HorizontalAlignRight_022: -8215583118322619518
+      ~HorizontalAlignRight_019: -3677176127928738045
+      ~HorizontalAlignRight_008: -2625909437742989130
+      ~HorizontalAlignRight_011: -4838407971311858211
+      ~HorizontalAlignRight_010: -6012501074909156479
+      ~HorizontalAlignRight_009: -7136375154460953186
+      ~HorizontalAlignRight_003: -5846134345870590144
       ~HorizontalAlignRight_029: 2116745779282641810
+      ~HorizontalAlignRight_020: 609930346469426079
+      ~HorizontalAlignRight_004: 2202023028383220780
+      ~HorizontalAlignRight_016: 8070478760790973167
+      ~HorizontalAlignRight_021: -4279907236684145407
+      ~HorizontalAlignRight_027: -4173861126291413365
+      ~HorizontalAlignRight_001: -1280274504701819248
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

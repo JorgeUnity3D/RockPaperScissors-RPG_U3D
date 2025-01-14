@@ -361,17 +361,6 @@ namespace Doozy.Runtime.SceneManagement
             StartSceneLoad();
             return this;
         }
-        
-        /// <summary> Loads the given scene asynchronously in the background. </summary>
-        /// <param name="scene"> Scene to load </param>
-        /// <param name="mode"> If LoadSceneMode.Single then all current Scenes will be unloaded before activating the newly loaded scene </param>
-        public SceneLoader LoadSceneAsync(Scene scene, LoadSceneMode mode)
-        {
-            if (preventLoadingSameScene && IsSceneLoaded(scene.name)) return this;
-            currentAsyncOperation = SceneManager.LoadSceneAsync(scene.name, mode);
-            StartSceneLoad();
-            return this;
-        }
 
         /// <summary> Loads a Scene asynchronously in the background, by its index in Build Settings, with the LoadSceneMode.Additive setting </summary>
         /// <param name="sceneBuildIndex"> Index, in the Build Settings, of the Scene to load </param>
@@ -383,11 +372,6 @@ namespace Doozy.Runtime.SceneManagement
         public SceneLoader LoadSceneAsyncAdditive(string sceneName) =>
             LoadSceneAsync(sceneName, LoadSceneMode.Additive);
 
-        /// <summary>  Loads the given scene asynchronously in the background, with the LoadSceneMode.Additive setting. </summary>
-        /// <param name="scene"> Scene to load </param>
-        public SceneLoader LoadSceneAsyncAdditive(Scene scene) =>
-            LoadSceneAsync(scene, LoadSceneMode.Additive);
-        
         /// <summary> Loads a Scene asynchronously in the background, by its index in Build Settings, with the LoadSceneMode.Single setting </summary>
         /// <param name="sceneBuildIndex"> Index, in the Build Settings, of the Scene to load </param>
         public SceneLoader LoadSceneAsyncSingle(int sceneBuildIndex) =>
@@ -398,11 +382,6 @@ namespace Doozy.Runtime.SceneManagement
         public SceneLoader LoadSceneAsyncSingle(string sceneName) =>
             LoadSceneAsync(sceneName, LoadSceneMode.Single);
 
-        /// <summary>  Loads the given scene asynchronously in the background, with the LoadSceneMode.Single setting. </summary>
-        /// <param name="scene"> Scene to load </param>
-        public SceneLoader LoadSceneAsyncSingle(Scene scene) =>
-            LoadSceneAsync(scene, LoadSceneMode.Single);
-        
         /// <summary> Set the AllowSceneActivation that that allows for a Scene to be activated as soon as it is ready </summary>
         /// <param name="whenReadyAllowSceneActivation"> Allow Scenes to be activated as soon as it is ready </param>
         public SceneLoader SetAllowSceneActivation(bool whenReadyAllowSceneActivation)

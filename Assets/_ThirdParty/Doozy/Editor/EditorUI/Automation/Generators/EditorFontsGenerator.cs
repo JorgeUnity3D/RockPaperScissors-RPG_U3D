@@ -2,7 +2,6 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System;
 using System.Linq;
 using System.Text;
 using Doozy.Editor.Common.Utils;
@@ -93,9 +92,11 @@ namespace Doozy.Editor.EditorUI.Automation.Generators
                 }
             }
 
+
+
+
             data = data.Replace("//CONTENT//", contentStringBuilder.ToString());
 
-            data += Environment.NewLine;
             return data;
         }
     }

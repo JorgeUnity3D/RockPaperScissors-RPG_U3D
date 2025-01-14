@@ -40,7 +40,7 @@ namespace Doozy.Editor.UIManager.Automation.Generators
             return true;
         }
 
-        private static string InjectContent(string data, Func<IEnumerable<string>> getCategories, Func<string, IEnumerable<string>> getNames)
+        private static string InjectContent(string templateData, Func<IEnumerable<string>> getCategories, Func<string, IEnumerable<string>> getNames)
         {
             var accessorStringBuilder = new StringBuilder();
             var dataStringBuilder = new StringBuilder();
@@ -74,11 +74,9 @@ namespace Doozy.Editor.UIManager.Automation.Generators
                 }
             }
 
-            data = data.Replace("//ACCESSOR//", accessorStringBuilder.ToString().RemoveLast(Environment.NewLine.Length));
-            data = data.Replace("//DATA//", dataStringBuilder.ToString().RemoveLast(Environment.NewLine.Length));
-            
-            data += Environment.NewLine;
-            return data;
+            templateData = templateData.Replace("//ACCESSOR//", accessorStringBuilder.ToString().RemoveLast(Environment.NewLine.Length));
+            templateData = templateData.Replace("//DATA//", dataStringBuilder.ToString().RemoveLast(Environment.NewLine.Length));
+            return templateData;
         }
     }
 }

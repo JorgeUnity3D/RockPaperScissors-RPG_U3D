@@ -34,8 +34,8 @@ namespace Doozy.Editor.UIManager.Editors.Triggers
     [CustomEditor(typeof(UITooltipTrigger), true)]
     public class UITooltipTriggerEditor : EditorUIEditor<UITooltipTrigger>
     {
-        protected override Color accentColor => EditorColors.Default.ListenerComponent;
-        protected override EditorSelectableColorInfo selectableAccentColor => EditorSelectableColors.Default.ListenerComponent;
+        protected override Color accentColor => EditorColors.UIManager.ListenerComponent;
+        protected override EditorSelectableColorInfo selectableAccentColor => EditorSelectableColors.UIManager.ListenerComponent;
 
         protected FluidTab settingsTab { get; set; }
         protected FluidTab overridesTab { get; set; }
@@ -241,7 +241,7 @@ namespace Doozy.Editor.UIManager.Editors.Triggers
                         (
                             DesignUtils.row
                                 .AddChild(showOnPointerEnterSwitch)
-                                .AddSpaceBlock()
+                                .AddChild(DesignUtils.spaceBlock)
                                 .AddChild(showOnPointerClickSwitch)
                                 .AddChild(DesignUtils.flexibleSpace)
                         );
@@ -270,7 +270,7 @@ namespace Doozy.Editor.UIManager.Editors.Triggers
                         (
                             DesignUtils.row
                                 .AddChild(hideOnPointerExitSwitch)
-                                .AddSpaceBlock()
+                                .AddChild(DesignUtils.spaceBlock)
                                 .AddChild(hideOnPointerClickSwitch)
                                 .AddChild(DesignUtils.flexibleSpace)
                         );
@@ -337,7 +337,7 @@ namespace Doozy.Editor.UIManager.Editors.Triggers
                     (
                         DesignUtils.row
                             .AddChild(showTriggersFluidField)
-                            .AddSpaceBlock()
+                            .AddChild(DesignUtils.spaceBlock)
                             .AddChild(hideTriggersFluidField)
                     )
                     .AddContent(DesignUtils.spaceBlock)
@@ -613,9 +613,9 @@ namespace Doozy.Editor.UIManager.Editors.Triggers
                     (
                         DesignUtils.row
                             .AddChild(parentModeFluidField)
-                            .AddSpaceBlock()
+                            .AddChild(DesignUtils.spaceBlock)
                             .AddChild(trackingModeFluidField)
-                            .AddSpaceBlock()
+                            .AddChild(DesignUtils.spaceBlock)
                             .AddChild(positionModeFluidField)
                     )
                     .AddContent(parentTagFluidField)
@@ -662,13 +662,13 @@ namespace Doozy.Editor.UIManager.Editors.Triggers
             return
                 toolbarContainer
                     .AddChild(settingsTab)
-                    .AddSpaceBlock()
+                    .AddChild(DesignUtils.spaceBlock)
                     .AddChild(overridesTab)
-                    .AddSpaceBlock()
+                    .AddChild(DesignUtils.spaceBlock)
                     .AddChild(callbacksTab)
-                    .AddSpaceBlock()
+                    .AddChild(DesignUtils.spaceBlock)
                     .AddChild(DesignUtils.flexibleSpace)
-                    .AddSpaceBlock(2)
+                    .AddChild(DesignUtils.spaceBlock2X)
                     .AddChild
                     (
                         DesignUtils.SystemButton_SortComponents
@@ -767,7 +767,7 @@ namespace Doozy.Editor.UIManager.Editors.Triggers
                     FluidField fluidField = FluidField.Get(labelReference.name).AddFieldContent(textField);
                     textsContainer.AddChild(fluidField);
                     if (i < tooltip.Labels.Count - 1)
-                        textsContainer.AddSpaceBlock();
+                        textsContainer.AddChild(DesignUtils.spaceBlock);
                 }
             }
 
@@ -834,7 +834,7 @@ namespace Doozy.Editor.UIManager.Editors.Triggers
 
                     spritesContainer.AddChild(fluidField);
                     if (i < tooltip.Images.Count - 1)
-                        spritesContainer.AddSpaceBlock();
+                        spritesContainer.AddChild(DesignUtils.spaceBlock);
                 }
             }
 
@@ -866,7 +866,7 @@ namespace Doozy.Editor.UIManager.Editors.Triggers
                     FluidField fluidField = FluidField.Get(buttonReference.name).AddFieldContent(unityEventField);
                     eventsContainer.AddChild(fluidField);
                     if (i < tooltip.Buttons.Count - 1)
-                        eventsContainer.AddSpaceBlock();
+                        eventsContainer.AddChild(DesignUtils.spaceBlock);
                 }
             }
 

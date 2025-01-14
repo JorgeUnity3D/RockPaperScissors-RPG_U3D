@@ -191,6 +191,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -835,36 +847,36 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      ~Discord_019: -3600583245715042933
+      ~Discord_026: 3801658590920989651
       ~Discord_000: 7592402994893647126
-      ~Discord_001: 2682815936046485420
-      ~Discord_002: -2277609771885292381
-      ~Discord_003: -2739539150943444397
-      ~Discord_004: -8640934142635008745
-      ~Discord_005: 375168922495879352
       ~Discord_006: 3180956170268422366
+      ~Discord_002: -2277609771885292381
       ~Discord_007: -6294769077326876232
-      ~Discord_008: -7283868910224694849
+      ~Discord_013: -4106246157952659321
+      ~Discord_029: 7183701718342512099
+      ~Discord_012: 1942572455896299091
+      ~Discord_016: -6192086770489091891
+      ~Discord_011: -2766938879661816798
+      ~Discord_014: -2074921001325203324
+      ~Discord_017: 2937164276739587327
+      ~Discord_001: 2682815936046485420
+      ~Discord_025: -2476508251225884824
+      ~Discord_022: 6319837560681525085
+      ~Discord_027: 3650983181332187622
+      ~Discord_023: 9123406939427334481
       ~Discord_009: 3844144198047405374
       ~Discord_010: -1476083718160093888
-      ~Discord_011: -2766938879661816798
-      ~Discord_012: 1942572455896299091
-      ~Discord_013: -4106246157952659321
-      ~Discord_014: -2074921001325203324
       ~Discord_015: -1596283425769233212
-      ~Discord_016: -6192086770489091891
-      ~Discord_017: 2937164276739587327
-      ~Discord_018: 828471376617040333
-      ~Discord_019: -3600583245715042933
-      ~Discord_020: 9046872393597258374
-      ~Discord_021: 5454890465787185802
-      ~Discord_022: 6319837560681525085
-      ~Discord_023: 9123406939427334481
       ~Discord_024: -2280804548651807600
-      ~Discord_025: -2476508251225884824
-      ~Discord_026: 3801658590920989651
-      ~Discord_027: 3650983181332187622
       ~Discord_028: 7508449665868324877
-      ~Discord_029: 7183701718342512099
+      ~Discord_004: -8640934142635008745
+      ~Discord_008: -7283868910224694849
+      ~Discord_018: 828471376617040333
+      ~Discord_005: 375168922495879352
+      ~Discord_020: 9046872393597258374
+      ~Discord_003: -2739539150943444397
+      ~Discord_021: 5454890465787185802
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

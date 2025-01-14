@@ -9,7 +9,6 @@ using Doozy.Runtime.Reactor.Animators;
 using Doozy.Runtime.UIElements.Extensions;
 using UnityEditor;
 using UnityEditor.UIElements;
-using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace Doozy.Editor.Reactor.Editors.Animators.Internal
@@ -60,11 +59,11 @@ namespace Doozy.Editor.Reactor.Editors.Animators.Internal
                 .AddChild(reactionControls)
                 .AddChild(componentHeader)
                 .AddChild(Toolbar())
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(Content())
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(valueTargetFluidField)
-                .AddEndOfLineSpace();
+                .AddChild(DesignUtils.endOfLineBlock);
         }
     }
 }

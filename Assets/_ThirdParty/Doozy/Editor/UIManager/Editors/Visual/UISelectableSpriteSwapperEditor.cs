@@ -26,8 +26,8 @@ namespace Doozy.Editor.UIManager.Editors.Visual
         public UISelectableSpriteSwapper castedTarget => (UISelectableSpriteSwapper)target;
         public IEnumerable<UISelectableSpriteSwapper> castedTargets => targets.Cast<UISelectableSpriteSwapper>();
 
-        protected override Color accentColor => EditorColors.Default.VisualComponent;
-        protected override EditorSelectableColorInfo selectableAccentColor => EditorSelectableColors.Default.VisualComponent;
+        protected override Color accentColor => EditorColors.UIManager.VisualComponent;
+        protected override EditorSelectableColorInfo selectableAccentColor => EditorSelectableColors.UIManager.VisualComponent;
 
         private static IEnumerable<Texture2D> uiSelectableIconTextures => EditorSpriteSheets.UIManager.Icons.UISelectable;
         private static IEnumerable<Texture2D> spriteSwapperIconTextures => EditorSpriteSheets.UIManager.Icons.SpriteSwapper;
@@ -141,21 +141,21 @@ namespace Doozy.Editor.UIManager.Editors.Visual
         {
             root
                 .AddChild(componentHeader)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(BaseUISelectableAnimatorEditor.GetController(propertyController, propertyToggleCommand))
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(spriteTargetFluidField)
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(normalSpriteFluidField)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(highlightedSpriteFluidField)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(pressedSpriteFluidField)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(selectedSpriteFluidField)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(disabledSpriteFluidField)
-                .AddEndOfLineSpace()
+                .AddChild(DesignUtils.endOfLineBlock)
                 ;
         }
         

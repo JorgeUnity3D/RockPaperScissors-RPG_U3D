@@ -38,11 +38,7 @@ namespace Doozy.Editor.UIManager.Nodes
         public override void RefreshData()
         {
             base.RefreshData();
-            for (int i = 0; i < portDataViews.Count; i++)
-            {
-                UIOutputPortDataView item = portDataViews[i];
-                item?.RefreshData();
-            }
+            portDataViews.ForEach(item => item?.RefreshData());
         }
 
         public override void RefreshPortsViews()

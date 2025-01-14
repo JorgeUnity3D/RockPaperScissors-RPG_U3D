@@ -3,12 +3,12 @@
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
 using System.Collections.Generic;
-using Doozy.Runtime.Common.Layouts;
-using Doozy.Runtime.Common.Utils;
 using Doozy.Runtime.Reactor;
 using Doozy.Runtime.Reactor.Animations;
 using Doozy.Runtime.Reactor.Ticker;
 using Doozy.Runtime.UIManager.Containers;
+using Doozy.Runtime.UIManager.Layouts;
+using Doozy.Runtime.UIManager.Utils;
 using UnityEngine;
 using UnityEngine.UI;
 // ReSharper disable MemberCanBePrivate.Global
@@ -184,11 +184,6 @@ namespace Doozy.Runtime.UIManager.Animators
         /// <summary> Play the show animation </summary>
         public override void Show()
         {
-            if (reversingShow)
-            {
-                showAnimation.OnFinishCallback.RemoveListener(OnReverseShowComplete);
-                reversingShow = false;
-            }
             showAnimation.Play(PlayDirection.Forward);
             if (animatorInitialized && isInLayoutGroup) updateStartPositionInLateUpdate = true;
         }
@@ -199,28 +194,20 @@ namespace Doozy.Runtime.UIManager.Animators
             if (showAnimation.isPlaying)
             {
                 showAnimation.OnFinishCallback.AddListener(OnReverseShowComplete);
+                void OnReverseShowComplete()
+                {
+                    InstantHide();
+                    showAnimation.OnFinishCallback.RemoveListener(OnReverseShowComplete);
+                }
                 showAnimation.Reverse();
-                reversingShow = true;
                 return;
             }
             Hide();
-        }
-        
-        private void OnReverseShowComplete()
-        {
-            InstantHide();
-            showAnimation.OnFinishCallback.RemoveListener(OnReverseShowComplete);
-            reversingShow = false;
         }
 
         /// <summary> Play the hide animation </summary>
         public override void Hide()
         {
-            if (reversingHide)
-            {
-                hideAnimation.OnFinishCallback.RemoveListener(OnReverseHideComplete);
-                reversingHide = false;
-            }
             if (animatorInitialized && isInLayoutGroup) RefreshStartPosition();
             hideAnimation.Play(PlayDirection.Forward);
         }
@@ -228,24 +215,21 @@ namespace Doozy.Runtime.UIManager.Animators
         /// <summary> Reverse the hide animation (if playing) </summary>
         public override void ReverseHide()
         {
-            if (hideAnimation.isPlaying)
+            if(hideAnimation.isPlaying)
             {
                 hideAnimation.OnFinishCallback.AddListener(OnReverseHideComplete);
+                void OnReverseHideComplete()
+                {
+                    InstantShow();
+                    updateStartPositionInLateUpdate = true;
+                    hideAnimation.OnFinishCallback.RemoveListener(OnReverseHideComplete);
+                }
                 hideAnimation.Reverse();
-                reversingHide = true;
                 return;
             }
             Show();
         }
 
-        private void OnReverseHideComplete()
-        {
-            InstantShow();
-            hideAnimation.OnFinishCallback.RemoveListener(OnReverseHideComplete);
-            reversingHide = false;
-            updateStartPositionInLateUpdate = true;
-        }
-        
         /// <summary> Set show animation's progress at one </summary>
         public override void InstantShow()
         {

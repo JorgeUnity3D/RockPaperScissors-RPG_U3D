@@ -129,13 +129,12 @@ namespace Doozy.Runtime.SceneManagement
         public static SceneLoader LoadSceneAsync(int sceneBuildIndex, LoadSceneMode loadSceneMode)
         {
             if (instance.debug) Log($"{ObjectNames.NicifyVariableName(nameof(LoadSceneAsync))} - sceneBuildIndex: {sceneBuildIndex} / loadSceneMode: {loadSceneMode}", instance);
-            return
-                SceneLoader
-                    .GetLoader()
-                    .SetSceneBuildIndex(sceneBuildIndex)
-                    .SetLoadSceneBy(GetSceneBy.BuildIndex)
-                    .SetLoadSceneMode(loadSceneMode)
-                    .LoadSceneAsync();
+            var loader = SceneLoader.GetLoader();
+            loader.SetSceneBuildIndex(sceneBuildIndex)
+                .SetLoadSceneBy(GetSceneBy.BuildIndex)
+                .SetLoadSceneMode(loadSceneMode)
+                .LoadSceneAsync();
+            return loader;
         }
 
         /// <summary> Create a SceneLoader that loads the Scene asynchronously in the background by its name in Build Settings, then returns a reference to the newly created SceneLoader </summary>
@@ -144,28 +143,12 @@ namespace Doozy.Runtime.SceneManagement
         public static SceneLoader LoadSceneAsync(string sceneName, LoadSceneMode loadSceneMode)
         {
             if (instance.debug) Log($"{ObjectNames.NicifyVariableName(nameof(LoadSceneAsync))} - sceneName: {sceneName} / loadSceneMode: {loadSceneMode}", instance);
-            return
-                SceneLoader
-                    .GetLoader()
-                    .SetSceneName(sceneName)
-                    .SetLoadSceneBy(GetSceneBy.Name)
-                    .SetLoadSceneMode(loadSceneMode)
-                    .LoadSceneAsync();
-        }
-
-        /// <summary>
-        /// Create a SceneLoader that loads the given Scene asynchronously in the background, then returns a reference to the newly created SceneLoader
-        /// </summary>
-        /// <param name="scene"> Scene to load </param>
-        /// <param name="loadSceneMode"> If LoadSceneMode.Single then all current Scenes will be unloaded before loading </param>
-        /// <returns></returns>
-        public static SceneLoader LoadSceneAsync(Scene scene, LoadSceneMode loadSceneMode)
-        {
-            if (instance.debug) Log($"{ObjectNames.NicifyVariableName(nameof(LoadSceneAsync))} - scene: {scene.name} / loadSceneMode: {loadSceneMode}", instance);
-            return
-                SceneLoader
-                    .GetLoader()
-                    .LoadSceneAsync(scene, loadSceneMode);
+            var loader = SceneLoader.GetLoader();
+            loader.SetSceneName(sceneName)
+                .SetLoadSceneBy(GetSceneBy.Name)
+                .SetLoadSceneMode(loadSceneMode)
+                .LoadSceneAsync();
+            return loader;
         }
 
         /// <summary> Destroys all GameObjects associated with the given Scene and removes the Scene from the SceneManager </summary>
@@ -181,11 +164,7 @@ namespace Doozy.Runtime.SceneManagement
         public static AsyncOperation UnloadSceneAsync(int sceneBuildIndex)
         {
             if (instance.debug) Log($"{ObjectNames.NicifyVariableName(nameof(UnloadSceneAsync))} - sceneBuildIndex: {sceneBuildIndex}", instance);
-            return
-                SceneManager
-                    .GetSceneByBuildIndex(sceneBuildIndex).IsValid()
-                    ? SceneManager.UnloadSceneAsync(sceneBuildIndex)
-                    : null;
+            return SceneManager.GetSceneByBuildIndex(sceneBuildIndex).IsValid() ? SceneManager.UnloadSceneAsync(sceneBuildIndex) : null;
         }
 
         /// <summary> Destroys all GameObjects associated with the given Scene and removes the Scene from the SceneManager </summary>
@@ -193,11 +172,8 @@ namespace Doozy.Runtime.SceneManagement
         public static AsyncOperation UnloadSceneAsync(string sceneName)
         {
             if (instance.debug) Log($"{ObjectNames.NicifyVariableName(nameof(UnloadSceneAsync))} - sceneName: {sceneName}", instance);
-            return
-                SceneManager
-                    .GetSceneByName(sceneName).IsValid()
-                    ? SceneManager.UnloadSceneAsync(sceneName)
-                    : null;
+            return SceneManager.GetSceneByName(sceneName).IsValid() ? SceneManager.UnloadSceneAsync(sceneName) : null;
+
         }
 
         // ReSharper disable once MemberCanBePrivate.Global

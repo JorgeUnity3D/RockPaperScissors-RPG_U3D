@@ -313,7 +313,7 @@ namespace Doozy.Editor.UIManager.Editors.Containers
                         (
                             DesignUtils.row
                                 .AddChild(buttonsHideTooltipToggleSwitch)
-                                .AddSpaceBlock()
+                                .AddChild(DesignUtils.spaceBlock)
                                 .AddChild(hideOnBackButtonToggleSwitch)
                         );
 
@@ -371,9 +371,9 @@ namespace Doozy.Editor.UIManager.Editors.Containers
                     (
                         DesignUtils.row
                             .AddChild(parentModeFluidField)
-                            .AddSpaceBlock()
+                            .AddChild(DesignUtils.spaceBlock)
                             .AddChild(trackingModeFluidField)
-                            .AddSpaceBlock()
+                            .AddChild(DesignUtils.spaceBlock)
                             .AddChild(positionModeFluidField)
                     )
                     .AddContent(parentTagFluidField)
@@ -383,7 +383,7 @@ namespace Doozy.Editor.UIManager.Editors.Containers
                     (
                         DesignUtils.row
                             .AddChild(positionOffsetFluidField)
-                            .AddSpaceBlock()
+                            .AddChild(DesignUtils.spaceBlock)
                             .AddChild(maximumWidthFluidField)
                     )
                     .AddContent(DesignUtils.spaceBlock2X)
@@ -391,7 +391,7 @@ namespace Doozy.Editor.UIManager.Editors.Containers
                     (
                         DesignUtils.row
                             .AddChild(overrideSortingFluidField)
-                            .AddSpaceBlock()
+                            .AddChild(DesignUtils.spaceBlock)
                             .AddChild(keepInScreenFluidField)
                     )
                     .AddContent(DesignUtils.spaceBlock2X)
@@ -408,15 +408,15 @@ namespace Doozy.Editor.UIManager.Editors.Containers
             return
                 toolbarContainer
                     .AddChild(settingsTab)
-                    .AddSpaceBlock()
+                    .AddChild(DesignUtils.spaceBlock)
                     .AddChild(referencesTab)
-                    .AddSpaceBlock()
+                    .AddChild(DesignUtils.spaceBlock)
                     .AddChild(callbacksTab)
-                    .AddSpaceBlock()
+                    .AddChild(DesignUtils.spaceBlock)
                     .AddChild(progressorsTab)
-                    .AddSpaceBlock()
+                    .AddChild(DesignUtils.spaceBlock)
                     .AddChild(DesignUtils.flexibleSpace)
-                    .AddSpaceBlock(2)
+                    .AddChild(DesignUtils.spaceBlock2X)
                     .AddChild
                     (
                         DesignUtils.SystemButton_SortComponents

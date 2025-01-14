@@ -8,7 +8,6 @@ using System.Linq;
 using Doozy.Editor.Common;
 using Doozy.Editor.Common.ScriptableObjects;
 using Doozy.Runtime.Common;
-using Doozy.Runtime.Common.Attributes;
 using Doozy.Runtime.Common.Extensions;
 using UnityEditor;
 using UnityEngine;
@@ -35,10 +34,6 @@ namespace Doozy.Editor.UIManager.ScriptableObjects
 
         public void ClearOnUpdateCallback() =>
             onUpdateCallback = null;
-
-        [RestoreData(nameof(UIToggleIdDatabase))]
-        public static UIToggleIdDatabase RestoreData() =>
-            instance;
         
         public UIToggleIdDatabase() => Database = new UIToggleIdDataGroup();
 

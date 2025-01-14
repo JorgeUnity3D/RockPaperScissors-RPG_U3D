@@ -24,8 +24,8 @@ namespace Doozy.Editor.UIManager.Editors.Components
     [CanEditMultipleObjects]
     public class UITagEditor : UnityEditor.Editor
     {
-        private Color accentColor => EditorColors.Default.UIComponent;
-        private EditorSelectableColorInfo selectableAccentColor => EditorSelectableColors.Default.UIComponent;
+        private Color accentColor => EditorColors.UIManager.UIComponent;
+        private EditorSelectableColorInfo selectableAccentColor => EditorSelectableColors.UIManager.UIComponent;
 
         public UITag castedTarget => (UITag)target;
         public IEnumerable<UITag> castedTargets => targets.Cast<UITag>();
@@ -76,9 +76,9 @@ namespace Doozy.Editor.UIManager.Editors.Components
         {
             root
                 .AddChild(componentHeader)
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(idField)
-                .AddEndOfLineSpace();
+                .AddChild(DesignUtils.endOfLineBlock);
         }
     }
 }

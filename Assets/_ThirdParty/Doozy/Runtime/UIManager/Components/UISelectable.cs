@@ -326,8 +326,10 @@ namespace Doozy.Runtime.UIManager.Components
         /// If the behaviour already exists, the reference to it will get automatically returned. 
         /// </summary>
         /// <param name="behaviourName"> UIBehaviour.Name </param>
-        public UIBehaviour AddBehaviour(UIBehaviour.Name behaviourName) =>
-            behaviours.AddBehaviour(behaviourName);
+        public UIBehaviour AddBehaviour(UIBehaviour.Name behaviourName)
+        {
+            return behaviours.AddBehaviour(behaviourName);
+        }
 
         /// <summary> Remove the given behaviour (automatically disconnects) </summary>
         /// <param name="behaviourName"> UIBehaviour.Name </param>

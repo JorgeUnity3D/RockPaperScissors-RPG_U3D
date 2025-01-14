@@ -155,7 +155,7 @@ namespace Doozy.Editor.Reactor.Layouts
                         (
                             simpleContainer
                                 .AddChild(editorFPSGauge)
-                                .AddSpaceBlock(4)
+                                .AddChild(DesignUtils.spaceBlock4X)
                                 .AddChild
                                 (
                                     DesignUtils.column
@@ -183,7 +183,7 @@ namespace Doozy.Editor.Reactor.Layouts
                         (
                             simpleContainer
                                 .AddChild(runtimeFPSGauge)
-                                .AddSpaceBlock(4)
+                                .AddChild(DesignUtils.spaceBlock4X)
                                 .AddChild
                                 (
                                     DesignUtils.column

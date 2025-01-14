@@ -8,7 +8,6 @@ using System.Linq;
 using Doozy.Editor.Common;
 using Doozy.Editor.Common.ScriptableObjects;
 using Doozy.Runtime.Common;
-using Doozy.Runtime.Common.Attributes;
 using Doozy.Runtime.Common.Extensions;
 using UnityEditor;
 using UnityEngine;
@@ -40,10 +39,6 @@ namespace Doozy.Editor.UIManager.ScriptableObjects
         [SerializeField] private UITagIdDataGroup Database;
         public UITagIdDataGroup database => Database ??= new UITagIdDataGroup();
 
-        [RestoreData(nameof(UITagIdDatabase))]
-        public static UITagIdDatabase RestoreData() =>
-            instance;
-        
         public UITagIdDatabase() => Database = new UITagIdDataGroup();
 
         public (bool, string) CanImportRoamingDatabases(List<UITagIdRoamingDatabase> roamingDatabases)

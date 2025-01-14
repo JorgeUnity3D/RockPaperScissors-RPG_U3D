@@ -112,7 +112,7 @@ namespace Doozy.Editor.UIManager.Drawers
                         DesignUtils.row
                             .SetStyleMarginBottom(DesignUtils.k_Spacing)
                             .AddChild(DesignUtils.NewPropertyField(behaviourProperty))
-                            .AddSpaceBlock()
+                            .AddChild(DesignUtils.spaceBlock)
                             .AddChild(minusButtons[minusButtons.Count - 1])
                     );
                 }

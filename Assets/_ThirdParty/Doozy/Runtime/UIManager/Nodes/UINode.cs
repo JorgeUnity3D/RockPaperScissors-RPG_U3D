@@ -74,7 +74,7 @@ namespace Doozy.Runtime.UIManager.Nodes
             StopTimer();
             StopListeners();
 
-            if (OnExitHideAllViews) UIView.HideAllViews(false, flowGraph.controller.playerIndex);
+            if (OnExitHideAllViews) UIView.HideAllViews();
             OnExitShowViews.ForEach(v => v.Show(flowGraph.controller.playerIndex));
             OnExitHideViews.ForEach(v => v.Hide(flowGraph.controller.playerIndex));
         }

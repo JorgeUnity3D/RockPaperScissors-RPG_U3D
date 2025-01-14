@@ -28,8 +28,8 @@ namespace Doozy.Editor.UIManager.Editors.Components
     [CanEditMultipleObjects]
     public class UIToggleGroupEditor : UISelectableBaseEditor
     {
-        public override Color accentColor => EditorColors.Default.UIComponent;
-        public override EditorSelectableColorInfo selectableAccentColor => EditorSelectableColors.Default.UIComponent;
+        public override Color accentColor => EditorColors.UIManager.UIComponent;
+        public override EditorSelectableColorInfo selectableAccentColor => EditorSelectableColors.UIManager.UIComponent;
 
         public UIToggleGroup castedTarget => (UIToggleGroup)target;
         public IEnumerable<UIToggleGroup> castedTargets => targets.Cast<UIToggleGroup>();
@@ -46,7 +46,6 @@ namespace Doozy.Editor.UIManager.Editors.Components
         private SerializedProperty propertyHasMixedValues { get; set; }
         private SerializedProperty propertyId { get; set; }
         private SerializedProperty propertyIsOn { get; set; }
-        private SerializedProperty propertyIsLocked { get; set; }
         private SerializedProperty propertyMode { get; set; }
         private SerializedProperty propertyOnInstantToggleOffCallback { get; set; }
         private SerializedProperty propertyOnInstantToggleOnCallback { get; set; }
@@ -60,7 +59,7 @@ namespace Doozy.Editor.UIManager.Editors.Components
         private SerializedProperty propertyOverrideInteractabilityForToggles { get; set; }
         private SerializedProperty propertyToggleGroup { get; set; }
         private SerializedProperty propertyToggleGroupValue { get; set; }
-
+        
         protected override void OnDestroy()
         {
             base.OnDestroy();
@@ -97,7 +96,6 @@ namespace Doozy.Editor.UIManager.Editors.Components
             propertyHasMixedValues = serializedObject.FindProperty("HasMixedValues");
             propertyId = serializedObject.FindProperty(nameof(UIToggleGroup.Id));
             propertyIsOn = serializedObject.FindProperty("IsOn");
-            propertyIsLocked = serializedObject.FindProperty("IsLocked");
             propertyMode = serializedObject.FindProperty("Mode");
             propertyOnInstantToggleOffCallback = serializedObject.FindProperty(nameof(UIToggleGroup.OnInstantToggleOffCallback));
             propertyOnInstantToggleOnCallback = serializedObject.FindProperty(nameof(UIToggleGroup.OnInstantToggleOnCallback));
@@ -221,40 +219,6 @@ namespace Doozy.Editor.UIManager.Editors.Components
 
                 #endregion
 
-                #region Is Locked
-
-                FluidToggleCheckbox isLockedCheckbox =
-                    FluidToggleCheckbox.Get()
-                        .SetLabelText("Is Locked")
-                        .SetTooltip("Locks the toggle group so its isOn value cannot be changed.")
-                        .BindToProperty(propertyIsLocked)
-                        .SetOnClick(() =>
-                        {
-                            foreach (var t in castedTargets)
-                                t.isLocked = !castedTarget.isLocked;
-
-                            isOnCheckbox.SetEnabled(!castedTarget.isLocked);
-
-                            if (Application.isPlaying) return;
-                            HeartbeatCheck();
-                            foreach (var a in selectableAnimators.RemoveNulls())
-                            {
-                                switch (a.ToggleCommand)
-                                {
-                                    case CommandToggle.On when !castedTarget.isOn:
-                                    case CommandToggle.Off when castedTarget.isOn:
-                                        continue;
-                                    default:
-                                        a.Play(castedSelectable.currentUISelectionState);
-                                        break;
-                                }
-                            }
-                        });
-
-                isOnCheckbox.SetEnabled(!castedTarget.isLocked);
-
-                #endregion
-
                 #region Has Mixed Values
 
                 FluidToggleCheckbox hasMixedValuesToggle =
@@ -307,9 +271,9 @@ namespace Doozy.Editor.UIManager.Editors.Components
                             DesignUtils.row
                                 .SetStyleAlignItems(Align.Center)
                                 .AddChild(DesignUtils.NewFloatField(propertyCooldown).SetStyleWidth(40))
-                                .AddSpaceBlock()
+                                .AddChild(DesignUtils.spaceBlock)
                                 .AddChild(DesignUtils.fieldLabel.SetText("seconds"))
-                                .AddSpaceBlock(2)
+                                .AddChild(DesignUtils.spaceBlock2X)
                                 .AddChild(disableWhenInCooldownCheckbox)
                         );
 
@@ -434,7 +398,7 @@ namespace Doozy.Editor.UIManager.Editors.Components
                     (
                         DesignUtils.row
                             .AddChild(interactableCheckbox)
-                            .AddSpaceBlock()
+                            .AddChild(DesignUtils.spaceBlock)
                             .AddChild(deselectAfterPressCheckbox)
                     )
                     .AddContent(DesignUtils.spaceBlock)
@@ -442,11 +406,9 @@ namespace Doozy.Editor.UIManager.Editors.Components
                     (
                         DesignUtils.row
                             .AddChild(isOnCheckbox)
-                            .AddSpaceBlock()
-                            .AddChild(isLockedCheckbox)
-                            .AddSpaceBlock()
+                            .AddChild(DesignUtils.spaceBlock)
                             .AddChild(hasMixedValuesToggle)
-                            .AddSpaceBlock()
+                            .AddChild(DesignUtils.spaceBlock)
                             .AddChild(toggleGroupValueEnumField)
                     )
                     .AddContent(DesignUtils.spaceBlock)
@@ -459,7 +421,7 @@ namespace Doozy.Editor.UIManager.Editors.Components
                     (
                         DesignUtils.row
                             .AddChild(toggleModeField)
-                            .AddSpaceBlock()
+                            .AddChild(DesignUtils.spaceBlock)
                             .AddChild(autoSortField)
                     )
                     .AddContent(DesignUtils.spaceBlock)
@@ -515,17 +477,17 @@ namespace Doozy.Editor.UIManager.Editors.Components
         {
             toolbarContainer
                 .AddChild(settingsTab)
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(statesTab)
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(behavioursTab)
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(callbacksTab)
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(navigationTab)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(DesignUtils.flexibleSpace)
-                .AddSpaceBlock(2);
+                .AddChild(DesignUtils.spaceBlock2X);
 
             if (castedTarget != null)
             {
@@ -538,7 +500,7 @@ namespace Doozy.Editor.UIManager.Editors.Components
                             () => $"Toggle Group - {castedTarget.Id.Name}"
                         )
                     )
-                    .AddSpaceBlock();
+                    .AddChild(DesignUtils.spaceBlock);
             }
 
             toolbarContainer
@@ -573,11 +535,11 @@ namespace Doozy.Editor.UIManager.Editors.Components
                 .AddChild(reactionControls)
                 .AddChild(componentHeader)
                 .AddChild(Toolbar())
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(Content())
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(idField)
-                .AddEndOfLineSpace();
+                .AddChild(DesignUtils.endOfLineBlock);
         }
     }
 }

@@ -191,6 +191,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -835,36 +847,36 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ~PingPong_000: -4629450612380982721
-      ~PingPong_001: -937289181232955000
-      ~PingPong_002: -8218720388144471559
-      ~PingPong_003: 8600388623913331588
-      ~PingPong_004: -1346939539014802883
-      ~PingPong_005: 721442463971461822
-      ~PingPong_006: -2409050232710009579
-      ~PingPong_007: -6985205339490160592
-      ~PingPong_008: -7432049838818317751
-      ~PingPong_009: -3060078816264339701
-      ~PingPong_010: 8268977042007317533
-      ~PingPong_011: 7536530177018828666
-      ~PingPong_012: -4490131374832264693
-      ~PingPong_013: -4296540085247508086
-      ~PingPong_014: -2407150922889870981
-      ~PingPong_015: -7140698128746839318
-      ~PingPong_016: -4407726097312880252
-      ~PingPong_017: 28146709331522473
-      ~PingPong_018: -1888933839977393129
-      ~PingPong_019: -5931904104250650037
-      ~PingPong_020: 5272541984808191523
-      ~PingPong_021: -8124066642798173581
-      ~PingPong_022: -6704518568791622830
-      ~PingPong_023: -4922109682867930966
-      ~PingPong_024: 9121027265771369718
-      ~PingPong_025: 1822899551562976487
-      ~PingPong_026: -6357836018719338316
       ~PingPong_027: -1225656609470165628
-      ~PingPong_028: -6398359148489473218
+      ~PingPong_005: 721442463971461822
+      ~PingPong_013: -4296540085247508086
+      ~PingPong_000: -4629450612380982721
+      ~PingPong_010: 8268977042007317533
+      ~PingPong_008: -7432049838818317751
+      ~PingPong_015: -7140698128746839318
+      ~PingPong_019: -5931904104250650037
+      ~PingPong_021: -8124066642798173581
+      ~PingPong_011: 7536530177018828666
+      ~PingPong_024: 9121027265771369718
+      ~PingPong_014: -2407150922889870981
+      ~PingPong_009: -3060078816264339701
+      ~PingPong_012: -4490131374832264693
+      ~PingPong_003: 8600388623913331588
+      ~PingPong_018: -1888933839977393129
+      ~PingPong_017: 28146709331522473
+      ~PingPong_022: -6704518568791622830
       ~PingPong_029: 6967034824231892844
+      ~PingPong_001: -937289181232955000
+      ~PingPong_006: -2409050232710009579
+      ~PingPong_004: -1346939539014802883
+      ~PingPong_016: -4407726097312880252
+      ~PingPong_023: -4922109682867930966
+      ~PingPong_025: 1822899551562976487
+      ~PingPong_002: -8218720388144471559
+      ~PingPong_007: -6985205339490160592
+      ~PingPong_020: 5272541984808191523
+      ~PingPong_028: -6398359148489473218
+      ~PingPong_026: -6357836018719338316
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

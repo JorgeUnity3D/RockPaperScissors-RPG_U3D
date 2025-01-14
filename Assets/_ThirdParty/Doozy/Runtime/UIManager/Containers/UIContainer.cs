@@ -297,22 +297,22 @@ namespace Doozy.Runtime.UIManager.Containers
 
         /// <summary> Coroutine used when auto hide is enabled to hide the container after the specified delay </summary>
         private Coroutine m_AutoHideCoroutine;
-
+        
         /// <summary> Coroutine that is running when the container is showing </summary>
         private Coroutine m_CoroutineIsShowing;
-
+        
         /// <summary> Coroutine that is running when the container is hiding </summary>
         private Coroutine m_CoroutineIsHiding;
-
+        
         /// <summary> Coroutine used to disable the GameObject with a delay after the is hidden is completed </summary>
         private Coroutine m_DisableGameObjectWithDelayCoroutine;
-
+        
         /// <summary> Coroutine used to call Show with a 2 frame delay </summary>
         private Coroutine m_DelayedShowCoroutine;
 
         /// <summary> Coroutine used to call Hide with a 2 frame delay </summary>
         private Coroutine m_DelayedHideCoroutine;
-
+        
         #if ENABLE_INPUT_SYSTEM
         /// <summary>
         /// Reference to a MultiplayerEventSystem component that will be used to handle the input events if multiplayer mode is enabled.
@@ -470,12 +470,9 @@ namespace Doozy.Runtime.UIManager.Containers
         {
             showHideExecute?.Invoke(command);
             executedFirstCommand = true;
+            previouslyExecutedCommand = command;
 
-            if (!hasProgressors)
-            {
-                previouslyExecutedCommand = command;
-                return;
-            }
+            if (!hasProgressors) return;
 
             showProgressors.RemoveNulls();
             hideProgressors.RemoveNulls();
@@ -522,34 +519,6 @@ namespace Doozy.Runtime.UIManager.Containers
                     break;
                 case ShowHideExecute.ReverseShow:
                     hideProgressors.ForEach(p => p.Stop());
-
-                    if (previouslyExecutedCommand == ShowHideExecute.ReverseShow)
-                    {
-                        showProgressors.ForEach(p =>
-                        {
-                            if (p.reaction.isActive)
-                            {
-                                p.Reverse();
-                            }
-                            else
-                            {
-                                p.Play(PlayDirection.Forward);
-                            }
-                        });
-                        showHideProgressors.ForEach(p =>
-                        {
-                            if (p.reaction.isActive && p.reaction.direction == PlayDirection.Reverse)
-                            {
-                                p.Reverse();
-                            }
-                            else
-                            {
-                                p.Play(PlayDirection.Forward);
-                            }
-                        });
-                        break;
-                    }
-                    
                     showProgressors.ForEach(p =>
                     {
                         if (p.reaction.isActive)
@@ -575,34 +544,6 @@ namespace Doozy.Runtime.UIManager.Containers
                     break;
                 case ShowHideExecute.ReverseHide:
                     showProgressors.ForEach(p => p.Stop());
-                    
-                    if(previouslyExecutedCommand == ShowHideExecute.ReverseHide)
-                    {
-                        hideProgressors.ForEach(p =>
-                        {
-                            if (p.reaction.isActive)
-                            {
-                                p.Reverse();
-                            }
-                            else
-                            {
-                                p.Play(PlayDirection.Forward);
-                            }
-                        });
-                        showHideProgressors.ForEach(p =>
-                        {
-                            if (p.reaction.isActive && p.reaction.direction == PlayDirection.Forward)
-                            {
-                                p.Reverse();
-                            }
-                            else
-                            {
-                                p.Play(PlayDirection.Reverse);
-                            }
-                        });
-                        break;
-                    }
-                    
                     hideProgressors.ForEach(p =>
                     {
                         if (p.reaction.isActive)
@@ -629,8 +570,6 @@ namespace Doozy.Runtime.UIManager.Containers
                 default:
                     throw new ArgumentOutOfRangeException(nameof(command), command, null);
             }
-
-            previouslyExecutedCommand = command;
             // ReSharper restore Unity.NoNullPropagation
         }
 
@@ -652,9 +591,9 @@ namespace Doozy.Runtime.UIManager.Containers
         {
             StopDelayedShowCoroutine();
             StopDelayedHideCoroutine();
-
+            
             if (isVisible) return;
-
+            
             StopIsShowingCoroutine();
             StopIsHidingCoroutine();
 
@@ -701,9 +640,9 @@ namespace Doozy.Runtime.UIManager.Containers
         {
             StopDelayedShowCoroutine();
             StopDelayedHideCoroutine();
-
+            
             if (isHidden) return;
-
+            
             StopIsShowingCoroutine();
             StopIsHidingCoroutine();
 
@@ -717,8 +656,8 @@ namespace Doozy.Runtime.UIManager.Containers
             SetVisibility(VisibilityState.IsHiding, triggerCallbacks);
             SetVisibility(VisibilityState.Hidden, triggerCallbacks);
         }
-
-
+        
+       
 
         /// <summary>
         /// Toggles the visibility state.
@@ -771,11 +710,11 @@ namespace Doozy.Runtime.UIManager.Containers
         {
             StopDelayedShowCoroutine();
             StopDelayedHideCoroutine();
-
+            
             if (isShowing || isVisible) return;
-
+            
             gameObject.SetActive(true); //set the active state to true (in case it has been disabled when hidden)
-
+            
             if (m_LastFrameVisibilityStateChanged == Time.frameCount)
             {
                 StartDelayedShowCoroutine(triggerCallbacks);
@@ -787,15 +726,6 @@ namespace Doozy.Runtime.UIManager.Containers
                 SetSelected(null); //clear any selected object
             }
 
-            if (hasCanvas)
-                canvas.enabled = true; //enable the canvas
-
-            if (hasGraphicRaycaster & DisableGraphicRaycasterWhenHidden)
-                graphicRaycaster.enabled = true; //enable the graphic raycaster
-
-            if (hasCanvasGroup & HandleCanvasGroupBlockRaycasts)
-                canvasGroup.blocksRaycasts = true; //enable blocks raycasts
-            
             if (isHiding)
             {
                 StopIsHidingCoroutine();
@@ -804,14 +734,24 @@ namespace Doozy.Runtime.UIManager.Containers
                 return;
             }
 
+            if (hasCanvas)
+                canvas.enabled = true; //enable the canvas
+
+            if (hasGraphicRaycaster & DisableGraphicRaycasterWhenHidden)
+                graphicRaycaster.enabled = true; //enable the graphic raycaster
+
+            if (hasCanvasGroup & HandleCanvasGroupBlockRaycasts)
+                canvasGroup.blocksRaycasts = true; //enable blocks raycasts
+
             ExecutedCommand(ShowHideExecute.Show);
+
             m_CoroutineIsShowing = StartCoroutine(IsShowing(triggerCallbacks));
         }
-
+        
         private void StartDelayedShowCoroutine(bool triggerCallbacks)
         {
             StopDelayedShowCoroutine();
-
+            
             m_DelayedShowCoroutine =
                 StartCoroutine
                 (
@@ -825,14 +765,14 @@ namespace Doozy.Runtime.UIManager.Containers
                     )
                 );
         }
-
+        
         private void StopDelayedShowCoroutine()
         {
             if (m_DelayedShowCoroutine == null) return;
             StopCoroutine(m_DelayedShowCoroutine);
             m_DelayedShowCoroutine = null;
         }
-
+      
         private void StopIsShowingCoroutine()
         {
             if (m_CoroutineIsShowing == null) return;
@@ -882,12 +822,12 @@ namespace Doozy.Runtime.UIManager.Containers
         public virtual void Hide(bool triggerCallbacks)
         {
             if (!isActiveAndEnabled) return;
-
+            
             StopDelayedShowCoroutine();
             StopDelayedHideCoroutine();
-
+            
             if (isHiding || isHidden) return;
-
+            
             if (m_LastFrameVisibilityStateChanged == Time.frameCount)
             {
                 StartDelayedHideCoroutine(triggerCallbacks);
@@ -915,7 +855,7 @@ namespace Doozy.Runtime.UIManager.Containers
         private void StartDelayedHideCoroutine(bool triggerCallbacks)
         {
             StopDelayedHideCoroutine();
-
+            
             m_DelayedHideCoroutine =
                 StartCoroutine
                 (
@@ -930,14 +870,14 @@ namespace Doozy.Runtime.UIManager.Containers
                     )
                 );
         }
-
+        
         private void StopDelayedHideCoroutine()
         {
             if (m_DelayedHideCoroutine == null) return;
             StopCoroutine(m_DelayedHideCoroutine);
             m_DelayedHideCoroutine = null;
         }
-
+        
         private void StopIsHidingCoroutine()
         {
             StopDisableGameObject();
@@ -1055,13 +995,6 @@ namespace Doozy.Runtime.UIManager.Containers
             {
                 OnHideCallback.Execute();
             }
-
-            if (hasGraphicRaycaster & DisableGraphicRaycasterWhenHidden)
-                graphicRaycaster.enabled = false; //disable graphic raycaster when hidden
-
-            if (hasCanvasGroup & HandleCanvasGroupBlockRaycasts)
-                canvasGroup.blocksRaycasts = false; //disable blocks raycasts when hidden
-
             StopAutoHide();
         }
 
@@ -1077,7 +1010,6 @@ namespace Doozy.Runtime.UIManager.Containers
             {
                 OnVisibleCallback.Execute();
             }
-
             StartAutoHide();
         }
 

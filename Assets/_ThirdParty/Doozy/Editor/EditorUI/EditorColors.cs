@@ -94,12 +94,9 @@ namespace Doozy.Editor.EditorUI
             {
                 Action,
                 Add,
-                AudioComponent,
                 Background,
                 BoxBackground,
                 ButtonIdleColor,
-                DataComponent,
-                DateTime,
                 EditorStatusError,
                 EditorStatusInfo,
                 EditorStatusOk,
@@ -107,23 +104,17 @@ namespace Doozy.Editor.EditorUI
                 FieldBackground,
                 FieldIcon,
                 Icon,
-                InputComponent,
-                LayoutComponent,
-                ListenerComponent,
                 MenuBackgroundLevel0,
                 MenuBackgroundLevel1,
                 MenuBackgroundLevel2,
                 Placeholder,
                 Remove,
                 Selection,
-                SettingsComponent,
                 TextDescription,
                 TextSubtitle,
                 TextTitle,
-                UIComponent,
                 UnityTheme,
                 UnityThemeInversed,
-                VisualComponent,
                 WindowHeaderBackground,
                 WindowHeaderIcon,
                 WindowHeaderSubtitle,
@@ -135,18 +126,12 @@ namespace Doozy.Editor.EditorUI
             public static Color Action => (Color) (s_Action ?? (s_Action = GetColor(ColorName.Action)));
             private static Color? s_Add;
             public static Color Add => (Color) (s_Add ?? (s_Add = GetColor(ColorName.Add)));
-            private static Color? s_AudioComponent;
-            public static Color AudioComponent => (Color) (s_AudioComponent ?? (s_AudioComponent = GetColor(ColorName.AudioComponent)));
             private static Color? s_Background;
             public static Color Background => (Color) (s_Background ?? (s_Background = GetColor(ColorName.Background)));
             private static Color? s_BoxBackground;
             public static Color BoxBackground => (Color) (s_BoxBackground ?? (s_BoxBackground = GetColor(ColorName.BoxBackground)));
             private static Color? s_ButtonIdleColor;
             public static Color ButtonIdleColor => (Color) (s_ButtonIdleColor ?? (s_ButtonIdleColor = GetColor(ColorName.ButtonIdleColor)));
-            private static Color? s_DataComponent;
-            public static Color DataComponent => (Color) (s_DataComponent ?? (s_DataComponent = GetColor(ColorName.DataComponent)));
-            private static Color? s_DateTime;
-            public static Color DateTime => (Color) (s_DateTime ?? (s_DateTime = GetColor(ColorName.DateTime)));
             private static Color? s_EditorStatusError;
             public static Color EditorStatusError => (Color) (s_EditorStatusError ?? (s_EditorStatusError = GetColor(ColorName.EditorStatusError)));
             private static Color? s_EditorStatusInfo;
@@ -161,12 +146,6 @@ namespace Doozy.Editor.EditorUI
             public static Color FieldIcon => (Color) (s_FieldIcon ?? (s_FieldIcon = GetColor(ColorName.FieldIcon)));
             private static Color? s_Icon;
             public static Color Icon => (Color) (s_Icon ?? (s_Icon = GetColor(ColorName.Icon)));
-            private static Color? s_InputComponent;
-            public static Color InputComponent => (Color) (s_InputComponent ?? (s_InputComponent = GetColor(ColorName.InputComponent)));
-            private static Color? s_LayoutComponent;
-            public static Color LayoutComponent => (Color) (s_LayoutComponent ?? (s_LayoutComponent = GetColor(ColorName.LayoutComponent)));
-            private static Color? s_ListenerComponent;
-            public static Color ListenerComponent => (Color) (s_ListenerComponent ?? (s_ListenerComponent = GetColor(ColorName.ListenerComponent)));
             private static Color? s_MenuBackgroundLevel0;
             public static Color MenuBackgroundLevel0 => (Color) (s_MenuBackgroundLevel0 ?? (s_MenuBackgroundLevel0 = GetColor(ColorName.MenuBackgroundLevel0)));
             private static Color? s_MenuBackgroundLevel1;
@@ -179,22 +158,16 @@ namespace Doozy.Editor.EditorUI
             public static Color Remove => (Color) (s_Remove ?? (s_Remove = GetColor(ColorName.Remove)));
             private static Color? s_Selection;
             public static Color Selection => (Color) (s_Selection ?? (s_Selection = GetColor(ColorName.Selection)));
-            private static Color? s_SettingsComponent;
-            public static Color SettingsComponent => (Color) (s_SettingsComponent ?? (s_SettingsComponent = GetColor(ColorName.SettingsComponent)));
             private static Color? s_TextDescription;
             public static Color TextDescription => (Color) (s_TextDescription ?? (s_TextDescription = GetColor(ColorName.TextDescription)));
             private static Color? s_TextSubtitle;
             public static Color TextSubtitle => (Color) (s_TextSubtitle ?? (s_TextSubtitle = GetColor(ColorName.TextSubtitle)));
             private static Color? s_TextTitle;
             public static Color TextTitle => (Color) (s_TextTitle ?? (s_TextTitle = GetColor(ColorName.TextTitle)));
-            private static Color? s_UIComponent;
-            public static Color UIComponent => (Color) (s_UIComponent ?? (s_UIComponent = GetColor(ColorName.UIComponent)));
             private static Color? s_UnityTheme;
             public static Color UnityTheme => (Color) (s_UnityTheme ?? (s_UnityTheme = GetColor(ColorName.UnityTheme)));
             private static Color? s_UnityThemeInversed;
             public static Color UnityThemeInversed => (Color) (s_UnityThemeInversed ?? (s_UnityThemeInversed = GetColor(ColorName.UnityThemeInversed)));
-            private static Color? s_VisualComponent;
-            public static Color VisualComponent => (Color) (s_VisualComponent ?? (s_VisualComponent = GetColor(ColorName.VisualComponent)));
             private static Color? s_WindowHeaderBackground;
             public static Color WindowHeaderBackground => (Color) (s_WindowHeaderBackground ?? (s_WindowHeaderBackground = GetColor(ColorName.WindowHeaderBackground)));
             private static Color? s_WindowHeaderIcon;
@@ -523,12 +496,39 @@ namespace Doozy.Editor.EditorUI
                 
             public enum ColorName
             {
-                UIMenuItemBackground
+                AudioComponent,
+                DataComponent,
+                DateTime,
+                InputComponent,
+                LayoutComponent,
+                ListenerComponent,
+                Settings,
+                UIComponent,
+                UIMenuItemBackground,
+                VisualComponent
             }
             
 
+            private static Color? s_AudioComponent;
+            public static Color AudioComponent => (Color) (s_AudioComponent ?? (s_AudioComponent = GetColor(ColorName.AudioComponent)));
+            private static Color? s_DataComponent;
+            public static Color DataComponent => (Color) (s_DataComponent ?? (s_DataComponent = GetColor(ColorName.DataComponent)));
+            private static Color? s_DateTime;
+            public static Color DateTime => (Color) (s_DateTime ?? (s_DateTime = GetColor(ColorName.DateTime)));
+            private static Color? s_InputComponent;
+            public static Color InputComponent => (Color) (s_InputComponent ?? (s_InputComponent = GetColor(ColorName.InputComponent)));
+            private static Color? s_LayoutComponent;
+            public static Color LayoutComponent => (Color) (s_LayoutComponent ?? (s_LayoutComponent = GetColor(ColorName.LayoutComponent)));
+            private static Color? s_ListenerComponent;
+            public static Color ListenerComponent => (Color) (s_ListenerComponent ?? (s_ListenerComponent = GetColor(ColorName.ListenerComponent)));
+            private static Color? s_Settings;
+            public static Color Settings => (Color) (s_Settings ?? (s_Settings = GetColor(ColorName.Settings)));
+            private static Color? s_UIComponent;
+            public static Color UIComponent => (Color) (s_UIComponent ?? (s_UIComponent = GetColor(ColorName.UIComponent)));
             private static Color? s_UIMenuItemBackground;
             public static Color UIMenuItemBackground => (Color) (s_UIMenuItemBackground ?? (s_UIMenuItemBackground = GetColor(ColorName.UIMenuItemBackground)));
+            private static Color? s_VisualComponent;
+            public static Color VisualComponent => (Color) (s_VisualComponent ?? (s_VisualComponent = GetColor(ColorName.VisualComponent)));
           
         }
 

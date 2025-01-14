@@ -272,11 +272,11 @@ namespace Doozy.Editor.UIManager.Editors.Containers
                         (
                             DesignUtils.row
                                 .AddChild(buttonsHideTooltipToggleSwitch)
-                                .AddSpaceBlock()
+                                .AddChild(DesignUtils.spaceBlock)
                                 .AddChild(hideOnBackButtonToggleSwitch)
-                                .AddSpaceBlock()
+                                .AddChild(DesignUtils.spaceBlock)
                                 .AddChild(hideOnClickOverlayToggleSwitch)
-                                .AddSpaceBlock()
+                                .AddChild(DesignUtils.spaceBlock)
                                 .AddChild(hideOnClickContainerToggleSwitch)
                         );
 
@@ -352,7 +352,7 @@ namespace Doozy.Editor.UIManager.Editors.Containers
                         (
                             DesignUtils.row
                                 .AddChild(clearSelectedOnShowSwitch)
-                                .AddSpaceBlock()
+                                .AddChild(DesignUtils.spaceBlock)
                                 .AddChild(clearSelectedOnHideSwitch)
                         )
                         .SetStyleMinWidth(150);
@@ -381,7 +381,7 @@ namespace Doozy.Editor.UIManager.Editors.Containers
                         (
                             DesignUtils.row
                                 .AddChild(autoSelectAfterShowSwitch)
-                                .AddSpaceBlock()
+                                .AddChild(DesignUtils.spaceBlock)
                                 .AddChild(autoSelectTargetObjectField)
                         );
 
@@ -413,7 +413,7 @@ namespace Doozy.Editor.UIManager.Editors.Containers
                     (
                         DesignUtils.row
                             .AddChild(overlayFluidField)
-                            .AddSpaceBlock()
+                            .AddChild(DesignUtils.spaceBlock)
                             .AddChild(containerFluidField)
                     )
                     .AddContent(DesignUtils.spaceBlock2X)
@@ -432,7 +432,7 @@ namespace Doozy.Editor.UIManager.Editors.Containers
                     (
                         DesignUtils.row
                             .AddChild(clearSelectedFluidField)
-                            .AddSpaceBlock()
+                            .AddChild(DesignUtils.spaceBlock)
                             .AddChild(autoSelectAfterShowFluidField)
                     )
                     .AddContent(DesignUtils.spaceBlock)
@@ -447,15 +447,15 @@ namespace Doozy.Editor.UIManager.Editors.Containers
             return
                 toolbarContainer
                     .AddChild(settingsTab)
-                    .AddSpaceBlock()
+                    .AddChild(DesignUtils.spaceBlock)
                     .AddChild(referencesTab)
-                    .AddSpaceBlock()
+                    .AddChild(DesignUtils.spaceBlock)
                     .AddChild(callbacksTab)
-                    .AddSpaceBlock()
+                    .AddChild(DesignUtils.spaceBlock)
                     .AddChild(progressorsTab)
-                    .AddSpaceBlock()
+                    .AddChild(DesignUtils.spaceBlock)
                     .AddChild(DesignUtils.flexibleSpace)
-                    .AddSpaceBlock(2)
+                    .AddChild(DesignUtils.spaceBlock2X)
                     .AddChild
                     (
                         DesignUtils.SystemButton_SortComponents

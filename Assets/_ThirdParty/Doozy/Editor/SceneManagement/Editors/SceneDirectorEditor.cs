@@ -108,11 +108,11 @@ namespace Doozy.Editor.SceneManagement.Editors
                         .AddChild(debugModeSwitch)
                 )
                 .AddChild(onActiveSceneChangedFluidField)
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(onSceneLoadedFluidField)
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(onSceneUnloadedFluidField)
-                .AddEndOfLineSpace()
+                .AddChild(DesignUtils.endOfLineBlock)
                 ;
         }
     }

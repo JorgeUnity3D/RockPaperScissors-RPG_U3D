@@ -1,0 +1,534 @@
+fileFormatVersion: 2
+guid: 39252eaf47b7b85498e99a8f973d8404
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1072510915536324427
+    second: languagesatlas_0
+  - first:
+      213: 6230511073010024918
+    second: languagesatlas_1
+  - first:
+      213: -3534026635286288089
+    second: languagesatlas_2
+  - first:
+      213: 256195957829840427
+    second: languagesatlas_3
+  - first:
+      213: -1915460221465102825
+    second: languagesatlas_4
+  - first:
+      213: -2526645490451054047
+    second: languagesatlas_5
+  - first:
+      213: -7138504502509409647
+    second: languagesatlas_6
+  - first:
+      213: -8289833758997973313
+    second: languagesatlas_7
+  - first:
+      213: -2596878693118719246
+    second: languagesatlas_8
+  - first:
+      213: 4727846028510335904
+    second: languagesatlas_9
+  - first:
+      213: 7107833486487891296
+    second: languagesatlas_10
+  - first:
+      213: -4635214821509363116
+    second: languagesatlas_11
+  - first:
+      213: 3230980919541296372
+    second: languagesatlas_12
+  - first:
+      213: 3576863224645067710
+    second: languagesatlas_13
+  - first:
+      213: 7635529267662083548
+    second: languagesatlas_14
+  - first:
+      213: 6999506647120362493
+    second: languagesatlas_15
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: languagesatlas_0
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 397
+        width: 91
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b47854acef252ee00800000000000000
+      internalID: 1072510915536324427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: languagesatlas_1
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 400
+        width: 99
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d186eb6fc8377650800000000000000
+      internalID: 6230511073010024918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: languagesatlas_2
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 396
+        width: 93
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 729edf0df7d94fec0800000000000000
+      internalID: -3534026635286288089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: languagesatlas_3
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 412
+        width: 92
+        height: 91
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2ea653cdd03e8300800000000000000
+      internalID: 256195957829840427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: languagesatlas_4
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 261
+        width: 102
+        height: 106
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7167e2eb31bea65e0800000000000000
+      internalID: -1915460221465102825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: languagesatlas_5
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 267
+        width: 96
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 122825c205d8fecd0800000000000000
+      internalID: -2526645490451054047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: languagesatlas_6
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 270
+        width: 103
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19a6664f9ffeeec90800000000000000
+      internalID: -7138504502509409647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: languagesatlas_7
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 282
+        width: 94
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb672eb1e1894fc80800000000000000
+      internalID: -8289833758997973313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: languagesatlas_8
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 148
+        width: 83
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2fac0e3669806fbd0800000000000000
+      internalID: -2596878693118719246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: languagesatlas_9
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 146
+        width: 98
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a3991ae9eeac9140800000000000000
+      internalID: 4727846028510335904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: languagesatlas_10
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 147
+        width: 102
+        height: 91
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06dacb4a5e814a260800000000000000
+      internalID: 7107833486487891296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: languagesatlas_11
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 142
+        width: 96
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45a0f42ada86cafb0800000000000000
+      internalID: -4635214821509363116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: languagesatlas_12
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 2
+        width: 93
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4fce2512700c6dc20800000000000000
+      internalID: 3230980919541296372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: languagesatlas_13
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 1
+        width: 100
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb3a02bd62293a130800000000000000
+      internalID: 3576863224645067710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: languagesatlas_14
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 6
+        width: 100
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd5d8170a69d6f960800000000000000
+      internalID: 7635529267662083548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: languagesatlas_15
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 5
+        width: 64
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dfb3898e53e332160800000000000000
+      internalID: 6999506647120362493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: cee9403e80fa94d4d9e0e0940f9571c2
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      languagesatlas_0: 1072510915536324427
+      languagesatlas_6: -7138504502509409647
+      languagesatlas_4: -1915460221465102825
+      languagesatlas_3: 256195957829840427
+      languagesatlas_7: -8289833758997973313
+      languagesatlas_10: 7107833486487891296
+      languagesatlas_5: -2526645490451054047
+      languagesatlas_2: -3534026635286288089
+      languagesatlas_8: -2596878693118719246
+      languagesatlas_13: 3576863224645067710
+      languagesatlas_9: 4727846028510335904
+      languagesatlas_11: -4635214821509363116
+      languagesatlas_1: 6230511073010024918
+      languagesatlas_15: 6999506647120362493
+      languagesatlas_12: 3230980919541296372
+      languagesatlas_14: 7635529267662083548
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

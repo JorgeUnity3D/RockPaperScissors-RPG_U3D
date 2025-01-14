@@ -59,7 +59,7 @@ namespace Doozy.Editor.Nody.Nodes
         {
             base.Compose();
             root
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(messageField);
         }
     }

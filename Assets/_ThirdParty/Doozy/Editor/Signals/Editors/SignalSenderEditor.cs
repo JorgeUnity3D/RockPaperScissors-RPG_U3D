@@ -117,11 +117,11 @@ namespace Doozy.Editor.Signals.Editors
                     (
                         DesignUtils.row
                             .AddChild(sendOnStartSwitch)
-                            .AddSpaceBlock()
+                            .AddChild(DesignUtils.spaceBlock)
                             .AddChild(sendOnEnableSwitch)
-                            .AddSpaceBlock()
+                            .AddChild(DesignUtils.spaceBlock)
                             .AddChild(sendOnDisableSwitch)
-                            .AddSpaceBlock()
+                            .AddChild(DesignUtils.spaceBlock)
                             .AddChild(sendOnDestroySwitch)
                     );
         }
@@ -130,11 +130,11 @@ namespace Doozy.Editor.Signals.Editors
         {
             root
                 .AddChild(componentHeader)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(payloadFluidField)
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(autoSendFluidField)
-                .AddEndOfLineSpace()
+                .AddChild(DesignUtils.endOfLineBlock)
                 ;
         }
     }

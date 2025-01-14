@@ -436,88 +436,6 @@ namespace Doozy.Editor.EditorUI.Utils
                 .SetButtonStyle(ButtonStyle.Contained)
                 .SetElementSize(ElementSize.Tiny);
 
-        /// <summary>
-        /// Get a Fluid ListView for the given array property
-        /// </summary>
-        /// <param name="arrayProperty"> Target arrayProperty (not checked; will result in error if a property of an array is not passed) </param>
-        /// <param name="listTitle"> Title displayed on top of the list </param>
-        /// <param name="listDescription"> Descriptions displayed below the title </param>
-        /// <returns></returns>
-        public static FluidListView NewStringListView(SerializedProperty arrayProperty, string listTitle, string listDescription)
-        {
-            var flv = new FluidListView();
-            var itemsSource = new List<SerializedProperty>();
-
-            flv.SetListTitle(listTitle);
-            flv.SetListDescription(listDescription);
-            flv.listView.selectionType = SelectionType.None;
-            flv.listView.itemsSource = itemsSource;
-            flv.listView.makeItem = () => new StringFluidListViewItem(flv);
-
-            flv.listView.bindItem = (element, i) =>
-            {
-                var item = (StringFluidListViewItem)element;
-                item.Update(i, itemsSource[i]);
-                item.OnRemoveButtonClick += itemProperty =>
-                {
-                    int propertyIndex = 0;
-                    for (int j = 0; j < arrayProperty.arraySize; j++)
-                    {
-                        if (itemProperty.propertyPath != arrayProperty.GetArrayElementAtIndex(j).propertyPath)
-                            continue;
-                        propertyIndex = j;
-                        break;
-                    }
-                    arrayProperty.DeleteArrayElementAtIndex(propertyIndex);
-                    arrayProperty.serializedObject.ApplyModifiedProperties();
-
-                    UpdateItemsSource();
-                };
-            };
-            #if UNITY_2021_2_OR_NEWER
-            flv.listView.fixedItemHeight = 30;
-            flv.SetPreferredListHeight((int)flv.listView.fixedItemHeight * 6);
-            #else
-            flv.listView.itemHeight = 30;
-            flv.SetPreferredListHeight(flv.listView.itemHeight * 6);
-            #endif
-            flv.SetDynamicListHeight(false);
-            flv.HideFooterWhenEmpty(true);
-            flv.UseSmallEmptyListPlaceholder(true);
-            flv.emptyListPlaceholder.SetIcon(EditorSpriteSheets.EditorUI.Placeholders.EmptyListViewSmall);
-
-            //ADD ITEM BUTTON (plus button)
-            flv.AddNewItemButtonCallback += () =>
-            {
-                arrayProperty.InsertArrayElementAtIndex(0);
-                arrayProperty.serializedObject.ApplyModifiedProperties();
-                UpdateItemsSource();
-            };
-
-            UpdateItemsSource();
-
-            int arraySize = arrayProperty.arraySize;
-            flv.schedule.Execute(() =>
-            {
-                if (arrayProperty.arraySize == arraySize) return;
-                arraySize = arrayProperty.arraySize;
-                UpdateItemsSource();
-
-            }).Every(100);
-
-            void UpdateItemsSource()
-            {
-                itemsSource.Clear();
-                for (int i = 0; i < arrayProperty.arraySize; i++)
-                    itemsSource.Add(arrayProperty.GetArrayElementAtIndex(i));
-
-                flv?.Update();
-            }
-
-            flv.schedule.Execute(flv.Update);
-            return flv;
-        }
-
         /// <summary> Get a Fluid ListView for the given array property </summary>
         /// <param name="arrayProperty"> Target arrayProperty (not checked; will result in error if a property of an array is not passed) </param>
         /// <param name="listTitle"> Title displayed on top of the list </param>
@@ -596,7 +514,7 @@ namespace Doozy.Editor.EditorUI.Utils
             flv.schedule.Execute(flv.Update);
             return flv;
         }
-
+        
 
         /// <summary> Get a Fluid ListView for the given array property </summary>
         /// <param name="arrayProperty"> Target arrayProperty (not checked; will result in error if a property of an array is not passed) </param>
@@ -804,19 +722,6 @@ namespace Doozy.Editor.EditorUI.Utils
                     .SetButtonStyle(ButtonStyle.Contained)
                     .SetElementSize(ElementSize.Small)
                     .SetIcon(EditorSpriteSheets.EditorUI.Icons.Refresh);
-
-            public static FluidButton PingAsset(Object asset) =>
-                FluidButton.Get()
-                    .SetElementSize(ElementSize.Small)
-                    .SetTooltip($"{(asset == null ? "Referenced asset is missing" : AssetDatabase.GetAssetPath(asset))}")
-                    .SetIcon(EditorSpriteSheets.EditorUI.Icons.Location)
-                    .SetOnClick(() =>
-                    {
-                        if (asset == null) return;
-                        EditorGUIUtility.PingObject(asset);
-                        if (Selection.activeObject == asset) return;
-                        Selection.activeObject = asset;
-                    });
         }
     }
 }

@@ -23,8 +23,8 @@ namespace Doozy.Editor.Common.Editors
         protected T castedTarget => (T)target;
         protected IEnumerable<T> castedTargets => targets.Cast<T>();
 
-        protected virtual Color accentColor => EditorColors.Default.DataComponent;
-        protected virtual EditorSelectableColorInfo selectableAccentColor => EditorSelectableColors.Default.DataComponent;
+        protected virtual Color accentColor => EditorColors.UIManager.DataComponent;
+        protected virtual EditorSelectableColorInfo selectableAccentColor => EditorSelectableColors.UIManager.DataComponent;
 
         protected VisualElement root { get; set; }
         protected FluidComponentHeader componentHeader { get; set; }
@@ -125,15 +125,15 @@ namespace Doozy.Editor.Common.Editors
             return
                 contentContainer
                     .AddChild(prefabNameFluidField)
-                    .AddSpaceBlock()
+                    .AddChild(DesignUtils.spaceBlock)
                     .AddChild(prefabFluidField)
-                    .AddSpaceBlock(2)
+                    .AddChild(DesignUtils.spaceBlock2X)
                     .AddChild
                     (
                         DesignUtils.row
                             .AddChild(DesignUtils.flexibleSpace)
                             .AddChild(validateButton)
-                            .AddSpaceBlock()
+                            .AddChild(DesignUtils.spaceBlock)
                             .AddChild(databaseButton)
                             .AddChild(DesignUtils.flexibleSpace)
                     )
@@ -145,9 +145,9 @@ namespace Doozy.Editor.Common.Editors
             root
                 .AddChild(componentHeader)
                 .AddChild(Toolbar())
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(Content())
-                .AddEndOfLineSpace();
+                .AddChild(DesignUtils.endOfLineBlock);
         }
     }
 }

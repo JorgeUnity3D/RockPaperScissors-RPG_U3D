@@ -6,7 +6,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Doozy.Editor.Signals.Automation.Generators;
-using Doozy.Runtime.Common.Attributes;
 using Doozy.Runtime.Common.Utils;
 using Doozy.Runtime.Signals;
 using UnityEngine;
@@ -19,6 +18,7 @@ namespace Doozy.Editor.Signals
         private static List<ProviderAttributes> s_providerAttributesSet;
         public static List<ProviderAttributes> providerAttributesSet => GetProviderAttributesSet();
 
+        // [MenuItem("Doozy/Signals/Refresh Providers")]
         public static void RefreshProviders()
         {
             SignalProviderExtensionGenerator.Run();

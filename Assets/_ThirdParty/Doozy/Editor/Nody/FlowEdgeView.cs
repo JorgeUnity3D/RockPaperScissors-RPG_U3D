@@ -15,13 +15,9 @@ using UnityEngine;
 using UnityEngine.UIElements;
 // ReSharper disable UnusedAutoPropertyAccessor.Global
 // ReSharper disable MemberCanBePrivate.Global
-// ReSharper disable ConvertToAutoProperty
 
 namespace Doozy.Editor.Nody
 {
-    /// <summary>
-    /// Custom Edge used in the FlowGraphView
-    /// </summary>
     public class FlowEdgeView : Edge, IDisposable
     {
         public void Dispose()
@@ -125,7 +121,7 @@ namespace Doozy.Editor.Nody
                     });
 
 
-            RegisterCallback<CustomStyleResolvedEvent>(_ =>
+            RegisterCallback<CustomStyleResolvedEvent>(evt =>
             {
                 typeof(Edge).GetField("m_SelectedColor", BindingFlags.NonPublic | BindingFlags.Instance)?
                     .SetValue(this, EditorColors.Nody.Selection);

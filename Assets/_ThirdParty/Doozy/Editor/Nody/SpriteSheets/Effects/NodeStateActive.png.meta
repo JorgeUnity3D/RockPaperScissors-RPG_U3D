@@ -173,6 +173,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -691,30 +703,30 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ~NodeStateActive_000: 7594008210205832871
-      ~NodeStateActive_001: 7251255955990807783
-      ~NodeStateActive_002: -1148936146212886777
-      ~NodeStateActive_003: -2769986351304230241
-      ~NodeStateActive_004: -4948201023363763488
-      ~NodeStateActive_005: -4940773450908168872
-      ~NodeStateActive_006: 5429240524655736790
-      ~NodeStateActive_007: 6854513490258100740
       ~NodeStateActive_008: 8578875621217086013
-      ~NodeStateActive_009: -1928151566159020955
-      ~NodeStateActive_010: 4343954848975152481
-      ~NodeStateActive_011: 5018345417206992899
-      ~NodeStateActive_012: 1321451300669929262
       ~NodeStateActive_013: -88610206924724481
+      ~NodeStateActive_010: 4343954848975152481
+      ~NodeStateActive_012: 1321451300669929262
+      ~NodeStateActive_009: -1928151566159020955
       ~NodeStateActive_014: -5928301387982483970
-      ~NodeStateActive_015: 7042131355380101837
+      ~NodeStateActive_023: 3952982937875064235
+      ~NodeStateActive_007: 6854513490258100740
+      ~NodeStateActive_000: 7594008210205832871
+      ~NodeStateActive_004: -4948201023363763488
+      ~NodeStateActive_001: 7251255955990807783
       ~NodeStateActive_016: 1206219059978737125
-      ~NodeStateActive_017: 670449448668079428
       ~NodeStateActive_018: 2682201459232507808
+      ~NodeStateActive_022: 8092865269376164277
+      ~NodeStateActive_006: 5429240524655736790
+      ~NodeStateActive_005: -4940773450908168872
+      ~NodeStateActive_003: -2769986351304230241
+      ~NodeStateActive_021: 6674945999204881955
+      ~NodeStateActive_011: 5018345417206992899
+      ~NodeStateActive_017: 670449448668079428
+      ~NodeStateActive_002: -1148936146212886777
       ~NodeStateActive_019: 1456414367130402601
       ~NodeStateActive_020: -2275555224053857083
-      ~NodeStateActive_021: 6674945999204881955
-      ~NodeStateActive_022: 8092865269376164277
-      ~NodeStateActive_023: 3952982937875064235
+      ~NodeStateActive_015: 7042131355380101837
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

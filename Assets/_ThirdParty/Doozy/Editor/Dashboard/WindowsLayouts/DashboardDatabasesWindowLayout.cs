@@ -14,13 +14,10 @@ using Doozy.Runtime.UIElements.Extensions;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
-
 namespace Doozy.Editor.Dashboard.WindowsLayouts
 {
     public class DashboardDatabasesWindowLayout : FluidWindowLayout, IDashboardWindowLayout
     {
-        public bool isValid => validLayoutsCount > 0;
-
         public int order => 50;
 
         public override string layoutName => "Databases";
@@ -29,9 +26,6 @@ namespace Doozy.Editor.Dashboard.WindowsLayouts
 
         public override Color accentColor => EditorColors.Default.UnityThemeInversed;
         public override EditorSelectableColorInfo selectableAccentColor => EditorSelectableColors.Default.UnityThemeInversed;
-
-        private IEnumerable<IDashboardDatabaseWindowLayout> layouts { get; set; }
-        private int validLayoutsCount { get; set; }
 
         public DashboardDatabasesWindowLayout()
         {
@@ -51,14 +45,13 @@ namespace Doozy.Editor.Dashboard.WindowsLayouts
 
             //get all the types that implement the IDashboardDatabaseWindowLayout interface
             //they are used to generate the side menu buttons and to get/display the corresponding content
-            layouts =
+            IEnumerable<IDashboardDatabaseWindowLayout> layouts =
                 TypeCache.GetTypesDerivedFrom(typeof(IDashboardDatabaseWindowLayout))               //get all the types that derive from IDashboardDatabaseWindowLayout
                     .Select(type => (IDashboardDatabaseWindowLayout)Activator.CreateInstance(type)) //create an instance of the type
                     .OrderBy(l => l.order)                                                          //sort the layouts by order (set in each layout's class)
                     .ThenBy(l => l.layoutName);                                                     //sort the layouts by name (set in each layout's class)
 
-            validLayoutsCount = 0;
-            
+
             //add buttons to side menu
             foreach (IDashboardDatabaseWindowLayout l in layouts)
             {
@@ -82,8 +75,6 @@ namespace Doozy.Editor.Dashboard.WindowsLayouts
                     content.Clear();
                     content.Add(customWindowLayout);
                 };
-                
-                validLayoutsCount++;
             }
 
             #endregion

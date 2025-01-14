@@ -11,5 +11,6 @@ namespace Doozy.Runtime.SceneManagement.ScriptableObjects
     {
         /// <summary> Global debug flag for the SceneManagement system </summary>
         public bool DebugMode;
+        
     }
 }

@@ -46,29 +46,6 @@ namespace Doozy.Editor.EditorUI
         }
 
 
-        public static class Dashboard
-        {
-            private static EditorDataLayoutGroup s_layoutGroup;
-            private static EditorDataLayoutGroup layoutGroup =>
-                s_layoutGroup != null
-                    ? s_layoutGroup
-                    : s_layoutGroup = EditorDataLayoutDatabase.GetLayoutGroup("Dashboard");
-
-            public static VisualTreeAsset GetVisualTreeAsset(LayoutName layoutName) =>
-                layoutGroup.GetVisualTreeAsset(layoutName.ToString());
-
-            public enum LayoutName
-            {
-                DashboardWindow                     
-            }
-            
-
-            private static VisualTreeAsset s_DashboardWindow;
-            public static VisualTreeAsset DashboardWindow => s_DashboardWindow ? s_DashboardWindow : s_DashboardWindow = GetVisualTreeAsset(LayoutName.DashboardWindow);
-
-        }
-
-
         public static class EditorUI
         {
             private static EditorDataLayoutGroup s_layoutGroup;
@@ -308,12 +285,15 @@ namespace Doozy.Editor.EditorUI
 
             public enum LayoutName
             {
+                DoozyDashboardWindow,
                 UIManagerWindow,
                 UIMenuItemButton,
                 UIMenuWindow                     
             }
             
 
+            private static VisualTreeAsset s_DoozyDashboardWindow;
+            public static VisualTreeAsset DoozyDashboardWindow => s_DoozyDashboardWindow ? s_DoozyDashboardWindow : s_DoozyDashboardWindow = GetVisualTreeAsset(LayoutName.DoozyDashboardWindow);
             private static VisualTreeAsset s_UIManagerWindow;
             public static VisualTreeAsset UIManagerWindow => s_UIManagerWindow ? s_UIManagerWindow : s_UIManagerWindow = GetVisualTreeAsset(LayoutName.UIManagerWindow);
             private static VisualTreeAsset s_UIMenuItemButton;

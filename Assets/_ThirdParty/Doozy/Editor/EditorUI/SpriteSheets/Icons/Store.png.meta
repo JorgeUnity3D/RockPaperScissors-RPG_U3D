@@ -191,6 +191,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -835,36 +847,36 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ~Store_000: -5764465678810205057
-      ~Store_001: 6190684285839266481
-      ~Store_002: -7427325896773502742
-      ~Store_003: 9150176058092280993
-      ~Store_004: -2554747854254143482
-      ~Store_005: 3473373307809550958
-      ~Store_006: 7397464361952309368
-      ~Store_007: -8994404381283039729
-      ~Store_008: 6031685299480787011
-      ~Store_009: -5975073277964720440
-      ~Store_010: 9015776577356245260
       ~Store_011: -7812962532519140123
-      ~Store_012: -5855552277981910268
-      ~Store_013: 1258532273475542086
-      ~Store_014: -5473283487672879747
-      ~Store_015: -6020638730120547396
-      ~Store_016: -300448636306630404
-      ~Store_017: 8031093083779607728
-      ~Store_018: -6899819614734374829
-      ~Store_019: -3747406928001788321
-      ~Store_020: -786099433918263837
-      ~Store_021: 2662316118930954937
-      ~Store_022: 5162953004421280495
-      ~Store_023: 3076031366516457304
-      ~Store_024: -8921601705765359613
+      ~Store_002: -7427325896773502742
+      ~Store_001: 6190684285839266481
+      ~Store_009: -5975073277964720440
+      ~Store_028: 7616141433195791705
+      ~Store_004: -2554747854254143482
       ~Store_025: 7660171016027603721
+      ~Store_007: -8994404381283039729
+      ~Store_022: 5162953004421280495
+      ~Store_000: -5764465678810205057
+      ~Store_010: 9015776577356245260
+      ~Store_015: -6020638730120547396
+      ~Store_029: 352381649970940715
+      ~Store_008: 6031685299480787011
+      ~Store_021: 2662316118930954937
       ~Store_026: -3569890332633627319
       ~Store_027: 6353506375720254185
-      ~Store_028: 7616141433195791705
-      ~Store_029: 352381649970940715
+      ~Store_013: 1258532273475542086
+      ~Store_020: -786099433918263837
+      ~Store_012: -5855552277981910268
+      ~Store_014: -5473283487672879747
+      ~Store_023: 3076031366516457304
+      ~Store_006: 7397464361952309368
+      ~Store_019: -3747406928001788321
+      ~Store_024: -8921601705765359613
+      ~Store_005: 3473373307809550958
+      ~Store_016: -300448636306630404
+      ~Store_003: 9150176058092280993
+      ~Store_018: -6899819614734374829
+      ~Store_017: 8031093083779607728
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

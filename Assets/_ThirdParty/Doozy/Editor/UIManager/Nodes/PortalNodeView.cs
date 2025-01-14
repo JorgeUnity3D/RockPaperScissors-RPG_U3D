@@ -48,8 +48,8 @@ namespace Doozy.Editor.UIManager.Nodes
                     .ResetLayout()
                     .SetStyleFlexShrink(0)
                     .SetStyleSize(72)
-                    .SetStyleTop(-12)
-                    .SetStyleOpacity(0.4f)
+                    .SetStyleLeft(-4)
+                    .SetStyleTop(12)
                     .SetStylePosition(Position.Absolute)
                     .SetStyleBackgroundImageTintColor(EditorColors.Default.FieldIcon);
 
@@ -62,10 +62,10 @@ namespace Doozy.Editor.UIManager.Nodes
 
             nodeBorder
                 .SetStyleOverflow(Overflow.Hidden);
-            
-            nodeContent
-                .AddChild(icon)
-                .AddChild(iTriggerEnumField);
+
+            nodeBorder
+                .AddChild(iTriggerEnumField)
+                .AddChild(icon);
 
             nodeBorder.Bind(serializedObject);
 

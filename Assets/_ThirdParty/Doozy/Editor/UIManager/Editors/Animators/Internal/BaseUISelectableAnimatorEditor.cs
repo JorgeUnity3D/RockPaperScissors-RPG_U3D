@@ -287,15 +287,15 @@ namespace Doozy.Editor.UIManager.Editors.Animators.Internal
         {
             return base.Toolbar()
                 .AddChild(normalTab)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(highlightedTab)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(pressedTab)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(selectedTab)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(disabledTab)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(DesignUtils.flexibleSpace);
         }
 
@@ -317,11 +317,11 @@ namespace Doozy.Editor.UIManager.Editors.Animators.Internal
                 .AddChild(reactionControls)
                 .AddChild(componentHeader)
                 .AddChild(Toolbar())
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(Content())
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(GetController(propertyController, propertyToggleCommand))
-                .AddEndOfLineSpace();
+                .AddChild(DesignUtils.endOfLineBlock);
         }
 
         protected internal static FluidField GetController(SerializedProperty controllerProperty, SerializedProperty toggleCommandProperty)

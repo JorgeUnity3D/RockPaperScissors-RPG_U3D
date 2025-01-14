@@ -77,15 +77,8 @@ namespace Doozy.Runtime.UIManager.Animators
         }
         
         /// <summary> Play the show animation </summary>
-        public override void Show()
-        {
-            if (reversingShow)
-            {
-                showAnimation.OnFinishCallback.RemoveListener(OnReverseShowComplete);
-                reversingShow = false;
-            }
+        public override void Show() =>
             showAnimation.Play(PlayDirection.Forward);
-        }
 
         /// <summary> Reverse the show animation (if playing) </summary>
         public override void ReverseShow()
@@ -93,49 +86,36 @@ namespace Doozy.Runtime.UIManager.Animators
             if (showAnimation.isPlaying)
             {
                 showAnimation.OnFinishCallback.AddListener(OnReverseShowComplete);
+                void OnReverseShowComplete()
+                {
+                    InstantHide();
+                    showAnimation.OnFinishCallback.RemoveListener(OnReverseShowComplete);
+                }
                 showAnimation.Reverse();
-                reversingShow = true;
                 return;
             }
             Hide();
         }
 
-        private void OnReverseShowComplete()
-        {
-            InstantHide();
-            showAnimation.OnFinishCallback.RemoveListener(OnReverseShowComplete);
-            reversingShow = false;
-        }
-
         /// <summary> Play the hide animation </summary>
-        public override void Hide()
-        {
-            if (reversingHide)
-            {
-                hideAnimation.OnFinishCallback.RemoveListener(OnReverseHideComplete);
-                reversingHide = false;
-            }
+        public override void Hide() =>
             hideAnimation.Play(PlayDirection.Forward);
-        }
 
         /// <summary> Reverse the hide animation (if playing) </summary>
         public override void ReverseHide()
         {
-            if (hideAnimation.isPlaying)
+            if(hideAnimation.isPlaying)
             {
                 hideAnimation.OnFinishCallback.AddListener(OnReverseHideComplete);
+                void OnReverseHideComplete()
+                {
+                    InstantShow();
+                    hideAnimation.OnFinishCallback.RemoveListener(OnReverseHideComplete);
+                }
                 hideAnimation.Reverse();
-                reversingHide = true;
                 return;
             }
             Show();
-        }
-        
-        private void OnReverseHideComplete()
-        {
-            InstantShow();
-            hideAnimation.OnFinishCallback.RemoveListener(OnReverseHideComplete);
-            reversingHide = false;
         }
 
         /// <summary> Set show animation's progress at one </summary>

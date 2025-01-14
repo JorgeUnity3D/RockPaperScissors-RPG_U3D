@@ -191,6 +191,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -835,36 +847,36 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ~Parent_000: -8696511991727629050
-      ~Parent_001: -1894428418824685607
-      ~Parent_002: -3115966613935308118
-      ~Parent_003: -3604100583875788748
+      ~Parent_017: -6278583571477689149
+      ~Parent_008: -5034337402058546367
+      ~Parent_023: 5263420116841167649
+      ~Parent_022: -1889102189776007567
       ~Parent_004: -5943530955277826787
+      ~Parent_016: -232738817972221334
       ~Parent_005: 5445762178957069946
+      ~Parent_001: -1894428418824685607
+      ~Parent_024: -2264751010267097205
+      ~Parent_018: -4138984694105354833
+      ~Parent_002: -3115966613935308118
+      ~Parent_011: -211821406635803681
+      ~Parent_003: -3604100583875788748
+      ~Parent_021: -2563813075226345271
+      ~Parent_010: 7041215868888593688
+      ~Parent_013: 7204774702263688857
+      ~Parent_012: -3357377723698489224
+      ~Parent_014: 6878414569300662148
+      ~Parent_020: 435851962968513500
+      ~Parent_028: 8133450277988201557
+      ~Parent_026: 1901370657807926353
+      ~Parent_025: -5010635309886129441
+      ~Parent_019: 6256562962455816522
       ~Parent_006: 8493978477969911225
       ~Parent_007: 299455869601710022
-      ~Parent_008: -5034337402058546367
       ~Parent_009: -8942713535747616367
-      ~Parent_010: 7041215868888593688
-      ~Parent_011: -211821406635803681
-      ~Parent_012: -3357377723698489224
-      ~Parent_013: 7204774702263688857
-      ~Parent_014: 6878414569300662148
-      ~Parent_015: 6611037379286380011
-      ~Parent_016: -232738817972221334
-      ~Parent_017: -6278583571477689149
-      ~Parent_018: -4138984694105354833
-      ~Parent_019: 6256562962455816522
-      ~Parent_020: 435851962968513500
-      ~Parent_021: -2563813075226345271
-      ~Parent_022: -1889102189776007567
-      ~Parent_023: 5263420116841167649
-      ~Parent_024: -2264751010267097205
-      ~Parent_025: -5010635309886129441
-      ~Parent_026: 1901370657807926353
       ~Parent_027: -2983761850982182472
-      ~Parent_028: 8133450277988201557
+      ~Parent_015: 6611037379286380011
       ~Parent_029: -2284846159273920213
+      ~Parent_000: -8696511991727629050
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

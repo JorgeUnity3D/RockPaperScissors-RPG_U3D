@@ -22,8 +22,8 @@ namespace Doozy.Editor.EditorUI.Components
 {
     public sealed class FluidSideMenu : VisualElement
     {
-        public const float EXPAND_COLLAPSE_DURATION = 0.3f;
-        public const Ease EXPAND_COLLAPSE_EASE = Ease.InOutExpo;
+        public const float k_ExpandCollapseDuration = 0.3f;
+        public const Ease k_ExpandCollapseEase = Ease.InOutExpo;
         
         #region MenuState
 
@@ -442,8 +442,8 @@ namespace Doozy.Editor.EditorUI.Components
             expandCollapseReaction =
                 Reaction.Get<FloatReaction>()
                     .SetEditorHeartbeat()
-                    .SetDuration(EXPAND_COLLAPSE_DURATION)
-                    .SetEase(EXPAND_COLLAPSE_EASE);
+                    .SetDuration(k_ExpandCollapseDuration)
+                    .SetEase(k_ExpandCollapseEase);
 
             expandCollapseReaction.setter = value => UpdateVisualState();
             expandCollapseReaction.SetFrom(0f);

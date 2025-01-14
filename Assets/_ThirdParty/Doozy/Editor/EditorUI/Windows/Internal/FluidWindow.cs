@@ -21,8 +21,6 @@ namespace Doozy.Editor.EditorUI.Windows.Internal
         // public static bool isOpen { get; private set; }
         public static bool isOpen => HasOpenInstances<T>();
 
-        public static bool isFocused => instance != null && instance.hasFocus;
-        
         #region Instance
 
         private static T s_instance;
@@ -34,7 +32,7 @@ namespace Doozy.Editor.EditorUI.Windows.Internal
                 if (s_instance != null) return s_instance;
                 s_instance = window;
                 if (s_instance != null) return s_instance;
-                s_instance = GetWindow<T>(false);
+                s_instance = GetWindow<T>();
                 return s_instance;
             }
         }

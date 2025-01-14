@@ -76,7 +76,7 @@ namespace Doozy.Editor.UIManager.Editors.Content
                     (
                         DesignUtils.row
                             .AddChild(infoLabel)
-                            .AddSpaceBlock()
+                            .AddChild(DesignUtils.spaceBlock)
                             .AddChild(DesignUtils.flexibleSpace)
                     );
 
@@ -161,7 +161,7 @@ namespace Doozy.Editor.UIManager.Editors.Content
                         (
                             DesignUtils.row
                                 .AddChild(FluidField.Get("Target Progressor").AddFieldContent(targetProgressorObjectField))
-                                .AddSpaceBlock()
+                                .AddChild(DesignUtils.spaceBlock)
                                 .AddChild(instantProgressorUpdateToggleCheckbox)
                         );
 
@@ -179,21 +179,21 @@ namespace Doozy.Editor.UIManager.Editors.Content
                                     (
                                         DesignUtils.row
                                             .AddChild(FluidField.Get("Years").AddFieldContent(yearsField))
-                                            .AddSpaceBlock()
+                                            .AddChild(DesignUtils.spaceBlock)
                                             .AddChild(FluidField.Get("Months").AddFieldContent(monthsField))
-                                            .AddSpaceBlock()
+                                            .AddChild(DesignUtils.spaceBlock)
                                             .AddChild(FluidField.Get("Days").AddFieldContent(daysField))
                                     )
-                                    .AddSpaceBlock()
+                                    .AddChild(DesignUtils.spaceBlock)
                                     .AddChild
                                     (
                                         DesignUtils.row
                                             .AddChild(FluidField.Get("Hours").AddFieldContent(hoursField))
-                                            .AddSpaceBlock()
+                                            .AddChild(DesignUtils.spaceBlock)
                                             .AddChild(FluidField.Get("Minutes").AddFieldContent(minutesField))
-                                            .AddSpaceBlock()
+                                            .AddChild(DesignUtils.spaceBlock)
                                             .AddChild(FluidField.Get("Seconds").AddFieldContent(secondsField))
-                                            .AddSpaceBlock()
+                                            .AddChild(DesignUtils.spaceBlock)
                                             .AddChild(FluidField.Get("Milliseconds").AddFieldContent(millisecondsField))
                                     )
                             )
@@ -203,7 +203,7 @@ namespace Doozy.Editor.UIManager.Editors.Content
                     (
                         DesignUtils.row
                             .AddChild(loopsFluidField)
-                            .AddSpaceBlock()
+                            .AddChild(DesignUtils.spaceBlock)
                             .AddChild(loopDelayFluidField)
                     )
                     .AddContent(DesignUtils.spaceBlock2X)
@@ -251,7 +251,7 @@ namespace Doozy.Editor.UIManager.Editors.Content
                             (
                                 DesignUtils.row
                                     .AddChild(standardFormatButton)
-                                    .AddSpaceBlock()
+                                    .AddChild(DesignUtils.spaceBlock)
                                     .AddChild(customFormatButton)
                             )
                     )
@@ -292,19 +292,19 @@ namespace Doozy.Editor.UIManager.Editors.Content
         {
             root
                 .AddChild(GetControlButtons())
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild
                 (
                     DesignUtils.row
                         .AddSpace(44, 0)
                         .AddChild(infoFluidField)
                 )
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(componentHeader)
                 .AddChild(Toolbar())
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(Content())
-                .AddEndOfLineSpace();
+                .AddChild(DesignUtils.endOfLineBlock);
         }
     }
 }

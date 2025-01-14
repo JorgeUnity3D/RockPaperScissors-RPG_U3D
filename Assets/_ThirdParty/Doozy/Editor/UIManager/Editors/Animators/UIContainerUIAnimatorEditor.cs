@@ -174,9 +174,9 @@ namespace Doozy.Editor.UIManager.Editors.Animators
             return base.Toolbar()
                 .RecycleAndClear()
                 .AddChild(showUIAnimationTab)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(hideUIAnimationTab)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(DesignUtils.flexibleSpace);
         }
     }

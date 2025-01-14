@@ -191,6 +191,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -835,36 +847,36 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ~Back_000: 6558356512784768286
-      ~Back_001: -2278090763927897159
-      ~Back_002: -1826160868481979876
-      ~Back_003: -2268990646007378582
-      ~Back_004: -1798151422033024683
+      ~Back_020: -7900891657837211731
+      ~Back_012: 5460968467300275667
+      ~Back_016: 7598838243689927809
+      ~Back_015: 9103285379474866116
       ~Back_005: 1214349959079993317
-      ~Back_006: 2661256675144579270
-      ~Back_007: 2430299763911233059
+      ~Back_024: -9162189578839583143
+      ~Back_002: -1826160868481979876
+      ~Back_028: -8442736793005018121
+      ~Back_021: 3915795627657141624
+      ~Back_010: 6495060625202321166
+      ~Back_017: 5299547946579553052
+      ~Back_003: -2268990646007378582
+      ~Back_026: 4677344043554512224
+      ~Back_025: 7436096322226936904
+      ~Back_014: -2752144634580952191
       ~Back_008: 2949288917422817435
       ~Back_009: 9165232793965494833
-      ~Back_010: 6495060625202321166
-      ~Back_011: 6633835997403502649
-      ~Back_012: 5460968467300275667
-      ~Back_013: -5780310687886788553
-      ~Back_014: -2752144634580952191
-      ~Back_015: 9103285379474866116
-      ~Back_016: 7598838243689927809
-      ~Back_017: 5299547946579553052
-      ~Back_018: -3547252906876804572
-      ~Back_019: 857542604928139916
-      ~Back_020: -7900891657837211731
-      ~Back_021: 3915795627657141624
       ~Back_022: -8943943333188778107
+      ~Back_018: -3547252906876804572
+      ~Back_000: 6558356512784768286
+      ~Back_011: 6633835997403502649
+      ~Back_007: 2430299763911233059
       ~Back_023: 1510412919239801395
-      ~Back_024: -9162189578839583143
-      ~Back_025: 7436096322226936904
-      ~Back_026: 4677344043554512224
+      ~Back_013: -5780310687886788553
+      ~Back_019: 857542604928139916
       ~Back_027: -270219657811313389
-      ~Back_028: -8442736793005018121
       ~Back_029: -583612324074971933
+      ~Back_004: -1798151422033024683
+      ~Back_001: -2278090763927897159
+      ~Back_006: 2661256675144579270
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

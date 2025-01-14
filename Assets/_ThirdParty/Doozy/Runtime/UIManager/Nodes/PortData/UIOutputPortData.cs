@@ -33,7 +33,7 @@ namespace Doozy.Runtime.UIManager.Nodes.PortData
         public bool isBackButton => Trigger == TriggerCondition.UIButton && ButtonId.Name.Equals(BackButton.k_ButtonName);
         public bool viewsCategory => Trigger == TriggerCondition.UIView && ViewId.Name.IsNullOrEmpty();
         public bool allViews => Trigger == TriggerCondition.UIView && ViewId.Category.IsNullOrEmpty() && ViewId.Name.IsNullOrEmpty();
-
+        
         public UIOutputPortData()
         {
             Trigger = TriggerCondition.TimeDelay;

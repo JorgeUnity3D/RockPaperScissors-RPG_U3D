@@ -2,7 +2,6 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System;
 using Doozy.Editor.EditorUI;
 using Doozy.Editor.EditorUI.Components;
 using Doozy.Editor.EditorUI.Components.Internal;
@@ -18,7 +17,6 @@ using Doozy.Runtime.UIElements.Extensions;
 using UnityEditor;
 using UnityEditor.Callbacks;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UIElements;
 using EditorStyles = Doozy.Editor.EditorUI.EditorStyles;
 // ReSharper disable MemberCanBePrivate.Global
@@ -27,13 +25,13 @@ namespace Doozy.Editor.Nody
 {
     public class NodyWindow : FluidWindow<NodyWindow>
     {
-        private const string k_WindowTitle = "Nody";
-        public const string WINDOW_MENU_PATH = "Tools/Doozy/Nody/";
+        private const string WINDOW_TITLE = "Nody";
+        public const string k_WindowMenuPath = "Tools/Doozy/Nody/";
 
-        [MenuItem(WINDOW_MENU_PATH + "Window", priority = -900)]
+        [MenuItem(k_WindowMenuPath + "Window", priority = -900)]
         public static void Open()
         {
-            InternalOpenWindow(k_WindowTitle);
+            InternalOpenWindow(WINDOW_TITLE);
         }
 
         [MenuItem("Tools/Doozy/Refresh/Nody", priority = -450)]
@@ -47,12 +45,14 @@ namespace Doozy.Editor.Nody
         [OnOpenAsset]
         public static bool OnOpenAsset(int instanceId, int line)
         {
-            if (Selection.activeObject.GetType() != typeof(FlowGraph))
-                return false;
+            if (Selection.activeObject is FlowGraph)
+            {
+                Open();
+                OpenGraph((FlowGraph)Selection.activeObject);
+                return true;
+            }
 
-            Open();
-            OpenGraph((FlowGraph)Selection.activeObject);
-            return true;
+            return false;
         }
 
         private static NodySettings settings => NodySettings.instance;
@@ -80,7 +80,6 @@ namespace Doozy.Editor.Nody
 
         private Label openedGraphPathLabel { get; set; }
         private FluidButton pingOpenGraphButton { get; set; }
-
 
         protected override void OnDestroy()
         {
@@ -477,7 +476,7 @@ namespace Doozy.Editor.Nody
             }
 
             if (graph == null) return;
-
+            
             if (Application.isPlaying)
             {
                 if (instance.flowGraphView == null) return;

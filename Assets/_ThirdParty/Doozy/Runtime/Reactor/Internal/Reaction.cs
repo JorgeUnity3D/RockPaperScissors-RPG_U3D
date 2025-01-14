@@ -3,7 +3,6 @@
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using Doozy.Runtime.Common.Attributes;
 using Doozy.Runtime.Common.Extensions;
@@ -121,7 +120,7 @@ namespace Doozy.Runtime.Reactor.Internal
         #region Cycle Variables
 
         protected float currentCycleEasedProgress => Settings.CalculateEasedProgress(currentCycleProgress);
-        protected List<float> cycleDurations { get; set; }
+        protected float[] cycleDurations { get; set; }
         protected int numberOfCycles { get; set; }
         protected int previousCycleIndex { get; set; }
         protected int currentCycleIndex { get; set; }
@@ -129,7 +128,7 @@ namespace Doozy.Runtime.Reactor.Internal
         {
             get
             {
-                if (cycleDurations == null || currentCycleIndex != cycleDurations.Count)
+                if (cycleDurations == null || currentCycleIndex != cycleDurations.Length)
                     ComputePlayMode();
                 return cycleDurations[currentCycleIndex];
             }
@@ -169,10 +168,6 @@ namespace Doozy.Runtime.Reactor.Internal
 
         protected Reaction()
         {
-            // ReSharper disable once IdentifierTypo
-            const int preallocatedCapacity = 100;
-            cycleDurations = new List<float>(preallocatedCapacity);
-            
             Settings = new ReactionSettings();
             this.SetRuntimeHeartbeat();
         }
@@ -716,7 +711,7 @@ namespace Doozy.Runtime.Reactor.Internal
                 case PlayDirection.Forward:
                 {
                     float compoundDuration = 0f;
-                    for (int i = 0; i < cycleDurations.Count; i++)
+                    for (int i = 0; i < cycleDurations.Length; i++)
                     {
                         currentCycleIndex = i;
                         compoundDuration += cycleDurations[i];
@@ -728,7 +723,7 @@ namespace Doozy.Runtime.Reactor.Internal
                 {
                     // float compoundDuration = targetDuration;
                     float compoundDuration = duration;
-                    for (int i = cycleDurations.Count - 1; i >= 0; i--)
+                    for (int i = cycleDurations.Length - 1; i >= 0; i--)
                     {
                         currentCycleIndex = i;
                         compoundDuration -= cycleDurations[i];
@@ -739,37 +734,12 @@ namespace Doozy.Runtime.Reactor.Internal
             }
         }
 
-        private void EnsureCycleDurationsListCapacity(int requiredCapacity)
-        {
-            if (cycleDurations == null)
-            {
-                cycleDurations = new List<float>(requiredCapacity);
-                return;
-            }
-            
-            if(requiredCapacity <= cycleDurations.Capacity) 
-                return;
-            
-            cycleDurations.Capacity = requiredCapacity;
-        }
-        
         /// <summary> Compute normal play mode cycle </summary>
         protected virtual void ComputeNormal()
         {
             currentCycleIndex = 0;
             numberOfCycles = 1;
-            
-            EnsureCycleDurationsListCapacity(numberOfCycles);
-            
-            if (cycleDurations.Count != numberOfCycles)
-            {
-                cycleDurations.Clear();
-                cycleDurations.Add(duration);
-            }
-            else
-            {
-                cycleDurations[0] = duration;
-            }
+            cycleDurations = new[] { duration };
         }
 
         /// <summary> Compute ping-pong play mode cycles </summary>
@@ -778,20 +748,7 @@ namespace Doozy.Runtime.Reactor.Internal
             currentCycleIndex = 0;
             numberOfCycles = 2;
             float halfDuration = duration / 2f;
-            
-            EnsureCycleDurationsListCapacity(numberOfCycles);
-            
-            if (cycleDurations.Count != numberOfCycles)
-            {
-                cycleDurations.Clear();
-                cycleDurations.Add(halfDuration);
-                cycleDurations.Add(halfDuration);
-            }
-            else
-            {
-                cycleDurations[0] = halfDuration;
-                cycleDurations[1] = halfDuration;
-            }
+            cycleDurations = new[] { halfDuration, halfDuration };
         }
 
         /// <summary> Compute spring play mode cycles </summary>
@@ -800,17 +757,7 @@ namespace Doozy.Runtime.Reactor.Internal
             currentCycleIndex = 0;
             numberOfCycles = Max(1, settings.vibration + (int)(settings.vibration * duration));
             if (numberOfCycles % 2 != 0) numberOfCycles++;
-            
-            EnsureCycleDurationsListCapacity(numberOfCycles);
-            
-            if (cycleDurations.Count != numberOfCycles)
-            {
-                cycleDurations.Clear();
-                for (int i = 0; i < numberOfCycles; i++)
-                {
-                    cycleDurations.Add(0f);
-                }
-            }
+            cycleDurations = new float[numberOfCycles];
 
             float compoundDuration = 0f;
             for (int i = 0; i < numberOfCycles; i++)
@@ -831,17 +778,7 @@ namespace Doozy.Runtime.Reactor.Internal
             currentCycleIndex = 0;
             numberOfCycles = Max(1, settings.vibration + (int)(settings.vibration * duration));
             if (numberOfCycles % 2 == 0) numberOfCycles++;
-            
-            EnsureCycleDurationsListCapacity(numberOfCycles);
-            
-            if (cycleDurations.Count != numberOfCycles)
-            {
-                cycleDurations.Clear();
-                for (int i = 0; i < numberOfCycles; i++)
-                {
-                    cycleDurations.Add(0f);
-                }
-            }
+            cycleDurations = new float[numberOfCycles];
 
             float compoundDuration = 0f;
             for (int i = 0; i < numberOfCycles; i++)

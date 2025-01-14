@@ -196,13 +196,13 @@ namespace Doozy.Editor.Reactor.Editors.Animators
             return
                 toolbarContainer
                     .AddChild(colorTab)
-                    .AddSpaceBlock()
+                    .AddChild(DesignUtils.spaceBlock)
                     .AddChild(behaviourTab)
-                    .AddSpaceBlock()
+                    .AddChild(DesignUtils.spaceBlock)
                     .AddChild(DesignUtils.flexibleSpace)
-                    .AddSpaceBlock(2)
+                    .AddChild(DesignUtils.spaceBlock2X)
                     .AddChild(nameTab)
-                    .AddSpaceBlock();
+                    .AddChild(DesignUtils.spaceBlock);
         }
 
         protected override void Compose()
@@ -211,10 +211,10 @@ namespace Doozy.Editor.Reactor.Editors.Animators
                 .AddChild(reactionControls)
                 .AddChild(componentHeader)
                 .AddChild(Toolbar())
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(Content())
                 .AddChild(colorTargetFluidField)
-                .AddEndOfLineSpace();
+                .AddChild(DesignUtils.endOfLineBlock);
         }
     }
 }

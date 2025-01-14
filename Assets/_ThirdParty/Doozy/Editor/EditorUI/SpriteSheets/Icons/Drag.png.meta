@@ -191,6 +191,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -835,36 +847,36 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ~Drag_000: -6933173995195110718
+      ~Drag_020: 64550447903714576
+      ~Drag_016: 5985004142662524745
       ~Drag_001: 1320869656324957387
       ~Drag_002: -6272050629641810260
       ~Drag_003: -8643539449676068850
-      ~Drag_004: -3319266967516920386
-      ~Drag_005: 3024351761710294170
-      ~Drag_006: -2130931072742209371
-      ~Drag_007: 1479647090915976117
-      ~Drag_008: 279898454979536868
-      ~Drag_009: 3221874453646736297
-      ~Drag_010: -7374502042511944513
-      ~Drag_011: -4739356415142239372
-      ~Drag_012: -2636505083632459565
-      ~Drag_013: -6770890625650031031
-      ~Drag_014: 5677375388543856706
-      ~Drag_015: 860336247514888260
-      ~Drag_016: 5985004142662524745
       ~Drag_017: -6286162386848397006
-      ~Drag_018: 6106431879876691623
-      ~Drag_019: -4706524436240313161
-      ~Drag_020: 64550447903714576
-      ~Drag_021: 6509960106161227047
-      ~Drag_022: 2945701650144775445
-      ~Drag_023: 4639677707262695720
       ~Drag_024: -846026197254467562
-      ~Drag_025: 2463319842407966851
-      ~Drag_026: 2819341592041067092
-      ~Drag_027: -2062763045716275347
       ~Drag_028: -8526650063571446897
+      ~Drag_009: 3221874453646736297
+      ~Drag_022: 2945701650144775445
+      ~Drag_014: 5677375388543856706
+      ~Drag_025: 2463319842407966851
+      ~Drag_027: -2062763045716275347
+      ~Drag_019: -4706524436240313161
+      ~Drag_007: 1479647090915976117
+      ~Drag_013: -6770890625650031031
+      ~Drag_005: 3024351761710294170
+      ~Drag_000: -6933173995195110718
+      ~Drag_015: 860336247514888260
+      ~Drag_026: 2819341592041067092
       ~Drag_029: -1994698533526288787
+      ~Drag_006: -2130931072742209371
+      ~Drag_010: -7374502042511944513
+      ~Drag_004: -3319266967516920386
+      ~Drag_018: 6106431879876691623
+      ~Drag_011: -4739356415142239372
+      ~Drag_008: 279898454979536868
+      ~Drag_012: -2636505083632459565
+      ~Drag_021: 6509960106161227047
+      ~Drag_023: 4639677707262695720
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

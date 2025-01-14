@@ -28,7 +28,7 @@ namespace Doozy.Editor.UIManager.Drawers
                 SteppersDatabaseWindow.Open,
                 "Open Steppers Database Window",
                 UIStepperIdDatabase.instance,
-                EditorSelectableColors.Default.UIComponent
+                EditorSelectableColors.UIManager.UIComponent
             );
     }
 }

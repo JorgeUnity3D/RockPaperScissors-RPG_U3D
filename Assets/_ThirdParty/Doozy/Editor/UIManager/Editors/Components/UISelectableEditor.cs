@@ -19,8 +19,8 @@ namespace Doozy.Editor.UIManager.Editors.Components
     [CanEditMultipleObjects]
     public sealed class UISelectableEditor : UISelectableBaseEditor
     {
-        public override Color accentColor => EditorColors.Default.UIComponent;
-        public override EditorSelectableColorInfo selectableAccentColor => EditorSelectableColors.Default.UIComponent;
+        public override Color accentColor => EditorColors.UIManager.UIComponent;
+        public override EditorSelectableColorInfo selectableAccentColor => EditorSelectableColors.UIManager.UIComponent;
         
         public static IEnumerable<Texture2D> selectableIconTextures => EditorSpriteSheets.UIManager.Icons.UISelectable;
         

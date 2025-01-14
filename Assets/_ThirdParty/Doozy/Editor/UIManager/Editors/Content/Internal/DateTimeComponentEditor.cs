@@ -23,8 +23,8 @@ namespace Doozy.Editor.UIManager.Editors.Content.Internal
 {
     public abstract class BaseDateTimeContentEditor : UnityEditor.Editor
     {
-        protected virtual Color accentColor => EditorColors.Default.DateTime;
-        protected virtual EditorSelectableColorInfo selectableAccentColor => EditorSelectableColors.Default.DateTime;
+        protected virtual Color accentColor => EditorColors.UIManager.DateTime;
+        protected virtual EditorSelectableColorInfo selectableAccentColor => EditorSelectableColors.UIManager.DateTime;
 
         protected DateTimeComponent castedDateTimeComponent => (DateTimeComponent)target;
         protected List<DateTimeComponent> castedDateTimeContents => targets.Cast<DateTimeComponent>().ToList();
@@ -101,7 +101,7 @@ namespace Doozy.Editor.UIManager.Editors.Content.Internal
                     
                     castedDateTimeComponent.StartTimer();
                 }))
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(GetButton("Stop", () =>
                 {
                     if (!castedDateTimeComponent.isActiveAndEnabled)
@@ -116,7 +116,7 @@ namespace Doozy.Editor.UIManager.Editors.Content.Internal
                     }
                     castedDateTimeComponent.StopTimer();
                 }))
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(GetButton("Finish", () =>
                 {
                     if (!castedDateTimeComponent.isActiveAndEnabled)
@@ -132,7 +132,7 @@ namespace Doozy.Editor.UIManager.Editors.Content.Internal
                     
                     castedDateTimeComponent.FinishTimer();
                 }))
-                .AddSpaceBlock(4)
+                .AddChild(DesignUtils.spaceBlock4X)
                 .AddChild(GetButton("Pause", () =>
                 {
                     if (!castedDateTimeComponent.isActiveAndEnabled)
@@ -155,7 +155,7 @@ namespace Doozy.Editor.UIManager.Editors.Content.Internal
                     
                     castedDateTimeComponent.PauseTimer();
                 }))
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(GetButton("Resume", () =>
                 {
                     if (!castedDateTimeComponent.isActiveAndEnabled)
@@ -178,7 +178,7 @@ namespace Doozy.Editor.UIManager.Editors.Content.Internal
                     
                     castedDateTimeComponent.ResumeTimer();
                 }))
-                .AddSpaceBlock(4)
+                .AddChild(DesignUtils.spaceBlock4X)
                 .AddChild(GetButton("Reset", () =>
                 {
                     if (!castedDateTimeComponent.isActiveAndEnabled)
@@ -189,7 +189,7 @@ namespace Doozy.Editor.UIManager.Editors.Content.Internal
                     
                     castedDateTimeComponent.ResetTimer();
                 }))
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(GetButton("Cancel", () =>
                 {
                     if (!castedDateTimeComponent.isActiveAndEnabled)
@@ -363,7 +363,7 @@ namespace Doozy.Editor.UIManager.Editors.Content.Internal
                 DesignUtils.row
                     .SetName("Timescale Mode and Update Interval")
                     .AddChild(FluidField.Get("Timescale Mode").AddFieldContent(timeScaleModeEnumField))
-                    .AddSpaceBlock()
+                    .AddChild(DesignUtils.spaceBlock)
                     .AddChild(FluidField.Get("Update Interval").AddFieldContent(updateIntervalFloatField));
         }
 
@@ -412,13 +412,13 @@ namespace Doozy.Editor.UIManager.Editors.Content.Internal
             return
                 toolbarContainer
                     .AddChild(settingsTab)
-                    .AddSpaceBlock()
+                    .AddChild(DesignUtils.spaceBlock)
                     .AddChild(labelsTab)
-                    .AddSpaceBlock()
+                    .AddChild(DesignUtils.spaceBlock)
                     .AddChild(callbacksTab)
-                    .AddSpaceBlock()
+                    .AddChild(DesignUtils.spaceBlock)
                     .AddChild(DesignUtils.flexibleSpace)
-                    .AddSpaceBlock(2);
+                    .AddChild(DesignUtils.spaceBlock2X);
         }
 
         protected virtual VisualElement Content()
@@ -437,20 +437,20 @@ namespace Doozy.Editor.UIManager.Editors.Content.Internal
                 .AddChild(GetControlButtons())
                 .AddChild(componentHeader)
                 .AddChild(Toolbar())
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(Content())
-                .AddEndOfLineSpace();
+                .AddChild(DesignUtils.endOfLineBlock);
         }
 
         protected VisualElement GetBehaviours()
         {
             return DesignUtils.row
                 .AddChild(FluidField.Get<EnumField>(propertyOnStartBehaviour, "On Start Behaviour"))
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(FluidField.Get<EnumField>(propertyOnEnableBehaviour, "OnEnable Behaviour"))
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(FluidField.Get<EnumField>(propertyOnDisableBehaviour, "OnDisable Behaviour"))
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(FluidField.Get<EnumField>(propertyOnDestroyBehaviour, "OnDestroy Behaviour"));
             ;
         }

@@ -3,7 +3,6 @@
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
 using Doozy.Editor.Common.ScriptableObjects;
-using Doozy.Runtime.Common.Attributes;
 using UnityEngine;
 // ReSharper disable MemberCanBePrivate.Global
 
@@ -14,19 +13,15 @@ namespace Doozy.Editor.UIManager.UIMenu
         public bool SelectNewlyCreatedObjects;
         public PrefabInstantiateModeSetting InstantiateMode;
 
-        public const int MIN_ITEM_SIZE = 64;
-        public const int MAX_ITEM_SIZE = 256;
-        public const int DEFAULT_ITEM_SIZE = 96;
+        public const int k_MinItemSize = 64;
+        public const int k_MaxItemSize = 256;
+        public const int k_DefaultItemSize = 96;
         
-        [SerializeField] private int ItemSize = DEFAULT_ITEM_SIZE;
+        [SerializeField] private int ItemSize = k_DefaultItemSize;
         public int itemSize
         {
             get => ItemSize;
-            set => ItemSize = Mathf.Clamp(value, MIN_ITEM_SIZE, MAX_ITEM_SIZE);
+            set => ItemSize = Mathf.Clamp(value, k_MinItemSize, k_MaxItemSize);
         }
-        
-        [RestoreData(nameof(UIMenuSettings))]
-        public static UIMenuSettings RestoreData() =>
-            instance;
     }
 }

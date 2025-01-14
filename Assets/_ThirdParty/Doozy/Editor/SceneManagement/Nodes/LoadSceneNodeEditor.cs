@@ -209,7 +209,7 @@ namespace Doozy.Editor.SceneManagement.Nodes
                     (
                         DesignUtils.column
                             .AddChild(connectProgressorSwitch)
-                            .AddSpaceBlock()
+                            .AddChild(DesignUtils.spaceBlock)
                             .AddChild(progressorIdPropertyField)
                     )
                 ;
@@ -232,25 +232,25 @@ namespace Doozy.Editor.SceneManagement.Nodes
                         (
                             DesignUtils.row
                                 .AddChild(getSceneByFluidField)
-                                .AddSpaceBlock()
+                                .AddChild(DesignUtils.spaceBlock)
                                 .AddChild(sceneNameFluidField)
                                 .AddChild(sceneBuildIndexFluidField)
-                                .AddSpaceBlock()
+                                .AddChild(DesignUtils.spaceBlock)
                                 .AddChild(loadSceneModeFluidField)
                         )
-                        .AddSpaceBlock()
+                        .AddChild(DesignUtils.spaceBlock)
                         .AddChild(preventLoadingSameSceneFluidField)
-                        .AddSpaceBlock()
+                        .AddChild(DesignUtils.spaceBlock)
                         .AddChild
                         (
                             DesignUtils.row
                                 .AddChild(waitForSceneToLoadFluidField)
-                                .AddSpaceBlock()
+                                .AddChild(DesignUtils.spaceBlock)
                                 .AddChild(allowSceneActivationFluidField)
-                                .AddSpaceBlock()
+                                .AddChild(DesignUtils.spaceBlock)
                                 .AddChild(sceneActivationDelayFluidField)
                         )
-                        .AddSpaceBlock(2)
+                        .AddChild(DesignUtils.spaceBlock2X)
                         .AddChild(progressorIdFluidField)
                 )
                 ;

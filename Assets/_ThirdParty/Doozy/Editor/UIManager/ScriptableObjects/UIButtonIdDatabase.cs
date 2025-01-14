@@ -8,7 +8,6 @@ using System.Linq;
 using Doozy.Editor.Common;
 using Doozy.Editor.Common.ScriptableObjects;
 using Doozy.Runtime.Common;
-using Doozy.Runtime.Common.Attributes;
 using Doozy.Runtime.Common.Extensions;
 using UnityEditor;
 using UnityEngine;
@@ -40,10 +39,6 @@ namespace Doozy.Editor.UIManager.ScriptableObjects
         [SerializeField] private UIButtonIdDataGroup Database;
         public UIButtonIdDataGroup database => Database ??= new UIButtonIdDataGroup();
 
-        [RestoreData(nameof(UIButtonIdDatabase))]
-        public static UIButtonIdDatabase RestoreData() =>
-            instance;
-        
         public UIButtonIdDatabase() => Database = new UIButtonIdDataGroup();
 
         public (bool, string) CanImportRoamingDatabases(List<UIButtonIdRoamingDatabase> roamingDatabases)

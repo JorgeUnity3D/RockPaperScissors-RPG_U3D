@@ -191,6 +191,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -835,36 +847,36 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      ~SizeDecrease_018: -6062169019856644391
+      ~SizeDecrease_014: -6223075075510542751
+      ~SizeDecrease_024: -3229702978062882404
+      ~SizeDecrease_010: 1847513489842541782
+      ~SizeDecrease_016: 1589604716686245604
+      ~SizeDecrease_005: 1850536519321428736
+      ~SizeDecrease_011: -4687412127150179579
+      ~SizeDecrease_029: -4571835136129068208
+      ~SizeDecrease_012: 1178849310454654705
+      ~SizeDecrease_003: 2885531728091703354
       ~SizeDecrease_000: 8058241719426390441
       ~SizeDecrease_001: -6087630709307989065
-      ~SizeDecrease_002: 76666069181261773
-      ~SizeDecrease_003: 2885531728091703354
-      ~SizeDecrease_004: -8570935846800257517
-      ~SizeDecrease_005: 1850536519321428736
-      ~SizeDecrease_006: 7174041550700070766
-      ~SizeDecrease_007: -5462474687955537549
-      ~SizeDecrease_008: -8112700434009758364
-      ~SizeDecrease_009: -7497963919520834368
-      ~SizeDecrease_010: 1847513489842541782
-      ~SizeDecrease_011: -4687412127150179579
-      ~SizeDecrease_012: 1178849310454654705
-      ~SizeDecrease_013: -7971934149163081546
-      ~SizeDecrease_014: -6223075075510542751
-      ~SizeDecrease_015: -2278523660011659091
-      ~SizeDecrease_016: 1589604716686245604
-      ~SizeDecrease_017: 7711689734718305564
-      ~SizeDecrease_018: -6062169019856644391
-      ~SizeDecrease_019: 4889486599866511069
-      ~SizeDecrease_020: 2483056223254511935
-      ~SizeDecrease_021: 6160981038369437416
-      ~SizeDecrease_022: 5789219219311193177
-      ~SizeDecrease_023: -4090372374732972756
-      ~SizeDecrease_024: -3229702978062882404
-      ~SizeDecrease_025: -776235386488151137
-      ~SizeDecrease_026: -8468238791382506766
-      ~SizeDecrease_027: -4734398883183309947
       ~SizeDecrease_028: 1586991511312244432
-      ~SizeDecrease_029: -4571835136129068208
+      ~SizeDecrease_009: -7497963919520834368
+      ~SizeDecrease_002: 76666069181261773
+      ~SizeDecrease_007: -5462474687955537549
+      ~SizeDecrease_019: 4889486599866511069
+      ~SizeDecrease_022: 5789219219311193177
+      ~SizeDecrease_017: 7711689734718305564
+      ~SizeDecrease_004: -8570935846800257517
+      ~SizeDecrease_025: -776235386488151137
+      ~SizeDecrease_023: -4090372374732972756
+      ~SizeDecrease_021: 6160981038369437416
+      ~SizeDecrease_013: -7971934149163081546
+      ~SizeDecrease_027: -4734398883183309947
+      ~SizeDecrease_006: 7174041550700070766
+      ~SizeDecrease_026: -8468238791382506766
+      ~SizeDecrease_008: -8112700434009758364
+      ~SizeDecrease_020: 2483056223254511935
+      ~SizeDecrease_015: -2278523660011659091
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

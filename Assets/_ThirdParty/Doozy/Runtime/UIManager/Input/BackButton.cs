@@ -41,9 +41,8 @@ namespace Doozy.Runtime.UIManager.Input
 
         #if LEGACY_INPUT_MANAGER
         public const KeyCode k_BackButtonKeyCode = KeyCode.Escape;
-        #endif
-        /// <summary> Default name of the virtual button that will be used for the 'Back' button, when LEGACY_INPUT_MANAGER is enabled </summary>
         public const string k_BackButtonVirtualButtonName = "Cancel";
+        #endif
 
         /// <summary> Stream category name for the Back Button </summary>
         public const string k_StreamCategory = "Input";
@@ -208,7 +207,7 @@ namespace Doozy.Runtime.UIManager.Input
                             Fire(data);
                         break;
                     case LegacyInputMode.VirtualButton:
-                        if (data.virtualButtonName == inputSettings.backButtonVirtualButtonName)
+                        if (data.virtualButtonName == BackButton.k_BackButtonVirtualButtonName)
                             Fire(data);
                         break;
                     case LegacyInputMode.None: break;
@@ -246,7 +245,6 @@ namespace Doozy.Runtime.UIManager.Input
             base.OnDestroy();
             DisconnectFromInputStream();
             DisconnectFromButtonStream();
-            SceneManager.sceneLoaded -= OnSceneLoaded;
         }
 
         //ToDo: maybe -> add option to set default action name for 'Back' button (instead of Cancel)
@@ -396,6 +394,7 @@ namespace Doozy.Runtime.UIManager.Input
 
 
     }
+
     public static class BackButtonExtras
     {
         public static bool SendsBackButtonSignal<T>(this T target) where T : InputToSignal

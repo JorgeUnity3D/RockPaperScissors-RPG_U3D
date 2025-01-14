@@ -191,6 +191,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -835,36 +847,36 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      ~UIClock_023: -4840893866540682550
       ~UIClock_000: 5807900950440862948
-      ~UIClock_001: -2588044507764043842
-      ~UIClock_002: -6698076600899922765
-      ~UIClock_003: -3808476185266507798
-      ~UIClock_004: -4773120882015815966
-      ~UIClock_005: 2911493583498797119
-      ~UIClock_006: -1491069212382205187
-      ~UIClock_007: -7551436084276891123
       ~UIClock_008: -6792589824146958075
       ~UIClock_009: -5891947362776820146
-      ~UIClock_010: 8097921413452658894
-      ~UIClock_011: 6885679725705992572
-      ~UIClock_012: 4299546881620389406
-      ~UIClock_013: 5951298391317714350
       ~UIClock_014: -8783338405786510403
-      ~UIClock_015: 5644946646955424892
-      ~UIClock_016: -7489845524185915919
-      ~UIClock_017: 1160210036718809192
-      ~UIClock_018: -4673273869649960849
-      ~UIClock_019: -4147113401907014167
-      ~UIClock_020: -1738490192959962040
-      ~UIClock_021: 6652360466350600288
-      ~UIClock_022: -312190006551602869
-      ~UIClock_023: -4840893866540682550
       ~UIClock_024: 4844856949967291168
       ~UIClock_025: -3107542611587405377
-      ~UIClock_026: 2092548047684699036
-      ~UIClock_027: 8061011502834632038
+      ~UIClock_017: 1160210036718809192
       ~UIClock_028: -3455378140156522229
+      ~UIClock_026: 2092548047684699036
+      ~UIClock_002: -6698076600899922765
+      ~UIClock_012: 4299546881620389406
+      ~UIClock_005: 2911493583498797119
+      ~UIClock_001: -2588044507764043842
+      ~UIClock_007: -7551436084276891123
       ~UIClock_029: -1643817097497230473
+      ~UIClock_011: 6885679725705992572
+      ~UIClock_003: -3808476185266507798
+      ~UIClock_021: 6652360466350600288
+      ~UIClock_013: 5951298391317714350
+      ~UIClock_020: -1738490192959962040
+      ~UIClock_018: -4673273869649960849
+      ~UIClock_027: 8061011502834632038
+      ~UIClock_010: 8097921413452658894
+      ~UIClock_019: -4147113401907014167
+      ~UIClock_016: -7489845524185915919
+      ~UIClock_006: -1491069212382205187
+      ~UIClock_022: -312190006551602869
+      ~UIClock_004: -4773120882015815966
+      ~UIClock_015: 5644946646955424892
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

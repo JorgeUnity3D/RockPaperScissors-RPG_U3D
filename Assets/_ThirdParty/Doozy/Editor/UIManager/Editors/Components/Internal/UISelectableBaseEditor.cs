@@ -33,8 +33,8 @@ namespace Doozy.Editor.UIManager.Editors.Components.Internal
         protected const string k_ShowNavigationKey = "SelectableEditor.ShowNavigation";
         protected static bool showNavigation { get; set; }
 
-        public virtual Color accentColor => EditorColors.Default.UIComponent;
-        public virtual EditorSelectableColorInfo selectableAccentColor => EditorSelectableColors.Default.UIComponent;
+        public virtual Color accentColor => EditorColors.UIManager.UIComponent;
+        public virtual EditorSelectableColorInfo selectableAccentColor => EditorSelectableColors.UIManager.UIComponent;
 
         public UISelectable castedSelectable => (UISelectable)target;
         public List<UISelectable> castedSelectables => targets.Cast<UISelectable>().ToList();
@@ -307,7 +307,7 @@ namespace Doozy.Editor.UIManager.Editors.Components.Internal
                     (
                         DesignUtils.row
                             .AddChild(interactableCheckbox)
-                            .AddSpaceBlock()
+                            .AddChild(DesignUtils.spaceBlock)
                             .AddChild(deselectAfterPressCheckbox)
                     )
                     .Bind(serializedObject);
@@ -383,13 +383,13 @@ namespace Doozy.Editor.UIManager.Editors.Components.Internal
                 VisualElement explicitNavigationContainer =
                     new VisualElement()
                         .SetName("Explicit Navigation")
-                        .AddSpaceBlock()
+                        .AddChild(DesignUtils.spaceBlock)
                         .AddChild(NavigationSelectField("Select On Up", EditorSpriteSheets.EditorUI.Arrows.ArrowUp, propertyNavigationSelectOnUp))
-                        .AddSpaceBlock()
+                        .AddChild(DesignUtils.spaceBlock)
                         .AddChild(NavigationSelectField("Select On Down", EditorSpriteSheets.EditorUI.Arrows.ArrowDown, propertyNavigationSelectOnDown))
-                        .AddSpaceBlock()
+                        .AddChild(DesignUtils.spaceBlock)
                         .AddChild(NavigationSelectField("Select On Left", EditorSpriteSheets.EditorUI.Arrows.ArrowLeft, propertyNavigationSelectOnLeft))
-                        .AddSpaceBlock()
+                        .AddChild(DesignUtils.spaceBlock)
                         .AddChild(NavigationSelectField("Select On Right", EditorSpriteSheets.EditorUI.Arrows.ArrowRight, propertyNavigationSelectOnRight));
 
                 EnumField navigationModeEnumField = DesignUtils.NewEnumField(propertyNavigationMode).SetStyleFlexGrow(1).SetStyleHeight(26);
@@ -429,7 +429,7 @@ namespace Doozy.Editor.UIManager.Editors.Components.Internal
                                 DesignUtils.row
                                     .SetStyleJustifyContent(Justify.FlexEnd)
                                     .AddChild(navigationModeEnumField)
-                                    .AddSpaceBlock()
+                                    .AddChild(DesignUtils.spaceBlock)
                                     .AddChild(visualizeNavigationButton)
                             )
                     )
@@ -444,15 +444,15 @@ namespace Doozy.Editor.UIManager.Editors.Components.Internal
             return
                 toolbarContainer
                     .AddChild(settingsTab)
-                    .AddSpaceBlock(2)
+                    .AddChild(DesignUtils.spaceBlock2X)
                     .AddChild(statesTab)
-                    .AddSpaceBlock(2)
+                    .AddChild(DesignUtils.spaceBlock2X)
                     .AddChild(behavioursTab)
-                    .AddSpaceBlock(2)
+                    .AddChild(DesignUtils.spaceBlock2X)
                     .AddChild(navigationTab)
-                    .AddSpaceBlock(2)
+                    .AddChild(DesignUtils.spaceBlock2X)
                     .AddChild(DesignUtils.flexibleSpace)
-                    .AddSpaceBlock(2)
+                    .AddChild(DesignUtils.spaceBlock2X)
                     .AddChild
                     (
                         DesignUtils.SystemButton_SortComponents
@@ -480,9 +480,9 @@ namespace Doozy.Editor.UIManager.Editors.Components.Internal
                 .AddChild(reactionControls)
                 .AddChild(componentHeader)
                 .AddChild(Toolbar())
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(Content())
-                .AddEndOfLineSpace();
+                .AddChild(DesignUtils.endOfLineBlock);
         }
 
         private void UpdateVisualizeNavigationButton(FluidToggleButtonTab navigationButton)

@@ -2,7 +2,6 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using Doozy.Runtime.Common.Attributes;
 using Doozy.Runtime.Common.ScriptableObjects;
 using Doozy.Runtime.UIManager.Input;
 using UnityEngine;
@@ -12,10 +11,6 @@ namespace Doozy.Runtime.UIManager.ScriptableObjects
 {
     public class UIManagerInputSettings : SingletonRuntimeScriptableObject<UIManagerInputSettings>
     {
-        [RestoreData(nameof(UIManagerInputSettings))]
-        public static UIManagerInputSettings Get() =>
-            instance;
-        
         #if INPUT_SYSTEM_PACKAGE
         public const InputHandling k_InputHandling = InputHandling.InputSystemPackage;
         #elif LEGACY_INPUT_MANAGER
@@ -23,14 +18,14 @@ namespace Doozy.Runtime.UIManager.ScriptableObjects
         #else //CustomInput
         public const InputHandling k_InputHandling = InputHandling.CustomInput;
         #endif
-
+        
         public const int k_LifeTheUniverseAndEverything = 42;
         public const float k_BackButtonCooldown = 0.1f;
-
+        
         [SerializeField] private int DefaultPlayerIndex = -k_LifeTheUniverseAndEverything;
         /// <summary> Default player index value (used for global user) </summary>
         public int defaultPlayerIndex => DefaultPlayerIndex;
-
+        
         [SerializeField] private bool MultiplayerMode;
         /// <summary> True if Multiplayer Mode is enabled </summary>
         public bool multiplayerMode
@@ -38,7 +33,7 @@ namespace Doozy.Runtime.UIManager.ScriptableObjects
             get => MultiplayerMode;
             set => MultiplayerMode = value;
         }
-
+        
         [SerializeField] private float BackButtonCooldown = k_BackButtonCooldown;
         /// <summary> Cooldown after the 'Back' button was fired (to prevent spamming and accidental double execution) </summary>
         public float backButtonCooldown
@@ -53,14 +48,6 @@ namespace Doozy.Runtime.UIManager.ScriptableObjects
         {
             get => SubmitTriggersPointerClick;
             set => SubmitTriggersPointerClick = value;
-        }
-
-        [SerializeField] private string BackButtonVirtualButtonName = BackButton.k_BackButtonVirtualButtonName;
-        /// <summary> Name of the virtual button that will be used for the 'Back' button, when LEGACY_INPUT_MANAGER is enabled </summary>
-        public string backButtonVirtualButtonName
-        {
-            get => BackButtonVirtualButtonName;
-            set => BackButtonVirtualButtonName = value;
         }
     }
 }

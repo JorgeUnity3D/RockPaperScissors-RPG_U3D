@@ -120,20 +120,20 @@ namespace Doozy.Editor.Reactor.Editors.Targets
                 (
                     DesignUtils.row
                         .AddChild(wholeNumbersSwitch)
-                        .AddSpaceBlock()
+                        .AddChild(DesignUtils.spaceBlock)
                         .AddChild(useMultiplierSwitch)
-                        .AddSpaceBlock()
+                        .AddChild(DesignUtils.spaceBlock)
                         .AddChild(multiplierFloatField)
                 )
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild
                 (
                     DesignUtils.row
                         .AddChild(prefixFluidField)
-                        .AddSpaceBlock()
+                        .AddChild(DesignUtils.spaceBlock)
                         .AddChild(suffixFluidField)
                 )
-                .AddSpaceBlock(2);
+                .AddChild(DesignUtils.spaceBlock2X);
         }
     }
 }

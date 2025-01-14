@@ -9,7 +9,6 @@ using Doozy.Editor.Common;
 using Doozy.Editor.Common.ScriptableObjects;
 using Doozy.Editor.UIManager.Automation.Generators;
 using Doozy.Runtime.Common;
-using Doozy.Runtime.Common.Attributes;
 using Doozy.Runtime.Common.Extensions;
 using UnityEditor;
 using UnityEngine;
@@ -57,10 +56,6 @@ namespace Doozy.Editor.UIManager.UIMenu
 
         public bool isEmpty => database.Count == 0;
 
-        [RestoreData(nameof(UIMenuItemsDatabase))]
-        public static UIMenuItemsDatabase RestoreData() =>
-            instance;
-        
         private void RemoveNullEntries() =>
             Database =
                 Database
@@ -144,10 +139,6 @@ namespace Doozy.Editor.UIManager.UIMenu
             EditorUtility.ClearProgressBar();
         }
 
-        [RefreshData(nameof(UIMenuItemsDatabase))]
-        public static void RefreshData() =>
-            instance.RefreshDatabase();
-        
         public void RefreshDatabase(bool saveAssets = true, bool refreshAssetDatabase = false)
         {
             //CLEAR DATABASE

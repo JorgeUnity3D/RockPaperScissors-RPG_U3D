@@ -253,10 +253,10 @@ namespace Doozy.Editor.SceneManagement.Editors
                     (
                         DesignUtils.row
                             .AddChild(getSceneByFluidField)
-                            .AddSpaceBlock()
+                            .AddChild(DesignUtils.spaceBlock)
                             .AddChild(sceneNameFluidField)
                             .AddChild(sceneBuildIndexFluidField)
-                            .AddSpaceBlock()
+                            .AddChild(DesignUtils.spaceBlock)
                             .AddChild(loadSceneModeFluidField)
                     )
                     .AddContent(DesignUtils.spaceBlock)
@@ -266,7 +266,7 @@ namespace Doozy.Editor.SceneManagement.Editors
                     (
                         DesignUtils.row
                             .AddChild(allowSceneActivationFluidField)
-                            .AddSpaceBlock()
+                            .AddChild(DesignUtils.spaceBlock)
                             .AddChild(sceneActivationDelayFluidField)
                     )
                     .Bind(serializedObject);
@@ -397,11 +397,11 @@ namespace Doozy.Editor.SceneManagement.Editors
             return
                 toolbarContainer
                     .AddChild(settingsTab)
-                    .AddSpaceBlock()
+                    .AddChild(DesignUtils.spaceBlock)
                     .AddChild(callbacksTab)
-                    .AddSpaceBlock(4)
+                    .AddChild(DesignUtils.spaceBlock4X)
                     .AddChild(progressorsTab)
-                    .AddSpaceBlock()
+                    .AddChild(DesignUtils.spaceBlock)
                     .AddChild(DesignUtils.flexibleSpace)
                     .AddChild(debugModeSwitch);
         }
@@ -420,9 +420,9 @@ namespace Doozy.Editor.SceneManagement.Editors
             root
                 .AddChild(componentHeader)
                 .AddChild(Toolbar())
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(Content())
-                .AddEndOfLineSpace();
+                .AddChild(DesignUtils.endOfLineBlock);
         }
     }
 }

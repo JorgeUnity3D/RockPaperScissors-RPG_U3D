@@ -68,7 +68,7 @@ namespace Doozy.Editor.Reactor.Editors.Targets
             base.Compose();
             root
                 .AddChild(parameterNameFluidField)
-                .AddSpaceBlock(2);
+                .AddChild(DesignUtils.spaceBlock2X);
         }
     }
 }

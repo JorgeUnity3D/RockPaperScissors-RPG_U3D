@@ -27,8 +27,8 @@ namespace Doozy.Editor.UIManager.Layouts.Settings
 
         public override string layoutName => "UI Settings";
         public override List<Texture2D> animatedIconTextures => EditorSpriteSheets.EditorUI.Icons.DoozyUI;
-        public override Color accentColor => EditorColors.Default.SettingsComponent;
-        public override EditorSelectableColorInfo selectableAccentColor => EditorSelectableColors.Default.SettingsComponent;
+        public override Color accentColor => EditorColors.UIManager.Settings;
+        public override EditorSelectableColorInfo selectableAccentColor => EditorSelectableColors.UIManager.Settings;
 
         private SerializedObject serializedObject { get; set; }
         private SerializedProperty propertyUseOrientationDetection { get; set; }

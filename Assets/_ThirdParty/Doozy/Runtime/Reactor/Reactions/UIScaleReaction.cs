@@ -4,6 +4,7 @@
 
 using System;
 using Doozy.Runtime.Reactor.Internal;
+using Doozy.Runtime.UIManager.Extensions;
 using UnityEngine;
 
 namespace Doozy.Runtime.Reactor.Reactions
@@ -75,11 +76,7 @@ namespace Doozy.Runtime.Reactor.Reactions
 
         public Vector3 currentScale
         {
-            get
-            {
-                Vector3 localScale = rectTransform.localScale;
-                return new Vector3(localScale.x, localScale.y, 1f);
-            }
+            get => rectTransform.localScale.SetZToOne();
             set
             {
                 if (rectTransform == null)
@@ -87,7 +84,7 @@ namespace Doozy.Runtime.Reactor.Reactions
                     Stop();
                     return;
                 }
-                rectTransform.localScale = new Vector3(value.x, value.y, 1f);
+                rectTransform.localScale = value.SetZToOne();
             }
         }
 

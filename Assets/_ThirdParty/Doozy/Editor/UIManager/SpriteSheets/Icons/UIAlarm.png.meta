@@ -191,6 +191,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -835,36 +847,36 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ~UIAlarm_000: 6635177221267707770
-      ~UIAlarm_001: 5089939597216269261
-      ~UIAlarm_002: 3963041773680544412
-      ~UIAlarm_003: 206354082008379791
-      ~UIAlarm_004: 2465842100998949830
-      ~UIAlarm_005: 8848615528853651963
-      ~UIAlarm_006: -8675326282946293221
-      ~UIAlarm_007: -6313196578167661247
+      ~UIAlarm_017: -1305605880137489406
       ~UIAlarm_008: -7260996408275801742
       ~UIAlarm_009: 2173511811955415148
-      ~UIAlarm_010: -7840021137306835859
-      ~UIAlarm_011: -2263098463402340853
-      ~UIAlarm_012: -733447726700634135
-      ~UIAlarm_013: 7620718897525956614
-      ~UIAlarm_014: 1233390990246127645
-      ~UIAlarm_015: -4402970204577348332
-      ~UIAlarm_016: 7312685564534246512
-      ~UIAlarm_017: -1305605880137489406
-      ~UIAlarm_018: -8836416323553153225
-      ~UIAlarm_019: 1342837636614177547
-      ~UIAlarm_020: -3799129768514463566
-      ~UIAlarm_021: 9204913615490785295
+      ~UIAlarm_007: -6313196578167661247
+      ~UIAlarm_000: 6635177221267707770
       ~UIAlarm_022: 6397664589938547695
+      ~UIAlarm_016: 7312685564534246512
+      ~UIAlarm_002: 3963041773680544412
       ~UIAlarm_023: -7308716760517750126
+      ~UIAlarm_018: -8836416323553153225
+      ~UIAlarm_012: -733447726700634135
+      ~UIAlarm_019: 1342837636614177547
+      ~UIAlarm_003: 206354082008379791
+      ~UIAlarm_015: -4402970204577348332
+      ~UIAlarm_001: 5089939597216269261
+      ~UIAlarm_013: 7620718897525956614
+      ~UIAlarm_010: -7840021137306835859
+      ~UIAlarm_021: 9204913615490785295
       ~UIAlarm_024: -8438482454499836373
-      ~UIAlarm_025: 1765414947149973646
-      ~UIAlarm_026: -9185758992867989560
-      ~UIAlarm_027: 5543071672632011266
-      ~UIAlarm_028: -6753728510352216412
+      ~UIAlarm_011: -2263098463402340853
       ~UIAlarm_029: 8795921018499149959
+      ~UIAlarm_004: 2465842100998949830
+      ~UIAlarm_006: -8675326282946293221
+      ~UIAlarm_027: 5543071672632011266
+      ~UIAlarm_020: -3799129768514463566
+      ~UIAlarm_025: 1765414947149973646
+      ~UIAlarm_028: -6753728510352216412
+      ~UIAlarm_026: -9185758992867989560
+      ~UIAlarm_005: 8848615528853651963
+      ~UIAlarm_014: 1233390990246127645
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

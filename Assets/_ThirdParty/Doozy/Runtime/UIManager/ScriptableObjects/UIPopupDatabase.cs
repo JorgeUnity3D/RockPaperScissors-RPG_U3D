@@ -3,7 +3,6 @@
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
 using System;
-using Doozy.Runtime.Common.Attributes;
 using Doozy.Runtime.UIManager.Containers;
 using Doozy.Runtime.UIManager.ScriptableObjects.Internal;
 
@@ -14,13 +13,5 @@ namespace Doozy.Runtime.UIManager.ScriptableObjects
     {
         public override string defaultLinkName => UIPopup.k_DefaultPopupName;
         public override string databaseName => nameof(UIPopup);
-        
-        [RestoreData(nameof(UIPopupDatabase))]
-        public static UIPopupDatabase RestoreData() =>
-            instance;
-        
-        [RefreshData(nameof(UIPopupDatabase))]
-        public static void RefreshData() =>
-            instance.RefreshDatabase();
     }
 }

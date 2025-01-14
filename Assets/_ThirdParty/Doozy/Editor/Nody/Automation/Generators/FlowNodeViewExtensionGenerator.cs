@@ -34,7 +34,7 @@ namespace Doozy.Editor.Nody.Automation.Generators
             return true;
         }
 
-        private static string InjectContent(string data)
+        private static string InjectContent(string templateData)
         {
             var nodesStringBuilder = new StringBuilder();
             IEnumerable<Type> nodeTypeCollection = TypeCache.GetTypesDerivedFrom<FlowNode>().Where(t => !t.IsAbstract);
@@ -64,10 +64,8 @@ namespace Doozy.Editor.Nody.Automation.Generators
 
                 nodesStringBuilder.AppendLine($"                {nodeTypeFullName} _ => new {nodeViewTypeFullName}(graphView, node),");
             }
-            data = data.Replace("//NODES//", nodesStringBuilder.ToString().RemoveLast(Environment.NewLine.Length));
-
-            data += Environment.NewLine;
-            return data;
+            templateData = templateData.Replace("//NODES//", nodesStringBuilder.ToString().RemoveLast(Environment.NewLine.Length));
+            return templateData;
         }
     }
 }

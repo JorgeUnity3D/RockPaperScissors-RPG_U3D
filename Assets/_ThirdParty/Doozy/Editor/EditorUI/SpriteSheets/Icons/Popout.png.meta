@@ -191,6 +191,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -835,36 +847,36 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ~Popout_000: 1999839680734681398
-      ~Popout_001: -8997202846442828848
-      ~Popout_002: -5707355783990042744
-      ~Popout_003: 8061079678907955052
+      ~Popout_011: -7505202287375411790
       ~Popout_004: -1445975370629958967
-      ~Popout_005: -6918728895630355365
-      ~Popout_006: 3010625612621120891
-      ~Popout_007: 1764037131917253771
+      ~Popout_003: 8061079678907955052
+      ~Popout_023: 8438739804787076573
+      ~Popout_025: 791167955694071414
+      ~Popout_010: 713696065781443511
+      ~Popout_000: 1999839680734681398
+      ~Popout_013: 3737761147965030411
+      ~Popout_012: -6304123960971285675
+      ~Popout_002: -5707355783990042744
+      ~Popout_027: -7911758314056623315
       ~Popout_008: 2311615737165271535
       ~Popout_009: -1552623349519568614
-      ~Popout_010: 713696065781443511
-      ~Popout_011: -7505202287375411790
-      ~Popout_012: -6304123960971285675
-      ~Popout_013: 3737761147965030411
-      ~Popout_014: 1920307636331174983
-      ~Popout_015: 2724877132586112887
-      ~Popout_016: -271236129990460859
-      ~Popout_017: -3787863554853089338
-      ~Popout_018: 2352321054699212468
-      ~Popout_019: -1349863139903809588
-      ~Popout_020: -6455645344610640816
-      ~Popout_021: -6501008643831899931
-      ~Popout_022: 1870627841335139225
-      ~Popout_023: 8438739804787076573
-      ~Popout_024: -5753462161179743091
-      ~Popout_025: 791167955694071414
-      ~Popout_026: -949043903023237025
-      ~Popout_027: -7911758314056623315
-      ~Popout_028: -5003057089311132713
       ~Popout_029: -4130983063450749897
+      ~Popout_006: 3010625612621120891
+      ~Popout_015: 2724877132586112887
+      ~Popout_026: -949043903023237025
+      ~Popout_028: -5003057089311132713
+      ~Popout_019: -1349863139903809588
+      ~Popout_024: -5753462161179743091
+      ~Popout_007: 1764037131917253771
+      ~Popout_022: 1870627841335139225
+      ~Popout_001: -8997202846442828848
+      ~Popout_005: -6918728895630355365
+      ~Popout_020: -6455645344610640816
+      ~Popout_016: -271236129990460859
+      ~Popout_018: 2352321054699212468
+      ~Popout_021: -6501008643831899931
+      ~Popout_014: 1920307636331174983
+      ~Popout_017: -3787863554853089338
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

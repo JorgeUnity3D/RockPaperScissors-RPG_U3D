@@ -117,11 +117,11 @@ namespace Doozy.Editor.SceneManagement.Nodes
                         (
                             DesignUtils.row
                                 .AddChild(getSceneByFluidField)
-                                .AddSpaceBlock()
+                                .AddChild(DesignUtils.spaceBlock)
                                 .AddChild(sceneNameFluidField)
                                 .AddChild(sceneBuildIndexFluidField)
                         )
-                        .AddSpaceBlock()
+                        .AddChild(DesignUtils.spaceBlock)
                         .AddChild
                         (
                             DesignUtils.row

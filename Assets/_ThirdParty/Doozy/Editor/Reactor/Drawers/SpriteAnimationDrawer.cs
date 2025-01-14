@@ -184,11 +184,11 @@ namespace Doozy.Editor.Reactor.Drawers
 
             toolbarContainer
                 .AddChild(settingsTab)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(spritesTab)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(callbacksTab)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(DesignUtils.flexibleSpace);
 
             #endregion
@@ -198,7 +198,7 @@ namespace Doozy.Editor.Reactor.Drawers
             drawer
                 .AddChild(componentHeader)
                 .AddChild(toolbarContainer)
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild
                 (
                     contentContainer
@@ -236,7 +236,7 @@ namespace Doozy.Editor.Reactor.Drawers
                 new VisualElement()
                     .AddChild(fluidListView)
                     .AddChild(animationInfo)
-                    .AddEndOfLineSpace();
+                    .AddChild(DesignUtils.endOfLineBlock);
             content.Bind(arrayProperty.serializedObject);
 
             animationInfo.SetStyleDisplay(arrayProperty.arraySize > 0 ? DisplayStyle.Flex : DisplayStyle.None);
@@ -532,26 +532,26 @@ namespace Doozy.Editor.Reactor.Drawers
                                         DesignUtils.column
                                             .SetName("From Settings")
                                             .AddChild(fromReferenceValueFluidField)
-                                            .AddSpaceBlock()
+                                            .AddChild(DesignUtils.spaceBlock)
                                             .AddChild(fromFrameOffsetFluidField)
                                             .AddChild(fromCustomValueFluidField)
                                             .AddChild(fromCustomProgressFluidField)
                                     )
-                                    .AddSpaceBlock()
+                                    .AddChild(DesignUtils.spaceBlock)
                                     .AddChild
                                     (
                                         DesignUtils.column
                                             .SetName("To Settings")
                                             .AddChild(toReferenceValueFluidField)
-                                            .AddSpaceBlock()
+                                            .AddChild(DesignUtils.spaceBlock)
                                             .AddChild(toFrameOffsetFluidField)
                                             .AddChild(toCustomValueFluidField)
                                             .AddChild(toCustomProgressFluidField)
                                     )
                             )
-                            .AddSpaceBlock()
+                            .AddChild(DesignUtils.spaceBlock)
                             .AddChild(settingsPropertyField)
-                            .AddEndOfLineSpace()
+                            .AddChild(DesignUtils.endOfLineBlock)
                     );
 
             void Update()
@@ -610,7 +610,7 @@ namespace Doozy.Editor.Reactor.Drawers
                     DesignUtils.row
                         .SetStyleJustifyContent(Justify.Center)
                         .AddChild(label)
-                        .AddSpaceBlock(2)
+                        .AddChild(DesignUtils.spaceBlock2X)
                         .AddChild(slider)
                         .AddChild
                         (

@@ -79,7 +79,7 @@ namespace Doozy.Editor.Reactor.Editors.Targets
 
             root
                 .AddChild(targetModeFluidField)
-                .AddSpaceBlock(2);
+                .AddChild(DesignUtils.spaceBlock2X);
         }
     }
 }

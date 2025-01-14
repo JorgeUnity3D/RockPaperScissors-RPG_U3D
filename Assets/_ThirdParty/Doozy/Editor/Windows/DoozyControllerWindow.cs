@@ -2,10 +2,10 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-namespace Doozy.Editor.Windows
+// ReSharper disable CheckNamespace
+// ReSharper disable UnusedType.Global
+
+public class DoozyControllerWindow 
 {
-    public class DoozyControllerWindow
-    {
-        //REMOVED
-    }
+    //REMOVED
 }

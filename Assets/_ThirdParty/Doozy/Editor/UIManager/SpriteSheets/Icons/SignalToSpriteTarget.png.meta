@@ -191,6 +191,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -835,36 +847,36 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ~SignalToSpriteTarget_000: 9089820792110569161
-      ~SignalToSpriteTarget_001: -5311855540397887449
-      ~SignalToSpriteTarget_002: 7649718943398096771
-      ~SignalToSpriteTarget_003: -5867609982335665724
-      ~SignalToSpriteTarget_004: 1326582520456475960
-      ~SignalToSpriteTarget_005: -4731295690315088878
-      ~SignalToSpriteTarget_006: 6537478995131512449
-      ~SignalToSpriteTarget_007: -7440944672961914774
-      ~SignalToSpriteTarget_008: -9018354751495604750
-      ~SignalToSpriteTarget_009: 1765625264196106803
-      ~SignalToSpriteTarget_010: -114359762283024159
-      ~SignalToSpriteTarget_011: -1141838985401293425
-      ~SignalToSpriteTarget_012: 5938242498912997864
-      ~SignalToSpriteTarget_013: -4003823511394125173
-      ~SignalToSpriteTarget_014: 6377075761791908299
-      ~SignalToSpriteTarget_015: -7058020270588256853
-      ~SignalToSpriteTarget_016: 3778438988515271087
-      ~SignalToSpriteTarget_017: 1954767569356486060
-      ~SignalToSpriteTarget_018: -1269203476268684777
-      ~SignalToSpriteTarget_019: 3616228747845484790
-      ~SignalToSpriteTarget_020: 6649084933309967534
-      ~SignalToSpriteTarget_021: 1138469360972972667
       ~SignalToSpriteTarget_022: 3324169214328396563
-      ~SignalToSpriteTarget_023: 5059528633497474471
-      ~SignalToSpriteTarget_024: -996410955425583353
-      ~SignalToSpriteTarget_025: -4491446543461503643
+      ~SignalToSpriteTarget_005: -4731295690315088878
+      ~SignalToSpriteTarget_013: -4003823511394125173
+      ~SignalToSpriteTarget_008: -9018354751495604750
+      ~SignalToSpriteTarget_017: 1954767569356486060
       ~SignalToSpriteTarget_026: 6155551947411332120
+      ~SignalToSpriteTarget_025: -4491446543461503643
+      ~SignalToSpriteTarget_006: 6537478995131512449
       ~SignalToSpriteTarget_027: -6044015526764348775
-      ~SignalToSpriteTarget_028: -716504909592603476
+      ~SignalToSpriteTarget_021: 1138469360972972667
+      ~SignalToSpriteTarget_014: 6377075761791908299
       ~SignalToSpriteTarget_029: 1074338835849742729
+      ~SignalToSpriteTarget_010: -114359762283024159
+      ~SignalToSpriteTarget_024: -996410955425583353
+      ~SignalToSpriteTarget_007: -7440944672961914774
+      ~SignalToSpriteTarget_012: 5938242498912997864
+      ~SignalToSpriteTarget_016: 3778438988515271087
+      ~SignalToSpriteTarget_020: 6649084933309967534
+      ~SignalToSpriteTarget_000: 9089820792110569161
+      ~SignalToSpriteTarget_002: 7649718943398096771
+      ~SignalToSpriteTarget_004: 1326582520456475960
+      ~SignalToSpriteTarget_011: -1141838985401293425
+      ~SignalToSpriteTarget_009: 1765625264196106803
+      ~SignalToSpriteTarget_019: 3616228747845484790
+      ~SignalToSpriteTarget_018: -1269203476268684777
+      ~SignalToSpriteTarget_028: -716504909592603476
+      ~SignalToSpriteTarget_015: -7058020270588256853
+      ~SignalToSpriteTarget_003: -5867609982335665724
+      ~SignalToSpriteTarget_023: 5059528633497474471
+      ~SignalToSpriteTarget_001: -5311855540397887449
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -138,7 +138,7 @@ namespace Doozy.Editor.UIDesigner.Editors
         {
             return
                 toolbarContainer
-                    .AddSpaceBlock(2)
+                    .AddChild(DesignUtils.spaceBlock2X)
                     .AddChild(DesignUtils.flexibleSpace)
                     .AddChild
                     (
@@ -156,17 +156,17 @@ namespace Doozy.Editor.UIDesigner.Editors
             root
                 .AddChild(componentHeader)
                 .AddChild(Toolbar())
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild
                 (
                     DesignUtils.row
                         .AddChild(targetSizeFluidField)
-                        .AddSpaceBlock()
+                        .AddChild(DesignUtils.spaceBlock)
                         .AddChild(referenceSizeFluidField)
                 )
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(continuousUpdateToggleSwitch)
-                .AddEndOfLineSpace();
+                .AddChild(DesignUtils.endOfLineBlock);
         }
     }
 }

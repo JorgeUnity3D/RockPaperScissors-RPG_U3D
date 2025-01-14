@@ -109,7 +109,6 @@ namespace Doozy.Editor.Nody.Automation.Generators
                 data = data.Replace("//runFixedUpdate//", targetRunFixedUpdate.ToString().ToLowerInvariant());
                 data = data.Replace("//runLateUpdate//", targetRunLateUpdate.ToString().ToLowerInvariant());
             }
-            data += Environment.NewLine;
             bool result = FileGenerator.WriteFile(targetNodeFilePath, data, silent);
             return result;
         }
@@ -121,7 +120,6 @@ namespace Doozy.Editor.Nody.Automation.Generators
                 data = data.Replace("//NodeEditorName//", nodeEditorName);
                 data = data.Replace("//NodeName//", nodeName);
             }
-            data += Environment.NewLine;
             bool result = FileGenerator.WriteFile(targetNodeEditorFilePath, data, silent);
             return result;
         }
@@ -133,7 +131,6 @@ namespace Doozy.Editor.Nody.Automation.Generators
                 data = data.Replace("//NodeViewName//", nodeViewName);
                 data = data.Replace("//NodeName//", nodeName);
             }
-            data += Environment.NewLine;
             bool result = FileGenerator.WriteFile(targetNodeViewFilePath, data, silent);
             return result;
         }

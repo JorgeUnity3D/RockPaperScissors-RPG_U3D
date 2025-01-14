@@ -236,15 +236,15 @@ namespace Doozy.Editor.UIManager.Editors.Animators
             return base.Toolbar()
                 .RecycleAndClear()
                 .AddChild(normalUIAnimationTab)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(highlightedUIAnimationTab)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(pressedUIAnimationTab)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(selectedUIAnimationTab)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(disabledUIAnimationTab)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(DesignUtils.flexibleSpace);
         }
     }

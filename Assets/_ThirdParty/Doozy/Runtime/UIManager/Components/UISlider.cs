@@ -267,7 +267,7 @@ namespace Doozy.Runtime.UIManager.Components
         public bool InstantProgressorUpdate = true;
 
         /// <summary> Reset the slider value to the default value OnEnable </summary>
-        public bool ResetValueOnEnable = false;
+        public bool ResetValueOnEnable = true;
 
         /// <summary> The current value of the slider normalized into a value between 0 and 1 </summary>
         public float normalizedValue

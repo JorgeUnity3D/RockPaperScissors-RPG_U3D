@@ -3,16 +3,15 @@
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
 using System.Collections.Generic;
-using Doozy.Runtime.Common.Layouts;
-using Doozy.Runtime.Common.Utils;
 using Doozy.Runtime.Reactor;
 using Doozy.Runtime.Reactor.Animations;
 using Doozy.Runtime.Reactor.Ticker;
 using Doozy.Runtime.UIManager.Containers;
+using Doozy.Runtime.UIManager.Layouts;
+using Doozy.Runtime.UIManager.Utils;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
-
 namespace Doozy.Runtime.UIManager.Animators
 {
     /// <summary>

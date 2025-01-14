@@ -250,7 +250,7 @@ namespace Doozy.Editor.UIManager.UIMenu
             }
 
             itemSizeSlider =
-                new SliderInt(UIMenuSettings.MIN_ITEM_SIZE, UIMenuSettings.MAX_ITEM_SIZE)
+                new SliderInt(UIMenuSettings.k_MinItemSize, UIMenuSettings.k_MaxItemSize)
                     .SetName("Item Size Slider")
                     .ResetLayout()
                     .SetStyleWidth(88);
@@ -320,7 +320,7 @@ namespace Doozy.Editor.UIManager.UIMenu
                 FluidToggleButtonTab.Get()
                     .SetLabelText(labelText)
                     .SetContainerColorOff(DesignUtils.tabButtonColorOff)
-                    .SetToggleAccentColor(EditorSelectableColors.Default.UIComponent);
+                    .SetToggleAccentColor(EditorSelectableColors.UIManager.UIComponent);
 
             autoSelectTab =
                 GetInstantiateTab("Auto Select")
@@ -509,18 +509,18 @@ namespace Doozy.Editor.UIManager.UIMenu
                         .SetStyleBackgroundColor(EditorColors.Default.BoxBackground)
                         .SetStylePadding(DesignUtils.k_Spacing2X)
                         .AddChild(regenerateButton)
-                        .AddSpaceBlock()
+                        .AddChild(DesignUtils.spaceBlock)
                         .AddChild(refreshButton)
-                        .AddSpaceBlock(2)
+                        .AddChild(DesignUtils.spaceBlock2X)
                         .AddChild(autoSelectTab)
                         .AddChild(DesignUtils.flexibleSpace)
-                        .AddSpaceBlock(2)
+                        .AddChild(DesignUtils.spaceBlock2X)
                         .AddChild(cloneInstantiateModeTab)
                         .AddSpace(2, 0)
                         .AddChild(defaultInstantiateModeTab)
                         .AddSpace(2, 0)
                         .AddChild(linkInstantiateModeTab)
-                        .AddSpaceBlock(2)
+                        .AddChild(DesignUtils.spaceBlock2X)
                         .AddChild(DesignUtils.flexibleSpace)
                         .AddChild(itemSizeContainer)
                 )

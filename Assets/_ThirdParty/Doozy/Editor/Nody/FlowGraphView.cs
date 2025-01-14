@@ -14,12 +14,9 @@ using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UIElements;
-using FlowGraph = Doozy.Runtime.Nody.FlowGraph;
 using Object = UnityEngine.Object;
 // ReSharper disable MemberCanBePrivate.Global
 // ReSharper disable UnusedAutoPropertyAccessor.Local
-// ReSharper disable ForCanBeConvertedToForeach
-// ReSharper disable LoopCanBeConvertedToQuery
 
 namespace Doozy.Editor.Nody
 {
@@ -71,12 +68,11 @@ namespace Doozy.Editor.Nody
             graphViewChanged -= OnGraphViewChanged;
             DeleteElements(nodes.ToList());
             graphViewChanged += OnGraphViewChanged;
-            for (int i = 0; i < flowGraph.nodes.Count; i++)
+            flowGraph.nodes.ForEach(node =>
             {
-                FlowNode node = flowGraph.nodes[i];
                 FlowNodeView nodeView = CreateNodeView(node);
                 nodeView.UpdatePresenterPosition();
-            }
+            });
         }
 
         public void RefreshEdges()
@@ -85,21 +81,19 @@ namespace Doozy.Editor.Nody
             graphViewChanged -= OnGraphViewChanged;
             DeleteElements(edges.ToList());
             graphViewChanged += OnGraphViewChanged;
-            for (int i = 0; i < flowGraph.outputPorts.Count; i++)
+            flowGraph.outputPorts.ForEach(outputPort =>
             {
-                FlowPort outputPort = flowGraph.outputPorts[i];
-                if (!outputPort.isConnected) continue;
+                if (!outputPort.isConnected) return;
                 FlowPortView outputPortView = GetPortView(outputPort);
-                if (outputPortView == null) continue;
-                for (int j = 0; j < outputPort.connections.Count; j++)
+                if (outputPortView == null) return;
+                foreach (string inputPortId in outputPort.connections)
                 {
-                    string inputPortId = outputPort.connections[j];
                     FlowPortView inputPortView = GetPortView(inputPortId);
                     if (inputPortView == null) continue;
                     FlowEdgeView edgeView = outputPortView.ConnectTo(inputPortView);
                     AddElement(edgeView);
                 }
-            }
+            });
         }
 
         public FlowNode CreateNode(Type type, bool createView = false, bool recordUndo = true)
@@ -179,6 +173,7 @@ namespace Doozy.Editor.Nody
                     evt.menu.RemoveItemAt(1);
                     evt.menu.RemoveItemAt(3);
                 }
+
             }
         }
 
@@ -198,7 +193,7 @@ namespace Doozy.Editor.Nody
         public override void RemoveFromSelection(ISelectable selectable)
         {
             base.RemoveFromSelection(selectable);
-
+            
             if (selection.Count > 1)
                 OnNodeSelected?.Invoke(null);
 
@@ -230,15 +225,15 @@ namespace Doozy.Editor.Nody
 
         public override List<Port> GetCompatiblePorts(Port startPort, NodeAdapter nodeAdapter)
         {
-            return
-                ports
-                    .ToList()
-                    .Where(endPort => endPort.direction != startPort.direction && endPort.node != startPort.node)
-                    .ToList();
+            return ports
+                .ToList()
+                .Where(endPort => endPort.direction != startPort.direction && endPort.node != startPort.node)
+                .ToList();
         }
 
         internal void PopulateView(FlowGraph graphReference)
         {
+            // Debug.Log($"PopulateView");
             ClearGraphView(true);          // clear the view (from the previous graph)
             flowGraph = graphReference;    // set graph reference 
             if (flowGraph == null) return; // graph null -> stop
@@ -318,33 +313,21 @@ namespace Doozy.Editor.Nody
             }
             else //the graph was not selected in the Inspector -> check each node
             {
-                for (int i = 0; i < flowGraph.nodes.Count; i++)
+                if (flowGraph.nodes.Any(node => Selection.activeObject == node))
                 {
-                    FlowNode node = flowGraph.nodes[i];
-                    if (Selection.activeObject != node)
-                        continue;
                     Selection.activeObject = null; //one of the graph's nodes was selected in the Inspector -> deselect the node
-                    break;
                 }
             }
         }
 
         private FlowPortView GetPortView(FlowPort flowPort)
         {
-            foreach (FlowPortView portView in portViews)
-                if (portView.flowPort == flowPort)
-                    return portView;
-
-            return null;
+            return portViews.FirstOrDefault(portView => portView.flowPort == flowPort);
         }
 
         private FlowPortView GetPortView(string portId)
         {
-            foreach (FlowPortView portView in portViews)
-                if (portView.flowPort.portId == portId)
-                    return portView;
-
-            return null;
+            return portViews.FirstOrDefault(portView => portView.flowPort.portId == portId);
         }
 
         private GraphViewChange OnGraphViewChanged(GraphViewChange graphViewChange)
@@ -445,40 +428,33 @@ namespace Doozy.Editor.Nody
                 var flowNodes = new List<FlowNode>();
                 var otherPorts = new List<FlowPort>();
 
-                for (int i = 0; i < port.connections.Count; i++)
+                foreach (string otherPortId in port.connections.ToList())
                 {
-                    string otherPortId = port.connections[i];
                     FlowPortView otherPortView = GetPortView(otherPortId); //get other port's view
                     FlowPort otherPort = otherPortView?.flowPort;          //get a reference to the other port
                     if (otherPort == null) continue;                       //null port -> skip this id
                     otherPorts.Add(otherPort);                             //add other ports (to disconnect)
                     flowNodes.Add(otherPort.node);                         //add other nodes (to save for undo and mark as dirty)
                     nodeViews.Add(otherPortView.nodeView);
-                }
+                }                    //
                 flowNodes.Add(node); //add the node to the undo objects list
                 nodeViews.Add(portView.nodeView);
                 // ReSharper disable once CoVariantArrayConversion
-                Undo.RecordObjects(flowNodes.ToArray(), "Delete Port"); //save undo for all the nodes
-                for (int i = 0; i < otherPorts.Count; i++)              //disconnect all ports
+                Undo.RecordObjects(flowNodes.ToArray(), "Delete Port");                                       //save undo for all the nodes
+                foreach (FlowPort otherPort in otherPorts) NodyUtils.DisconnectPortFromPort(port, otherPort); //disconnect all ports
+                port.connections.Clear();                                                                     //sanity check - remove all connection port ids from target port
+                node.DeletePort(port.portId);                                                                 //delete the port
+                flowNodes.ForEach(n =>
                 {
-                    FlowPort otherPort = otherPorts[i];
-                    NodyUtils.DisconnectPortFromPort(port, otherPort);
-                }
-                port.connections.Clear();     //sanity check - remove all connection port ids from target port
-                node.DeletePort(port.portId); //delete the port
-                for (int i = 0; i < flowNodes.Count; i++)
-                {
-                    FlowNode n = flowNodes[i];
                     EditorUtility.SetDirty(n);         //mark all nodes as dirty
                     AssetDatabase.SaveAssetIfDirty(n); //save this s$%t
-                }
+                });
                 // AssetDatabase.SaveAssets();                                                                 
-                for (int i = 0; i < nodeViews.Count; i++)
+                nodeViews.ForEach(nodeView =>
                 {
-                    FlowNodeView nodeView = nodeViews[i];
                     nodeView.RefreshNodeView();   //refresh node views
                     nodeView.RefreshPortsViews(); //refresh node port views
-                }
+                });
 
                 // if (NodyInspectorWindow.isOpen)
                 //     inspector.Refresh();
@@ -518,14 +494,14 @@ namespace Doozy.Editor.Nody
         {
             if (flowGraph == null) return;
             if (flowGraph.rootNode != null) return;
-            for (int i = 0; i < flowGraph.nodes.Count; i++)
+            foreach (FlowNode node in flowGraph.nodes)
             {
-                FlowNode node = flowGraph.nodes[i];
                 if (!(node is StartNode rootNode))
                     continue;
                 flowGraph.rootNode = rootNode;
                 EditorUtility.SetDirty(flowGraph);
                 AssetDatabase.SaveAssetIfDirty(flowGraph);
+                // AssetDatabase.SaveAssets();
                 break;
             }
             if (flowGraph.rootNode != null) return;
@@ -534,6 +510,7 @@ namespace Doozy.Editor.Nody
             flowGraph.nodes.Insert(0, flowGraph.rootNode);
             EditorUtility.SetDirty(flowGraph);
             AssetDatabase.SaveAssetIfDirty(flowGraph);
+            // AssetDatabase.SaveAssets();
             FrameAll();
         }
 

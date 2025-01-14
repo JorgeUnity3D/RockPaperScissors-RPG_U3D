@@ -191,6 +191,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -835,35 +847,35 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ~Twitter_000: 7293137748703710809
-      ~Twitter_001: -8101404565491737117
-      ~Twitter_002: -7349310171270472620
-      ~Twitter_003: 6372212881410114756
-      ~Twitter_004: 6827897995426531257
-      ~Twitter_005: -1516256897022860253
-      ~Twitter_006: -6348705171691196300
-      ~Twitter_007: 8445078739545512480
-      ~Twitter_008: -7967942918285570485
-      ~Twitter_009: -1095174606552005578
-      ~Twitter_010: 2412080560451286188
-      ~Twitter_011: -6545848190361510498
-      ~Twitter_012: 70625370431381735
-      ~Twitter_013: 5996854559802140856
-      ~Twitter_014: -8529585442762533542
-      ~Twitter_015: 2002689175370176505
       ~Twitter_016: -6357480638156409907
-      ~Twitter_017: -4354211311210607033
       ~Twitter_018: 8553627449536715772
-      ~Twitter_019: 2939234173726745224
-      ~Twitter_020: 3983470641892781524
-      ~Twitter_021: 8895685597961050223
-      ~Twitter_022: -7337227202029438500
+      ~Twitter_002: -7349310171270472620
       ~Twitter_023: 7178578746337726293
-      ~Twitter_024: -2832535576737094981
       ~Twitter_025: 2588177895124761604
       ~Twitter_026: 5454373376638454856
-      ~Twitter_027: -1942210207889893824
+      ~Twitter_000: 7293137748703710809
       ~Twitter_028: -991574833894093284
+      ~Twitter_017: -4354211311210607033
+      ~Twitter_020: 3983470641892781524
+      ~Twitter_027: -1942210207889893824
+      ~Twitter_022: -7337227202029438500
+      ~Twitter_004: 6827897995426531257
+      ~Twitter_014: -8529585442762533542
+      ~Twitter_015: 2002689175370176505
+      ~Twitter_003: 6372212881410114756
+      ~Twitter_012: 70625370431381735
+      ~Twitter_021: 8895685597961050223
+      ~Twitter_010: 2412080560451286188
+      ~Twitter_011: -6545848190361510498
+      ~Twitter_019: 2939234173726745224
+      ~Twitter_009: -1095174606552005578
+      ~Twitter_024: -2832535576737094981
+      ~Twitter_006: -6348705171691196300
+      ~Twitter_005: -1516256897022860253
+      ~Twitter_013: 5996854559802140856
+      ~Twitter_008: -7967942918285570485
+      ~Twitter_001: -8101404565491737117
+      ~Twitter_007: 8445078739545512480
       ~Twitter_029: 1765158825355231659
   spritePackingTag: 
   pSDRemoveMatte: 0

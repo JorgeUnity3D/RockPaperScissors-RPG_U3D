@@ -110,13 +110,13 @@ namespace Doozy.Editor.UIManager.Editors.Containers
         {
             toolbarContainer
                 .AddChild(settingsTab)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(callbacksTab)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(progressorsTab)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(DesignUtils.flexibleSpace)
-                .AddSpaceBlock(2);
+                .AddChild(DesignUtils.spaceBlock2X);
 
             if (castedTarget != null)
             {
@@ -127,7 +127,7 @@ namespace Doozy.Editor.UIManager.Editors.Containers
                             () => $"View - {castedTarget.Id.Name}"
                         )
                     )
-                    .AddSpaceBlock();
+                    .AddChild(DesignUtils.spaceBlock);
             }
 
             toolbarContainer
@@ -150,13 +150,13 @@ namespace Doozy.Editor.UIManager.Editors.Containers
                 .AddChild(reactionControls)
                 .AddChild(componentHeader)
                 .AddChild(Toolbar())
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(Content())
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(idFluidField)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(targetOrientationFluidField)
-                .AddEndOfLineSpace();
+                .AddChild(DesignUtils.endOfLineBlock);
         }
     }
 }

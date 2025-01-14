@@ -8,7 +8,6 @@ using System.Linq;
 using Doozy.Editor.Common;
 using Doozy.Editor.Common.ScriptableObjects;
 using Doozy.Runtime.Common;
-using Doozy.Runtime.Common.Attributes;
 using Doozy.Runtime.Common.Extensions;
 using UnityEditor;
 using UnityEngine;
@@ -24,10 +23,6 @@ namespace Doozy.Editor.Signals.ScriptableObjects
 
         public UnityAction onUpdateCallback { get; set; }
 
-        [RestoreData(nameof(StreamIdDatabase))]
-        public static StreamIdDatabase RestoreData() =>
-            instance;
-        
         public void SetOnUpdateCallback(UnityAction callback) =>
             onUpdateCallback = callback;
 

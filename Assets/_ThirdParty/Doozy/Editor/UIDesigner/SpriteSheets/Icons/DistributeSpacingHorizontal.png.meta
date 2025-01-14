@@ -191,6 +191,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -835,36 +847,36 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ~DistributeSpacingHorizontal_000: 7042211284229707229
-      ~DistributeSpacingHorizontal_001: 3899266147576660806
-      ~DistributeSpacingHorizontal_002: -7631359418131853811
-      ~DistributeSpacingHorizontal_003: -3293115706433905191
-      ~DistributeSpacingHorizontal_004: -6577370113135714742
-      ~DistributeSpacingHorizontal_005: -6528400239650824845
-      ~DistributeSpacingHorizontal_006: -7229038326832073045
-      ~DistributeSpacingHorizontal_007: 8111008139408752980
-      ~DistributeSpacingHorizontal_008: 3106373499233866715
-      ~DistributeSpacingHorizontal_009: 5773943472327732931
-      ~DistributeSpacingHorizontal_010: -7543439136161910833
       ~DistributeSpacingHorizontal_011: -191170686289714080
-      ~DistributeSpacingHorizontal_012: 5561901161682203088
       ~DistributeSpacingHorizontal_013: 2096038166625832663
-      ~DistributeSpacingHorizontal_014: 2771589640750313262
-      ~DistributeSpacingHorizontal_015: 7714738225937613076
-      ~DistributeSpacingHorizontal_016: -6753077481531299088
-      ~DistributeSpacingHorizontal_017: -541566577720699550
-      ~DistributeSpacingHorizontal_018: -2409640227839100969
-      ~DistributeSpacingHorizontal_019: -6583455956389042356
       ~DistributeSpacingHorizontal_020: 1373587186012456636
+      ~DistributeSpacingHorizontal_024: 8207317762711067040
+      ~DistributeSpacingHorizontal_016: -6753077481531299088
+      ~DistributeSpacingHorizontal_006: -7229038326832073045
+      ~DistributeSpacingHorizontal_012: 5561901161682203088
+      ~DistributeSpacingHorizontal_018: -2409640227839100969
+      ~DistributeSpacingHorizontal_015: 7714738225937613076
+      ~DistributeSpacingHorizontal_025: 4099066408970277686
+      ~DistributeSpacingHorizontal_003: -3293115706433905191
+      ~DistributeSpacingHorizontal_028: -427025901109670380
+      ~DistributeSpacingHorizontal_007: 8111008139408752980
+      ~DistributeSpacingHorizontal_001: 3899266147576660806
+      ~DistributeSpacingHorizontal_010: -7543439136161910833
+      ~DistributeSpacingHorizontal_014: 2771589640750313262
       ~DistributeSpacingHorizontal_021: -1596483709705237968
+      ~DistributeSpacingHorizontal_017: -541566577720699550
+      ~DistributeSpacingHorizontal_008: 3106373499233866715
+      ~DistributeSpacingHorizontal_002: -7631359418131853811
+      ~DistributeSpacingHorizontal_004: -6577370113135714742
+      ~DistributeSpacingHorizontal_019: -6583455956389042356
+      ~DistributeSpacingHorizontal_009: 5773943472327732931
+      ~DistributeSpacingHorizontal_005: -6528400239650824845
+      ~DistributeSpacingHorizontal_026: 9017533348560420237
       ~DistributeSpacingHorizontal_022: -8046694205265160898
       ~DistributeSpacingHorizontal_023: 5848178587039565703
-      ~DistributeSpacingHorizontal_024: 8207317762711067040
-      ~DistributeSpacingHorizontal_025: 4099066408970277686
-      ~DistributeSpacingHorizontal_026: 9017533348560420237
-      ~DistributeSpacingHorizontal_027: -6621933865807436899
-      ~DistributeSpacingHorizontal_028: -427025901109670380
       ~DistributeSpacingHorizontal_029: -1016025515377700296
+      ~DistributeSpacingHorizontal_027: -6621933865807436899
+      ~DistributeSpacingHorizontal_000: 7042211284229707229
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

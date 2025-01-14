@@ -19,7 +19,6 @@ namespace Doozy.Editor.Dashboard.WindowsLayouts
 {
     public class DashboardEditorUIWindowLayout : FluidWindowLayout, IDashboardWindowLayout
     {
-        public bool isValid => true;
         
         public int order => 900;
 

@@ -51,30 +51,24 @@ namespace Doozy.Editor.UIManager.Nodes.PortData
         {
             this.port = port;
             this.nodeView = nodeView;
-            GetDataFromPort();
+            data = this.port.GetValue<UIOutputPortData>();
+
             InitializeEditor();
             Compose();
-            // Undo.undoRedoPerformed -= RefreshData;
-            // Undo.undoRedoPerformed += RefreshData;
+
+            Undo.undoRedoPerformed -= RefreshData;
+            Undo.undoRedoPerformed += RefreshData;
         }
 
-        /// <summary>
-        /// Gets the data from the port
-        /// </summary>
-        private void GetDataFromPort()
-        {
-            // data = this.port.GetValue<UIOutputPortData>(); // this uses reflection and is slow
-            
-            data ??= new UIOutputPortData();
-            JsonUtility.FromJsonOverwrite(this.port.value, data); // this is faster than the reflection method above
-        }
-        
         private void RefreshData()
         {
             if (port == null) return;
             if (port.node == null) return;
             connectionIndicator?.Toggle(port.isConnected, true);
-            GetDataFromPort();
+            data = port.GetValue<UIOutputPortData>();
+            {
+
+            }
             port.RefreshPortEditor();
             port.RefreshPortView();
         }
@@ -182,11 +176,7 @@ namespace Doozy.Editor.UIManager.Nodes.PortData
         {
             if (port == null) return;
             if (port.node == null) return;
-            
-            // data = port.GetValue<UIOutputPortData>();
-            data ??= new UIOutputPortData();
-            JsonUtility.FromJsonOverwrite(port.value, data);
-            
+            data = port.GetValue<UIOutputPortData>();
             triggerEnumField.SetValueWithoutNotify(data.Trigger);
             connectionIndicator.Toggle(port.isConnected, true);
             EditorUtility.SetDirty(port.node);
@@ -213,7 +203,7 @@ namespace Doozy.Editor.UIManager.Nodes.PortData
                 .SetStylePadding(DesignUtils.k_Spacing)
                 .SetStyleMarginBottom(DesignUtils.k_Spacing)
                 .AddChild(connectionIndicator)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild
                 (
                     DesignUtils.column
@@ -221,7 +211,7 @@ namespace Doozy.Editor.UIManager.Nodes.PortData
                         (
                             DesignUtils.row
                                 .AddChild(icon)
-                                .AddSpaceBlock()
+                                .AddChild(DesignUtils.spaceBlock)
                                 .AddChild(triggerEnumField)
                                 .AddChild(timeDelayFloatField)
                                 .AddChild(commandToggleEnumField)
@@ -458,12 +448,12 @@ namespace Doozy.Editor.UIManager.Nodes.PortData
 
             container
                 .AddChild(streamIdElement)
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild
                 (
                     DesignUtils.row
                         .AddChild(valueTypeFluidField)
-                        .AddSpaceBlock()
+                        .AddChild(DesignUtils.spaceBlock)
                         .AddChild(valueFluidField)
                 );
 
@@ -501,7 +491,7 @@ namespace Doozy.Editor.UIManager.Nodes.PortData
                     ButtonsDatabaseWindow.Open,
                     "Open Buttons Database Window",
                     UIButtonIdDatabase.instance,
-                    EditorSelectableColors.Default.UIComponent
+                    EditorSelectableColors.UIManager.UIComponent
                 )
                 .SetName("UIButton Container");
         }
@@ -537,7 +527,7 @@ namespace Doozy.Editor.UIManager.Nodes.PortData
                     TogglesDatabaseWindow.Open,
                     "Open Toggles Database Window",
                     UIToggleIdDatabase.instance,
-                    EditorSelectableColors.Default.UIComponent
+                    EditorSelectableColors.UIManager.UIComponent
                 )
                 .SetName("UIToggle Container");
         }
@@ -573,7 +563,7 @@ namespace Doozy.Editor.UIManager.Nodes.PortData
                     ViewsDatabaseWindow.Open,
                     "Open Views Database Window",
                     UIViewIdDatabase.instance,
-                    EditorSelectableColors.Default.UIComponent
+                    EditorSelectableColors.UIManager.UIComponent
                 )
                 .SetName("UIToggle Container");
         }

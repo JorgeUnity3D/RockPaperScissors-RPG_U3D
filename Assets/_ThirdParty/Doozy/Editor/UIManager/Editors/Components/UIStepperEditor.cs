@@ -24,8 +24,8 @@ namespace Doozy.Editor.UIManager.Editors.Components
     [CanEditMultipleObjects]
     public class UIStepperEditor : UnityEditor.Editor
     {
-        public Color accentColor => EditorColors.Default.UIComponent;
-        public EditorSelectableColorInfo selectableAccentColor => EditorSelectableColors.Default.UIComponent;
+        public Color accentColor => EditorColors.UIManager.UIComponent;
+        public EditorSelectableColorInfo selectableAccentColor => EditorSelectableColors.UIManager.UIComponent;
 
         public UIStepper castedTarget => (UIStepper)target;
         public IEnumerable<UIStepper> castedTargets => targets.Cast<UIStepper>();
@@ -246,7 +246,7 @@ namespace Doozy.Editor.UIManager.Editors.Components
                         (
                             DesignUtils.row
                                 .AddChild(FluidField.Get("Min Value").AddFieldContent(minValueFloatField))
-                                .AddSpaceBlock()
+                                .AddChild(DesignUtils.spaceBlock)
                                 .AddChild(FluidField.Get("Max Value").AddFieldContent(maxValueFloatField))
                         );
 
@@ -271,9 +271,9 @@ namespace Doozy.Editor.UIManager.Editors.Components
                         (
                             DesignUtils.row
                                 .AddChild(FluidField.Get("Current Value").AddFieldContent(valueFloatField))
-                                .AddSpaceBlock()
+                                .AddChild(DesignUtils.spaceBlock)
                                 .AddChild(FluidField.Get("Increment/Decrement Step").AddFieldContent(stepFloatField))
-                                .AddSpaceBlock()
+                                .AddChild(DesignUtils.spaceBlock)
                                 .AddChild(FluidField.Get("Value Precision").AddFieldContent(valuePrecisionFloatField))
                         );
 
@@ -295,7 +295,7 @@ namespace Doozy.Editor.UIManager.Editors.Components
                         (
                             DesignUtils.row
                                 .AddChild(FluidField.Get("Default (Reset) Value").AddFieldContent(defaultValueFloatField))
-                                .AddSpaceBlock()
+                                .AddChild(DesignUtils.spaceBlock)
                                 .AddChild(resetValueOnEnableToggleCheckbox)
                         );
 
@@ -413,9 +413,9 @@ namespace Doozy.Editor.UIManager.Editors.Components
                         (
                             DesignUtils.row
                                 .AddChild(autoRepeatWaitTimeFluidField)
-                                .AddSpaceBlock()
+                                .AddChild(DesignUtils.spaceBlock)
                                 .AddChild(autoRepeatWaitTimeReductionFluidField)
-                                .AddSpaceBlock()
+                                .AddChild(DesignUtils.spaceBlock)
                                 .AddChild(autoRepeatMinWaitTimeFluidField)
                         );
 
@@ -440,9 +440,9 @@ namespace Doozy.Editor.UIManager.Editors.Components
                         (
                             DesignUtils.row
                                 .AddChild(FluidField.Get("Minus Button").AddFieldContent(minusButtonObjectField))
-                                .AddSpaceBlock()
+                                .AddChild(DesignUtils.spaceBlock)
                                 .AddChild(FluidField.Get("Plus Button").AddFieldContent(plusButtonObjectField))
-                                .AddSpaceBlock()
+                                .AddChild(DesignUtils.spaceBlock)
                                 .AddChild(FluidField.Get("Reset Button").AddFieldContent(resetButtonObjectField))
                         );
 
@@ -484,7 +484,7 @@ namespace Doozy.Editor.UIManager.Editors.Components
                         (
                             DesignUtils.row
                                 .AddChild(FluidField.Get("Target Progressor").AddFieldContent(targetProgressorObjectField))
-                                .AddSpaceBlock()
+                                .AddChild(DesignUtils.spaceBlock)
                                 .AddChild(instantProgressorUpdateToggleCheckbox)
                         );
 
@@ -555,15 +555,15 @@ namespace Doozy.Editor.UIManager.Editors.Components
         {
             toolbarContainer
                 .AddChild(settingsTab)
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(dragTab)
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(advancedTab)
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(callbacksTab)
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(DesignUtils.flexibleSpace)
-                .AddSpaceBlock(2);
+                .AddChild(DesignUtils.spaceBlock2X);
 
             if (castedTarget != null)
             {
@@ -576,7 +576,7 @@ namespace Doozy.Editor.UIManager.Editors.Components
                             () => $"Stepper - {castedTarget.Id.Name}"
                         )
                     )
-                    .AddSpaceBlock();
+                    .AddChild(DesignUtils.spaceBlock);
             }
 
             toolbarContainer
@@ -608,11 +608,11 @@ namespace Doozy.Editor.UIManager.Editors.Components
             root
                 .AddChild(componentHeader)
                 .AddChild(Toolbar())
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(Content())
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(idField)
-                .AddEndOfLineSpace();
+                .AddChild(DesignUtils.endOfLineBlock);
         }
 
         private FluidTab GetTab(string labelText) =>

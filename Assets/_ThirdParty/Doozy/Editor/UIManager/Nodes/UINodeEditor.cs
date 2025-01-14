@@ -6,19 +6,15 @@ using System.Collections.Generic;
 using Doozy.Editor.EditorUI;
 using Doozy.Editor.EditorUI.Components;
 using Doozy.Editor.EditorUI.Components.Internal;
-using Doozy.Editor.EditorUI.ScriptableObjects.Colors;
 using Doozy.Editor.EditorUI.Utils;
 using Doozy.Editor.Nody.Nodes.Internal;
 using Doozy.Editor.UIElements;
 using Doozy.Editor.UIManager.Nodes.PortData;
 using Doozy.Runtime.Colors;
-using Doozy.Runtime.Common.Extensions;
 using Doozy.Runtime.UIElements.Extensions;
 using Doozy.Runtime.UIManager.Nodes;
 using UnityEditor;
-using UnityEditor.UIElements;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UIElements;
 
 namespace Doozy.Editor.UIManager.Nodes
@@ -109,60 +105,112 @@ namespace Doozy.Editor.UIManager.Nodes
             base.Compose();
 
             root
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(portsContainer)
-                .AddSpaceBlock(3)
+                .AddChild(DesignUtils.spaceBlock3X)
                 .AddChild(enterNodeHeader)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild
                 (
                     showHideContainer
                         .SetStyleBorderColor(EditorColors.Nody.Input.WithAlpha(0.4f))
                         .AddChild(onEnterHideAllViewsSwitch)
-                        .AddSpaceBlock(2)
-                        .AddChild
-                        (
-                            new IdsPropertyList(propertyOnEnterShowViews)
-                                .SetListTitle("Show Views")
-                                .SetListDescription("Views that will be shown when the node is activated")
-                                .SetListTitleColor(EditorColors.Nody.Input)
-                        )
-                        .AddSpaceBlock(2)
-                        .AddChild
-                        (
-                            new IdsPropertyList(propertyOnEnterHideViews)
-                                .SetListTitle("Hide Views")
-                                .SetListDescription("Views that will be hidden when the node is activated")
-                                .SetListTitleColor(EditorColors.Nody.Input)
-                        )
+                        .AddChild(DesignUtils.spaceBlock2X)
+                        .AddChild(GetListView(propertyOnEnterShowViews).SetListDescription("Show Views"))
+                        .AddChild(DesignUtils.spaceBlock2X)
+                        .AddChild(GetListView(propertyOnEnterHideViews).SetListDescription("Hide Views"))
                 )
-                .AddSpaceBlock(4)
+                .AddChild(DesignUtils.spaceBlock4X)
                 .AddChild(exitNodeHeader)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild
                 (
                     showHideContainer
                         .SetStyleBorderColor(EditorColors.Nody.Output.WithAlpha(0.4f))
                         .AddChild(onExitHideAllViewsSwitch)
-                        .AddSpaceBlock(2)
-                        .AddChild
-                        (
-                            new IdsPropertyList(propertyOnExitShowViews)
-                                .SetListTitle("Show Views")
-                                .SetListDescription("Views that will be shown when the node is deactivated")
-                                .SetListTitleColor(EditorColors.Nody.Output)
-                        )
-                        .AddSpaceBlock(2)
-                        .AddChild
-                        (
-                            new IdsPropertyList(propertyOnExitHideViews)
-                                .SetListTitle("Hide Views")
-                                .SetListDescription("Views that will be hidden when the node is deactivated")
-                                .SetListTitleColor(EditorColors.Nody.Output)
-                        )
+                        .AddChild(DesignUtils.spaceBlock2X)
+                        .AddChild(GetListView(propertyOnExitShowViews).SetListDescription("Show Views"))
+                        .AddChild(DesignUtils.spaceBlock2X)
+                        .AddChild(GetListView(propertyOnExitHideViews).SetListDescription("Hide Views"))
                 )
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 ;
+        }
+
+        private static FluidListView GetListView(SerializedProperty arrayProperty)
+        {
+            var itemsSource = new List<SerializedProperty>();
+            var lv = new FluidListView();
+            lv.listView.selectionType = SelectionType.None;
+            lv.listView.itemsSource = itemsSource;
+            lv.listView.makeItem = () => new PropertyFluidListViewItem(lv);
+            lv.listView.bindItem = (element, i) =>
+            {
+                var item = (PropertyFluidListViewItem)element;
+                item.propertyField.TryToHideLabel();
+                item.Update(i, itemsSource[i]);
+                item.OnRemoveButtonClick += property =>
+                {
+                    int propertyIndex = 0;
+                    for (int j = 0; j < arrayProperty.arraySize; j++)
+                    {
+                        if (property.propertyPath != arrayProperty.GetArrayElementAtIndex(j).propertyPath)
+                            continue;
+                        propertyIndex = j;
+                        break;
+                    }
+                    arrayProperty.DeleteArrayElementAtIndex(propertyIndex);
+                    arrayProperty.serializedObject.ApplyModifiedProperties();
+
+                    UpdateItemsSource();
+                };
+            };
+
+            #if UNITY_2021_2_OR_NEWER
+            lv.listView.fixedItemHeight = 80;
+            lv.SetPreferredListHeight((int)lv.listView.fixedItemHeight * 10);
+            #else
+            lv.listView.itemHeight = 80;
+            lv.SetPreferredListHeight(lv.listView.itemHeight * 10);
+            #endif
+
+            lv.SetDynamicListHeight(false);
+            lv.UseSmallEmptyListPlaceholder(true);
+            lv.HideFooter(true);
+            lv.ShowItemIndex(false);
+            lv.emptyListPlaceholder.SetIcon(EditorSpriteSheets.EditorUI.Placeholders.EmptyListViewSmall);
+
+            //ADD ITEM BUTTON (plus button)
+            lv.AddNewItemButtonCallback += () =>
+            {
+                arrayProperty.InsertArrayElementAtIndex(0);
+                // propertyTags.GetArrayElementAtIndex(0).objectReferenceValue = null;
+                arrayProperty.serializedObject.ApplyModifiedProperties();
+                UpdateItemsSource();
+            };
+
+            int arraySize = -1;
+            lv.schedule.Execute(() =>
+            {
+                if (arrayProperty.arraySize == arraySize) return;
+                arraySize = arrayProperty.arraySize;
+                UpdateItemsSource();
+
+            }).Every(100);
+
+            void UpdateItemsSource()
+            {
+                itemsSource.Clear();
+
+                for (int i = 0; i < arrayProperty.arraySize; i++)
+                    itemsSource.Add(arrayProperty.GetArrayElementAtIndex(i));
+
+                lv?.Update();
+            }
+
+            UpdateItemsSource();
+
+            return lv;
         }
 
         private static VisualElement showHideContainer =>
@@ -172,288 +220,5 @@ namespace Doozy.Editor.UIManager.Nodes
                 .SetStylePadding(DesignUtils.k_Spacing2X);
 
         private static FluidComponentHeader GetHeader() => FluidComponentHeader.Get().SetElementSize(ElementSize.Small);
-
-        private class IdsPropertyList : VisualElement
-        {
-            private SerializedProperty property { get; }
-
-            //REFERENCES
-            private VisualElement layoutContainer { get; }
-            private Label titleLabel { get; }
-            private Label descriptionLabel { get; }
-            private VisualElement toolbarContainer { get; }
-            private VisualElement listContainer { get; }
-            private VisualElement addItemButtonContainer { get; }
-
-            //ACTIONS
-            public UnityAction AddNewItemButtonCallback;
-
-            //SELECTABLE COLORS
-            private static EditorSelectableColorInfo actionSelectableColor => EditorSelectableColors.Default.Action;
-            private static EditorSelectableColorInfo addSelectableColor => EditorSelectableColors.Default.Add;
-            private static EditorSelectableColorInfo removeSelectableColor => EditorSelectableColors.Default.Remove;
-
-            //COLORS
-            private static Color listNameTextColor => EditorColors.Default.TextTitle;
-            private static Color listDescriptionTextColor => EditorColors.Default.TextDescription;
-            private static Color backgroundColor => EditorColors.Default.Background;
-
-            //FONTS
-            private static Font listNameFont => EditorFonts.Ubuntu.Light;
-            private static Font listDescriptionFont => EditorFonts.Inter.Light;
-
-            private List<PropertyRow> rows { get; }
-
-            public IdsPropertyList(SerializedProperty property)
-            {
-                if (property == null) return;
-                if (!property.isArray) return;
-
-                this.property = property;
-
-                layoutContainer =
-                    new VisualElement()
-                        .SetStyleBackgroundColor(backgroundColor)
-                        .SetStylePadding(DesignUtils.k_Spacing)
-                        .SetStyleBorderRadius(DesignUtils.k_Spacing2X);
-
-                titleLabel =
-                    new Label()
-                        .SetStyleColor(listNameTextColor)
-                        .SetStyleUnityFont(listNameFont)
-                        .SetStylePadding(DesignUtils.k_Spacing)
-                        .SetStyleDisplay(DisplayStyle.None)
-                        .SetStyleFontSize(14);
-
-                descriptionLabel =
-                    new Label()
-                        .SetStyleColor(listDescriptionTextColor)
-                        .SetStyleUnityFont(listDescriptionFont)
-                        .SetStyleDisplay(DisplayStyle.None)
-                        .SetStyleFontSize(10)
-                        .SetStylePaddingLeft(DesignUtils.k_Spacing)
-                        .SetWhiteSpace(WhiteSpace.Normal);
-
-                toolbarContainer =
-                    new VisualElement()
-                        .SetStyleFlexDirection(FlexDirection.Row)
-                        .SetStyleFlexGrow(1);
-
-                addItemButtonContainer =
-                    new VisualElement()
-                        .SetStyleFlexDirection(FlexDirection.Row)
-                        .SetStyleFlexGrow(0)
-                        .SetStyleFlexShrink(0)
-                        .SetStylePaddingLeft(DesignUtils.k_Spacing)
-                        .SetStylePaddingRight(DesignUtils.k_Spacing2X)
-                        .AddChild
-                        (
-                            DesignUtils.row
-                                .AddChild(DesignUtils.dividerVertical)
-                                .AddSpaceBlock()
-                                .AddChild(Buttons.addButton.SetOnClick(AddNewItem).SetStyleAlignSelf(Align.FlexEnd))
-                        );
-
-                listContainer
-                    = new VisualElement()
-                        .SetStyleBackgroundColor(backgroundColor);
-
-                this
-                    .AddChild
-                    (
-                        layoutContainer
-                            .AddChild(titleLabel)
-                            .AddChild(descriptionLabel)
-                            .AddSpaceBlock()
-                            .AddChild
-                            (
-                                DesignUtils.row
-                                    .AddChild(toolbarContainer)
-                                    .AddChild(addItemButtonContainer)
-                            )
-                            .AddSpaceBlock()
-                            .AddChild(listContainer)
-                    );
-
-                const int rowsCapacity = 5;
-                rows = new List<PropertyRow>(rowsCapacity);
-
-                RefreshRows();
-
-                //every 50ms check if the array size has changed
-                //this is needed to for Undo/Redo operations
-                schedule.Execute
-                    (
-                        () =>
-                        {
-                            if (property.arraySize != rows.Count)
-                                RefreshRows();
-                        }
-                    )
-                    .Every(30);
-            }
-
-
-            public IdsPropertyList SetListTitle(string listTitle)
-            {
-                titleLabel.SetStyleDisplay(listTitle.IsNullOrEmpty() ? DisplayStyle.None : DisplayStyle.Flex);
-                titleLabel.text = listTitle;
-                return this;
-            }
-
-            public IdsPropertyList SetListDescription(string listDescription)
-            {
-                descriptionLabel.SetStyleDisplay(listDescription.IsNullOrEmpty() ? DisplayStyle.None : DisplayStyle.Flex);
-                descriptionLabel.text = listDescription;
-                return this;
-            }
-
-            public IdsPropertyList SetListTitleColor(Color color)
-            {
-                titleLabel.SetStyleColor(color);
-                return this;
-            }
-
-            public IdsPropertyList SetListDescriptionColor(Color color)
-            {
-                descriptionLabel.SetStyleColor(color);
-                return this;
-            }
-
-            private void RefreshRows()
-            {
-                property.serializedObject.UpdateIfRequiredOrScript();
-                
-                // make sure the row capacity is enough (in case the array size was increased to a crazy number)
-                if (rows.Capacity < property.arraySize)
-                    rows.Capacity = property.arraySize;
-
-                for (int i = rows.Count - 1; i >= 0; i--)
-                {
-                    VisualElement row = rows[i];
-                    if (row == null) continue;
-                    rows[i].Recycle();
-                    rows.RemoveAt(i);
-                }
-
-                if (rows.Count > 0)
-                    rows.Clear();
-
-                listContainer
-                    .RecycleAndClear();
-
-                for (int i = 0; i < property.arraySize; i++)
-                {
-                    PropertyRow row = GetRow(i);
-                    rows.Add(row);
-                    listContainer.AddChild(row);
-                }
-
-                listContainer.Bind(property.serializedObject);
-            }
-
-            private PropertyRow GetRow(int elementIndex) =>
-                PropertyRow.Get()
-                    .SetProperty(property.GetArrayElementAtIndex(elementIndex))
-                    .SetRemoveAction(() => RemoveItem(elementIndex));
-
-            private void RemoveItem(int elementIndex)
-            {
-                //check if the index is valid
-                if (elementIndex < 0 || elementIndex >= property.arraySize)
-                    return;
-
-                //remove the property
-                property.DeleteArrayElementAtIndex(elementIndex);
-                property.serializedObject.ApplyModifiedProperties();
-                //refresh the rows
-                RefreshRows();
-            }
-
-            private void AddNewItem()
-            {
-                //add a new element to the array
-                property.InsertArrayElementAtIndex(property.arraySize);
-                property.serializedObject.ApplyModifiedProperties();
-                //refresh the rows
-                RefreshRows();
-            }
-
-            public class PropertyRow : PoolableElement<PropertyRow>
-            {
-                private SerializedProperty property { get; set; }
-                private PropertyField propertyField { get; }
-                private FluidButton removeButton { get; }
-
-                public override void Reset()
-                {
-                    propertyField.Unbind();
-                    property = null;
-                    propertyField.SetBindingPath(null);
-                    removeButton.ClearOnClick();
-                    removeButton.SetSelectionState(SelectionState.Normal);
-                }
-
-                public PropertyRow()
-                {
-                    propertyField =
-                        new PropertyField()
-                            .ResetLayout()
-                            .SetStyleFlexGrow(1);
-
-                    removeButton =
-                        Buttons.removeButton;
-
-                    this
-                        .SetStyleAlignItems(Align.Center)
-                        .SetStyleBorderRadius(DesignUtils.k_FieldBorderRadius)
-                        .SetStylePadding(DesignUtils.k_Spacing)
-                        .SetStyleMargins(DesignUtils.k_Spacing)
-                        .SetStyleBackgroundColor(EditorColors.Default.FieldBackground)
-                        .SetStyleFlexDirection(FlexDirection.Row);
-
-                    this
-                        .AddChild(propertyField)
-                        .AddSpaceBlock()
-                        .AddChild(DesignUtils.dividerVertical)
-                        .AddSpaceBlock()
-                        .AddChild(removeButton);
-                }
-
-                public PropertyRow SetProperty(SerializedProperty newProperty)
-                {
-                    property = newProperty;
-                    propertyField.SetBindingPath(property.propertyPath);
-                    return this;
-                }
-
-                public PropertyRow SetRemoveAction(UnityAction action)
-                {
-                    removeButton.SetOnClick(action);
-                    return this;
-                }
-
-            }
-
-            private static class Buttons
-            {
-                private const ElementSize k_Size = ElementSize.Small;
-                private const ButtonStyle k_ButtonStyle = ButtonStyle.Clear;
-                private static EditorSelectableColorInfo accentColor => actionSelectableColor;
-
-                // ReSharper disable once MemberCanBePrivate.Local
-                public static FluidButton GetNewToolbarButton(IEnumerable<Texture2D> textures, string tooltip = "") =>
-                    FluidButton.Get()
-                        .SetIcon(textures)
-                        .SetElementSize(k_Size)
-                        .SetButtonStyle(k_ButtonStyle)
-                        .SetAccentColor(accentColor)
-                        .SetTooltip(tooltip);
-
-                public static FluidButton addButton => GetNewToolbarButton(EditorSpriteSheets.EditorUI.Icons.Plus, "Add Item").SetAccentColor(addSelectableColor);
-                public static FluidButton removeButton => GetNewToolbarButton(EditorSpriteSheets.EditorUI.Icons.Minus, "Remove Item").SetAccentColor(removeSelectableColor);
-            }
-
-        }
     }
 }

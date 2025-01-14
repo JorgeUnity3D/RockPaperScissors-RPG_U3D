@@ -17,8 +17,6 @@ namespace Doozy.Editor.Dashboard.WindowsLayouts
 {
     public class DashboardHelpWindowLayout : FluidWindowLayout, IDashboardWindowLayout
     {
-        public bool isValid => true;
-        
         public int order => 1100;
 
         public override string layoutName => "Help";

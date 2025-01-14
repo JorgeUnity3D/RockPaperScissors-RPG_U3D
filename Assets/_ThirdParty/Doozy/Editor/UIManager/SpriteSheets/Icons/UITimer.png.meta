@@ -191,6 +191,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -835,36 +847,36 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ~UITimer_000: -8525606862587993810
-      ~UITimer_001: 3305935856408042334
-      ~UITimer_002: 4162169907499907609
-      ~UITimer_003: -5365634584789948328
-      ~UITimer_004: 2633552760590893280
-      ~UITimer_005: 8939463298296050376
-      ~UITimer_006: -6730042304845270829
-      ~UITimer_007: 1089036310178796441
-      ~UITimer_008: -2816894176883422276
-      ~UITimer_009: 7008462196552487735
-      ~UITimer_010: -3789718325864978323
-      ~UITimer_011: -3644292021368548685
-      ~UITimer_012: 2343862143456903225
-      ~UITimer_013: 6101304291037990937
-      ~UITimer_014: 3334427121630926771
-      ~UITimer_015: 3525931841702096359
-      ~UITimer_016: 2908396822796004024
-      ~UITimer_017: -1524009595874711055
-      ~UITimer_018: 4178268737058044394
-      ~UITimer_019: 6464313233000527335
       ~UITimer_020: 8759554912345462039
-      ~UITimer_021: -897705145684286526
+      ~UITimer_018: 4178268737058044394
+      ~UITimer_007: 1089036310178796441
+      ~UITimer_019: 6464313233000527335
+      ~UITimer_029: 5913346344881240131
+      ~UITimer_016: 2908396822796004024
       ~UITimer_022: -3674148889104976907
       ~UITimer_023: -8974822278002529571
+      ~UITimer_028: -8905041065166748051
+      ~UITimer_000: -8525606862587993810
+      ~UITimer_004: 2633552760590893280
+      ~UITimer_027: 2803901025387778247
+      ~UITimer_002: 4162169907499907609
+      ~UITimer_010: -3789718325864978323
+      ~UITimer_006: -6730042304845270829
+      ~UITimer_005: 8939463298296050376
+      ~UITimer_001: 3305935856408042334
+      ~UITimer_012: 2343862143456903225
       ~UITimer_024: 8373897142046968381
       ~UITimer_025: 1569294099276501169
+      ~UITimer_017: -1524009595874711055
+      ~UITimer_008: -2816894176883422276
+      ~UITimer_011: -3644292021368548685
+      ~UITimer_014: 3334427121630926771
+      ~UITimer_021: -897705145684286526
+      ~UITimer_013: 6101304291037990937
+      ~UITimer_015: 3525931841702096359
       ~UITimer_026: -7258974246723098574
-      ~UITimer_027: 2803901025387778247
-      ~UITimer_028: -8905041065166748051
-      ~UITimer_029: 5913346344881240131
+      ~UITimer_003: -5365634584789948328
+      ~UITimer_009: 7008462196552487735
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

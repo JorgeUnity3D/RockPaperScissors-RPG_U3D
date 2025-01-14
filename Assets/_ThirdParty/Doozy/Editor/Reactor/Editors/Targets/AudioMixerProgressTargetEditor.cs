@@ -93,10 +93,10 @@ namespace Doozy.Editor.Reactor.Editors.Targets
                 (
                     DesignUtils.row
                         .AddChild(exposedParameterNameFluidField)
-                        .AddSpaceBlock()
+                        .AddChild(DesignUtils.spaceBlock)
                         .AddChild(useLogarithmicConversionFluidField)
                 )
-                .AddSpaceBlock(2);
+                .AddChild(DesignUtils.spaceBlock2X);
         }
     }
 }

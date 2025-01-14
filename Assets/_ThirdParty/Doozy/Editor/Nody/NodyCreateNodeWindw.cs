@@ -246,7 +246,7 @@ namespace Doozy.Editor.Nody
                     .AddInfoElement
                     (
                         DesignUtils.column
-                            .AddSpaceBlock(3)
+                            .AddChild(DesignUtils.spaceBlock3X)
                             .AddChild(canBeDeletedSwitch)
                     );
 
@@ -258,7 +258,7 @@ namespace Doozy.Editor.Nody
                     .AddInfoElement
                     (
                         DesignUtils.column
-                            .AddSpaceBlock(3)
+                            .AddChild(DesignUtils.spaceBlock3X)
                             .AddChild(runtimePathButton)
                     );
 
@@ -270,7 +270,7 @@ namespace Doozy.Editor.Nody
                     .AddInfoElement
                     (
                         DesignUtils.column
-                            .AddSpaceBlock(3)
+                            .AddChild(DesignUtils.spaceBlock3X)
                             .AddChild(editorPathButton)
                     );
 
@@ -312,7 +312,7 @@ namespace Doozy.Editor.Nody
         private void Compose()
         {
             root
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 // .AddChild
                 // (
                 //     DesignUtils.row
@@ -323,7 +323,7 @@ namespace Doozy.Editor.Nody
                 //         .AddChild(DesignUtils.flexibleSpace)
                 //     // .AddChild(searchBox.SetStyleFlexShrink(0))
                 // )
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild
                 (
                     DesignUtils.row
@@ -336,28 +336,28 @@ namespace Doozy.Editor.Nody
                         .AddChild(simpleNodeTabSelector)
                         .AddSpace(2, 0)
                         .AddChild(globalNodeTabSelector)
-                        .AddSpaceBlock(2)
+                        .AddChild(DesignUtils.spaceBlock2X)
                         .AddChild(DesignUtils.flexibleSpace)
-                        .AddSpaceBlock(2)
+                        .AddChild(DesignUtils.spaceBlock2X)
                         .AddChild(runUpdateTabSelector)
                         .AddSpace(2, 0)
                         .AddChild(runFixedUpdateTabSelector)
                         .AddSpace(2, 0)
                         .AddChild(runLateUpdateTabSelector)
                 )
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild
                 (
                     content
                         .AddChild(nodeNameField)
-                        .AddSpaceBlock(2)
+                        .AddChild(DesignUtils.spaceBlock2X)
                         .AddChild(runtimePathField)
-                        .AddSpaceBlock(2)
+                        .AddChild(DesignUtils.spaceBlock2X)
                         .AddChild(editorPathField)
-                        .AddSpaceBlock(2)
+                        .AddChild(DesignUtils.spaceBlock2X)
                         .AddChild(DesignUtils.flexibleSpace)
                 )
-                .AddSpaceBlock(4)
+                .AddChild(DesignUtils.spaceBlock4X)
                 .AddChild
                 (
                     DesignUtils.row

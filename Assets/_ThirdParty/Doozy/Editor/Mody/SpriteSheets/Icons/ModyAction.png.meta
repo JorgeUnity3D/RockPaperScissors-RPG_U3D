@@ -191,6 +191,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -836,35 +848,35 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       ~ModyAction_000: -7920174340443398827
-      ~ModyAction_001: -4820656312369247995
-      ~ModyAction_002: -5708803204369473939
-      ~ModyAction_003: 685793888586065947
-      ~ModyAction_004: -8321089488378443553
-      ~ModyAction_005: -614352185093974138
-      ~ModyAction_006: 286913684336462828
-      ~ModyAction_007: -4222798397571649999
-      ~ModyAction_008: 8421328439267474170
-      ~ModyAction_009: 7813955064745074794
-      ~ModyAction_010: -5389486648351616507
-      ~ModyAction_011: 5684667265807035529
-      ~ModyAction_012: 3428267612363766063
-      ~ModyAction_013: -7174421163204503843
-      ~ModyAction_014: 3418740876494914464
-      ~ModyAction_015: -8336102053233748014
-      ~ModyAction_016: -6235735768427793593
-      ~ModyAction_017: -2208720288863070323
-      ~ModyAction_018: 5360217228581804267
-      ~ModyAction_019: 3967811880384292575
-      ~ModyAction_020: 316697064532325698
-      ~ModyAction_021: -8066038229981594510
-      ~ModyAction_022: -81636624807241168
-      ~ModyAction_023: 4982823805874707356
-      ~ModyAction_024: 8687751805279590495
       ~ModyAction_025: 4550518911411238053
-      ~ModyAction_026: 6835670146713127018
-      ~ModyAction_027: -2915654068094255838
+      ~ModyAction_015: -8336102053233748014
+      ~ModyAction_009: 7813955064745074794
       ~ModyAction_028: 808235954614116352
+      ~ModyAction_027: -2915654068094255838
+      ~ModyAction_021: -8066038229981594510
+      ~ModyAction_013: -7174421163204503843
+      ~ModyAction_012: 3428267612363766063
+      ~ModyAction_023: 4982823805874707356
+      ~ModyAction_001: -4820656312369247995
+      ~ModyAction_010: -5389486648351616507
+      ~ModyAction_006: 286913684336462828
+      ~ModyAction_011: 5684667265807035529
+      ~ModyAction_005: -614352185093974138
+      ~ModyAction_017: -2208720288863070323
+      ~ModyAction_003: 685793888586065947
+      ~ModyAction_022: -81636624807241168
+      ~ModyAction_026: 6835670146713127018
+      ~ModyAction_016: -6235735768427793593
+      ~ModyAction_019: 3967811880384292575
+      ~ModyAction_002: -5708803204369473939
+      ~ModyAction_004: -8321089488378443553
+      ~ModyAction_008: 8421328439267474170
+      ~ModyAction_024: 8687751805279590495
       ~ModyAction_029: -7746139508432304785
+      ~ModyAction_018: 5360217228581804267
+      ~ModyAction_007: -4222798397571649999
+      ~ModyAction_014: 3418740876494914464
+      ~ModyAction_020: 316697064532325698
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

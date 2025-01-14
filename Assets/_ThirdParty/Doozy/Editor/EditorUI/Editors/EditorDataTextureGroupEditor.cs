@@ -121,7 +121,7 @@ namespace Doozy.Editor.EditorUI.Editors
                 (
                     DesignUtils.row
                         .AddChild(prefixComponentField)
-                        .AddSpaceBlock()
+                        .AddChild(DesignUtils.spaceBlock)
                         .AddChild(FluidToggleSwitch.Get("Ignore Texture Settings").BindToProperty(serializedObject.FindProperty("IgnoreTextureSettings")))
                 )
                 .AddSpace(0, DesignUtils.k_Spacing * 2)

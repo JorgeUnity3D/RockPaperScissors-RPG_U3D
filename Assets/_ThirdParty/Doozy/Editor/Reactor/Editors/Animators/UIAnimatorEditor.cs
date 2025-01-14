@@ -176,13 +176,13 @@ namespace Doozy.Editor.Reactor.Editors.Animators
             return
                 toolbarContainer
                     .AddChild(uiAnimationTab)
-                    .AddSpaceBlock()
+                    .AddChild(DesignUtils.spaceBlock)
                     .AddChild(behaviourTab)
-                    .AddSpaceBlock()
+                    .AddChild(DesignUtils.spaceBlock)
                     .AddChild(DesignUtils.flexibleSpace)
-                    .AddSpaceBlock(2)
+                    .AddChild(DesignUtils.spaceBlock2X)
                     .AddChild(nameTab)
-                    .AddSpaceBlock();
+                    .AddChild(DesignUtils.spaceBlock);
         }
     }
 }

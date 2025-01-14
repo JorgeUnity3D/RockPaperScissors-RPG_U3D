@@ -191,6 +191,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -835,36 +847,36 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ~UIPopupManager_000: 4200425862963238135
-      ~UIPopupManager_001: 4370120755352864540
-      ~UIPopupManager_002: -4804219295698977199
+      ~UIPopupManager_013: 831078781929385099
+      ~UIPopupManager_027: 4109340910762006065
+      ~UIPopupManager_015: -8986047561633823198
+      ~UIPopupManager_011: -2497595581759351149
+      ~UIPopupManager_024: 3301556146411737792
+      ~UIPopupManager_029: 5009254196472329002
+      ~UIPopupManager_021: 5091086498416473768
+      ~UIPopupManager_014: 9054477139239357586
+      ~UIPopupManager_025: 7051370396170553013
+      ~UIPopupManager_020: 5731212290495655057
       ~UIPopupManager_003: 378379983286386102
+      ~UIPopupManager_001: 4370120755352864540
       ~UIPopupManager_004: 6186062830067000709
+      ~UIPopupManager_009: -3384053010763333105
       ~UIPopupManager_005: 5305386501463756622
+      ~UIPopupManager_012: -8061336324433694872
+      ~UIPopupManager_019: -6833880004427744540
+      ~UIPopupManager_000: 4200425862963238135
+      ~UIPopupManager_023: -8873162125203066826
+      ~UIPopupManager_008: -6041314578644368635
+      ~UIPopupManager_026: 1634748483905786902
+      ~UIPopupManager_018: 7582093274964399149
+      ~UIPopupManager_028: 8293579657294684432
+      ~UIPopupManager_022: 3733787057574613891
       ~UIPopupManager_006: 4643397091313542002
       ~UIPopupManager_007: -2437871045042257124
-      ~UIPopupManager_008: -6041314578644368635
-      ~UIPopupManager_009: -3384053010763333105
-      ~UIPopupManager_010: 8175084222282477167
-      ~UIPopupManager_011: -2497595581759351149
-      ~UIPopupManager_012: -8061336324433694872
-      ~UIPopupManager_013: 831078781929385099
-      ~UIPopupManager_014: 9054477139239357586
-      ~UIPopupManager_015: -8986047561633823198
       ~UIPopupManager_016: -7590260034834942613
+      ~UIPopupManager_010: 8175084222282477167
       ~UIPopupManager_017: 3112636552972340213
-      ~UIPopupManager_018: 7582093274964399149
-      ~UIPopupManager_019: -6833880004427744540
-      ~UIPopupManager_020: 5731212290495655057
-      ~UIPopupManager_021: 5091086498416473768
-      ~UIPopupManager_022: 3733787057574613891
-      ~UIPopupManager_023: -8873162125203066826
-      ~UIPopupManager_024: 3301556146411737792
-      ~UIPopupManager_025: 7051370396170553013
-      ~UIPopupManager_026: 1634748483905786902
-      ~UIPopupManager_027: 4109340910762006065
-      ~UIPopupManager_028: 8293579657294684432
-      ~UIPopupManager_029: 5009254196472329002
+      ~UIPopupManager_002: -4804219295698977199
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

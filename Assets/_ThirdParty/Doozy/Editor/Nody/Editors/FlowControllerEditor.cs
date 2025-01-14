@@ -191,7 +191,7 @@ namespace Doozy.Editor.Nody.Editors
                                 .SetStyleFlexGrow(0)
                                 .SetStyleFlexShrink(1)
                                 .AddChild(DesignUtils.NewObjectField(propertyFlow, typeof(FlowGraph)).SetStyleFlexGrow(1))
-                                .AddSpaceBlock(2)
+                                .AddChild(DesignUtils.spaceBlock2X)
                                 .AddChild(openNodyButton)
                         );
 
@@ -277,7 +277,7 @@ namespace Doozy.Editor.Nody.Editors
                     (
                         DesignUtils.row
                             .AddChild(flowField)
-                            .AddSpaceBlock()
+                            .AddChild(DesignUtils.spaceBlock)
                             .AddChild(flowTypeFluidField)
                     )
                     .AddContent(DesignUtils.spaceBlock)
@@ -285,7 +285,7 @@ namespace Doozy.Editor.Nody.Editors
                     (
                         DesignUtils.row
                             .AddChild(onEnableBehaviourFluidField)
-                            .AddSpaceBlock()
+                            .AddChild(DesignUtils.spaceBlock)
                             .AddChild(onDisableBehaviourFluidField)
                     )
                     .AddContent(DesignUtils.spaceBlock2X)
@@ -365,9 +365,9 @@ namespace Doozy.Editor.Nody.Editors
             return
                 toolbarContainer
                     .AddChild(settingsTab)
-                    .AddSpaceBlock()
+                    .AddChild(DesignUtils.spaceBlock)
                     .AddChild(callbacksTab)
-                    .AddSpaceBlock()
+                    .AddChild(DesignUtils.spaceBlock)
                     .AddChild(DesignUtils.flexibleSpace);
         }
 
@@ -384,9 +384,9 @@ namespace Doozy.Editor.Nody.Editors
             root
                 .AddChild(componentHeader)
                 .AddChild(Toolbar())
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(Content())
-                .AddEndOfLineSpace();
+                .AddChild(DesignUtils.endOfLineBlock);
         }
     }
 }

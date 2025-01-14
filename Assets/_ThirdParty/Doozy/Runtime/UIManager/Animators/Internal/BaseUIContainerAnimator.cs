@@ -15,9 +15,6 @@ namespace Doozy.Runtime.UIManager.Animators
     {
         private Coroutine executeCommandCoroutine { get; set; }
 
-        protected bool reversingShow { get; set; }
-        protected bool reversingHide { get; set; }
-        
         /// <summary> Connect to Controller </summary>
         protected override void ConnectToController()
         {

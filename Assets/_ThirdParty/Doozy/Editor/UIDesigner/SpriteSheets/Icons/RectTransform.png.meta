@@ -191,6 +191,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -835,36 +847,36 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ~RectTransform_000: -8931225276191995947
-      ~RectTransform_001: -71094117734628670
-      ~RectTransform_002: -1862370784729
-      ~RectTransform_003: 7536444564433895962
-      ~RectTransform_004: 3105166893691415678
-      ~RectTransform_005: 4433699960306788046
-      ~RectTransform_006: 2121607168195376697
-      ~RectTransform_007: -8507309738072329345
       ~RectTransform_008: -910254078846383958
-      ~RectTransform_009: 4441463683586565675
-      ~RectTransform_010: 5594113396224863707
-      ~RectTransform_011: 6361757943404151329
+      ~RectTransform_004: 3105166893691415678
       ~RectTransform_012: -8323493597612689380
+      ~RectTransform_019: 3157162901411800987
+      ~RectTransform_016: 1681252897420226143
+      ~RectTransform_023: -5528651493574656780
+      ~RectTransform_018: -8968998994439660462
+      ~RectTransform_021: 3463645568105038148
+      ~RectTransform_026: 5765685484711960034
+      ~RectTransform_006: 2121607168195376697
+      ~RectTransform_009: 4441463683586565675
+      ~RectTransform_005: 4433699960306788046
+      ~RectTransform_025: 962855450818837807
       ~RectTransform_013: -2835825296263038797
       ~RectTransform_014: -548011694945977299
-      ~RectTransform_015: -5380826105967350497
-      ~RectTransform_016: 1681252897420226143
-      ~RectTransform_017: 4665347402032977402
-      ~RectTransform_018: -8968998994439660462
-      ~RectTransform_019: 3157162901411800987
-      ~RectTransform_020: -9173925203614986498
-      ~RectTransform_021: 3463645568105038148
       ~RectTransform_022: -4831299119232975360
-      ~RectTransform_023: -5528651493574656780
-      ~RectTransform_024: 5223995156724279849
-      ~RectTransform_025: 962855450818837807
-      ~RectTransform_026: 5765685484711960034
       ~RectTransform_027: -6631581534670844729
+      ~RectTransform_011: 6361757943404151329
+      ~RectTransform_002: -1862370784729
+      ~RectTransform_007: -8507309738072329345
+      ~RectTransform_020: -9173925203614986498
       ~RectTransform_028: -9209728732592327397
+      ~RectTransform_024: 5223995156724279849
       ~RectTransform_029: 1971570665066841456
+      ~RectTransform_003: 7536444564433895962
+      ~RectTransform_010: 5594113396224863707
+      ~RectTransform_017: 4665347402032977402
+      ~RectTransform_000: -8931225276191995947
+      ~RectTransform_015: -5380826105967350497
+      ~RectTransform_001: -71094117734628670
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

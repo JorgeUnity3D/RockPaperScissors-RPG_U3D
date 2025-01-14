@@ -90,9 +90,9 @@ namespace Doozy.Editor.Mody
                     (
                         DesignUtils.row
                             .AddChild(GetCooldownFluidField(serializedObject))
-                            .AddSpaceBlock()
+                            .AddChild(DesignUtils.spaceBlock)
                             .AddChild(GetTimescaleFluidField(serializedObject))
-                            .AddSpaceBlock()
+                            .AddChild(DesignUtils.spaceBlock)
                             .AddChild(DesignUtils.flexibleSpace)
                     )
                     .Bind(serializedObject);
@@ -115,9 +115,9 @@ namespace Doozy.Editor.Mody
             return 
                 base.Toolbar()
                 .AddChild(settingsTab)
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(callbacksTab)
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(DesignUtils.flexibleSpace);
         }
 
@@ -133,9 +133,9 @@ namespace Doozy.Editor.Mody
             root
                 .AddChild(componentHeader)
                 .AddChild(Toolbar())
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(Content())
-                .AddEndOfLineSpace();
+                .AddChild(DesignUtils.endOfLineBlock);
 
         }
 

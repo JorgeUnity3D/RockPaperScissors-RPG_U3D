@@ -191,6 +191,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -835,36 +847,36 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ~DotNet_000: -8446800448571515981
-      ~DotNet_001: -6070926123020578539
-      ~DotNet_002: 6496697591905829269
-      ~DotNet_003: -8643254389007025012
-      ~DotNet_004: 2920902386004846841
+      ~DotNet_013: -385644387793607896
+      ~DotNet_027: 4419638980098485143
+      ~DotNet_019: 4410047450905242715
       ~DotNet_005: 908972712589416980
-      ~DotNet_006: 7442749828228686015
+      ~DotNet_012: -6383271155773780162
+      ~DotNet_028: -9184122843673637450
+      ~DotNet_023: 2634375310317075464
+      ~DotNet_000: -8446800448571515981
+      ~DotNet_010: -4669008520029883189
       ~DotNet_007: 6287910360333287899
+      ~DotNet_026: 1388599444192250093
+      ~DotNet_006: 7442749828228686015
+      ~DotNet_014: 4343371099831431053
+      ~DotNet_024: 5201418885243029789
+      ~DotNet_029: -2300533491670518724
+      ~DotNet_011: 2373611430901188565
+      ~DotNet_025: 2324535425650754576
+      ~DotNet_020: -1255314606975789173
+      ~DotNet_017: 7360940265807492416
+      ~DotNet_001: -6070926123020578539
+      ~DotNet_021: -1170478964572649571
       ~DotNet_008: 54538313449714787
       ~DotNet_009: 8160745162487260345
-      ~DotNet_010: -4669008520029883189
-      ~DotNet_011: 2373611430901188565
-      ~DotNet_012: -6383271155773780162
-      ~DotNet_013: -385644387793607896
-      ~DotNet_014: 4343371099831431053
-      ~DotNet_015: -6822099374762599211
+      ~DotNet_003: -8643254389007025012
       ~DotNet_016: -8878586360474452617
-      ~DotNet_017: 7360940265807492416
       ~DotNet_018: 1415973495218370654
-      ~DotNet_019: 4410047450905242715
-      ~DotNet_020: -1255314606975789173
-      ~DotNet_021: -1170478964572649571
       ~DotNet_022: 7592740815767626254
-      ~DotNet_023: 2634375310317075464
-      ~DotNet_024: 5201418885243029789
-      ~DotNet_025: 2324535425650754576
-      ~DotNet_026: 1388599444192250093
-      ~DotNet_027: 4419638980098485143
-      ~DotNet_028: -9184122843673637450
-      ~DotNet_029: -2300533491670518724
+      ~DotNet_015: -6822099374762599211
+      ~DotNet_002: 6496697591905829269
+      ~DotNet_004: 2920902386004846841
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

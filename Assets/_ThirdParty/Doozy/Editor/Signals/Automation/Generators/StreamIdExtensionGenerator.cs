@@ -19,7 +19,7 @@ namespace Doozy.Editor.Signals.Automation.Generators
 
         private static string targetFileNameWithExtension => $"{templateName}.cs";
         private static string targetFilePath => $"{RuntimePath.path}/Signals/{targetFileNameWithExtension}";
-
+        
         public static bool Run(bool saveAssets = true, bool refreshAssetDatabase = false, bool silent = false)
         {
             string data = FileGenerator.GetFile(templateFilePath);
@@ -34,7 +34,7 @@ namespace Doozy.Editor.Signals.Automation.Generators
             return true;
         }
 
-        private static string InjectContent(string data, Func<IEnumerable<string>> getCategories, Func<string, IEnumerable<string>> getNames)
+          private static string InjectContent(string templateData, Func<IEnumerable<string>> getCategories, Func<string, IEnumerable<string>> getNames)
         {
             var accessorStringBuilder = new StringBuilder();
             var dataStringBuilder = new StringBuilder();
@@ -73,11 +73,9 @@ namespace Doozy.Editor.Signals.Automation.Generators
                 }
             }
 
-            data = data.Replace("//ACCESSOR//", accessorStringBuilder.ToString().RemoveLast(Environment.NewLine.Length));
-            data = data.Replace("//DATA//", dataStringBuilder.ToString().RemoveLast(Environment.NewLine.Length));
-            
-            data += Environment.NewLine;
-            return data;
+            templateData = templateData.Replace("//ACCESSOR//", accessorStringBuilder.ToString().RemoveLast(Environment.NewLine.Length));
+            templateData = templateData.Replace("//DATA//", dataStringBuilder.ToString().RemoveLast(Environment.NewLine.Length));
+            return templateData;
         }
     }
 }

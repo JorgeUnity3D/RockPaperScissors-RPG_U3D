@@ -28,7 +28,7 @@ namespace Doozy.Editor.UIManager.Drawers
                 TagsDatabaseWindow.Open,
                 "Open Tags Database Window",
                 UITagIdDatabase.instance,
-                EditorSelectableColors.Default.UIComponent
+                EditorSelectableColors.UIManager.UIComponent
             );
     }
 }

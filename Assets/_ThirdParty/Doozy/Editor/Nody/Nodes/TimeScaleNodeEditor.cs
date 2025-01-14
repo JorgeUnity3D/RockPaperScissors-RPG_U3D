@@ -106,11 +106,11 @@ namespace Doozy.Editor.Nody.Nodes
                         DesignUtils.row
                             .SetStyleAlignItems(Align.Center)
                             .AddChild(animateValueSwitch)
-                            .AddSpaceBlock(2)
+                            .AddChild(DesignUtils.spaceBlock2X)
                             .AddChild(animationDurationFloatField)
-                            .AddSpaceBlock()
+                            .AddChild(DesignUtils.spaceBlock)
                             .AddChild(animationDurationLabel)
-                            .AddSpaceBlock(2)
+                            .AddChild(DesignUtils.spaceBlock2X)
                             .AddChild(animationEaseEnumField)
                     );
         }
@@ -120,11 +120,11 @@ namespace Doozy.Editor.Nody.Nodes
             base.Compose();
 
             root
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(targetValueField)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(animationField)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(waitForAnimationToFinishCheckbox)
                 ;
         }

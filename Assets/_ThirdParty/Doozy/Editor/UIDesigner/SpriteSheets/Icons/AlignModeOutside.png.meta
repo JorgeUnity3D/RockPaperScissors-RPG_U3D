@@ -191,6 +191,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -835,36 +847,36 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ~AlignModeOutside_000: 8848350554184465842
-      ~AlignModeOutside_001: 5732234984044790426
-      ~AlignModeOutside_002: -5609230155297498184
-      ~AlignModeOutside_003: -4382436463497866531
       ~AlignModeOutside_004: 4287848380839741801
-      ~AlignModeOutside_005: 8163939764672568691
-      ~AlignModeOutside_006: -46725714355148908
+      ~AlignModeOutside_028: -5759624397393501296
+      ~AlignModeOutside_022: -2915742109008872539
+      ~AlignModeOutside_029: -3069181178073687174
+      ~AlignModeOutside_019: 7047405661165193894
+      ~AlignModeOutside_018: 2010718763791179200
       ~AlignModeOutside_007: 1979555369560238917
-      ~AlignModeOutside_008: -8342154982280767705
-      ~AlignModeOutside_009: -285931575880286885
       ~AlignModeOutside_010: -4333376290420964899
-      ~AlignModeOutside_011: -8237963875789838865
-      ~AlignModeOutside_012: 981273930278020520
+      ~AlignModeOutside_026: 2091663426951362815
+      ~AlignModeOutside_006: -46725714355148908
+      ~AlignModeOutside_008: -8342154982280767705
+      ~AlignModeOutside_015: 4047538631559455372
+      ~AlignModeOutside_017: 8482652941503176173
       ~AlignModeOutside_013: -8962642777917087647
       ~AlignModeOutside_014: -3181383852104062124
-      ~AlignModeOutside_015: 4047538631559455372
-      ~AlignModeOutside_016: 4145094556506050708
-      ~AlignModeOutside_017: 8482652941503176173
-      ~AlignModeOutside_018: 2010718763791179200
-      ~AlignModeOutside_019: 7047405661165193894
       ~AlignModeOutside_020: -1332264264406509913
+      ~AlignModeOutside_012: 981273930278020520
+      ~AlignModeOutside_011: -8237963875789838865
+      ~AlignModeOutside_002: -5609230155297498184
+      ~AlignModeOutside_003: -4382436463497866531
+      ~AlignModeOutside_009: -285931575880286885
+      ~AlignModeOutside_001: 5732234984044790426
       ~AlignModeOutside_021: -5574975115841743628
-      ~AlignModeOutside_022: -2915742109008872539
       ~AlignModeOutside_023: 2845282818049602789
       ~AlignModeOutside_024: -1581938964789237330
       ~AlignModeOutside_025: 6613698588524696032
-      ~AlignModeOutside_026: 2091663426951362815
+      ~AlignModeOutside_000: 8848350554184465842
+      ~AlignModeOutside_005: 8163939764672568691
+      ~AlignModeOutside_016: 4145094556506050708
       ~AlignModeOutside_027: 8303510936545211689
-      ~AlignModeOutside_028: -5759624397393501296
-      ~AlignModeOutside_029: -3069181178073687174
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

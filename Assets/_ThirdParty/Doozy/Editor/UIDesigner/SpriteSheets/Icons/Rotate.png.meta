@@ -191,6 +191,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -835,36 +847,36 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ~Rotate_000: -8936373869419366627
-      ~Rotate_001: 8739175242227795011
-      ~Rotate_002: -3729393751702786488
-      ~Rotate_003: -8699446865689212811
-      ~Rotate_004: 2608916302149004510
-      ~Rotate_005: -5938241945385225294
       ~Rotate_006: 8799079914531528347
-      ~Rotate_007: -6880782907710992354
-      ~Rotate_008: 1382773043753339936
-      ~Rotate_009: 2406446165946721210
-      ~Rotate_010: -62301103472659877
-      ~Rotate_011: 8639608744857946827
-      ~Rotate_012: -2878044172105301495
-      ~Rotate_013: -4444369951723799485
       ~Rotate_014: -5939486183684237585
-      ~Rotate_015: -6193730281173974679
-      ~Rotate_016: 1900320406219725922
-      ~Rotate_017: -4394723167837567948
-      ~Rotate_018: 3415443107545370147
-      ~Rotate_019: -8088076946813600325
-      ~Rotate_020: -2869825828957899792
-      ~Rotate_021: 2194280739569907024
-      ~Rotate_022: -1165170261307159022
-      ~Rotate_023: 4124313160038958974
+      ~Rotate_011: 8639608744857946827
       ~Rotate_024: 1276107433640415272
+      ~Rotate_018: 3415443107545370147
+      ~Rotate_016: 1900320406219725922
+      ~Rotate_023: 4124313160038958974
       ~Rotate_025: -6137051419454811130
+      ~Rotate_010: -62301103472659877
+      ~Rotate_000: -8936373869419366627
+      ~Rotate_013: -4444369951723799485
+      ~Rotate_022: -1165170261307159022
+      ~Rotate_017: -4394723167837567948
+      ~Rotate_004: 2608916302149004510
+      ~Rotate_008: 1382773043753339936
+      ~Rotate_002: -3729393751702786488
+      ~Rotate_020: -2869825828957899792
+      ~Rotate_029: 7651713825922155597
+      ~Rotate_028: 4661632130436656211
+      ~Rotate_019: -8088076946813600325
+      ~Rotate_012: -2878044172105301495
+      ~Rotate_015: -6193730281173974679
       ~Rotate_026: -5122513154397957406
       ~Rotate_027: -1600873499967618117
-      ~Rotate_028: 4661632130436656211
-      ~Rotate_029: 7651713825922155597
+      ~Rotate_005: -5938241945385225294
+      ~Rotate_007: -6880782907710992354
+      ~Rotate_001: 8739175242227795011
+      ~Rotate_021: 2194280739569907024
+      ~Rotate_003: -8699446865689212811
+      ~Rotate_009: 2406446165946721210
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

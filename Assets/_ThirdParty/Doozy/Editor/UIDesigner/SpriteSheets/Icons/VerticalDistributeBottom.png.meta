@@ -191,6 +191,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -835,36 +847,36 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ~VerticalDistributeBottom_000: 8166792121355765278
-      ~VerticalDistributeBottom_001: -2734137102109457093
-      ~VerticalDistributeBottom_002: 5197201052013438635
-      ~VerticalDistributeBottom_003: -8348998342835488781
-      ~VerticalDistributeBottom_004: 4474911320841954544
-      ~VerticalDistributeBottom_005: -4903359809841377838
-      ~VerticalDistributeBottom_006: -2374705433594256854
-      ~VerticalDistributeBottom_007: 955830758376935484
-      ~VerticalDistributeBottom_008: 1233546139097157415
-      ~VerticalDistributeBottom_009: -4813406891411528585
-      ~VerticalDistributeBottom_010: 3418601404485818694
-      ~VerticalDistributeBottom_011: 1046990236373182968
-      ~VerticalDistributeBottom_012: -6803946379199872739
-      ~VerticalDistributeBottom_013: -7096698629905649106
-      ~VerticalDistributeBottom_014: -8586347033391230939
-      ~VerticalDistributeBottom_015: -4875386442038117183
-      ~VerticalDistributeBottom_016: 6271211139912083834
-      ~VerticalDistributeBottom_017: 7857422909483226815
-      ~VerticalDistributeBottom_018: -3318789682562307241
-      ~VerticalDistributeBottom_019: -5365057032071399854
-      ~VerticalDistributeBottom_020: 4981679999363306826
-      ~VerticalDistributeBottom_021: 1575078664514790090
-      ~VerticalDistributeBottom_022: -5076952748762076068
-      ~VerticalDistributeBottom_023: -3626193489973134711
-      ~VerticalDistributeBottom_024: -6492420869404777032
-      ~VerticalDistributeBottom_025: -7622569863384155772
-      ~VerticalDistributeBottom_026: 7102932178499393078
-      ~VerticalDistributeBottom_027: -8959141196835286993
       ~VerticalDistributeBottom_028: -2719573724661700136
       ~VerticalDistributeBottom_029: -4176802682031648637
+      ~VerticalDistributeBottom_009: -4813406891411528585
+      ~VerticalDistributeBottom_023: -3626193489973134711
+      ~VerticalDistributeBottom_006: -2374705433594256854
+      ~VerticalDistributeBottom_013: -7096698629905649106
+      ~VerticalDistributeBottom_019: -5365057032071399854
+      ~VerticalDistributeBottom_011: 1046990236373182968
+      ~VerticalDistributeBottom_005: -4903359809841377838
+      ~VerticalDistributeBottom_024: -6492420869404777032
+      ~VerticalDistributeBottom_007: 955830758376935484
+      ~VerticalDistributeBottom_001: -2734137102109457093
+      ~VerticalDistributeBottom_008: 1233546139097157415
+      ~VerticalDistributeBottom_004: 4474911320841954544
+      ~VerticalDistributeBottom_027: -8959141196835286993
+      ~VerticalDistributeBottom_021: 1575078664514790090
+      ~VerticalDistributeBottom_022: -5076952748762076068
+      ~VerticalDistributeBottom_010: 3418601404485818694
+      ~VerticalDistributeBottom_003: -8348998342835488781
+      ~VerticalDistributeBottom_015: -4875386442038117183
+      ~VerticalDistributeBottom_020: 4981679999363306826
+      ~VerticalDistributeBottom_012: -6803946379199872739
+      ~VerticalDistributeBottom_014: -8586347033391230939
+      ~VerticalDistributeBottom_016: 6271211139912083834
+      ~VerticalDistributeBottom_000: 8166792121355765278
+      ~VerticalDistributeBottom_026: 7102932178499393078
+      ~VerticalDistributeBottom_002: 5197201052013438635
+      ~VerticalDistributeBottom_017: 7857422909483226815
+      ~VerticalDistributeBottom_018: -3318789682562307241
+      ~VerticalDistributeBottom_025: -7622569863384155772
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

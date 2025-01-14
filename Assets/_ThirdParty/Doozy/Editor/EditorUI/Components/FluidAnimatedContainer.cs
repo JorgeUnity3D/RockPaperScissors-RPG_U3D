@@ -165,22 +165,13 @@ namespace Doozy.Editor.EditorUI.Components
             fluidContainer.visible = false;
 
             fluidContainer.RegisterCallback<GeometryChangedEvent>(OnGeometryChanged);
-            fluidContainer.RegisterCallback<AttachToPanelEvent>(OnAttachToPanel);
-            fluidContainer.RegisterCallback<DetachFromPanelEvent>(OnDetachFromPanel);
-        }
-
-        private IVisualElementScheduledItem autoUpdate { get; set; }
-
-        private void OnAttachToPanel(AttachToPanelEvent evt)
-        {
-            schedule.Execute(() => OnGeometryChanged(null));
-            autoUpdate ??= schedule.Execute(UpdateContainer).Every(1000);
-            autoUpdate?.Resume();
-        }
-
-        private void OnDetachFromPanel(DetachFromPanelEvent evt)
-        {
-            autoUpdate?.Pause();
+            
+            schedule
+                .Execute(() => OnGeometryChanged(null));
+            
+            schedule
+                .Execute(() => OnGeometryChanged(null))
+                .Every(1000);
         }
 
         private void UpdateContainer()

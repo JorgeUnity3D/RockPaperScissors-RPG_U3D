@@ -191,6 +191,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -835,36 +847,36 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ~UIMenu_000: 5078865777075162408
-      ~UIMenu_001: 9069426709343920278
-      ~UIMenu_002: -1981797125433071542
-      ~UIMenu_003: -7650134598998822601
-      ~UIMenu_004: 4604334624907486954
+      ~UIMenu_013: 2213396201772667150
+      ~UIMenu_024: 7390147704393686176
+      ~UIMenu_015: 7571448922738125598
+      ~UIMenu_016: -2488393424220104365
       ~UIMenu_005: 930280537158023746
       ~UIMenu_006: -8204856139242414315
       ~UIMenu_007: 5089742564444203359
-      ~UIMenu_008: 7200395271692004462
-      ~UIMenu_009: -6650217905952082387
-      ~UIMenu_010: -1247046996157979731
       ~UIMenu_011: -7955203997073276876
-      ~UIMenu_012: -227817878417770910
-      ~UIMenu_013: 2213396201772667150
+      ~UIMenu_003: -7650134598998822601
       ~UIMenu_014: -1386764097448257504
-      ~UIMenu_015: 7571448922738125598
-      ~UIMenu_016: -2488393424220104365
-      ~UIMenu_017: -4523304053299407222
-      ~UIMenu_018: 8581624787203620891
-      ~UIMenu_019: 3665369561655540989
-      ~UIMenu_020: -6512856505944835913
-      ~UIMenu_021: 968091919595491824
-      ~UIMenu_022: 1603241028994960131
       ~UIMenu_023: 6741266671265960565
-      ~UIMenu_024: 7390147704393686176
-      ~UIMenu_025: -1311410710170602753
-      ~UIMenu_026: 51540179603578623
-      ~UIMenu_027: 507497381806748007
-      ~UIMenu_028: 7738468522685452342
+      ~UIMenu_008: 7200395271692004462
       ~UIMenu_029: 7172531830845272690
+      ~UIMenu_018: 8581624787203620891
+      ~UIMenu_022: 1603241028994960131
+      ~UIMenu_021: 968091919595491824
+      ~UIMenu_027: 507497381806748007
+      ~UIMenu_000: 5078865777075162408
+      ~UIMenu_020: -6512856505944835913
+      ~UIMenu_026: 51540179603578623
+      ~UIMenu_004: 4604334624907486954
+      ~UIMenu_010: -1247046996157979731
+      ~UIMenu_025: -1311410710170602753
+      ~UIMenu_012: -227817878417770910
+      ~UIMenu_028: 7738468522685452342
+      ~UIMenu_019: 3665369561655540989
+      ~UIMenu_009: -6650217905952082387
+      ~UIMenu_002: -1981797125433071542
+      ~UIMenu_001: 9069426709343920278
+      ~UIMenu_017: -4523304053299407222
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -5,16 +5,18 @@
 using System;
 using Doozy.Editor.EditorUI;
 using Doozy.Editor.EditorUI.Components;
+using Doozy.Editor.EditorUI.Utils;
 using Doozy.Editor.UIElements;
 using Doozy.Runtime.Common;
+using Doozy.Runtime.UIDesigner.Utils;
 using Doozy.Runtime.UIElements.Extensions;
+using Doozy.Runtime.UIManager.ScriptableObjects;
 using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UIElements;
 using EditorStyles = Doozy.Editor.EditorUI.EditorStyles;
-
 namespace Doozy.Editor.Common.Layouts
 {
     public class PrefabLinkDatabaseItemRow : PoolableElement<PrefabLinkDatabaseItemRow>
@@ -96,13 +98,13 @@ namespace Doozy.Editor.Common.Layouts
 
             middleContainer
                 .AddChild(prefabNameTextField)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(prefabObjectField);
 
             rightContainer
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(buttonFind)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(buttonDelete);
         }
 

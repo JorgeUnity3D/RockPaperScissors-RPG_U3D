@@ -24,8 +24,8 @@ namespace Doozy.Editor.UIManager.Editors.Triggers.Internal
 {
     public abstract class BaseValueTriggerEditor<Tbehaviour> : UnityEditor.Editor where Tbehaviour : MonoBehaviour
     {
-        protected virtual Color accentColor => EditorColors.Default.ListenerComponent;
-        protected virtual EditorSelectableColorInfo selectableAccentColor => EditorSelectableColors.Default.ListenerComponent;
+        protected virtual Color accentColor => EditorColors.UIManager.ListenerComponent;
+        protected virtual EditorSelectableColorInfo selectableAccentColor => EditorSelectableColors.UIManager.ListenerComponent;
 
         protected BaseValueTrigger<Tbehaviour> castedTarget => (BaseValueTrigger<Tbehaviour>)target;
         protected IEnumerable<BaseValueTrigger<Tbehaviour>> castedTargets => targets.Cast<BaseValueTrigger<Tbehaviour>>();
@@ -198,9 +198,9 @@ namespace Doozy.Editor.UIManager.Editors.Triggers.Internal
                         (
                             DesignUtils.row
                                 .AddChild(triggerOnExactValueMatchCheckbox)
-                                .AddSpaceBlock()
+                                .AddChild(DesignUtils.spaceBlock)
                                 .AddChild(triggerOnIncrementCheckbox)
-                                .AddSpaceBlock()
+                                .AddChild(DesignUtils.spaceBlock)
                                 .AddChild(triggerOnDecrementCheckbox)
                         )
                         .SetStyleMarginTop(DesignUtils.k_Spacing);
@@ -229,7 +229,7 @@ namespace Doozy.Editor.UIManager.Editors.Triggers.Internal
                     (
                         DesignUtils.row
                             .AddChild(triggerModeFluidField)
-                            .AddSpaceBlock()
+                            .AddChild(DesignUtils.spaceBlock)
                             .AddChild(triggerValueFluidField)
                     )
                     .AddContent(triggerOnFluidField)
@@ -262,9 +262,9 @@ namespace Doozy.Editor.UIManager.Editors.Triggers.Internal
             return
                 toolbarContainer
                     .AddChild(settingsTab)
-                    .AddSpaceBlock(2)
+                    .AddChild(DesignUtils.spaceBlock2X)
                     .AddChild(callbacksTab)
-                    .AddSpaceBlock(2)
+                    .AddChild(DesignUtils.spaceBlock2X)
                     .AddChild(DesignUtils.flexibleSpace);
         }
 
@@ -281,9 +281,9 @@ namespace Doozy.Editor.UIManager.Editors.Triggers.Internal
             root
                 .AddChild(componentHeader)
                 .AddChild(Toolbar())
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(Content())
-                .AddEndOfLineSpace();
+                .AddChild(DesignUtils.endOfLineBlock);
         }
 
         protected FluidTab GetTab(string labelText) =>

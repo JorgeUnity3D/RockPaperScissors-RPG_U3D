@@ -25,8 +25,8 @@ namespace Doozy.Editor.UIManager.Editors.Visual
         public UIContainerSpriteSwapper castedTarget => (UIContainerSpriteSwapper)target;
         public IEnumerable<UIContainerSpriteSwapper> castedTargets => targets.Cast<UIContainerSpriteSwapper>();
 
-        protected override Color accentColor => EditorColors.Default.VisualComponent;
-        protected override EditorSelectableColorInfo selectableAccentColor => EditorSelectableColors.Default.VisualComponent;
+        protected override Color accentColor => EditorColors.UIManager.VisualComponent;
+        protected override EditorSelectableColorInfo selectableAccentColor => EditorSelectableColors.UIManager.VisualComponent;
 
         private SerializedProperty propertySpriteTarget { get; set; }
         private SerializedProperty propertyShowSprite { get; set; }
@@ -108,15 +108,15 @@ namespace Doozy.Editor.UIManager.Editors.Visual
         {
             root
                 .AddChild(componentHeader)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(BaseUIContainerAnimatorEditor.GetController(propertyController))
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(spriteTargetFluidField)
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(showSpriteFluidField)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(hideSpriteFluidField)
-                .AddEndOfLineSpace()
+                .AddChild(DesignUtils.endOfLineBlock)
                 ;
         }
 

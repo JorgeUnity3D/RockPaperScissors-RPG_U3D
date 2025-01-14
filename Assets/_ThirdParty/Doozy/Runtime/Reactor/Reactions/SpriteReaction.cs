@@ -15,9 +15,7 @@ namespace Doozy.Runtime.Reactor.Reactions
     [Serializable]
     public class SpriteReaction : DynamicReaction<Sprite, int>
     {
-        public const int DEFAULT_CAPACITY = 100;
-
-        private List<Sprite> sprites { get; set; }
+        private List<Sprite> sprites { get; set; } = new List<Sprite>();
         public int firstFrame => 0;
         public int lastFrame => sprites == null || sprites.Count == 0 ? 0 : sprites.Count - 1;
         public int currentFrame => CurrentValue;
@@ -48,15 +46,6 @@ namespace Doozy.Runtime.Reactor.Reactions
         {
             base.Reset();
             this.SetEase(Ease.Linear);
-            if (sprites == null)
-            {
-                sprites = new List<Sprite>(DEFAULT_CAPACITY);
-            }
-            else
-            {
-                sprites.Clear();
-            }
-            sprites.Add(null);
             OnFrameChangedCallback = null;
         }
 
@@ -85,7 +74,7 @@ namespace Doozy.Runtime.Reactor.Reactions
 
         public override Reaction SetFrom(int value, bool relative = false)
         {
-
+            
             FromValue = value;
             if (relative) FromValue += CurrentValue;
             FromValue = Mathf.Clamp(FromValue, firstFrame, lastFrame);
@@ -116,6 +105,7 @@ namespace Doozy.Runtime.Reactor.Reactions
             base.PlayFromToProgress(fromProgress, toProgress);
         }
 
+
         public override void PlayToProgress(float toProgress)
         {
             FromValue = firstFrame;
@@ -138,13 +128,11 @@ namespace Doozy.Runtime.Reactor.Reactions
         public SpriteReaction SetFrame(int frameNumber) =>
             (SpriteReaction)SetValue(frameNumber);
 
-        /// <summary> Order descending the sprites </summary>
-        public SpriteReaction ReverseSpritesOrder()
+
+        /// <summary> Order descending the sprites by filename </summary>
+        public SpriteReaction ReverseTexturesOrder()
         {
-            int count = sprites.Count;
-            for (int i = 0; i < count / 2; i++)
-                (sprites[i], sprites[count - i - 1]) = (sprites[count - i - 1], sprites[i]);
-            // sprites = sprites.OrderByDescending(t => t.name).ToList();
+            sprites = sprites.OrderByDescending(t => t.name).ToList();
             setter?.Invoke(current);
             return this;
         }
@@ -156,16 +144,8 @@ namespace Doozy.Runtime.Reactor.Reactions
         {
             _ = spriteList ?? throw new ArgumentNullException(nameof(spriteList));
             if (isActive) Stop(true);
-
-            int spriteListCount = spriteList.Count;
-            if (sprites != null && sprites.Count > 0)
-            {
-                sprites.Clear();
-                if (sprites.Capacity != spriteListCount)
-                    sprites.Capacity = spriteListCount;
-            }
-
-            sprites ??= new List<Sprite>(spriteListCount);
+            sprites ??= new List<Sprite>();
+            sprites.Clear();
             sprites.AddRange(spriteList);
             FromValue = firstFrame;
             ToValue = lastFrame;

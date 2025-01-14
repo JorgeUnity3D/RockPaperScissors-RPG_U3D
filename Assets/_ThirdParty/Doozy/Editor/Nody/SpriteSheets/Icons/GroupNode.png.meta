@@ -188,6 +188,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -811,35 +823,35 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ~GroupNode_000: 2553859410744264033
-      ~GroupNode_001: 5050973263890625519
-      ~GroupNode_002: 6976121848611623581
-      ~GroupNode_003: 4766728516020968782
-      ~GroupNode_004: -1559052545367857867
-      ~GroupNode_005: -3164166171264823655
-      ~GroupNode_006: -4538442162216412417
-      ~GroupNode_007: -4659729460904573151
       ~GroupNode_008: -8159746019627502529
-      ~GroupNode_009: -5139399455001622427
-      ~GroupNode_010: -4851809765417830023
-      ~GroupNode_011: 2585636429768849385
-      ~GroupNode_012: 3763631750541863391
-      ~GroupNode_013: 40341478684488586
-      ~GroupNode_014: 6357539831581692599
-      ~GroupNode_015: -2876667433069171249
       ~GroupNode_016: 1068034025290750996
-      ~GroupNode_017: 5098759912292560740
-      ~GroupNode_018: 4141585563231400599
-      ~GroupNode_019: 7162192861554989354
       ~GroupNode_020: 7234254293008599168
-      ~GroupNode_021: 928451330878292776
+      ~GroupNode_019: 7162192861554989354
+      ~GroupNode_009: -5139399455001622427
       ~GroupNode_022: 7202345556246965483
+      ~GroupNode_004: -1559052545367857867
+      ~GroupNode_002: 6976121848611623581
+      ~GroupNode_006: -4538442162216412417
+      ~GroupNode_000: 2553859410744264033
+      ~GroupNode_017: 5098759912292560740
+      ~GroupNode_003: 4766728516020968782
+      ~GroupNode_014: 6357539831581692599
       ~GroupNode_023: -3711968603174188970
-      ~GroupNode_024: -3356776188786458093
+      ~GroupNode_001: 5050973263890625519
+      ~GroupNode_021: 928451330878292776
+      ~GroupNode_028: -4677496382985001580
+      ~GroupNode_027: 5521891181313057313
+      ~GroupNode_015: -2876667433069171249
+      ~GroupNode_013: 40341478684488586
+      ~GroupNode_011: 2585636429768849385
       ~GroupNode_025: 7834119657605805821
       ~GroupNode_026: -4945423441420385787
-      ~GroupNode_027: 5521891181313057313
-      ~GroupNode_028: -4677496382985001580
+      ~GroupNode_018: 4141585563231400599
+      ~GroupNode_024: -3356776188786458093
+      ~GroupNode_012: 3763631750541863391
+      ~GroupNode_005: -3164166171264823655
+      ~GroupNode_010: -4851809765417830023
+      ~GroupNode_007: -4659729460904573151
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

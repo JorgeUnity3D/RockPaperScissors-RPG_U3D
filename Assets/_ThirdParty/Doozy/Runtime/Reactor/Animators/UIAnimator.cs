@@ -3,11 +3,12 @@
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
 using System.Collections.Generic;
-using Doozy.Runtime.Common.Layouts;
 using Doozy.Runtime.Common.Utils;
 using Doozy.Runtime.Reactor.Animations;
 using Doozy.Runtime.Reactor.Animators.Internal;
 using Doozy.Runtime.Reactor.Ticker;
+using Doozy.Runtime.UIManager.Layouts;
+using Doozy.Runtime.UIManager.Utils;
 using UnityEngine;
 using UnityEngine.UI;
 // ReSharper disable MemberCanBePrivate.Global

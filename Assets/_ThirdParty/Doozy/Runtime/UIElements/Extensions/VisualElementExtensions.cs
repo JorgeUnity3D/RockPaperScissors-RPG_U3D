@@ -52,14 +52,6 @@ namespace Doozy.Runtime.UIElements.Extensions
 
         #region AddSpace, AddHorizontalSpace, AddVerticalSpace
 
-        public const float SPACING = 4;
-        
-        public static T AddEndOfLineSpace<T>(this T target, int multiplier = 1) where T : VisualElement =>
-            target.AddChild(new VisualElement().SetStyleFlexShrink(0).SetName("EndSpace").SetStyleHeight(SPACING * 6 * multiplier));
-        
-        public static T AddSpaceBlock<T>(this T target, int multiplier = 1) where T : VisualElement =>
-            target.AddChild(new VisualElement().SetStyleFlexShrink(0).SetName("SpaceBlock").SetStyleHeight(SPACING * multiplier));
-        
         public static T AddSpace<T>(this T target, float width, float height) where T : VisualElement =>
             target.AddChild(new VisualElement().SetStyleFlexShrink(0).SetName("Space").SetStyleSize(width, height));
 
@@ -1742,25 +1734,12 @@ namespace Doozy.Runtime.UIElements.Extensions
 
         #region Style - Whitespace
 
-        /// <summary>
-        /// Word wrapping over multiple lines if not enough space is available to draw the text of an element.
-        /// </summary>
-        /// <param name="target"> Target VisualElement </param>
-        /// <param name="value"> WhiteSpace value </param>
-        /// <typeparam name="T"> Target VisualElement </typeparam>
-        /// <returns> Target VisualElement </returns>
         public static T SetWhiteSpace<T>(this T target, WhiteSpace value) where T : VisualElement
         {
             target.style.whiteSpace = value;
             return target;
         }
 
-        /// <summary>
-        /// Get the word wrapping over multiple lines if not enough space is available to draw the text of an element.
-        /// </summary>
-        /// <param name="target"> Target VisualElement </param>
-        /// <typeparam name="T"> Target VisualElement </typeparam>
-        /// <returns> WhiteSpace value </returns>
         public static WhiteSpace GetWhiteSpace<T>(this T target) where T : VisualElement =>
             target.style.whiteSpace.value;
 
@@ -1768,53 +1747,14 @@ namespace Doozy.Runtime.UIElements.Extensions
 
         #region Style - UnityFont
 
-        /// <summary>
-        /// Set the font to draw the element's text.
-        /// </summary>
-        /// <param name="target"> Target VisualElement </param>
-        /// <param name="value"> Font value </param>
-        /// <typeparam name="T"> Target VisualElement </typeparam>
-        /// <returns> Target VisualElement </returns>
         public static T SetStyleUnityFont<T>(this T target, Font value) where T : VisualElement
         {
             target.style.unityFont = value;
             return target;
         }
 
-        /// <summary>
-        /// Get the font to draw the element's text.
-        /// </summary>
-        /// <param name="target"> Target VisualElement </param>
-        /// <typeparam name="T"> Target VisualElement </typeparam>
-        /// <returns> Font value </returns>
         public static Font GetStyleUnityFont<T>(this T target) where T : VisualElement =>
             target.style.unityFont.value;
-
-        #endregion
-
-        #region Style - UnityFontStyleAndWeight
-        
-        /// <summary>
-        /// Set the font style and weight (normal, bold, italic) to draw the element's text.
-        /// </summary>
-        /// <param name="target"> Target VisualElement </param>
-        /// <param name="value"> FontStyle value </param>
-        /// <typeparam name="T"> Target VisualElement </typeparam>
-        /// <returns> Target VisualElement </returns>
-        public static T SetStyleUnityFontStyleAndWeight<T>(this T target, FontStyle value) where T : VisualElement
-        {
-            target.style.unityFontStyleAndWeight = new StyleEnum<FontStyle>(value);
-            return target;
-        }
-        
-        /// <summary>
-        /// Get the font style and weight (normal, bold, italic) used to draw the element's text.
-        /// </summary>
-        /// <param name="target"> Target VisualElement </param> 
-        /// <typeparam name="T"> Target VisualElement </typeparam>
-        /// <returns> FontStyle value </returns>
-        public static FontStyle GetStyleUnityFontStyleAndWeight<T>(this T target) where T : VisualElement =>
-            target.style.unityFontStyleAndWeight.value;
 
         #endregion
 

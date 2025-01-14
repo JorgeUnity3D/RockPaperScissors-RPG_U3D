@@ -26,8 +26,8 @@ namespace Doozy.Editor.UIManager.Layouts.Databases
         
         public override string layoutName => "Popups";
         public override List<Texture2D> animatedIconTextures => EditorSpriteSheets.UIManager.Icons.UIPopupDatabase;
-        public override Color accentColor => EditorColors.Default.UIComponent;
-        public override EditorSelectableColorInfo selectableAccentColor => EditorSelectableColors.Default.UIComponent;
+        public override Color accentColor => EditorColors.UIManager.UIComponent;
+        public override EditorSelectableColorInfo selectableAccentColor => EditorSelectableColors.UIManager.UIComponent;
         
         private UnityEngine.Object targetObject => null;
         private UnityAction onUpdateCallback => null;

@@ -28,7 +28,7 @@ namespace Doozy.Editor.UIManager.Drawers
                 TogglesDatabaseWindow.Open,
                 "Open Toggles Database Window",
                 UIToggleIdDatabase.instance,
-                EditorSelectableColors.Default.UIComponent
+                EditorSelectableColors.UIManager.UIComponent
             );
     }
 }

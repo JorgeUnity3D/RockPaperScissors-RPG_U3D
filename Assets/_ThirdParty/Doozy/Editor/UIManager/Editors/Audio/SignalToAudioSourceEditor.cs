@@ -23,8 +23,8 @@ namespace Doozy.Editor.UIManager.Editors.Audio
         private SignalToAudioSource castedTarget => (SignalToAudioSource)target;
         private IEnumerable<SignalToAudioSource> castedTargets => targets.Cast<SignalToAudioSource>();
 
-        private static Color accentColor => EditorColors.Default.AudioComponent;
-        private static EditorSelectableColorInfo selectableAccentColor => EditorSelectableColors.Default.AudioComponent;
+        private static Color accentColor => EditorColors.UIManager.AudioComponent;
+        private static EditorSelectableColorInfo selectableAccentColor => EditorSelectableColors.UIManager.AudioComponent;
 
         private static IEnumerable<Texture2D> componentIconTextures => EditorSpriteSheets.UIManager.Icons.SignalToAudioSource;
 
@@ -87,11 +87,11 @@ namespace Doozy.Editor.UIManager.Editors.Audio
         {
             root
                 .AddChild(componentHeader)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(streamIdFluidField)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(audioSourceFluidField)
-                .AddEndOfLineSpace()
+                .AddChild(DesignUtils.endOfLineBlock)
                 ;
         }
     }

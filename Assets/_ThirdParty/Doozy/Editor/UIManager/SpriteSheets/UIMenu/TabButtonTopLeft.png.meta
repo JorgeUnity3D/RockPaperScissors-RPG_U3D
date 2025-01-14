@@ -191,6 +191,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -836,34 +848,34 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       ~TabButtonTopLeft_000: 1999432779932939751
-      ~TabButtonTopLeft_001: 7656947386943035218
-      ~TabButtonTopLeft_002: -3554476239479173463
-      ~TabButtonTopLeft_003: -3621258872938691043
-      ~TabButtonTopLeft_004: -7412687844962113031
-      ~TabButtonTopLeft_005: 4907845676798891746
-      ~TabButtonTopLeft_006: -2606246695157407873
-      ~TabButtonTopLeft_007: -7540543073109168803
-      ~TabButtonTopLeft_008: 7773999333738100928
-      ~TabButtonTopLeft_009: 3357393791117194756
-      ~TabButtonTopLeft_010: 2299336669438243249
-      ~TabButtonTopLeft_011: -3222715901727228622
-      ~TabButtonTopLeft_012: -8598171274171960036
       ~TabButtonTopLeft_013: 8487454713594449292
-      ~TabButtonTopLeft_014: 5752394533498543845
-      ~TabButtonTopLeft_015: 697751237348383247
-      ~TabButtonTopLeft_016: -8971634264688312526
-      ~TabButtonTopLeft_017: -8101161079193536535
-      ~TabButtonTopLeft_018: 5573315096541888745
-      ~TabButtonTopLeft_019: -5382075828990285196
-      ~TabButtonTopLeft_020: 8671394060904969764
-      ~TabButtonTopLeft_021: -7319745716809336610
-      ~TabButtonTopLeft_022: -1743479477526347462
-      ~TabButtonTopLeft_023: -2322531155537121282
       ~TabButtonTopLeft_024: 531636511690390311
+      ~TabButtonTopLeft_022: -1743479477526347462
+      ~TabButtonTopLeft_008: 7773999333738100928
+      ~TabButtonTopLeft_012: -8598171274171960036
+      ~TabButtonTopLeft_009: 3357393791117194756
       ~TabButtonTopLeft_025: -6502505571355400842
-      ~TabButtonTopLeft_026: 1409499513214875091
+      ~TabButtonTopLeft_001: 7656947386943035218
+      ~TabButtonTopLeft_005: 4907845676798891746
+      ~TabButtonTopLeft_016: -8971634264688312526
+      ~TabButtonTopLeft_002: -3554476239479173463
+      ~TabButtonTopLeft_007: -7540543073109168803
       ~TabButtonTopLeft_027: 4134342627701940439
       ~TabButtonTopLeft_028: 8537083453238070852
+      ~TabButtonTopLeft_006: -2606246695157407873
+      ~TabButtonTopLeft_015: 697751237348383247
+      ~TabButtonTopLeft_010: 2299336669438243249
+      ~TabButtonTopLeft_023: -2322531155537121282
+      ~TabButtonTopLeft_019: -5382075828990285196
+      ~TabButtonTopLeft_018: 5573315096541888745
+      ~TabButtonTopLeft_014: 5752394533498543845
+      ~TabButtonTopLeft_011: -3222715901727228622
+      ~TabButtonTopLeft_017: -8101161079193536535
+      ~TabButtonTopLeft_020: 8671394060904969764
+      ~TabButtonTopLeft_003: -3621258872938691043
+      ~TabButtonTopLeft_021: -7319745716809336610
+      ~TabButtonTopLeft_026: 1409499513214875091
+      ~TabButtonTopLeft_004: -7412687844962113031
       ~TabButtonTopLeft_029: -4330898745541545268
   spritePackingTag: 
   pSDRemoveMatte: 0

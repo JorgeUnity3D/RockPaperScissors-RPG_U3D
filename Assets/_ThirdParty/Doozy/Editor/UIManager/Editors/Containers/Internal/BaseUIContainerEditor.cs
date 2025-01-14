@@ -29,8 +29,8 @@ namespace Doozy.Editor.UIManager.Editors.Containers.Internal
 {
     public abstract class BaseUIContainerEditor : UnityEditor.Editor
     {
-        protected virtual Color accentColor => EditorColors.Default.UIComponent;
-        protected virtual EditorSelectableColorInfo selectableAccentColor => EditorSelectableColors.Default.UIComponent;
+        protected virtual Color accentColor => EditorColors.UIManager.UIComponent;
+        protected virtual EditorSelectableColorInfo selectableAccentColor => EditorSelectableColors.UIManager.UIComponent;
 
         protected UIContainer castedContainer => (UIContainer)target;
         protected List<UIContainer> castedContainers => targets.Cast<UIContainer>().ToList();
@@ -401,14 +401,11 @@ namespace Doozy.Editor.UIManager.Editors.Containers.Internal
 
                 #region Custom Start Position
 
-                Vector3Field customStartPositionPropertyField =
-                    DesignUtils.NewVector3Field(propertyCustomStartPosition)
+                PropertyField customStartPositionPropertyField =
+                    DesignUtils.NewPropertyField(propertyCustomStartPosition)
+                        .TryToHideLabel()
                         .SetTooltip("AnchoredPosition3D to snap to on Awake")
                         .SetStyleAlignSelf(Align.Center);
-
-                customStartPositionPropertyField.Q<FloatField>("unity-x-input").SetStyleFlexShrink(1);
-                customStartPositionPropertyField.Q<FloatField>("unity-y-input").SetStyleFlexShrink(1);
-                customStartPositionPropertyField.Q<FloatField>("unity-z-input").SetStyleFlexShrink(1);
 
                 FluidToggleSwitch useCustomStartPositionSwitch =
                     FluidToggleSwitch.Get()
@@ -422,8 +419,7 @@ namespace Doozy.Editor.UIManager.Editors.Containers.Internal
                         .SetLabelText(labelText)
                         .SetTooltip(tooltip)
                         .SetElementSize(ElementSize.Tiny)
-                        .SetButtonStyle(ButtonStyle.Contained)
-                        .SetStyleFlexShrink(0);
+                        .SetButtonStyle(ButtonStyle.Contained);
 
                 FluidButton getCustomPositionButton =
                     GetButton
@@ -480,13 +476,13 @@ namespace Doozy.Editor.UIManager.Editors.Containers.Internal
                             DesignUtils.row
                                 .SetStyleAlignItems(Align.Center)
                                 .AddChild(useCustomStartPositionSwitch)
-                                .AddSpaceBlock()
+                                .AddChild(DesignUtils.spaceBlock)
                                 .AddChild(customStartPositionPropertyField)
-                                .AddSpaceBlock()
+                                .AddChild(DesignUtils.spaceBlock)
                                 .AddChild(getCustomPositionButton)
-                                .AddSpaceBlock()
+                                .AddChild(DesignUtils.spaceBlock)
                                 .AddChild(setCustomPositionButton)
-                                .AddSpaceBlock()
+                                .AddChild(DesignUtils.spaceBlock)
                                 .AddChild(resetCustomPositionButton)
                         );
 
@@ -531,9 +527,9 @@ namespace Doozy.Editor.UIManager.Editors.Containers.Internal
                         (
                             DesignUtils.row
                                 .AddChild(disableGameObjectWhenHiddenSwitch)
-                                .AddSpaceBlock()
+                                .AddChild(DesignUtils.spaceBlock)
                                 .AddChild(disableCanvasWhenHiddenSwitch)
-                                .AddSpaceBlock()
+                                .AddChild(DesignUtils.spaceBlock)
                                 .AddChild(disableGraphicRaycasterWhenHiddenSwitch)
                                 .AddChild(DesignUtils.flexibleSpace)
                         );
@@ -578,7 +574,7 @@ namespace Doozy.Editor.UIManager.Editors.Containers.Internal
                         (
                             DesignUtils.row
                                 .AddChild(clearSelectedOnShowSwitch)
-                                .AddSpaceBlock()
+                                .AddChild(DesignUtils.spaceBlock)
                                 .AddChild(clearSelectedOnHideSwitch)
                         )
                         .SetStyleMinWidth(150);
@@ -607,7 +603,7 @@ namespace Doozy.Editor.UIManager.Editors.Containers.Internal
                         (
                             DesignUtils.row
                                 .AddChild(autoSelectAfterShowSwitch)
-                                .AddSpaceBlock()
+                                .AddChild(DesignUtils.spaceBlock)
                                 .AddChild(autoSelectTargetObjectField)
                         );
 
@@ -618,7 +614,7 @@ namespace Doozy.Editor.UIManager.Editors.Containers.Internal
                     (
                         DesignUtils.row
                             .AddChild(onStartBehaviourFluidField)
-                            .AddSpaceBlock()
+                            .AddChild(DesignUtils.spaceBlock)
                             .AddChild(autoHideAfterShowFluidField)
                     )
                     .AddContent(DesignUtils.spaceBlock)
@@ -632,7 +628,7 @@ namespace Doozy.Editor.UIManager.Editors.Containers.Internal
                     (
                         DesignUtils.row
                             .AddChild(clearSelectedFluidField)
-                            .AddSpaceBlock()
+                            .AddChild(DesignUtils.spaceBlock)
                             .AddChild(autoSelectAfterShowFluidField)
                     )
                     .AddContent(DesignUtils.endOfLineBlock)
@@ -739,13 +735,13 @@ namespace Doozy.Editor.UIManager.Editors.Containers.Internal
             return
                 toolbarContainer
                     .AddChild(settingsTab)
-                    .AddSpaceBlock()
+                    .AddChild(DesignUtils.spaceBlock)
                     .AddChild(callbacksTab)
-                    .AddSpaceBlock()
+                    .AddChild(DesignUtils.spaceBlock)
                     .AddChild(progressorsTab)
-                    .AddSpaceBlock()
+                    .AddChild(DesignUtils.spaceBlock)
                     .AddChild(DesignUtils.flexibleSpace)
-                    .AddSpaceBlock(2)
+                    .AddChild(DesignUtils.spaceBlock2X)
                     .AddChild
                     (
                         DesignUtils.SystemButton_SortComponents
@@ -772,9 +768,9 @@ namespace Doozy.Editor.UIManager.Editors.Containers.Internal
                 .AddChild(reactionControls)
                 .AddChild(componentHeader)
                 .AddChild(Toolbar())
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(Content())
-                .AddEndOfLineSpace();
+                .AddChild(DesignUtils.endOfLineBlock);
         }
     }
 }

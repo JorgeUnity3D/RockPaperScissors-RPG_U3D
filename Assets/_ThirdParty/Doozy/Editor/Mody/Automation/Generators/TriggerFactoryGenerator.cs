@@ -2,7 +2,6 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System;
 using System.Text;
 using Doozy.Editor.Common.Utils;
 using Doozy.Runtime;
@@ -38,7 +37,6 @@ namespace Doozy.Editor.Mody.Automation.Generators
             string data = FileGenerator.GetFile(templateFilePath);
             if (data.IsNullOrEmpty()) return false;
             data = InjectContent(data);
-            data += Environment.NewLine;
             bool result = FileGenerator.WriteFile(targetFilePath, data);
             if (!result) return false;
             if (saveAssets) AssetDatabase.SaveAssets();

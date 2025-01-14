@@ -191,6 +191,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -835,36 +847,36 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ~OrientationDetector_000: 8183492589569386142
-      ~OrientationDetector_001: -5005226555762134067
-      ~OrientationDetector_002: -5673588867398471898
-      ~OrientationDetector_003: -4945541817163431798
-      ~OrientationDetector_004: -8484260400496527276
-      ~OrientationDetector_005: 4023453515300060257
-      ~OrientationDetector_006: -5045344117985938679
-      ~OrientationDetector_007: 6763645150181154592
-      ~OrientationDetector_008: -3819768756181464523
       ~OrientationDetector_009: 6534485084648154646
-      ~OrientationDetector_010: 7861044043878593581
-      ~OrientationDetector_011: 2099879587042304087
-      ~OrientationDetector_012: 3740114896636458363
       ~OrientationDetector_013: 8369251319750684125
-      ~OrientationDetector_014: 6253616545495980546
-      ~OrientationDetector_015: -2952717891482088298
-      ~OrientationDetector_016: -5912441839002048168
-      ~OrientationDetector_017: -9081620553354176075
-      ~OrientationDetector_018: 7842098378887195072
-      ~OrientationDetector_019: -2503658616372391511
       ~OrientationDetector_020: -436616536950224
-      ~OrientationDetector_021: 218459343042582379
+      ~OrientationDetector_003: -4945541817163431798
+      ~OrientationDetector_019: -2503658616372391511
       ~OrientationDetector_022: 1980438659980346199
-      ~OrientationDetector_023: -3375308981408759767
-      ~OrientationDetector_024: -785834276753902253
-      ~OrientationDetector_025: -6890030194959020872
-      ~OrientationDetector_026: -5165709144406054738
-      ~OrientationDetector_027: 9004517989710711622
-      ~OrientationDetector_028: 7467763335913155031
+      ~OrientationDetector_018: 7842098378887195072
       ~OrientationDetector_029: 7132013412578990458
+      ~OrientationDetector_010: 7861044043878593581
+      ~OrientationDetector_014: 6253616545495980546
+      ~OrientationDetector_012: 3740114896636458363
+      ~OrientationDetector_008: -3819768756181464523
+      ~OrientationDetector_001: -5005226555762134067
+      ~OrientationDetector_025: -6890030194959020872
+      ~OrientationDetector_015: -2952717891482088298
+      ~OrientationDetector_011: 2099879587042304087
+      ~OrientationDetector_000: 8183492589569386142
+      ~OrientationDetector_016: -5912441839002048168
+      ~OrientationDetector_024: -785834276753902253
+      ~OrientationDetector_027: 9004517989710711622
+      ~OrientationDetector_017: -9081620553354176075
+      ~OrientationDetector_023: -3375308981408759767
+      ~OrientationDetector_004: -8484260400496527276
+      ~OrientationDetector_007: 6763645150181154592
+      ~OrientationDetector_006: -5045344117985938679
+      ~OrientationDetector_026: -5165709144406054738
+      ~OrientationDetector_021: 218459343042582379
+      ~OrientationDetector_028: 7467763335913155031
+      ~OrientationDetector_002: -5673588867398471898
+      ~OrientationDetector_005: 4023453515300060257
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

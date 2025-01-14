@@ -191,6 +191,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -835,36 +847,36 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ~KeyObject_000: 5324759271891081633
-      ~KeyObject_001: 757407783200288558
-      ~KeyObject_002: -538131127924836929
-      ~KeyObject_003: -5866445961402708219
-      ~KeyObject_004: -7684953980725241554
-      ~KeyObject_005: 7856500327686794118
-      ~KeyObject_006: 1926142572319055867
-      ~KeyObject_007: -6988241499784774710
       ~KeyObject_008: 3843858546684695042
-      ~KeyObject_009: -3193030032040539486
       ~KeyObject_010: 7560625249626577576
-      ~KeyObject_011: -5862386014536027004
-      ~KeyObject_012: -7530265298360870359
-      ~KeyObject_013: -6990991843064821769
-      ~KeyObject_014: 1589033433236011184
-      ~KeyObject_015: -7239351316428214259
-      ~KeyObject_016: 2162465287375483135
-      ~KeyObject_017: -1186940349624113563
-      ~KeyObject_018: 1460711114207294488
-      ~KeyObject_019: 1891208059177755201
       ~KeyObject_020: 2110173474308972061
+      ~KeyObject_014: 1589033433236011184
+      ~KeyObject_009: -3193030032040539486
+      ~KeyObject_019: 1891208059177755201
+      ~KeyObject_026: -623768910517704821
+      ~KeyObject_007: -6988241499784774710
+      ~KeyObject_028: 4667243057361272139
+      ~KeyObject_004: -7684953980725241554
+      ~KeyObject_025: -8605499086724386710
+      ~KeyObject_001: 757407783200288558
+      ~KeyObject_027: -3933202314384144720
       ~KeyObject_021: -3668750826709054689
       ~KeyObject_022: 7821951966687957887
-      ~KeyObject_023: -6384368601403241192
-      ~KeyObject_024: 1126960201922289692
-      ~KeyObject_025: -8605499086724386710
-      ~KeyObject_026: -623768910517704821
-      ~KeyObject_027: -3933202314384144720
-      ~KeyObject_028: 4667243057361272139
       ~KeyObject_029: 2955874481928472783
+      ~KeyObject_016: 2162465287375483135
+      ~KeyObject_024: 1126960201922289692
+      ~KeyObject_002: -538131127924836929
+      ~KeyObject_003: -5866445961402708219
+      ~KeyObject_011: -5862386014536027004
+      ~KeyObject_006: 1926142572319055867
+      ~KeyObject_015: -7239351316428214259
+      ~KeyObject_017: -1186940349624113563
+      ~KeyObject_018: 1460711114207294488
+      ~KeyObject_000: 5324759271891081633
+      ~KeyObject_005: 7856500327686794118
+      ~KeyObject_013: -6990991843064821769
+      ~KeyObject_012: -7530265298360870359
+      ~KeyObject_023: -6384368601403241192
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

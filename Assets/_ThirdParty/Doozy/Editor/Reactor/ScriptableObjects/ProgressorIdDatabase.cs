@@ -7,12 +7,10 @@ using System.Linq;
 using Doozy.Editor.Common;
 using Doozy.Editor.Common.ScriptableObjects;
 using Doozy.Runtime.Common;
-using Doozy.Runtime.Common.Attributes;
 using Doozy.Runtime.Common.Extensions;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
-
 namespace Doozy.Editor.Reactor.ScriptableObjects
 {
     public class ProgressorIdDatabase : SingletonEditorScriptableObject<ProgressorIdDatabase>, IUpdateCallback
@@ -38,10 +36,6 @@ namespace Doozy.Editor.Reactor.ScriptableObjects
         [SerializeField] private ProgressorIdDataGroup Database;
         public ProgressorIdDataGroup database => Database ??= new ProgressorIdDataGroup();
 
-        [RestoreData(nameof(ProgressorIdDatabase))]
-        public static ProgressorIdDatabase RestoreData() =>
-            instance;
-        
         public ProgressorIdDatabase() => Database = new ProgressorIdDataGroup();
 
         public (bool, string) CanImportRoamingDatabases(List<ProgressorIdRoamingDatabase> roamingDatabases)

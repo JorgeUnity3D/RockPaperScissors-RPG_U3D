@@ -28,8 +28,8 @@ namespace Doozy.Editor.UIManager.Editors.Input
         public InputToSignal castedTarget => (InputToSignal)target;
         public IEnumerable<InputToSignal> castedTargets => targets.Cast<InputToSignal>();
 
-        private static Color accentColor => EditorColors.Default.InputComponent;
-        private static EditorSelectableColorInfo selectableAccentColor => EditorSelectableColors.Default.InputComponent;
+        private static Color accentColor => EditorColors.UIManager.InputComponent;
+        private static EditorSelectableColorInfo selectableAccentColor => EditorSelectableColors.UIManager.InputComponent;
 
         private static IEnumerable<Texture2D> inputToSignalIconTextures => EditorSpriteSheets.UIManager.Icons.InputToSignal;
 
@@ -181,22 +181,22 @@ namespace Doozy.Editor.UIManager.Editors.Input
         {
             root
                 .AddChild(componentHeader)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(autoConnectSwitch)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild
                 (
                     DesignUtils.row
                         .AddChild(uiInputModuleField)
-                        .AddSpaceBlock()
+                        .AddChild(DesignUtils.spaceBlock)
                         .AddChild(playerInputField)
                 )
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild
                 (
                     DesignUtils.row
                         .AddChild(inputActionNameField)
-                        .AddSpaceBlock()
+                        .AddChild(DesignUtils.spaceBlock)
                         .AddChild(customInputActionNameField)
                 )
                 ;
@@ -295,17 +295,17 @@ namespace Doozy.Editor.UIManager.Editors.Input
         {
             root
                 .AddChild(componentHeader)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(inputModeFluidField)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(keyCodeFluidField)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(virtualButtonNameFluidField)
                 ;
 
             if (UIManagerInputSettings.instance.multiplayerMode)
                 root
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(playerIndexFluidField)
                 ;
         }

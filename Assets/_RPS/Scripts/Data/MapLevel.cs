@@ -28,10 +28,10 @@ namespace Kapibara.RPS {
         // [LabelWidth(50f)]
         // public int reward = 10;
 
-        // [FoldoutGroup("LevelInfo")]
-        // [HorizontalGroup("LevelInfo/Row2", MaxWidth = 300f, Width = 0.1f, PaddingLeft = 0.001f, PaddingRight = 0.005f)]
-        // [LabelWidth(100f)]
-        // public UIButtonId.TravelButtons levelButtonID;
+        [FoldoutGroup("LevelInfo")]
+        [HorizontalGroup("LevelInfo/Row2", MaxWidth = 300f, Width = 0.1f, PaddingLeft = 0.001f, PaddingRight = 0.005f)]
+        [LabelWidth(100f)]
+        public UIButtonId.TravelButtons levelButtonID;
 
         [FoldoutGroup("LevelInfo")]
         [HorizontalGroup("LevelInfo/Row3", MaxWidth = 100F, Width = 0.5f, PaddingLeft = 0.001f, PaddingRight = 0.001f)]

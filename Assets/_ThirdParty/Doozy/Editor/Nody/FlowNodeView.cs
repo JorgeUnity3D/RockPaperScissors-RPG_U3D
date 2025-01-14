@@ -30,7 +30,6 @@ using EditorStyles = Doozy.Editor.EditorUI.EditorStyles;
 // ReSharper disable VirtualMemberCallInConstructor
 // ReSharper disable VirtualMemberNeverOverridden.Global
 // ReSharper disable UnusedMember.Global
-// ReSharper disable ForCanBeConvertedToForeach
 
 namespace Doozy.Editor.Nody
 {
@@ -137,8 +136,8 @@ namespace Doozy.Editor.Nody
             node.refreshNodeView += RefreshNodeView;
             node.refreshNodeView += RefreshPortsViews;
 
-            // RegisterCallback<PointerEnterEvent>(evt => nodeIconReaction?.Play());
-            RegisterCallback<PointerDownEvent>(_ => nodeIconReaction?.Play());
+            RegisterCallback<PointerEnterEvent>(evt => nodeIconReaction?.Play());
+            RegisterCallback<PointerDownEvent>(evt => nodeIconReaction?.Play());
 
             inputPortViews ??= new List<FlowPortView>();
             outputPortViews ??= new List<FlowPortView>();
@@ -217,43 +216,23 @@ namespace Doozy.Editor.Nody
 
         public virtual void RefreshPortsViews()
         {
-            // Remove all input ports
-            for (int i = inputPortViews.Count - 1; i >= 0; i--)
+            inputPortViews.ForEach(p => p?.Dispose());
+            inputPortViews.Clear();
+            flowNode.inputPorts.ForEach(port =>
             {
-                FlowPortView p = inputPortViews[i];
-                inputPortViews.RemoveAt(i);
-                p?.Dispose();
-            }
-            if (inputPortViews.Count > 0)
-                inputPortViews.Clear();
-
-            // Add all input ports
-            for (int i = 0; i < flowNode.inputPorts.Count; i++)
-            {
-                FlowPort port = flowNode.inputPorts[i];
                 port.refreshPortView -= RefreshData;
                 port.refreshPortView += RefreshData;
                 AddPortView(port);
-            }
+            });
 
-            // Remove all output ports
-            for (int i = outputPortViews.Count - 1; i >= 0; i--)
+            outputPortViews.ForEach(p => p?.Dispose());
+            outputPortViews.Clear();
+            flowNode.outputPorts.ForEach(port =>
             {
-                FlowPortView p = outputPortViews[i];
-                outputPortViews.RemoveAt(i);
-                p?.Dispose();
-            }
-            if (outputPortViews.Count > 0)
-                outputPortViews.Clear();
-            
-            // Add all output ports
-            for (int i = 0; i < flowNode.outputPorts.Count; i++)
-            {
-                FlowPort port = flowNode.outputPorts[i];
                 port.refreshPortView -= RefreshData;
                 port.refreshPortView += RefreshData;
                 AddPortView(port);
-            }
+            });
 
             graphView.RefreshEdges();
 
@@ -378,7 +357,7 @@ namespace Doozy.Editor.Nody
                         .SetEditorHeartbeat()
                         .SetTextures(EditorSpriteSheets.EditorUI.Icons.Locked);
 
-                deleteLockIcon.RegisterCallback<PointerEnterEvent>(_ => deleteLockIconReaction?.Play());
+                deleteLockIcon.RegisterCallback<PointerEnterEvent>(evy => deleteLockIconReaction?.Play());
 
                 nodeInfo.AddChild(deleteLockIcon);
             }

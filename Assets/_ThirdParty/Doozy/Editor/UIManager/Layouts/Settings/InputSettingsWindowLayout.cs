@@ -26,24 +26,20 @@ namespace Doozy.Editor.UIManager.Layouts.Settings
     public sealed class InputSettingsWindowLayout : FluidWindowLayout, IDashboardSettingsWindowLayout
     {
         public int order => 0;
-
+        
         public override string layoutName => "Input Settings";
         public override List<Texture2D> animatedIconTextures => EditorSpriteSheets.UIManager.Icons.KeyMapper;
-        public override Color accentColor => EditorColors.Default.SettingsComponent;
-        public override EditorSelectableColorInfo selectableAccentColor => EditorSelectableColors.Default.SettingsComponent;
+        public override Color accentColor => EditorColors.UIManager.Settings;
+        public override EditorSelectableColorInfo selectableAccentColor => EditorSelectableColors.UIManager.Settings;
 
         private SerializedObject serializedObject { get; set; }
         private SerializedProperty propertyDefaultPlayerIndex { get; set; }
         private SerializedProperty propertyMultiplayerMode { get; set; }
         private SerializedProperty propertyBackButtonCooldown { get; set; }
 
-        private SerializedProperty propertyBackButtonVirtualButtonName { get; set; }
-
         private IntegerField defaultPlayerIndexIntegerField { get; set; }
         private FluidToggleSwitch multiplayerModeSwitch { get; set; }
         private FloatField backButtonCooldownFloatField { get; set; }
-
-        private TextField backButtonVirtualButtonNameTextField { get; set; }
 
         private static IEnumerable<Texture2D> resetTextures => EditorSpriteSheets.EditorUI.Icons.Reset;
         private FluidButton resetPlayerIndexButton { get; set; }
@@ -54,7 +50,6 @@ namespace Doozy.Editor.UIManager.Layouts.Settings
         private FluidField playerIndexField { get; set; }
         private FluidField playerMultiplayerMode { get; set; }
         private FluidField playerBackButtonCooldown { get; set; }
-        private FluidField backButtonVirtualButtonName { get; set; }
 
         private FluidToggleButtonTab inputSystemPackageTabButton { get; set; }
         private FluidToggleButtonTab legacyInputManagerTabButton { get; set; }
@@ -67,7 +62,6 @@ namespace Doozy.Editor.UIManager.Layouts.Settings
             playerIndexField?.Recycle();
             playerMultiplayerMode?.Recycle();
             playerBackButtonCooldown?.Recycle();
-            backButtonVirtualButtonName?.Recycle();
             resetPlayerIndexButton?.Recycle();
             resetBackButtonCooldownButton?.Recycle();
             resetMultiplayerModeButton?.Recycle();
@@ -93,7 +87,6 @@ namespace Doozy.Editor.UIManager.Layouts.Settings
             propertyDefaultPlayerIndex = serializedObject.FindProperty("DefaultPlayerIndex");
             propertyMultiplayerMode = serializedObject.FindProperty("MultiplayerMode");
             propertyBackButtonCooldown = serializedObject.FindProperty("BackButtonCooldown");
-            propertyBackButtonVirtualButtonName = serializedObject.FindProperty("BackButtonVirtualButtonName");
         }
 
         private void Initialize()
@@ -165,7 +158,7 @@ namespace Doozy.Editor.UIManager.Layouts.Settings
                         DesignUtils.row
                             .AddFlexibleSpace()
                             .AddChild(multiplayerModeSwitch)
-                            .AddSpaceBlock()
+                            .AddChild(DesignUtils.spaceBlock)
                             .AddChild(resetMultiplayerModeButton)
                     );
 
@@ -179,7 +172,7 @@ namespace Doozy.Editor.UIManager.Layouts.Settings
                         DesignUtils.row
                             .AddFlexibleSpace()
                             .AddChild(backButtonCooldownFloatField)
-                            .AddSpaceBlock()
+                            .AddChild(DesignUtils.spaceBlock)
                             .AddChild(resetBackButtonCooldownButton)
                     );
 
@@ -195,28 +188,11 @@ namespace Doozy.Editor.UIManager.Layouts.Settings
                         AssetDatabase.SaveAssets();
                     });
 
-            backButtonVirtualButtonNameTextField =
-                DesignUtils.NewTextField(propertyBackButtonVirtualButtonName)
-                    .SetTooltip("Name of the virtual button that will be used as 'Back' button")
-                    .SetStyleWidth(120);
-
-            backButtonVirtualButtonName =
-                FluidField.Get()
-                    .SetStyleFlexGrow(0)
-                    .SetElementSize(ElementSize.Normal)
-                    .SetLabelText("'Back' button virtual button name")
-                    .AddFieldContent
-                    (
-                        DesignUtils.row
-                            .AddFlexibleSpace()
-                            .AddChild(backButtonVirtualButtonNameTextField)
-                    );
-
             FluidToggleButtonTab GetTab() =>
                 FluidToggleButtonTab.Get()
                     .SetToggleAccentColor(selectableAccentColor)
                     .SetContainerColorOff(DesignUtils.tabButtonColorOff);
-
+            
             inputSystemPackageTabButton =
                 GetTab()
                     .SetLabelText($"{ObjectNames.NicifyVariableName(InputHandling.InputSystemPackage.ToString())}")
@@ -252,7 +228,7 @@ namespace Doozy.Editor.UIManager.Layouts.Settings
                         inputSystemPackageTabButton.isOn = false;
                         legacyInputManagerTabButton.isOn = false;
                     });
-
+            
             inputSystemPackageTabButton.isOn = UIManagerInputSettings.k_InputHandling == InputHandling.InputSystemPackage;
             legacyInputManagerTabButton.isOn = UIManagerInputSettings.k_InputHandling == InputHandling.LegacyInputManager;
             customInputTabButton.isOn = UIManagerInputSettings.k_InputHandling == InputHandling.CustomInput;
@@ -269,32 +245,27 @@ namespace Doozy.Editor.UIManager.Layouts.Settings
                         .SetStyleFlexGrow(0)
                         .AddFlexibleSpace()
                         .AddChild(inputSystemPackageTabButton)
-                        .AddSpace(1, 1)
+                        .AddSpace(1,1)
                         .AddChild(legacyInputManagerTabButton)
-                        .AddSpace(1, 1)
+                        .AddSpace(1,1)
                         .AddChild(customInputTabButton)
                         .AddFlexibleSpace()
                 )
-                .AddSpaceBlock(4)
+                .AddChild(DesignUtils.spaceBlock4X)
                 .AddChild(playerIndexField)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(playerMultiplayerMode)
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(playerBackButtonCooldown)
-                .AddSpaceBlock(2);
-
-            #if LEGACY_INPUT_MANAGER
-            content.AddChild(backButtonVirtualButtonName)
-                .AddSpaceBlock(2);
-            #endif
-            
-            content.AddChild
+                .AddChild(DesignUtils.spaceBlock2X)
+                .AddChild
                 (
                     DesignUtils.row
                         .SetStyleFlexGrow(0)
                         .AddFlexibleSpace()
                         .AddChild(saveButton)
-                );
+                )
+                ;
         }
     }
 }

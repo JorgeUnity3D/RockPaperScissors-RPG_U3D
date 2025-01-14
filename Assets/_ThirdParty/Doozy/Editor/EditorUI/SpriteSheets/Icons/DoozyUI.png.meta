@@ -191,6 +191,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -835,36 +847,36 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ~DoozyUI_000: -5189720237548657568
-      ~DoozyUI_001: 6035424486911751661
       ~DoozyUI_002: -2758396459825363620
-      ~DoozyUI_003: -3929748432549613416
       ~DoozyUI_004: -3409494115261530370
-      ~DoozyUI_005: 564952938316793744
-      ~DoozyUI_006: 1007256580665121240
-      ~DoozyUI_007: 6597911506043674823
-      ~DoozyUI_008: 6432644280310185535
-      ~DoozyUI_009: 2340663604901882371
-      ~DoozyUI_010: -8169961140289982528
-      ~DoozyUI_011: 3616897996903375488
+      ~DoozyUI_029: -4445016752708277007
+      ~DoozyUI_001: 6035424486911751661
       ~DoozyUI_012: 1522375449158583646
-      ~DoozyUI_013: 1928226164211071365
-      ~DoozyUI_014: -3521135700726862918
-      ~DoozyUI_015: -1019876646012761590
-      ~DoozyUI_016: 4901275878856635900
-      ~DoozyUI_017: 6504632884145935329
-      ~DoozyUI_018: -2209654726873866447
       ~DoozyUI_019: 1069948426802738387
-      ~DoozyUI_020: 3076749972725475376
-      ~DoozyUI_021: -7016217144843763022
-      ~DoozyUI_022: -8170960066656842804
-      ~DoozyUI_023: 3557103568870271349
-      ~DoozyUI_024: 3803318032468829470
+      ~DoozyUI_014: -3521135700726862918
+      ~DoozyUI_017: 6504632884145935329
+      ~DoozyUI_010: -8169961140289982528
+      ~DoozyUI_006: 1007256580665121240
+      ~DoozyUI_018: -2209654726873866447
       ~DoozyUI_025: 8925506703658035779
-      ~DoozyUI_026: -2826512931087824006
+      ~DoozyUI_015: -1019876646012761590
+      ~DoozyUI_011: 3616897996903375488
+      ~DoozyUI_016: 4901275878856635900
+      ~DoozyUI_022: -8170960066656842804
       ~DoozyUI_027: -4117198911560378546
       ~DoozyUI_028: 6870683102967311064
-      ~DoozyUI_029: -4445016752708277007
+      ~DoozyUI_005: 564952938316793744
+      ~DoozyUI_023: 3557103568870271349
+      ~DoozyUI_000: -5189720237548657568
+      ~DoozyUI_007: 6597911506043674823
+      ~DoozyUI_008: 6432644280310185535
+      ~DoozyUI_003: -3929748432549613416
+      ~DoozyUI_009: 2340663604901882371
+      ~DoozyUI_013: 1928226164211071365
+      ~DoozyUI_026: -2826512931087824006
+      ~DoozyUI_020: 3076749972725475376
+      ~DoozyUI_021: -7016217144843763022
+      ~DoozyUI_024: 3803318032468829470
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

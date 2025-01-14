@@ -8,7 +8,6 @@ using System.Linq;
 using System.Text;
 using Doozy.Editor.Common.Utils;
 using Doozy.Runtime;
-using Doozy.Runtime.Common.Attributes;
 using Doozy.Runtime.Common.Extensions;
 using Doozy.Runtime.Signals;
 using UnityEditor;
@@ -17,11 +16,8 @@ namespace Doozy.Editor.Signals.Automation.Generators
 {
     internal static class SignalProviderExtensionGenerator
     {
-        [RefreshData("Signal Providers")]
-        public static void RefreshData() =>
-            Run();
-        
-        private static void Tester() => Run();
+        // [InitializeOnLoadMethod]
+        // private static void Tester() => Run();
 
         private static string templateName => nameof(SignalProviderExtensionGenerator).Replace("Generator", "");
         private static string templateNameWithExtension => $"{templateName}.cst";
@@ -219,7 +215,6 @@ namespace Doozy.Editor.Signals.Automation.Generators
             }
             data = data.Replace("//Global_Providers//", sb.ToString());
 
-            data += Environment.NewLine;
             bool result = FileGenerator.WriteFile(targetFilePath, data);
             if (!result) return false;
             if (saveAssets) AssetDatabase.SaveAssets();

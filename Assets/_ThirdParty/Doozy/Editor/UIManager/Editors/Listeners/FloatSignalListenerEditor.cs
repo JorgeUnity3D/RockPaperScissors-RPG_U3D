@@ -52,15 +52,15 @@ namespace Doozy.Editor.UIManager.Editors.Listeners
         {
             root
                 .AddChild(componentHeader)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(idFluidField)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(onFloatSignalFluidField)
-                // .AddSpaceBlock()
+                // .AddChild(DesignUtils.spaceBlock)
                 // .AddChild(callbackFluidField)
-                // .AddSpaceBlock()
+                // .AddChild(DesignUtils.spaceBlock)
                 // .AddChild(onSignalFluidField)
-                .AddEndOfLineSpace()
+                .AddChild(DesignUtils.endOfLineBlock)
                 ;
         }
     }

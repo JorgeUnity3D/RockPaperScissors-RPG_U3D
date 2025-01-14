@@ -191,6 +191,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -835,36 +847,36 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ~SaveAs_000: 1204567971243124213
-      ~SaveAs_001: -1453290206719623891
-      ~SaveAs_002: 1119780118308522319
-      ~SaveAs_003: -8734906907015415532
-      ~SaveAs_004: 4365897045231384896
-      ~SaveAs_005: -3031693106809714393
-      ~SaveAs_006: 3157697121349892029
-      ~SaveAs_007: 5138490752140625404
-      ~SaveAs_008: 521069846962692102
-      ~SaveAs_009: -7999255736223186809
+      ~SaveAs_019: -2135636602929213407
+      ~SaveAs_028: -8699551989652574740
       ~SaveAs_010: -3495681937022958557
-      ~SaveAs_011: 269928829033261525
+      ~SaveAs_017: -8504292076725558589
+      ~SaveAs_007: 5138490752140625404
+      ~SaveAs_021: 8376716277477519390
+      ~SaveAs_002: 1119780118308522319
+      ~SaveAs_026: 2521965698126183545
+      ~SaveAs_003: -8734906907015415532
+      ~SaveAs_025: -5154111300967210661
+      ~SaveAs_006: 3157697121349892029
+      ~SaveAs_027: -1806505183638702216
+      ~SaveAs_009: -7999255736223186809
+      ~SaveAs_015: -2656658402562708308
+      ~SaveAs_001: -1453290206719623891
+      ~SaveAs_016: -2576903353520665448
+      ~SaveAs_000: 1204567971243124213
+      ~SaveAs_004: 4365897045231384896
+      ~SaveAs_024: 7705455454839521158
+      ~SaveAs_029: 8782186053256593321
+      ~SaveAs_023: -1190035589230624955
+      ~SaveAs_014: 5033335008247576800
       ~SaveAs_012: -8179771261364653091
       ~SaveAs_013: 6177551512092797231
-      ~SaveAs_014: 5033335008247576800
-      ~SaveAs_015: -2656658402562708308
-      ~SaveAs_016: -2576903353520665448
-      ~SaveAs_017: -8504292076725558589
       ~SaveAs_018: 1584352457321913006
-      ~SaveAs_019: -2135636602929213407
+      ~SaveAs_011: 269928829033261525
       ~SaveAs_020: -1369565419727294383
-      ~SaveAs_021: 8376716277477519390
+      ~SaveAs_008: 521069846962692102
       ~SaveAs_022: -7777150561886224836
-      ~SaveAs_023: -1190035589230624955
-      ~SaveAs_024: 7705455454839521158
-      ~SaveAs_025: -5154111300967210661
-      ~SaveAs_026: 2521965698126183545
-      ~SaveAs_027: -1806505183638702216
-      ~SaveAs_028: -8699551989652574740
-      ~SaveAs_029: 8782186053256593321
+      ~SaveAs_005: -3031693106809714393
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

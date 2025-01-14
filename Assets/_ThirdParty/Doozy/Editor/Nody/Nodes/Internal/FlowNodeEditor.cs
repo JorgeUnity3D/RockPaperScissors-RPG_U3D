@@ -231,7 +231,7 @@ namespace Doozy.Editor.Nody.Nodes.Internal
                     (
                         DesignUtils.column
                             .AddChild(passthroughSwitch)
-                            .AddSpaceBlock()
+                            .AddChild(DesignUtils.spaceBlock)
                             .AddChild(clearGraphHistorySwitch)
                     )
                     .SetStyleMarginBottom(DesignUtils.k_Spacing2X)
@@ -334,9 +334,9 @@ namespace Doozy.Editor.Nody.Nodes.Internal
                 )
                 .AddChild(flowOptionsField)
                 .AddChild(nodeNameField)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(nodeDescriptionField)
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(portsContainer);
         }
 

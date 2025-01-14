@@ -19,11 +19,11 @@ namespace Doozy.Editor.Nody
 {
     public class NodyInspectorWindow : FluidWindow<NodyInspectorWindow>
     {
-        private const string k_WindowTitle = "Nody Inspector";
-        public const string WINDOW_MENU_PATH = "Tools/Doozy/Nody/";
+        private const string WINDOW_TITLE = "Nody Inspector";
+        public const string k_WindowMenuPath = "Tools/Doozy/Nody/";
 
         // [MenuItem(k_WindowMenuPath + "Inspector", priority = -850)]
-        public static void Open() => InternalOpenWindow(k_WindowTitle);
+        public static void Open() => InternalOpenWindow(WINDOW_TITLE);
 
         public static Color accentColor => EditorColors.Nody.Color;
         public static EditorSelectableColorInfo selectableAccentColor => EditorSelectableColors.Nody.Color;
@@ -41,7 +41,7 @@ namespace Doozy.Editor.Nody
         protected override void OnEnable()
         {
             base.OnEnable();
-            titleContent = new GUIContent(k_WindowTitle);
+            titleContent = new GUIContent(WINDOW_TITLE);
             minSize = new Vector2(200, 200);
         }
 

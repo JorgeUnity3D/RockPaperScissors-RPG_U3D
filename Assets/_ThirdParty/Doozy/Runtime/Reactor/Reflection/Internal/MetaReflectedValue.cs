@@ -66,10 +66,6 @@ namespace Doozy.Runtime.Reactor.Reflection.Internal
 
         }
 
-        /// <summary>
-        /// Check if it's valid and get either the target FieldInfo or the target PropertyInfo
-        /// </summary>
-        /// <returns> True if it's valid, false otherwise </returns>
         public override bool IsValid()
         {
             if (Target == null)

@@ -14,7 +14,7 @@ using UnityEngine.UIElements;
 
 namespace Doozy.Editor.EditorUI.WindowLayouts
 {
-    public sealed class EditorMicroAnimationsWindowLayout : EditorUIDatabaseWindowLayout//, IEditorUIDatabaseWindowLayout
+    public sealed class EditorMicroAnimationsWindowLayout : EditorUIDatabaseWindowLayout, IEditorUIDatabaseWindowLayout
     {
         public int order => 100;
         

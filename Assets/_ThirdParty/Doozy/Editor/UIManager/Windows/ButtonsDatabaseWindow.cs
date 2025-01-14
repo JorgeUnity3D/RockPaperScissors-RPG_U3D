@@ -7,6 +7,7 @@ using Doozy.Editor.EditorUI.Windows.Internal;
 using Doozy.Editor.UIElements;
 using Doozy.Editor.UIManager.Layouts.Databases;
 using Doozy.Runtime.UIElements.Extensions;
+using UnityEditor;
 using UnityEngine;
 
 namespace Doozy.Editor.UIManager.Windows

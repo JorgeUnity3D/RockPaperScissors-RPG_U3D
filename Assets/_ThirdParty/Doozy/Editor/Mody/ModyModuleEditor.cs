@@ -154,7 +154,7 @@ namespace Doozy.Editor.Mody
                             .AddFieldContent(moduleNameTextField)
                             .SetIcon(EditorSpriteSheets.EditorUI.Icons.Label)
                     )
-                    .AddEndOfLineSpace()
+                    .AddChild(DesignUtils.endOfLineBlock)
                     .Bind(serializedObject);
             });
         }
@@ -164,9 +164,9 @@ namespace Doozy.Editor.Mody
             return
                 base.Toolbar()
                     .AddChild(settingsTab)
-                    .AddSpaceBlock(2)
+                    .AddChild(DesignUtils.spaceBlock2X)
                     .AddChild(DesignUtils.flexibleSpace)
-                    .AddSpaceBlock(2)
+                    .AddChild(DesignUtils.spaceBlock2X)
                     .AddChild(nameTab);
         }
 

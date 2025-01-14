@@ -191,6 +191,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -835,36 +847,36 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ~ProgressorDatabase_000: -5638428992260133453
-      ~ProgressorDatabase_001: 4476570433518946218
-      ~ProgressorDatabase_002: -2853655413696041927
-      ~ProgressorDatabase_003: -6164841518382295267
-      ~ProgressorDatabase_004: 3207526703645723873
-      ~ProgressorDatabase_005: -9120129193803437075
       ~ProgressorDatabase_006: -106443593436764831
-      ~ProgressorDatabase_007: -2241248032959050384
-      ~ProgressorDatabase_008: 4788645932068182035
-      ~ProgressorDatabase_009: 5834926156796407515
-      ~ProgressorDatabase_010: -4379096545144231422
-      ~ProgressorDatabase_011: 2271877725441204869
+      ~ProgressorDatabase_003: -6164841518382295267
       ~ProgressorDatabase_012: 1929569807316369348
-      ~ProgressorDatabase_013: 4355038527912989562
-      ~ProgressorDatabase_014: -3601434739067330058
-      ~ProgressorDatabase_015: 6153819329272487268
-      ~ProgressorDatabase_016: 5389720594502160284
-      ~ProgressorDatabase_017: 2107304173986858236
-      ~ProgressorDatabase_018: -1748993539947490567
-      ~ProgressorDatabase_019: 4953355175194255485
-      ~ProgressorDatabase_020: 458065430585672449
-      ~ProgressorDatabase_021: -7415291893345842308
       ~ProgressorDatabase_022: -7840495458789471739
+      ~ProgressorDatabase_004: 3207526703645723873
       ~ProgressorDatabase_023: 7099442221244537646
-      ~ProgressorDatabase_024: 5242399074535129123
-      ~ProgressorDatabase_025: 4201613212252164075
+      ~ProgressorDatabase_016: 5389720594502160284
+      ~ProgressorDatabase_005: -9120129193803437075
+      ~ProgressorDatabase_019: 4953355175194255485
       ~ProgressorDatabase_026: 8905886763039298485
       ~ProgressorDatabase_027: 6805306838351520605
+      ~ProgressorDatabase_002: -2853655413696041927
+      ~ProgressorDatabase_011: 2271877725441204869
+      ~ProgressorDatabase_000: -5638428992260133453
+      ~ProgressorDatabase_007: -2241248032959050384
+      ~ProgressorDatabase_018: -1748993539947490567
+      ~ProgressorDatabase_025: 4201613212252164075
       ~ProgressorDatabase_028: 5981923926869214590
+      ~ProgressorDatabase_009: 5834926156796407515
+      ~ProgressorDatabase_014: -3601434739067330058
+      ~ProgressorDatabase_020: 458065430585672449
+      ~ProgressorDatabase_024: 5242399074535129123
+      ~ProgressorDatabase_008: 4788645932068182035
+      ~ProgressorDatabase_010: -4379096545144231422
+      ~ProgressorDatabase_021: -7415291893345842308
+      ~ProgressorDatabase_001: 4476570433518946218
       ~ProgressorDatabase_029: -5979896323648561065
+      ~ProgressorDatabase_015: 6153819329272487268
+      ~ProgressorDatabase_017: 2107304173986858236
+      ~ProgressorDatabase_013: 4355038527912989562
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

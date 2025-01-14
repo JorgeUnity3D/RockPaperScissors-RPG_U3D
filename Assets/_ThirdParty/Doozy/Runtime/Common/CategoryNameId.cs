@@ -26,21 +26,6 @@ namespace Doozy.Runtime.Common
         /// <summary> Flag used by the editor if to lookup the category name values in the database or not </summary>
         public bool Custom;
 
-        /// <summary>
-        /// Check if this Id uses the default values for Category and Name (Category = "None", Name = "None") 
-        /// </summary>
-        public bool isDefaultId => isDefaultCategory && isDefaultName;
-        
-        /// <summary>
-        /// Check if this Id uses the default value for Category (Category = "None")
-        /// </summary>
-        public bool isDefaultCategory => Category == defaultCategory;
-        
-        /// <summary>
-        /// Check if this Id uses the default value for Name (Name = "None")
-        /// </summary>
-        public bool isDefaultName => Name == defaultName;
-        
         protected CategoryNameId()
         {
             Category = defaultCategory;

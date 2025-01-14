@@ -2,17 +2,19 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using Doozy.Editor.EditorUI;
 using Doozy.Editor.EditorUI.Components;
 using Doozy.Editor.EditorUI.ScriptableObjects.Colors;
 using Doozy.Editor.EditorUI.Utils;
 using Doozy.Editor.Interfaces;
+using Doozy.Editor.WindowLayouts;
 using Doozy.Runtime.Colors;
+using Doozy.Runtime.Common.Extensions;
 using Doozy.Runtime.Common.Utils;
+using Doozy.Runtime.Reactor.ScriptableObjects;
 using Doozy.Runtime.UIElements.Extensions;
+using Doozy.Runtime.UIManager.ScriptableObjects;
 using UnityEngine;
 using UnityEngine.UIElements;
 // ReSharper disable MemberCanBePrivate.Local
@@ -22,24 +24,23 @@ using UnityEngine.UIElements;
 
 namespace Doozy.Editor.Dashboard.WindowsLayouts
 {
-    // ReSharper disable once ClassNeverInstantiated.Global
-    public partial class DashboardHomeWindowLayout : FluidWindowLayout, IDashboardWindowLayout
+    public class DashboardHomeWindowLayout : FluidWindowLayout, IDashboardWindowLayout
     {
-        public bool isValid => homeSections.Count > 0;
-        
         public int order => 0;
 
-        public override string layoutName => "General";
-        public sealed override List<Texture2D> animatedIconTextures => EditorSpriteSheets.EditorUI.Icons.Boards;
+        public override string layoutName => "Home";
+        public sealed override List<Texture2D> animatedIconTextures => EditorSpriteSheets.EditorUI.Icons.DoozyUI;
 
         public override Color accentColor => EditorColors.Default.UnityThemeInversed;
         public override EditorSelectableColorInfo selectableAccentColor => EditorSelectableColors.Default.UnityThemeInversed;
 
-        private List<HomeSection> homeSections { get; set; }
+        private HomeSection doozyBarSection { get; set; }
+        private HomeSection inputSettingsSection { get; set; }
+        private HomeSection reactorSettingsSection { get; set; }
 
         public DashboardHomeWindowLayout()
         {
-            AddHeader("General", "Overview", animatedIconTextures);
+            AddHeader("Doozy UI Manager", "Dashboard", animatedIconTextures);
             content
                 .ResetLayout()
                 .SetStylePadding(DesignUtils.k_Spacing)
@@ -55,35 +56,68 @@ namespace Doozy.Editor.Dashboard.WindowsLayouts
 
         private void Initialize()
         {
-            //find all derived classed of HomeSection
-            IEnumerable<Type> sectionTypes = ReflectionUtils.GetDerivedTypes(typeof(HomeSection));
-            homeSections =
-                sectionTypes
-                    .Select(s => (HomeSection)Activator.CreateInstance(s))
-                    .Where(s => s.isValid)
-                    .OrderBy(s => s.sectionOrder)
-                    .ThenBy(s => s.sectionName)
-                    .ToList();
+            doozyBarSection =
+                new HomeSection()
+                    .SetTitle("Quick Access")
+                    .AddChild
+                    (
+                        new DoozyBarWindowLayout()
+                            .SetStyleFlexDirection(FlexDirection.Column)
+                    );
+
+            inputSettingsSection =
+                new HomeSection()
+                    .SetTitle("Input Settings")
+                    .AddChild
+                    (
+                        FluidField.Get("Input Handling").SetStyleFlexGrow(0).ClearBackground()
+                            .AddFieldContent(DesignUtils.NewLabel(ObjectNames.NicifyVariableName(UIManagerInputSettings.k_InputHandling.ToString())))
+                    )
+                    .AddChild(DesignUtils.spaceBlock2X)
+                    .AddChild
+                    (
+                        FluidField.Get("Multiplayer Mode").SetStyleFlexGrow(0).ClearBackground()
+                            .AddFieldContent(DesignUtils.NewLabel(UIManagerInputSettings.instance.multiplayerMode ? "Enabled" : "Disabled"))
+                    )
+                    .AddChild(DesignUtils.spaceBlock2X)
+                    .AddChild
+                    (
+                        FluidField.Get("'Back' Button Cooldown").SetStyleFlexGrow(0).ClearBackground()
+                            .AddFieldContent(DesignUtils.NewLabel(UIManagerInputSettings.instance.backButtonCooldown + " seconds"))
+                    );
+
+            reactorSettingsSection =
+                new HomeSection()
+                    .SetTitle("Reactor Settings")
+                    .AddChild
+                    (
+                        FluidField.Get("Editor Heartbeat").SetStyleFlexGrow(0).ClearBackground()
+                            .AddFieldContent(DesignUtils.NewLabel(ObjectNames.NicifyVariableName(ReactorSettings.editorFPS.ToString()) + " FPS"))
+                    )
+                    .AddChild(DesignUtils.spaceBlock2X)
+                    .AddChild
+                    (
+                        FluidField.Get("Runtime Heartbeat").SetStyleFlexGrow(0).ClearBackground()
+                            .AddFieldContent(DesignUtils.NewLabel(ObjectNames.NicifyVariableName(ReactorSettings.runtimeFPS.ToString()) + " FPS"))
+                    );
         }
+
+
 
         private void Compose()
         {
-            //add sections
-            VisualElement sectionContainer =
-                DesignUtils.row
-                    .SetStyleFlexGrow(0);
-
-            if (homeSections.Count > 0)
-            {
-                foreach (HomeSection section in homeSections)
-                    sectionContainer.AddChild(section);
-
-                sectionContainer.AddFlexibleSpace();
-                content.AddChild(sectionContainer);
-            }
-
             content
-                .AddFlexibleSpace();
+                .AddChild
+                (
+                    DesignUtils.row
+                        .SetStyleFlexGrow(0)
+                        .AddChild(doozyBarSection)
+                        .AddChild(inputSettingsSection)
+                        .AddChild(reactorSettingsSection)
+                        .AddFlexibleSpace()
+                )
+                .AddFlexibleSpace()
+                ;
         }
 
         private static VisualElement newSection =>
@@ -94,6 +128,40 @@ namespace Doozy.Editor.Dashboard.WindowsLayouts
                 .SetStyleBackgroundColor(EditorColors.Default.BoxBackground.WithAlpha(0.9f))
                 .SetStyleBorderRadius(DesignUtils.k_Spacing2X);
 
+        private class HomeSection : VisualElement
+        {
+            public Label title { get; private set; }
+
+            public HomeSection()
+            {
+                this
+                    .SetStyleFlexShrink(0)
+                    .SetStylePadding(DesignUtils.k_Spacing2X)
+                    .SetStyleMargins(DesignUtils.k_Spacing / 2f)
+                    .SetStyleBackgroundColor(EditorColors.Default.BoxBackground.WithAlpha(0.9f))
+                    .SetStyleBorderRadius(DesignUtils.k_Spacing2X);
+
+                title =
+                    DesignUtils.NewLabel()
+                        .SetStyleAlignSelf(Align.Center)
+                        .SetStyleMarginBottom(DesignUtils.k_Spacing)
+                        .SetStyleDisplay(DisplayStyle.None);
+
+                this
+                    .AddChild(title);
+            }
+
+            public HomeSection SetTitle(string text = "")
+            {
+                title
+                    .SetText(text)
+                    .SetStyleDisplay(text.IsNullOrEmpty() ? DisplayStyle.None : DisplayStyle.Flex);
+                return this;
+            }
+
+            public HomeSection ClearTitle() =>
+                SetTitle();
+        }
 
     }
 

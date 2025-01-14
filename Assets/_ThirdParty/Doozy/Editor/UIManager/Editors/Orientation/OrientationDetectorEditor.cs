@@ -61,7 +61,7 @@ namespace Doozy.Editor.UIManager.Editors.Orientation
             componentHeader =
                 FluidComponentHeader.Get()
                     .SetElementSize(ElementSize.Large)
-                    .SetAccentColor(EditorColors.Default.ListenerComponent)
+                    .SetAccentColor(EditorColors.UIManager.ListenerComponent)
                     .SetIcon(EditorSpriteSheets.UIManager.Icons.OrientationDetector)
                     .SetComponentNameText("Orientation Detector")
                     .AddManualButton()
@@ -87,17 +87,17 @@ namespace Doozy.Editor.UIManager.Editors.Orientation
         {
             root
                 .AddChild(componentHeader)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(currentOrientationFluidField)
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(onOrientationChangedElement)
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(DesignUtils.NewPropertyField(propertyOnAnyOrientation))
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(DesignUtils.NewPropertyField(propertyOnPortraitOrientation))
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(DesignUtils.NewPropertyField(propertyOnLandscapeOrientation))
-                .AddEndOfLineSpace()
+                .AddChild(DesignUtils.endOfLineBlock)
                 ;
         }
 

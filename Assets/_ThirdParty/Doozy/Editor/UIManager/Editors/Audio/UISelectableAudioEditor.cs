@@ -25,8 +25,8 @@ namespace Doozy.Editor.UIManager.Editors.Audio
         public UISelectableAudio castedTarget => (UISelectableAudio)target;
         public IEnumerable<UISelectableAudio> castedTargets => targets.Cast<UISelectableAudio>();
 
-        protected override Color accentColor => EditorColors.Default.AudioComponent;
-        protected override EditorSelectableColorInfo selectableAccentColor => EditorSelectableColors.Default.AudioComponent;
+        protected override Color accentColor => EditorColors.UIManager.AudioComponent;
+        protected override EditorSelectableColorInfo selectableAccentColor => EditorSelectableColors.UIManager.AudioComponent;
         
         private SerializedProperty propertyAudioSource { get; set; }
         private SerializedProperty propertyNormalAudioClip { get; set; }
@@ -118,21 +118,21 @@ namespace Doozy.Editor.UIManager.Editors.Audio
         {
             root
                 .AddChild(componentHeader)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(BaseUISelectableAnimatorEditor.GetController(propertyController, propertyToggleCommand))
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(audioSourceFluidField)
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild(normalAudioClipFluidField)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(highlightedAudioClipFluidField)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(pressedAudioClipFluidField)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(selectedAudioClipFluidField)
-                .AddSpaceBlock()
+                .AddChild(DesignUtils.spaceBlock)
                 .AddChild(disabledAudioClipFluidField)
-                .AddEndOfLineSpace()
+                .AddChild(DesignUtils.endOfLineBlock)
                 ;
         }
 

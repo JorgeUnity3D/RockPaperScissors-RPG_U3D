@@ -28,7 +28,7 @@ namespace Doozy.Editor.UIManager.Drawers
                 ButtonsDatabaseWindow.Open,
                 "Open Buttons Database Window",
                 UIButtonIdDatabase.instance,
-                EditorSelectableColors.Default.UIComponent
+                EditorSelectableColors.UIManager.UIComponent
             );
     }
 }

@@ -100,7 +100,6 @@ namespace Doozy.Editor.EditorUI
                 public enum TextureName
                 {
                     API,
-                    Boards,
                     ButtonClick,
                     ButtonDoubleClick,
                     ButtonLeftClick,
@@ -110,7 +109,6 @@ namespace Doozy.Editor.EditorUI
                     Camera,
                     Copy,
                     Cut,
-                    Dashboard,
                     Deselected,
                     Discord,
                     DoozyUI,
@@ -142,7 +140,6 @@ namespace Doozy.Editor.EditorUI
                     PointerExit,
                     PointerUp,
                     Prefab,
-                    Pro,
                     Redo,
                     Reset,
                     SelectableStates,
@@ -167,8 +164,6 @@ namespace Doozy.Editor.EditorUI
 
                 private static Texture2D s_API;
                 public static Texture2D API => s_API ? s_API : s_API = GetTexture2D(TextureName.API);
-                private static Texture2D s_Boards;
-                public static Texture2D Boards => s_Boards ? s_Boards : s_Boards = GetTexture2D(TextureName.Boards);
                 private static Texture2D s_ButtonClick;
                 public static Texture2D ButtonClick => s_ButtonClick ? s_ButtonClick : s_ButtonClick = GetTexture2D(TextureName.ButtonClick);
                 private static Texture2D s_ButtonDoubleClick;
@@ -187,8 +182,6 @@ namespace Doozy.Editor.EditorUI
                 public static Texture2D Copy => s_Copy ? s_Copy : s_Copy = GetTexture2D(TextureName.Copy);
                 private static Texture2D s_Cut;
                 public static Texture2D Cut => s_Cut ? s_Cut : s_Cut = GetTexture2D(TextureName.Cut);
-                private static Texture2D s_Dashboard;
-                public static Texture2D Dashboard => s_Dashboard ? s_Dashboard : s_Dashboard = GetTexture2D(TextureName.Dashboard);
                 private static Texture2D s_Deselected;
                 public static Texture2D Deselected => s_Deselected ? s_Deselected : s_Deselected = GetTexture2D(TextureName.Deselected);
                 private static Texture2D s_Discord;
@@ -251,8 +244,6 @@ namespace Doozy.Editor.EditorUI
                 public static Texture2D PointerUp => s_PointerUp ? s_PointerUp : s_PointerUp = GetTexture2D(TextureName.PointerUp);
                 private static Texture2D s_Prefab;
                 public static Texture2D Prefab => s_Prefab ? s_Prefab : s_Prefab = GetTexture2D(TextureName.Prefab);
-                private static Texture2D s_Pro;
-                public static Texture2D Pro => s_Pro ? s_Pro : s_Pro = GetTexture2D(TextureName.Pro);
                 private static Texture2D s_Redo;
                 public static Texture2D Redo => s_Redo ? s_Redo : s_Redo = GetTexture2D(TextureName.Redo);
                 private static Texture2D s_Reset;
@@ -291,52 +282,6 @@ namespace Doozy.Editor.EditorUI
                 public static Texture2D VisibilityChanged => s_VisibilityChanged ? s_VisibilityChanged : s_VisibilityChanged = GetTexture2D(TextureName.VisibilityChanged);
                 private static Texture2D s_Zoom;
                 public static Texture2D Zoom => s_Zoom ? s_Zoom : s_Zoom = GetTexture2D(TextureName.Zoom);
-                
-            }
-
-            public static class Logos
-            {
-                private static EditorDataTextureGroup s_textureGroup;
-                private static EditorDataTextureGroup textureGroup =>
-                    s_textureGroup
-                        ? s_textureGroup
-                        : s_textureGroup = EditorDataTextureDatabase.GetTextureGroup("EditorUI","Logos");
-
-                public static Texture2D GetTexture2D(TextureName textureName) =>
-                    textureGroup.GetTexture(textureName.ToString());
-
-                public enum TextureName
-                {
-                    Bindy,
-                    EditorUI,
-                    Mody,
-                    Nody,
-                    Reactor,
-                    Signals,
-                    UIDesigner,
-                    UIManager,
-                    UIMenu
-                }
-                
-
-                private static Texture2D s_Bindy;
-                public static Texture2D Bindy => s_Bindy ? s_Bindy : s_Bindy = GetTexture2D(TextureName.Bindy);
-                private static Texture2D s_EditorUI;
-                public static Texture2D EditorUI => s_EditorUI ? s_EditorUI : s_EditorUI = GetTexture2D(TextureName.EditorUI);
-                private static Texture2D s_Mody;
-                public static Texture2D Mody => s_Mody ? s_Mody : s_Mody = GetTexture2D(TextureName.Mody);
-                private static Texture2D s_Nody;
-                public static Texture2D Nody => s_Nody ? s_Nody : s_Nody = GetTexture2D(TextureName.Nody);
-                private static Texture2D s_Reactor;
-                public static Texture2D Reactor => s_Reactor ? s_Reactor : s_Reactor = GetTexture2D(TextureName.Reactor);
-                private static Texture2D s_Signals;
-                public static Texture2D Signals => s_Signals ? s_Signals : s_Signals = GetTexture2D(TextureName.Signals);
-                private static Texture2D s_UIDesigner;
-                public static Texture2D UIDesigner => s_UIDesigner ? s_UIDesigner : s_UIDesigner = GetTexture2D(TextureName.UIDesigner);
-                private static Texture2D s_UIManager;
-                public static Texture2D UIManager => s_UIManager ? s_UIManager : s_UIManager = GetTexture2D(TextureName.UIManager);
-                private static Texture2D s_UIMenu;
-                public static Texture2D UIMenu => s_UIMenu ? s_UIMenu : s_UIMenu = GetTexture2D(TextureName.UIMenu);
                 
             }
 

@@ -55,12 +55,12 @@ namespace Doozy.Editor.Signals.Drawers
 
             drawer
                 .AddChild(DesignUtils.NewPropertyField(propertyStreamId))
-                .AddSpaceBlock(2)
+                .AddChild(DesignUtils.spaceBlock2X)
                 .AddChild
                 (
                     DesignUtils.row
                         .AddChild(valueTypeFluidField)
-                        .AddSpaceBlock()
+                        .AddChild(DesignUtils.spaceBlock)
                         .AddChild(valueFluidField)
                 );
 
