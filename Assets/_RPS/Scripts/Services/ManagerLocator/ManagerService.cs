@@ -47,7 +47,24 @@ namespace Kapibara.RPS
 			return manager;
 		}
 
+		public BaseManager GetManager(TownMenu menu)
+		{
+			return menu switch
+			{
+				//TownMenu.LIBRARY => GetManager<LibraryManager>(),
+				TownMenu.PAPER_TREE => GetManager<PaperTreeManager>(),
+				TownMenu.SCISSORS => GetManager<ScissorBonfireManager>(),
+				//TownMenu.STABLES => GetManager<StablesManager>(),
+				//TownMenu.STONE_SMITHY => GetManager<StoneSmithyManager>(),
+				//TownMenu.THEATER => GetManager<TheaterManager>(),
+				TownMenu.TRAINING_HOUSE => GetManager<TrainingHouseManager>(),
+				//TownMenu.TRAVEL => GetManager<TravelManager>(),
+				TownMenu.HOUSE => GetManager<HouseManager>(),
+				_ => null
+			};
+		}
+
 		#endregion
-		
+
 	}
 }

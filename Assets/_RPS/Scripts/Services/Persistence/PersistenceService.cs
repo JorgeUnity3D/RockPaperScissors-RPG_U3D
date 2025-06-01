@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
@@ -15,7 +15,6 @@ namespace Kapibara.RPS
     {
         [SerializeField] string _subfolder;
         [SerializeField] [ReadOnly] string _saveDirectory;
-        [SerializeField] [ReadOnly] string _savePath;
 
         #region UNITY_LIFECYCLE
 

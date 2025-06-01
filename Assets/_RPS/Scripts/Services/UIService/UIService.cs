@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -53,6 +53,23 @@ namespace Kapibara.RPS
             return controller;
         }
 
-        #endregion
-    }
+		public BaseUIController GetController(TownMenu menu)
+		{
+			return menu switch
+			{
+				TownMenu.LIBRARY => GetController<LibraryUIController>(),
+				TownMenu.PAPER_TREE => GetController<PaperTreeUIController>(),
+				TownMenu.SCISSORS => GetController<ScissorsBonfireUIController>(),
+				TownMenu.STABLES => GetController<StablesUIController>(),
+				TownMenu.STONE_SMITHY => GetController<StoneSmithyUIController>(),
+				TownMenu.THEATER => GetController<TheaterUIController>(),
+				TownMenu.TRAINING_HOUSE => GetController<TrainingHouseUIController>(),
+				TownMenu.TRAVEL => GetController<TravelUIController>(),
+				TownMenu.HOUSE => GetController<HouseUIController>(),
+				_ => null
+			};
+		}
+
+		#endregion
+	}
 }

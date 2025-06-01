@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -89,46 +89,16 @@ namespace Kapibara.RPS
 		private void GoToTownMenu(TownData townData, TownView townView)
 		{
 			Debug.Log($"[TownManager] GoToTownMenu() -> TownView: {townData.TownMenu}");
-			BaseManager targetManager = null;
-			switch (townData.TownMenu)
+			TownMenu townMenu = townData.TownMenu;
+			BaseManager targetManager = _managerService.GetManager(townMenu);
+			_currentTownUIController = _uiService.GetController(townMenu);
+
+			if (_currentTownUIController == null || targetManager == null)
 			{
-				case TownMenu.LIBRARY:
-					_currentTownUIController = _uiService.GetController<LibraryUIController>();
-					// targetManager = _managerService.GetManager<LibraryManager>();
-					break;
-				case TownMenu.PAPER_TREE:
-					_currentTownUIController = _uiService.GetController<PaperTreeUIController>();
-					targetManager = _managerService.GetManager<PaperTreeManager>();
-					break;
-				case TownMenu.SCISSORS:
-					_currentTownUIController = _uiService.GetController<ScissorsBonfireUIController>();
-					targetManager = _managerService.GetManager<ScissorBonfireManager>();
-					break;
-				case TownMenu.STABLES:
-					_currentTownUIController = _uiService.GetController<StablesUIController>();
-					// targetManager = _managerService.GetManager<StablesManager>();
-					break;
-				case TownMenu.STONE_SMITHY:
-					_currentTownUIController = _uiService.GetController<StoneSmithyUIController>();
-					// targetManager = _managerService.GetManager<StoneSmithyManager>();
-					break;
-				case TownMenu.THEATER:
-					_currentTownUIController = _uiService.GetController<TheaterUIController>();
-					// targetManager = _managerService.GetManager<TheaterManager>();
-					break;
-				case TownMenu.TRAINING_HOUSE:
-					_currentTownUIController = _uiService.GetController<TrainingHouseUIController>();
-					targetManager = _managerService.GetManager<TrainingHouseManager>();
-					break;
-				case TownMenu.TRAVEL:
-					_currentTownUIController = _uiService.GetController<TravelUIController>();
-					// targetManager = _managerService.GetManager<TravelManager>();
-					break;
-				case TownMenu.HOUSE:
-					_currentTownUIController = _uiService.GetController<HouseUIController>();
-					targetManager = _managerService.GetManager<HouseManager>();
-					break;
+				Debug.Log($"[TownManager] GoToTownMenu() -> Couldn't find Manager or UIController for {townData.TownMenu}");
+				return;
 			}
+
 			_currentTownUIController.ShowCanvas();
 			targetManager.Initialize();
 			_inMenuUIController.ShowCanvas();
