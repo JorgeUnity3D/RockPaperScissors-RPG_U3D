@@ -1,13 +1,14 @@
-using System.Collections.Generic;
-using Doozy.Runtime.UIManager.Components;
+﻿using System.Collections.Generic;
 using Kapibara.RPS.Extensions;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Kapibara.RPS
 {
 	public class LoadGameUIController : BaseUIController
 	{
+		[Header("UI")]
 		[Header("Load Game")]
 		[SerializeField] private Transform _gameButtonsHolder;
 		[SerializeField] private GameContextButton _gameContextButtonPrefab;
@@ -15,11 +16,11 @@ namespace Kapibara.RPS
 		[SerializeField] private TextMeshProUGUI _dateText;
 		[SerializeField] private TextMeshProUGUI _gamenameText;
 		[SerializeField] private TextMeshProUGUI _playernameText;
-		[SerializeField] private UIButton _loadSelectedButton;
-		[SerializeField] private UIButton _deleteSelectedButton;
+		[SerializeField] private Button _loadSelectedButton;
+		[SerializeField] private Button _deleteSelectedButton;
 
 		[Header("Back Game")]
-		[SerializeField] private UIButton _backButton;
+		[SerializeField] private Button _backButton;
 
         #region UNITY_LIFECYCLE
 
@@ -64,7 +65,7 @@ namespace Kapibara.RPS
 			}
 		}
 		
-		private void SelectGame(GameContext gameContext, UIButton button)
+		private void SelectGame(GameContext gameContext, Button button)
 		{
 	        Debug.Log($"[LoadGameUIController] SelectGame() -> ");	
 			_timestampText.text = gameContext.Timestamp;
@@ -89,7 +90,7 @@ namespace Kapibara.RPS
 			AppEvents.OnConfirmLoadGame?.Invoke(gameContext);
 		}
 
-		private void DeleteSelectedGame(GameContext gameContext, UIButton button)
+		private void DeleteSelectedGame(GameContext gameContext, Button button)
 		{
 	        Debug.Log($"[LoadGameUIController] DeleteSelectedGame() -> Invoking: AppEvents.OnConfirmDeleteGame({gameContext})");			
 			AppEvents.OnConfirmDeleteGame?.Invoke(gameContext);

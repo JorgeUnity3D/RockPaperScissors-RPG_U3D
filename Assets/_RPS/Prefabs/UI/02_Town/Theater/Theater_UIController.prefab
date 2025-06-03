@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1724362830630507914}
   - component: {fileID: 5321257316146189822}
   m_Layer: 5
-  m_Name: Button - WatchAd
+  m_Name: Video00_Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -644,7 +644,6 @@ GameObject:
   - component: {fileID: 6182070147636048715}
   - component: {fileID: 7771211136729158645}
   - component: {fileID: 7136724847455347886}
-  - component: {fileID: 8982798684324116756}
   - component: {fileID: 5560558787752144158}
   m_Layer: 5
   m_Name: Theater_UIController
@@ -749,67 +748,6 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &8982798684324116756
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1936394727173007178}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4bdd92761f8f457190f4bab9efcf67bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MultiplayerInfo: {fileID: 0}
-  OnStartBehaviour: 0
-  OnShowCallback:
-    EventName: OnShowCallback
-    Runners: []
-    Event:
-      m_PersistentCalls:
-        m_Calls: []
-  OnVisibleCallback:
-    EventName: OnVisibleCallback
-    Runners: []
-    Event:
-      m_PersistentCalls:
-        m_Calls: []
-  OnHideCallback:
-    EventName: OnHideCallback
-    Runners: []
-    Event:
-      m_PersistentCalls:
-        m_Calls: []
-  OnHiddenCallback:
-    EventName: OnHiddenCallback
-    Runners: []
-    Event:
-      m_PersistentCalls:
-        m_Calls: []
-  OnVisibilityChangedCallback:
-    m_PersistentCalls:
-      m_Calls: []
-  ShowProgressors: []
-  HideProgressors: []
-  ShowHideProgressors: []
-  CustomStartPosition: {x: 0, y: 0, z: 0}
-  UseCustomStartPosition: 1
-  AutoHideAfterShow: 0
-  AutoHideAfterShowDelay: 0
-  DisableGameObjectWhenHidden: 0
-  DisableCanvasWhenHidden: 1
-  DisableGraphicRaycasterWhenHidden: 1
-  HandleCanvasGroupBlockRaycasts: 1
-  ClearSelectedOnShow: 0
-  ClearSelectedOnHide: 0
-  AutoSelectAfterShow: 0
-  AutoSelectTarget: {fileID: 0}
-  Id:
-    Category: None
-    Name: None
-    Custom: 0
-  TargetOrientation: 0
 --- !u!114 &5560558787752144158
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -910,7 +848,7 @@ GameObject:
   - component: {fileID: 1976818837783943041}
   - component: {fileID: 7198274740629249173}
   m_Layer: 5
-  m_Name: Button - WatchAd (4)
+  m_Name: Video04_Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1107,7 +1045,7 @@ GameObject:
   - component: {fileID: 8217137722612275897}
   - component: {fileID: 9107743378716131364}
   m_Layer: 5
-  m_Name: Button - WatchAd (3)
+  m_Name: Video03_Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1304,7 +1242,7 @@ GameObject:
   - component: {fileID: 2680147910489833039}
   - component: {fileID: 7666604986692293743}
   m_Layer: 5
-  m_Name: Button - WatchAd (8)
+  m_Name: Video08_Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1502,7 +1440,7 @@ GameObject:
   - component: {fileID: 5364685568490419842}
   - component: {fileID: 5862596735587861188}
   m_Layer: 5
-  m_Name: Button - WatchAd (5)
+  m_Name: Video05_Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1526,7 +1464,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -95}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &8379484777192970002
@@ -1719,7 +1657,7 @@ GameObject:
   - component: {fileID: 444916737299865396}
   - component: {fileID: 8543864353728567}
   m_Layer: 5
-  m_Name: Button - WatchAd (10)
+  m_Name: Video10_Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2109,7 +2047,7 @@ GameObject:
   - component: {fileID: 3073942373022566178}
   - component: {fileID: 674392869338188042}
   m_Layer: 5
-  m_Name: Button - WatchAd (2)
+  m_Name: Video02_Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2365,7 +2303,7 @@ GameObject:
   - component: {fileID: 9137057488658285197}
   - component: {fileID: 6929596548270649419}
   m_Layer: 5
-  m_Name: Button - WatchAd (1)
+  m_Name: Video01_Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3098,7 +3036,7 @@ GameObject:
   - component: {fileID: 5475390297637030778}
   - component: {fileID: 2330653030503032516}
   m_Layer: 5
-  m_Name: Button - WatchAd (6)
+  m_Name: Video06_Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3220,7 +3158,7 @@ GameObject:
   - component: {fileID: 4976024172589911087}
   - component: {fileID: 551000129902973921}
   m_Layer: 5
-  m_Name: Button - WatchAd (7)
+  m_Name: Video07_Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3476,7 +3414,7 @@ GameObject:
   - component: {fileID: 5159196005366187368}
   - component: {fileID: 5628452073961007162}
   m_Layer: 5
-  m_Name: Button - WatchAd (9)
+  m_Name: Video09_Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3597,7 +3535,7 @@ GameObject:
   - component: {fileID: 4741967770852135180}
   - component: {fileID: 4663160646174471534}
   m_Layer: 5
-  m_Name: ButtonsHolder
+  m_Name: Buttons_Holder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Doozy.Runtime.UIManager.Components;
 using Kapibara.RPS.Extensions;
 using Sirenix.OdinInspector;
 using TMPro;
@@ -10,6 +9,7 @@ namespace Kapibara.RPS
 {
 	public class TrainingHouseUIController : BaseUIController
 	{
+		[Header("UI")]
 		[Header("Stats Buttons")]
 		[SerializeField] private TrainingDictionary _trainingDictionary;
 		[Header("Stat Info")]
@@ -20,17 +20,17 @@ namespace Kapibara.RPS
 		[SerializeField] private TextMeshProUGUI _statExperienceText;
 		[SerializeField] private Slider _statLevelProgressSlider;
 		[SerializeField] private TextMeshProUGUI _statBonusText;
-		[SerializeField] private UIButton _selectTrainingButton;
+		[SerializeField] private Button _selectTrainingButton;
 		[Header("Unlock Stat")]
 		[SerializeField] private GameObject _unlockStatHolder;
 		[SerializeField] private TextMeshProUGUI _unlockStatNameText;
 		[SerializeField] private Image _unlockStatIconImage;
 		[SerializeField] private TextMeshProUGUI _unlockCostText;
-		[SerializeField] private UIButton _unlockStatButton;
+		[SerializeField] private Button _unlockStatButton;
 		[Header("Icons")]
 		[SerializeField] private IconsScrObj _iconsScrObj;
 		[SerializeField, ReadOnly] private IconsDictionary _icons;
-		[Header("Debug")]
+		[Header("DEBUG")]
 		[SerializeField] private Button _addExperienceButton;
 		[SerializeField] private Button _addLevelButton;
 

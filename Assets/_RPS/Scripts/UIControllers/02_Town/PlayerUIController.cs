@@ -1,16 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
-using Doozy.Runtime.UIManager.Components;
-using Kapibara.RPS.Extensions;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 namespace Kapibara.RPS
 {
 	public class PlayerUIController : BaseUIController
 	{
-		[SerializeField] private UIButton _settingsButton;
+		[Header("UI")]
+		[SerializeField] private Button _settingsButton;
 		[SerializeField] private TextMeshProUGUI _playerGoldText;
 
 		#region UNITY_LIFECYCLE

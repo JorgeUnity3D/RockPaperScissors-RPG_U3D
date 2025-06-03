@@ -1,17 +1,16 @@
-﻿using System;
-using Doozy.Runtime.UIManager.Components;
-using Kapibara.RPS.Extensions;
+﻿using Kapibara.RPS.Extensions;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Kapibara.RPS
 {
     public class MainMenuUIController : BaseUIController
     {
-        [Header("Main Menu")]
-        [SerializeField] private UIButton _continueGameButton;
-        [SerializeField] private UIButton _newGameButton;
-        [SerializeField] private UIButton _loadGameButton;
-        [SerializeField] private UIButton _optionsButton;
+		[Header("UI")]
+		[SerializeField] private Button _continueGameButton;
+        [SerializeField] private Button _newGameButton;
+        [SerializeField] private Button _loadGameButton;
+        [SerializeField] private Button _optionsButton;
 
         #region UNITY_LIFECYCLE
 

@@ -1,7 +1,7 @@
-using Doozy.Runtime.UIManager.Components;
-using Kapibara.RPS.Extensions;
+﻿using Kapibara.RPS.Extensions;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Kapibara.RPS
 {
@@ -9,10 +9,10 @@ namespace Kapibara.RPS
     {
         [Header("New Game")]
         [SerializeField] private TMP_InputField _gamenameInput;
-        [SerializeField] private UIButton _confirmNewGameButton;
+        [SerializeField] private Button _confirmNewGameButton;
         
         [Header("Back Game")]
-        [SerializeField] private UIButton _backButton;
+        [SerializeField] private Button _backButton;
 
         #region UNITY_LIFECYCLE
 

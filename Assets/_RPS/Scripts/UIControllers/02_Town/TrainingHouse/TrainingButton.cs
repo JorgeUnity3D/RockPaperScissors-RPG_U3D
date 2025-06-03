@@ -1,5 +1,4 @@
-using System.Collections.Generic;
-using Doozy.Runtime.UIManager.Components;
+﻿using System.Collections.Generic;
 using Kapibara.RPS.Extensions;
 using UnityEngine;
 using UnityEngine.Events;
@@ -20,7 +19,7 @@ namespace Kapibara.RPS
 			SetImage(trainingHouseModifier.IsUnlocked ? icon : null);
 			SetLevel(trainingHouseModifier.Level, trainingHouseModifier.IsUnlocked);
 			SetSelectionOverlay(trainingHouseModifier.IsTraining);
-			GetComponent<UIButton>().AddListener(() =>
+			GetComponent<Button>().AddListener(() =>
 			{
 				OnButtonClick?.Invoke(trainingHouseModifier);
 			}, true);

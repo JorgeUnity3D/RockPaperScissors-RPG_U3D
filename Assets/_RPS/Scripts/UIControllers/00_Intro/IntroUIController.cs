@@ -1,12 +1,13 @@
-using System;
+﻿using System;
 using DG.Tweening;
 using UnityEngine;
 
 namespace Kapibara.RPS
 {
     public class IntroUIController : BaseUIController {
-    
-        [SerializeField] private RectTransform _introHolder;
+
+		[Header("UI")]
+		[SerializeField] private RectTransform _introHolder;
         
         #region UNITY_LIFECYCLE
 
