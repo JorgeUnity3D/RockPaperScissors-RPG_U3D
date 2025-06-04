@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Kapibara.RPS
+namespace Kapibara.RPS.UI
 {
 
 	public class UILineRenderer : Graphic

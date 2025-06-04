@@ -62,8 +62,6 @@ namespace Kapibara.RPS
 		
 		#region CONTROL
 
-		
-
 		private void SetUpPaperTreeUI(List<PaperTreeButton> paperTreeButtons, List<PaperTreeNode> paperTreeSkillTree)
 		{
 			SetUpSkillNodes(paperTreeButtons, paperTreeSkillTree);
@@ -81,7 +79,6 @@ namespace Kapibara.RPS
 				paperTreeButton.SetUp(paperTreeNode, icon, SelectPaperTreeButton);
 				paperTreeNode.SetUp(paperTreeSkillTree);
 			}
-			
 		}
 
 		private void SetUpSkillTreeLines(List<PaperTreeButton> paperTreeButtons, List<PaperTreeNode> paperTreeSkillTree)
