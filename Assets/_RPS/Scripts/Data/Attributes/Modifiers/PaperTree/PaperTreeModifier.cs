@@ -1,4 +1,5 @@
 ﻿using System;
+using Kapibara.Util.NotificableFields;
 using Newtonsoft.Json;
 using UnityEngine;
 

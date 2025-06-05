@@ -1,15 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Kapibara.RPS.Extensions;
-using Sirenix.OdinInspector;
+﻿using System.Collections.Generic;
+using Kapibara.Util.Extensions;
+using Kapibara.UI;
 using UnityEngine;
 
 namespace Kapibara.RPS
 {
 	public class PaperTreeUIController : BaseUIController
 	{
+		[Header("DATA")]
 		[SerializeField] private PaperTreeScrObj _paperTreeScrObj;
+		[Header("UI")]
 		[SerializeField] private IconsScrObj _iconsScrObj;
 		[SerializeField] private GameObject _linePrefab;
 		[SerializeField] private List<Color> _lineColors;
@@ -48,7 +48,7 @@ namespace Kapibara.RPS
 			_icons = _iconsScrObj.Data;
 		}		
 
-		public void SetData(List<Attribute> attributes)
+		public void SetData(List<StatAttribute> attributes)
 		{
 			Debug.Log($"[PaperTreeUIController] SetData() -> ");
 			SetUpPaperTreeUI(_rockPaperTreeButtons, _rockSkillTree);
@@ -61,8 +61,6 @@ namespace Kapibara.RPS
 		#endregion
 		
 		#region CONTROL
-
-		
 
 		private void SetUpPaperTreeUI(List<PaperTreeButton> paperTreeButtons, List<PaperTreeNode> paperTreeSkillTree)
 		{
@@ -81,7 +79,6 @@ namespace Kapibara.RPS
 				paperTreeButton.SetUp(paperTreeNode, icon, SelectPaperTreeButton);
 				paperTreeNode.SetUp(paperTreeSkillTree);
 			}
-			
 		}
 
 		private void SetUpSkillTreeLines(List<PaperTreeButton> paperTreeButtons, List<PaperTreeNode> paperTreeSkillTree)

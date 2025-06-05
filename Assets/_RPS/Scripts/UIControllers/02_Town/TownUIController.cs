@@ -1,8 +1,6 @@
-using System;
-using System.Collections.Generic;
-using Doozy.Runtime.UIManager.Components;
-using Kapibara.RPS.Extensions;
-using Sirenix.OdinInspector;
+﻿using System.Collections.Generic;
+using Kapibara.Util.Extensions;
+using Kapibara.UI;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +8,7 @@ namespace Kapibara.RPS
 {
 	public class TownUIController : BaseUIController
 	{
+		[Header("UI")]
 		[SerializeField] private TownDictionary _townDictionary;
 
 		#region UNITY_LIFECYCLE
@@ -26,10 +25,10 @@ namespace Kapibara.RPS
 		public override void SetUp()
 		{
 			Debug.Log($"[TownUIController] SetUp() -> ");
-			foreach (KeyValuePair<TownMenu, UIButton> entry in _townDictionary)
+			foreach (KeyValuePair<TownMenu, Button> entry in _townDictionary)
 			{
 				TownMenu townMenu = entry.Key;
-				UIButton townButton = entry.Value;
+				Button townButton = entry.Value;
 				townButton.AddListener(() =>
 				{
 					OpenTownMenu(townMenu);
@@ -51,7 +50,7 @@ namespace Kapibara.RPS
 		public void UpdateTownButton(TownData townData, TownView townView)
 		{
 			Debug.Log($"[TownUIController] UpdateTownButton() -> townView: {townData.TownMenu}");
-			UIButton townButton = _townDictionary[townData.TownMenu];
+			Button townButton = _townDictionary[townData.TownMenu];
 			townButton.GetComponent<Image>().sprite = townData.IsUnlocked ? townView.buildingIcon : townView.notBuiltIcon;
 		}
 		

@@ -1,17 +1,10 @@
-﻿using Doozy.Runtime.UIManager.Animators;
-using Doozy.Runtime.UIManager.Containers;
-using Kapibara.RPS;
-using Kapibara.RPS.Extensions;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class ComicPlayerUIController : MonoBehaviour
 {
-	[SerializeField] private List<UIContainer> _vignettesCont;
-	[SerializeField] private List<UIContainerUIAnimator> _vignettes;
+	//[SerializeField] private List<UIContainer> _vignettesCont;
+	//[SerializeField] private List<UIContainerUIAnimator> _vignettes;
 	[SerializeField] private Button _resetButton;
 	[SerializeField] private Button _nextButton;
 	private int _currentVignette;
@@ -19,30 +12,30 @@ public class ComicPlayerUIController : MonoBehaviour
 
 	private void Awake()
 	{
-		_currentVignette = -1;
-		_vignettesCont.ForEach(vignette => { vignette.InstantHide(); });
-		_nextButton.AddListener(NextVignette);
-		_resetButton.AddListener(ResetComic);
+		//_currentVignette = -1;
+		//_vignettesCont.ForEach(vignette => { vignette.InstantHide(); });
+		//_nextButton.AddListener(NextVignette);
+		//_resetButton.AddListener(ResetComic);
 
 	}
 
 	private void ResetComic()
 	{
-		foreach (UIContainer vignette in _vignettesCont)
-		{
-			vignette.Hide();
-		}
+		//foreach (UIContainer vignette in _vignettesCont)
+		//{
+		//	vignette.Hide();
+		//}
 		
-		_currentVignette = -1;
+		//_currentVignette = -1;
 	}
 
 	private void NextVignette()
 	{
-		_currentVignette++;
-		if (_currentVignette >= _vignettesCont.Count)
-		{
-			return;
-		}
-		_vignettesCont[_currentVignette].Show();		
+		//_currentVignette++;
+		//if (_currentVignette >= _vignettesCont.Count)
+		//{
+		//	return;
+		//}
+		//_vignettesCont[_currentVignette].Show();		
 	}
 }

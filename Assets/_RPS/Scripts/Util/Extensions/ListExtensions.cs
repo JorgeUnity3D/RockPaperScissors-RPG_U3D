@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Kapibara.RPS.Extensions
+namespace Kapibara.Util.Extensions
 {
 	public static class ListExtensions
 	{

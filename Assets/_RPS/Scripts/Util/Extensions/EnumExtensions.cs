@@ -1,7 +1,8 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Reflection;
-namespace Kapibara.RPS.Extensions
+
+namespace Kapibara.Util.Extensions
 {
 	public static class EnumExtensions
 	{

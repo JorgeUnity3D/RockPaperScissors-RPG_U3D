@@ -1,4 +1,5 @@
-﻿using Sirenix.OdinInspector;
+﻿using Kapibara.UI;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Kapibara.RPS

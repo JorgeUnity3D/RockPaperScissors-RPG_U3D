@@ -3,10 +3,11 @@
  */
 
 using System;
+using Kapibara.RPS;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
-namespace Kapibara.RPS
+namespace Kapibara.Util.Serialization
 {
 	public class BaseSpecifiedConcreteClassConverter : DefaultContractResolver
 	{

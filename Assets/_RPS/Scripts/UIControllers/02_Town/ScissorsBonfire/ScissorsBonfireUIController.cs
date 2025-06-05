@@ -1,6 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using Kapibara.RPS.Extensions;
+﻿using System.Collections.Generic;
+using Kapibara.Util.Extensions;
+using Kapibara.UI;
 using Sirenix.Utilities;
 using TMPro;
 using UnityEngine;
@@ -10,6 +10,7 @@ namespace Kapibara.RPS
 {
 	public class ScissorsBonfireUIController : BaseUIController
 	{
+		[Header("UI")]
 		[Header("Level Holder")]
 		[SerializeField] private TextMeshProUGUI _currentLevelText;
 		[SerializeField] private TextMeshProUGUI _nextLevelText;

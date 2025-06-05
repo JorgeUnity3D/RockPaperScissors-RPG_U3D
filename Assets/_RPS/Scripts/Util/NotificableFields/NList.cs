@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-namespace Kapibara.RPS
+
+namespace Kapibara.Util.NotificableFields
 {
 	public class NList<T> : NotificableField<List<T>>
 	{

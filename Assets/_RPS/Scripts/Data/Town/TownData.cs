@@ -1,13 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using Doozy.Runtime.Signals;
-using Doozy.Runtime.UIManager;
-using Doozy.Runtime.UIManager.Components;
-using Doozy.Runtime.UIManager.Containers;
+using Kapibara.Util.NotificableFields;
 using Newtonsoft.Json;
-using Sirenix.OdinInspector;
-using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Kapibara.RPS
 {

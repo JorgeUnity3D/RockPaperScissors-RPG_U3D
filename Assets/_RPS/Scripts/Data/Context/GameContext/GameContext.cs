@@ -1,6 +1,7 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using Kapibara.Util.NotificableFields;
 using Newtonsoft.Json;
 using UnityEngine;
 

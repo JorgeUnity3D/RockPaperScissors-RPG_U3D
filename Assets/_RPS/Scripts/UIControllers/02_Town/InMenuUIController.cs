@@ -1,13 +1,15 @@
-﻿using Doozy.Runtime.UIManager.Components;
-using Kapibara.RPS.Extensions;
+﻿using Kapibara.Util.Extensions;
+using Kapibara.UI;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+
 namespace Kapibara.RPS
 {
 	public class InMenuUIController : BaseUIController
 	{
-		[SerializeField] private UIButton _backButton;
+		[Header("UI")]
+		[SerializeField] private Button _backButton;
 		[SerializeField] private TextMeshProUGUI _menuNameText;
 		[SerializeField] private TextMeshProUGUI _menuLevelText;
 		[SerializeField] private Slider _menuLevelSlider;

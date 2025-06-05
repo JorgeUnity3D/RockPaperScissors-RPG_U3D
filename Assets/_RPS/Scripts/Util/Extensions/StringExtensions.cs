@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace Kapibara.RPS.Extensions
+namespace Kapibara.Util.Extensions
 {
 	public static class StringExtensions
 	{

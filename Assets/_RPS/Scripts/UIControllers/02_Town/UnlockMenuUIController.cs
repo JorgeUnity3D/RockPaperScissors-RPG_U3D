@@ -1,21 +1,22 @@
-﻿using System;
-using Doozy.Runtime.UIManager.Components;
-using Kapibara.RPS.Extensions;
+﻿using Kapibara.Util.Extensions;
+using Kapibara.UI;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
+
 namespace Kapibara.RPS
 {
 	public class UnlockMenuUIController : BaseUIController
 	{
+		[Header("UI")]
 		[SerializeField] private Image _buildingImage;
 		[SerializeField] private TextMeshProUGUI _buildingText;
 		[SerializeField] private TextMeshProUGUI _costText;
-		[SerializeField] private UIButton _confirmUnlockButton;
-		[SerializeField] private UIButton _cancelUnlockButton;
+		[SerializeField] private Button _confirmUnlockButton;
+		[SerializeField] private Button _cancelUnlockButton;
 
-		[FormerlySerializedAs("currentTownData2"),FormerlySerializedAs("_currentTownView"),SerializeField] private TownData currentTownData;
+		[Header("DEBUG")]
+		[SerializeField] private TownData _currentTownData;
 		
 		#region UNITY_LIFECYCLE
 
@@ -39,10 +40,10 @@ namespace Kapibara.RPS
 		public void SetData(TownData townData, TownView townView)
 		{
 			Debug.Log($"[UnlockMenuUIController] SetData() -> TownView: {townData.TownMenu}");
-			currentTownData = townData;
+			_currentTownData = townData;
 			_buildingImage.sprite = townView.buildingIcon;
-			_buildingText.text = currentTownData.Name;
-			_costText.text = currentTownData.Cost.ToString();
+			_buildingText.text = _currentTownData.Name;
+			_costText.text = _currentTownData.Cost.ToString();
 			_confirmUnlockButton.interactable = AppContext.Player.Gold >= townData.Cost;
 		}
 
@@ -53,7 +54,7 @@ namespace Kapibara.RPS
 		private void ConfirmUnlockButton()
 		{
 			Debug.Log($"[UnlockMenuUIController] ConfirmUnlockButton() -> ");
-			AppEvents.OnConfirmUnlock?.Invoke(currentTownData);
+			AppEvents.OnConfirmUnlock?.Invoke(_currentTownData);
 			Close();
 		}
 
@@ -67,7 +68,7 @@ namespace Kapibara.RPS
 		private void Close()
 		{
 			HideCanvas();
-			currentTownData = null;
+			_currentTownData = null;
 		}
 		
 		#endregion

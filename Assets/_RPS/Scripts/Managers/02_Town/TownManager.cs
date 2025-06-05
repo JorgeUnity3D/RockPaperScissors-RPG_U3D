@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using Kapibara.UI;
 using Sirenix.OdinInspector;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Kapibara.RPS
 {
@@ -10,7 +10,7 @@ namespace Kapibara.RPS
 		[SerializeField] private TownViewScrObj _townViewScrObj;
 		[SerializeField, ReadOnly] private List<TownData> _townData;
 		[SerializeField, ReadOnly] private List<TownView> _townViews;
-		
+
 		[SerializeField, ReadOnly] private UIService _uiService;
 		[SerializeField, ReadOnly] private ManagerService _managerService;
 		[SerializeField, ReadOnly] private TownUIController _townUIController;
@@ -21,9 +21,9 @@ namespace Kapibara.RPS
 		[SerializeField, ReadOnly] private InMenuUIController _inMenuUIController;
 
 		private BaseUIController _currentTownUIController;
-		
+
 		#region SETUP
-		
+
 		public override void SetUp()
 		{
 			Debug.Log($"[TownManager] SetUp() -> ");
@@ -39,25 +39,25 @@ namespace Kapibara.RPS
 
 		protected override void Subscribe()
 		{
-            Debug.Log($"[TownManager] Subscribe() -> ");
-            AppContext.Player.OnGoldValueChanged += UpdatePlayerGold;
-            AppEvents.OnOpenTownMenu += OpenTownMenu;
-            AppEvents.OnBackFromTownMenu += BackFromTownMenu;
-            AppEvents.OnConfirmUnlock += UnlockTownMenu;
+			Debug.Log($"[TownManager] Subscribe() -> ");
+			AppContext.Player.OnGoldValueChanged += UpdatePlayerGold;
+			AppEvents.OnOpenTownMenu += OpenTownMenu;
+			AppEvents.OnBackFromTownMenu += BackFromTownMenu;
+			AppEvents.OnConfirmUnlock += UnlockTownMenu;
 		}
-		
+
 		protected override void UnSubscribe()
 		{
-            Debug.Log($"[TownManager] UnSubscribe() -> ");
-            AppContext.Player.OnGoldValueChanged -= UpdatePlayerGold;
-            AppEvents.OnOpenTownMenu -= OpenTownMenu;
-            AppEvents.OnBackFromTownMenu -= BackFromTownMenu;
-            AppEvents.OnConfirmUnlock -= UnlockTownMenu;
+			Debug.Log($"[TownManager] UnSubscribe() -> ");
+			AppContext.Player.OnGoldValueChanged -= UpdatePlayerGold;
+			AppEvents.OnOpenTownMenu -= OpenTownMenu;
+			AppEvents.OnBackFromTownMenu -= BackFromTownMenu;
+			AppEvents.OnConfirmUnlock -= UnlockTownMenu;
 		}
 
-        #endregion
+		#endregion
 
-        #region CONTROL
+		#region CONTROL
 
 		public override void Initialize()
 		{
@@ -65,7 +65,7 @@ namespace Kapibara.RPS
 			_townUIController.SetData(_townData, _townViewScrObj.Data);
 			_playerUIController.UpdatePlayerGold(AppContext.Player.Gold);
 		}
-		
+
 		private void OpenTownMenu(TownMenu townMenu)
 		{
 			Debug.Log($"[TownManager] OpenTownMenu() -> TownMenu: {townMenu}");
@@ -85,7 +85,7 @@ namespace Kapibara.RPS
 				GoToUnlockMenu(townData, townView);
 			}
 		}
-		
+
 		private void GoToTownMenu(TownData townData, TownView townView)
 		{
 			Debug.Log($"[TownManager] GoToTownMenu() -> TownView: {townData.TownMenu}");
@@ -104,14 +104,14 @@ namespace Kapibara.RPS
 			_inMenuUIController.ShowCanvas();
 			_inMenuUIController.SetData(townData, townView);
 		}
-		
+
 		private void GoToUnlockMenu(TownData townData, TownView townView)
 		{
 			Debug.Log($"[TownManager] GoToUnlockMenu() -> TownView: {townData.TownMenu} - Cost: {townData.Cost}");
 			_unlockMenuUIController.ShowCanvas();
 			_unlockMenuUIController.SetData(townData, townView);
 		}
-		
+
 		private void BackFromTownMenu()
 		{
 			Debug.Log($"[TownManager] BackFromTownMenu() -> ");
@@ -126,7 +126,7 @@ namespace Kapibara.RPS
 			townData.IsUnlocked = true;
 			TownView townView = _townViews.Find(td => td.townMenu == townData.TownMenu);
 			_townUIController.UpdateTownButton(townData, townView);
-			
+
 		}
 
 		private void UpdatePlayerGold(int currentGold)
@@ -134,6 +134,6 @@ namespace Kapibara.RPS
 			_playerUIController.UpdatePlayerGold(currentGold);
 		}
 
-        #endregion
+		#endregion
 	}
 }

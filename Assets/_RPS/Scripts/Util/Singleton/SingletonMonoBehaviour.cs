@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
-namespace Kapibara.RPS
+
+namespace Kapibara.Util.Singleton
 {
     public class SingletonMonoBehaviour<T> : MonoBehaviour where T : MonoBehaviour
     {
@@ -11,7 +12,6 @@ namespace Kapibara.RPS
         {
             get { return _instance; }
         }
-
 
         #region UNITY_LIFECYCLE
   

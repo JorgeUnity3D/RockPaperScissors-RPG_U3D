@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Kapibara.UI;
+using System;
 namespace Kapibara.RPS
 {
 	public class TravelUIController : BaseUIController

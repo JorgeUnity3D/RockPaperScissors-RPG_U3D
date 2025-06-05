@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using Doozy.Runtime.UIManager.Components;
-using Sirenix.OdinInspector;
+﻿using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Kapibara.RPS {
     public class Item {
@@ -18,6 +16,6 @@ namespace Kapibara.RPS {
         public int level;
         public int currentExp;
         
-        [HideInInspector] public UIButton button;
+        [HideInInspector] public Button button;
     }
 }
