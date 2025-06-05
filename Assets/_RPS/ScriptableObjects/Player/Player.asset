@@ -1,3 +1,61 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:1cce2c349c5492cb0c84c9704036b137888e60716472fcbfe8495dc3ffb9848f
-size 1372
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a57e99f536ee9bf47825915486a30a4b, type: 3}
+  m_Name: Player
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  data:
+    name: 
+    level: 0
+    portrait: {fileID: 0}
+    currentHealth: 0
+    maxHealth: 0
+    mentality: 0
+    rock: 0
+    rockCost: 0
+    paper: 0
+    paperCost: 0
+    scissor: 0
+    scissorCost: 0
+    defense: 0
+    defenseCost: 0
+    thorns: 0
+    currentEnergy: 0
+    maxEnergy: 0
+    initialEnergy: 0
+    energyRecovery: 0
+    crit: 0
+    superpower: 0
+    commonLanguage: {fileID: 0}
+    languages: []
+    currentLanguage:
+      language: 0
+      words: []
+    currentAction: 0
+    thinkingAction: 0
+    isSuperAction: 0
+    currentDamageRoll: 0
+    currentMultiplier: 0
+    currentCritBonus: 0
+    currentTotalDamage: 0
+    currentThornsRoll: 0
+    isTrainingSuccess: 0
+    currentGold: 0
+    trainingStat: 0

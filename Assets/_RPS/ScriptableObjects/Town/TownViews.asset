@@ -1,3 +1,256 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:80c75c3d84c0bea5e5f64e60db769f90f38b61f1a80164229d0379c4120fbe75
-size 7076
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad88fcb8d8405c44f9774637a8e2b204, type: 3}
+  m_Name: TownViews
+  m_EditorClassIdentifier: Assembly-CSharp::TownViewDataObject2
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 559974473110441684, guid: 6c8eba774a473704d90b33e61729c54c, type: 3}
+    - {fileID: -53196190585743988, guid: 0698248cc748fc740abbac0e84be6cfe, type: 3}
+    - {fileID: 4029466576895577280, guid: 5e5ccfa5b9a9dac45884a4e5919f085d, type: 3}
+    - {fileID: 8797648088622834891, guid: 03abc9512c2a87143b6653bb0c02902f, type: 3}
+    - {fileID: 298056223733689800, guid: 6c8eba774a473704d90b33e61729c54c, type: 3}
+    - {fileID: 9201700871623396525, guid: 0698248cc748fc740abbac0e84be6cfe, type: 3}
+    - {fileID: 3597508830047154912, guid: 5e5ccfa5b9a9dac45884a4e5919f085d, type: 3}
+    - {fileID: -6399477289438276639, guid: 03abc9512c2a87143b6653bb0c02902f, type: 3}
+    - {fileID: 7376140763690283233, guid: 6c8eba774a473704d90b33e61729c54c, type: 3}
+    - {fileID: -7113796119962576697, guid: 0698248cc748fc740abbac0e84be6cfe, type: 3}
+    - {fileID: -5974177904267531938, guid: 5e5ccfa5b9a9dac45884a4e5919f085d, type: 3}
+    - {fileID: -1914663959, guid: 03abc9512c2a87143b6653bb0c02902f, type: 3}
+    - {fileID: 3799858956480889531, guid: 6c8eba774a473704d90b33e61729c54c, type: 3}
+    - {fileID: -1207504993431540695, guid: 0698248cc748fc740abbac0e84be6cfe, type: 3}
+    - {fileID: 6730013578686099568, guid: 5e5ccfa5b9a9dac45884a4e5919f085d, type: 3}
+    - {fileID: -70631063, guid: 03abc9512c2a87143b6653bb0c02902f, type: 3}
+    - {fileID: -1536867919056583524, guid: 6c8eba774a473704d90b33e61729c54c, type: 3}
+    - {fileID: 8454840388730847565, guid: 0698248cc748fc740abbac0e84be6cfe, type: 3}
+    - {fileID: -8173045813343347067, guid: 5e5ccfa5b9a9dac45884a4e5919f085d, type: 3}
+    - {fileID: -2686291510178866453, guid: 03abc9512c2a87143b6653bb0c02902f, type: 3}
+    - {fileID: 536257845962034371, guid: 6c8eba774a473704d90b33e61729c54c, type: 3}
+    - {fileID: -5616971807647135786, guid: 0698248cc748fc740abbac0e84be6cfe, type: 3}
+    - {fileID: -818841823584972384, guid: 5e5ccfa5b9a9dac45884a4e5919f085d, type: 3}
+    - {fileID: -370416032, guid: 03abc9512c2a87143b6653bb0c02902f, type: 3}
+    - {fileID: -3091836770724968434, guid: 6c8eba774a473704d90b33e61729c54c, type: 3}
+    - {fileID: 5100263269730090060, guid: 0698248cc748fc740abbac0e84be6cfe, type: 3}
+    - {fileID: 6491680457769439068, guid: 5e5ccfa5b9a9dac45884a4e5919f085d, type: 3}
+    - {fileID: -1067249927, guid: 03abc9512c2a87143b6653bb0c02902f, type: 3}
+    - {fileID: 6911634294832785417, guid: 6c8eba774a473704d90b33e61729c54c, type: 3}
+    - {fileID: 6550742473371753569, guid: 0698248cc748fc740abbac0e84be6cfe, type: 3}
+    - {fileID: 5680673976619871293, guid: 0ca550bc406330a4493c8d901e3ea819, type: 3}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: _data
+      Entry: 7
+      Data: 0|System.Collections.Generic.List`1[[Kapibara.RPS.TownView, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 9
+    - Name: 
+      Entry: 7
+      Data: 1|Kapibara.RPS.TownView, Assembly-CSharp
+    - Name: townMenu
+      Entry: 3
+      Data: 1
+    - Name: buildingIcon
+      Entry: 10
+      Data: 0
+    - Name: notBuiltIcon
+      Entry: 10
+      Data: 1
+    - Name: npcIcon
+      Entry: 10
+      Data: 2
+    - Name: npcNotFoundIcon
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 2|Kapibara.RPS.TownView, Assembly-CSharp
+    - Name: townMenu
+      Entry: 3
+      Data: 2
+    - Name: buildingIcon
+      Entry: 10
+      Data: 4
+    - Name: notBuiltIcon
+      Entry: 10
+      Data: 5
+    - Name: npcIcon
+      Entry: 10
+      Data: 6
+    - Name: npcNotFoundIcon
+      Entry: 10
+      Data: 7
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 3|Kapibara.RPS.TownView, Assembly-CSharp
+    - Name: townMenu
+      Entry: 3
+      Data: 3
+    - Name: buildingIcon
+      Entry: 10
+      Data: 8
+    - Name: notBuiltIcon
+      Entry: 10
+      Data: 9
+    - Name: npcIcon
+      Entry: 10
+      Data: 10
+    - Name: npcNotFoundIcon
+      Entry: 10
+      Data: 11
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 4|Kapibara.RPS.TownView, Assembly-CSharp
+    - Name: townMenu
+      Entry: 3
+      Data: 4
+    - Name: buildingIcon
+      Entry: 10
+      Data: 12
+    - Name: notBuiltIcon
+      Entry: 10
+      Data: 13
+    - Name: npcIcon
+      Entry: 10
+      Data: 14
+    - Name: npcNotFoundIcon
+      Entry: 10
+      Data: 15
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 5|Kapibara.RPS.TownView, Assembly-CSharp
+    - Name: townMenu
+      Entry: 3
+      Data: 5
+    - Name: buildingIcon
+      Entry: 10
+      Data: 16
+    - Name: notBuiltIcon
+      Entry: 10
+      Data: 17
+    - Name: npcIcon
+      Entry: 10
+      Data: 18
+    - Name: npcNotFoundIcon
+      Entry: 10
+      Data: 19
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 6|Kapibara.RPS.TownView, Assembly-CSharp
+    - Name: townMenu
+      Entry: 3
+      Data: 6
+    - Name: buildingIcon
+      Entry: 10
+      Data: 20
+    - Name: notBuiltIcon
+      Entry: 10
+      Data: 21
+    - Name: npcIcon
+      Entry: 10
+      Data: 22
+    - Name: npcNotFoundIcon
+      Entry: 10
+      Data: 23
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 7|Kapibara.RPS.TownView, Assembly-CSharp
+    - Name: townMenu
+      Entry: 3
+      Data: 7
+    - Name: buildingIcon
+      Entry: 10
+      Data: 24
+    - Name: notBuiltIcon
+      Entry: 10
+      Data: 25
+    - Name: npcIcon
+      Entry: 10
+      Data: 26
+    - Name: npcNotFoundIcon
+      Entry: 10
+      Data: 27
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 8|Kapibara.RPS.TownView, Assembly-CSharp
+    - Name: townMenu
+      Entry: 3
+      Data: 8
+    - Name: buildingIcon
+      Entry: 10
+      Data: 28
+    - Name: notBuiltIcon
+      Entry: 10
+      Data: 29
+    - Name: npcIcon
+      Entry: 6
+      Data: 
+    - Name: npcNotFoundIcon
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 9|Kapibara.RPS.TownView, Assembly-CSharp
+    - Name: townMenu
+      Entry: 3
+      Data: 9
+    - Name: buildingIcon
+      Entry: 10
+      Data: 30
+    - Name: notBuiltIcon
+      Entry: 6
+      Data: 
+    - Name: npcIcon
+      Entry: 6
+      Data: 
+    - Name: npcNotFoundIcon
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 

@@ -1,3 +1,238 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:3d8a924364e71944b010b39b1ec086f22657c5ba45abbc03e15d1bff3c496f3b
-size 4530
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0a0e3839b4acab44bb05cdf01c71144, type: 3}
+  m_Name: PaperTreeSkillTrees
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  _rockSkillTree:
+  - _nodeID: 0
+    _stat: 2
+    _modifier: 1
+    _isUnlocked: 1
+    _cost: 10
+    _nextNodesIDs: 0100000002000000
+  - _nodeID: 1
+    _stat: 0
+    _modifier: 2
+    _isUnlocked: 0
+    _cost: 10
+    _nextNodesIDs: 0300000004000000
+  - _nodeID: 2
+    _stat: 2
+    _modifier: 2
+    _isUnlocked: 0
+    _cost: 10
+    _nextNodesIDs: 05000000
+  - _nodeID: 3
+    _stat: 2
+    _modifier: 3
+    _isUnlocked: 0
+    _cost: 10
+    _nextNodesIDs: 06000000
+  - _nodeID: 4
+    _stat: 0
+    _modifier: 3
+    _isUnlocked: 0
+    _cost: 0
+    _nextNodesIDs: 06000000
+  - _nodeID: 5
+    _stat: 2
+    _modifier: 3
+    _isUnlocked: 0
+    _cost: 10
+    _nextNodesIDs: 06000000
+  - _nodeID: 6
+    _stat: 2
+    _modifier: 5
+    _isUnlocked: 0
+    _cost: 10
+    _nextNodesIDs: 
+  _paperSkillTree:
+  - _nodeID: 0
+    _stat: 3
+    _modifier: 1
+    _isUnlocked: 1
+    _cost: 10
+    _nextNodesIDs: 0100000002000000
+  - _nodeID: 1
+    _stat: 0
+    _modifier: 2
+    _isUnlocked: 1
+    _cost: 10
+    _nextNodesIDs: 0300000004000000
+  - _nodeID: 2
+    _stat: 3
+    _modifier: 2
+    _isUnlocked: 1
+    _cost: 10
+    _nextNodesIDs: 0400000005000000
+  - _nodeID: 3
+    _stat: 3
+    _modifier: 3
+    _isUnlocked: 0
+    _cost: 10000
+    _nextNodesIDs: 06000000
+  - _nodeID: 4
+    _stat: 0
+    _modifier: 3
+    _isUnlocked: 0
+    _cost: 0
+    _nextNodesIDs: 06000000
+  - _nodeID: 5
+    _stat: 3
+    _modifier: 3
+    _isUnlocked: 0
+    _cost: 10
+    _nextNodesIDs: 06000000
+  - _nodeID: 6
+    _stat: 10
+    _modifier: 5
+    _isUnlocked: 0
+    _cost: 10
+    _nextNodesIDs: 
+  _scissorsSkillTree:
+  - _nodeID: 0
+    _stat: 4
+    _modifier: 1
+    _isUnlocked: 1
+    _cost: 10
+    _nextNodesIDs: 0100000002000000
+  - _nodeID: 1
+    _stat: 4
+    _modifier: 2
+    _isUnlocked: 1
+    _cost: 10
+    _nextNodesIDs: 0300000004000000
+  - _nodeID: 2
+    _stat: 9
+    _modifier: 2
+    _isUnlocked: 1
+    _cost: 10
+    _nextNodesIDs: 05000000
+  - _nodeID: 3
+    _stat: 4
+    _modifier: 3
+    _isUnlocked: 1
+    _cost: 10
+    _nextNodesIDs: 06000000
+  - _nodeID: 4
+    _stat: 0
+    _modifier: 3
+    _isUnlocked: 1
+    _cost: 0
+    _nextNodesIDs: 06000000
+  - _nodeID: 5
+    _stat: 4
+    _modifier: 3
+    _isUnlocked: 0
+    _cost: 10
+    _nextNodesIDs: 06000000
+  - _nodeID: 6
+    _stat: 10
+    _modifier: 5
+    _isUnlocked: 0
+    _cost: 10
+    _nextNodesIDs: 
+  _defenseSkillTree:
+  - _nodeID: 0
+    _stat: 5
+    _modifier: 1
+    _isUnlocked: 1
+    _cost: 10
+    _nextNodesIDs: 0100000002000000
+  - _nodeID: 1
+    _stat: 0
+    _modifier: 2
+    _isUnlocked: 1
+    _cost: 10
+    _nextNodesIDs: 0300000004000000
+  - _nodeID: 2
+    _stat: 5
+    _modifier: 2
+    _isUnlocked: 0
+    _cost: 10
+    _nextNodesIDs: 05000000
+  - _nodeID: 3
+    _stat: 0
+    _modifier: 3
+    _isUnlocked: 0
+    _cost: 10
+    _nextNodesIDs: 06000000
+  - _nodeID: 4
+    _stat: 5
+    _modifier: 3
+    _isUnlocked: 0
+    _cost: 0
+    _nextNodesIDs: 06000000
+  - _nodeID: 5
+    _stat: 9
+    _modifier: 3
+    _isUnlocked: 0
+    _cost: 10
+    _nextNodesIDs: 06000000
+  - _nodeID: 6
+    _stat: 6
+    _modifier: 5
+    _isUnlocked: 0
+    _cost: 10
+    _nextNodesIDs: 
+  _energyRecoverySkillTree:
+  - _nodeID: 0
+    _stat: 8
+    _modifier: 1
+    _isUnlocked: 1
+    _cost: 10
+    _nextNodesIDs: 0100000002000000
+  - _nodeID: 1
+    _stat: 9
+    _modifier: 2
+    _isUnlocked: 1
+    _cost: 10
+    _nextNodesIDs: 0300000004000000
+  - _nodeID: 2
+    _stat: 8
+    _modifier: 2
+    _isUnlocked: 1
+    _cost: 10
+    _nextNodesIDs: 05000000
+  - _nodeID: 3
+    _stat: 8
+    _modifier: 3
+    _isUnlocked: 1
+    _cost: 10
+    _nextNodesIDs: 06000000
+  - _nodeID: 4
+    _stat: 9
+    _modifier: 3
+    _isUnlocked: 1
+    _cost: 0
+    _nextNodesIDs: 06000000
+  - _nodeID: 5
+    _stat: 8
+    _modifier: 3
+    _isUnlocked: 1
+    _cost: 10
+    _nextNodesIDs: 06000000
+  - _nodeID: 6
+    _stat: 10
+    _modifier: 5
+    _isUnlocked: 1
+    _cost: 10
+    _nextNodesIDs: 
