@@ -1,7 +1,6 @@
 ﻿using System;
+using Kapibara.Util.NotificableFields;
 using Newtonsoft.Json;
-using Sirenix.OdinInspector;
-using UnityEngine;
 
 namespace Kapibara.RPS
 {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Kapibara.Util.NotificableFields;
 using Newtonsoft.Json;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -75,19 +76,19 @@ namespace Kapibara.RPS
 			set => _currentHealth.Value = value;
 		}
 
-		public Attribute MaxHealth
+		public StatAttribute MaxHealth
 		{
 			get => _maxHealth.Value;
 			set => _maxHealth.Value = value;
 		}
 
-		public Attribute Mentality
+		public StatAttribute Mentality
 		{
 			get => _mentality.Value;
 			set => _mentality.Value = value;
 		}
 
-		public Attribute Rock
+		public StatAttribute Rock
 		{
 			get => _rock.Value;
 			set => _rock.Value = value;
@@ -99,7 +100,7 @@ namespace Kapibara.RPS
 			set => _rockCost.Value = value;
 		}
 
-		public Attribute Paper
+		public StatAttribute Paper
 		{
 			get => _paper.Value;
 			set => _paper.Value = value;
@@ -111,7 +112,7 @@ namespace Kapibara.RPS
 			set => _paperCost.Value = value;
 		}
 
-		public Attribute Scissor
+		public StatAttribute Scissor
 		{
 			get => _scissor.Value;
 			set => _scissor.Value = value;
@@ -123,7 +124,7 @@ namespace Kapibara.RPS
 			set => _scissorCost.Value = value;
 		}
 
-		public Attribute Defense
+		public StatAttribute Defense
 		{
 			get => _defense.Value;
 			set => _defense.Value = value;
@@ -135,7 +136,7 @@ namespace Kapibara.RPS
 			set => _defenseCost.Value = value;
 		}
 
-		public Attribute Thorns
+		public StatAttribute Thorns
 		{
 			get => _thorns.Value;
 			set => _thorns.Value = value;
@@ -148,7 +149,7 @@ namespace Kapibara.RPS
 			set => _currentEnergy.Value = value;
 		}
 
-		public Attribute BaseEnergy
+		public StatAttribute BaseEnergy
 		{
 			get => _baseEnergy.Value;
 			set => _baseEnergy.Value = value;
@@ -160,30 +161,30 @@ namespace Kapibara.RPS
 			set => _initialEnergy.Value = value;
 		}
 
-		public Attribute EnergyRecovery
+		public StatAttribute EnergyRecovery
 		{
 			get => _energyRecovery.Value;
 			set => _energyRecovery.Value = value;
 		}
 
-		public Attribute Crit
+		public StatAttribute Crit
 		{
 			get => _crit.Value;
 			set => _crit.Value = value;
 		}
 
-		public Attribute Superpower
+		public StatAttribute Superpower
 		{
 			get => _superpower.Value;
 			set => _superpower.Value = value;
 		}
 
 		[JsonIgnore]
-		public List<Attribute> Attributes
+		public List<StatAttribute> Attributes
 		{
 			get
 			{
-				return new List<Attribute>
+				return new List<StatAttribute>
 				{
 					_maxHealth.Value,
 					_mentality.Value,
@@ -206,7 +207,7 @@ namespace Kapibara.RPS
 			dicList<string, object>
 			lista<object>
 		*/
-		public Attribute this[Stats stat]
+		public StatAttribute this[Stats stat]
 		{
 			get
 			{
@@ -280,9 +281,9 @@ namespace Kapibara.RPS
 		}
 
 		[JsonConstructor]
-		public Player(string name, int level, int currentGold, int currentHealth, Attribute maxHealth, Attribute mentality, Attribute rock,
-			int rockCost, Attribute paper, int paperCost, Attribute scissor, int scissorCost, Attribute defense, int defenseCost, Attribute thorns,
-			int currentEnergy, Attribute baseEnergy, int initialEnergy, Attribute energyRecovery, Attribute crit, Attribute superpower)
+		public Player(string name, int level, int currentGold, int currentHealth, StatAttribute maxHealth, StatAttribute mentality, StatAttribute rock,
+			int rockCost, StatAttribute paper, int paperCost, StatAttribute scissor, int scissorCost, StatAttribute defense, int defenseCost, StatAttribute thorns,
+			int currentEnergy, StatAttribute baseEnergy, int initialEnergy, StatAttribute energyRecovery, StatAttribute crit, StatAttribute superpower)
 		{
 			_name = new NString(name);
 			_level = new NInt(level);

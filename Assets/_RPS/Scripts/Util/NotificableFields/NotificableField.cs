@@ -1,8 +1,9 @@
-﻿using System;
+﻿using Kapibara.RPS;
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Kapibara.RPS
+namespace Kapibara.Util.NotificableFields
 {
 	[Serializable]
 	public class NotificableField<T>

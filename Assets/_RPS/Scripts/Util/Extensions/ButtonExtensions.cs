@@ -1,8 +1,7 @@
-﻿using Doozy.Runtime.UIManager.Components;
-using UnityEngine.Events;
+﻿using UnityEngine.Events;
 using UnityEngine.UI;
 
-namespace Kapibara.RPS.Extensions
+namespace Kapibara.Util.Extensions
 {
 	public static class ButtonExtensions
 	{
@@ -12,34 +11,25 @@ namespace Kapibara.RPS.Extensions
 			{
 				return;
 			}
-			if (button.GetComponent<UIButton>() != null)
-			{
-				button.GetComponent<UIButton>().AddListener(listener, removePreviousListener);
-				return;
-			}
 			if (removePreviousListener)
 			{
 				button.onClick.RemoveAllListeners();
 			}
 			button.onClick.AddListener(listener);
 		}
-		public static void AddListener(this UIButton uiButton, UnityAction listener, bool removePreviousListener = false, float cooldown = 0f)
-		{
-			if (!uiButton)
-			{
-				return;
-			}
-			if (removePreviousListener)
-			{
-				uiButton.onClickBehaviour.Event.RemoveAllListeners();
-			}
-			uiButton.Cooldown = cooldown;
-			uiButton.onClickBehaviour.Event.AddListener(listener);
-		}
 
-		public static void Interactable(this UIButton uiButton, bool isInteractable)
-		{
-			uiButton.interactable = isInteractable;
-		}
+		//public static void AddListener(this IButton uiButton, UnityAction listener, bool removePreviousListener = false, float cooldown = 0f)
+		//{
+		//	if (!uiButton)
+		//	{
+		//		return;
+		//	}
+		//	if (removePreviousListener)
+		//	{
+		//		uiButton.onClickBehaviour.Event.RemoveAllListeners();
+		//	}
+		//	uiButton.Cooldown = cooldown;
+		//	uiButton.onClickBehaviour.Event.AddListener(listener);
+		//}		
 	}
 }

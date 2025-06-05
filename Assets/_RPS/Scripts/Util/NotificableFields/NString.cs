@@ -1,5 +1,6 @@
 ﻿using System;
-namespace Kapibara.RPS
+
+namespace Kapibara.Util.NotificableFields
 {
 	[Serializable]
 	public class NString : NotificableField<string>

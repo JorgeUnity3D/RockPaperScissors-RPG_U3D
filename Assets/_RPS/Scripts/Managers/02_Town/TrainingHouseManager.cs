@@ -6,7 +6,7 @@ namespace Kapibara.RPS
 {
 	public class TrainingHouseManager : BaseManager
 	{
-		[SerializeField, ReadOnly] private List<Attribute> _trainingAttributes;
+		[SerializeField, ReadOnly] private List<StatAttribute> _trainingAttributes;
 		
 		[SerializeField, ReadOnly] private TrainingHouseUIController _trainingHouseUIController;
 		
@@ -46,7 +46,7 @@ namespace Kapibara.RPS
 		private void SelectTrainingStat(TrainingHouseModifier trainingHouseModifier)
 		{
 			Debug.Log($"[TrainingHouseManager] SelectTrainingStat() -> stat {trainingHouseModifier.Stat}");
-			foreach (Attribute trainingAttribute in _trainingAttributes)
+			foreach (StatAttribute trainingAttribute in _trainingAttributes)
 			{
 				if (trainingAttribute.GetModifier<TrainingHouseModifier>().IsTraining)
 				{

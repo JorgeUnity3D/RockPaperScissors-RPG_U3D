@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Kapibara.RPS {
+namespace Kapibara.Util.Coroutines
+{
     public class CoroutineQueue {
         MonoBehaviour m_Owner = null;
         Coroutine m_InternalCoroutine = null;

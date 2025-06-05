@@ -1,10 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using Doozy.Runtime.Signals;
-using Doozy.Runtime.UIManager;
-using Doozy.Runtime.UIManager.Components;
+﻿using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Kapibara.RPS {
     public class MapLevel {
@@ -59,7 +56,7 @@ namespace Kapibara.RPS {
         [FoldoutGroup("LevelInfo")] [HorizontalGroup("LevelInfo/Row4", MaxWidth = 500f, Width = 0.5f, PaddingLeft = 0.001f, PaddingRight = 0.001f)]
         public bool isSpecialLevel;
 
-        [HideInInspector] public UIButton button;
+        [HideInInspector] public Button button;
         
 
     }
