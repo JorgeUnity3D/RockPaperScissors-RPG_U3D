@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using Kapibara.Util.NotificableFields;
 using Newtonsoft.Json;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Kapibara.RPS
 {
 	[Serializable]
-	public class Attribute
+	public class StatAttribute
 	{
 		#region FIELDS
 
@@ -54,7 +54,7 @@ namespace Kapibara.RPS
 
 		#region CONSTRUCTORS
 
-		public Attribute(Stats stat, int attributeValue)
+		public StatAttribute(Stats stat, int attributeValue)
 		{
 			_stat = stat;
 			_attributeValue = new NInt(attributeValue);
@@ -62,7 +62,7 @@ namespace Kapibara.RPS
 		}
 
 		[JsonConstructor]
-		public Attribute(Stats stat, int attributeValue, List<BaseModifier> modifiers = null)
+		public StatAttribute(Stats stat, int attributeValue, List<BaseModifier> modifiers = null)
 		{
 			_stat = stat;
 			_attributeValue = new NInt(attributeValue);

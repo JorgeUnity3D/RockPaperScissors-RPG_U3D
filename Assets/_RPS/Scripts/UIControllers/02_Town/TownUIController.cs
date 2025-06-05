@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
-using Kapibara.RPS.Extensions;
+using Kapibara.Util.Extensions;
+using Kapibara.UI;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,6 +8,7 @@ namespace Kapibara.RPS
 {
 	public class TownUIController : BaseUIController
 	{
+		[Header("UI")]
 		[SerializeField] private TownDictionary _townDictionary;
 
 		#region UNITY_LIFECYCLE

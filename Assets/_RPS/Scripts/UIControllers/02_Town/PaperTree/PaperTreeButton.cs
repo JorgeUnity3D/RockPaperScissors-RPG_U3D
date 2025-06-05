@@ -1,5 +1,4 @@
-﻿using System;
-using Kapibara.RPS.Extensions;
+﻿using Kapibara.Util.Extensions;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;

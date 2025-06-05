@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
-using Kapibara.RPS.Extensions;
+using Kapibara.Util.Extensions;
+using Kapibara.UI;
 using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
@@ -52,10 +53,10 @@ namespace Kapibara.RPS
 			_icons = _iconsScrObj.Data;
 		}		
 
-		public void SetData(List<Attribute> attributes)
+		public void SetData(List<StatAttribute> attributes)
 		{
 			Debug.Log($"[TrainingHouseUIController] SetData() -> ");
-			foreach (Attribute attribute in attributes)
+			foreach (StatAttribute attribute in attributes)
 			{
 				TrainingHouseModifier trainingHouseModifier = attribute.GetModifier<TrainingHouseModifier>();
 				if (trainingHouseModifier != null)

@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -7,7 +7,7 @@ namespace Kapibara.RPS
 	public class ScissorBonfireManager : BaseManager
 	{
 		[SerializeField, ReadOnly] private Player _player;
-		[SerializeField, ReadOnly] private List<Attribute> _levelAttributes;
+		[SerializeField, ReadOnly] private List<StatAttribute> _levelAttributes;
 
 		[SerializeField, ReadOnly] private ScissorsBonfireUIController _scissorsBonfireUIController;
 		
@@ -51,7 +51,7 @@ namespace Kapibara.RPS
 			Debug.Log($"[ScissorBonfireManager] ConfirmLevelUp() -> Current Level: {AppContext.Player.Level}");
 			AppContext.Player.Gold = Mathf.Max(0, AppContext.Player.Gold - GameConsts.LEVEL_PRICES_AUX[AppContext.Player.Level]);
 			AppContext.Player.Level++;
-			List<Attribute> attributes = AppContext.Player.Attributes.FindAll(att => att.GetModifier<ScissorBonfireModifier>() != null);
+			List<StatAttribute> attributes = AppContext.Player.Attributes.FindAll(att => att.GetModifier<ScissorBonfireModifier>() != null);
 			attributes.ForEach(att =>
 			{
 				Debug.Log($"[ScissorBonfireManager] ConfirmLevelUp() -> Stat {att.GetModifier<ScissorBonfireModifier>().Stat} currently is: {att.GetModifier<ScissorBonfireModifier>().Modifier}");

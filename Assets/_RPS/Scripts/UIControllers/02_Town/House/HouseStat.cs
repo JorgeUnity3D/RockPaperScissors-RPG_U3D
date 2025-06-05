@@ -1,5 +1,5 @@
-using System.Collections.Generic;
-using Kapibara.RPS.Extensions;
+﻿using System.Collections.Generic;
+using Kapibara.Util.Extensions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,7 +17,7 @@ namespace Kapibara.RPS
 
 		#region CONTROL
 
-		public void SetData(Attribute attribute, Sprite statIcon)
+		public void SetData(StatAttribute attribute, Sprite statIcon)
 		{
 			UpdateAttributeText(attribute);
 			UpdateModifierText<ScissorBonfireModifier>(attribute, _scissorBonfireModText);
@@ -26,7 +26,7 @@ namespace Kapibara.RPS
 			_icons.ForEach(icon => icon.sprite = statIcon);
 		}
 
-		private void UpdateAttributeText(Attribute attribute)
+		private void UpdateAttributeText(StatAttribute attribute)
 		{
 			string statName = attribute.Stat.Name();
 			//Base
@@ -41,7 +41,7 @@ namespace Kapibara.RPS
 			totalParent.GetComponent<TextMeshProUGUI>().text = totalName;
 		}
 
-		private void UpdateModifierText<T>(Attribute attribute, TextMeshProUGUI textMesh) where T : BaseModifier
+		private void UpdateModifierText<T>(StatAttribute attribute, TextMeshProUGUI textMesh) where T : BaseModifier
 		{
 			if (textMesh == null)
 			{

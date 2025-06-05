@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Kapibara.UI;
+using UnityEngine;
 
 namespace Kapibara.RPS
 {

@@ -1,9 +1,8 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace Kapibara.RPS.UI
+namespace Kapibara.UI
 {
-
 	public class UILineRenderer : Graphic
 	{
 		public Vector2[] points;

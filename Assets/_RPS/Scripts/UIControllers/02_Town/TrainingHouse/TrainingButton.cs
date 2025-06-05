@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Kapibara.RPS.Extensions;
+using Kapibara.Util.Extensions;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;

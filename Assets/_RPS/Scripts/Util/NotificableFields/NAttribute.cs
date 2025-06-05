@@ -1,19 +1,21 @@
-﻿using System;
-namespace Kapibara.RPS
+﻿using Kapibara.RPS;
+using System;
+
+namespace Kapibara.Util.NotificableFields
 {
 	[Serializable]
-	public class NAttribute : NotificableField<Attribute>
+	public class NAttribute : NotificableField<StatAttribute>
 	{
 		#region CONSTRUCTOR
 
-		public NAttribute(Attribute value)
+		public NAttribute(StatAttribute value)
 		{
 			Value = value;
 		}
 
 		public NAttribute(Stats stat, int value)
 		{
-			Value = new Attribute(stat, value);
+			Value = new StatAttribute(stat, value);
 			Value.AddModifier(new TrainingHouseModifier(stat));
 			Value.AddModifier(new PaperTreeModifier(stat));
 		}

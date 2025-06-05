@@ -3,10 +3,11 @@
  */
 
 using System;
+using Kapibara.RPS;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace Kapibara.RPS
+namespace Kapibara.Util.Serialization
 {
 	public class BaseModifierConverter : JsonConverter
 	{

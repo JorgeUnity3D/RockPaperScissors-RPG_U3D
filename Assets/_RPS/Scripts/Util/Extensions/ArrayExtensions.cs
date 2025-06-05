@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Kapibara.RPS.Extensions
+namespace Kapibara.Util.Extensions
 {
 	public static class ArrayExtensions
 	{

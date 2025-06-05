@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using Kapibara.UI;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 

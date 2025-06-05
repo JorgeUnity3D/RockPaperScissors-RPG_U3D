@@ -1,4 +1,4 @@
-﻿namespace Kapibara.RPS.UI
+﻿namespace Kapibara.UI
 {
 	public class TabContent : BaseUIController
 	{

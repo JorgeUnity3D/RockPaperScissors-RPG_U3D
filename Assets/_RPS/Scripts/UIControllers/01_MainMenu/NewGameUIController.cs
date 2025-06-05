@@ -1,4 +1,5 @@
-﻿using Kapibara.RPS.Extensions;
+﻿using Kapibara.Util.Extensions;
+using Kapibara.UI;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,6 +8,7 @@ namespace Kapibara.RPS
 {
     public class NewGameUIController : BaseUIController
     {
+        [Header("UI")]
         [Header("New Game")]
         [SerializeField] private TMP_InputField _gamenameInput;
         [SerializeField] private Button _confirmNewGameButton;

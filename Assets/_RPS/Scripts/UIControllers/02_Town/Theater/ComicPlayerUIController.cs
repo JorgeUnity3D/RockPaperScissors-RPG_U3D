@@ -1,9 +1,6 @@
 ﻿using Doozy.Runtime.UIManager.Animators;
 using Doozy.Runtime.UIManager.Containers;
-using Kapibara.RPS;
-using Kapibara.RPS.Extensions;
-using System;
-using System.Collections;
+using Kapibara.Util.Extensions;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;

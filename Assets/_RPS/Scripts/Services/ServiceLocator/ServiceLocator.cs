@@ -1,3 +1,4 @@
+﻿using Kapibara.Util.Singleton;
 using Sirenix.OdinInspector;
 using UnityEngine;
 

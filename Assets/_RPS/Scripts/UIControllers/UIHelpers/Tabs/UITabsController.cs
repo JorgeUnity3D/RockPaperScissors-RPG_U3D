@@ -1,10 +1,9 @@
-﻿using Kapibara.RPS.Extensions;
+﻿using Kapibara.Util.Extensions;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
-namespace Kapibara.RPS.UI
+namespace Kapibara.UI
 {
 	public class UITabsController : MonoBehaviour
 	{

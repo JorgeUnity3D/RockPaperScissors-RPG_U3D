@@ -1,4 +1,6 @@
-﻿namespace Kapibara.RPS
+﻿using Kapibara.UI;
+
+namespace Kapibara.RPS
 {
 	public class StoneSmithyUIController : BaseUIController
 	{

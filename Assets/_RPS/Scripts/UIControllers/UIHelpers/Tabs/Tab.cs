@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Kapibara.RPS.UI
+namespace Kapibara.UI
 {
 	[Serializable]
 	public class Tab

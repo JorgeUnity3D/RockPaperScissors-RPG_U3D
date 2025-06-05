@@ -1,4 +1,5 @@
-﻿using Kapibara.RPS.Extensions;
+﻿using Kapibara.Util.Extensions;
+using Kapibara.UI;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
