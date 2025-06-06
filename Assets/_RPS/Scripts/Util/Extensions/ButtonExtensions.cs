@@ -17,19 +17,5 @@ namespace Kapibara.Util.Extensions
 			}
 			button.onClick.AddListener(listener);
 		}
-
-		//public static void AddListener(this IButton uiButton, UnityAction listener, bool removePreviousListener = false, float cooldown = 0f)
-		//{
-		//	if (!uiButton)
-		//	{
-		//		return;
-		//	}
-		//	if (removePreviousListener)
-		//	{
-		//		uiButton.onClickBehaviour.Event.RemoveAllListeners();
-		//	}
-		//	uiButton.Cooldown = cooldown;
-		//	uiButton.onClickBehaviour.Event.AddListener(listener);
-		//}		
 	}
 }
