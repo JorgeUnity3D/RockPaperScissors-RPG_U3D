@@ -5,6 +5,9 @@ namespace Kapibara.RPS
 {
 	public class PaperTreeManager : BaseManager
 	{
+		[Header("UI")]
+		[SerializeField] private PaperTreeScrObj _paperTreeScrObj;
+		[Header("DEBUG")]
 		[SerializeField, ReadOnly] private Player _player;
 		[SerializeField, ReadOnly] private PaperTreeUIController _paperTreeUIController;
 		
@@ -16,16 +19,15 @@ namespace Kapibara.RPS
 			_paperTreeUIController = ServiceLocator.Instance.GetService<UIService>().GetController<PaperTreeUIController>();
 			_player = AppContext.Player;
 		}
-		
 
 		protected override void Subscribe()
 		{
-			Debug.Log($"[PaperTreeManager] Subscribe() -> ");
+			Debug.Log($"[PaperTreeManager] Subscribe() ->  Nothing to subscribe!");
 		}
 		
 		protected override void UnSubscribe()
 		{
-			Debug.Log($"[PaperTreeManager] UnSubscribe() -> ");
+			Debug.Log($"[PaperTreeManager] UnSubscribe() ->  Nothing to unsubscribe!");
 		}
 
         #endregion
@@ -35,7 +37,7 @@ namespace Kapibara.RPS
 		public override void Initialize()
 		{
 			Debug.Log($"[PaperTreeManager] Initialize() -> ");
-			_paperTreeUIController.SetData(_player.Attributes);
+			_paperTreeUIController.SetData(_player.Attributes, _paperTreeScrObj);
 		}
 		
 		#endregion

@@ -2,13 +2,13 @@
 using Kapibara.Util.Extensions;
 using Kapibara.UI;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 namespace Kapibara.RPS
 {
 	public class PaperTreeUIController : UIController
 	{
-		[Header("DATA")]
-		[SerializeField] private PaperTreeScrObj _paperTreeScrObj;
+
 		[Header("UI")]
 		[SerializeField] private IconsScrObj _iconsScrObj;
 		[SerializeField] private GameObject _linePrefab;
@@ -18,13 +18,14 @@ namespace Kapibara.RPS
 		[SerializeField] private List<PaperTreeButton> _scissorsPaperTreeButtons;
 		[SerializeField] private List<PaperTreeButton> _defensePaperTreeButtons;
 		[SerializeField] private List<PaperTreeButton> _energyRecPaperTreeButtons;
-		private List<PaperTreeNode> _rockSkillTree;
-		private List<PaperTreeNode> _paperSkillTree;
-		private List<PaperTreeNode> _scissorsSkillTree;
-		private List<PaperTreeNode> _defenseSkillTree;
-		private List<PaperTreeNode> _energyRecSkillTree;
-		private IconsDictionary _icons;
-		
+		[Header("DEBUG")]
+		[SerializeField, ReadOnly] private List<PaperTreeNode> _rockSkillTree;
+		[SerializeField, ReadOnly] private List<PaperTreeNode> _paperSkillTree;
+		[SerializeField, ReadOnly] private List<PaperTreeNode> _scissorsSkillTree;
+		[SerializeField, ReadOnly] private List<PaperTreeNode> _defenseSkillTree;
+		[SerializeField, ReadOnly] private List<PaperTreeNode> _energyRecSkillTree;
+		[SerializeField, ReadOnly] private IconsDictionary _icons;
+
 		#region UNITY_LIFECYCLE
 
 		private void Awake()
@@ -33,24 +34,24 @@ namespace Kapibara.RPS
 		}
 
 		#endregion
-		
+
 		#region SETUP
 
 		public override void SetUp()
 		{
 			Debug.Log($"[PaperTreeUIController] SetUp() -> ");
 			HideCanvas(0);
-			_rockSkillTree = _paperTreeScrObj[Stats.ROCK];
-			_paperSkillTree = _paperTreeScrObj[Stats.PAPER];
-			_scissorsSkillTree = _paperTreeScrObj[Stats.SCISSOR];
-			_defenseSkillTree = _paperTreeScrObj[Stats.DEFENSE];
-			_energyRecSkillTree = _paperTreeScrObj[Stats.ENERGY_RECOVERY];
 			_icons = _iconsScrObj.Data;
-		}		
+		}
 
-		public void SetData(List<StatAttribute> attributes)
+		public void SetData(List<StatAttribute> attributes, PaperTreeScrObj paperTreeScrObj)
 		{
 			Debug.Log($"[PaperTreeUIController] SetData() -> ");
+			_rockSkillTree = paperTreeScrObj[Stats.ROCK];
+			_paperSkillTree = paperTreeScrObj[Stats.PAPER];
+			_scissorsSkillTree = paperTreeScrObj[Stats.SCISSOR];
+			_defenseSkillTree = paperTreeScrObj[Stats.DEFENSE];
+			_energyRecSkillTree = paperTreeScrObj[Stats.ENERGY_RECOVERY];
 			SetUpPaperTreeUI(_rockPaperTreeButtons, _rockSkillTree);
 			SetUpPaperTreeUI(_paperPaperTreeButtons, _paperSkillTree);
 			SetUpPaperTreeUI(_scissorsPaperTreeButtons, _scissorsSkillTree);
@@ -59,7 +60,7 @@ namespace Kapibara.RPS
 		}
 
 		#endregion
-		
+
 		#region CONTROL
 
 		private void SetUpPaperTreeUI(List<PaperTreeButton> paperTreeButtons, List<PaperTreeNode> paperTreeSkillTree)
@@ -67,7 +68,7 @@ namespace Kapibara.RPS
 			SetUpSkillNodes(paperTreeButtons, paperTreeSkillTree);
 			SetUpSkillTreeLines(paperTreeButtons, paperTreeSkillTree);
 		}
-		
+
 		private void SetUpSkillNodes(List<PaperTreeButton> paperTreeButtons, List<PaperTreeNode> paperTreeSkillTree)
 		{
 			Debug.Log($"[PaperTreeUIController] SetSkillTreeUI() -> ");
@@ -84,10 +85,10 @@ namespace Kapibara.RPS
 		private void SetUpSkillTreeLines(List<PaperTreeButton> paperTreeButtons, List<PaperTreeNode> paperTreeSkillTree)
 		{
 			Debug.Log($"[PaperTreeUIController] SetUpSkillTreeLines() -> ");
-			
+
 			Transform parentPanel = paperTreeButtons[0].transform.parent;
 			parentPanel.DestroyChildren<PaperTreeLine>();
-			
+
 			foreach (PaperTreeNode currentNode in paperTreeSkillTree)
 			{
 				PaperTreeButton currentPaperTreeButton = paperTreeButtons.Find(ptb => ptb.NodeID == currentNode.NodeID);
@@ -126,9 +127,9 @@ namespace Kapibara.RPS
 
 		private void SelectPaperTreeButton(PaperTreeNode selectedNode)
 		{
-			
+
 		}
-		
+
 		#endregion
 	}
 }

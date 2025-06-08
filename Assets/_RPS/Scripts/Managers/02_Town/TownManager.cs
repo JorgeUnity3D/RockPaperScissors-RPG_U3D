@@ -75,7 +75,7 @@ namespace Kapibara.RPS
 				Debug.Log($"[TownManager] OpenTownMenu() -> Error: No TownView with {townMenu} flag");
 				return;
 			}
-			TownView townView = _townViews.Find(td => td.townMenu == townData.TownMenu);
+			TownView townView = _townViews.Find(td => td.TownMenu == townData.TownMenu);
 			if (townData.IsUnlocked)
 			{
 				GoToTownMenu(townData, townView);
@@ -95,7 +95,9 @@ namespace Kapibara.RPS
 
 			if (_currentTownUIController == null || targetManager == null)
 			{
-				Debug.Log($"[TownManager] GoToTownMenu() -> Couldn't find Manager or UIController for {townData.TownMenu}");
+				string uiController = _currentTownUIController == null ? "UIController" : "";
+				string manager = targetManager == null ? "Manager" : "";
+				Debug.Log($"[TownManager] GoToTownMenu() -> Couldn't find {uiController} {manager} for {townData.TownMenu}");
 				return;
 			}
 
@@ -124,7 +126,7 @@ namespace Kapibara.RPS
 			Debug.Log($"[TownManager] UnlockTownMenu() -> TownView: {townData.TownMenu} - Cost: {townData.Cost}");
 			AppContext.Player.Gold = Mathf.Max(0, AppContext.Player.Gold - townData.Cost);
 			townData.IsUnlocked = true;
-			TownView townView = _townViews.Find(td => td.townMenu == townData.TownMenu);
+			TownView townView = _townViews.Find(td => td.TownMenu == townData.TownMenu);
 			_townUIController.UpdateTownButton(townData, townView);
 
 		}

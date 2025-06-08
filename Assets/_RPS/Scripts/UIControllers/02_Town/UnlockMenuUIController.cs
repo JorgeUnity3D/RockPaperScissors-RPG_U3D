@@ -41,7 +41,7 @@ namespace Kapibara.RPS
 		{
 			Debug.Log($"[UnlockMenuUIController] SetData() -> TownView: {townData.TownMenu}");
 			_currentTownData = townData;
-			_buildingImage.sprite = townView.buildingIcon;
+			_buildingImage.sprite = townView.BuildingIcon;
 			_buildingText.text = _currentTownData.Name;
 			_costText.text = _currentTownData.Cost.ToString();
 			_confirmUnlockButton.interactable = AppContext.Player.Gold >= townData.Cost;

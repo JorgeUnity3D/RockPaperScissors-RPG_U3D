@@ -58,7 +58,7 @@ namespace Kapibara.RPS
 				//TownMenu.STONE_SMITHY => GetManager<StoneSmithyManager>(),
 				//TownMenu.THEATER => GetManager<TheaterManager>(),
 				TownMenu.TRAINING_HOUSE => GetManager<TrainingHouseManager>(),
-				//TownMenu.TRAVEL => GetManager<TravelManager>(),
+				TownMenu.TRAVEL => GetManager<TravelManager>(),
 				TownMenu.HOUSE => GetManager<HouseManager>(),
 				_ => null
 			};

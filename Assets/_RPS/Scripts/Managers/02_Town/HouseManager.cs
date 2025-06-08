@@ -22,12 +22,12 @@ namespace Kapibara.RPS
 
 		protected override void Subscribe()
 		{
-			Debug.Log($"[HouseManager] Subscribe() -> ");
+			Debug.Log($"[HouseManager] Subscribe() ->  Nothing to subscribe!");
 		}
 		
 		protected override void UnSubscribe()
 		{
-			Debug.Log($"[HouseManager] UnSubscribe() -> ");
+			Debug.Log($"[HouseManager] UnSubscribe() ->  Nothing to unsubscribe!");
 		}
 
         #endregion

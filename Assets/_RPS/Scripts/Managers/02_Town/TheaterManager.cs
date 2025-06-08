@@ -16,12 +16,12 @@ namespace Kapibara.RPS
 
 		protected override void Subscribe()
 		{
-			Debug.Log($"[TheaterManager] Subscribe() -> ");
+			Debug.Log($"[TheaterManager] Subscribe() ->  Nothing to subscribe!");
 		}
 		
 		protected override void UnSubscribe()
 		{
-			Debug.Log($"[TheaterManager] UnSubscribe() -> ");
+			Debug.Log($"[TheaterManager] UnSubscribe() ->  Nothing to unsubscribe!");
 		}
 
         #endregion

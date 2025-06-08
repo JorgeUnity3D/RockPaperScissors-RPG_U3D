@@ -1048,6 +1048,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _backButton: {fileID: 1992305645758738147}
+  _menuInfoHolder: {fileID: 7945221579877679737}
   _menuNameText: {fileID: 1213628907617926618}
   _menuLevelText: {fileID: 4316261346673181385}
   _menuLevelSlider: {fileID: 4893128630364804007}

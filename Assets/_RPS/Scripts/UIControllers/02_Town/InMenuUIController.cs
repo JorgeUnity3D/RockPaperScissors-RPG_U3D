@@ -10,6 +10,7 @@ namespace Kapibara.RPS
 	{
 		[Header("UI")]
 		[SerializeField] private Button _backButton;
+		[SerializeField] private GameObject _menuInfoHolder;
 		[SerializeField] private TextMeshProUGUI _menuNameText;
 		[SerializeField] private TextMeshProUGUI _menuLevelText;
 		[SerializeField] private Slider _menuLevelSlider;
@@ -38,12 +39,13 @@ namespace Kapibara.RPS
 		public void SetData(TownData townData, TownView townView)
 		{
 			Debug.Log($"[InMenuUIController] SetData() -> townView {townData.Name}");
+			_menuInfoHolder.SetActive(townData.HasLevel);
 			_menuNameText.text = townData.Name;
 			_menuLevelText.text = townData.Level.ToString();
 			_menuLevelSlider.value = townData.LevelProgress;
 			_menuNPCHolder.SetActive(townData.HasNpc);
 			_menuNPCText.text = townData.Message + (townData.NpcUnlocked ? "" : " but there's no NPC here!");
-			_menuNPCImage.sprite = townData.NpcUnlocked ? townView.npcIcon : townView.npcNotFoundIcon;
+			_menuNPCImage.sprite = townData.NpcUnlocked ? townView.NPCIcon : townView.NPCNotFoundIcon;
 		}
 
 		#endregion

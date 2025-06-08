@@ -12,4 +12,5 @@ namespace Kapibara.RPS
     [Serializable] public class IconsDictionary : UnitySerializedDictionary<Stats, Sprite> { }
     [Serializable] public class TrainingDictionary : UnitySerializedDictionary<Stats, TrainingButton> { }
     [Serializable] public class ScissorBonfireDictionary : UnitySerializedDictionary<Stats, ScissorBonfireVariation> { }
+    [Serializable] public class LevelButtonsDictionary : UnitySerializedDictionary<int, Button> { }
 }
