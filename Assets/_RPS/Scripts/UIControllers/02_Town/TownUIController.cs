@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace Kapibara.RPS
 {
-	public class TownUIController : BaseUIController
+	public class TownUIController : UIController
 	{
 		[Header("UI")]
 		[SerializeField] private TownDictionary _townDictionary;

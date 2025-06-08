@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Kapibara.RPS
 {
-	public class TheaterUIController : BaseUIController
+	public class TheaterUIController : UIController
 	{
 		#region UNITY_LIFECYCLE
 

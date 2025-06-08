@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Kapibara.RPS
 {
-	public class HouseUIController : BaseUIController
+	public class HouseUIController : UIController
 	{
 		[Header("UI")]
 		[SerializeField] private TextMeshProUGUI _nameText;

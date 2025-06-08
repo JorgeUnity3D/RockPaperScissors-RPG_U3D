@@ -2,7 +2,7 @@
 
 namespace Kapibara.RPS
 {
-	public class StablesUIController : BaseUIController
+	public class StablesUIController : UIController
 	{
 
 		#region UNITY_LIFECYCLE

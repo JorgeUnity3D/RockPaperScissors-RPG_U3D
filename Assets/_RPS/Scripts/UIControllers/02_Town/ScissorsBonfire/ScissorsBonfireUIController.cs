@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 namespace Kapibara.RPS
 {
-	public class ScissorsBonfireUIController : BaseUIController
+	public class ScissorsBonfireUIController : UIController
 	{
 		[Header("UI")]
 		[Header("Level Holder")]

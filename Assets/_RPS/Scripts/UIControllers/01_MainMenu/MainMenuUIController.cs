@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace Kapibara.RPS
 {
-    public class MainMenuUIController : BaseUIController
+    public class MainMenuUIController : UIController
     {
 		[Header("UI")]
 		[SerializeField] private Button _continueGameButton;

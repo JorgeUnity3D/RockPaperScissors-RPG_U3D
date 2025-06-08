@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace Kapibara.RPS
 {
-	public class InMenuUIController : BaseUIController
+	public class InMenuUIController : UIController
 	{
 		[Header("UI")]
 		[SerializeField] private Button _backButton;

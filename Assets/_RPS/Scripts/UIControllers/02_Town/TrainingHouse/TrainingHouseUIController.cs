@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 namespace Kapibara.RPS
 {
-	public class TrainingHouseUIController : BaseUIController
+	public class TrainingHouseUIController : UIController
 	{
 		[Header("UI")]
 		[Header("Stats Buttons")]

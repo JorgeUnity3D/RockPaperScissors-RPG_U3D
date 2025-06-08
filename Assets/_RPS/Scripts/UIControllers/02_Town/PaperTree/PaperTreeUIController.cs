@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Kapibara.RPS
 {
-	public class PaperTreeUIController : BaseUIController
+	public class PaperTreeUIController : UIController
 	{
 		[Header("DATA")]
 		[SerializeField] private PaperTreeScrObj _paperTreeScrObj;

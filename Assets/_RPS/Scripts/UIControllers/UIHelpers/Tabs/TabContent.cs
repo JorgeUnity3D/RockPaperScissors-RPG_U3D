@@ -1,6 +1,6 @@
 ﻿namespace Kapibara.UI
 {
-	public class TabContent : BaseUIController
+	public class TabContent : BaseUIElement
 	{
 		public override void SetUp() { }
 	}

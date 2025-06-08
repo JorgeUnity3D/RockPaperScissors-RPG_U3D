@@ -20,7 +20,7 @@ namespace Kapibara.RPS
 		[SerializeField, ReadOnly] private HouseUIController _houseUIController;
 		[SerializeField, ReadOnly] private InMenuUIController _inMenuUIController;
 
-		private BaseUIController _currentTownUIController;
+		private BaseUIElement _currentTownUIController;
 
 		#region SETUP
 

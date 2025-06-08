@@ -8,8 +8,8 @@ namespace Kapibara.RPS
 	[DefaultExecutionOrder(-9989)]
     public class UIService : ServiceSubscriber<UIService> 
 	{
-        List<BaseUIController> _uiControllers;
-        Dictionary<Type, BaseUIController> _uiControllersDictionary;
+        List<UIController> _uiControllers;
+        Dictionary<Type, UIController> _uiControllersDictionary;
         
         #region UNITY_LIFECYCLE
 
@@ -34,14 +34,14 @@ namespace Kapibara.RPS
 
         private void GetControllers() 
         {
-            _uiControllers = new List<BaseUIController>(GetComponentsInChildren<BaseUIController>());
-            _uiControllersDictionary = new Dictionary<Type, BaseUIController>();
-            foreach (BaseUIController manager in _uiControllers) {
+            _uiControllers = new List<UIController>(GetComponentsInChildren<UIController>());
+            _uiControllersDictionary = new Dictionary<Type, UIController>();
+            foreach (UIController manager in _uiControllers) {
                 _uiControllersDictionary.Add(manager.GetType(), manager);
             }
         }
 
-        public T GetController<T>() where T : BaseUIController 
+        public T GetController<T>() where T : UIController 
         {
             T controller = _uiControllersDictionary.ContainsKey(typeof(T)) ? (T)_uiControllersDictionary[typeof(T)] : null;
             if (controller == null) {
@@ -54,7 +54,7 @@ namespace Kapibara.RPS
             return controller;
         }
 
-		public BaseUIController GetController(TownMenu menu)
+		public UIController GetController(TownMenu menu)
 		{
 			return menu switch
 			{

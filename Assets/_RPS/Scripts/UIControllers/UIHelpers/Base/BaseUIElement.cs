@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace Kapibara.UI
 {
-	public abstract class BaseUIController : MonoBehaviour
+	public abstract class BaseUIElement : MonoBehaviour
 	{
         #region FIELDS
 

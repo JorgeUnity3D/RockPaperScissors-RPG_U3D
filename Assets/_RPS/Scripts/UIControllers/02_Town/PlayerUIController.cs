@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace Kapibara.RPS
 {
-	public class PlayerUIController : BaseUIController
+	public class PlayerUIController : UIController
 	{
 		[Header("UI")]
 		[SerializeField] private Button _settingsButton;

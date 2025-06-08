@@ -2,7 +2,7 @@
 using System;
 namespace Kapibara.RPS
 {
-	public class TravelUIController : BaseUIController
+	public class TravelUIController : UIController
 	{
 		#region UNITY_LIFECYCLE
 

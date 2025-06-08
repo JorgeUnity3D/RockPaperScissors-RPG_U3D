@@ -2,7 +2,7 @@
 
 namespace Kapibara.RPS
 {
-	public class LibraryUIController : BaseUIController
+	public class LibraryUIController : UIController
 	{
 		#region UNITY_LIFECYCLE
 
@@ -12,7 +12,7 @@ namespace Kapibara.RPS
 		}
 
 		#endregion
-		
+
 		#region SETUP
 
 		public override void SetUp()

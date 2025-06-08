@@ -2,7 +2,7 @@
 
 namespace Kapibara.RPS
 {
-	public class StoneSmithyUIController : BaseUIController
+	public class StoneSmithyUIController : UIController
 	{
 		#region UNITY_LIFECYCLE
 

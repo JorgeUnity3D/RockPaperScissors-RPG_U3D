@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Kapibara.RPS
 {
-    public class IntroUIController : BaseUIController 
+    public class IntroUIController : UIController 
 	{
 
 		[Header("UI")]

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace Kapibara.RPS
 {
-	public class UnlockMenuUIController : BaseUIController
+	public class UnlockMenuUIController : UIController
 	{
 		[Header("UI")]
 		[SerializeField] private Image _buildingImage;

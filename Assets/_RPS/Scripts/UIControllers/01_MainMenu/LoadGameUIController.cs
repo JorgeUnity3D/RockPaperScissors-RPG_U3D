@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 namespace Kapibara.RPS
 {
-	public class LoadGameUIController : BaseUIController
+	public class LoadGameUIController : UIController
 	{
 		[Header("UI")]
 		[Header("Load Game")]
