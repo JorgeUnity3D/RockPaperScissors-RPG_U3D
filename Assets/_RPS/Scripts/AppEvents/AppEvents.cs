@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 using Object = System.Object;
 
@@ -38,5 +38,8 @@ namespace Kapibara.RPS
 		public static UnityAction OnTrainingLevelUpdated;
 		//Scissors Bonfire
 		public static UnityAction OnConfirmLevelUp;
+		//Credits Time Counter
+		public static UnityAction<float> OnTimeUpdated;
+		public static UnityAction<int> OnCreditsUpdated;
 	}
 }

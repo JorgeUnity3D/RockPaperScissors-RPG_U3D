@@ -2868,7 +2868,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9031939891588720145, guid: b78cbdb5a57a39b428267ec4d377cc05, type: 3}
       propertyPath: m_Name
-      value: TimeCounter_UIController
+      value: CreditTimeCounter_UIController
       objectReference: {fileID: 0}
     - target: {fileID: 9118176002559913605, guid: b78cbdb5a57a39b428267ec4d377cc05, type: 3}
       propertyPath: m_AnchorMax.y

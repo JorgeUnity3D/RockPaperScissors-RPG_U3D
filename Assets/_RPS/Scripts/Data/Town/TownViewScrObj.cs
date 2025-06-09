@@ -7,7 +7,10 @@ namespace Kapibara.RPS
 	[CreateAssetMenu(fileName = "TownViews", menuName = "RPSRPG/TownViews")]
 	public class TownViewScrObj : SerializedScriptableObject
 	{
-		[SerializeField] private List<TownView> _data;
-		public List<TownView> Data => _data;
+		[HideLabel, SerializeField] private List<TownView> _data;
+		public List<TownView> Data
+		{
+			get => _data;
+		}
 	}
 }

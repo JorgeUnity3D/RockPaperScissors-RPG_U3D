@@ -9,9 +9,10 @@ namespace Kapibara.RPS
 	[CreateAssetMenu(fileName = "MapLevels", menuName = "RPSRPG/MapLevels")]
 	public class MapLevelScrObj : SerializedScriptableObject
 	{
-
-		[SerializeField] private List<MapLevel> _data;
-
-		public List<MapLevel> Data => _data;
+		[HideLabel, SerializeField] private List<MapLevel> _data;
+		public List<MapLevel> Data
+		{
+			get => _data;
+		}
 	}
 }

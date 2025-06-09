@@ -771,8 +771,9 @@ GameObject:
   - component: {fileID: 838165279836033602}
   - component: {fileID: 6157242094482989851}
   - component: {fileID: 1492511248447271476}
+  - component: {fileID: 6124284955273601780}
   m_Layer: 5
-  m_Name: TimeCounter_UIController
+  m_Name: CreditTimeCounter_UIController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -873,3 +874,28 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &6124284955273601780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9031939891588720145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f76c2d8281f652c4fac82698a7d6e7aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _credits:
+  - {fileID: 5587920527347992903}
+  - {fileID: 2392825125348405510}
+  - {fileID: 3254205777003976214}
+  - {fileID: 4015201220154563771}
+  - {fileID: 722448439772511556}
+  _usedCredit: {fileID: 21300000, guid: 7a99d2d20cc6b2c4193ae5aa5d053a86, type: 3}
+  _unusedCredit: {fileID: 21300000, guid: 071b8023cb5fc434a9ff9663737a9f16, type: 3}
+  _timeCounterHolder: {fileID: 1242441868356583851}
+  _timeCounterText: {fileID: 8356841560231800403}
+  _creditTimeCounter:
+    _maxCredits: 5
+    _hoursForACredit: 0
