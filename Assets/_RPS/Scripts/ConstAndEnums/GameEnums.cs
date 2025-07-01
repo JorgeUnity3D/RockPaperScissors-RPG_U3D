@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.ComponentModel;
 
 namespace Kapibara.RPS
@@ -34,7 +34,8 @@ namespace Kapibara.RPS
 	{
 		TRAININGHOUSE_MOD = 0,
 		PAPERTREE_MOD = 1,
-		SCISSORBONFIRE_MOD = 2
+		SCISSORBONFIRE_MOD = 2,
+		LIBRARY_MOD = 3
 	}
 
 	[Serializable]

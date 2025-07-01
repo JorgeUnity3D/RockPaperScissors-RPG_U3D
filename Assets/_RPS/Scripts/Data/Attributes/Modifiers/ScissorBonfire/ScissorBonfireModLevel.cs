@@ -1,10 +1,9 @@
-using System;
+﻿using System;
 using Newtonsoft.Json;
 using Unity.VisualScripting;
 
 namespace Kapibara.RPS
 {
-
 	public class ScissorBonfireModLevel
 	{
 		private int _healthMod;

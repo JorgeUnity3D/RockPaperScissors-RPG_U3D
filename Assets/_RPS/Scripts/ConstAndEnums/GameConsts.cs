@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -67,7 +67,8 @@ namespace Kapibara.RPS
 		{
 			{ typeof(TrainingHouseModifier), ModifierType.TRAININGHOUSE_MOD },
 			{ typeof(PaperTreeModifier), ModifierType.PAPERTREE_MOD },
-			{ typeof(ScissorBonfireModifier), ModifierType.SCISSORBONFIRE_MOD }
+			{ typeof(ScissorBonfireModifier), ModifierType.SCISSORBONFIRE_MOD },
+			{ typeof(PaperTreeModifier), ModifierType.PAPERTREE_MOD}
 		};
 
 		//todo: aux code, we should probably find a better place for this data
