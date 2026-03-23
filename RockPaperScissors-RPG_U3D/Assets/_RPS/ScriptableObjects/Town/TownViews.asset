@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad88fcb8d8405c44f9774637a8e2b204, type: 3}
+  m_Name: TownViews
+  m_EditorClassIdentifier: Assembly-CSharp::TownViewDataObject2
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  _data:
+  - _townMenu: 1
+    _buildingIcon: {fileID: 559974473110441684, guid: 6c8eba774a473704d90b33e61729c54c, type: 3}
+    _notBuiltIcon: {fileID: -53196190585743988, guid: 0698248cc748fc740abbac0e84be6cfe, type: 3}
+    _npcIcon: {fileID: 4029466576895577280, guid: 5e5ccfa5b9a9dac45884a4e5919f085d, type: 3}
+    _npcNotFoundIcon: {fileID: 8797648088622834891, guid: 03abc9512c2a87143b6653bb0c02902f, type: 3}
+  - _townMenu: 2
+    _buildingIcon: {fileID: 298056223733689800, guid: 6c8eba774a473704d90b33e61729c54c, type: 3}
+    _notBuiltIcon: {fileID: 9201700871623396525, guid: 0698248cc748fc740abbac0e84be6cfe, type: 3}
+    _npcIcon: {fileID: 3597508830047154912, guid: 5e5ccfa5b9a9dac45884a4e5919f085d, type: 3}
+    _npcNotFoundIcon: {fileID: -6399477289438276639, guid: 03abc9512c2a87143b6653bb0c02902f, type: 3}
+  - _townMenu: 3
+    _buildingIcon: {fileID: 7376140763690283233, guid: 6c8eba774a473704d90b33e61729c54c, type: 3}
+    _notBuiltIcon: {fileID: -7113796119962576697, guid: 0698248cc748fc740abbac0e84be6cfe, type: 3}
+    _npcIcon: {fileID: -5974177904267531938, guid: 5e5ccfa5b9a9dac45884a4e5919f085d, type: 3}
+    _npcNotFoundIcon: {fileID: -1914663959, guid: 03abc9512c2a87143b6653bb0c02902f, type: 3}
+  - _townMenu: 4
+    _buildingIcon: {fileID: 3799858956480889531, guid: 6c8eba774a473704d90b33e61729c54c, type: 3}
+    _notBuiltIcon: {fileID: -1207504993431540695, guid: 0698248cc748fc740abbac0e84be6cfe, type: 3}
+    _npcIcon: {fileID: 6730013578686099568, guid: 5e5ccfa5b9a9dac45884a4e5919f085d, type: 3}
+    _npcNotFoundIcon: {fileID: -70631063, guid: 03abc9512c2a87143b6653bb0c02902f, type: 3}
+  - _townMenu: 5
+    _buildingIcon: {fileID: -1536867919056583524, guid: 6c8eba774a473704d90b33e61729c54c, type: 3}
+    _notBuiltIcon: {fileID: 8454840388730847565, guid: 0698248cc748fc740abbac0e84be6cfe, type: 3}
+    _npcIcon: {fileID: -8173045813343347067, guid: 5e5ccfa5b9a9dac45884a4e5919f085d, type: 3}
+    _npcNotFoundIcon: {fileID: -2686291510178866453, guid: 03abc9512c2a87143b6653bb0c02902f, type: 3}
+  - _townMenu: 6
+    _buildingIcon: {fileID: 536257845962034371, guid: 6c8eba774a473704d90b33e61729c54c, type: 3}
+    _notBuiltIcon: {fileID: -5616971807647135786, guid: 0698248cc748fc740abbac0e84be6cfe, type: 3}
+    _npcIcon: {fileID: -818841823584972384, guid: 5e5ccfa5b9a9dac45884a4e5919f085d, type: 3}
+    _npcNotFoundIcon: {fileID: -370416032, guid: 03abc9512c2a87143b6653bb0c02902f, type: 3}
+  - _townMenu: 7
+    _buildingIcon: {fileID: -3091836770724968434, guid: 6c8eba774a473704d90b33e61729c54c, type: 3}
+    _notBuiltIcon: {fileID: 5100263269730090060, guid: 0698248cc748fc740abbac0e84be6cfe, type: 3}
+    _npcIcon: {fileID: 6491680457769439068, guid: 5e5ccfa5b9a9dac45884a4e5919f085d, type: 3}
+    _npcNotFoundIcon: {fileID: -1067249927, guid: 03abc9512c2a87143b6653bb0c02902f, type: 3}
+  - _townMenu: 8
+    _buildingIcon: {fileID: 6911634294832785417, guid: 6c8eba774a473704d90b33e61729c54c, type: 3}
+    _notBuiltIcon: {fileID: 6550742473371753569, guid: 0698248cc748fc740abbac0e84be6cfe, type: 3}
+    _npcIcon: {fileID: 0}
+    _npcNotFoundIcon: {fileID: 0}
+  - _townMenu: 9
+    _buildingIcon: {fileID: 5680673976619871293, guid: 0ca550bc406330a4493c8d901e3ea819, type: 3}
+    _notBuiltIcon: {fileID: 0}
+    _npcIcon: {fileID: 0}
+    _npcNotFoundIcon: {fileID: 0}

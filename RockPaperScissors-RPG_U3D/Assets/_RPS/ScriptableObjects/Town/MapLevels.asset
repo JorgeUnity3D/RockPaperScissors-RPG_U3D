@@ -1,0 +1,87 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 655326709623028478406665481a5774, type: 3}
+  m_Name: MapLevels
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  _data:
+  - _level: 1
+    _levelName: Forest
+    _steps: 2
+    _reward: 10
+    _levelIcon: {fileID: -6684475192863260856, guid: 0ca550bc406330a4493c8d901e3ea819, type: 3}
+    _levelPortrait: {fileID: -6684475192863260856, guid: 0ca550bc406330a4493c8d901e3ea819, type: 3}
+    _levelEnemies: []
+    _isAvailable: 1
+    _isSpecialLevel: 0
+  - _level: 2
+    _levelName: Desert
+    _steps: 4
+    _reward: 15
+    _levelIcon: {fileID: 9170327630243124144, guid: 0ca550bc406330a4493c8d901e3ea819, type: 3}
+    _levelPortrait: {fileID: 9170327630243124144, guid: 0ca550bc406330a4493c8d901e3ea819, type: 3}
+    _levelEnemies: []
+    _isAvailable: 1
+    _isSpecialLevel: 0
+  - _level: 3
+    _levelName: Ocean
+    _steps: 6
+    _reward: 20
+    _levelIcon: {fileID: 3210994475073176143, guid: 0ca550bc406330a4493c8d901e3ea819, type: 3}
+    _levelPortrait: {fileID: 3210994475073176143, guid: 0ca550bc406330a4493c8d901e3ea819, type: 3}
+    _levelEnemies: []
+    _isAvailable: 1
+    _isSpecialLevel: 0
+  - _level: 4
+    _levelName: Frozen Mountain
+    _steps: 8
+    _reward: 25
+    _levelIcon: {fileID: 1404248521807868572, guid: 0ca550bc406330a4493c8d901e3ea819, type: 3}
+    _levelPortrait: {fileID: 1404248521807868572, guid: 0ca550bc406330a4493c8d901e3ea819, type: 3}
+    _levelEnemies: []
+    _isAvailable: 0
+    _isSpecialLevel: 0
+  - _level: 5
+    _levelName: Cave
+    _steps: 10
+    _reward: 30
+    _levelIcon: {fileID: 5680673976619871293, guid: 0ca550bc406330a4493c8d901e3ea819, type: 3}
+    _levelPortrait: {fileID: 5680673976619871293, guid: 0ca550bc406330a4493c8d901e3ea819, type: 3}
+    _levelEnemies: []
+    _isAvailable: 0
+    _isSpecialLevel: 0
+  - _level: 6
+    _levelName: Volcano
+    _steps: 12
+    _reward: 35
+    _levelIcon: {fileID: -7969225410775572928, guid: 0ca550bc406330a4493c8d901e3ea819, type: 3}
+    _levelPortrait: {fileID: -7969225410775572928, guid: 0ca550bc406330a4493c8d901e3ea819, type: 3}
+    _levelEnemies: []
+    _isAvailable: 0
+    _isSpecialLevel: 0
+  - _level: 7
+    _levelName: Void
+    _steps: 14
+    _reward: 40
+    _levelIcon: {fileID: -1613414928997637167, guid: 0ca550bc406330a4493c8d901e3ea819, type: 3}
+    _levelPortrait: {fileID: -1613414928997637167, guid: 0ca550bc406330a4493c8d901e3ea819, type: 3}
+    _levelEnemies: []
+    _isAvailable: 0
+    _isSpecialLevel: 0

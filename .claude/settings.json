@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "PreCompact": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo 'Summarize what you were working on and append a brief note to ClaudeDocs/tasks/session-log.md before compacting'"
+          }
+        ]
+      }
+    ]
+  }
+}

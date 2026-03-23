@@ -1,0 +1,43 @@
+﻿using System;
+using Kapibara.Util.NotificableFields;
+using Newtonsoft.Json;
+
+namespace Kapibara.RPS
+{
+	/// <summary>
+	/// Modificador de la Biblioteca. ADVERTENCIA: no tiene case en BaseModifierConverter; cualquier guardado con este modificador lanzará excepción al cargar.
+	/// </summary>
+	[Serializable]
+	public class LibraryModifier : BaseModifier
+	{
+		[JsonIgnore]
+		public override int TotaModifier
+		{
+			get => Modifier;
+		}
+
+		#region CONSTRUCTOR
+
+		public LibraryModifier(Stats stat, int initialModifier = 0)
+		{
+			ModifierType = GameConsts.ATTRIBUTE_TYPE_VALUE[this.GetType()];
+			_stat = stat;
+			_modifier = new NInt(initialModifier);
+			_level = new NInt(1);
+			_experience = new NInt(0);
+		}
+
+		[JsonConstructor]
+		public LibraryModifier(Stats stat, int modifier, int level, int experience)
+		{
+			ModifierType = GameConsts.ATTRIBUTE_TYPE_VALUE[this.GetType()];
+			_stat = stat;
+			_modifier = new NInt(modifier);
+			_level = new NInt(level);
+			_experience = new NInt(experience);
+		}
+
+		#endregion
+
+	}
+}

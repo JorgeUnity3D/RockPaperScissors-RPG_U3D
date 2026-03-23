@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84c2c164f2e9c7351b23285aa47e8dfc, type: 3}
+  m_Name: StoneSmithyItems
+  m_EditorClassIdentifier: Assembly-CSharp::Kapibara.RPS.StoneSmithyScrObj
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  _data:
+    attackItem:
+      itemName: Poti
+      itemType: 0
+      cost: 10
+      targetIsPlayer: 1
+      affectedStat: 0
+      amountsPerLevel: 050000000a0000000f00000014000000190000001e00000023000000280000002d00000032000000
+      level: 0
+      icon: {fileID: -5716238003858950735, guid: 1f9290f03740bbc44bba5549d3084e83, type: 3}
+    healItem:
+      itemName: Shuriken
+      itemType: 1
+      cost: 15
+      targetIsPlayer: 0
+      affectedStat: 0
+      amountsPerLevel: 050000000a0000000f00000014000000190000001e00000023000000280000002d00000032000000
+      level: 0
+      icon: {fileID: -8691918774333350173, guid: 1f9290f03740bbc44bba5549d3084e83, type: 3}
+    energyItem:
+      itemName: Antorcha
+      itemType: 2
+      cost: 0
+      targetIsPlayer: 1
+      affectedStat: 7
+      amountsPerLevel: 050000000a0000000f00000014000000190000001e00000023000000280000002d00000032000000
+      level: 0
+      icon: {fileID: 881740601863224163, guid: 1f9290f03740bbc44bba5549d3084e83, type: 3}

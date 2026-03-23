@@ -1,0 +1,29 @@
+--- Fase 1 --- Inicio Combate
+1. NPC -> Elige su ataque -> Tirada Acción + Gambits
+2. PJ -> Tirada Mentalidad
+	Si Gana -> NPC Tirada Lenguaje -> Muestra icono pensamiento lenguaje acción
+	Si Pierde -> NPC Tirada Lenguaje -> Muestra icono pensamiento ¿?
+
+--- Fase 2 --- Selección Accion PJ
+3. PJ -> Elige su ataque -> Muestra icono pensamiento acción
+ * Botones habilitados en función de energia restante (> coste)
+ * Botones cambian cuando haya MAX energia a SuperAtaques
+4. NPC -> Tirada Mentalidad
+	Si Gana -> NPC -> Cambia acción a ganadora si puede o no la tiene ya
+	Si Pierde -> NPC no hace nada
+
+--- Fase 3 --- Calculos Combate
+5. Resultado Combate = Calculo daño PJ - Calculo daño NPC
+	Comparación de vainas varias
+
+--- Fase 4 --- Resultado
+
+
+
+FIXES
+
+- Primer click en acción es para mostrar en el pensamiento y un reborde al botón
+- Segundo clic en una misma acción, ejecuta la acción -> Apaga pensamiento, enciende Acción
+- No mostrar pensamiento (pj y npc) durante resolución acciones
+- Oculta energia enemigo
+- Mostrar acciones (pj y npc) en idioma común

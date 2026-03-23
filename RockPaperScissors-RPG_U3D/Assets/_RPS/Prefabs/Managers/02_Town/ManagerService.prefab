@@ -1,0 +1,876 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &268030958116950118
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 846362531527613876}
+  - component: {fileID: 819710174735706150}
+  m_Layer: 0
+  m_Name: LibraryManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &846362531527613876
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 268030958116950118}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 953.59503, y: 443.00278, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8110969696307375654}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &819710174735706150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 268030958116950118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b32e865eda8819c41a138add7d60924f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Kapibara.RPS.LibraryManager
+--- !u!1 &408772276717978412
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4843473962698177633}
+  - component: {fileID: 2751798287597271807}
+  m_Layer: 0
+  m_Name: CreditTimeCounterManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4843473962698177633
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 408772276717978412}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8110969696307375654}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2751798287597271807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 408772276717978412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ad884bc4a2f78d4c8c38b086c6cd68f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _creditsTimeCounterScrObj: {fileID: 11400000, guid: fa503e4cf2ee17845968d674b44615df, type: 2}
+  _creditTimeCounter:
+    _maxCredits: 5
+    _hoursForACredit: 0
+    _creditsLeft: 0
+    _timeLeftInSeconds: 0
+    _timeIsRunning: 0
+  _creditsTimeCounterUIController: {fileID: 0}
+--- !u!1 &434321276907905701
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7120055173522724199}
+  - component: {fileID: 6457912644910724233}
+  m_Layer: 0
+  m_Name: ScissorBonfireManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7120055173522724199
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 434321276907905701}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8110969696307375654}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6457912644910724233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 434321276907905701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d36522a61024004585c15404b8c45fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _player:
+    _name:
+      _value: 
+    _level:
+      _value: 0
+    _gold:
+      _value: 0
+    _currentHealth:
+      _value: 0
+    _maxHealth:
+      _value:
+        _stat: 0
+        _attributeValue:
+          _value: 0
+    _mentality:
+      _value:
+        _stat: 0
+        _attributeValue:
+          _value: 0
+    _rock:
+      _value:
+        _stat: 0
+        _attributeValue:
+          _value: 0
+    _rockCost:
+      _value: 0
+    _paper:
+      _value:
+        _stat: 0
+        _attributeValue:
+          _value: 0
+    _paperCost:
+      _value: 0
+    _scissor:
+      _value:
+        _stat: 0
+        _attributeValue:
+          _value: 0
+    _scissorCost:
+      _value: 0
+    _defense:
+      _value:
+        _stat: 0
+        _attributeValue:
+          _value: 0
+    _defenseCost:
+      _value: 0
+    _thorns:
+      _value:
+        _stat: 0
+        _attributeValue:
+          _value: 0
+    _currentEnergy:
+      _value: 0
+    _baseEnergy:
+      _value:
+        _stat: 0
+        _attributeValue:
+          _value: 0
+    _initialEnergy:
+      _value: 0
+    _energyRecovery:
+      _value:
+        _stat: 0
+        _attributeValue:
+          _value: 0
+    _crit:
+      _value:
+        _stat: 0
+        _attributeValue:
+          _value: 0
+    _superpower:
+      _value:
+        _stat: 0
+        _attributeValue:
+          _value: 0
+  _levelAttributes: []
+  _scissorsBonfireUIController: {fileID: 0}
+--- !u!1 &1541333245860058248
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4216847185386118976}
+  - component: {fileID: 398904402285276586}
+  m_Layer: 0
+  m_Name: StablesManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4216847185386118976
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1541333245860058248}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 953.59503, y: 443.00278, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8110969696307375654}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &398904402285276586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1541333245860058248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 121fd1f148a0b658a983c948cb8f9519, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Kapibara.RPS.StablesManager
+--- !u!1 &1645442205454490509
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8110969696307375654}
+  - component: {fileID: 3814844835950356618}
+  m_Layer: 0
+  m_Name: ManagerService
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8110969696307375654
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1645442205454490509}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8705330291804300780}
+  - {fileID: 2124836844502455933}
+  - {fileID: 7120055173522724199}
+  - {fileID: 1588572570444110946}
+  - {fileID: 4170451964825766516}
+  - {fileID: 4775645563910198493}
+  - {fileID: 4843473962698177633}
+  - {fileID: 846362531527613876}
+  - {fileID: 4216847185386118976}
+  - {fileID: 2707755543262417238}
+  - {fileID: 233918675415362445}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3814844835950356618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1645442205454490509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e12b1c390cc4b71489df44f102badb56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _managers: []
+  _sceneManagers:
+    valueData: []
+--- !u!1 &1662567371693049389
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8705330291804300780}
+  - component: {fileID: 963892559651052162}
+  m_Layer: 0
+  m_Name: TownManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8705330291804300780
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1662567371693049389}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8110969696307375654}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &963892559651052162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1662567371693049389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4ae2bc5d8c4d774ba9accc3290c05a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _townViewScrObj: {fileID: 11400000, guid: 4e92c4f196c953c4b834ee7d15164409, type: 2}
+  _townData: []
+  _townViews: []
+  _uiService: {fileID: 0}
+  _managerService: {fileID: 0}
+  _townUIController: {fileID: 0}
+  _playerUIController: {fileID: 0}
+  _unlockMenuUIController: {fileID: 0}
+  _travelUIController: {fileID: 0}
+  _houseUIController: {fileID: 0}
+  _inMenuUIController: {fileID: 0}
+--- !u!1 &1707350801584485277
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2124836844502455933}
+  - component: {fileID: 3478146784201488028}
+  m_Layer: 0
+  m_Name: TrainingHouseManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2124836844502455933
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1707350801584485277}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8110969696307375654}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3478146784201488028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1707350801584485277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60d193fe1fb24b7da32ed5a7c3c202dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _trainingAttributes: []
+  _trainingHouseUIController: {fileID: 0}
+--- !u!1 &1807636170346377161
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4170451964825766516}
+  - component: {fileID: 7342593981413393344}
+  m_Layer: 0
+  m_Name: HouseManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4170451964825766516
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1807636170346377161}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8110969696307375654}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7342593981413393344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1807636170346377161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 140aeec9fc964ac595159979fdf91f18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _player:
+    _name:
+      _value: 
+    _level:
+      _value: 0
+    _gold:
+      _value: 0
+    _currentHealth:
+      _value: 0
+    _maxHealth:
+      _value:
+        _stat: 0
+        _attributeValue:
+          _value: 0
+    _mentality:
+      _value:
+        _stat: 0
+        _attributeValue:
+          _value: 0
+    _rock:
+      _value:
+        _stat: 0
+        _attributeValue:
+          _value: 0
+    _rockCost:
+      _value: 0
+    _paper:
+      _value:
+        _stat: 0
+        _attributeValue:
+          _value: 0
+    _paperCost:
+      _value: 0
+    _scissor:
+      _value:
+        _stat: 0
+        _attributeValue:
+          _value: 0
+    _scissorCost:
+      _value: 0
+    _defense:
+      _value:
+        _stat: 0
+        _attributeValue:
+          _value: 0
+    _defenseCost:
+      _value: 0
+    _thorns:
+      _value:
+        _stat: 0
+        _attributeValue:
+          _value: 0
+    _currentEnergy:
+      _value: 0
+    _baseEnergy:
+      _value:
+        _stat: 0
+        _attributeValue:
+          _value: 0
+    _initialEnergy:
+      _value: 0
+    _energyRecovery:
+      _value:
+        _stat: 0
+        _attributeValue:
+          _value: 0
+    _crit:
+      _value:
+        _stat: 0
+        _attributeValue:
+          _value: 0
+    _superpower:
+      _value:
+        _stat: 0
+        _attributeValue:
+          _value: 0
+  _houseUIController: {fileID: 0}
+--- !u!1 &2306600664817402437
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 233918675415362445}
+  - component: {fileID: 7249405220867194147}
+  m_Layer: 0
+  m_Name: TheaterManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &233918675415362445
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2306600664817402437}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 953.59503, y: 443.00278, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8110969696307375654}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7249405220867194147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2306600664817402437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19077ab0c26e421a84d1c90939f82037, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Kapibara.RPS.TheaterManager
+--- !u!1 &5481548597308175364
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2707755543262417238}
+  - component: {fileID: 758131553945416190}
+  m_Layer: 0
+  m_Name: StoneSmithyManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2707755543262417238
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5481548597308175364}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 953.59503, y: 443.00278, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8110969696307375654}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &758131553945416190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5481548597308175364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f478d3166ce9fdcbfa932e9d7b6a0278, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Kapibara.RPS.StoneSmithyManager
+--- !u!1 &6384666197238970445
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1588572570444110946}
+  - component: {fileID: 2230935596231356057}
+  m_Layer: 0
+  m_Name: PaperTreeManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1588572570444110946
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6384666197238970445}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8110969696307375654}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2230935596231356057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6384666197238970445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9151fd643d664c1e9808d17ea123f3cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _paperTreeScrObj: {fileID: 0}
+  _player:
+    _name:
+      _value: 
+    _level:
+      _value: 0
+    _gold:
+      _value: 0
+    _currentHealth:
+      _value: 0
+    _maxHealth:
+      _value:
+        _stat: 0
+        _attributeValue:
+          _value: 0
+    _mentality:
+      _value:
+        _stat: 0
+        _attributeValue:
+          _value: 0
+    _rock:
+      _value:
+        _stat: 0
+        _attributeValue:
+          _value: 0
+    _rockCost:
+      _value: 0
+    _paper:
+      _value:
+        _stat: 0
+        _attributeValue:
+          _value: 0
+    _paperCost:
+      _value: 0
+    _scissor:
+      _value:
+        _stat: 0
+        _attributeValue:
+          _value: 0
+    _scissorCost:
+      _value: 0
+    _defense:
+      _value:
+        _stat: 0
+        _attributeValue:
+          _value: 0
+    _defenseCost:
+      _value: 0
+    _thorns:
+      _value:
+        _stat: 0
+        _attributeValue:
+          _value: 0
+    _currentEnergy:
+      _value: 0
+    _baseEnergy:
+      _value:
+        _stat: 0
+        _attributeValue:
+          _value: 0
+    _initialEnergy:
+      _value: 0
+    _energyRecovery:
+      _value:
+        _stat: 0
+        _attributeValue:
+          _value: 0
+    _crit:
+      _value:
+        _stat: 0
+        _attributeValue:
+          _value: 0
+    _superpower:
+      _value:
+        _stat: 0
+        _attributeValue:
+          _value: 0
+  _paperTreeUIController: {fileID: 0}
+--- !u!1 &8220325950448387194
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4775645563910198493}
+  - component: {fileID: 6015508639540722237}
+  m_Layer: 0
+  m_Name: TravelManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4775645563910198493
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8220325950448387194}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8110969696307375654}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6015508639540722237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8220325950448387194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c205817726da07479f62b98b51f07cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mapLevelScrObj: {fileID: 11400000, guid: d6ce862f1097c084d8b0962d14d572a3, type: 2}
+  _player:
+    _name:
+      _value: 
+    _level:
+      _value: 0
+    _gold:
+      _value: 0
+    _currentHealth:
+      _value: 0
+    _maxHealth:
+      _value:
+        _stat: 0
+        _attributeValue:
+          _value: 0
+    _mentality:
+      _value:
+        _stat: 0
+        _attributeValue:
+          _value: 0
+    _rock:
+      _value:
+        _stat: 0
+        _attributeValue:
+          _value: 0
+    _rockCost:
+      _value: 0
+    _paper:
+      _value:
+        _stat: 0
+        _attributeValue:
+          _value: 0
+    _paperCost:
+      _value: 0
+    _scissor:
+      _value:
+        _stat: 0
+        _attributeValue:
+          _value: 0
+    _scissorCost:
+      _value: 0
+    _defense:
+      _value:
+        _stat: 0
+        _attributeValue:
+          _value: 0
+    _defenseCost:
+      _value: 0
+    _thorns:
+      _value:
+        _stat: 0
+        _attributeValue:
+          _value: 0
+    _currentEnergy:
+      _value: 0
+    _baseEnergy:
+      _value:
+        _stat: 0
+        _attributeValue:
+          _value: 0
+    _initialEnergy:
+      _value: 0
+    _energyRecovery:
+      _value:
+        _stat: 0
+        _attributeValue:
+          _value: 0
+    _crit:
+      _value:
+        _stat: 0
+        _attributeValue:
+          _value: 0
+    _superpower:
+      _value:
+        _stat: 0
+        _attributeValue:
+          _value: 0
+  _travelUIController: {fileID: 0}
