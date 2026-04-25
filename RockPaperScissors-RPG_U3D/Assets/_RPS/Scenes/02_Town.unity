@@ -3249,6 +3249,10 @@ PrefabInstance:
       propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
       value: 1801810542
       objectReference: {fileID: 0}
+    - target: {fileID: 8490099462779473673, guid: fed47db856a210d41888c13c99783fa8, type: 3}
+      propertyPath: m_SortingOrder
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 8517100379238802704, guid: fed47db856a210d41888c13c99783fa8, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

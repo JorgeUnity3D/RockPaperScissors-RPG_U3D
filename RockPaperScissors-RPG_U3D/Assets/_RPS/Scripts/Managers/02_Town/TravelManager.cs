@@ -1,6 +1,4 @@
-﻿using Sirenix.OdinInspector;
-using System.Collections;
-using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Kapibara.RPS
@@ -15,6 +13,7 @@ namespace Kapibara.RPS
 		[Header("DEBUG")]
 		[SerializeField, ReadOnly] private Player _player;
 		[SerializeField, ReadOnly] private TravelUIController _travelUIController;
+		[SerializeField, ReadOnly] private CreditsTimeCounterManager _creditsManager;
 
 		#region SETUP
 
@@ -22,7 +21,8 @@ namespace Kapibara.RPS
 		{
 			Debug.Log($"[TravelManager] SetUp() -> ");
 			_travelUIController = ServiceLocator.Instance.GetService<UIService>().GetController<TravelUIController>();
-			_player = AppContext.Player;
+			_creditsManager     = ServiceLocator.Instance.GetService<ManagerService>().GetManager<CreditsTimeCounterManager>();
+			_player             = AppContext.Player;
 		}
 
 		protected override void Subscribe()
@@ -49,6 +49,15 @@ namespace Kapibara.RPS
 		{
 			Debug.Log($"[TravelManager] TravelToLevel() -> {level.Level}.{level.LevelName}");
 
+			if (_creditsManager.CreditsLeft <= 0)
+			{
+				Debug.LogWarning($"[TravelManager] TravelToLevel() -> No credits left.");
+				return;
+			}
+
+			_creditsManager.UseCredit();
+			AppContext.CombatContext = new CombatContext { SelectedLevel = level };
+			ServiceLocator.Instance.GetService<SceneService>().LoadScene(GameScenes.COMBAT);
 		}
 
 		#endregion

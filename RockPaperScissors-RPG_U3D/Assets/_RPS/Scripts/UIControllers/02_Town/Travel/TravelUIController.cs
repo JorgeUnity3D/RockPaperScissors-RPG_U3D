@@ -64,6 +64,7 @@ namespace Kapibara.RPS
 					Debug.Log($"[TravelUIController] SetUpMapUI() -> No Button found for level {level.Level}.{level.LevelName}");
 					return;
 				}
+				levelButton.interactable = level.IsAvailable;
 				levelButton.AddListener(() => SetUpLevelPreview(level), true);
 			}			
 		}

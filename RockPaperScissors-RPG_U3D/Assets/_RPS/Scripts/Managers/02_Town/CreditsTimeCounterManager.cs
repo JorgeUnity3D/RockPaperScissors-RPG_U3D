@@ -64,6 +64,8 @@ namespace Kapibara.RPS
 
 		#region CONTROL
 
+		public int CreditsLeft => _creditTimeCounter.CreditsLeft;
+
 		/// <summary>Inicia el contador si no está en marcha; si ya estaba, no lo reinicia.</summary>
 		public void StartTimeCounter()
 		{

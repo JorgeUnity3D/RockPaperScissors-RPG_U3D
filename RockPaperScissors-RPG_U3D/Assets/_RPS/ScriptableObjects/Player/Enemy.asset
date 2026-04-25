@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 440b653ceaa2cb8b4b813c2ec4a68241, type: 3}
-  m_Name: TheaterData
-  m_EditorClassIdentifier: Assembly-CSharp::Kapibara.RPS.TheaterScrObj
+  m_Script: {fileID: 11500000, guid: 971eb246421c5f94f9c1209bfa370109, type: 3}
+  m_Name: Enemy
+  m_EditorClassIdentifier: Assembly-CSharp::Kapibara.RPS.EnemyDataObject
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
@@ -20,7 +20,7 @@ MonoBehaviour:
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes: []
-  _data:
-  - {fileID: 11400000, guid: eb22bdd81beb6ab45ae58d3e4eaf4f81, type: 2}
-  - {fileID: 11400000, guid: e416524df1dddaf83a1e233fd7a70a79, type: 2}
+    SerializationNodes:
+    - Name: data
+      Entry: 6
+      Data: 

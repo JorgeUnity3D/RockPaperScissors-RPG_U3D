@@ -33,5 +33,7 @@ namespace Kapibara.RPS
         public static TownContext TownContext => _gameContext.TownContext;
         /// <summary>Lista de datos de cada edificio de la ciudad.</summary>
         public static List<TownData> TownData => _gameContext.TownContext.TownData;
+        /// <summary>Contexto del combate activo. Asignado por TravelManager antes de cargar la escena Combat; null fuera de combate.</summary>
+        public static CombatContext CombatContext { get; set; }
     }
 }

@@ -78,13 +78,13 @@ namespace Kapibara.RPS {
         [HorizontalGroup("Stats/Language1", MaxWidth = 400f)]
         [LabelWidth(150f)]
         [InlineEditor()]
-        public LanguageDataObject commonLanguage;
+        public LanguageScrObj commonLanguage;
         [VerticalGroup("Stats")]
         [HorizontalGroup("Stats/Language2", MaxWidth = 400f)]
         [LabelWidth(150f)]
         [InlineEditor()]
         [HideIf("IsPlayer")]
-        public List<LanguageDataObject> languages;
+        public List<LanguageScrObj> languages;
 
         // public virtual bool IsPlayer() {
         //     //return GetType() == typeof(Player);

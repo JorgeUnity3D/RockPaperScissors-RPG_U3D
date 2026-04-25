@@ -279,7 +279,7 @@ namespace Kapibara.RPS {
         }
 
         public void LanguageRoll() {
-            this.currentLanguage = this.languages[RNGGenerator.RandomBetween(0, this.languages.Count-1)].data;
+            this.currentLanguage = this.languages[RNGGenerator.RandomBetween(0, this.languages.Count-1)].Data;
             Debug.Log("[Enemy] LanguageRoll() -> this.currentLanguage: " + this.currentLanguage.language.ToString());
         }
 
