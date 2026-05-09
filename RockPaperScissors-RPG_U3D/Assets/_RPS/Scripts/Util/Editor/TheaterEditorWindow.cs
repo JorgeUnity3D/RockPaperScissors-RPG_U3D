@@ -6,30 +6,29 @@ using UnityEngine;
 namespace Kapibara.Util.Editor
 {
 	/// <summary>
-	/// Ventana de editor para gestionar historias del Theater sin navegar entre assets.
-	/// Tres paneles: Historias | Páginas | Viñetas.
-	/// Menú: Kapibara/Theater Story Editor
+	/// 3-panel editor for TheaterScrObj: Stories | Pages | Vignettes.
+	/// Menu: Kapibara/Theater Story Editor  —  also embeddable via DrawEmbedded().
 	/// </summary>
 	public class TheaterEditorWindow : EditorWindow
 	{
 		// ── State ──────────────────────────────────────────────────────────────────
 
-		private TheaterScrObj        _theater;
-		private SerializedObject     _theaterSO;
-		private SerializedProperty   _storiesProp;
+		private TheaterScrObj      _theater;
+		private SerializedObject   _theaterSO;
+		private SerializedProperty _storiesProp;
 
-		private int                  _selectedStoryIndex = -1;
-		private ComicStoryScrObj     _selectedStory;
-		private SerializedObject     _storySO;
-		private SerializedProperty   _titleProp;
-		private SerializedProperty   _thumbnailProp;
-		private SerializedProperty   _pagesProp;
+		private int                _selectedStoryIndex = -1;
+		private ComicStoryScrObj   _selectedStory;
+		private SerializedObject   _storySO;
+		private SerializedProperty _titleProp;
+		private SerializedProperty _thumbnailProp;
+		private SerializedProperty _pagesProp;
 
-		private int                  _selectedPageIndex = -1;
-		private ComicPageScrObj      _selectedPage;
-		private SerializedObject     _pageSO;
-		private SerializedProperty   _layoutProp;
-		private SerializedProperty   _vignettesProp;
+		private int                _selectedPageIndex = -1;
+		private ComicPageScrObj    _selectedPage;
+		private SerializedObject   _pageSO;
+		private SerializedProperty _layoutProp;
+		private SerializedProperty _vignettesProp;
 
 		// ── Scroll ─────────────────────────────────────────────────────────────────
 
@@ -37,16 +36,21 @@ namespace Kapibara.Util.Editor
 		private Vector2 _pageScroll;
 		private Vector2 _vignetteScroll;
 
+		// ── Draw dimensions ────────────────────────────────────────────────────────
+
+		private float _w;
+		private float _h;
+
 		// ── Layout constants ───────────────────────────────────────────────────────
 
-		private const float HEADER_HEIGHT      = 50f;
-		private const float STORY_PANEL_WIDTH  = 210f;
-		private const float PAGE_PANEL_WIDTH   = 200f;
-		private const float DIVIDER_WIDTH      = 2f;
-		private const float THUMB_SIZE         = 40f;
-		private const float ROW_HEIGHT         = 48f;
+		private const float HEADER_HEIGHT     = 50f;
+		private const float STORY_PANEL_WIDTH = 210f;
+		private const float PAGE_PANEL_WIDTH  = 200f;
+		private const float DIVIDER_WIDTH     = 2f;
+		private const float THUMB_SIZE        = 40f;
+		private const float ROW_HEIGHT        = 48f;
 
-		private static readonly Color SelectedBg  = new Color(0.24f, 0.48f, 0.90f, 0.30f);
+		private static readonly Color SelectedBg   = new Color(0.24f, 0.48f, 0.90f, 0.30f);
 		private static readonly Color DividerColor = new Color(0.15f, 0.15f, 0.15f, 1f);
 		private static readonly Color EmptyThumb   = new Color(0.28f, 0.28f, 0.28f, 0.50f);
 
@@ -60,15 +64,29 @@ namespace Kapibara.Util.Editor
 			window.Show();
 		}
 
-		// ── OnGUI ──────────────────────────────────────────────────────────────────
+		// ── OnGUI / Embedded ───────────────────────────────────────────────────────
 
 		private void OnGUI()
+		{
+			_w = position.width;
+			_h = position.height;
+			DrawContents();
+		}
+
+		public void DrawEmbedded(float w, float h)
+		{
+			_w = w;
+			_h = h;
+			DrawContents();
+		}
+
+		private void DrawContents()
 		{
 			DrawHeader();
 
 			if (_theater == null)
 			{
-				Rect helpRect = new Rect(16f, HEADER_HEIGHT + 12f, position.width - 32f, 40f);
+				Rect helpRect = new Rect(16f, HEADER_HEIGHT + 12f, _w - 32f, 40f);
 				EditorGUI.HelpBox(helpRect, "Asigna un TheaterScrObj para comenzar.", MessageType.Info);
 				return;
 			}
@@ -77,15 +95,15 @@ namespace Kapibara.Util.Editor
 			if (_storySO != null) _storySO.Update();
 			if (_pageSO  != null) _pageSO.Update();
 
-			float contentY      = HEADER_HEIGHT;
-			float contentHeight = position.height - HEADER_HEIGHT;
-			float vigWidth      = position.width - STORY_PANEL_WIDTH - PAGE_PANEL_WIDTH - DIVIDER_WIDTH * 2f;
+			float contentY   = HEADER_HEIGHT;
+			float contentH   = _h - HEADER_HEIGHT;
+			float vigWidth   = _w - STORY_PANEL_WIDTH - PAGE_PANEL_WIDTH - DIVIDER_WIDTH * 2f;
 
-			Rect storyArea  = new Rect(0f,                                                contentY, STORY_PANEL_WIDTH, contentHeight);
-			Rect div1Rect   = new Rect(STORY_PANEL_WIDTH,                                 contentY, DIVIDER_WIDTH,      contentHeight);
-			Rect pageArea   = new Rect(STORY_PANEL_WIDTH + DIVIDER_WIDTH,                 contentY, PAGE_PANEL_WIDTH,  contentHeight);
-			Rect div2Rect   = new Rect(STORY_PANEL_WIDTH + DIVIDER_WIDTH + PAGE_PANEL_WIDTH, contentY, DIVIDER_WIDTH,   contentHeight);
-			Rect vigArea    = new Rect(div2Rect.xMax,                                     contentY, vigWidth,          contentHeight);
+			Rect storyArea = new Rect(0f,                                                  contentY, STORY_PANEL_WIDTH, contentH);
+			Rect div1Rect  = new Rect(STORY_PANEL_WIDTH,                                   contentY, DIVIDER_WIDTH,     contentH);
+			Rect pageArea  = new Rect(STORY_PANEL_WIDTH + DIVIDER_WIDTH,                   contentY, PAGE_PANEL_WIDTH,  contentH);
+			Rect div2Rect  = new Rect(STORY_PANEL_WIDTH + DIVIDER_WIDTH + PAGE_PANEL_WIDTH, contentY, DIVIDER_WIDTH,    contentH);
+			Rect vigArea   = new Rect(div2Rect.xMax,                                       contentY, vigWidth,          contentH);
 
 			EditorGUI.DrawRect(div1Rect, DividerColor);
 			EditorGUI.DrawRect(div2Rect, DividerColor);
@@ -111,17 +129,15 @@ namespace Kapibara.Util.Editor
 
 		private void DrawHeader()
 		{
-			GUILayout.BeginArea(new Rect(0f, 0f, position.width, HEADER_HEIGHT));
+			GUILayout.BeginArea(new Rect(0f, 0f, _w, HEADER_HEIGHT));
 			GUILayout.Space(6f);
-
 			EditorGUI.BeginChangeCheck();
 			TheaterScrObj next = (TheaterScrObj)EditorGUILayout.ObjectField(
 				"Theater Data", _theater, typeof(TheaterScrObj), false);
 			if (EditorGUI.EndChangeCheck())
 				SetTheater(next);
-
 			GUILayout.Space(4f);
-			EditorGUI.DrawRect(new Rect(0f, HEADER_HEIGHT - 1f, position.width, 1f), DividerColor);
+			EditorGUI.DrawRect(new Rect(0f, HEADER_HEIGHT - 1f, _w, 1f), DividerColor);
 			GUILayout.EndArea();
 		}
 
@@ -129,9 +145,9 @@ namespace Kapibara.Util.Editor
 
 		private void SetTheater(TheaterScrObj theater)
 		{
-			_theater            = theater;
-			_theaterSO          = theater != null ? new SerializedObject(theater) : null;
-			_storiesProp        = _theaterSO?.FindProperty("_data");
+			_theater     = theater;
+			_theaterSO   = theater != null ? new SerializedObject(theater) : null;
+			_storiesProp = _theaterSO?.FindProperty("_data");
 			ClearStorySelection();
 		}
 
@@ -157,14 +173,11 @@ namespace Kapibara.Util.Editor
 			if (_storiesProp == null) return;
 
 			_storyScroll = EditorGUILayout.BeginScrollView(_storyScroll,
-				GUILayout.Height(position.height - HEADER_HEIGHT - 90f));
-
+				GUILayout.Height(_h - HEADER_HEIGHT - 90f));
 			for (int i = 0; i < _storiesProp.arraySize; i++)
 				DrawStoryRow(i);
-
 			EditorGUILayout.EndScrollView();
 
-			// Story details: title + thumbnail below the list
 			if (_selectedStory != null && _storySO != null)
 			{
 				EditorGUI.DrawRect(EditorGUILayout.GetControlRect(false, 1f), DividerColor);
@@ -185,10 +198,8 @@ namespace Kapibara.Util.Editor
 				: $"Historia {i + 1}";
 
 			Rect rowRect = EditorGUILayout.GetControlRect(false, ROW_HEIGHT);
-			if (selected)
-				EditorGUI.DrawRect(rowRect, SelectedBg);
+			if (selected) EditorGUI.DrawRect(rowRect, SelectedBg);
 
-			// Thumbnail
 			Rect thumbRect = new Rect(rowRect.x + 4f, rowRect.y + 4f, THUMB_SIZE, THUMB_SIZE);
 			Sprite thumb = story?.Data?.Thumbnail;
 			if (thumb != null)
@@ -204,13 +215,11 @@ namespace Kapibara.Util.Editor
 				EditorGUI.DrawRect(thumbRect, EmptyThumb);
 			}
 
-			// Label
-			float labelX = thumbRect.xMax + 6f;
+			float labelX   = thumbRect.xMax + 6f;
 			Rect labelRect = new Rect(labelX, rowRect.y + (ROW_HEIGHT - EditorGUIUtility.singleLineHeight) * 0.5f,
 				rowRect.xMax - labelX - 4f, EditorGUIUtility.singleLineHeight);
 			GUI.Label(labelRect, title, selected ? EditorStyles.whiteLabel : EditorStyles.label);
 
-			// Click
 			if (Event.current.type == EventType.MouseDown && rowRect.Contains(Event.current.mousePosition))
 			{
 				SelectStory(i);
@@ -297,27 +306,24 @@ namespace Kapibara.Util.Editor
 			}
 
 			_pageScroll = EditorGUILayout.BeginScrollView(_pageScroll);
-
 			for (int i = 0; i < _pagesProp.arraySize; i++)
 				DrawPageRow(i);
-
 			EditorGUILayout.EndScrollView();
 		}
 
 		private void DrawPageRow(int i)
 		{
-			SerializedProperty pageRef = _pagesProp.GetArrayElementAtIndex(i);
-			ComicPageScrObj    page    = pageRef.objectReferenceValue as ComicPageScrObj;
+			SerializedProperty pageRef  = _pagesProp.GetArrayElementAtIndex(i);
+			ComicPageScrObj    page     = pageRef.objectReferenceValue as ComicPageScrObj;
 			bool               selected = i == _selectedPageIndex;
 
-			int    vigCount     = page?.Data?.Vignettes?.Count ?? 0;
-			string layoutLabel  = page?.Data != null ? page.Data.Layout.ToString().Replace("_", " ") : "—";
-			string label        = $"P{i + 1}  {layoutLabel}  ({vigCount}v)";
+			int    vigCount    = page?.Data?.Vignettes?.Count ?? 0;
+			string layoutLabel = page?.Data != null ? page.Data.Layout.ToString().Replace("_", " ") : "—";
+			string label       = $"P{i + 1}  {layoutLabel}  ({vigCount}v)";
 
 			float rowH   = EditorGUIUtility.singleLineHeight + 6f;
 			Rect rowRect = EditorGUILayout.GetControlRect(false, rowH);
-			if (selected)
-				EditorGUI.DrawRect(rowRect, SelectedBg);
+			if (selected) EditorGUI.DrawRect(rowRect, SelectedBg);
 
 			Rect lr = new Rect(rowRect.x + 6f, rowRect.y + 3f, rowRect.width - 8f, EditorGUIUtility.singleLineHeight);
 			GUI.Label(lr, label, selected ? EditorStyles.whiteLabel : EditorStyles.label);
@@ -338,10 +344,10 @@ namespace Kapibara.Util.Editor
 
 			if (_selectedPage != null)
 			{
-				_pageSO               = new SerializedObject(_selectedPage);
-				SerializedProperty d  = _pageSO.FindProperty("_data");
-				_layoutProp           = d.FindPropertyRelative("_layout");
-				_vignettesProp        = d.FindPropertyRelative("_vignettes");
+				_pageSO              = new SerializedObject(_selectedPage);
+				SerializedProperty d = _pageSO.FindProperty("_data");
+				_layoutProp          = d.FindPropertyRelative("_layout");
+				_vignettesProp       = d.FindPropertyRelative("_vignettes");
 			}
 			else
 			{
@@ -384,7 +390,6 @@ namespace Kapibara.Util.Editor
 
 		private void DrawVignettesPanel()
 		{
-			// Toolbar
 			EditorGUILayout.BeginHorizontal(EditorStyles.toolbar);
 			string header = _selectedPage != null
 				? $"VIÑETAS  —  Página {_selectedPageIndex + 1}"
@@ -415,19 +420,15 @@ namespace Kapibara.Util.Editor
 				return;
 			}
 
-			// Layout picker
 			GUILayout.Space(4f);
 			EditorGUILayout.PropertyField(_layoutProp, new GUIContent("Layout de página"));
 			GUILayout.Space(4f);
 			EditorGUI.DrawRect(EditorGUILayout.GetControlRect(false, 1f), DividerColor);
 			GUILayout.Space(4f);
 
-			// Vignette cards
 			_vignetteScroll = EditorGUILayout.BeginScrollView(_vignetteScroll);
-
 			for (int i = 0; i < _vignettesProp.arraySize; i++)
 				DrawVignetteCard(i);
-
 			EditorGUILayout.EndScrollView();
 		}
 
@@ -443,7 +444,6 @@ namespace Kapibara.Util.Editor
 
 			EditorGUILayout.BeginHorizontal();
 
-			// Sprite preview (64×64)
 			Rect previewRect = EditorGUILayout.GetControlRect(false, 64f, GUILayout.Width(64f));
 			Sprite sprite = spritePr.objectReferenceValue as Sprite;
 			if (sprite != null)
@@ -460,7 +460,6 @@ namespace Kapibara.Util.Editor
 				GUI.Label(previewRect, "sin sprite", EditorStyles.centeredGreyMiniLabel);
 			}
 
-			// Fields
 			EditorGUILayout.BeginVertical();
 			EditorGUILayout.PropertyField(spritePr, new GUIContent("Sprite"));
 			EditorGUILayout.PropertyField(animPr,   new GUIContent("Animación"));

@@ -5,8 +5,7 @@ namespace Kapibara.Util.Editor
 {
 	/// <summary>
 	/// 3-panel editor for MapLevelScrObj: Levels | Steps | Step Detail.
-	/// Supports create/delete/edit levels and add/remove/reorder steps.
-	/// Menu: Kapibara/Map Level Editor
+	/// Menu: Kapibara/Map Level Editor  —  also embeddable via DrawEmbedded().
 	/// </summary>
 	public class MapLevelEditorWindow : EditorWindow
 	{
@@ -28,13 +27,18 @@ namespace Kapibara.Util.Editor
 		private Vector2 _levelScroll;
 		private Vector2 _stepScroll;
 
+		// ── Draw dimensions ────────────────────────────────────────────────────────
+
+		private float _w;
+		private float _h;
+
 		// ── Layout constants ───────────────────────────────────────────────────────
 
-		private const float HEADER_HEIGHT    = 50f;
-		private const float LEVEL_PANEL_W    = 210f;
-		private const float STEP_PANEL_W     = 190f;
-		private const float DIVIDER_W        = 2f;
-		private const float ROW_H            = 36f;
+		private const float HEADER_HEIGHT = 50f;
+		private const float LEVEL_PANEL_W = 210f;
+		private const float STEP_PANEL_W  = 190f;
+		private const float DIVIDER_W     = 2f;
+		private const float ROW_H         = 36f;
 
 		private static readonly Color SelectedBg   = new Color(0.24f, 0.48f, 0.90f, 0.30f);
 		private static readonly Color DividerColor = new Color(0.15f, 0.15f, 0.15f, 1f);
@@ -49,15 +53,29 @@ namespace Kapibara.Util.Editor
 			w.Show();
 		}
 
-		// ── OnGUI ──────────────────────────────────────────────────────────────────
+		// ── OnGUI / Embedded ───────────────────────────────────────────────────────
 
 		private void OnGUI()
+		{
+			_w = position.width;
+			_h = position.height;
+			DrawContents();
+		}
+
+		public void DrawEmbedded(float w, float h)
+		{
+			_w = w;
+			_h = h;
+			DrawContents();
+		}
+
+		private void DrawContents()
 		{
 			DrawHeader();
 
 			if (_asset == null)
 			{
-				Rect helpRect = new Rect(16f, HEADER_HEIGHT + 12f, position.width - 32f, 40f);
+				Rect helpRect = new Rect(16f, HEADER_HEIGHT + 12f, _w - 32f, 40f);
 				EditorGUI.HelpBox(helpRect, "Assign a MapLevelScrObj to begin.", MessageType.Info);
 				return;
 			}
@@ -65,14 +83,14 @@ namespace Kapibara.Util.Editor
 			_assetSO.Update();
 
 			float contentY = HEADER_HEIGHT;
-			float contentH = position.height - HEADER_HEIGHT;
-			float detailW  = position.width - LEVEL_PANEL_W - STEP_PANEL_W - DIVIDER_W * 2f;
+			float contentH = _h - HEADER_HEIGHT;
+			float detailW  = _w - LEVEL_PANEL_W - STEP_PANEL_W - DIVIDER_W * 2f;
 
-			Rect levelArea  = new Rect(0f,                                            contentY, LEVEL_PANEL_W, contentH);
-			Rect div1       = new Rect(LEVEL_PANEL_W,                                 contentY, DIVIDER_W,     contentH);
-			Rect stepArea   = new Rect(LEVEL_PANEL_W + DIVIDER_W,                     contentY, STEP_PANEL_W,  contentH);
-			Rect div2       = new Rect(LEVEL_PANEL_W + DIVIDER_W + STEP_PANEL_W,      contentY, DIVIDER_W,     contentH);
-			Rect detailArea = new Rect(div2.xMax,                                     contentY, detailW,       contentH);
+			Rect levelArea  = new Rect(0f,                                       contentY, LEVEL_PANEL_W, contentH);
+			Rect div1       = new Rect(LEVEL_PANEL_W,                            contentY, DIVIDER_W,     contentH);
+			Rect stepArea   = new Rect(LEVEL_PANEL_W + DIVIDER_W,               contentY, STEP_PANEL_W,  contentH);
+			Rect div2       = new Rect(LEVEL_PANEL_W + DIVIDER_W + STEP_PANEL_W, contentY, DIVIDER_W,    contentH);
+			Rect detailArea = new Rect(div2.xMax,                                contentY, detailW,       contentH);
 
 			EditorGUI.DrawRect(div1, DividerColor);
 			EditorGUI.DrawRect(div2, DividerColor);
@@ -96,14 +114,14 @@ namespace Kapibara.Util.Editor
 
 		private void DrawHeader()
 		{
-			GUILayout.BeginArea(new Rect(0f, 0f, position.width, HEADER_HEIGHT));
+			GUILayout.BeginArea(new Rect(0f, 0f, _w, HEADER_HEIGHT));
 			GUILayout.Space(6f);
 			EditorGUI.BeginChangeCheck();
 			Kapibara.RPS.MapLevelScrObj next = (Kapibara.RPS.MapLevelScrObj)EditorGUILayout.ObjectField(
 				"Map Level Data", _asset, typeof(Kapibara.RPS.MapLevelScrObj), false);
 			if (EditorGUI.EndChangeCheck()) SetAsset(next);
 			GUILayout.Space(4f);
-			EditorGUI.DrawRect(new Rect(0f, HEADER_HEIGHT - 1f, position.width, 1f), DividerColor);
+			EditorGUI.DrawRect(new Rect(0f, HEADER_HEIGHT - 1f, _w, 1f), DividerColor);
 			GUILayout.EndArea();
 		}
 
@@ -137,28 +155,27 @@ namespace Kapibara.Util.Editor
 			if (_levelsProp == null) return;
 
 			_levelScroll = EditorGUILayout.BeginScrollView(_levelScroll,
-				GUILayout.Height(position.height - HEADER_HEIGHT - 148f));
+				GUILayout.Height(_h - HEADER_HEIGHT - 148f));
 			for (int i = 0; i < _levelsProp.arraySize; i++)
 				DrawLevelRow(i);
 			EditorGUILayout.EndScrollView();
 
-			// Level fields below list
 			if (_selectedLevelProp != null)
 			{
 				EditorGUI.DrawRect(EditorGUILayout.GetControlRect(false, 1f), DividerColor);
 				GUILayout.Space(2f);
-				EditorGUILayout.PropertyField(_selectedLevelProp.FindPropertyRelative("_level"),       new GUIContent("Number"));
-				EditorGUILayout.PropertyField(_selectedLevelProp.FindPropertyRelative("_levelName"),   new GUIContent("Name"));
-				EditorGUILayout.PropertyField(_selectedLevelProp.FindPropertyRelative("_isAvailable"), new GUIContent("Available"));
-				EditorGUILayout.PropertyField(_selectedLevelProp.FindPropertyRelative("_levelIcon"),   new GUIContent("Icon"));
+				EditorGUILayout.PropertyField(_selectedLevelProp.FindPropertyRelative("_level"),        new GUIContent("Number"));
+				EditorGUILayout.PropertyField(_selectedLevelProp.FindPropertyRelative("_levelName"),    new GUIContent("Name"));
+				EditorGUILayout.PropertyField(_selectedLevelProp.FindPropertyRelative("_isAvailable"),  new GUIContent("Available"));
+				EditorGUILayout.PropertyField(_selectedLevelProp.FindPropertyRelative("_levelIcon"),    new GUIContent("Icon"));
 				EditorGUILayout.PropertyField(_selectedLevelProp.FindPropertyRelative("_levelPortrait"), new GUIContent("Portrait"));
 			}
 		}
 
 		private void DrawLevelRow(int i)
 		{
-			SerializedProperty lp       = _levelsProp.GetArrayElementAtIndex(i);
-			SerializedProperty nameProp = lp.FindPropertyRelative("_levelName");
+			SerializedProperty lp        = _levelsProp.GetArrayElementAtIndex(i);
+			SerializedProperty nameProp  = lp.FindPropertyRelative("_levelName");
 			SerializedProperty stepsProp = lp.FindPropertyRelative("_steps");
 			SerializedProperty availProp = lp.FindPropertyRelative("_isAvailable");
 			bool selected = i == _selectedLevelIndex;
@@ -200,9 +217,9 @@ namespace Kapibara.Util.Editor
 		{
 			_levelsProp.arraySize++;
 			SerializedProperty np = _levelsProp.GetArrayElementAtIndex(_levelsProp.arraySize - 1);
-			np.FindPropertyRelative("_level").intValue         = _levelsProp.arraySize;
-			np.FindPropertyRelative("_levelName").stringValue  = $"Level {_levelsProp.arraySize}";
-			np.FindPropertyRelative("_isAvailable").boolValue  = false;
+			np.FindPropertyRelative("_level").intValue        = _levelsProp.arraySize;
+			np.FindPropertyRelative("_levelName").stringValue = $"Level {_levelsProp.arraySize}";
+			np.FindPropertyRelative("_isAvailable").boolValue = false;
 			_assetSO.ApplyModifiedProperties();
 			EditorUtility.SetDirty(_asset);
 			Repaint();
