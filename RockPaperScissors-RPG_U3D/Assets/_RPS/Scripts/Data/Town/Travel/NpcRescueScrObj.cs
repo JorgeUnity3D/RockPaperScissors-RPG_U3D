@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Kapibara.RPS
 {
-	[CreateAssetMenu(fileName = "NpcRescueStep", menuName = "RPSRPG/Map/NpcRescueStep")]
+	[CreateAssetMenu(fileName = "NpcRescueStep", menuName = "RPSRPG/Levels/Steps/NpcRescue")]
 	public class NpcRescueScrObj : SerializedScriptableObject
 	{
 		[SerializeField] private TownMenu _targetBuilding;

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Kapibara.RPS
 {
-	[CreateAssetMenu(fileName = "TownViews", menuName = "RPSRPG/TownViews")]
+	[CreateAssetMenu(fileName = "TownViews", menuName = "RPSRPG/Town/TownViews")]
 	public class TownViewScrObj : SerializedScriptableObject
 	{
 		[HideLabel, SerializeField] private List<TownView> _data;

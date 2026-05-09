@@ -26,7 +26,15 @@ MonoBehaviour:
     _levelName: Forest
     _levelIcon: {fileID: -6684475192863260856, guid: 0ca550bc406330a4493c8d901e3ea819, type: 3}
     _levelPortrait: {fileID: -6684475192863260856, guid: 0ca550bc406330a4493c8d901e3ea819, type: 3}
-    _steps: []
+    _steps:
+    - _type: 0
+      _combatData: {fileID: 11400000, guid: 1ed6355fd628e5f549beaca85677c157, type: 2}
+      _treasureData: {fileID: 0}
+      _npcRescueData: {fileID: 0}
+    - _type: 2
+      _combatData: {fileID: 11400000, guid: 1ed6355fd628e5f549beaca85677c157, type: 2}
+      _treasureData: {fileID: 11400000, guid: d6ed167e0dd08c4f7a56e0591b56607d, type: 2}
+      _npcRescueData: {fileID: 0}
     _isAvailable: 1
   - _level: 2
     _levelName: Desert

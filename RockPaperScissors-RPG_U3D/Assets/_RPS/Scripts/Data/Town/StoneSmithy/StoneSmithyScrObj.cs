@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Kapibara.RPS
 {
-	[CreateAssetMenu(fileName = "StoneSmithyData", menuName = "RPSRPG/StoneSmithyData")]
+	[CreateAssetMenu(fileName = "StoneSmithyData", menuName = "RPSRPG/Town/StoneSmithy")]
 	public class StoneSmithyScrObj : SerializedScriptableObject
 	{
 		[HideLabel, SerializeField] private StoneSmithyData _data;

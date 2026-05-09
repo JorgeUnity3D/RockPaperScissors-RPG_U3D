@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Kapibara.RPS
 {
 
-	[CreateAssetMenu(fileName = "MapLevels", menuName = "RPSRPG/MapLevels")]
+	[CreateAssetMenu(fileName = "MapLevels", menuName = "RPSRPG/Levels/MapLevels")]
 	public class MapLevelScrObj : SerializedScriptableObject
 	{
 		[HideLabel, SerializeField] private List<MapLevel> _data;

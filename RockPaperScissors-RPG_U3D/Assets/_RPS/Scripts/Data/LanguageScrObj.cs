@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Kapibara.RPS
 {
-	[CreateAssetMenu(fileName = "Language", menuName = "RPSRPG/Language")]
+	[CreateAssetMenu(fileName = "Language", menuName = "RPSRPG/Enemies/Language")]
 	public class LanguageScrObj : SerializedScriptableObject
 	{
 		[HideLabel, SerializeField] private Language _data;

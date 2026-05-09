@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Kapibara.RPS
 {
-	[CreateAssetMenu(fileName = "ComicPage", menuName = "RPSRPG/Theater/ComicPage")]
+	[CreateAssetMenu(fileName = "ComicPage", menuName = "RPSRPG/Town/Theater/ComicPage")]
 	public class ComicPageScrObj : SerializedScriptableObject
 	{
 		[HideLabel, SerializeField] private ComicPageData _data;

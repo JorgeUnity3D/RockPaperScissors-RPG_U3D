@@ -8,7 +8,7 @@ namespace Kapibara.RPS
 	/// Contiene todas las páginas y quests. Asignar en el Inspector del LibraryManager.
 	/// Crear desde: RPSRPG/Library/LibraryData
 	/// </summary>
-	[CreateAssetMenu(fileName = "LibraryData", menuName = "RPSRPG/Library/LibraryData")]
+	[CreateAssetMenu(fileName = "Library", menuName = "RPSRPG/Town/Library")]
 	public class LibraryScrObj : SerializedScriptableObject
 	{
 		[HideLabel, SerializeField] private LibraryData _data;

@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Kapibara.RPS
 {
-	[CreateAssetMenu(fileName = "Icons", menuName = "RPSRPG/Icons")]
+	[CreateAssetMenu(fileName = "StatIcons", menuName = "RPSRPG/Player/StatIcons")]
 	public class IconsScrObj : SerializedScriptableObject
 	{
 		[HideLabel, SerializeField] private IconsDictionary _data;

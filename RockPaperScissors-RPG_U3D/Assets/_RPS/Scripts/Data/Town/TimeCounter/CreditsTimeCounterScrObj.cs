@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Kapibara.RPS
 {
-	[CreateAssetMenu(fileName = "CreditsTimeCounter", menuName = "RPSRPG/CreditsTimeCounter")]
+	[CreateAssetMenu(fileName = "CreditsTimeCounter", menuName = "RPSRPG/Town/CreditsTimeCounter")]
 	public class CreditsTimeCounterScrObj : SerializedScriptableObject
 	{
 		[HideLabel, SerializeField] private CreditTimeCounter _data;

@@ -7,7 +7,7 @@ using UnityEngine;
 namespace Kapibara.RPS
 {
 
-	[CreateAssetMenu(fileName = "PaperTreeSkillTrees", menuName = "RPSRPG/PaperTreeSkillTree")]
+	[CreateAssetMenu(fileName = "PaperTreeSkillTrees", menuName = "RPSRPG/Town/PaperTree")]
 	public class PaperTreeScrObj : SerializedScriptableObject
 	{
 		[SerializeField] private List<PaperTreeNode> _rockSkillTree;

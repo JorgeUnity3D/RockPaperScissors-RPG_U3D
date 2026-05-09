@@ -9,7 +9,7 @@ namespace Kapibara.RPS
 	/// Historia 0 = se muestra al iniciar nueva partida; 1-N se desbloquean al derrotar jefes.
 	/// Crear el asset desde: RPSRPG/Theater/TheaterData.
 	/// </summary>
-	[CreateAssetMenu(fileName = "TheaterData", menuName = "RPSRPG/Theater/TheaterData")]
+	[CreateAssetMenu(fileName = "TheaterData", menuName = "RPSRPG/Town/Theater/TheaterData")]
 	public class TheaterScrObj : SerializedScriptableObject
 	{
 		[HideLabel, InlineEditor, SerializeField] private List<ComicStoryScrObj> _data;
