@@ -369,18 +369,18 @@ namespace Kapibara.Util.Editor
 				case RPS.MapStepType.Combat:
 				case RPS.MapStepType.Boss:
 					EditorGUILayout.PropertyField(
-						_selectedStepProp.FindPropertyRelative("_combatData"),
-						new GUIContent("Combat Step Asset"));
+						_selectedStepProp.FindPropertyRelative("_enemy"),
+						new GUIContent("Enemy"));
 					break;
 				case RPS.MapStepType.Treasure:
 					EditorGUILayout.PropertyField(
-						_selectedStepProp.FindPropertyRelative("_treasureData"),
-						new GUIContent("Treasure Step Asset"));
+						_selectedStepProp.FindPropertyRelative("_goldAmount"),
+						new GUIContent("Gold Amount"));
 					break;
 				case RPS.MapStepType.NpcRescue:
 					EditorGUILayout.PropertyField(
-						_selectedStepProp.FindPropertyRelative("_npcRescueData"),
-						new GUIContent("NPC Rescue Step Asset"));
+						_selectedStepProp.FindPropertyRelative("_targetBuilding"),
+						new GUIContent("Target Building"));
 					break;
 			}
 		}
