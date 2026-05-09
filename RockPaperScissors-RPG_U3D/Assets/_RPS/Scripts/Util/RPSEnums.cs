@@ -22,6 +22,14 @@
         TORCH
     }
 
+	public enum MapStepType
+	{
+		Combat,
+		Boss,
+		Treasure,
+		NpcRescue
+	}
+
 	public enum EnemyId
 	{
 		ENEMY_0,
@@ -29,6 +37,9 @@
 		ENEMY_2,
 		ENEMY_3,
 		ENEMY_4,
+		ENEMY_5,
+		ENEMY_6,
+		ENEMY_7,
 	}
 
 	/// <summary>Animación de entrada de una viñeta al revelarse en el lector de comic.</summary>

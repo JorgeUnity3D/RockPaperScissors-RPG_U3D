@@ -13,7 +13,8 @@
       "Bash(cp /home/darak0/Darako/UNITY/_PROJECTS/03_RPS/RockPaperScissors-RPG_U3D/Assets/_RPS/Scripts/_oldScriptables/ItemDataObject.cs.meta /home/darak0/Darako/UNITY/_PROJECTS/03_RPS/RockPaperScissors-RPG_U3D/Assets/_RPS/Scripts/_oldScriptables/ItemScrObj.cs.meta)",
       "Bash(rm /home/darak0/Darako/UNITY/_PROJECTS/03_RPS/RockPaperScissors-RPG_U3D/Assets/_RPS/Scripts/_oldScriptables/ItemDataObject.cs)",
       "Bash(git -C /home/darak0/Darako/UNITY/_PROJECTS/03_RPS diff --name-only HEAD)",
-      "Bash(git -C /home/darak0/Darako/UNITY/_PROJECTS/03_RPS ls-files --others --exclude-standard)"
+      "Bash(git -C /home/darak0/Darako/UNITY/_PROJECTS/03_RPS ls-files --others --exclude-standard)",
+      "Bash(git add *)"
     ]
   }
 }

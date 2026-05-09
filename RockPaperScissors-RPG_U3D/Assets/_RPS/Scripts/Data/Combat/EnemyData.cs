@@ -14,6 +14,7 @@ namespace Kapibara.RPS
 		[Header("Identity")]
 		[SerializeField] private EnemyId _id;
 		[SerializeField] private string  _name;
+		[SerializeField] private Sprite  _portrait;
 
 		[Header("Combat Stats")]
 		[SerializeField] private int _maxHealth;
@@ -55,6 +56,7 @@ namespace Kapibara.RPS
 
 		public EnemyId Id               => _id;
 		public string Name              => _name;
+		public Sprite Portrait          => _portrait;
 		public int MaxHealth            => _maxHealth;
 		public int Mentality            => _mentality;
 		public int Rock                 => _rock;

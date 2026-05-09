@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 971eb246421c5f94f9c1209bfa370109, type: 3}
-  m_Name: Enemy
-  m_EditorClassIdentifier: Assembly-CSharp::Kapibara.RPS.EnemyDataObject
+  m_Script: {fileID: 11500000, guid: 7de6ada9e40982e7ab0868ed10181dd7, type: 3}
+  m_Name: TreasureStep
+  m_EditorClassIdentifier: Assembly-CSharp::Kapibara.RPS.TreasureStepScrObj
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
@@ -20,7 +20,5 @@ MonoBehaviour:
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: data
-      Entry: 6
-      Data: 
+    SerializationNodes: []
+  _goldAmount: 0
