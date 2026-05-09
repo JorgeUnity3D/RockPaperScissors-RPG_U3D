@@ -80,7 +80,8 @@ namespace Kapibara.Util.Editor
 		public static void Open()
 		{
 			RPSDatabaseWindow w = GetWindow<RPSDatabaseWindow>("RPSRPG Database");
-			w.minSize = new Vector2(560f, 420f);
+			w.minSize = new Vector2(900f, 620f);
+			w.maxSize = new Vector2(900f, 620f);
 			w.Show();
 		}
 
