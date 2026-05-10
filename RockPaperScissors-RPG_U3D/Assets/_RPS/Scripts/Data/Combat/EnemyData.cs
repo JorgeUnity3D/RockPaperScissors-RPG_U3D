@@ -52,7 +52,7 @@ namespace Kapibara.RPS
 		[SerializeField] private int _goldMax;
 
 		[Header("Languages")]
-		[SerializeField] private List<Language> _languages;
+		[SerializeField] private List<LanguageScrObj> _languages;
 
 		public EnemyId Id               => _id;
 		public string Name              => _name;
@@ -80,6 +80,6 @@ namespace Kapibara.RPS
 		public int MentalityMod         => _mentalityMod;
 		public int GoldMin              => _goldMin;
 		public int GoldMax              => _goldMax;
-		public List<Language> Languages => _languages;
+		public List<LanguageScrObj> Languages => _languages;
 	}
 }

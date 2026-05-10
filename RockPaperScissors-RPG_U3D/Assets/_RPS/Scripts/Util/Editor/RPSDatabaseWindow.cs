@@ -22,7 +22,7 @@ namespace Kapibara.Util.Editor
 		private static readonly AssetCategory[] s_categories =
 		{
 			new AssetCategory { Group = "ENEMIES", Label = "Enemies",        AssetType = typeof(EnemyScrObj),              Folder = "Enemies",      DefaultName = "Enemy"              },
-			new AssetCategory { Group = "ENEMIES", Label = "Languages",      AssetType = typeof(LanguageScrObj),           Folder = "Enemies",      DefaultName = "Language"           },
+			new AssetCategory { Group = "ENEMIES", Label = "Languages",      AssetType = typeof(LanguageScrObj),           Folder = "Languages",    DefaultName = "Language"           },
 			new AssetCategory { Group = "LEVELS",  Label = "Map Levels",     AssetType = typeof(MapLevelScrObj),           Folder = "Levels",       DefaultName = "MapLevels"          },
 			new AssetCategory { Group = "PLAYER",  Label = "Player",         AssetType = typeof(PlayerScrObj),             Folder = "Player",       DefaultName = "Player"             },
 			new AssetCategory { Group = "PLAYER",  Label = "Stat Icons",     AssetType = typeof(IconsScrObj),              Folder = "Player",       DefaultName = "StatIcons"          },
@@ -54,8 +54,9 @@ namespace Kapibara.Util.Editor
 		private Vector2                _categoryScroll;
 		private Vector2                _assetScroll;
 
-		private ScriptableObject   _editingAsset   = null;
-		private UnityEditor.Editor _embeddedEditor = null;
+		private ScriptableObject   _editingAsset      = null;
+		private int                _editingAssetIndex = -1;
+		private UnityEditor.Editor _embeddedEditor    = null;
 		private Vector2            _detailScroll;
 
 		// ── Layout ─────────────────────────────────────────────────────────────────
@@ -70,6 +71,8 @@ namespace Kapibara.Util.Editor
 		private static readonly Color SelectedBg   = new Color(0.24f, 0.48f, 0.90f, 0.30f);
 		private static readonly Color DividerColor = new Color(0.15f, 0.15f, 0.15f, 1f);
 		private static readonly Color GroupBg      = new Color(0.18f, 0.18f, 0.18f, 1f);
+		private static readonly Color RowEven      = new Color(1f, 1f, 1f, 0.02f);
+		private static readonly Color RowOdd       = new Color(0f, 0f, 0f, 0.08f);
 
 		// ── Menu ───────────────────────────────────────────────────────────────────
 
@@ -278,18 +281,22 @@ namespace Kapibara.Util.Editor
 			ScriptableObject toEdit   = null;
 			ScriptableObject toDelete = null;
 
-			foreach (ScriptableObject asset in _assets)
+			for (int i = 0; i < _assets.Count; i++)
 			{
+				ScriptableObject asset   = _assets[i];
 				Rect rowRect    = EditorGUILayout.GetControlRect(false, ROW_H);
+				EditorGUI.DrawRect(rowRect, i % 2 == 0 ? RowEven : RowOdd);
 				float btnY      = rowRect.y + 4f;
 				float btnH      = ROW_H - 8f;
-				Rect deleteRect = new Rect(rowRect.xMax - 22f, btnY, 18f, btnH);
-				Rect editRect   = new Rect(rowRect.xMax - 80f, btnY, 54f, btnH);
+				Rect deleteRect = new Rect(rowRect.xMax - 22f,  btnY, 18f, btnH);
+				Rect editRect   = new Rect(rowRect.xMax - 80f,  btnY, 54f, btnH);
+				Rect pingRect   = new Rect(rowRect.xMax - 118f, btnY, 34f, btnH);
 				Rect nameRect   = new Rect(rowRect.x + 10f,
 					rowRect.y + (ROW_H - EditorGUIUtility.singleLineHeight) * 0.5f,
-					rowRect.width - 88f, EditorGUIUtility.singleLineHeight);
+					rowRect.width - 126f, EditorGUIUtility.singleLineHeight);
 
 				GUI.Label(nameRect, asset.name, EditorStyles.label);
+				if (GUI.Button(pingRect,   "Ping", EditorStyles.miniButton)) EditorGUIUtility.PingObject(asset);
 				if (GUI.Button(editRect,   "Edit", EditorStyles.miniButton)) toEdit   = asset;
 				if (GUI.Button(deleteRect, "X",    EditorStyles.miniButton)) toDelete = asset;
 			}
@@ -314,7 +321,11 @@ namespace Kapibara.Util.Editor
 
 		private void DrawDetailView()
 		{
-			bool goBack = false;
+			bool goBack   = false;
+			bool goPrev   = false;
+			bool goNext   = false;
+			bool hasPrev  = _editingAssetIndex > 0;
+			bool hasNext  = _editingAssetIndex < _assets.Count - 1;
 
 			EditorGUILayout.BeginHorizontal(EditorStyles.toolbar);
 			if (GUILayout.Button("← Back", EditorStyles.toolbarButton, GUILayout.Width(60f)))
@@ -322,15 +333,22 @@ namespace Kapibara.Util.Editor
 			GUILayout.Space(6f);
 			GUILayout.Label(_editingAsset.name, EditorStyles.boldLabel);
 			GUILayout.FlexibleSpace();
+			EditorGUI.BeginDisabledGroup(!hasPrev);
+			if (GUILayout.Button("< Prev", EditorStyles.toolbarButton, GUILayout.Width(50f)))
+				goPrev = true;
+			EditorGUI.EndDisabledGroup();
+			EditorGUI.BeginDisabledGroup(!hasNext);
+			if (GUILayout.Button("Next >", EditorStyles.toolbarButton, GUILayout.Width(50f)))
+				goNext = true;
+			EditorGUI.EndDisabledGroup();
+			GUILayout.Space(6f);
 			if (GUILayout.Button("Ping", EditorStyles.toolbarButton, GUILayout.Width(40f)))
 				EditorGUIUtility.PingObject(_editingAsset);
 			EditorGUILayout.EndHorizontal();
 
-			if (goBack)
-			{
-				CloseDetailView();
-				return;
-			}
+			if (goBack)  { CloseDetailView(); return; }
+			if (goPrev)  { OpenDetailView(_assets[_editingAssetIndex - 1]); return; }
+			if (goNext)  { OpenDetailView(_assets[_editingAssetIndex + 1]); return; }
 
 			EditorGUI.DrawRect(EditorGUILayout.GetControlRect(false, 1f), DividerColor);
 			GUILayout.Space(4f);
@@ -355,16 +373,18 @@ namespace Kapibara.Util.Editor
 		private void OpenDetailView(ScriptableObject asset)
 		{
 			DestroyEmbeddedEditor();
-			_editingAsset   = asset;
-			_embeddedEditor = UnityEditor.Editor.CreateEditor(asset);
-			_detailScroll   = Vector2.zero;
+			_editingAsset      = asset;
+			_editingAssetIndex = _assets.IndexOf(asset);
+			_embeddedEditor    = UnityEditor.Editor.CreateEditor(asset);
+			_detailScroll      = Vector2.zero;
 			Selection.activeObject = asset;
 		}
 
 		private void CloseDetailView()
 		{
 			DestroyEmbeddedEditor();
-			_editingAsset = null;
+			_editingAsset      = null;
+			_editingAssetIndex = -1;
 		}
 
 		private void DestroyEmbeddedEditor()

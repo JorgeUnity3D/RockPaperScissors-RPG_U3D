@@ -28,47 +28,263 @@ MonoBehaviour:
     _levelPortrait: {fileID: -6684475192863260856, guid: 0ca550bc406330a4493c8d901e3ea819, type: 3}
     _steps:
     - _type: 0
-      _combatData: {fileID: 11400000, guid: 1ed6355fd628e5f549beaca85677c157, type: 2}
-      _treasureData: {fileID: 0}
-      _npcRescueData: {fileID: 0}
+      _enemy: {fileID: 11400000, guid: ef6523a57f000600abb5e70e13fa24a3, type: 2}
+      _goldAmount: 0
+      _targetBuilding: 0
+    - _type: 0
+      _enemy: {fileID: 11400000, guid: cabbad3a921a8a438bbed9a791c48126, type: 2}
+      _goldAmount: 0
+      _targetBuilding: 0
     - _type: 2
-      _combatData: {fileID: 11400000, guid: 1ed6355fd628e5f549beaca85677c157, type: 2}
-      _treasureData: {fileID: 11400000, guid: d6ed167e0dd08c4f7a56e0591b56607d, type: 2}
-      _npcRescueData: {fileID: 0}
+      _enemy: {fileID: 0}
+      _goldAmount: 100
+      _targetBuilding: 0
+    - _type: 0
+      _enemy: {fileID: 11400000, guid: ef6523a57f000600abb5e70e13fa24a3, type: 2}
+      _goldAmount: 0
+      _targetBuilding: 0
+    - _type: 3
+      _enemy: {fileID: 0}
+      _goldAmount: 0
+      _targetBuilding: 2
+    - _type: 0
+      _enemy: {fileID: 11400000, guid: cabbad3a921a8a438bbed9a791c48126, type: 2}
+      _goldAmount: 0
+      _targetBuilding: 0
+    - _type: 0
+      _enemy: {fileID: 11400000, guid: ef6523a57f000600abb5e70e13fa24a3, type: 2}
+      _goldAmount: 0
+      _targetBuilding: 0
+    - _type: 1
+      _enemy: {fileID: 11400000, guid: 1fe4aff8c1bad72eb937a50874c2dc4f, type: 2}
+      _goldAmount: 0
+      _targetBuilding: 0
     _isAvailable: 1
   - _level: 2
     _levelName: Desert
     _levelIcon: {fileID: 9170327630243124144, guid: 0ca550bc406330a4493c8d901e3ea819, type: 3}
     _levelPortrait: {fileID: 9170327630243124144, guid: 0ca550bc406330a4493c8d901e3ea819, type: 3}
-    _steps: []
-    _isAvailable: 1
+    _steps:
+    - _type: 0
+      _enemy: {fileID: 11400000, guid: ef6523a57f000600abb5e70e13fa24a3, type: 2}
+      _goldAmount: 0
+      _targetBuilding: 0
+    - _type: 0
+      _enemy: {fileID: 11400000, guid: cabbad3a921a8a438bbed9a791c48126, type: 2}
+      _goldAmount: 0
+      _targetBuilding: 0
+    - _type: 2
+      _enemy: {fileID: 0}
+      _goldAmount: 100
+      _targetBuilding: 0
+    - _type: 0
+      _enemy: {fileID: 11400000, guid: ef6523a57f000600abb5e70e13fa24a3, type: 2}
+      _goldAmount: 0
+      _targetBuilding: 0
+    - _type: 3
+      _enemy: {fileID: 0}
+      _goldAmount: 0
+      _targetBuilding: 2
+    - _type: 0
+      _enemy: {fileID: 11400000, guid: cabbad3a921a8a438bbed9a791c48126, type: 2}
+      _goldAmount: 0
+      _targetBuilding: 0
+    - _type: 0
+      _enemy: {fileID: 11400000, guid: ef6523a57f000600abb5e70e13fa24a3, type: 2}
+      _goldAmount: 0
+      _targetBuilding: 0
+    - _type: 1
+      _enemy: {fileID: 11400000, guid: 1fe4aff8c1bad72eb937a50874c2dc4f, type: 2}
+      _goldAmount: 0
+      _targetBuilding: 0
+    _isAvailable: 0
   - _level: 3
     _levelName: Ocean
     _levelIcon: {fileID: 3210994475073176143, guid: 0ca550bc406330a4493c8d901e3ea819, type: 3}
     _levelPortrait: {fileID: 3210994475073176143, guid: 0ca550bc406330a4493c8d901e3ea819, type: 3}
-    _steps: []
-    _isAvailable: 1
+    _steps:
+    - _type: 0
+      _enemy: {fileID: 11400000, guid: ef6523a57f000600abb5e70e13fa24a3, type: 2}
+      _goldAmount: 0
+      _targetBuilding: 0
+    - _type: 0
+      _enemy: {fileID: 11400000, guid: cabbad3a921a8a438bbed9a791c48126, type: 2}
+      _goldAmount: 0
+      _targetBuilding: 0
+    - _type: 2
+      _enemy: {fileID: 0}
+      _goldAmount: 100
+      _targetBuilding: 0
+    - _type: 0
+      _enemy: {fileID: 11400000, guid: ef6523a57f000600abb5e70e13fa24a3, type: 2}
+      _goldAmount: 0
+      _targetBuilding: 0
+    - _type: 3
+      _enemy: {fileID: 0}
+      _goldAmount: 0
+      _targetBuilding: 2
+    - _type: 0
+      _enemy: {fileID: 11400000, guid: cabbad3a921a8a438bbed9a791c48126, type: 2}
+      _goldAmount: 0
+      _targetBuilding: 0
+    - _type: 0
+      _enemy: {fileID: 11400000, guid: ef6523a57f000600abb5e70e13fa24a3, type: 2}
+      _goldAmount: 0
+      _targetBuilding: 0
+    - _type: 1
+      _enemy: {fileID: 11400000, guid: 1fe4aff8c1bad72eb937a50874c2dc4f, type: 2}
+      _goldAmount: 0
+      _targetBuilding: 0
+    _isAvailable: 0
   - _level: 4
     _levelName: Frozen Mountain
     _levelIcon: {fileID: 1404248521807868572, guid: 0ca550bc406330a4493c8d901e3ea819, type: 3}
     _levelPortrait: {fileID: 1404248521807868572, guid: 0ca550bc406330a4493c8d901e3ea819, type: 3}
-    _steps: []
+    _steps:
+    - _type: 0
+      _enemy: {fileID: 11400000, guid: ef6523a57f000600abb5e70e13fa24a3, type: 2}
+      _goldAmount: 0
+      _targetBuilding: 0
+    - _type: 0
+      _enemy: {fileID: 11400000, guid: cabbad3a921a8a438bbed9a791c48126, type: 2}
+      _goldAmount: 0
+      _targetBuilding: 0
+    - _type: 2
+      _enemy: {fileID: 0}
+      _goldAmount: 100
+      _targetBuilding: 0
+    - _type: 0
+      _enemy: {fileID: 11400000, guid: ef6523a57f000600abb5e70e13fa24a3, type: 2}
+      _goldAmount: 0
+      _targetBuilding: 0
+    - _type: 3
+      _enemy: {fileID: 0}
+      _goldAmount: 0
+      _targetBuilding: 2
+    - _type: 0
+      _enemy: {fileID: 11400000, guid: cabbad3a921a8a438bbed9a791c48126, type: 2}
+      _goldAmount: 0
+      _targetBuilding: 0
+    - _type: 0
+      _enemy: {fileID: 11400000, guid: ef6523a57f000600abb5e70e13fa24a3, type: 2}
+      _goldAmount: 0
+      _targetBuilding: 0
+    - _type: 1
+      _enemy: {fileID: 11400000, guid: 1fe4aff8c1bad72eb937a50874c2dc4f, type: 2}
+      _goldAmount: 0
+      _targetBuilding: 0
     _isAvailable: 0
   - _level: 5
     _levelName: Cave
     _levelIcon: {fileID: 5680673976619871293, guid: 0ca550bc406330a4493c8d901e3ea819, type: 3}
     _levelPortrait: {fileID: 5680673976619871293, guid: 0ca550bc406330a4493c8d901e3ea819, type: 3}
-    _steps: []
+    _steps:
+    - _type: 0
+      _enemy: {fileID: 11400000, guid: ef6523a57f000600abb5e70e13fa24a3, type: 2}
+      _goldAmount: 0
+      _targetBuilding: 0
+    - _type: 0
+      _enemy: {fileID: 11400000, guid: cabbad3a921a8a438bbed9a791c48126, type: 2}
+      _goldAmount: 0
+      _targetBuilding: 0
+    - _type: 2
+      _enemy: {fileID: 0}
+      _goldAmount: 100
+      _targetBuilding: 0
+    - _type: 0
+      _enemy: {fileID: 11400000, guid: ef6523a57f000600abb5e70e13fa24a3, type: 2}
+      _goldAmount: 0
+      _targetBuilding: 0
+    - _type: 3
+      _enemy: {fileID: 0}
+      _goldAmount: 0
+      _targetBuilding: 2
+    - _type: 0
+      _enemy: {fileID: 11400000, guid: cabbad3a921a8a438bbed9a791c48126, type: 2}
+      _goldAmount: 0
+      _targetBuilding: 0
+    - _type: 0
+      _enemy: {fileID: 11400000, guid: ef6523a57f000600abb5e70e13fa24a3, type: 2}
+      _goldAmount: 0
+      _targetBuilding: 0
+    - _type: 1
+      _enemy: {fileID: 11400000, guid: 1fe4aff8c1bad72eb937a50874c2dc4f, type: 2}
+      _goldAmount: 0
+      _targetBuilding: 0
     _isAvailable: 0
   - _level: 6
     _levelName: Volcano
     _levelIcon: {fileID: -7969225410775572928, guid: 0ca550bc406330a4493c8d901e3ea819, type: 3}
     _levelPortrait: {fileID: -7969225410775572928, guid: 0ca550bc406330a4493c8d901e3ea819, type: 3}
-    _steps: []
+    _steps:
+    - _type: 0
+      _enemy: {fileID: 11400000, guid: ef6523a57f000600abb5e70e13fa24a3, type: 2}
+      _goldAmount: 0
+      _targetBuilding: 0
+    - _type: 0
+      _enemy: {fileID: 11400000, guid: cabbad3a921a8a438bbed9a791c48126, type: 2}
+      _goldAmount: 0
+      _targetBuilding: 0
+    - _type: 2
+      _enemy: {fileID: 0}
+      _goldAmount: 100
+      _targetBuilding: 0
+    - _type: 0
+      _enemy: {fileID: 11400000, guid: ef6523a57f000600abb5e70e13fa24a3, type: 2}
+      _goldAmount: 0
+      _targetBuilding: 0
+    - _type: 3
+      _enemy: {fileID: 0}
+      _goldAmount: 0
+      _targetBuilding: 2
+    - _type: 0
+      _enemy: {fileID: 11400000, guid: cabbad3a921a8a438bbed9a791c48126, type: 2}
+      _goldAmount: 0
+      _targetBuilding: 0
+    - _type: 0
+      _enemy: {fileID: 11400000, guid: ef6523a57f000600abb5e70e13fa24a3, type: 2}
+      _goldAmount: 0
+      _targetBuilding: 0
+    - _type: 1
+      _enemy: {fileID: 11400000, guid: 1fe4aff8c1bad72eb937a50874c2dc4f, type: 2}
+      _goldAmount: 0
+      _targetBuilding: 0
     _isAvailable: 0
   - _level: 7
     _levelName: Void
     _levelIcon: {fileID: -1613414928997637167, guid: 0ca550bc406330a4493c8d901e3ea819, type: 3}
     _levelPortrait: {fileID: -1613414928997637167, guid: 0ca550bc406330a4493c8d901e3ea819, type: 3}
-    _steps: []
+    _steps:
+    - _type: 0
+      _enemy: {fileID: 11400000, guid: ef6523a57f000600abb5e70e13fa24a3, type: 2}
+      _goldAmount: 0
+      _targetBuilding: 0
+    - _type: 0
+      _enemy: {fileID: 11400000, guid: cabbad3a921a8a438bbed9a791c48126, type: 2}
+      _goldAmount: 0
+      _targetBuilding: 0
+    - _type: 2
+      _enemy: {fileID: 0}
+      _goldAmount: 100
+      _targetBuilding: 0
+    - _type: 0
+      _enemy: {fileID: 11400000, guid: ef6523a57f000600abb5e70e13fa24a3, type: 2}
+      _goldAmount: 0
+      _targetBuilding: 0
+    - _type: 3
+      _enemy: {fileID: 0}
+      _goldAmount: 0
+      _targetBuilding: 2
+    - _type: 0
+      _enemy: {fileID: 11400000, guid: cabbad3a921a8a438bbed9a791c48126, type: 2}
+      _goldAmount: 0
+      _targetBuilding: 0
+    - _type: 0
+      _enemy: {fileID: 11400000, guid: ef6523a57f000600abb5e70e13fa24a3, type: 2}
+      _goldAmount: 0
+      _targetBuilding: 0
+    - _type: 1
+      _enemy: {fileID: 11400000, guid: 1fe4aff8c1bad72eb937a50874c2dc4f, type: 2}
+      _goldAmount: 0
+      _targetBuilding: 0
     _isAvailable: 0

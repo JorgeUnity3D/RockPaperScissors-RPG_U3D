@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cebc5b9e212c692429a5dd7e0d16bf2f, type: 3}
+  m_Name: Language_Orc
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  _data:
+    language: 0
+    words:
+    - word: 1
+      icon: {fileID: 7072420908752014796, guid: 5ce3d45ee413d667a821896b68c55780, type: 3}
+    - word: 2
+      icon: {fileID: 1401453359701939511, guid: 5ce3d45ee413d667a821896b68c55780, type: 3}
+    - word: 3
+      icon: {fileID: 6638431223737651811, guid: 5ce3d45ee413d667a821896b68c55780, type: 3}
+    - word: 4
+      icon: {fileID: -9050506261184236702, guid: 5ce3d45ee413d667a821896b68c55780, type: 3}
+    - word: 5
+      icon: {fileID: -7694182991577264921, guid: 5ce3d45ee413d667a821896b68c55780, type: 3}
