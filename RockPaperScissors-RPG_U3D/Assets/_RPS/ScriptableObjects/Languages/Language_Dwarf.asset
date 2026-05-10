@@ -22,15 +22,15 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   _data:
-    language: 0
+    language: 2
     words:
     - word: 1
-      icon: {fileID: 7072420908752014796, guid: 5ce3d45ee413d667a821896b68c55780, type: 3}
+      icon: {fileID: 1611970466183296693, guid: 5ce3d45ee413d667a821896b68c55780, type: 3}
     - word: 2
-      icon: {fileID: 1401453359701939511, guid: 5ce3d45ee413d667a821896b68c55780, type: 3}
+      icon: {fileID: 3204060552600179721, guid: 5ce3d45ee413d667a821896b68c55780, type: 3}
     - word: 3
-      icon: {fileID: 6638431223737651811, guid: 5ce3d45ee413d667a821896b68c55780, type: 3}
+      icon: {fileID: -4422727704624733897, guid: 5ce3d45ee413d667a821896b68c55780, type: 3}
     - word: 4
-      icon: {fileID: -9050506261184236702, guid: 5ce3d45ee413d667a821896b68c55780, type: 3}
+      icon: {fileID: 7792648754491992087, guid: 5ce3d45ee413d667a821896b68c55780, type: 3}
     - word: 5
-      icon: {fileID: -7694182991577264921, guid: 5ce3d45ee413d667a821896b68c55780, type: 3}
+      icon: {fileID: -9042237875535731391, guid: 5ce3d45ee413d667a821896b68c55780, type: 3}

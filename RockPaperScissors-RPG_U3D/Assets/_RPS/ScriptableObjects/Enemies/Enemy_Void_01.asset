@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 971eb246421c5f94f9c1209bfa370109, type: 3}
-  m_Name: Enemy_03
+  m_Name: Enemy_Void_01
   m_EditorClassIdentifier: Assembly-CSharp::Kapibara.RPS.EnemyScrObj
   serializationData:
     SerializedFormat: 2
@@ -22,30 +22,31 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   _data:
-    _id: 3
-    _name: Stone Guard
-    _portrait: {fileID: -70631063, guid: 03abc9512c2a87143b6653bb0c02902f, type: 3}
-    _maxHealth: 18
-    _mentality: 1
-    _rock: 4
-    _paper: 4
-    _scissor: 2
-    _defense: 8
-    _thorns: 3
-    _crit: 0
-    _superpower: 0
+    _id: 0
+    _name: Void Knight
+    _portrait: {fileID: -5582043908450876262, guid: 843efc42f3a37f105b8aa54c09864735, type: 3}
+    _maxHealth: 30
+    _mentality: 5
+    _rock: 10
+    _paper: 9
+    _scissor: 9
+    _defense: 9
+    _thorns: 5
+    _crit: 10
+    _superpower: 6
     _initialEnergy: 10
-    _energyRecovery: 4
+    _energyRecovery: 6
     _rockCost: 10
     _paperCost: 10
     _scissorCost: 10
     _defenseCost: 10
-    _rockProb: 15
-    _paperProb: 15
-    _scissorProb: 10
-    _defenseProb: 50
+    _rockProb: 25
+    _paperProb: 25
+    _scissorProb: 25
+    _defenseProb: 15
     _energyProb: 10
-    _mentalityMod: 1
-    _goldMin: 15
-    _goldMax: 25
-    _languages: []
+    _mentalityMod: 2
+    _goldMin: 48
+    _goldMax: 72
+    _languages:
+    - {fileID: 11400000, guid: 59f3f3307691d5a4a9b90d062e7e74d6, type: 2}

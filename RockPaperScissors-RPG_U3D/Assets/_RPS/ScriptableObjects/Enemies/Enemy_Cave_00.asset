@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 971eb246421c5f94f9c1209bfa370109, type: 3}
+  m_Name: Enemy_Cave_00
+  m_EditorClassIdentifier: Assembly-CSharp::Kapibara.RPS.EnemyScrObj
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  _data:
+    _id: 0
+    _name: Cave Bat
+    _portrait: {fileID: 194062433656301813, guid: 843efc42f3a37f105b8aa54c09864735, type: 3}
+    _maxHealth: 15
+    _mentality: 4
+    _rock: 2
+    _paper: 3
+    _scissor: 9
+    _defense: 1
+    _thorns: 0
+    _crit: 7
+    _superpower: 0
+    _initialEnergy: 10
+    _energyRecovery: 9
+    _rockCost: 10
+    _paperCost: 10
+    _scissorCost: 10
+    _defenseCost: 10
+    _rockProb: 5
+    _paperProb: 15
+    _scissorProb: 55
+    _defenseProb: 5
+    _energyProb: 20
+    _mentalityMod: 2
+    _goldMin: 25
+    _goldMax: 40
+    _languages:
+    - {fileID: 11400000, guid: 9eb60e1965966ae438e9f1f8862bff77, type: 2}

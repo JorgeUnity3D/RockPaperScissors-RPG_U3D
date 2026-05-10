@@ -66,11 +66,11 @@ MonoBehaviour:
     _levelPortrait: {fileID: 9170327630243124144, guid: 0ca550bc406330a4493c8d901e3ea819, type: 3}
     _steps:
     - _type: 0
-      _enemy: {fileID: 11400000, guid: ef6523a57f000600abb5e70e13fa24a3, type: 2}
+      _enemy: {fileID: 11400000, guid: bb4194550d8240df80f202ccc1029621, type: 2}
       _goldAmount: 0
       _targetBuilding: 0
     - _type: 0
-      _enemy: {fileID: 11400000, guid: cabbad3a921a8a438bbed9a791c48126, type: 2}
+      _enemy: {fileID: 11400000, guid: 6d686ad954d64fad94a5e0297175d303, type: 2}
       _goldAmount: 0
       _targetBuilding: 0
     - _type: 2
@@ -78,23 +78,23 @@ MonoBehaviour:
       _goldAmount: 100
       _targetBuilding: 0
     - _type: 0
-      _enemy: {fileID: 11400000, guid: ef6523a57f000600abb5e70e13fa24a3, type: 2}
+      _enemy: {fileID: 11400000, guid: bb4194550d8240df80f202ccc1029621, type: 2}
       _goldAmount: 0
       _targetBuilding: 0
     - _type: 3
       _enemy: {fileID: 0}
       _goldAmount: 0
-      _targetBuilding: 2
+      _targetBuilding: 3
     - _type: 0
-      _enemy: {fileID: 11400000, guid: cabbad3a921a8a438bbed9a791c48126, type: 2}
+      _enemy: {fileID: 11400000, guid: 6d686ad954d64fad94a5e0297175d303, type: 2}
       _goldAmount: 0
       _targetBuilding: 0
     - _type: 0
-      _enemy: {fileID: 11400000, guid: ef6523a57f000600abb5e70e13fa24a3, type: 2}
+      _enemy: {fileID: 11400000, guid: bb4194550d8240df80f202ccc1029621, type: 2}
       _goldAmount: 0
       _targetBuilding: 0
     - _type: 1
-      _enemy: {fileID: 11400000, guid: 1fe4aff8c1bad72eb937a50874c2dc4f, type: 2}
+      _enemy: {fileID: 11400000, guid: 73a34d7749da42ee9fbd75c5bf045c5e, type: 2}
       _goldAmount: 0
       _targetBuilding: 0
     _isAvailable: 0
@@ -104,11 +104,11 @@ MonoBehaviour:
     _levelPortrait: {fileID: 3210994475073176143, guid: 0ca550bc406330a4493c8d901e3ea819, type: 3}
     _steps:
     - _type: 0
-      _enemy: {fileID: 11400000, guid: ef6523a57f000600abb5e70e13fa24a3, type: 2}
+      _enemy: {fileID: 11400000, guid: be2e2e841ce748ef9fdf2f39f4788f53, type: 2}
       _goldAmount: 0
       _targetBuilding: 0
     - _type: 0
-      _enemy: {fileID: 11400000, guid: cabbad3a921a8a438bbed9a791c48126, type: 2}
+      _enemy: {fileID: 11400000, guid: 1218a5e2e9184edb89c9229d4ef7a0e8, type: 2}
       _goldAmount: 0
       _targetBuilding: 0
     - _type: 2
@@ -116,23 +116,23 @@ MonoBehaviour:
       _goldAmount: 100
       _targetBuilding: 0
     - _type: 0
-      _enemy: {fileID: 11400000, guid: ef6523a57f000600abb5e70e13fa24a3, type: 2}
+      _enemy: {fileID: 11400000, guid: be2e2e841ce748ef9fdf2f39f4788f53, type: 2}
       _goldAmount: 0
       _targetBuilding: 0
     - _type: 3
       _enemy: {fileID: 0}
       _goldAmount: 0
-      _targetBuilding: 2
+      _targetBuilding: 5
     - _type: 0
-      _enemy: {fileID: 11400000, guid: cabbad3a921a8a438bbed9a791c48126, type: 2}
+      _enemy: {fileID: 11400000, guid: 1218a5e2e9184edb89c9229d4ef7a0e8, type: 2}
       _goldAmount: 0
       _targetBuilding: 0
     - _type: 0
-      _enemy: {fileID: 11400000, guid: ef6523a57f000600abb5e70e13fa24a3, type: 2}
+      _enemy: {fileID: 11400000, guid: be2e2e841ce748ef9fdf2f39f4788f53, type: 2}
       _goldAmount: 0
       _targetBuilding: 0
     - _type: 1
-      _enemy: {fileID: 11400000, guid: 1fe4aff8c1bad72eb937a50874c2dc4f, type: 2}
+      _enemy: {fileID: 11400000, guid: a9498374bcd24cc6833667d687228d33, type: 2}
       _goldAmount: 0
       _targetBuilding: 0
     _isAvailable: 0
@@ -142,11 +142,11 @@ MonoBehaviour:
     _levelPortrait: {fileID: 1404248521807868572, guid: 0ca550bc406330a4493c8d901e3ea819, type: 3}
     _steps:
     - _type: 0
-      _enemy: {fileID: 11400000, guid: ef6523a57f000600abb5e70e13fa24a3, type: 2}
+      _enemy: {fileID: 11400000, guid: 7e2d353f933c49cf8f90f42793be4953, type: 2}
       _goldAmount: 0
       _targetBuilding: 0
     - _type: 0
-      _enemy: {fileID: 11400000, guid: cabbad3a921a8a438bbed9a791c48126, type: 2}
+      _enemy: {fileID: 11400000, guid: 35b4bfe11086441d9f13b685de46c5ee, type: 2}
       _goldAmount: 0
       _targetBuilding: 0
     - _type: 2
@@ -154,23 +154,23 @@ MonoBehaviour:
       _goldAmount: 100
       _targetBuilding: 0
     - _type: 0
-      _enemy: {fileID: 11400000, guid: ef6523a57f000600abb5e70e13fa24a3, type: 2}
+      _enemy: {fileID: 11400000, guid: 7e2d353f933c49cf8f90f42793be4953, type: 2}
       _goldAmount: 0
       _targetBuilding: 0
     - _type: 3
       _enemy: {fileID: 0}
       _goldAmount: 0
-      _targetBuilding: 2
+      _targetBuilding: 6
     - _type: 0
-      _enemy: {fileID: 11400000, guid: cabbad3a921a8a438bbed9a791c48126, type: 2}
+      _enemy: {fileID: 11400000, guid: 35b4bfe11086441d9f13b685de46c5ee, type: 2}
       _goldAmount: 0
       _targetBuilding: 0
     - _type: 0
-      _enemy: {fileID: 11400000, guid: ef6523a57f000600abb5e70e13fa24a3, type: 2}
+      _enemy: {fileID: 11400000, guid: 7e2d353f933c49cf8f90f42793be4953, type: 2}
       _goldAmount: 0
       _targetBuilding: 0
     - _type: 1
-      _enemy: {fileID: 11400000, guid: 1fe4aff8c1bad72eb937a50874c2dc4f, type: 2}
+      _enemy: {fileID: 11400000, guid: 5032e2e63b034c3f9c305c59687639bd, type: 2}
       _goldAmount: 0
       _targetBuilding: 0
     _isAvailable: 0
@@ -180,11 +180,11 @@ MonoBehaviour:
     _levelPortrait: {fileID: 5680673976619871293, guid: 0ca550bc406330a4493c8d901e3ea819, type: 3}
     _steps:
     - _type: 0
-      _enemy: {fileID: 11400000, guid: ef6523a57f000600abb5e70e13fa24a3, type: 2}
+      _enemy: {fileID: 11400000, guid: 52b20da6892e45e89733c2d69b9e2514, type: 2}
       _goldAmount: 0
       _targetBuilding: 0
     - _type: 0
-      _enemy: {fileID: 11400000, guid: cabbad3a921a8a438bbed9a791c48126, type: 2}
+      _enemy: {fileID: 11400000, guid: 03d0757d577f472abfbc0b94fcadfbdf, type: 2}
       _goldAmount: 0
       _targetBuilding: 0
     - _type: 2
@@ -192,23 +192,23 @@ MonoBehaviour:
       _goldAmount: 100
       _targetBuilding: 0
     - _type: 0
-      _enemy: {fileID: 11400000, guid: ef6523a57f000600abb5e70e13fa24a3, type: 2}
+      _enemy: {fileID: 11400000, guid: 52b20da6892e45e89733c2d69b9e2514, type: 2}
       _goldAmount: 0
       _targetBuilding: 0
     - _type: 3
       _enemy: {fileID: 0}
       _goldAmount: 0
-      _targetBuilding: 2
+      _targetBuilding: 7
     - _type: 0
-      _enemy: {fileID: 11400000, guid: cabbad3a921a8a438bbed9a791c48126, type: 2}
+      _enemy: {fileID: 11400000, guid: 03d0757d577f472abfbc0b94fcadfbdf, type: 2}
       _goldAmount: 0
       _targetBuilding: 0
     - _type: 0
-      _enemy: {fileID: 11400000, guid: ef6523a57f000600abb5e70e13fa24a3, type: 2}
+      _enemy: {fileID: 11400000, guid: 52b20da6892e45e89733c2d69b9e2514, type: 2}
       _goldAmount: 0
       _targetBuilding: 0
     - _type: 1
-      _enemy: {fileID: 11400000, guid: 1fe4aff8c1bad72eb937a50874c2dc4f, type: 2}
+      _enemy: {fileID: 11400000, guid: 4f4eca4220f34020a671b3d8f3b0048f, type: 2}
       _goldAmount: 0
       _targetBuilding: 0
     _isAvailable: 0
@@ -218,11 +218,11 @@ MonoBehaviour:
     _levelPortrait: {fileID: -7969225410775572928, guid: 0ca550bc406330a4493c8d901e3ea819, type: 3}
     _steps:
     - _type: 0
-      _enemy: {fileID: 11400000, guid: ef6523a57f000600abb5e70e13fa24a3, type: 2}
+      _enemy: {fileID: 11400000, guid: 202d3572aeab450ca86894ce4e0c2481, type: 2}
       _goldAmount: 0
       _targetBuilding: 0
     - _type: 0
-      _enemy: {fileID: 11400000, guid: cabbad3a921a8a438bbed9a791c48126, type: 2}
+      _enemy: {fileID: 11400000, guid: 36e5f7c75e6246a08729395e8ccdab2a, type: 2}
       _goldAmount: 0
       _targetBuilding: 0
     - _type: 2
@@ -230,23 +230,23 @@ MonoBehaviour:
       _goldAmount: 100
       _targetBuilding: 0
     - _type: 0
-      _enemy: {fileID: 11400000, guid: ef6523a57f000600abb5e70e13fa24a3, type: 2}
+      _enemy: {fileID: 11400000, guid: 202d3572aeab450ca86894ce4e0c2481, type: 2}
       _goldAmount: 0
       _targetBuilding: 0
     - _type: 3
       _enemy: {fileID: 0}
       _goldAmount: 0
-      _targetBuilding: 2
+      _targetBuilding: 9
     - _type: 0
-      _enemy: {fileID: 11400000, guid: cabbad3a921a8a438bbed9a791c48126, type: 2}
+      _enemy: {fileID: 11400000, guid: 36e5f7c75e6246a08729395e8ccdab2a, type: 2}
       _goldAmount: 0
       _targetBuilding: 0
     - _type: 0
-      _enemy: {fileID: 11400000, guid: ef6523a57f000600abb5e70e13fa24a3, type: 2}
+      _enemy: {fileID: 11400000, guid: 202d3572aeab450ca86894ce4e0c2481, type: 2}
       _goldAmount: 0
       _targetBuilding: 0
     - _type: 1
-      _enemy: {fileID: 11400000, guid: 1fe4aff8c1bad72eb937a50874c2dc4f, type: 2}
+      _enemy: {fileID: 11400000, guid: 0dde302a809941b7b5dfd4037f46b94a, type: 2}
       _goldAmount: 0
       _targetBuilding: 0
     _isAvailable: 0
@@ -256,11 +256,11 @@ MonoBehaviour:
     _levelPortrait: {fileID: -1613414928997637167, guid: 0ca550bc406330a4493c8d901e3ea819, type: 3}
     _steps:
     - _type: 0
-      _enemy: {fileID: 11400000, guid: ef6523a57f000600abb5e70e13fa24a3, type: 2}
+      _enemy: {fileID: 11400000, guid: bcc7210fda794a72a8c611488a13e36e, type: 2}
       _goldAmount: 0
       _targetBuilding: 0
     - _type: 0
-      _enemy: {fileID: 11400000, guid: cabbad3a921a8a438bbed9a791c48126, type: 2}
+      _enemy: {fileID: 11400000, guid: f23d379d7ac14fc2a04da7bc4bdb24b2, type: 2}
       _goldAmount: 0
       _targetBuilding: 0
     - _type: 2
@@ -268,23 +268,23 @@ MonoBehaviour:
       _goldAmount: 100
       _targetBuilding: 0
     - _type: 0
-      _enemy: {fileID: 11400000, guid: ef6523a57f000600abb5e70e13fa24a3, type: 2}
+      _enemy: {fileID: 11400000, guid: bcc7210fda794a72a8c611488a13e36e, type: 2}
       _goldAmount: 0
       _targetBuilding: 0
-    - _type: 3
+    - _type: 2
       _enemy: {fileID: 0}
-      _goldAmount: 0
+      _goldAmount: 200
       _targetBuilding: 2
     - _type: 0
-      _enemy: {fileID: 11400000, guid: cabbad3a921a8a438bbed9a791c48126, type: 2}
+      _enemy: {fileID: 11400000, guid: f23d379d7ac14fc2a04da7bc4bdb24b2, type: 2}
       _goldAmount: 0
       _targetBuilding: 0
     - _type: 0
-      _enemy: {fileID: 11400000, guid: ef6523a57f000600abb5e70e13fa24a3, type: 2}
+      _enemy: {fileID: 11400000, guid: bcc7210fda794a72a8c611488a13e36e, type: 2}
       _goldAmount: 0
       _targetBuilding: 0
     - _type: 1
-      _enemy: {fileID: 11400000, guid: 1fe4aff8c1bad72eb937a50874c2dc4f, type: 2}
+      _enemy: {fileID: 11400000, guid: 7843697fa615425ab1ded80d34da29dc, type: 2}
       _goldAmount: 0
       _targetBuilding: 0
     _isAvailable: 0

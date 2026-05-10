@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 971eb246421c5f94f9c1209bfa370109, type: 3}
+  m_Name: Enemy_Desert_01
+  m_EditorClassIdentifier: Assembly-CSharp::Kapibara.RPS.EnemyScrObj
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  _data:
+    _id: 0
+    _name: Desert Golem
+    _portrait: {fileID: -8583424898737625535, guid: 843efc42f3a37f105b8aa54c09864735, type: 3}
+    _maxHealth: 17
+    _mentality: 0
+    _rock: 7
+    _paper: 3
+    _scissor: 2
+    _defense: 5
+    _thorns: 2
+    _crit: 0
+    _superpower: 0
+    _initialEnergy: 10
+    _energyRecovery: 4
+    _rockCost: 10
+    _paperCost: 10
+    _scissorCost: 10
+    _defenseCost: 10
+    _rockProb: 55
+    _paperProb: 10
+    _scissorProb: 5
+    _defenseProb: 30
+    _energyProb: 0
+    _mentalityMod: 1
+    _goldMin: 14
+    _goldMax: 22
+    _languages:
+    - {fileID: 11400000, guid: 59f3f3307691d5a4a9b90d062e7e74d6, type: 2}

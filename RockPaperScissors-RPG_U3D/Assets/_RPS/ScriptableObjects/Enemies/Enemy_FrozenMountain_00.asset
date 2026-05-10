@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 971eb246421c5f94f9c1209bfa370109, type: 3}
+  m_Name: Enemy_FrozenMountain_00
+  m_EditorClassIdentifier: Assembly-CSharp::Kapibara.RPS.EnemyScrObj
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  _data:
+    _id: 0
+    _name: Frost Imp
+    _portrait: {fileID: -8245479547354485185, guid: 843efc42f3a37f105b8aa54c09864735, type: 3}
+    _maxHealth: 13
+    _mentality: 5
+    _rock: 2
+    _paper: 4
+    _scissor: 8
+    _defense: 2
+    _thorns: 0
+    _crit: 8
+    _superpower: 0
+    _initialEnergy: 10
+    _energyRecovery: 8
+    _rockCost: 10
+    _paperCost: 10
+    _scissorCost: 10
+    _defenseCost: 10
+    _rockProb: 10
+    _paperProb: 20
+    _scissorProb: 45
+    _defenseProb: 5
+    _energyProb: 20
+    _mentalityMod: 2
+    _goldMin: 20
+    _goldMax: 32
+    _languages:
+    - {fileID: 11400000, guid: 59f3f3307691d5a4a9b90d062e7e74d6, type: 2}

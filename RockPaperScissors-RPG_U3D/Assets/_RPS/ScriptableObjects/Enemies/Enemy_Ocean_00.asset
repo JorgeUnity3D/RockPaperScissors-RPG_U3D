@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 971eb246421c5f94f9c1209bfa370109, type: 3}
-  m_Name: Enemy_05
+  m_Name: Enemy_Ocean_00
   m_EditorClassIdentifier: Assembly-CSharp::Kapibara.RPS.EnemyScrObj
   serializationData:
     SerializedFormat: 2
@@ -22,30 +22,31 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   _data:
-    _id: 5
-    _name: Berserker
-    _portrait: {fileID: -370416032, guid: 03abc9512c2a87143b6653bb0c02902f, type: 3}
-    _maxHealth: 20
-    _mentality: 0
-    _rock: 7
-    _paper: 2
-    _scissor: 8
-    _defense: 1
-    _thorns: 4
-    _crit: 5
+    _id: 0
+    _name: Sea Serpent
+    _portrait: {fileID: 8423667748458784587, guid: 843efc42f3a37f105b8aa54c09864735, type: 3}
+    _maxHealth: 14
+    _mentality: 4
+    _rock: 3
+    _paper: 7
+    _scissor: 5
+    _defense: 3
+    _thorns: 0
+    _crit: 3
     _superpower: 0
     _initialEnergy: 10
-    _energyRecovery: 5
+    _energyRecovery: 7
     _rockCost: 10
     _paperCost: 10
     _scissorCost: 10
     _defenseCost: 10
-    _rockProb: 40
-    _paperProb: 5
-    _scissorProb: 45
-    _defenseProb: 5
-    _energyProb: 5
-    _mentalityMod: 1
-    _goldMin: 25
-    _goldMax: 40
-    _languages: []
+    _rockProb: 10
+    _paperProb: 40
+    _scissorProb: 30
+    _defenseProb: 10
+    _energyProb: 10
+    _mentalityMod: 2
+    _goldMin: 15
+    _goldMax: 25
+    _languages:
+    - {fileID: 11400000, guid: 8f07e65fa5c083ec1bc9b552dac6a33a, type: 2}

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 971eb246421c5f94f9c1209bfa370109, type: 3}
-  m_Name: Enemy_07
+  m_Name: Enemy_Void_Boss
   m_EditorClassIdentifier: Assembly-CSharp::Kapibara.RPS.EnemyScrObj
   serializationData:
     SerializedFormat: 2
@@ -22,18 +22,18 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   _data:
-    _id: 7
-    _name: Dragon Knight
-    _portrait: {fileID: 1301242283, guid: 03abc9512c2a87143b6653bb0c02902f, type: 3}
-    _maxHealth: 25
-    _mentality: 6
-    _rock: 8
-    _paper: 7
-    _scissor: 7
-    _defense: 7
-    _thorns: 5
-    _crit: 12
-    _superpower: 8
+    _id: 0
+    _name: Void Sovereign
+    _portrait: {fileID: -370416032, guid: 03abc9512c2a87143b6653bb0c02902f, type: 3}
+    _maxHealth: 58
+    _mentality: 10
+    _rock: 14
+    _paper: 13
+    _scissor: 12
+    _defense: 13
+    _thorns: 10
+    _crit: 18
+    _superpower: 12
     _initialEnergy: 10
     _energyRecovery: 6
     _rockCost: 10
@@ -46,6 +46,8 @@ MonoBehaviour:
     _defenseProb: 15
     _energyProb: 10
     _mentalityMod: 3
-    _goldMin: 40
-    _goldMax: 60
-    _languages: []
+    _goldMin: 80
+    _goldMax: 120
+    _languages:
+    - {fileID: 11400000, guid: 8f07e65fa5c083ec1bc9b552dac6a33a, type: 2}
+    - {fileID: 11400000, guid: 59f3f3307691d5a4a9b90d062e7e74d6, type: 2}

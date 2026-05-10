@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 971eb246421c5f94f9c1209bfa370109, type: 3}
-  m_Name: Enemy_02
+  m_Name: Enemy_FrozenMountain_01
   m_EditorClassIdentifier: Assembly-CSharp::Kapibara.RPS.EnemyScrObj
   serializationData:
     SerializedFormat: 2
@@ -22,30 +22,31 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   _data:
-    _id: 2
-    _name: Elf Scout
-    _portrait: {fileID: -1914663959, guid: 03abc9512c2a87143b6653bb0c02902f, type: 3}
-    _maxHealth: 10
-    _mentality: 4
-    _rock: 2
-    _paper: 3
-    _scissor: 6
-    _defense: 2
-    _thorns: 0
-    _crit: 5
+    _id: 0
+    _name: Ice Golem
+    _portrait: {fileID: 8483889708082720890, guid: 843efc42f3a37f105b8aa54c09864735, type: 3}
+    _maxHealth: 22
+    _mentality: 0
+    _rock: 5
+    _paper: 5
+    _scissor: 3
+    _defense: 10
+    _thorns: 4
+    _crit: 0
     _superpower: 0
     _initialEnergy: 10
-    _energyRecovery: 8
+    _energyRecovery: 4
     _rockCost: 10
     _paperCost: 10
     _scissorCost: 10
     _defenseCost: 10
-    _rockProb: 10
-    _paperProb: 20
-    _scissorProb: 35
-    _defenseProb: 10
-    _energyProb: 25
-    _mentalityMod: 2
-    _goldMin: 12
-    _goldMax: 20
-    _languages: []
+    _rockProb: 20
+    _paperProb: 15
+    _scissorProb: 10
+    _defenseProb: 55
+    _energyProb: 0
+    _mentalityMod: 1
+    _goldMin: 22
+    _goldMax: 38
+    _languages:
+    - {fileID: 11400000, guid: 8f07e65fa5c083ec1bc9b552dac6a33a, type: 2}

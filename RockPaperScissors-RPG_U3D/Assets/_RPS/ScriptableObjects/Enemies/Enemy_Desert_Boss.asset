@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 971eb246421c5f94f9c1209bfa370109, type: 3}
-  m_Name: Enemy_00
+  m_Name: Enemy_Desert_Boss
   m_EditorClassIdentifier: Assembly-CSharp::Kapibara.RPS.EnemyScrObj
   serializationData:
     SerializedFormat: 2
@@ -23,29 +23,31 @@ MonoBehaviour:
     SerializationNodes: []
   _data:
     _id: 0
-    _name: Goblin
-    _portrait: {fileID: 8797648088622834891, guid: 03abc9512c2a87143b6653bb0c02902f, type: 3}
-    _maxHealth: 8
-    _mentality: 0
-    _rock: 3
-    _paper: 3
+    _name: Dune Warlord
+    _portrait: {fileID: -6399477289438276639, guid: 03abc9512c2a87143b6653bb0c02902f, type: 3}
+    _maxHealth: 28
+    _mentality: 1
+    _rock: 10
+    _paper: 4
     _scissor: 3
-    _defense: 2
-    _thorns: 0
-    _crit: 0
+    _defense: 8
+    _thorns: 4
+    _crit: 2
     _superpower: 0
     _initialEnergy: 10
-    _energyRecovery: 5
+    _energyRecovery: 4
     _rockCost: 10
     _paperCost: 10
     _scissorCost: 10
     _defenseCost: 10
-    _rockProb: 35
-    _paperProb: 30
-    _scissorProb: 25
-    _defenseProb: 10
-    _energyProb: 0
+    _rockProb: 50
+    _paperProb: 10
+    _scissorProb: 5
+    _defenseProb: 30
+    _energyProb: 5
     _mentalityMod: 1
-    _goldMin: 5
-    _goldMax: 10
-    _languages: []
+    _goldMin: 25
+    _goldMax: 40
+    _languages:
+    - {fileID: 11400000, guid: 9eb60e1965966ae438e9f1f8862bff77, type: 2}
+    - {fileID: 11400000, guid: 59f3f3307691d5a4a9b90d062e7e74d6, type: 2}

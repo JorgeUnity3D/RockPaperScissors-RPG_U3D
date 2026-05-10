@@ -91,12 +91,22 @@ namespace Kapibara.Util.Editor
 		{
 			_newAssetName = s_categories[_selectedCategoryIndex].DefaultName;
 			RefreshAssets();
+			EditorApplication.projectChanged += OnProjectChanged;
 		}
 
 		private void OnDisable()
 		{
+			EditorApplication.projectChanged -= OnProjectChanged;
 			DestroyEmbeddedEditor();
 			DestroySubViewInstances();
+		}
+
+		private void OnProjectChanged()
+		{
+			if (_editingAsset == null)
+				CloseDetailView();
+			RefreshAssets();
+			Repaint();
 		}
 
 		// ── OnGUI ──────────────────────────────────────────────────────────────────
@@ -283,7 +293,8 @@ namespace Kapibara.Util.Editor
 
 			for (int i = 0; i < _assets.Count; i++)
 			{
-				ScriptableObject asset   = _assets[i];
+				ScriptableObject asset = _assets[i];
+				if (asset == null) continue;
 				Rect rowRect    = EditorGUILayout.GetControlRect(false, ROW_H);
 				EditorGUI.DrawRect(rowRect, i % 2 == 0 ? RowEven : RowOdd);
 				float btnY      = rowRect.y + 4f;
@@ -343,7 +354,10 @@ namespace Kapibara.Util.Editor
 			EditorGUI.EndDisabledGroup();
 			GUILayout.Space(6f);
 			if (GUILayout.Button("Ping", EditorStyles.toolbarButton, GUILayout.Width(40f)))
+			{
+				Selection.activeObject = _editingAsset;
 				EditorGUIUtility.PingObject(_editingAsset);
+			}
 			EditorGUILayout.EndHorizontal();
 
 			if (goBack)  { CloseDetailView(); return; }
@@ -377,7 +391,6 @@ namespace Kapibara.Util.Editor
 			_editingAssetIndex = _assets.IndexOf(asset);
 			_embeddedEditor    = UnityEditor.Editor.CreateEditor(asset);
 			_detailScroll      = Vector2.zero;
-			Selection.activeObject = asset;
 		}
 
 		private void CloseDetailView()

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 971eb246421c5f94f9c1209bfa370109, type: 3}
-  m_Name: Enemy_01
+  m_Name: Enemy_Volcano_00
   m_EditorClassIdentifier: Assembly-CSharp::Kapibara.RPS.EnemyScrObj
   serializationData:
     SerializedFormat: 2
@@ -22,30 +22,31 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   _data:
-    _id: 1
-    _name: Orc Brute
-    _portrait: {fileID: -6399477289438276639, guid: 03abc9512c2a87143b6653bb0c02902f, type: 3}
-    _maxHealth: 13
-    _mentality: 1
-    _rock: 6
-    _paper: 2
-    _scissor: 2
-    _defense: 4
-    _thorns: 1
-    _crit: 0
+    _id: 0
+    _name: Lava Sprite
+    _portrait: {fileID: 4733236076421836986, guid: 843efc42f3a37f105b8aa54c09864735, type: 3}
+    _maxHealth: 18
+    _mentality: 3
+    _rock: 8
+    _paper: 3
+    _scissor: 6
+    _defense: 2
+    _thorns: 3
+    _crit: 10
     _superpower: 0
     _initialEnergy: 10
-    _energyRecovery: 5
+    _energyRecovery: 6
     _rockCost: 10
     _paperCost: 10
     _scissorCost: 10
     _defenseCost: 10
-    _rockProb: 50
+    _rockProb: 45
     _paperProb: 10
-    _scissorProb: 15
-    _defenseProb: 25
-    _energyProb: 0
-    _mentalityMod: 1
-    _goldMin: 8
-    _goldMax: 15
-    _languages: []
+    _scissorProb: 30
+    _defenseProb: 5
+    _energyProb: 10
+    _mentalityMod: 2
+    _goldMin: 32
+    _goldMax: 52
+    _languages:
+    - {fileID: 11400000, guid: 9eb60e1965966ae438e9f1f8862bff77, type: 2}

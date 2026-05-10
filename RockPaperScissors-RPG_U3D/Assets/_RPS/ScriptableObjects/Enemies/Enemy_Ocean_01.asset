@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 971eb246421c5f94f9c1209bfa370109, type: 3}
-  m_Name: Enemy_06
+  m_Name: Enemy_Ocean_01
   m_EditorClassIdentifier: Assembly-CSharp::Kapibara.RPS.EnemyScrObj
   serializationData:
     SerializedFormat: 2
@@ -22,30 +22,31 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   _data:
-    _id: 6
-    _name: Assassin
-    _portrait: {fileID: -1067249927, guid: 03abc9512c2a87143b6653bb0c02902f, type: 3}
-    _maxHealth: 14
-    _mentality: 5
-    _rock: 3
-    _paper: 6
-    _scissor: 9
-    _defense: 3
+    _id: 0
+    _name: Tide Shaman
+    _portrait: {fileID: 3174213229076479155, guid: 843efc42f3a37f105b8aa54c09864735, type: 3}
+    _maxHealth: 13
+    _mentality: 8
+    _rock: 2
+    _paper: 5
+    _scissor: 2
+    _defense: 2
     _thorns: 0
-    _crit: 18
-    _superpower: 3
+    _crit: 5
+    _superpower: 6
     _initialEnergy: 10
-    _energyRecovery: 7
+    _energyRecovery: 10
     _rockCost: 10
     _paperCost: 10
     _scissorCost: 10
     _defenseCost: 10
-    _rockProb: 15
+    _rockProb: 5
     _paperProb: 25
-    _scissorProb: 40
-    _defenseProb: 5
-    _energyProb: 15
-    _mentalityMod: 2
-    _goldMin: 30
-    _goldMax: 48
-    _languages: []
+    _scissorProb: 15
+    _defenseProb: 10
+    _energyProb: 45
+    _mentalityMod: 3
+    _goldMin: 18
+    _goldMax: 28
+    _languages:
+    - {fileID: 11400000, guid: 9eb60e1965966ae438e9f1f8862bff77, type: 2}

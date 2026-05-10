@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 971eb246421c5f94f9c1209bfa370109, type: 3}
-  m_Name: Enemy_04
+  m_Name: Enemy_Cave_01
   m_EditorClassIdentifier: Assembly-CSharp::Kapibara.RPS.EnemyScrObj
   serializationData:
     SerializedFormat: 2
@@ -22,30 +22,31 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   _data:
-    _id: 4
-    _name: Shadow Mage
-    _portrait: {fileID: -2686291510178866453, guid: 03abc9512c2a87143b6653bb0c02902f, type: 3}
-    _maxHealth: 11
-    _mentality: 7
-    _rock: 2
-    _paper: 5
+    _id: 1
+    _name: Cave Troll
+    _portrait: {fileID: 2925835854707207079, guid: 843efc42f3a37f105b8aa54c09864735, type: 3}
+    _maxHealth: 25
+    _mentality: 0
+    _rock: 9
+    _paper: 2
     _scissor: 3
-    _defense: 2
-    _thorns: 0
-    _crit: 8
-    _superpower: 5
+    _defense: 5
+    _thorns: 6
+    _crit: 0
+    _superpower: 0
     _initialEnergy: 10
-    _energyRecovery: 10
+    _energyRecovery: 4
     _rockCost: 10
     _paperCost: 10
     _scissorCost: 10
     _defenseCost: 10
-    _rockProb: 10
-    _paperProb: 20
-    _scissorProb: 15
-    _defenseProb: 10
-    _energyProb: 45
-    _mentalityMod: 3
-    _goldMin: 20
-    _goldMax: 32
-    _languages: []
+    _rockProb: 60
+    _paperProb: 5
+    _scissorProb: 10
+    _defenseProb: 20
+    _energyProb: 5
+    _mentalityMod: 1
+    _goldMin: 28
+    _goldMax: 45
+    _languages:
+    - {fileID: 11400000, guid: 59f3f3307691d5a4a9b90d062e7e74d6, type: 2}

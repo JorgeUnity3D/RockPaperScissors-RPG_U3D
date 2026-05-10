@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 971eb246421c5f94f9c1209bfa370109, type: 3}
+  m_Name: Enemy_Ocean_Boss
+  m_EditorClassIdentifier: Assembly-CSharp::Kapibara.RPS.EnemyScrObj
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  _data:
+    _id: 0
+    _name: Deep Leviathan
+    _portrait: {fileID: -2686291510178866453, guid: 03abc9512c2a87143b6653bb0c02902f, type: 3}
+    _maxHealth: 30
+    _mentality: 5
+    _rock: 5
+    _paper: 10
+    _scissor: 7
+    _defense: 5
+    _thorns: 2
+    _crit: 6
+    _superpower: 4
+    _initialEnergy: 10
+    _energyRecovery: 6
+    _rockCost: 10
+    _paperCost: 10
+    _scissorCost: 10
+    _defenseCost: 10
+    _rockProb: 10
+    _paperProb: 35
+    _scissorProb: 25
+    _defenseProb: 15
+    _energyProb: 15
+    _mentalityMod: 2
+    _goldMin: 30
+    _goldMax: 50
+    _languages:
+    - {fileID: 11400000, guid: 8f07e65fa5c083ec1bc9b552dac6a33a, type: 2}
+    - {fileID: 11400000, guid: 9eb60e1965966ae438e9f1f8862bff77, type: 2}
