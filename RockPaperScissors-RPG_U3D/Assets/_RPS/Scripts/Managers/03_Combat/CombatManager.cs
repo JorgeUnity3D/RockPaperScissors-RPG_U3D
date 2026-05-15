@@ -57,6 +57,7 @@ namespace Kapibara.RPS
 
 			EnemyData data = _context.CurrentStep.Enemy.Data;
 			_enemy = new Enemy(data);
+			_enemy.LanguageRoll();
 
 			_combatUI.SetData(
 				_enemy.Portrait,
@@ -173,8 +174,8 @@ namespace Kapibara.RPS
 			// ── Update UI ─────────────────────────────────────────────────────────
 			_combatUI.RefreshPlayerBars(_playerHP, _playerEnergy);
 			_combatUI.RefreshEnemyBars(_enemy.CurrentHealth, _enemy.CurrentEnergy);
-			_combatUI.ShowPlayerActionBubble(null, playerDamageDealt);
-			_combatUI.ShowEnemyActionBubble(null, enemyDamageDealt);
+			_combatUI.ShowPlayerActionBubble(GetActionIcon(playerAction), playerDamageDealt);
+			_combatUI.ShowEnemyActionBubble(GetActionIcon(enemyAction), enemyDamageDealt);
 
 			StartCoroutine(WaitThenContinue());
 		}
@@ -214,6 +215,12 @@ namespace Kapibara.RPS
 		#endregion
 
 		#region HELPERS
+
+		private Sprite GetActionIcon(Actions action)
+		{
+			if (_enemy.CurrentLanguage == null) return null;
+			return _enemy.CurrentLanguage.GetActionIcon(action);
+		}
 
 		private int PlayerActionCost(Actions action)
 		{
