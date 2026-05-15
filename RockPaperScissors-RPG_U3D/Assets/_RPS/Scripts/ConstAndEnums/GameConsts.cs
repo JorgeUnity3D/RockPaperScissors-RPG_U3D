@@ -17,12 +17,10 @@ namespace Kapibara.RPS
 		public const string MAIN_MENU_SCENE = "01_MainMenu";
 		/// <summary>Nombre del archivo de escena de la ciudad.</summary>
 		public const string TOWN_SCENE = "02_Town";
-		/// <summary>Nombre del archivo de escena del mapa.</summary>
-		public const string MAP_SCENE = "03_Map";
 		/// <summary>Nombre del archivo de escena de combate.</summary>
-		public const string COMBAT_SCENE = "04_Combat";
+		public const string COMBAT_SCENE = "03_Combat";
 		/// <summary>Nombre del archivo de escena de carga.</summary>
-		public const string LOADING_SCENE = "05_Loading";
+		public const string LOADING_SCENE = "04_Loading";
 
 		/// <summary>Mapeo de enum GameScenes a nombre de escena para cargar con SceneManager.</summary>
 		public static readonly Dictionary<GameScenes, string> SceneNames = new Dictionary<GameScenes, string>()
@@ -35,9 +33,6 @@ namespace Kapibara.RPS
 			},
 			{
 				GameScenes.TOWN, TOWN_SCENE
-			},
-			{
-				GameScenes.MAP, MAP_SCENE
 			},
 			{
 				GameScenes.COMBAT, COMBAT_SCENE
@@ -60,9 +55,6 @@ namespace Kapibara.RPS
 				TOWN_SCENE, GameScenes.TOWN
 			},
 			{
-				MAP_SCENE, GameScenes.MAP
-			},
-			{
 				COMBAT_SCENE, GameScenes.COMBAT
 			},
 			{
@@ -71,6 +63,14 @@ namespace Kapibara.RPS
 		};
 
         #endregion
+
+		#region COMBAT
+
+		public const int   COMBAT_MAX_ROUNDS  = 10;
+		public const int   COMBAT_MAX_ENERGY  = 100;
+		public const float COMBAT_ROUND_DELAY = 2f;
+
+		#endregion
 
 		#region ATTRIBUTE_MODIFIER
 

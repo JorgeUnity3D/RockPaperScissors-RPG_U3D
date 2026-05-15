@@ -12,12 +12,10 @@ namespace Kapibara.RPS
 		MAIN_MENU = 1,
 		/// <summary>Escena de la ciudad con todos los edificios.</summary>
 		TOWN = 2,
-		/// <summary>Mapa de niveles (no implementado).</summary>
-		MAP = 3,
 		/// <summary>Escena de combate (no implementada).</summary>
-		COMBAT = 4,
+		COMBAT = 3,
 		/// <summary>Pantalla de carga entre escenas.</summary>
-		LOAD = 5
+		LOAD = 4
 	}
 
 	/// <summary>Identifica cada estadística del jugador; usado como clave en diccionarios y modificadores.</summary>

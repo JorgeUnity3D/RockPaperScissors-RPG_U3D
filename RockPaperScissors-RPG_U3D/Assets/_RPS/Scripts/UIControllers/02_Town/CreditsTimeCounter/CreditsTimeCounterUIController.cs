@@ -59,19 +59,13 @@ namespace Kapibara.RPS
 		#region CONTROL
 		private void SetCreditsUI(int creditsLeft)
 		{
-			//Debug.Log($"[CreditsTimeCounterUIController] SetCreditsUI() -> ");			
 			for (int i = 0; i < _credits.Count; i++)
 			{
-				_credits[i].sprite = creditsLeft == 0 ? 
-										_usedCredit : i < creditsLeft ? 
+				_credits[i].sprite = creditsLeft == 0 ?
+										_usedCredit : i < creditsLeft ?
 											_unusedCredit : _usedCredit;
 			}
-			//if (!Manager.CreditsAtMax)
-			//{
-			//	Manager.StartTimeCounter();
-			//}
-
-			//timeCounterText.transform.parent.gameObject.SetActive(!Manager.CreditsAtMax);
+			_timeCounterHolder.SetActive(!_creditTimeCounter.CreditsAtMax);
 		}
 
 		private void SetTimeCounterUI(float timeToDisplay)

@@ -279,6 +279,11 @@ Before combat can be built, all data structures must be stable.
 2. **Implement `TravelManager.TravelToLevel()`**: deduct one horse use (gate behind count > 0), set selected level in `AppContext` or a `CombatContext`, load `GameScenes.MAP` or `GameScenes.COMBAT` via `SceneService`.
 3. **Add adjacency unlock display in `TravelUIController`**: grey out locked levels; unlock based on `MapLevel.IsAvailable`; set `IsAvailable=true` on adjacent levels when a level is cleared (requires combat first, but the display logic can be wired now).
 
+**Phase 3 Status (data complete as of 2026-05-10):**
+- ✅ Task 1 — step-based `MapStep` system replaces legacy `EnemyDataObject`. `EnemyScrObj` holds HP, probabilities, gold, languages. All 7 biomes fully populated in `MapLevels.asset`.
+- ❌ Task 2 — `TravelManager.TravelToLevel()` is still a stub. **This is the Phase 4 entry point.** Implement first: deduct horse use, store selected level's step list in `CombatContext`, load combat scene.
+- ⚠️ Task 3 — `TravelUIController` renders all levels; `IsAvailable` display is wired; unlock-on-clear (set adjacent `IsAvailable=true`) deferred to Phase 6 since it requires a combat-result event.
+
 ---
 
 ### Phase 4 — Combat Core (MVP)

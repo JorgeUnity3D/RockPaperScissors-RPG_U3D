@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_RPS/Scenes/02_Town.unity
     guid: cd49191b371fa2d499d87c4cc386aa13
+  - enabled: 1
+    path: Assets/_RPS/Scenes/03_Combat.unity
+    guid: 900adedc1469aca44993b19d2726c6ef
   m_configObjects: {}

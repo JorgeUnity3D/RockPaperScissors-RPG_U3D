@@ -3709,7 +3709,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4811aa6b7d96d448b849ea8771f251d, type: 3}
---- !u!1001 &6790461371809227643
+--- !u!1001 &8441451632470608694
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -3717,63 +3717,55 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 758131553945416190, guid: 751b57ca1f54ae0398123257cbf86c58, type: 3}
-      propertyPath: _stoneSmithyScrObj
-      value: 
-      objectReference: {fileID: 11400000, guid: 7bb63a1c75dd0f7a0b2ccf8d0d34f43f, type: 2}
-    - target: {fileID: 1645442205454490509, guid: 751b57ca1f54ae0398123257cbf86c58, type: 3}
-      propertyPath: m_Name
-      value: ManagerService
-      objectReference: {fileID: 0}
-    - target: {fileID: 7249405220867194147, guid: 751b57ca1f54ae0398123257cbf86c58, type: 3}
-      propertyPath: _theaterScrObj
-      value: 
-      objectReference: {fileID: 11400000, guid: 9ec57528c0cb3668c8e37d6c9778e45e, type: 2}
-    - target: {fileID: 8110969696307375654, guid: 751b57ca1f54ae0398123257cbf86c58, type: 3}
+    - target: {fileID: 3460809525840975755, guid: fae1bc14e5ed7fc5c914ec9925f675bf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 967.3071
       objectReference: {fileID: 0}
-    - target: {fileID: 8110969696307375654, guid: 751b57ca1f54ae0398123257cbf86c58, type: 3}
+    - target: {fileID: 3460809525840975755, guid: fae1bc14e5ed7fc5c914ec9925f675bf, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 500.39322
       objectReference: {fileID: 0}
-    - target: {fileID: 8110969696307375654, guid: 751b57ca1f54ae0398123257cbf86c58, type: 3}
+    - target: {fileID: 3460809525840975755, guid: fae1bc14e5ed7fc5c914ec9925f675bf, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8110969696307375654, guid: 751b57ca1f54ae0398123257cbf86c58, type: 3}
+    - target: {fileID: 3460809525840975755, guid: fae1bc14e5ed7fc5c914ec9925f675bf, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 8110969696307375654, guid: 751b57ca1f54ae0398123257cbf86c58, type: 3}
+    - target: {fileID: 3460809525840975755, guid: fae1bc14e5ed7fc5c914ec9925f675bf, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8110969696307375654, guid: 751b57ca1f54ae0398123257cbf86c58, type: 3}
+    - target: {fileID: 3460809525840975755, guid: fae1bc14e5ed7fc5c914ec9925f675bf, type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8110969696307375654, guid: 751b57ca1f54ae0398123257cbf86c58, type: 3}
+    - target: {fileID: 3460809525840975755, guid: fae1bc14e5ed7fc5c914ec9925f675bf, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8110969696307375654, guid: 751b57ca1f54ae0398123257cbf86c58, type: 3}
+    - target: {fileID: 3460809525840975755, guid: fae1bc14e5ed7fc5c914ec9925f675bf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8110969696307375654, guid: 751b57ca1f54ae0398123257cbf86c58, type: 3}
+    - target: {fileID: 3460809525840975755, guid: fae1bc14e5ed7fc5c914ec9925f675bf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8110969696307375654, guid: 751b57ca1f54ae0398123257cbf86c58, type: 3}
+    - target: {fileID: 3460809525840975755, guid: fae1bc14e5ed7fc5c914ec9925f675bf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6900888643913054746, guid: fae1bc14e5ed7fc5c914ec9925f675bf, type: 3}
+      propertyPath: m_Name
+      value: Town_ManagerService
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 751b57ca1f54ae0398123257cbf86c58, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: fae1bc14e5ed7fc5c914ec9925f675bf, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -3784,6 +3776,6 @@ SceneRoots:
   - {fileID: 582613943}
   - {fileID: 155865778}
   - {fileID: 2142813157}
-  - {fileID: 6790461371809227643}
+  - {fileID: 8441451632470608694}
   - {fileID: 1970211170}
   - {fileID: 830941928}

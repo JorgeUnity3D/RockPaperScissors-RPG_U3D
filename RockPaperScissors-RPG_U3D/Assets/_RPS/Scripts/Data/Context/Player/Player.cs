@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using Kapibara.Util.NotificableFields;
 using Newtonsoft.Json;
-using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -452,51 +451,4 @@ namespace Kapibara.RPS
 		}
 	}
 
-	[Serializable]
-	public class PlayerOld : Character
-	{
-		[VerticalGroup("Stats")] [HorizontalGroup("Stats/Gold", MaxWidth = 200f)] [LabelWidth(100f)]
-		public int currentGold;
-
-		public Stats trainingStat;
-
-		public PlayerOld(PlayerOld player) { }
-
-		public PlayerOld(string playername)
-		{
-			name = playername;
-			level = 1;
-			currentGold = 100;
-			rock = 3;
-			paper = 3;
-			scissor = 3;
-		}
-
-		[JsonConstructor]
-		public PlayerOld(int currentGold, Stats trainingStat)
-		{
-			this.currentGold = currentGold;
-			this.trainingStat = trainingStat;
-		}
-
-        #region ROLLS
-
-		public override int MentalityRollAgainst(Character other)
-		{
-			var mentalityRoll = VariabilityRoll() + this.mentality - ((Enemy)other).storedMentality;
-			Debug.Log("[Player] MentalityRollAgainst() -> mentalityRoll: " + mentalityRoll);
-			return mentalityRoll;
-		}
-
-        #endregion
-
-        #region STATS
-
-		public void UpdateGold(int gold)
-		{
-			this.currentGold += this.isSuperAction ? gold * 2 : gold;
-		}
-
-        #endregion
-	}
 }

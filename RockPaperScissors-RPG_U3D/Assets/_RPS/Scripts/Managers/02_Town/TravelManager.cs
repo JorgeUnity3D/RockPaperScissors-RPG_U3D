@@ -56,7 +56,7 @@ namespace Kapibara.RPS
 			}
 
 			_creditsManager.UseCredit();
-			AppContext.CombatContext = new CombatContext { SelectedLevel = level };
+			AppContext.CombatContext = new CombatContext(level);
 			ServiceLocator.Instance.GetService<SceneService>().LoadScene(GameScenes.COMBAT);
 		}
 

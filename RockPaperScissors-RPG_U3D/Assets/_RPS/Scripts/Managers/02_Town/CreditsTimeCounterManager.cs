@@ -18,18 +18,22 @@ namespace Kapibara.RPS
 		
 		private void Update()
 		{
-			if (_creditTimeCounter.TimeIsRunning)
+			if (!_creditTimeCounter.TimeIsRunning) return;
+
+			if (_creditTimeCounter.TimeLeftInSeconds > 0)
 			{
-				if (_creditTimeCounter.TimeLeftInSeconds > 0)
+				_creditTimeCounter.TimeLeftInSeconds -= Time.deltaTime;
+			}
+			else
+			{
+				_creditTimeCounter.CreditsLeft++;
+				if (_creditTimeCounter.CreditsAtMax)
 				{
-					_creditTimeCounter.TimeLeftInSeconds -= Time.deltaTime;
-					//AppEvents.OnTimeUpdated?.Invoke(_creditTimeCounter.TimeLeftInSeconds);
+					_creditTimeCounter.TimeIsRunning = false;
 				}
 				else
 				{
-					_creditTimeCounter.TimeIsRunning = false;
-					_creditTimeCounter.CreditsLeft++;
-					//AppEvents.OnCreditsUpdated?.Invoke(_creditsLeft);
+					_creditTimeCounter.TimeLeftInSeconds = _creditTimeCounter.HoursForACreditInSeconds;
 				}
 			}
 		}
@@ -66,34 +70,36 @@ namespace Kapibara.RPS
 
 		public int CreditsLeft => _creditTimeCounter.CreditsLeft;
 
-		/// <summary>Inicia el contador si no está en marcha; si ya estaba, no lo reinicia.</summary>
+		/// <summary>Inicia el contador solo si los créditos no están al máximo y el timer no estaba ya en marcha.</summary>
 		public void StartTimeCounter()
 		{
 			Debug.Log($"[CreditsTimeCounterManager] StartTimeCounter() -> ");
+			if (_creditTimeCounter.CreditsAtMax) return;
 
 			if (!_creditTimeCounter.TimeIsRunning)
 			{
 				_creditTimeCounter.TimeLeftInSeconds = _creditTimeCounter.HoursForACreditInSeconds;
+				_creditTimeCounter.TimeIsRunning     = true;
 			}
-			_creditTimeCounter.TimeIsRunning = true;
 		}
 
-		/// <summary>Resta un crédito al jugador sin bajar de cero.</summary>
+		/// <summary>Resta un crédito al jugador sin bajar de cero e inicia el timer de recarga.</summary>
 		[ContextMenu("UseCredit")]
 		public void UseCredit()
 		{
 			Debug.Log($"[CreditsTimeCounterManager] UseCredit() -> ");
 			_creditTimeCounter.CreditsLeft = Mathf.Max(0, _creditTimeCounter.CreditsLeft - 1);
-			//AppEvents.OnCreditsUpdated?.Invoke(_creditTimeCounter.CreditsLeft);
+			StartTimeCounter();
 		}
 
-		/// <summary>Añade un crédito sin superar el máximo permitido.</summary>
+		/// <summary>Añade un crédito sin superar el máximo; para el timer si se alcanza el máximo.</summary>
 		[ContextMenu("EarnCredit")]
 		public void EarnCredit()
 		{
 			Debug.Log($"[CreditsTimeCounterManager] EarnCredit() -> ");
 			_creditTimeCounter.CreditsLeft = Mathf.Min(_creditTimeCounter.MaxCredits, _creditTimeCounter.CreditsLeft + 1);
-			//AppEvents.OnCreditsUpdated?.Invoke(_creditTimeCounter.CreditsLeft);
+			if (_creditTimeCounter.CreditsAtMax)
+				_creditTimeCounter.TimeIsRunning = false;
 		}
 
 		#endregion

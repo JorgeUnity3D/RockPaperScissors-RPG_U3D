@@ -49,4 +49,5 @@ MonoBehaviour:
     _goldMin: 20
     _goldMax: 35
     _languages:
+    - {fileID: 11400000, guid: 9eb60e1965966ae438e9f1f8862bff77, type: 2}
     - {fileID: 11400000, guid: 8f07e65fa5c083ec1bc9b552dac6a33a, type: 2}

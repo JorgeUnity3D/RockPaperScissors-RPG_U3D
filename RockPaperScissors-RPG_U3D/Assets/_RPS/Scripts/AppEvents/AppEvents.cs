@@ -69,5 +69,12 @@ namespace Kapibara.RPS
 		public static UnityAction<int> OnStorySelected;
 		/// <summary>Se dispara al cerrar el lector de comic (ComicPlayerUIController). TheaterManager lo recibe para restaurar el estado del Theater.</summary>
 		public static UnityAction OnComicClosed;
+
+		/// <summary>Se dispara cuando el jugador pulsa un botón de acción en combate.</summary>
+		public static UnityAction<Actions> OnCombatActionSelected;
+		/// <summary>Se dispara al terminar una ronda de combate con el resultado (daño jugador, daño enemigo).</summary>
+		public static UnityAction<int, int> OnCombatRoundResolved;
+		/// <summary>Se dispara al terminar el combate. true = victoria, false = derrota.</summary>
+		public static UnityAction<bool> OnCombatFinished;
 	}
 }

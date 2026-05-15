@@ -29,11 +29,13 @@ namespace Kapibara.RPS
 		protected override void Subscribe()
 		{
 			Debug.Log($"[GameManager] Subscribe() -> ");
-			SceneManager.sceneLoaded += InitializeScene;
+			SceneManager.sceneLoaded        += InitializeScene;
 			AppEvents.OnConfirmContinueGame += ContinueGame;
-			AppEvents.OnConfirmNewGame += ConfirmNewGame;
-			AppEvents.OnConfirmLoadGame += LoadSelectedGame;
-			AppEvents.OnConfirmDeleteGame += DeleteSelectedGame;
+			AppEvents.OnConfirmNewGame      += ConfirmNewGame;
+			AppEvents.OnConfirmLoadGame     += LoadSelectedGame;
+			AppEvents.OnConfirmDeleteGame   += DeleteSelectedGame;
+			AppEvents.OnCombatFinished      += OnCombatFinished;
+			AppEvents.OnGameContextUpdated  += UpdateSaveGame;
 		}
 
 		protected override void UnSubscribe()
@@ -41,10 +43,11 @@ namespace Kapibara.RPS
 			Debug.Log($"[GameManager] UnSubscribe() -> ");
 			SceneManager.sceneLoaded -= InitializeScene;
 			AppEvents.OnConfirmContinueGame -= ContinueGame;
-			AppEvents.OnConfirmNewGame -= ConfirmNewGame;
-			AppEvents.OnConfirmLoadGame -= LoadSelectedGame;
-			AppEvents.OnConfirmDeleteGame -= DeleteSelectedGame;
-			AppEvents.OnGameContextUpdated -= UpdateSaveGame;
+			AppEvents.OnConfirmNewGame      -= ConfirmNewGame;
+			AppEvents.OnConfirmLoadGame     -= LoadSelectedGame;
+			AppEvents.OnConfirmDeleteGame   -= DeleteSelectedGame;
+			AppEvents.OnCombatFinished      -= OnCombatFinished;
+			AppEvents.OnGameContextUpdated  -= UpdateSaveGame;
 		}
 
         #endregion
@@ -65,9 +68,8 @@ namespace Kapibara.RPS
 				case GameScenes.TOWN:
 					ServiceLocator.Instance.GetService<ManagerService>().GetManager<TownManager>().Initialize();
 					break;
-				case GameScenes.MAP:
-					break;
 				case GameScenes.COMBAT:
+					ServiceLocator.Instance.GetService<ManagerService>().GetManager<CombatManager>().Initialize();
 					break;
 				case GameScenes.LOAD:
 					break;
@@ -100,7 +102,6 @@ namespace Kapibara.RPS
 			AppContext.GameContext = gameContext;
 			_gameContext = AppContext.GameContext;
 			_sceneService.LoadScene(GameScenes.TOWN);
-			AppEvents.OnGameContextUpdated += UpdateSaveGame;
 		}
 
 		private void DeleteSelectedGame(GameContext gameContext)
@@ -109,9 +110,16 @@ namespace Kapibara.RPS
 			_persistenceService.DeleteGame(gameContext.GameName);
 		}
 
+		private void OnCombatFinished(bool playerWins)
+		{
+			Debug.Log($"[GameManager] OnCombatFinished() -> playerWins={playerWins}");
+			_sceneService.LoadScene(GameScenes.TOWN);
+		}
+
 		private void UpdateSaveGame()
 		{
 			Debug.Log($"[GameManager] UpdateSaveGame() -> ");
+			if (AppContext.GameContext == null) return;
 			ServiceLocator.Instance.GetService<PersistenceService>().UpdateSaveGame(AppContext.GameContext);
 		}
 
