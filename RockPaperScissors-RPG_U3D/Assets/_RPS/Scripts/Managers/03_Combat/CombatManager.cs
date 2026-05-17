@@ -95,7 +95,8 @@ namespace Kapibara.RPS
 			_enemy.ActionRoll();
 			_combatUI.HideBubbles();
 
-			Debug.Log($"[CombatManager] ─── Round {_currentRound} BEGIN ─── EnemyAction:{_enemy.CurrentAction}");
+			Debug.Log($"[CombatManager] ─── Round {_currentRound} BEGIN ─── PlayerHP:{_playerHP}/{_player.MaxHealth.TotalValue}  Energy:{_playerEnergy}/{GameConsts.COMBAT_MAX_ENERGY}  │  EnemyHP:{_enemy.CurrentHealth}/{_enemy.MaxHealth}  Energy:{_enemy.CurrentEnergy}/{_enemy.MaxEnergy}");
+			Debug.Log($"[CombatManager] Enemy rolled → CurrentAction:{_enemy.CurrentAction}  ThinkingAction:{_enemy.ThinkingAction}  StoredMentality:{_enemy.StoredMentality}");
 
 			int mentalityResult = _enemy.MentalityRollAgainst(_player.Mentality.TotalValue);
 			if (mentalityResult <= 0)
@@ -115,6 +116,7 @@ namespace Kapibara.RPS
 
 		private void OnPlayerActionSelected(Actions playerAction)
 		{
+			Debug.Log($"[CombatManager] Player selected: {playerAction}");
 			_combatUI.SetActionsInteractable(false);
 			ResolveRound(playerAction, _enemy.CurrentAction);
 		}
