@@ -79,5 +79,12 @@ namespace Kapibara.RPS
 		public static UnityAction<int, int> OnCombatRoundResolved;
 		/// <summary>Se dispara al terminar el combate. true = victoria, false = derrota.</summary>
 		public static UnityAction<bool> OnCombatFinished;
+
+		/// <summary>Se dispara cuando el jugador selecciona una acción RPS en un step de tesoro.</summary>
+		public static UnityAction<Actions> OnTreasureActionSelected;
+		/// <summary>Se dispara cuando el jugador pulsa "Siguiente" en el diálogo de NPC.</summary>
+		public static UnityAction OnNPCDialogueNext;
+		/// <summary>Se dispara cuando el jugador pulsa "Anterior" en el diálogo de NPC.</summary>
+		public static UnityAction OnNPCDialoguePrev;
 	}
 }

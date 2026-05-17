@@ -76,9 +76,9 @@ namespace Kapibara.RPS
 					townManager.Initialize();
 					break;
 				case GameScenes.COMBAT:
-					CombatManager combatManager = managerService.GetManager<CombatManager>();
-					if (combatManager == null) { Debug.LogError("[GameManager] InitializeScene() -> CombatManager not found."); break; }
-					combatManager.Initialize();
+					StepManager stepManager = managerService.GetManager<StepManager>();
+					if (stepManager == null) { Debug.LogError("[GameManager] InitializeScene() -> StepManager not found."); break; }
+					stepManager.Initialize();
 					break;
 				case GameScenes.LOAD:
 					break;
@@ -132,13 +132,9 @@ namespace Kapibara.RPS
 				if (nextIndex < ctx.SelectedLevel.StepCount)
 				{
 					ctx.CurrentStepIndex = nextIndex;
-					MapStepType nextType = ctx.CurrentStep.Type;
-					Debug.Log($"[GameManager] OnCombatFinished() -> advancing to step {nextIndex} ({nextType})");
-					if (nextType == MapStepType.Combat || nextType == MapStepType.Boss)
-					{
-						_sceneService.LoadScene(GameScenes.COMBAT);
-						return;
-					}
+					Debug.Log($"[GameManager] OnCombatFinished() -> advancing to step {nextIndex} ({ctx.CurrentStep.Type})");
+					_sceneService.LoadScene(GameScenes.COMBAT);
+					return;
 				}
 			}
 
