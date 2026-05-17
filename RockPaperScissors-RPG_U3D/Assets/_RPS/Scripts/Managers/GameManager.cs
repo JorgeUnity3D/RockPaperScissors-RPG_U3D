@@ -57,19 +57,28 @@ namespace Kapibara.RPS
 		void InitializeScene(Scene scene, LoadSceneMode loadSceneMode)
 		{
 			Debug.Log($"[GameManager] InitializeScene() -> scene {scene.name}");
+			ManagerService managerService = ServiceLocator.Instance.GetService<ManagerService>();
 			switch (GameConsts.SceneEnums[scene.name])
 			{
 				case GameScenes.INTRO:
-					ServiceLocator.Instance.GetService<ManagerService>().GetManager<IntroManager>().Initialize();
+					IntroManager introManager = managerService.GetManager<IntroManager>();
+					if (introManager == null) { Debug.LogError("[GameManager] InitializeScene() -> IntroManager not found."); break; }
+					introManager.Initialize();
 					break;
 				case GameScenes.MAIN_MENU:
-					ServiceLocator.Instance.GetService<ManagerService>().GetManager<MainMenuManager>().Initialize();
+					MainMenuManager mainMenuManager = managerService.GetManager<MainMenuManager>();
+					if (mainMenuManager == null) { Debug.LogError("[GameManager] InitializeScene() -> MainMenuManager not found."); break; }
+					mainMenuManager.Initialize();
 					break;
 				case GameScenes.TOWN:
-					ServiceLocator.Instance.GetService<ManagerService>().GetManager<TownManager>().Initialize();
+					TownManager townManager = managerService.GetManager<TownManager>();
+					if (townManager == null) { Debug.LogError("[GameManager] InitializeScene() -> TownManager not found."); break; }
+					townManager.Initialize();
 					break;
 				case GameScenes.COMBAT:
-					ServiceLocator.Instance.GetService<ManagerService>().GetManager<CombatManager>().Initialize();
+					CombatManager combatManager = managerService.GetManager<CombatManager>();
+					if (combatManager == null) { Debug.LogError("[GameManager] InitializeScene() -> CombatManager not found."); break; }
+					combatManager.Initialize();
 					break;
 				case GameScenes.LOAD:
 					break;

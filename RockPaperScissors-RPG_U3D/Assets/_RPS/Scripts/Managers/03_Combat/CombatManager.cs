@@ -10,7 +10,8 @@ namespace Kapibara.RPS
 	/// </summary>
 	public class CombatManager : BaseManager
 	{
-		[SerializeField, ReadOnly] private CombatUIController _combatUI;
+		[SerializeField, ReadOnly] private CombatUIController       _combatUI;
+		[SerializeField, ReadOnly] private CombatResultUIController _resultUI;
 
 		private Player        _player;
 		private CombatContext _context;
@@ -20,11 +21,16 @@ namespace Kapibara.RPS
 		private int _playerHP;
 		private int _playerEnergy;
 
+		private int                   _pendingTrainingExp;
+		private TrainingHouseModifier _activeTrainingModifier;
+
 		#region SETUP
 
 		public override void SetUp()
 		{
-			_combatUI = ServiceLocator.Instance.GetService<UIService>().GetController<CombatUIController>();
+			UIService uiService = ServiceLocator.Instance.GetService<UIService>();
+			_combatUI = uiService.GetController<CombatUIController>();
+			_resultUI = uiService.GetController<CombatResultUIController>();
 			_player   = AppContext.Player;
 			_context  = AppContext.CombatContext;
 		}
@@ -51,13 +57,21 @@ namespace Kapibara.RPS
 				return;
 			}
 
-			_currentRound = 0;
-			_playerHP     = _player.MaxHealth.TotalValue;
-			_playerEnergy = _player.InitialEnergy;
+			_currentRound            = 0;
+			_playerHP                = _player.MaxHealth.TotalValue;
+			_playerEnergy            = _player.InitialEnergy;
+			_pendingTrainingExp      = 0;
+			_activeTrainingModifier  = FindActiveTrainingModifier();
 
 			EnemyData data = _context.CurrentStep.Enemy.Data;
 			_enemy = new Enemy(data);
 			_enemy.LanguageRoll();
+
+			Debug.Log($"[CombatManager] ═══════════════ COMBAT START ═══════════════");
+			Debug.Log($"[CombatManager] Player → HP:{_playerHP}  Energy:{_playerEnergy}  Lv:{_player.Level}  Mentality:{_player.Mentality.TotalValue}");
+			Debug.Log($"[CombatManager] Enemy  → {_enemy.Name}  HP:{_enemy.MaxHealth}  Energy:{_enemy.MaxEnergy}  Lv:{_enemy.Level}  Mentality:{_enemy.StoredMentality}");
+			Debug.Log($"[CombatManager] Language → {(_enemy.CurrentLanguage != null ? _enemy.CurrentLanguage.GetType().Name : "none")}");
+			Debug.Log($"[CombatManager] Training → {(_activeTrainingModifier != null ? _activeTrainingModifier.Stat.ToString() : "none")}");
 
 			_combatUI.SetData(
 				_enemy.Portrait,
@@ -80,6 +94,22 @@ namespace Kapibara.RPS
 			_currentRound++;
 			_enemy.ActionRoll();
 			_combatUI.HideBubbles();
+
+			Debug.Log($"[CombatManager] ─── Round {_currentRound} BEGIN ─── EnemyAction:{_enemy.CurrentAction}");
+
+			int mentalityResult = _enemy.MentalityRollAgainst(_player.Mentality.TotalValue);
+			if (mentalityResult <= 0)
+			{
+				Debug.Log($"[CombatManager] Mentality roll {mentalityResult} ≤ 0 → player reads enemy mind → {_enemy.ThinkingAction}");
+				_combatUI.ShowPlayerThoughtBubble(GetActionIcon(_enemy.ThinkingAction));
+				_enemy.ResetMentality();
+			}
+			else
+			{
+				Debug.Log($"[CombatManager] Mentality roll {mentalityResult} > 0 → enemy conceals thought");
+				_enemy.IncreaseMentality();
+			}
+
 			_combatUI.SetActionsInteractable(true);
 		}
 
@@ -91,12 +121,16 @@ namespace Kapibara.RPS
 
 		private void ResolveRound(Actions playerAction, Actions enemyAction)
 		{
-			int playerDamageDealt = 0;
-			int enemyDamageDealt  = 0;
+			int   playerDamageDealt  = 0;
+			int   enemyDamageDealt   = 0;
+			float playerMultiplier   = 0f;
+			int   playerCritBonus    = 0;
 
 			// ── Super check BEFORE energy changes ────────────────────────────────
 			bool playerIsSuper = _playerEnergy >= GameConsts.COMBAT_MAX_ENERGY && playerAction != Actions.ENERGY;
 			bool enemyIsSuper  = _enemy.CurrentEnergy >= _enemy.MaxEnergy && enemyAction != Actions.ENERGY;
+
+			Debug.Log($"[CombatManager] RESOLVE  Player:{playerAction}{(playerIsSuper ? "(SUPER)" : "")}  vs  Enemy:{enemyAction}{(enemyIsSuper ? "(SUPER)" : "")}");
 
 			// ── Player energy ─────────────────────────────────────────────────────
 			if (playerAction == Actions.ENERGY)
@@ -114,18 +148,20 @@ namespace Kapibara.RPS
 			else
 				_enemy.PayActionEnergyCost();
 
+			Debug.Log($"[CombatManager] Energy after  → Player:{_playerEnergy}/{GameConsts.COMBAT_MAX_ENERGY}  Enemy:{_enemy.CurrentEnergy}/{_enemy.MaxEnergy}");
+
 			// ── Player attacks enemy ──────────────────────────────────────────────
 			if (playerAction != Actions.ENERGY && playerAction != Actions.DEFENSE)
 			{
-				float multiplier = CombatResolver.GetMultiplier(playerAction, enemyAction, playerIsSuper, enemyIsSuper);
-				int   baseDmg    = CombatResolver.DamageRoll(
+				playerMultiplier  = CombatResolver.GetMultiplier(playerAction, enemyAction, playerIsSuper, enemyIsSuper);
+				int baseDmg       = CombatResolver.DamageRoll(
 					playerAction,
 					_player.Rock.TotalValue,
 					_player.Paper.TotalValue,
 					_player.Scissor.TotalValue,
 					_player.Defense.TotalValue,
 					_player.Level);
-				int critBonus = CombatResolver.CritBonus(
+				playerCritBonus   = CombatResolver.CritBonus(
 					playerAction,
 					_player.Rock.TotalValue,
 					_player.Paper.TotalValue,
@@ -134,8 +170,9 @@ namespace Kapibara.RPS
 					_player.EnergyRecovery.TotalValue,
 					_player.Crit.TotalValue);
 
-				playerDamageDealt = Mathf.FloorToInt(baseDmg * multiplier) + critBonus;
+				playerDamageDealt = Mathf.FloorToInt(baseDmg * playerMultiplier) + playerCritBonus;
 				_enemy.ReceiveDamage(playerDamageDealt);
+				Debug.Log($"[CombatManager] Player dmg → base:{baseDmg} ×{playerMultiplier} +crit:{playerCritBonus} = {playerDamageDealt}  EnemyHP:{_enemy.CurrentHealth}/{_enemy.MaxHealth}");
 			}
 
 			// ── Enemy attacks player ──────────────────────────────────────────────
@@ -164,12 +201,15 @@ namespace Kapibara.RPS
 				{
 					int thorns = CombatResolver.ThornsRoll(_player.Thorns.TotalValue, multiplier, critBonus, _player.Level);
 					_enemy.ReceiveDamage(thorns);
+					Debug.Log($"[CombatManager] Thorns → {thorns} reflected  EnemyHP:{_enemy.CurrentHealth}/{_enemy.MaxHealth}");
 				}
 
 				_playerHP = Mathf.Max(0, _playerHP - enemyDamageDealt);
+				Debug.Log($"[CombatManager] Enemy dmg  → base:{baseDmg} ×{multiplier} +crit:{critBonus} = {enemyDamageDealt}  PlayerHP:{_playerHP}/{_player.MaxHealth.TotalValue}");
 			}
 
 			_enemy.ResetCombatState();
+			AccumulateTrainingExp(playerAction, playerMultiplier, playerCritBonus, enemyDamageDealt);
 
 			// ── Update UI ─────────────────────────────────────────────────────────
 			_combatUI.RefreshPlayerBars(_playerHP, _playerEnergy);
@@ -193,7 +233,9 @@ namespace Kapibara.RPS
 
 			if (playerDead || enemyDead || _currentRound >= GameConsts.COMBAT_MAX_ROUNDS)
 			{
-				bool playerWins = !playerDead && (enemyDead || _playerHP > _enemy.CurrentHealth);
+				bool   playerWins = !playerDead && (enemyDead || _playerHP > _enemy.CurrentHealth);
+				string reason     = playerDead ? "player dead" : enemyDead ? "enemy dead" : "max rounds";
+				Debug.Log($"[CombatManager] Combat END → {reason}  playerWins:{playerWins}  PlayerHP:{_playerHP}  EnemyHP:{_enemy.CurrentHealth}");
 				EndCombat(playerWins);
 				return;
 			}
@@ -203,13 +245,33 @@ namespace Kapibara.RPS
 
 		private void EndCombat(bool playerWins)
 		{
+			int goldEarned = 0;
 			if (playerWins)
 			{
-				int gold = _enemy.RewardRoll();
-				_player.Gold += gold;
+				goldEarned = _enemy.RewardRoll();
+				_player.Gold += goldEarned;
+				Debug.Log($"[CombatManager] Victory → gold earned:{goldEarned}  totalGold:{_player.Gold}");
+			}
+			else
+			{
+				Debug.Log($"[CombatManager] Defeat → no gold earned");
 			}
 
-			AppEvents.OnCombatFinished?.Invoke(playerWins);
+			ApplyPendingTrainingExp();
+
+			_combatUI.SetActionsInteractable(false);
+			_combatUI.HideCanvas();
+
+			if (_resultUI == null)
+			{
+				Debug.LogError("[CombatManager] EndCombat() -> _resultUI is null. Is CombatResult_UIController a child of Combat_UIService?");
+				AppEvents.OnCombatFinished?.Invoke(playerWins);
+				return;
+			}
+
+			_resultUI.SetData(playerWins, goldEarned, _pendingTrainingExp);
+			_resultUI.ShowCanvas();
+			// OnCombatFinished lo dispara el botón Continuar de _resultUI
 		}
 
 		#endregion
@@ -232,6 +294,65 @@ namespace Kapibara.RPS
 				case Actions.DEFENSE: return _player.DefenseCost;
 				default:              return 0;
 			}
+		}
+
+		private TrainingHouseModifier FindActiveTrainingModifier()
+		{
+			foreach (StatAttribute attr in _player.Attributes)
+			{
+				TrainingHouseModifier mod = attr.GetModifier<TrainingHouseModifier>();
+				if (mod != null && mod.IsTraining && mod.IsUnlocked)
+					return mod;
+			}
+			return null;
+		}
+
+		private void AccumulateTrainingExp(Actions playerAction, float multiplier, int critBonus, int enemyDamageDealt)
+		{
+			if (_activeTrainingModifier == null) return;
+			if (!ActionMatchesTrainingStat(playerAction, _activeTrainingModifier.Stat)) return;
+
+			bool tookNoDamage = enemyDamageDealt == 0;
+			if (!tookNoDamage)
+			{
+				Debug.Log($"[CombatManager] Training EXP → skipped (took {enemyDamageDealt} damage this round)");
+				return;
+			}
+
+			int exp = 0;
+			if      (multiplier >= 2f)   exp = 2;
+			else if (multiplier >= 1.2f) exp = 1;
+
+			if (critBonus > 0) exp++;
+
+			_pendingTrainingExp += exp;
+			Debug.Log($"[CombatManager] Training EXP → +{exp} this round  (mult:{multiplier} crit:{critBonus})  total pending:{_pendingTrainingExp}");
+		}
+
+		private static bool ActionMatchesTrainingStat(Actions action, Stats stat)
+		{
+			switch (action)
+			{
+				case Actions.ROCK:    return stat == Stats.ROCK;
+				case Actions.PAPER:   return stat == Stats.PAPER;
+				case Actions.SCISSOR: return stat == Stats.SCISSOR;
+				default:              return false;
+			}
+		}
+
+		private void ApplyPendingTrainingExp()
+		{
+			if (_activeTrainingModifier == null || _pendingTrainingExp <= 0) return;
+
+			int levelBefore = _activeTrainingModifier.Level;
+			_activeTrainingModifier.Experience += _pendingTrainingExp;
+			AppEvents.OnTrainingExpUpdated?.Invoke();
+			if (_activeTrainingModifier.Level > levelBefore)
+			{
+				Debug.Log($"[CombatManager] Training LEVEL UP! {_activeTrainingModifier.Stat} {levelBefore} → {_activeTrainingModifier.Level}");
+				AppEvents.OnTrainingLevelUpdated?.Invoke();
+			}
+			Debug.Log($"[CombatManager] Training EXP applied → stat:{_activeTrainingModifier.Stat}  +{_pendingTrainingExp}EXP  level:{_activeTrainingModifier.Level}");
 		}
 
 		#endregion

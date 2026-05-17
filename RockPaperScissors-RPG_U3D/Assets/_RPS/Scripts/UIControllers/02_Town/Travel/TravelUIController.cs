@@ -61,8 +61,8 @@ namespace Kapibara.RPS
 				Button levelButton = _levelButtons[level.Level];
 				if (levelButton == null)
 				{
-					Debug.Log($"[TravelUIController] SetUpMapUI() -> No Button found for level {level.Level}.{level.LevelName}");
-					return;
+					Debug.LogWarning($"[TravelUIController] SetUpMapUI() -> No Button found for level {level.Level}.{level.LevelName}");
+					continue;
 				}
 				levelButton.interactable = level.IsAvailable;
 				levelButton.AddListener(() => SetUpLevelPreview(level), true);

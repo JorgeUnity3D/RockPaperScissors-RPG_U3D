@@ -180,9 +180,8 @@ Listed in priority order.
 
 ### P1 — Blocks combat implementation
 
-**Bug #2 — Two Player classes, no bridge**
-- `Player` (active data, NAttribute-based) and `PlayerOld : Character` (legacy flat-int combat) are unconnected. `PlayerOld` is what `Character`, `Enemy`, and all roll methods use. Combat cannot use real player stats without a bridge or rewrite.
-- **File:** `Player.cs`, `Character.cs`, `Enemy.cs`
+**Bug #2 — Two Player classes, no bridge** ✅ FIXED (Phase 4)
+- `PlayerOld` eliminated. Combat uses `CombatContext` built from `AppContext.Player` directly.
 
 **Bug #14 — `MapLevel._levelEnemies` references legacy `EnemyDataObject`**
 - `EnemyDataObject` is in `_oldScriptables/` and is not connected to the active `Enemy` or `Player` data models. The travel/combat pipeline cannot use `MapLevel` enemy lists as-is.

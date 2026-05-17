@@ -51,17 +51,15 @@ namespace Kapibara.RPS
 			}
 		}
 
-		/// <summary>Experiencia acumulada; sube de nivel automáticamente al llegar al umbral.</summary>
+		/// <summary>Experiencia acumulada; sube de nivel automáticamente al llegar al umbral. Soporta múltiples level-ups en una sola asignación.</summary>
 		public int Experience
 		{
 			get => _experience.Value;
 			set
 			{
 				_experience.Value = value;
-				if (LevelProgress == 1)
-				{
+				while (_level.Value < GameConsts.TRAINING_EXP_PER_LEVEL.Count - 1 && LevelProgress >= 1f)
 					_level.Value++;
-				}
 			}
 		}
 
