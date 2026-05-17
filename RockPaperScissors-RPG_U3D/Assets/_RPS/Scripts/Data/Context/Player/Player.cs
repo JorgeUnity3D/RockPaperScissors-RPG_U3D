@@ -335,7 +335,7 @@ namespace Kapibara.RPS
 			_currentEnergy = new NInt(0);
 			_baseEnergy = new NAttribute(Stats.ENERGY_BASE, 0);
 			_baseEnergy.Value.AddModifier(new ScissorBonfireModifier(Stats.ENERGY_BASE));
-			_initialEnergy = new NInt(10);
+			_initialEnergy = new NInt(GameConsts.COMBAT_MAX_ENERGY);
 			_energyRecovery = new NAttribute(Stats.ENERGY_RECOVERY, 5);
 			//Crit & SuperPower
 			_crit = new NAttribute(Stats.CRIT, 0);

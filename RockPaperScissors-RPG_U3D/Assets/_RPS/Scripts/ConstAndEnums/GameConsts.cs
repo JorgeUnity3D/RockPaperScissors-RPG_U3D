@@ -66,9 +66,12 @@ namespace Kapibara.RPS
 
 		#region COMBAT
 
-		public const int   COMBAT_MAX_ROUNDS  = 10;
-		public const int   COMBAT_MAX_ENERGY  = 100;
-		public const float COMBAT_ROUND_DELAY = 2f;
+		public const int   COMBAT_MAX_ROUNDS       = 10;
+		public const int   COMBAT_MAX_ENERGY       = 100;
+		public const float COMBAT_ROUND_DELAY      = 2f;
+		public const float COMBAT_BAR_ANIM         = 0.2f;
+		public const float COMBAT_BAR_GHOST_DELAY  = 0.2f;
+		public const float COMBAT_BAR_GHOST_DUR    = 0.35f;
 
 		#endregion
 

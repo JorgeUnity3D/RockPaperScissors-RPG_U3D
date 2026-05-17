@@ -90,9 +90,11 @@ namespace Kapibara.RPS
 		private void ConfirmNewGame(string playerName)
 		{
 			Debug.Log($"[GameManager] ConfirmNewGame() -> ");
+			AppEvents.OnGameContextUpdated -= UpdateSaveGame;
 			string gameName = "Game_" + _persistenceService.GetGamesCount();
 			GameContext gameContext = new GameContext(gameName, playerName);
 			_persistenceService.SaveGame(gameContext);
+			AppEvents.OnGameContextUpdated += UpdateSaveGame;
 			LoadSelectedGame(gameContext);
 		}
 
@@ -122,6 +124,25 @@ namespace Kapibara.RPS
 		private void OnCombatFinished(bool playerWins)
 		{
 			Debug.Log($"[GameManager] OnCombatFinished() -> playerWins={playerWins}");
+
+			CombatContext ctx = AppContext.CombatContext;
+			if (playerWins && ctx != null)
+			{
+				int nextIndex = ctx.CurrentStepIndex + 1;
+				if (nextIndex < ctx.SelectedLevel.StepCount)
+				{
+					ctx.CurrentStepIndex = nextIndex;
+					MapStepType nextType = ctx.CurrentStep.Type;
+					Debug.Log($"[GameManager] OnCombatFinished() -> advancing to step {nextIndex} ({nextType})");
+					if (nextType == MapStepType.Combat || nextType == MapStepType.Boss)
+					{
+						_sceneService.LoadScene(GameScenes.COMBAT);
+						return;
+					}
+				}
+			}
+
+			AppContext.CombatContext = null;
 			_sceneService.LoadScene(GameScenes.TOWN);
 		}
 

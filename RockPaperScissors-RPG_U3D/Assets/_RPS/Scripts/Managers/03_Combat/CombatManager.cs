@@ -108,6 +108,7 @@ namespace Kapibara.RPS
 			else
 			{
 				Debug.Log($"[CombatManager] Mentality roll {mentalityResult} > 0 → enemy conceals thought");
+				_combatUI.ShowEnemyThoughtBubble(null);
 				_enemy.IncreaseMentality();
 			}
 
@@ -123,10 +124,12 @@ namespace Kapibara.RPS
 
 		private void ResolveRound(Actions playerAction, Actions enemyAction)
 		{
-			int   playerDamageDealt  = 0;
-			int   enemyDamageDealt   = 0;
-			float playerMultiplier   = 0f;
-			int   playerCritBonus    = 0;
+			int   playerDamageDealt = 0;
+			int   enemyDamageDealt  = 0;
+			int   playerCritBonus   = 0;
+			int   enemyCritBonus    = 0;
+			float playerMult        = 0f;
+			float enemyMult         = 0f;
 
 			// ── Super check BEFORE energy changes ────────────────────────────────
 			bool playerIsSuper = _playerEnergy >= GameConsts.COMBAT_MAX_ENERGY && playerAction != Actions.ENERGY;
@@ -134,84 +137,112 @@ namespace Kapibara.RPS
 
 			Debug.Log($"[CombatManager] RESOLVE  Player:{playerAction}{(playerIsSuper ? "(SUPER)" : "")}  vs  Enemy:{enemyAction}{(enemyIsSuper ? "(SUPER)" : "")}");
 
-			// ── Player energy ─────────────────────────────────────────────────────
+			// ── Energy management ─────────────────────────────────────────────────
 			if (playerAction == Actions.ENERGY)
-			{
 				_playerEnergy = Mathf.Min(GameConsts.COMBAT_MAX_ENERGY, _playerEnergy + _player.EnergyRecovery.TotalValue);
-			}
 			else
-			{
 				_playerEnergy = Mathf.Max(0, _playerEnergy - PlayerActionCost(playerAction));
-			}
 
-			// ── Enemy energy ──────────────────────────────────────────────────────
 			if (enemyAction == Actions.ENERGY)
 				_enemy.RecoverEnergy();
 			else
 				_enemy.PayActionEnergyCost();
 
-			Debug.Log($"[CombatManager] Energy after  → Player:{_playerEnergy}/{GameConsts.COMBAT_MAX_ENERGY}  Enemy:{_enemy.CurrentEnergy}/{_enemy.MaxEnergy}");
+			Debug.Log($"[CombatManager] Energy after → Player:{_playerEnergy}/{GameConsts.COMBAT_MAX_ENERGY}  Enemy:{_enemy.CurrentEnergy}/{_enemy.MaxEnergy}");
 
-			// ── Player attacks enemy ──────────────────────────────────────────────
-			if (playerAction != Actions.ENERGY && playerAction != Actions.DEFENSE)
+			// ── Effective power ───────────────────────────────────────────────────
+			// ENERGY always has 0 effective; DEFENSE computes with defense stat × its multiplier
+			bool playerIsAttack  = playerAction != Actions.ENERGY && playerAction != Actions.DEFENSE;
+			bool playerIsDefense = playerAction == Actions.DEFENSE;
+			bool enemyIsAttack   = enemyAction  != Actions.ENERGY && enemyAction  != Actions.DEFENSE;
+			bool enemyIsDefense  = enemyAction  == Actions.DEFENSE;
+
+			int playerEffective = 0;
+			int enemyEffective  = 0;
+
+			if (playerAction != Actions.ENERGY)
 			{
-				playerMultiplier  = CombatResolver.GetMultiplier(playerAction, enemyAction, playerIsSuper, enemyIsSuper);
-				int baseDmg       = CombatResolver.DamageRoll(
-					playerAction,
-					_player.Rock.TotalValue,
-					_player.Paper.TotalValue,
-					_player.Scissor.TotalValue,
-					_player.Defense.TotalValue,
-					_player.Level);
-				playerCritBonus   = CombatResolver.CritBonus(
-					playerAction,
-					_player.Rock.TotalValue,
-					_player.Paper.TotalValue,
-					_player.Scissor.TotalValue,
-					_player.Defense.TotalValue,
-					_player.EnergyRecovery.TotalValue,
-					_player.Crit.TotalValue);
-
-				playerDamageDealt = Mathf.FloorToInt(baseDmg * playerMultiplier) + playerCritBonus;
-				_enemy.ReceiveDamage(playerDamageDealt);
-				Debug.Log($"[CombatManager] Player dmg → base:{baseDmg} ×{playerMultiplier} +crit:{playerCritBonus} = {playerDamageDealt}  EnemyHP:{_enemy.CurrentHealth}/{_enemy.MaxHealth}");
+				playerMult      = CombatResolver.GetMultiplier(playerAction, enemyAction, playerIsSuper, enemyIsSuper);
+				int baseDmg     = CombatResolver.DamageRoll(playerAction, _player.Rock.TotalValue, _player.Paper.TotalValue, _player.Scissor.TotalValue, _player.Defense.TotalValue, _player.Level);
+				playerCritBonus = CombatResolver.CritBonus(playerAction, _player.Rock.TotalValue, _player.Paper.TotalValue, _player.Scissor.TotalValue, _player.Defense.TotalValue, _player.EnergyRecovery.TotalValue, _player.Crit.TotalValue);
+				playerEffective = Mathf.FloorToInt(baseDmg * playerMult) + playerCritBonus;
 			}
 
-			// ── Enemy attacks player ──────────────────────────────────────────────
-			if (enemyAction != Actions.ENERGY && enemyAction != Actions.DEFENSE)
+			if (enemyAction != Actions.ENERGY)
 			{
-				float multiplier = CombatResolver.GetMultiplier(enemyAction, playerAction, enemyIsSuper, playerIsSuper);
-				int   baseDmg    = CombatResolver.DamageRoll(
-					enemyAction,
-					_enemy.Rock,
-					_enemy.Paper,
-					_enemy.Scissor,
-					_enemy.Defense,
-					_enemy.Level);
-				int critBonus = CombatResolver.CritBonus(
-					enemyAction,
-					_enemy.Rock,
-					_enemy.Paper,
-					_enemy.Scissor,
-					_enemy.Defense,
-					_enemy.EnergyRecovery,
-					_enemy.Crit);
+				enemyMult      = CombatResolver.GetMultiplier(enemyAction, playerAction, enemyIsSuper, playerIsSuper);
+				int baseDmg    = CombatResolver.DamageRoll(enemyAction, _enemy.Rock, _enemy.Paper, _enemy.Scissor, _enemy.Defense, _enemy.Level);
+				enemyCritBonus = CombatResolver.CritBonus(enemyAction, _enemy.Rock, _enemy.Paper, _enemy.Scissor, _enemy.Defense, _enemy.EnergyRecovery, _enemy.Crit);
+				enemyEffective = Mathf.FloorToInt(baseDmg * enemyMult) + enemyCritBonus;
+			}
 
-				enemyDamageDealt = Mathf.FloorToInt(baseDmg * multiplier) + critBonus;
+			Debug.Log($"[CombatManager] Effective → Player:{playerEffective} (×{playerMult} crit:{playerCritBonus})  Enemy:{enemyEffective} (×{enemyMult} crit:{enemyCritBonus})");
 
-				if (playerAction == Actions.DEFENSE && _player.Thorns.TotalValue > 0)
+			// ── Damage cases (difference-based clash) ─────────────────────────────
+			if (!playerIsAttack && !enemyIsAttack)
+			{
+				// Case 2: both passive (Defense+Defense, Energy+Energy, Defense+Energy) → no damage
+				Debug.Log($"[CombatManager] Case 2 (both passive) → no damage");
+			}
+			else if (playerIsAttack && enemyIsDefense)
+			{
+				// Case 3a: player attacks, enemy defends → attacker wins only if effective > shield
+				if (playerEffective > enemyEffective)
 				{
-					int thorns = CombatResolver.ThornsRoll(_player.Thorns.TotalValue, multiplier, critBonus, _player.Level);
+					playerDamageDealt = playerEffective - enemyEffective;
+					_enemy.ReceiveDamage(playerDamageDealt);
+					Debug.Log($"[CombatManager] Case 3: player breaks shield → enemy takes {playerDamageDealt}  EnemyHP:{_enemy.CurrentHealth}/{_enemy.MaxHealth}");
+				}
+				else
+				{
+					Debug.Log($"[CombatManager] Case 3: enemy shield holds ({enemyEffective} ≥ {playerEffective}) → no damage");
+				}
+			}
+			else if (enemyIsAttack && playerIsDefense)
+			{
+				// Case 3b: enemy attacks, player defends → thorns always fire; attacker wins only if effective > shield
+				if (_player.Thorns.TotalValue > 0)
+				{
+					int thorns = CombatResolver.ThornsRoll(_player.Thorns.TotalValue, enemyMult, enemyCritBonus, _player.Level);
 					_enemy.ReceiveDamage(thorns);
 					Debug.Log($"[CombatManager] Thorns → {thorns} reflected  EnemyHP:{_enemy.CurrentHealth}/{_enemy.MaxHealth}");
 				}
 
-				_playerHP = Mathf.Max(0, _playerHP - enemyDamageDealt);
-				Debug.Log($"[CombatManager] Enemy dmg  → base:{baseDmg} ×{multiplier} +crit:{critBonus} = {enemyDamageDealt}  PlayerHP:{_playerHP}/{_player.MaxHealth.TotalValue}");
+				if (enemyEffective > playerEffective)
+				{
+					enemyDamageDealt = enemyEffective - playerEffective;
+					_playerHP = Mathf.Max(0, _playerHP - enemyDamageDealt);
+					Debug.Log($"[CombatManager] Case 3: enemy breaks shield → player takes {enemyDamageDealt}  PlayerHP:{_playerHP}/{_player.MaxHealth.TotalValue}");
+				}
+				else
+				{
+					Debug.Log($"[CombatManager] Case 3: player shield holds ({playerEffective} ≥ {enemyEffective}) → no damage");
+				}
+			}
+			else
+			{
+				// Case 1: attack vs attack, attack vs energy, energy vs attack → symmetric difference
+				int diff = playerEffective - enemyEffective;
+				if (diff > 0)
+				{
+					playerDamageDealt = diff;
+					_enemy.ReceiveDamage(playerDamageDealt);
+					Debug.Log($"[CombatManager] Case 1: player wins ({playerEffective} vs {enemyEffective}) → enemy takes {playerDamageDealt}  EnemyHP:{_enemy.CurrentHealth}/{_enemy.MaxHealth}");
+				}
+				else if (diff < 0)
+				{
+					enemyDamageDealt = -diff;
+					_playerHP = Mathf.Max(0, _playerHP - enemyDamageDealt);
+					Debug.Log($"[CombatManager] Case 1: enemy wins ({enemyEffective} vs {playerEffective}) → player takes {enemyDamageDealt}  PlayerHP:{_playerHP}/{_player.MaxHealth.TotalValue}");
+				}
+				else
+				{
+					Debug.Log($"[CombatManager] Case 1: tie ({playerEffective} = {enemyEffective}) → no damage");
+				}
 			}
 
 			_enemy.ResetCombatState();
-			AccumulateTrainingExp(playerAction, playerMultiplier, playerCritBonus, enemyDamageDealt);
+			AccumulateTrainingExp(playerAction, playerMult, playerCritBonus, enemyDamageDealt);
 
 			// ── Update UI ─────────────────────────────────────────────────────────
 			_combatUI.RefreshPlayerBars(_playerHP, _playerEnergy);

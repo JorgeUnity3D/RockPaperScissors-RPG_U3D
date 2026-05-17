@@ -25,7 +25,8 @@ namespace Kapibara.Util.NotificableFields
 				if (!Equals(_value, value))
 				{
 					_value = value;
-					AppEvents.OnGameContextUpdated?.Invoke();
+					if (!AppEvents.SuppressContextUpdates)
+						AppEvents.OnGameContextUpdated?.Invoke();
 					OnValueChanged?.Invoke(_value);
 				}
 			}

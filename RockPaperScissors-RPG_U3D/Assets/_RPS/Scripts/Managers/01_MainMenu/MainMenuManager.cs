@@ -60,10 +60,7 @@ namespace Kapibara.RPS
 			_mainMenuUIController.ShowCanvas(0);
 			_newGameUIController.HideCanvas(0);
 			_loadGameUIController.HideCanvas(0);
-			_persistenceService.LoadGameList((gameContexts) =>
-			{
-				_mainMenuUIController.EnableContinueButton(gameContexts.Count > 0);
-			});
+			_mainMenuUIController.EnableContinueButton(_persistenceService.HasAnySave());
 		}
 
 		private void NewGameMenu()

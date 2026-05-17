@@ -85,7 +85,7 @@ namespace Kapibara.RPS
 			MaxEnergy      = GameConsts.COMBAT_MAX_ENERGY;
 
 			CurrentHealth   = MaxHealth;
-			CurrentEnergy   = InitialEnergy;
+			CurrentEnergy   = MaxEnergy;
 			StoredMentality = Mentality;
 			CurrentAction   = Actions.NONE;
 			ThinkingAction  = Actions.NONE;

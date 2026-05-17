@@ -54,6 +54,12 @@ namespace Kapibara.RPS
 	        File.WriteAllText(Path.Combine(_saveDirectory, gameContext.GameName), json);
         }
         
+        /// <summary>Devuelve true si existe al menos una partida guardada, sin deserializar.</summary>
+        public bool HasAnySave()
+        {
+            return Directory.Exists(_saveDirectory) && Directory.GetFiles(_saveDirectory, "Game_*").Length > 0;
+        }
+
         /// <summary>Carga una partida por nombre de archivo e invoca el callback con el GameContext deserializado.</summary>
         public void LoadGame(string filename, UnityAction<GameContext> OnFinishCallback)
         {
@@ -62,7 +68,9 @@ namespace Kapibara.RPS
             if (File.Exists(filePath))
             {
                 string json = File.ReadAllText(filePath);
+                AppEvents.SuppressContextUpdates = true;
                 GameContext gameContext = JsonConvert.DeserializeObject<GameContext>(json);
+                AppEvents.SuppressContextUpdates = false;
                 OnFinishCallback?.Invoke(gameContext);
             }
         }
@@ -74,12 +82,14 @@ namespace Kapibara.RPS
             List<string> allSaveFiles = new List<string>(Directory.GetFiles(_saveDirectory, "Game_*"));
             List<GameContext> allGameContexts = new List<GameContext>();
 
+            AppEvents.SuppressContextUpdates = true;
             foreach (string saveFile in allSaveFiles)
             {
                 string json = File.ReadAllText(saveFile);
                 GameContext gameContext = JsonConvert.DeserializeObject<GameContext>(json);
                 allGameContexts.Add(gameContext);
             }
+            AppEvents.SuppressContextUpdates = false;
             OnFinishCallback?.Invoke(allGameContexts);
         }
 
