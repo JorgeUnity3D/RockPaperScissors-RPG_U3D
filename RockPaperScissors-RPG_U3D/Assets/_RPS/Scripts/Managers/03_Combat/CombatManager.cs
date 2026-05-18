@@ -278,6 +278,8 @@ namespace Kapibara.RPS
 
 		private void EndCombat(bool playerWins)
 		{
+			_player.CurrentHealth = _playerHP;
+
 			int goldEarned = 0;
 			if (playerWins)
 			{

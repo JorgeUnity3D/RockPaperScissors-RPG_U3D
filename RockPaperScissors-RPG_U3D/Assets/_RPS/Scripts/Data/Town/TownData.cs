@@ -110,8 +110,9 @@ namespace Kapibara.RPS
 		{
 			get
 			{
+				if (Level >= GameConsts.TRAINING_EXP_PER_LEVEL.Count) return 1f;
 				float levelBase = GameConsts.TRAINING_EXP_PER_LEVEL[Level - 1];
-				float levelTop = GameConsts.TRAINING_EXP_PER_LEVEL[Level];
+				float levelTop  = GameConsts.TRAINING_EXP_PER_LEVEL[Level];
 				return (Experience - levelBase) / (levelTop - levelBase);
 			}
 		}

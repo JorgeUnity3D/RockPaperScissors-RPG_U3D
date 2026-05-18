@@ -39,6 +39,9 @@ namespace Kapibara.RPS
 				return;
 			}
 
+			if (ctx.CurrentStepIndex == 0)
+				AppContext.Player.CurrentHealth = AppContext.Player.MaxHealth.TotalValue;
+
 			MapStep step = ctx.CurrentStep;
 			Debug.Log($"[StepManager] Initialize() -> step {ctx.CurrentStepIndex}  type:{step.Type}");
 

@@ -34,7 +34,7 @@ namespace Kapibara.RPS
 			AppEvents.OnNPCDialogueNext += OnNext;
 			AppEvents.OnNPCDialoguePrev += OnPrev;
 
-			_npcUI.SetData(step.NPCSprite, _player.MaxHealth.TotalValue, _player.MaxHealth.TotalValue);
+			_npcUI.SetData(step.NPCSprite, _player.CurrentHealth, _player.MaxHealth.TotalValue);
 			_npcUI.SetDialogueLine(_dialogueLines[_currentLineIndex], _currentLineIndex % 2 == 1);
 			_npcUI.SetPrevInteractable(false);
 			_npcUI.ShowCanvas();

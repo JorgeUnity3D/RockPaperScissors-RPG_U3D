@@ -34,7 +34,7 @@ namespace Kapibara.RPS
 
 			AppEvents.OnTreasureActionSelected += OnActionSelected;
 
-			_treasureUI.SetData(step.TreasureSprite, step.GoldAmount, _player.MaxHealth.TotalValue, _player.MaxHealth.TotalValue);
+			_treasureUI.SetData(step.TreasureSprite, step.GoldAmount, _player.CurrentHealth, _player.MaxHealth.TotalValue);
 			_treasureUI.SetActionsInteractable(true);
 			_treasureUI.ShowCanvas();
 
