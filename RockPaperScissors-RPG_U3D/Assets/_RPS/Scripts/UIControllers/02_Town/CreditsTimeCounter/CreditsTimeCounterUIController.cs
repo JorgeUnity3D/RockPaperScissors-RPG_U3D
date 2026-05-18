@@ -27,14 +27,10 @@ namespace Kapibara.RPS
 			SetUp();
 		}
 
-		private void Update()
+		private void OnDestroy()
 		{
-			if (_creditTimeCounter == null)
-			{
-				return;
-			}
-			SetCreditsUI(_creditTimeCounter.CreditsLeft);
-			SetTimeCounterUI(_creditTimeCounter.TimeLeftInSeconds);
+			AppEvents.OnCreditsUpdated -= SetCreditsUI;
+			AppEvents.OnTimeUpdated    -= SetTimeCounterUI;
 		}
 
 		#endregion
@@ -44,8 +40,8 @@ namespace Kapibara.RPS
 		public override void SetUp()
 		{
 			Debug.Log($"[CreditsTimeCounterUIController] SetUp() -> ");
-			//AppEvents.OnCreditsUpdated += SetCreditsUI;
-			//AppEvents.OnTimeUpdated += SetTimeCounterUI;
+			AppEvents.OnCreditsUpdated += SetCreditsUI;
+			AppEvents.OnTimeUpdated    += SetTimeCounterUI;
 		}
 
 		public void SetData(CreditTimeCounter creditTimeCounter)

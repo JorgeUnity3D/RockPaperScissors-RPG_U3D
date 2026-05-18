@@ -43,7 +43,16 @@ namespace Kapibara.RPS
 		public void OnMenuOpen()
 		{
 			Debug.Log($"[TrainingHouseManager] OnMenuOpen() -> ");
-			_trainingHouseUIController.SetData(_trainingAttributes, AppContext.Player.Gold, GameConsts.TRAINING_MOD_PRICES);
+			_trainingHouseUIController.SetData(_trainingAttributes, ComputeCanAfford(), GameConsts.TRAINING_MOD_PRICES);
+		}
+
+		private Dictionary<Stats, bool> ComputeCanAfford()
+		{
+			int gold = AppContext.Player.Gold;
+			Dictionary<Stats, bool> result = new Dictionary<Stats, bool>();
+			foreach (KeyValuePair<Stats, int> entry in GameConsts.TRAINING_MOD_PRICES)
+				result[entry.Key] = gold >= entry.Value;
+			return result;
 		}
 		
 		private void SelectTrainingStat(TrainingHouseModifier trainingHouseModifier)
@@ -72,7 +81,7 @@ namespace Kapibara.RPS
 			int trainingCost = GameConsts.TRAINING_MOD_PRICES[trainingHouseModifier.Stat];
 			AppContext.Player.Gold = Mathf.Max(0, AppContext.Player.Gold - trainingCost);
 			trainingHouseModifier.IsUnlocked = true;
-			_trainingHouseUIController.UpdateView(trainingHouseModifier, AppContext.Player.Gold);
+			_trainingHouseUIController.UpdateView(trainingHouseModifier, ComputeCanAfford());
 			AppEvents.OnGameContextUpdated?.Invoke();
 		}
 		
@@ -86,7 +95,7 @@ namespace Kapibara.RPS
 			TrainingHouseModifier modifier = GetTrainingModifier(stat);
 			if (modifier == null) return;
 			modifier.Experience++;
-			_trainingHouseUIController.UpdateView(modifier, AppContext.Player.Gold);
+			_trainingHouseUIController.UpdateView(modifier, ComputeCanAfford());
 		}
 
 		[FoldoutGroup("DEBUG"), Button("Add Level")]
@@ -95,7 +104,7 @@ namespace Kapibara.RPS
 			TrainingHouseModifier modifier = GetTrainingModifier(stat);
 			if (modifier == null) return;
 			modifier.Level++;
-			_trainingHouseUIController.UpdateView(modifier, AppContext.Player.Gold);
+			_trainingHouseUIController.UpdateView(modifier, ComputeCanAfford());
 		}
 
 		private TrainingHouseModifier GetTrainingModifier(Stats stat)

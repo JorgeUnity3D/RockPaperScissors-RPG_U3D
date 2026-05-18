@@ -1,4 +1,5 @@
-﻿using Sirenix.OdinInspector;
+﻿using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Kapibara.RPS
@@ -40,7 +41,28 @@ namespace Kapibara.RPS
 		public void OnMenuOpen()
 		{
 			Debug.Log($"[PaperTreeManager] OnMenuOpen() -> ");
+			RestoreNodeState();
 			_paperTreeUIController.SetData(_player.Attributes, _paperTreeScrObj, AppContext.Player.Gold);
+		}
+
+		private static readonly Stats[] PaperTreeStats =
+		{
+			Stats.ROCK, Stats.PAPER, Stats.SCISSOR, Stats.DEFENSE, Stats.ENERGY_RECOVERY
+		};
+
+		private void RestoreNodeState()
+		{
+			foreach (Stats stat in PaperTreeStats)
+			{
+				List<PaperTreeNode> nodes = _paperTreeScrObj[stat];
+				if (nodes == null) continue;
+				StatAttribute attribute = _player.Attributes.Find(a => a.Stat == stat);
+				if (attribute == null) continue;
+				PaperTreeModifier modifier = attribute.GetModifier<PaperTreeModifier>();
+				if (modifier == null) continue;
+				foreach (PaperTreeNode node in nodes)
+					node.IsUnlocked = modifier.UnlockedNodes.Contains(node.NodeID);
+			}
 		}
 		
 		#endregion

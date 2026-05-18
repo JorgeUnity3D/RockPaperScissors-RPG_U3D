@@ -26,12 +26,16 @@ namespace Kapibara.RPS
 
 		protected override void Subscribe()
 		{
-			Debug.Log($"[StablesManager] Subscribe() -> Nothing to subscribe!");
+			Debug.Log($"[StablesManager] Subscribe() -> ");
+			AppEvents.OnWatchAd += WatchAd;
+			AppEvents.OnBuyGame += BuyGame;
 		}
 
 		protected override void UnSubscribe()
 		{
-			Debug.Log($"[StablesManager] UnSubscribe() -> Nothing to unsubscribe!");
+			Debug.Log($"[StablesManager] UnSubscribe() -> ");
+			AppEvents.OnWatchAd -= WatchAd;
+			AppEvents.OnBuyGame -= BuyGame;
 		}
 
 		#endregion
@@ -41,7 +45,6 @@ namespace Kapibara.RPS
 		public void OnMenuOpen()
 		{
 			Debug.Log($"[StablesManager] OnMenuOpen() -> ");
-			_stablesUIController.SetData(WatchAd, BuyGame);
 		}
 
 		/// <summary>

@@ -47,37 +47,20 @@ namespace Kapibara.RPS
 			_icons = _iconsScrObj.Data;
 		}
 
-		/// <summary>Carga los datos del árbol, restaura el estado de los nodos y construye toda la UI de habilidades.</summary>
+		/// <summary>Carga los datos del árbol ya restaurados y construye la UI de habilidades. Llamar tras RestoreNodeState en el manager.</summary>
 		public void SetData(List<StatAttribute> attributes, PaperTreeScrObj paperTreeScrObj, int playerGold)
 		{
 			Debug.Log($"[PaperTreeUIController] SetData() -> ");
-			_rockSkillTree = paperTreeScrObj[Stats.ROCK];
-			_paperSkillTree = paperTreeScrObj[Stats.PAPER];
-			_scissorsSkillTree = paperTreeScrObj[Stats.SCISSOR];
-			_defenseSkillTree = paperTreeScrObj[Stats.DEFENSE];
+			_rockSkillTree      = paperTreeScrObj[Stats.ROCK];
+			_paperSkillTree     = paperTreeScrObj[Stats.PAPER];
+			_scissorsSkillTree  = paperTreeScrObj[Stats.SCISSOR];
+			_defenseSkillTree   = paperTreeScrObj[Stats.DEFENSE];
 			_energyRecSkillTree = paperTreeScrObj[Stats.ENERGY_RECOVERY];
-			RestoreNodeState(attributes, Stats.ROCK, _rockSkillTree);
-			RestoreNodeState(attributes, Stats.PAPER, _paperSkillTree);
-			RestoreNodeState(attributes, Stats.SCISSOR, _scissorsSkillTree);
-			RestoreNodeState(attributes, Stats.DEFENSE, _defenseSkillTree);
-			RestoreNodeState(attributes, Stats.ENERGY_RECOVERY, _energyRecSkillTree);
-			SetUpPaperTreeUI(_rockPaperTreeButtons, _rockSkillTree, playerGold);
-			SetUpPaperTreeUI(_paperPaperTreeButtons, _paperSkillTree, playerGold);
-			SetUpPaperTreeUI(_scissorsPaperTreeButtons, _scissorsSkillTree, playerGold);
-			SetUpPaperTreeUI(_defensePaperTreeButtons, _defenseSkillTree, playerGold);
+			SetUpPaperTreeUI(_rockPaperTreeButtons,      _rockSkillTree,      playerGold);
+			SetUpPaperTreeUI(_paperPaperTreeButtons,     _paperSkillTree,     playerGold);
+			SetUpPaperTreeUI(_scissorsPaperTreeButtons,  _scissorsSkillTree,  playerGold);
+			SetUpPaperTreeUI(_defensePaperTreeButtons,   _defenseSkillTree,   playerGold);
 			SetUpPaperTreeUI(_energyRecPaperTreeButtons, _energyRecSkillTree, playerGold);
-		}
-
-		private void RestoreNodeState(List<StatAttribute> attributes, Stats stat, List<PaperTreeNode> nodes)
-		{
-			StatAttribute attribute = attributes.Find(a => a.Stat == stat);
-			if (attribute == null) return;
-			PaperTreeModifier modifier = attribute.GetModifier<PaperTreeModifier>();
-			if (modifier == null) return;
-			foreach (PaperTreeNode node in nodes)
-			{
-				node.IsUnlocked = modifier.UnlockedNodes.Contains(node.NodeID);
-			}
 		}
 
 		#endregion

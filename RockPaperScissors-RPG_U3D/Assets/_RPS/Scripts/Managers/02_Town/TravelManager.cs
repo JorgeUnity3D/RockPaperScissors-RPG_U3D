@@ -42,13 +42,7 @@ namespace Kapibara.RPS
 		public void OnMenuOpen()
 		{
 			Debug.Log($"[TravelManager] OnMenuOpen() -> ");
-			_travelUIController.SetData(_player.Attributes, _mapLevelScrObj, TravelToLevel);
-		}
-
-		private void TravelToLevel(MapLevel level)
-		{
-			Debug.Log($"[TravelManager] TravelToLevel() -> {level.Level}.{level.LevelName}");
-			AppEvents.OnTravelRequested?.Invoke(level);
+			_travelUIController.SetData(_player.Attributes, _mapLevelScrObj);
 		}
 
 		private void OnTravelConfirmed(MapLevel level)

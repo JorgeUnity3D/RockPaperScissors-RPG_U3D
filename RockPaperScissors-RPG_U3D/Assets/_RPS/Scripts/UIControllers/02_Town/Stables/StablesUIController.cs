@@ -1,6 +1,5 @@
 using Kapibara.UI;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace Kapibara.RPS
@@ -25,22 +24,22 @@ namespace Kapibara.RPS
 		public override void SetUp()
 		{
 			HideCanvas(0);
+			_watchAdButton.onClick.AddListener(OnWatchAdClicked);
+			_buyGameButton.onClick.AddListener(OnBuyGameClicked);
 		}
 
 		#endregion
 
 		#region CONTROL
 
-		/// <summary>
-		/// Wira los botones de monetización. Llamar desde StablesManager.Initialize().
-		/// </summary>
-		public void SetData(UnityAction onWatchAd, UnityAction onBuyGame)
+		private void OnWatchAdClicked()
 		{
-			_watchAdButton.onClick.RemoveAllListeners();
-			_watchAdButton.onClick.AddListener(onWatchAd);
+			AppEvents.OnWatchAd?.Invoke();
+		}
 
-			_buyGameButton.onClick.RemoveAllListeners();
-			_buyGameButton.onClick.AddListener(onBuyGame);
+		private void OnBuyGameClicked()
+		{
+			AppEvents.OnBuyGame?.Invoke();
 		}
 
 		#endregion

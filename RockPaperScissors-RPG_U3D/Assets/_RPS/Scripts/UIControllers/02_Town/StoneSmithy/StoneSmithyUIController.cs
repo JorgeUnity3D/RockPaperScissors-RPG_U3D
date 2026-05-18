@@ -1,6 +1,5 @@
 using Kapibara.UI;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace Kapibara.RPS
@@ -26,34 +25,39 @@ namespace Kapibara.RPS
 		public override void SetUp()
 		{
 			HideCanvas(0);
+			_attackButton.GetComponent<Button>().onClick.AddListener(OnUpgradeAttackClicked);
+			_healButton.GetComponent<Button>().onClick.AddListener(OnUpgradeHealClicked);
+			_energyButton.GetComponent<Button>().onClick.AddListener(OnUpgradeEnergyClicked);
 		}
 
 		#endregion
 
 		#region CONTROL
 
-		/// <summary>
-		/// Inicializa los tres slots de consumible con sus datos y callbacks de mejora.
-		/// </summary>
-		public void SetData(
-			Item attackItem, Item healItem, Item energyItem,
-			UnityAction onUpgradeAttack, UnityAction onUpgradeHeal, UnityAction onUpgradeEnergy)
+		public void SetData(Item attackItem, Item healItem, Item energyItem)
 		{
-			SetupButton(_attackButton, attackItem, onUpgradeAttack);
-			SetupButton(_healButton, healItem, onUpgradeHeal);
-			SetupButton(_energyButton, energyItem, onUpgradeEnergy);
+			_attackButton.SetButtonData(attackItem);
+			_healButton.SetButtonData(healItem);
+			_energyButton.SetButtonData(energyItem);
 		}
 
 		public void RefreshAttackLevel(int level) => _attackButton.SetLevel(level);
 		public void RefreshHealLevel(int level)   => _healButton.SetLevel(level);
 		public void RefreshEnergyLevel(int level) => _energyButton.SetLevel(level);
 
-		private void SetupButton(StoneSmithyButton smithyButton, Item item, UnityAction onUpgrade)
+		private void OnUpgradeAttackClicked()
 		{
-			smithyButton.SetButtonData(item);
-			Button btn = smithyButton.GetComponent<Button>();
-			btn.onClick.RemoveAllListeners();
-			btn.onClick.AddListener(onUpgrade);
+			AppEvents.OnUpgradeAttack?.Invoke();
+		}
+
+		private void OnUpgradeHealClicked()
+		{
+			AppEvents.OnUpgradeHeal?.Invoke();
+		}
+
+		private void OnUpgradeEnergyClicked()
+		{
+			AppEvents.OnUpgradeEnergy?.Invoke();
 		}
 
 		#endregion

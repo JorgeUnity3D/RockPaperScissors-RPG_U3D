@@ -4,7 +4,6 @@ using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace Kapibara.RPS
@@ -22,8 +21,6 @@ namespace Kapibara.RPS
 		[SerializeField] private TextMeshProUGUI _travelLabelText;		
 		[Header("DEBUG")]
 		[SerializeField, ReadOnly] private List<MapLevel> _levels;
-		
-		private UnityAction<MapLevel> OnTravelConfirmed;
 
 		#region UNITY_LIFECYCLE
 
@@ -41,11 +38,10 @@ namespace Kapibara.RPS
 			HideCanvas(0);
 		}
 
-		internal void SetData(List<StatAttribute> attributes, MapLevelScrObj mapLevelScrObj, UnityAction<MapLevel> OnTravelConfirmed)
+		internal void SetData(List<StatAttribute> attributes, MapLevelScrObj mapLevelScrObj)
 		{
 			Debug.Log($"[TravelUIController] SetData() -> ");
 			_levels = mapLevelScrObj.Data;
-			this.OnTravelConfirmed = OnTravelConfirmed;
 			SetUpMapUI();
 		}
 
@@ -81,7 +77,7 @@ namespace Kapibara.RPS
 		private void ConfirmTravel(MapLevel level)
 		{
 			Debug.Log($"[TravelUIController] ConfirmTravel() -> {level.Level}.{level.LevelName}");
-			OnTravelConfirmed(level);
+			AppEvents.OnTravelRequested?.Invoke(level);
 		}
 
 		#endregion

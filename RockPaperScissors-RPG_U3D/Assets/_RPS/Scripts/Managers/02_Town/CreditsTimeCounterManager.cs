@@ -71,6 +71,7 @@ namespace Kapibara.RPS
 		{
 			Debug.Log($"[CreditsTimeCounterManager] UseCredit() -> ");
 			_creditTimeCounter.CreditsLeft = Mathf.Max(0, _creditTimeCounter.CreditsLeft - 1);
+			AppEvents.OnCreditsUpdated?.Invoke(_creditTimeCounter.CreditsLeft);
 			StartTimeCounter();
 		}
 
@@ -91,6 +92,7 @@ namespace Kapibara.RPS
 		{
 			Debug.Log($"[CreditsTimeCounterManager] EarnCredit() -> ");
 			_creditTimeCounter.CreditsLeft = Mathf.Min(_creditTimeCounter.MaxCredits, _creditTimeCounter.CreditsLeft + 1);
+			AppEvents.OnCreditsUpdated?.Invoke(_creditTimeCounter.CreditsLeft);
 			if (_creditTimeCounter.CreditsAtMax)
 				_creditTimeCounter.TimeIsRunning = false;
 		}
@@ -110,10 +112,12 @@ namespace Kapibara.RPS
 				if (_creditTimeCounter.TimeLeftInSeconds > 0)
 				{
 					_creditTimeCounter.TimeLeftInSeconds -= Time.deltaTime;
+					AppEvents.OnTimeUpdated?.Invoke(_creditTimeCounter.TimeLeftInSeconds);
 				}
 				else
 				{
 					_creditTimeCounter.CreditsLeft++;
+					AppEvents.OnCreditsUpdated?.Invoke(_creditTimeCounter.CreditsLeft);
 					if (_creditTimeCounter.CreditsAtMax)
 						_creditTimeCounter.TimeIsRunning = false;
 					else

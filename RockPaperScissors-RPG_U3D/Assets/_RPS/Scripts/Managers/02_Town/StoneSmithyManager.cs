@@ -32,12 +32,18 @@ namespace Kapibara.RPS
 
 		protected override void Subscribe()
 		{
-			Debug.Log($"[StoneSmithyManager] Subscribe() -> Nothing to subscribe!");
+			Debug.Log($"[StoneSmithyManager] Subscribe() -> ");
+			AppEvents.OnUpgradeAttack += UpgradeAttack;
+			AppEvents.OnUpgradeHeal   += UpgradeHeal;
+			AppEvents.OnUpgradeEnergy += UpgradeEnergy;
 		}
 
 		protected override void UnSubscribe()
 		{
-			Debug.Log($"[StoneSmithyManager] UnSubscribe() -> Nothing to unsubscribe!");
+			Debug.Log($"[StoneSmithyManager] UnSubscribe() -> ");
+			AppEvents.OnUpgradeAttack -= UpgradeAttack;
+			AppEvents.OnUpgradeHeal   -= UpgradeHeal;
+			AppEvents.OnUpgradeEnergy -= UpgradeEnergy;
 		}
 
 		#endregion
@@ -56,9 +62,7 @@ namespace Kapibara.RPS
 			_healItem.level   = _player.HealItemLevel;
 			_energyItem.level = _player.EnergyItemLevel;
 
-			_stoneSmithyUIController.SetData(
-				_attackItem, _healItem, _energyItem,
-				UpgradeAttack, UpgradeHeal, UpgradeEnergy);
+			_stoneSmithyUIController.SetData(_attackItem, _healItem, _energyItem);
 		}
 
 		private void UpgradeAttack()

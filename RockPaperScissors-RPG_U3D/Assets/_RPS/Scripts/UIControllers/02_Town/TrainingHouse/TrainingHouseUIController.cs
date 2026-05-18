@@ -35,7 +35,7 @@ namespace Kapibara.RPS
 		[SerializeField] private IconsScrObj _iconsScrObj;
 		[SerializeField, ReadOnly] private IconsDictionary _icons;
 
-		private int _playerGold;
+		private Dictionary<Stats, bool> _canAffordByStats;
 		private Dictionary<Stats, int> _trainingCosts;
 
 		#region UNITY_LIFECYCLE
@@ -57,10 +57,10 @@ namespace Kapibara.RPS
 		}		
 
 		/// <summary>Inicializa todos los botones de entrenamiento con el estado actual de cada modificador.</summary>
-		public void SetData(List<StatAttribute> attributes, int playerGold, Dictionary<Stats, int> trainingCosts)
+		public void SetData(List<StatAttribute> attributes, Dictionary<Stats, bool> canAffordByStats, Dictionary<Stats, int> trainingCosts)
 		{
 			Debug.Log($"[TrainingHouseUIController] SetData() -> ");
-			_playerGold = playerGold;
+			_canAffordByStats = canAffordByStats;
 			_trainingCosts = trainingCosts;
 			foreach (StatAttribute attribute in attributes)
 			{
@@ -77,10 +77,10 @@ namespace Kapibara.RPS
 		#region CONTROL
 
 		/// <summary>Refresca el botón y el panel de detalle para el modificador indicado tras un cambio de estado.</summary>
-		public void UpdateView(TrainingHouseModifier trainingHouseModifier, int playerGold)
+		public void UpdateView(TrainingHouseModifier trainingHouseModifier, Dictionary<Stats, bool> canAffordByStats)
 		{
 			Debug.Log($"[TrainingHouseUIController] UpdateView() -> stat {trainingHouseModifier.Stat}");
-			_playerGold = playerGold;
+			_canAffordByStats = canAffordByStats;
 			UpdateTrainingButton(trainingHouseModifier);
 			SetStatView(trainingHouseModifier);
 		}
@@ -129,7 +129,7 @@ namespace Kapibara.RPS
 			_unlockStatIconImage.sprite = _icons[trainingHouseModifier.Stat];
 			int trainingCost = _trainingCosts[trainingHouseModifier.Stat];
 			_unlockCostText.text = trainingCost.ToString();
-			_unlockStatButton.interactable = _playerGold >= trainingCost;
+			_unlockStatButton.interactable = _canAffordByStats[trainingHouseModifier.Stat];
 			_unlockStatButton.AddListener(() =>
 			{
 				AppEvents.OnTrainingUnlocked?.Invoke(trainingHouseModifier);

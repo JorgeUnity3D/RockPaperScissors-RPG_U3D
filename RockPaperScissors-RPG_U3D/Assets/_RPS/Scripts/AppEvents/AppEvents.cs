@@ -62,8 +62,18 @@ namespace Kapibara.RPS
 		public static UnityAction<float> OnTimeUpdated;
 		/// <summary>Se dispara cuando cambia la cantidad de créditos disponibles.</summary>
 		public static UnityAction<int> OnCreditsUpdated;
+		/// <summary>El jugador pulsa "Ver anuncio" en Stables. StablesManager lo consume para ganar 1 crédito.</summary>
+		public static UnityAction OnWatchAd;
+		/// <summary>El jugador pulsa "Comprar juego" en Stables. StablesManager lo consume (IAP placeholder).</summary>
+		public static UnityAction OnBuyGame;
 		/// <summary>Solicita ganar un crédito (caballo). StablesManager lo dispara; CreditsTimeCounterManager lo consume.</summary>
 		public static UnityAction OnEarnCredit;
+		/// <summary>El jugador solicita mejorar el item de ataque en StoneSmithy.</summary>
+		public static UnityAction OnUpgradeAttack;
+		/// <summary>El jugador solicita mejorar el item de curación en StoneSmithy.</summary>
+		public static UnityAction OnUpgradeHeal;
+		/// <summary>El jugador solicita mejorar el item de energía en StoneSmithy.</summary>
+		public static UnityAction OnUpgradeEnergy;
 		/// <summary>El jugador solicita viajar a un nivel. CreditsTimeCounterManager valida y descuenta el crédito.</summary>
 		public static UnityAction<MapLevel> OnTravelRequested;
 		/// <summary>Crédito validado y descontado; TravelManager inicia la escena de combate con el nivel dado.</summary>
