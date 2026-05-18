@@ -7,7 +7,7 @@ namespace Kapibara.RPS
 	/// <summary>
 	/// Manager de la Casa del jugador. Pasa los datos del jugador al HouseUIController para su visualización.
 	/// </summary>
-	public class HouseManager : BaseManager
+	public class HouseManager : BaseManager, ITownBuilding
 	{
 		[SerializeField, ReadOnly] private Player _player;
 		
@@ -37,9 +37,9 @@ namespace Kapibara.RPS
 
         #region CONTROL
 
-		public override void Initialize()
+		public void OnMenuOpen()
 		{
-			Debug.Log($"[HouseManager] Initialize() -> ");
+			Debug.Log($"[HouseManager] OnMenuOpen() -> ");
 			_houseUIController.SetData(_player);
 		}
 		

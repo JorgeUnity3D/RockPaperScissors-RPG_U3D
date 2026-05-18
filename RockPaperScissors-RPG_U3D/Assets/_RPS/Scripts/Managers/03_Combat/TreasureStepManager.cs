@@ -6,7 +6,7 @@ namespace Kapibara.RPS
 	/// Gestiona el loop de un step de Tesoro. Muestra TreasureUIController, espera la acción RPS
 	/// del jugador, aplica el oro y dispara OnCombatFinished(true).
 	/// </summary>
-	public class TreasureStepManager : MonoBehaviour
+	public class TreasureStepManager : BaseManager
 	{
 		private static readonly Actions[] RpsActions = { Actions.ROCK, Actions.PAPER, Actions.SCISSOR };
 
@@ -15,13 +15,16 @@ namespace Kapibara.RPS
 		private int                  _goldReward;
 		private Actions              _treasureAction;
 
-		#region UNITY LIFECYCLE
+		#region SETUP
 
-		private void Awake()
+		public override void SetUp()
 		{
 			_treasureUI = ServiceLocator.Instance.GetService<UIService>().GetController<TreasureUIController>();
 			_player     = AppContext.Player;
 		}
+
+		protected override void Subscribe()   { }
+		protected override void UnSubscribe() { }
 
 		#endregion
 

@@ -35,9 +35,9 @@ namespace Kapibara.RPS
             _backButton.AddListener(Back);
         }
         
-        public void Initialize()
+        public void ClearView()
         {
-	        Debug.Log($"[NewGameUIController] Initialize() -> ");
+	        Debug.Log($"[NewGameUIController] ClearView() -> ");
 	        _gamenameInput.text = "";
         }
         

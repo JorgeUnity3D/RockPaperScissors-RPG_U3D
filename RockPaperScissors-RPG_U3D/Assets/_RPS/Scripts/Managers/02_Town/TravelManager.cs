@@ -6,14 +6,13 @@ namespace Kapibara.RPS
 	/// <summary>
 	/// Manager de la pantalla de viaje. Proporciona la lista de niveles del mapa al TravelUIController y gestiona la navegación a nivel seleccionado.
 	/// </summary>
-	public class TravelManager : BaseManager
+	public class TravelManager : BaseManager, ITownBuilding
 	{
 		[Header("DATA")]
 		[SerializeField] private MapLevelScrObj _mapLevelScrObj;
 		[Header("DEBUG")]
 		[SerializeField, ReadOnly] private Player _player;
 		[SerializeField, ReadOnly] private TravelUIController _travelUIController;
-		[SerializeField, ReadOnly] private CreditsTimeCounterManager _creditsManager;
 
 		#region SETUP
 
@@ -21,41 +20,40 @@ namespace Kapibara.RPS
 		{
 			Debug.Log($"[TravelManager] SetUp() -> ");
 			_travelUIController = ServiceLocator.Instance.GetService<UIService>().GetController<TravelUIController>();
-			_creditsManager     = ServiceLocator.Instance.GetService<ManagerService>().GetManager<CreditsTimeCounterManager>();
 			_player             = AppContext.Player;
 		}
 
 		protected override void Subscribe()
 		{
-			Debug.Log($"[TravelManager] Subscribe() -> Nothing to subscribe!");
+			Debug.Log($"[TravelManager] Subscribe() -> ");
+			AppEvents.OnTravelConfirmed += OnTravelConfirmed;
 		}
 
 		protected override void UnSubscribe()
 		{
-			Debug.Log($"[TravelManager] UnSubscribe() -> Nothing to unsubscribe!");
+			Debug.Log($"[TravelManager] UnSubscribe() -> ");
+			AppEvents.OnTravelConfirmed -= OnTravelConfirmed;
 		}
 
 		#endregion
 
 		#region CONTROL
 
-		public override void Initialize()
+		public void OnMenuOpen()
 		{
-			Debug.Log($"[TravelManager] Initialize() -> ");
+			Debug.Log($"[TravelManager] OnMenuOpen() -> ");
 			_travelUIController.SetData(_player.Attributes, _mapLevelScrObj, TravelToLevel);
 		}
 
 		private void TravelToLevel(MapLevel level)
 		{
 			Debug.Log($"[TravelManager] TravelToLevel() -> {level.Level}.{level.LevelName}");
+			AppEvents.OnTravelRequested?.Invoke(level);
+		}
 
-			if (_creditsManager.CreditsLeft <= 0)
-			{
-				Debug.LogWarning($"[TravelManager] TravelToLevel() -> No credits left.");
-				return;
-			}
-
-			_creditsManager.UseCredit();
+		private void OnTravelConfirmed(MapLevel level)
+		{
+			Debug.Log($"[TravelManager] OnTravelConfirmed() -> {level.Level}.{level.LevelName}");
 			AppContext.CombatContext = new CombatContext(level);
 			ServiceLocator.Instance.GetService<SceneService>().LoadScene(GameScenes.COMBAT);
 		}

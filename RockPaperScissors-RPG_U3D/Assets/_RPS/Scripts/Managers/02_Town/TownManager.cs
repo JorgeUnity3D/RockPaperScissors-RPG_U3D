@@ -16,6 +16,7 @@ namespace Kapibara.RPS
 
 		[SerializeField, ReadOnly] private UIService _uiService;
 		[SerializeField, ReadOnly] private ManagerService _managerService;
+		[SerializeField, ReadOnly] private CreditsTimeCounterManager _creditsTimeCounterManager;
 		[SerializeField, ReadOnly] private TownUIController _townUIController;
 		[SerializeField, ReadOnly] private PlayerUIController _playerUIController;
 		[SerializeField, ReadOnly] private UnlockMenuUIController _unlockMenuUIController;
@@ -32,6 +33,7 @@ namespace Kapibara.RPS
 			Debug.Log($"[TownManager] SetUp() -> ");
 			_uiService = ServiceLocator.Instance.GetService<UIService>();
 			_managerService = ServiceLocator.Instance.GetService<ManagerService>();
+			_creditsTimeCounterManager = _managerService.GetManager<CreditsTimeCounterManager>();
 			_playerUIController = _uiService.GetController<PlayerUIController>();
 			_unlockMenuUIController = _uiService.GetController<UnlockMenuUIController>();
 			_townUIController = _uiService.GetController<TownUIController>();
@@ -67,6 +69,7 @@ namespace Kapibara.RPS
 			Debug.Log($"[TownManager] Initialize() -> ");
 			_townUIController.SetData(_townData, _townViewScrObj.Data);
 			_playerUIController.UpdatePlayerGold(AppContext.Player.Gold);
+			_creditsTimeCounterManager.Initialize();
 		}
 
 		private void OpenTownMenu(TownMenu townMenu)
@@ -105,7 +108,8 @@ namespace Kapibara.RPS
 			}
 
 			_currentTownUIController.ShowCanvas();
-			targetManager.Initialize();
+			if (targetManager is ITownBuilding building)
+				building.OnMenuOpen();
 			_inMenuUIController.ShowCanvas();
 			_inMenuUIController.SetData(townData, townView);
 		}

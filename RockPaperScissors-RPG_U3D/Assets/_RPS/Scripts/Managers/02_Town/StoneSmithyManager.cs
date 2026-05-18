@@ -9,7 +9,7 @@ namespace Kapibara.RPS
 	/// Coste de mejora: (nivelActual + 1) × GameConsts.STONE_SMITHY_COST_PER_LEVEL.
 	/// Los consumibles se usan en combate usando el mismo patrón: SO como referencia + nivel del contexto (Phase 5).
 	/// </summary>
-	public class StoneSmithyManager : BaseManager
+	public class StoneSmithyManager : BaseManager, ITownBuilding
 	{
 		[Header("DATA")]
 		[SerializeField] private StoneSmithyScrObj _stoneSmithyScrObj;
@@ -44,9 +44,9 @@ namespace Kapibara.RPS
 
 		#region CONTROL
 
-		public override void Initialize()
+		public void OnMenuOpen()
 		{
-			Debug.Log($"[StoneSmithyManager] Initialize() -> ");
+			Debug.Log($"[StoneSmithyManager] OnMenuOpen() -> ");
 
 			_attackItem = _stoneSmithyScrObj.Data.attackItem.Clone();
 			_healItem   = _stoneSmithyScrObj.Data.healItem.Clone();

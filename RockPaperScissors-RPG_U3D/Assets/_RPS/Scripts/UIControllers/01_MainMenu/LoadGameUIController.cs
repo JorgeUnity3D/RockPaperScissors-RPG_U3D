@@ -44,9 +44,9 @@ namespace Kapibara.RPS
 
         #region CONTROL
 
-		public void Initialize()
+		public void ClearView()
 		{
-	        Debug.Log($"[LoadGameUIController] Initialize() -> ");			
+	        Debug.Log($"[LoadGameUIController] ClearView() -> ");
 			_timestampText.text = "";
 			_dateText.text = "";
 			_gamenameText.text = "";
@@ -101,7 +101,7 @@ namespace Kapibara.RPS
 				Back();
 				return;
 			}
-			Initialize();
+			ClearView();
 		}
 		
 		private void Back()

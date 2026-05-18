@@ -7,7 +7,7 @@ namespace Kapibara.RPS
 	/// <summary>
 	/// Manager de la Casa de Entrenamiento. Gestiona la selección de estadística a entrenar y el desbloqueo de slots de entrenamiento.
 	/// </summary>
-	public class TrainingHouseManager : BaseManager
+	public class TrainingHouseManager : BaseManager, ITownBuilding
 	{
 		[SerializeField, ReadOnly] private List<StatAttribute> _trainingAttributes;
 		
@@ -40,9 +40,9 @@ namespace Kapibara.RPS
 
         #region CONTROL
 
-		public override void Initialize()
+		public void OnMenuOpen()
 		{
-			Debug.Log($"[TrainingHouseManager] Initialize() -> ");
+			Debug.Log($"[TrainingHouseManager] OnMenuOpen() -> ");
 			_trainingHouseUIController.SetData(_trainingAttributes, AppContext.Player.Gold, GameConsts.TRAINING_MOD_PRICES);
 		}
 		

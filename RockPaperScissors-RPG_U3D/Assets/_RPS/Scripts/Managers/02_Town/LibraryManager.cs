@@ -8,7 +8,7 @@ namespace Kapibara.RPS
 	/// el progreso del jugador para mostrar el estado de cada quest.
 	/// Kill tracking requiere combat (Phase 4); por ahora todos los contadores son 0.
 	/// </summary>
-	public class LibraryManager : BaseManager
+	public class LibraryManager : BaseManager, ITownBuilding
 	{
 		[Header("DATA")]
 		[SerializeField] private LibraryScrObj _libraryScrObj;
@@ -39,9 +39,9 @@ namespace Kapibara.RPS
 
 		#region CONTROL
 
-		public override void Initialize()
+		public void OnMenuOpen()
 		{
-			Debug.Log($"[LibraryManager] Initialize() -> ");
+			Debug.Log($"[LibraryManager] OnMenuOpen() -> ");
 			_libraryUIController.SetData(_libraryScrObj.Data, _player.LibraryKillCounts);
 		}
 

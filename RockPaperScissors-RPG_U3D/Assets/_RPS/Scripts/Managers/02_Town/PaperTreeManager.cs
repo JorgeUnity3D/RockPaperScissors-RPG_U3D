@@ -6,7 +6,7 @@ namespace Kapibara.RPS
 	/// <summary>
 	/// Manager del árbol de habilidades Paper Tree. Alimenta la vista con los datos del jugador y el ScriptableObject del árbol.
 	/// </summary>
-	public class PaperTreeManager : BaseManager
+	public class PaperTreeManager : BaseManager, ITownBuilding
 	{
 		[Header("UI")]
 		[SerializeField] private PaperTreeScrObj _paperTreeScrObj;
@@ -37,9 +37,9 @@ namespace Kapibara.RPS
 
         #region CONTROL
 
-		public override void Initialize()
+		public void OnMenuOpen()
 		{
-			Debug.Log($"[PaperTreeManager] Initialize() -> ");
+			Debug.Log($"[PaperTreeManager] OnMenuOpen() -> ");
 			_paperTreeUIController.SetData(_player.Attributes, _paperTreeScrObj, AppContext.Player.Gold);
 		}
 		

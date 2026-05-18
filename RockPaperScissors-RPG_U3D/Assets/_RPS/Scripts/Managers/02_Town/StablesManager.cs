@@ -9,7 +9,7 @@ namespace Kapibara.RPS
 	/// BuyGame es placeholder IAP (Phase 7).
 	/// El nivel del edificio y su barra de progreso los muestra InMenuUIController (TownManager).
 	/// </summary>
-	public class StablesManager : BaseManager
+	public class StablesManager : BaseManager, ITownBuilding
 	{
 		[Header("DEBUG")]
 		[SerializeField, ReadOnly] private StablesUIController _stablesUIController;
@@ -38,9 +38,9 @@ namespace Kapibara.RPS
 
 		#region CONTROL
 
-		public override void Initialize()
+		public void OnMenuOpen()
 		{
-			Debug.Log($"[StablesManager] Initialize() -> ");
+			Debug.Log($"[StablesManager] OnMenuOpen() -> ");
 			_stablesUIController.SetData(WatchAd, BuyGame);
 		}
 

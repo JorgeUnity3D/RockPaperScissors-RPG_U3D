@@ -1,4 +1,5 @@
-﻿using Sirenix.OdinInspector;
+﻿using System.Collections;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Kapibara.RPS
@@ -14,54 +15,35 @@ namespace Kapibara.RPS
 		[SerializeField, ReadOnly] private CreditTimeCounter _creditTimeCounter;
 		[SerializeField, ReadOnly] private CreditsTimeCounterUIController _creditsTimeCounterUIController;
 
-		#region UNITY_LIFECYCLE
-		
-		private void Update()
-		{
-			if (!_creditTimeCounter.TimeIsRunning) return;
-
-			if (_creditTimeCounter.TimeLeftInSeconds > 0)
-			{
-				_creditTimeCounter.TimeLeftInSeconds -= Time.deltaTime;
-			}
-			else
-			{
-				_creditTimeCounter.CreditsLeft++;
-				if (_creditTimeCounter.CreditsAtMax)
-				{
-					_creditTimeCounter.TimeIsRunning = false;
-				}
-				else
-				{
-					_creditTimeCounter.TimeLeftInSeconds = _creditTimeCounter.HoursForACreditInSeconds;
-				}
-			}
-		}
-
-		#endregion
-
 		#region SETUP
 
 		public override void SetUp()
 		{
 			Debug.Log($"[CreditsTimeCounterManager] SetUp() -> ");
-			_creditsTimeCounterUIController = ServiceLocator.Instance.GetService<UIService>().GetController<CreditsTimeCounterUIController>();			
+			_creditsTimeCounterUIController = ServiceLocator.Instance.GetService<UIService>().GetController<CreditsTimeCounterUIController>();
 			_creditTimeCounter = _creditsTimeCounterScrObj.Data;
+		}
+
+		public override void Initialize()
+		{
+			Debug.Log($"[CreditsTimeCounterManager] Initialize() -> ");
 			_creditsTimeCounterUIController.SetData(_creditTimeCounter);
 			StartTimeCounter();
-			//AppEvents.OnCreditsUpdated.Invoke(_creditsLeft);	
+			StartCoroutine(TickCoroutine());
 		}
 
 		protected override void Subscribe()
 		{
 			Debug.Log($"[CreditsTimeCounterManager] Subscribe() -> ");
-			AppEvents.OnEarnCredit += EarnCredit;
+			AppEvents.OnEarnCredit      += EarnCredit;
+			AppEvents.OnTravelRequested += OnTravelRequested;
 		}
 
 		protected override void UnSubscribe()
 		{
 			Debug.Log($"[CreditsTimeCounterManager] UnSubscribe() -> ");
-			AppEvents.OnEarnCredit -= EarnCredit;
+			AppEvents.OnEarnCredit      -= EarnCredit;
+			AppEvents.OnTravelRequested -= OnTravelRequested;
 		}
 
 		#endregion
@@ -92,6 +74,17 @@ namespace Kapibara.RPS
 			StartTimeCounter();
 		}
 
+		private void OnTravelRequested(MapLevel level)
+		{
+			if (_creditTimeCounter.CreditsLeft <= 0)
+			{
+				Debug.LogWarning($"[CreditsTimeCounterManager] OnTravelRequested() -> No credits left.");
+				return;
+			}
+			UseCredit();
+			AppEvents.OnTravelConfirmed?.Invoke(level);
+		}
+
 		/// <summary>Añade un crédito sin superar el máximo; para el timer si se alcanza el máximo.</summary>
 		[ContextMenu("EarnCredit")]
 		public void EarnCredit()
@@ -100,6 +93,33 @@ namespace Kapibara.RPS
 			_creditTimeCounter.CreditsLeft = Mathf.Min(_creditTimeCounter.MaxCredits, _creditTimeCounter.CreditsLeft + 1);
 			if (_creditTimeCounter.CreditsAtMax)
 				_creditTimeCounter.TimeIsRunning = false;
+		}
+
+		#endregion
+
+		#region COROUTINES
+
+		private IEnumerator TickCoroutine()
+		{
+			while (true)
+			{
+				yield return null;
+
+				if (!_creditTimeCounter.TimeIsRunning) continue;
+
+				if (_creditTimeCounter.TimeLeftInSeconds > 0)
+				{
+					_creditTimeCounter.TimeLeftInSeconds -= Time.deltaTime;
+				}
+				else
+				{
+					_creditTimeCounter.CreditsLeft++;
+					if (_creditTimeCounter.CreditsAtMax)
+						_creditTimeCounter.TimeIsRunning = false;
+					else
+						_creditTimeCounter.TimeLeftInSeconds = _creditTimeCounter.HoursForACreditInSeconds;
+				}
+			}
 		}
 
 		#endregion

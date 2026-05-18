@@ -10,7 +10,7 @@ namespace Kapibara.RPS
 	/// Al pulsar un botón de historia → AppEvents.OnStorySelected → PlayStory() → ComicPlayerUIController.SetData().
 	/// Al cerrar el comic → AppEvents.OnComicClosed (el Theater ya está visible, no requiere acción extra).
 	/// </summary>
-	public class TheaterManager : BaseManager
+	public class TheaterManager : BaseManager, ITownBuilding
 	{
 		[SerializeField] private TheaterScrObj _theaterScrObj;
 
@@ -44,9 +44,9 @@ namespace Kapibara.RPS
 
 		#region CONTROL
 
-		public override void Initialize()
+		public void OnMenuOpen()
 		{
-			Debug.Log("[TheaterManager] Initialize()");
+			Debug.Log("[TheaterManager] OnMenuOpen()");
 			List<ComicStoryScrObj> stories = _theaterScrObj.Data;
 			List<int> unlockedStoryIds = AppContext.Player.UnlockedStoryIds;
 			_theaterUIController.SetData(stories, unlockedStoryIds);

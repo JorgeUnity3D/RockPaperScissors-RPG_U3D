@@ -7,20 +7,23 @@ namespace Kapibara.RPS
 	/// Gestiona el loop de un step de NPC. Muestra NPCUIController, navega por las líneas de diálogo
 	/// y dispara OnCombatFinished(true) al pasar la última.
 	/// </summary>
-	public class NPCStepManager : MonoBehaviour
+	public class NPCStepManager : BaseManager
 	{
 		private NPCUIController _npcUI;
 		private Player          _player;
 		private List<string>    _dialogueLines;
 		private int             _currentLineIndex;
 
-		#region UNITY LIFECYCLE
+		#region SETUP
 
-		private void Awake()
+		public override void SetUp()
 		{
 			_npcUI  = ServiceLocator.Instance.GetService<UIService>().GetController<NPCUIController>();
 			_player = AppContext.Player;
 		}
+
+		protected override void Subscribe()   { }
+		protected override void UnSubscribe() { }
 
 		#endregion
 

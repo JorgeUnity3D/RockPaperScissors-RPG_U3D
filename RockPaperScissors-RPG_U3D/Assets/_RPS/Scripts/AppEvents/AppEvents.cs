@@ -64,6 +64,10 @@ namespace Kapibara.RPS
 		public static UnityAction<int> OnCreditsUpdated;
 		/// <summary>Solicita ganar un crédito (caballo). StablesManager lo dispara; CreditsTimeCounterManager lo consume.</summary>
 		public static UnityAction OnEarnCredit;
+		/// <summary>El jugador solicita viajar a un nivel. CreditsTimeCounterManager valida y descuenta el crédito.</summary>
+		public static UnityAction<MapLevel> OnTravelRequested;
+		/// <summary>Crédito validado y descontado; TravelManager inicia la escena de combate con el nivel dado.</summary>
+		public static UnityAction<MapLevel> OnTravelConfirmed;
 
 		/// <summary>Se dispara al pulsar un botón de historia en TheaterUIController. El índice corresponde a la lista en TheaterScrObj.</summary>
 		public static UnityAction<int> OnStorySelected;

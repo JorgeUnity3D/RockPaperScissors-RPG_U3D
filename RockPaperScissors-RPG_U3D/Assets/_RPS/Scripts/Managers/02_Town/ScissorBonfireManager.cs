@@ -7,7 +7,7 @@ namespace Kapibara.RPS
 	/// <summary>
 	/// Manager de la Hoguera de las Tijeras. Gestiona la subida de nivel del jugador y la actualización de modificadores ScissorBonfire.
 	/// </summary>
-	public class ScissorBonfireManager : BaseManager
+	public class ScissorBonfireManager : BaseManager, ITownBuilding
 	{
 		[SerializeField, ReadOnly] private Player _player;
 		[SerializeField, ReadOnly] private List<StatAttribute> _levelAttributes;
@@ -43,9 +43,9 @@ namespace Kapibara.RPS
 
 		#region CONTROL
 
-		public override void Initialize()
+		public void OnMenuOpen()
 		{
-			Debug.Log($"[ScissorBonfireManager] Initialize() -> ");
+			Debug.Log($"[ScissorBonfireManager] OnMenuOpen() -> ");
 			int level = AppContext.Player.Level;
 			GetLevelUpData(level, out int cost, out bool canAfford, out ScissorBonfireModLevel statVariations);
 			_scissorsBonfireUIController.SetData(level, cost, canAfford, statVariations);

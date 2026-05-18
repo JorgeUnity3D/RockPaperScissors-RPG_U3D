@@ -31,17 +31,17 @@ namespace Kapibara.RPS
 		protected override void Subscribe()
 		{
 			Debug.Log($"[MainMenuManager] Subscribe() -> ");
-			AppEvents.OnNewGameMenu += NewGameMenu;
-			AppEvents.OnLoadGameMenu += LoadGameMenu;
-			AppEvents.OnBackToMainMenu += Initialize;
+			AppEvents.OnNewGameMenu    += NewGameMenu;
+			AppEvents.OnLoadGameMenu   += LoadGameMenu;
+			AppEvents.OnBackToMainMenu += BackToMainMenu;
 		}
 
 		protected override void UnSubscribe()
 		{
 			Debug.Log($"[MainMenuManager] UnSubscribe() -> ");
-			AppEvents.OnNewGameMenu -= NewGameMenu;
-			AppEvents.OnLoadGameMenu -= LoadGameMenu;
-			AppEvents.OnBackToMainMenu -= Initialize;
+			AppEvents.OnNewGameMenu    -= NewGameMenu;
+			AppEvents.OnLoadGameMenu   -= LoadGameMenu;
+			AppEvents.OnBackToMainMenu -= BackToMainMenu;
 		}
 
         #endregion
@@ -51,6 +51,12 @@ namespace Kapibara.RPS
 		public override void Initialize()
 		{
 			Debug.Log($"[MainMenuManager] Initialize() -> ");
+			MainMenu();
+		}
+
+		private void BackToMainMenu()
+		{
+			Debug.Log($"[MainMenuManager] BackToMainMenu() -> ");
 			MainMenu();
 		}
 
@@ -68,7 +74,7 @@ namespace Kapibara.RPS
 			Debug.Log($"[MainMenuManager] NewGameMenu() -> ");
 			_mainMenuUIController.HideCanvas();
 			_newGameUIController.ShowCanvas();
-			_newGameUIController.Initialize();
+			_newGameUIController.ClearView();
 		}
 
 		private void LoadGameMenu()
@@ -76,8 +82,14 @@ namespace Kapibara.RPS
 			Debug.Log($"[MainMenuManager] LoadGameMenu() -> ");
 			_mainMenuUIController.HideCanvas();
 			_loadGameUIController.ShowCanvas();
-			_loadGameUIController.Initialize();
-			_persistenceService.LoadGameList(_loadGameUIController.InstanceGames);
+			_loadGameUIController.ClearView();
+			_persistenceService.LoadGameList(OnGameListLoaded);
+		}
+
+		private void OnGameListLoaded(List<GameContext> gameContexts)
+		{
+			Debug.Log($"[MainMenuManager] OnGameListLoaded() -> count:{gameContexts.Count}");
+			_loadGameUIController.InstanceGames(gameContexts);
 		}
 
         #endregion
