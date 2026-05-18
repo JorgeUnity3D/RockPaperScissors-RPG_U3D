@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 namespace Kapibara.RPS
 {
 	/// <summary>
-	/// Modificador de la Biblioteca. ADVERTENCIA: no tiene case en BaseModifierConverter; cualquier guardado con este modificador lanzará excepción al cargar.
+	/// Modificador de la Biblioteca.
 	/// </summary>
 	[Serializable]
 	public class LibraryModifier : BaseModifier

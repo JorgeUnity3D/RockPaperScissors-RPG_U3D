@@ -24,10 +24,10 @@
 
 	public enum MapStepType
 	{
-		Combat,
-		Boss,
-		Treasure,
-		NpcRescue
+		COMBAT,
+		BOSS,
+		TREASURE,
+		NPC_RESCUE
 	}
 
 	public enum EnemyId
@@ -45,11 +45,11 @@
 	/// <summary>Animación de entrada de una viñeta al revelarse en el lector de comic.</summary>
 	public enum VignetteAnimation
 	{
-		FadeIn,
-		SlideFromLeft,
-		SlideFromRight,
-		SlideFromBottom,
-		ZoomIn
+		FADE_IN,
+		SLIDE_FROM_LEFT,
+		SLIDE_FROM_RIGHT,
+		SLIDE_FROM_BOTTOM,
+		ZOOM_IN
 	}
 
 	/// <summary>
@@ -58,12 +58,12 @@
 	/// </summary>
 	public enum ComicPageLayout
 	{
-		One_Full                = 0,
-		Two_Horizontal          = 1,
-		Two_Vertical            = 2,
-		Three_TopOne_BottomTwo  = 3,
-		Three_TopTwo_BottomOne  = 4,
-		Four_Grid               = 5,
-		Six_Grid                = 6  // 2 filas x 3 columnas, Slot_0...Slot_5
+		ONE_FULL                = 0,
+		TWO_HORIZONTAL          = 1,
+		TWO_VERTICAL            = 2,
+		THREE_TOP_ONE_BOTTOM_TWO = 3,
+		THREE_TOP_TWO_BOTTOM_ONE = 4,
+		FOUR_GRID               = 5,
+		SIX_GRID                = 6  // 2 filas x 3 columnas, Slot_0...Slot_5
 	}
 }

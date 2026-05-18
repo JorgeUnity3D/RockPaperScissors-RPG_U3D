@@ -258,7 +258,7 @@ namespace Kapibara.RPS
 			AppEvents.OnGameContextUpdated?.Invoke();
 		}
 
-		/// <summary>Lista plana de todos los StatAttribute del jugador para iteración genérica.</summary>
+		/// <summary>Lista plana de todos los StatAttribute del jugador para iteración genérica. Crea una nueva lista en cada acceso — no llamar en hot paths.</summary>
 		[JsonIgnore]
 		public List<StatAttribute> Attributes
 		{
@@ -444,9 +444,9 @@ namespace Kapibara.RPS
 		{
 			add { _level.OnValueChanged += value; }
 			remove { _level.OnValueChanged -= value; }
+		}
 
 		#endregion
-		}
 	}
 
 }

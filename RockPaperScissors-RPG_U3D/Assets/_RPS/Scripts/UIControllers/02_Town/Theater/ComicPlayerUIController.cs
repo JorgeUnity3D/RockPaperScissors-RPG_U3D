@@ -162,22 +162,22 @@ namespace Kapibara.RPS
 
 			switch (anim)
 			{
-				case VignetteAnimation.FadeIn:
+				case VignetteAnimation.FADE_IN:
 					UITween.FadeIn(cg, GameConsts.COMIC_VIGNETTE_DURATION);
 					break;
-				case VignetteAnimation.SlideFromLeft:
+				case VignetteAnimation.SLIDE_FROM_LEFT:
 					UITween.FadeIn(cg, GameConsts.COMIC_VIGNETTE_DURATION * 0.5f);
 					UITween.SlideFrom(rt, SlideDirection.Left, GameConsts.COMIC_SLIDE_DISTANCE, GameConsts.COMIC_VIGNETTE_DURATION);
 					break;
-				case VignetteAnimation.SlideFromRight:
+				case VignetteAnimation.SLIDE_FROM_RIGHT:
 					UITween.FadeIn(cg, GameConsts.COMIC_VIGNETTE_DURATION * 0.5f);
 					UITween.SlideFrom(rt, SlideDirection.Right, GameConsts.COMIC_SLIDE_DISTANCE, GameConsts.COMIC_VIGNETTE_DURATION);
 					break;
-				case VignetteAnimation.SlideFromBottom:
+				case VignetteAnimation.SLIDE_FROM_BOTTOM:
 					UITween.FadeIn(cg, GameConsts.COMIC_VIGNETTE_DURATION * 0.5f);
 					UITween.SlideFrom(rt, SlideDirection.Down, GameConsts.COMIC_SLIDE_DISTANCE, GameConsts.COMIC_VIGNETTE_DURATION);
 					break;
-				case VignetteAnimation.ZoomIn:
+				case VignetteAnimation.ZOOM_IN:
 					UITween.FadeIn(cg, GameConsts.COMIC_VIGNETTE_DURATION * 0.5f);
 					UITween.ZoomIn(rt, 0.7f, GameConsts.COMIC_VIGNETTE_DURATION);
 					break;

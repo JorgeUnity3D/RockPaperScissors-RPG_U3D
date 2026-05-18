@@ -49,7 +49,7 @@ namespace Kapibara.RPS
         {
             T controller = _uiControllersDictionary.ContainsKey(typeof(T)) ? (T)_uiControllersDictionary[typeof(T)] : null;
             if (controller == null) {
-                foreach (var manPair in _uiControllersDictionary) {
+                foreach (KeyValuePair<Type, UIController> manPair in _uiControllersDictionary) {
                     if (typeof(T).IsAssignableFrom(manPair.Key)) {
                         controller = (T)manPair.Value;
                     }

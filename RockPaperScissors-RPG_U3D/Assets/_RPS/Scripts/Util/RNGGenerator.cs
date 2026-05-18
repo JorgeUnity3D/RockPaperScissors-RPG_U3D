@@ -45,7 +45,7 @@ namespace Kapibara.RPS {
         /// <param name="includeNone">Should include the first value (NONE)? False by default</param>
         /// <returns></returns>
         public static T RandomEnumValue<T>(bool includeNone = false) where T : struct, IConvertible {
-            var values = Enum.GetValues(typeof(T));
+            Array values = Enum.GetValues(typeof(T));
             int randomIndex = RandomBetween(includeNone ? 0 : 1, values.Length);
             return (T) values.GetValue(randomIndex);
         }

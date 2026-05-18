@@ -47,16 +47,16 @@ namespace Kapibara.RPS
 
 			switch (step.Type)
 			{
-				case MapStepType.Combat:
-				case MapStepType.Boss:
+				case MapStepType.COMBAT:
+				case MapStepType.BOSS:
 					if (_combatManager == null) { Debug.LogError("[StepManager] CombatManager not found in children."); return; }
 					_combatManager.Initialize();
 					break;
-				case MapStepType.Treasure:
+				case MapStepType.TREASURE:
 					if (_treasureStepManager == null) { Debug.LogError("[StepManager] TreasureStepManager not found in children."); return; }
 					_treasureStepManager.Initialize(step);
 					break;
-				case MapStepType.NpcRescue:
+				case MapStepType.NPC_RESCUE:
 					if (_npcStepManager == null) { Debug.LogError("[StepManager] NPCStepManager not found in children."); return; }
 					_npcStepManager.Initialize(step);
 					break;

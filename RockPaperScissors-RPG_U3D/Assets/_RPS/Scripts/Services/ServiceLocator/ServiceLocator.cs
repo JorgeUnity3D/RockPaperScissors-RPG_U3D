@@ -27,7 +27,7 @@ namespace Kapibara.RPS
 		/// <summary>Devuelve el servicio registrado del tipo T, o null si no está registrado.</summary>
 		public T GetService<T>() where T : Component
 		{
-			var type = typeof(T);
+			Type type = typeof(T);
 
 			if (_services.ContainsKey(type))
 			{
@@ -41,7 +41,7 @@ namespace Kapibara.RPS
 		/// <summary>Registra un servicio en el localizador. Llamado automáticamente por ServiceSubscriber en Awake.</summary>
 		public void SubscribeService<T>(T service) where T : Component
 		{
-			var type = typeof(T);
+			Type type = typeof(T);
 
 			if (!_services.ContainsKey(type))
 			{
@@ -56,7 +56,7 @@ namespace Kapibara.RPS
 		/// <summary>Elimina el registro de un servicio. Llamado automáticamente por ServiceSubscriber en OnDestroy.</summary>
 		public void UnsubscribeService<T>() where T : Component
 		{
-			var type = typeof(T);
+			Type type = typeof(T);
 
 			if (_services.ContainsKey(type))
 			{

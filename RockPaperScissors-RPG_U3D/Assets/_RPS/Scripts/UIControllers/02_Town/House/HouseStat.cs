@@ -60,7 +60,7 @@ namespace Kapibara.RPS
 			{
 				textMesh.text = modifier.TotaModifier.ToString();
 				string statName = modifier.Stat.Name();
-				var modParent = textMesh.transform.parent;
+				Transform modParent = textMesh.transform.parent;
 				string modName = statName + "_" + modParent.name.Replace("Label_Text", "");
 				modParent.GetComponent<TextMeshProUGUI>().text = modName;
 			}

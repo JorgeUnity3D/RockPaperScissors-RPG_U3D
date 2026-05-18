@@ -280,10 +280,10 @@ namespace Kapibara.Util.Editor
 			RPS.MapStepType type = (RPS.MapStepType)typeProp.enumValueIndex;
 			string tag = type switch
 			{
-				RPS.MapStepType.Combat    => "[C]",
-				RPS.MapStepType.Boss      => "[B]",
-				RPS.MapStepType.Treasure  => "[T]",
-				RPS.MapStepType.NpcRescue => "[N]",
+				RPS.MapStepType.COMBAT    => "[C]",
+				RPS.MapStepType.BOSS      => "[B]",
+				RPS.MapStepType.TREASURE  => "[T]",
+				RPS.MapStepType.NPC_RESCUE => "[N]",
 				_                         => "[?]"
 			};
 
@@ -366,13 +366,13 @@ namespace Kapibara.Util.Editor
 			RPS.MapStepType type = (RPS.MapStepType)typeProp.enumValueIndex;
 			switch (type)
 			{
-				case RPS.MapStepType.Combat:
-				case RPS.MapStepType.Boss:
+				case RPS.MapStepType.COMBAT:
+				case RPS.MapStepType.BOSS:
 					EditorGUILayout.PropertyField(
 						_selectedStepProp.FindPropertyRelative("_enemy"),
 						new GUIContent("Enemy"));
 					break;
-				case RPS.MapStepType.Treasure:
+				case RPS.MapStepType.TREASURE:
 					EditorGUILayout.PropertyField(
 						_selectedStepProp.FindPropertyRelative("_goldAmount"),
 						new GUIContent("Gold Amount"));
@@ -380,7 +380,7 @@ namespace Kapibara.Util.Editor
 						_selectedStepProp.FindPropertyRelative("_treasureSprite"),
 						new GUIContent("Treasure Sprite"));
 					break;
-				case RPS.MapStepType.NpcRescue:
+				case RPS.MapStepType.NPC_RESCUE:
 					EditorGUILayout.PropertyField(
 						_selectedStepProp.FindPropertyRelative("_targetBuilding"),
 						new GUIContent("Target Building"));

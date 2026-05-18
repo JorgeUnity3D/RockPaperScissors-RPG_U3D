@@ -46,8 +46,9 @@ namespace Kapibara.RPS
 			get => _level.Value;
 			set
 			{
+				if (value < 1) return;
 				_level.Value = value;
-				_experience.Value = GameConsts.TRAINING_EXP_PER_LEVEL[_level.Value - 1]; 
+				_experience.Value = GameConsts.TRAINING_EXP_PER_LEVEL[_level.Value - 1];
 			}
 		}
 

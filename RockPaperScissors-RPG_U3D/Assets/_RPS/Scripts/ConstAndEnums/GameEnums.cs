@@ -31,7 +31,7 @@ namespace Kapibara.RPS
 		/// <summary>Potencia del movimiento Papel.</summary>
 		[Description("Paper")] PAPER = 3,
 		/// <summary>Potencia del movimiento Tijera.</summary>
-		[Description("Scisso")] SCISSOR = 4,
+		[Description("Scissor")] SCISSOR = 4,
 		/// <summary>Reducción de daño recibido.</summary>
 		[Description("Defens")] DEFENSE = 5,
 		/// <summary>Daño reflejado al atacante.</summary>
@@ -56,7 +56,7 @@ namespace Kapibara.RPS
 		PAPERTREE_MOD = 1,
 		/// <summary>Modificador procedente de la Hoguera de las Tijeras.</summary>
 		SCISSORBONFIRE_MOD = 2,
-		/// <summary>Modificador procedente de la Biblioteca. ADVERTENCIA: falta el case en BaseModifierConverter.</summary>
+		/// <summary>Modificador procedente de la Biblioteca.</summary>
 		LIBRARY_MOD = 3
 	}
 
