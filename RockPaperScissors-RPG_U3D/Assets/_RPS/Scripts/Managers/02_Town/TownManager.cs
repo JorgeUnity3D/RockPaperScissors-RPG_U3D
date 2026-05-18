@@ -131,7 +131,7 @@ namespace Kapibara.RPS
 			townData.IsUnlocked = true;
 			TownView townView = _townViews.Find(td => td.TownMenu == townData.TownMenu);
 			_townUIController.UpdateTownButton(townData, townView);
-
+			AppEvents.OnGameContextUpdated?.Invoke();
 		}
 
 		private void UpdatePlayerGold(int currentGold)

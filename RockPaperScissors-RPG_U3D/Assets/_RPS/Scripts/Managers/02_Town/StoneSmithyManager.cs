@@ -68,6 +68,7 @@ namespace Kapibara.RPS
 			_player.AttackItemLevel++;
 			_attackItem.level = _player.AttackItemLevel;
 			_stoneSmithyUIController.RefreshAttackLevel(_attackItem.level);
+			AppEvents.OnGameContextUpdated?.Invoke();
 		}
 
 		private void UpgradeHeal()
@@ -77,6 +78,7 @@ namespace Kapibara.RPS
 			_player.HealItemLevel++;
 			_healItem.level = _player.HealItemLevel;
 			_stoneSmithyUIController.RefreshHealLevel(_healItem.level);
+			AppEvents.OnGameContextUpdated?.Invoke();
 		}
 
 		private void UpgradeEnergy()
@@ -86,6 +88,7 @@ namespace Kapibara.RPS
 			_player.EnergyItemLevel++;
 			_energyItem.level = _player.EnergyItemLevel;
 			_stoneSmithyUIController.RefreshEnergyLevel(_energyItem.level);
+			AppEvents.OnGameContextUpdated?.Invoke();
 		}
 
 		private bool TrySpendGold(int cost)

@@ -54,6 +54,7 @@ namespace Kapibara.RPS
 			_treasureUI.SetActionsInteractable(false);
 			_treasureUI.HideCanvas();
 
+			AppEvents.OnGameContextUpdated?.Invoke();
 			AppEvents.OnCombatFinished?.Invoke(true);
 		}
 

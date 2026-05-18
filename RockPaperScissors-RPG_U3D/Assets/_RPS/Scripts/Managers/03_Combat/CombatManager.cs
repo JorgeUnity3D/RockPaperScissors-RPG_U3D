@@ -291,6 +291,7 @@ namespace Kapibara.RPS
 			}
 
 			ApplyPendingTrainingExp();
+			AppEvents.OnGameContextUpdated?.Invoke();
 
 			_combatUI.SetActionsInteractable(false);
 			_combatUI.HideCanvas();

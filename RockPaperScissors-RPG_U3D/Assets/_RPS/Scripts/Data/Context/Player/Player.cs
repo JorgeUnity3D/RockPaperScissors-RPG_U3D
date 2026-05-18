@@ -299,8 +299,6 @@ namespace Kapibara.RPS
 
 		#region CONSTRUCTORS
 
-		public Player(Player player) { }
-
 		public Player(string playername)
 		{
 			_name = new NString(playername);

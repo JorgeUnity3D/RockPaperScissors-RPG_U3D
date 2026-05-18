@@ -68,9 +68,7 @@ namespace Kapibara.RPS
             if (File.Exists(filePath))
             {
                 string json = File.ReadAllText(filePath);
-                AppEvents.SuppressContextUpdates = true;
                 GameContext gameContext = JsonConvert.DeserializeObject<GameContext>(json);
-                AppEvents.SuppressContextUpdates = false;
                 OnFinishCallback?.Invoke(gameContext);
             }
         }
@@ -82,14 +80,12 @@ namespace Kapibara.RPS
             List<string> allSaveFiles = new List<string>(Directory.GetFiles(_saveDirectory, "Game_*"));
             List<GameContext> allGameContexts = new List<GameContext>();
 
-            AppEvents.SuppressContextUpdates = true;
             foreach (string saveFile in allSaveFiles)
             {
                 string json = File.ReadAllText(saveFile);
                 GameContext gameContext = JsonConvert.DeserializeObject<GameContext>(json);
                 allGameContexts.Add(gameContext);
             }
-            AppEvents.SuppressContextUpdates = false;
             OnFinishCallback?.Invoke(allGameContexts);
         }
 

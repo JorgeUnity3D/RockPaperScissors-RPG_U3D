@@ -73,7 +73,7 @@ namespace Kapibara.RPS
 		{
 			_stat = stat;
 			_attributeValue = new NInt(attributeValue);
-			_modifiers = new NList<BaseModifier>() { Value = new List<BaseModifier>(modifiers) };
+			_modifiers = new NList<BaseModifier>() { Value = modifiers != null ? new List<BaseModifier>(modifiers) : new List<BaseModifier>() };
 		}
 
 		#endregion
@@ -103,7 +103,7 @@ namespace Kapibara.RPS
 			_modifiers.Value.Add(baseModifier);
 		}
 
-		/// <summary>Añade una lista de modificadores del mismo tipo llamando a AddModifier por cada uno.</summary>
+		/// <summary>Añade una lista de modificadores del mismo tipo.</summary>
 		public void AddModifiers<T>(List<T> modifiers) where T : BaseModifier
 		{
 			foreach (T modifier in modifiers)
@@ -121,16 +121,14 @@ namespace Kapibara.RPS
 		/// <summary>Devuelve el primer modificador del tipo T, o null si no existe.</summary>
 		public T GetModifier<T>() where T : BaseModifier
 		{
-			T result = null;
 			foreach (BaseModifier modifier in _modifiers.Value)
 			{
 				if (modifier is T specificType)
 				{
-					result = specificType;
+					return specificType;
 				}
 			}
-
-			return result;
+			return null;
 		}
 
 		#endregion

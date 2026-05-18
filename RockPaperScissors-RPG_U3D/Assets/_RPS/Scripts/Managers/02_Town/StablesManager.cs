@@ -72,6 +72,7 @@ namespace Kapibara.RPS
 			int levelCeiling = GameConsts.TRAINING_EXP_PER_LEVEL[_stablesData.Level];
 			int newExp = _stablesData.Experience + amount;
 			_stablesData.Experience = newExp < levelCeiling ? newExp : levelCeiling;
+			AppEvents.OnGameContextUpdated?.Invoke();
 		}
 
 		#endregion

@@ -90,11 +90,9 @@ namespace Kapibara.RPS
 		private void ConfirmNewGame(string playerName)
 		{
 			Debug.Log($"[GameManager] ConfirmNewGame() -> ");
-			AppEvents.OnGameContextUpdated -= UpdateSaveGame;
 			string gameName = "Game_" + _persistenceService.GetGamesCount();
 			GameContext gameContext = new GameContext(gameName, playerName);
 			_persistenceService.SaveGame(gameContext);
-			AppEvents.OnGameContextUpdated += UpdateSaveGame;
 			LoadSelectedGame(gameContext);
 		}
 

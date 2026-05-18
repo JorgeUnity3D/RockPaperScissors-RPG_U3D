@@ -77,6 +77,7 @@ namespace Kapibara.RPS
 				Debug.Log($"[ScissorBonfireManager] ConfirmLevelUp() -> Stat {att.GetModifier<ScissorBonfireModifier>().Stat} upgraded to: {att.GetModifier<ScissorBonfireModifier>().Modifier}");
 			});
 			Debug.Log($"[ScissorBonfireManager] ConfirmLevelUp() -> New Level: {AppContext.Player.Level}");
+			AppEvents.OnGameContextUpdated?.Invoke();
 		}
 		
 		private void UpdateLevelUpView(int level)

@@ -73,6 +73,7 @@ namespace Kapibara.RPS
 			AppContext.Player.Gold = Mathf.Max(0, AppContext.Player.Gold - trainingCost);
 			trainingHouseModifier.IsUnlocked = true;
 			_trainingHouseUIController.UpdateView(trainingHouseModifier, AppContext.Player.Gold);
+			AppEvents.OnGameContextUpdated?.Invoke();
 		}
 		
 		#endregion

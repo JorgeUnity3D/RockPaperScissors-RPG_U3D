@@ -121,13 +121,13 @@ namespace Kapibara.RPS
 		};
 		
 		/// <summary>Coste en oro para cada subida de nivel de la Hoguera de las Tijeras, indexado desde el nivel actual.</summary>
-		public static List<int> LEVEL_PRICES_AUX = new List<int>()
+		public static readonly IReadOnlyList<int> LEVEL_PRICES_AUX = new List<int>()
 		{
 			10, 20, 30, 40, 50, 60, 70, 80, 90, 100
 		};
-		
+
 		/// <summary>Experiencia acumulada requerida para cada umbral de nivel de entrenamiento/modificador. Índice 0 = nivel 1.</summary>
-		public static List<int> TRAINING_EXP_PER_LEVEL = new List<int>()
+		public static readonly IReadOnlyList<int> TRAINING_EXP_PER_LEVEL = new List<int>()
 		{
 			0, 10, 20, 30, 40, 50, 60, 70, 80, 90
 		};

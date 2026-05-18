@@ -9,10 +9,7 @@ namespace Kapibara.RPS
 	/// </summary>
 	public static class AppEvents
 	{
-		/// <summary>Cuando true, NotificableField.Value no dispara OnGameContextUpdated. Activar alrededor de deserializaciones masivas.</summary>
-		public static bool SuppressContextUpdates;
-
-		/// <summary>Se dispara en cada escritura de un NotificableField; desencadena el guardado automático a disco.</summary>
+		/// <summary>Dispara el guardado de la partida a disco. Los managers lo invocan explícitamente tras operaciones que modifican el estado persistente.</summary>
 		public static UnityAction OnGameContextUpdated;
 		/// <summary>Se dispara cuando cambia el nivel del jugador.</summary>
 		public static UnityAction<int> OnLevelUpdated;
