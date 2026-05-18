@@ -422,7 +422,10 @@ MonoBehaviour:
   _playerHPGhost: {fileID: 0}
   _playerHPText: {fileID: 0}
   _npcImage: {fileID: 4134549845449257322}
-  _dialogueText: {fileID: 2788822874479614268}
+  _npcDialogueBubble: {fileID: 2582024140534688035}
+  _npcDialogueText: {fileID: 2788822874479614268}
+  _playerDialogueBubble: {fileID: 3703500930626693937}
+  _playerDialogueText: {fileID: 5917773208303019997}
   _settingsButton: {fileID: 806452876253921181}
   _prevButton: {fileID: 552498316445995944}
   _nextButton: {fileID: 3961033668057145945}
@@ -2167,7 +2170,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6562320156230844227
 RectTransform:
   m_ObjectHideFlags: 0

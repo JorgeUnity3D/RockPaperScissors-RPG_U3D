@@ -376,11 +376,20 @@ namespace Kapibara.Util.Editor
 					EditorGUILayout.PropertyField(
 						_selectedStepProp.FindPropertyRelative("_goldAmount"),
 						new GUIContent("Gold Amount"));
+					EditorGUILayout.PropertyField(
+						_selectedStepProp.FindPropertyRelative("_treasureSprite"),
+						new GUIContent("Treasure Sprite"));
 					break;
 				case RPS.MapStepType.NpcRescue:
 					EditorGUILayout.PropertyField(
 						_selectedStepProp.FindPropertyRelative("_targetBuilding"),
 						new GUIContent("Target Building"));
+					EditorGUILayout.PropertyField(
+						_selectedStepProp.FindPropertyRelative("_npcSprite"),
+						new GUIContent("NPC Sprite"));
+					EditorGUILayout.PropertyField(
+						_selectedStepProp.FindPropertyRelative("_npcDialogueLines"),
+						new GUIContent("Dialogue Lines"));
 					break;
 			}
 		}

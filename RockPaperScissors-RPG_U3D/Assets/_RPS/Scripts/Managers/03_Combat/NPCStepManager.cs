@@ -35,7 +35,7 @@ namespace Kapibara.RPS
 			AppEvents.OnNPCDialoguePrev += OnPrev;
 
 			_npcUI.SetData(step.NPCSprite, _player.MaxHealth.TotalValue, _player.MaxHealth.TotalValue);
-			_npcUI.SetDialogueLine(_dialogueLines[_currentLineIndex]);
+			_npcUI.SetDialogueLine(_dialogueLines[_currentLineIndex], _currentLineIndex % 2 == 1);
 			_npcUI.SetPrevInteractable(false);
 			_npcUI.ShowCanvas();
 
@@ -57,7 +57,7 @@ namespace Kapibara.RPS
 				return;
 			}
 
-			_npcUI.SetDialogueLine(_dialogueLines[_currentLineIndex]);
+			_npcUI.SetDialogueLine(_dialogueLines[_currentLineIndex], _currentLineIndex % 2 == 1);
 			_npcUI.SetPrevInteractable(_currentLineIndex > 0);
 			Debug.Log($"[NPCStepManager] Line {_currentLineIndex}/{_dialogueLines.Count - 1}");
 		}
@@ -67,7 +67,7 @@ namespace Kapibara.RPS
 			if (_currentLineIndex <= 0) return;
 
 			_currentLineIndex--;
-			_npcUI.SetDialogueLine(_dialogueLines[_currentLineIndex]);
+			_npcUI.SetDialogueLine(_dialogueLines[_currentLineIndex], _currentLineIndex % 2 == 1);
 			_npcUI.SetPrevInteractable(_currentLineIndex > 0);
 			Debug.Log($"[NPCStepManager] Line {_currentLineIndex}/{_dialogueLines.Count - 1}");
 		}

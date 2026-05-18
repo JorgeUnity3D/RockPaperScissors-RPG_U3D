@@ -18,7 +18,10 @@ namespace Kapibara.RPS
 
 		[Header("NPC Zone")]
 		[SerializeField] private Image           _npcImage;
-		[SerializeField] private TextMeshProUGUI _dialogueText;
+		[SerializeField] private GameObject      _npcDialogueBubble;
+		[SerializeField] private TextMeshProUGUI _npcDialogueText;
+		[SerializeField] private GameObject      _playerDialogueBubble;
+		[SerializeField] private TextMeshProUGUI _playerDialogueText;
 
 		[Header("Center")]
 		[SerializeField] private Button          _settingsButton;
@@ -44,6 +47,8 @@ namespace Kapibara.RPS
 		{
 			HideCanvas(0);
 
+			_playerDialogueBubble.SetActive(false);
+
 			_prevButton.onClick.AddListener(() => AppEvents.OnNPCDialoguePrev?.Invoke());
 			_nextButton.onClick.AddListener(() => AppEvents.OnNPCDialogueNext?.Invoke());
 		}
@@ -64,9 +69,15 @@ namespace Kapibara.RPS
 
 		#region REFRESH
 
-		public void SetDialogueLine(string line)
+		public void SetDialogueLine(string line, bool isPlayer)
 		{
-			_dialogueText.text = line;
+			_npcDialogueBubble.SetActive(!isPlayer);
+			_playerDialogueBubble.SetActive(isPlayer);
+
+			if (isPlayer)
+				_playerDialogueText.text = line;
+			else
+				_npcDialogueText.text = line;
 		}
 
 		public void SetPrevInteractable(bool interactable)
