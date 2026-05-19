@@ -38,9 +38,9 @@ The switch returns `null` for `LIBRARY`, `STABLES`, `STONE_SMITHY`, and `THEATER
 
 ---
 
-## 8. `GameConsts.SCISSOR_MODS` is zero-indexed by player level, used as one-indexed
+## 8. `GameConsts.SCISSOR_MODS` covers only 10 level-ups — content gap, not a crash
 
-`ConfirmLevelUp()` increments `Player.Level` first, then indexes `GameConsts.SCISSOR_MODS[AppContext.Player.Level]`. `SCISSOR_MODS` has 10 entries (indices 0–9). Player starts at level 1. After level-up, level = 2, so index = 2. This means index 0 and 1 are never used. At level 10 (index 10), this throws `IndexOutOfRangeException`. The list supports at most 8 level-ups (levels 2→9).
+`ScissorBonfireManager.ConfirmLevelUp()` guards against out-of-bounds with `if (levelIndex >= GameConsts.SCISSOR_MODS.Count) { LogWarning; return; }`, so no crash. However, `SCISSOR_MODS` only has data for levels 1–9 (10 entries, indices 0–9). Players who reach level 10 will see a warning and the level-up button will silently do nothing. Add more entries to `GameConsts.SCISSOR_MODS` and `GameConsts.LEVEL_PRICES_AUX` once higher-level stat variations are designed.
 
 ---
 

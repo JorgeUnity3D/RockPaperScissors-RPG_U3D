@@ -69,7 +69,6 @@ namespace Kapibara.RPS
 		{
 			get
 			{
-				//todo: will break when Level == experiencePerLevel.Count -> actually we need to move experiencePerLevel elsewhere
 				float levelBase = GameConsts.TRAINING_EXP_PER_LEVEL[_level.Value - 1];
 				float levelTop = GameConsts.TRAINING_EXP_PER_LEVEL[_level.Value];
 				return (_experience.Value - levelBase) / (levelTop - levelBase);

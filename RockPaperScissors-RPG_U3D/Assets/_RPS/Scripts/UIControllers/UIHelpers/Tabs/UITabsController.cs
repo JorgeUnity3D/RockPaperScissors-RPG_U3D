@@ -10,10 +10,6 @@ namespace Kapibara.UI
 		[SerializeField] private List<Tab> _tabs;
 		private TabContent _currentTab;
 
-		//todo: will need this??
-		//public UnityAction<Tab> OnTabShown;
-		//public UnityAction<Tab> OnTabHidden;
-
 		#region UNITY_LIFECYCLE
 
 		private void Awake()

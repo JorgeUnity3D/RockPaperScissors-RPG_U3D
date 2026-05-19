@@ -86,7 +86,6 @@ namespace Kapibara.RPS
 			{ typeof(LibraryModifier), ModifierType.LIBRARY_MOD}
 		};
 
-		//todo: aux code, we should probably find a better place for this data
 		/// <summary>Coste en oro para desbloquear el entrenamiento de cada estadística en la Casa de Entrenamiento.</summary>
 		public static readonly Dictionary<Stats, int> TRAINING_MOD_PRICES = new Dictionary<Stats, int>()
 		{
