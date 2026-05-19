@@ -96,7 +96,7 @@ namespace Kapibara.RPS
 			{ Stats.SCISSOR, 20 },
 			{ Stats.DEFENSE, 30 },
 			{ Stats.THORNS, 10 },
-			{ Stats.ENERGY_BASE, 20 },
+	
 			{ Stats.ENERGY_RECOVERY, 30 },
 			{ Stats.CRIT, 10 },
 			{ Stats.SUPERPOWER, 20 }
@@ -107,16 +107,16 @@ namespace Kapibara.RPS
 		/// <summary>Variaciones de estadísticas por nivel de la Hoguera de las Tijeras. Indexado 0-based; nivel 1 usa índice 1. Solo hay 10 entradas (niveles 1-9 seguros).</summary>
 		public static readonly List<ScissorBonfireModLevel> SCISSOR_MODS = new List<ScissorBonfireModLevel>
 		{
-			new ScissorBonfireModLevel(0, 1, -1, 0, 2, 2, 0, 3, 3),
-			new ScissorBonfireModLevel(1, -1, 0, 2, 2, 0, 3, 3, 0),
-			new ScissorBonfireModLevel(-1, 0, 1, 2, 0, 2, 3, 0, 3),
-			new ScissorBonfireModLevel(0, 2, 2, 0, 1, -1, 0, 3, 3),
-			new ScissorBonfireModLevel(2, 3, 0, 1, -1, 0, 3, 2, 0),
-			new ScissorBonfireModLevel(2, 0, 2, 3, 0, 1, -1, 0, 3),
-			new ScissorBonfireModLevel(0, 3, 2, 0, 2, 3, 0, 1, -1),
-			new ScissorBonfireModLevel(3, 3, 0, 2, 2, 0, 1, -1, 0),
-			new ScissorBonfireModLevel(2, 0, 3, 2, 0, 2, -1, 0, 1),
-			new ScissorBonfireModLevel(1, 0, 2, 3, 0, 3, 2, 0, -1)
+			new ScissorBonfireModLevel(0, -1, 0, 2, 2, 0, 3, 3),
+			new ScissorBonfireModLevel(1, 0, 2, 2, 0, 3, 3, 0),
+			new ScissorBonfireModLevel(-1, 1, 2, 0, 2, 3, 0, 3),
+			new ScissorBonfireModLevel(0, 2, 0, 1, -1, 0, 3, 3),
+			new ScissorBonfireModLevel(2, 0, 1, -1, 0, 3, 2, 0),
+			new ScissorBonfireModLevel(2, 2, 3, 0, 1, -1, 0, 3),
+			new ScissorBonfireModLevel(0, 2, 0, 2, 3, 0, 1, -1),
+			new ScissorBonfireModLevel(3, 0, 2, 2, 0, 1, -1, 0),
+			new ScissorBonfireModLevel(2, 3, 2, 0, 2, -1, 0, 1),
+			new ScissorBonfireModLevel(1, 2, 3, 0, 3, 2, 0, -1)
 		};
 		
 		/// <summary>Coste en oro para cada subida de nivel de la Hoguera de las Tijeras, indexado desde el nivel actual.</summary>

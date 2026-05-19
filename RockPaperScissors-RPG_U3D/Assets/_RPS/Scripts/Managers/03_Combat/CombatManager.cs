@@ -59,7 +59,7 @@ namespace Kapibara.RPS
 
 			_currentRound            = 0;
 			_playerHP                = _player.MaxHealth.TotalValue;
-			_playerEnergy            = _player.InitialEnergy;
+			_playerEnergy            = _player.CurrentEnergy;
 			_pendingTrainingExp      = 0;
 			_activeTrainingModifier  = FindActiveTrainingModifier();
 
@@ -69,7 +69,7 @@ namespace Kapibara.RPS
 
 			Debug.Log($"[CombatManager] ═══════════════ COMBAT START ═══════════════");
 			Debug.Log($"[CombatManager] Player → HP:{_playerHP}  Energy:{_playerEnergy}  Lv:{_player.Level}  Mentality:{_player.Mentality.TotalValue}");
-			Debug.Log($"[CombatManager] Enemy  → {_enemy.Name}  HP:{_enemy.MaxHealth}  Energy:{_enemy.MaxEnergy}  Lv:{_enemy.Level}  Mentality:{_enemy.StoredMentality}");
+			Debug.Log($"[CombatManager] Enemy  → {_enemy.Name}  HP:{_enemy.MaxHealth}  Energy:{GameConsts.COMBAT_MAX_ENERGY}  Lv:{_enemy.Level}  Mentality:{_enemy.StoredMentality}");
 			Debug.Log($"[CombatManager] Language → {(_enemy.CurrentLanguage != null ? _enemy.CurrentLanguage.GetType().Name : "none")}");
 			Debug.Log($"[CombatManager] Training → {(_activeTrainingModifier != null ? _activeTrainingModifier.Stat.ToString() : "none")}");
 
@@ -78,7 +78,7 @@ namespace Kapibara.RPS
 				_player.MaxHealth.TotalValue,
 				GameConsts.COMBAT_MAX_ENERGY,
 				_enemy.MaxHealth,
-				_enemy.MaxEnergy
+				GameConsts.COMBAT_MAX_ENERGY
 			);
 			_combatUI.ShowCanvas();
 
@@ -95,7 +95,7 @@ namespace Kapibara.RPS
 			_enemy.ActionRoll();
 			_combatUI.HideBubbles();
 
-			Debug.Log($"[CombatManager] ─── Round {_currentRound} BEGIN ─── PlayerHP:{_playerHP}/{_player.MaxHealth.TotalValue}  Energy:{_playerEnergy}/{GameConsts.COMBAT_MAX_ENERGY}  │  EnemyHP:{_enemy.CurrentHealth}/{_enemy.MaxHealth}  Energy:{_enemy.CurrentEnergy}/{_enemy.MaxEnergy}");
+			Debug.Log($"[CombatManager] ─── Round {_currentRound} BEGIN ─── PlayerHP:{_playerHP}/{_player.MaxHealth.TotalValue}  Energy:{_playerEnergy}/{GameConsts.COMBAT_MAX_ENERGY}  │  EnemyHP:{_enemy.CurrentHealth}/{_enemy.MaxHealth}  Energy:{_enemy.CurrentEnergy}/{GameConsts.COMBAT_MAX_ENERGY}");
 			Debug.Log($"[CombatManager] Enemy rolled → CurrentAction:{_enemy.CurrentAction}  ThinkingAction:{_enemy.ThinkingAction}  StoredMentality:{_enemy.StoredMentality}");
 
 			int mentalityResult = _enemy.MentalityRollAgainst(_player.Mentality.TotalValue);
@@ -133,7 +133,7 @@ namespace Kapibara.RPS
 
 			// ── Super check BEFORE energy changes ────────────────────────────────
 			bool playerIsSuper = _playerEnergy >= GameConsts.COMBAT_MAX_ENERGY && playerAction != Actions.ENERGY;
-			bool enemyIsSuper  = _enemy.CurrentEnergy >= _enemy.MaxEnergy && enemyAction != Actions.ENERGY;
+			bool enemyIsSuper  = _enemy.CurrentEnergy >= GameConsts.COMBAT_MAX_ENERGY && enemyAction != Actions.ENERGY;
 
 			Debug.Log($"[CombatManager] RESOLVE  Player:{playerAction}{(playerIsSuper ? "(SUPER)" : "")}  vs  Enemy:{enemyAction}{(enemyIsSuper ? "(SUPER)" : "")}");
 
@@ -148,7 +148,7 @@ namespace Kapibara.RPS
 			else
 				_enemy.PayActionEnergyCost();
 
-			Debug.Log($"[CombatManager] Energy after → Player:{_playerEnergy}/{GameConsts.COMBAT_MAX_ENERGY}  Enemy:{_enemy.CurrentEnergy}/{_enemy.MaxEnergy}");
+			Debug.Log($"[CombatManager] Energy after → Player:{_playerEnergy}/{GameConsts.COMBAT_MAX_ENERGY}  Enemy:{_enemy.CurrentEnergy}/{GameConsts.COMBAT_MAX_ENERGY}");
 
 			// ── Effective power ───────────────────────────────────────────────────
 			// ENERGY always has 0 effective; DEFENSE computes with defense stat × its multiplier
@@ -279,6 +279,7 @@ namespace Kapibara.RPS
 		private void EndCombat(bool playerWins)
 		{
 			_player.CurrentHealth = _playerHP;
+			_player.CurrentEnergy = _playerEnergy;
 
 			int goldEarned = 0;
 			if (playerWins)

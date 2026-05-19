@@ -36,8 +36,6 @@ namespace Kapibara.RPS
 		[Description("Defens")] DEFENSE = 5,
 		/// <summary>Daño reflejado al atacante.</summary>
 		[Description("Thorns")] THORNS = 6,
-		/// <summary>Energía base acumulable máxima.</summary>
-		[Description("En_Bse")] ENERGY_BASE = 7,
 		/// <summary>Energía recuperada por turno.</summary>
 		[Description("En_Rec")] ENERGY_RECOVERY = 8,
 		/// <summary>Probabilidad de golpe crítico.</summary>

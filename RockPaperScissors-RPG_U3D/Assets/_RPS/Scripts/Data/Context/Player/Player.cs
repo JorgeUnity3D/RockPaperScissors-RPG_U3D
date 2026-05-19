@@ -38,8 +38,7 @@ namespace Kapibara.RPS
 		[SerializeField] private NInt _defenseCost;
 		[SerializeField] private NAttribute _thorns;
 		//Energy
-		[SerializeField] private NInt _currentEnergy;
-		[SerializeField] private NAttribute _baseEnergy;
+		[SerializeField, JsonIgnore] private NInt _currentEnergy;
 		[SerializeField] private NInt _initialEnergy;
 		[SerializeField] private NAttribute _energyRecovery;
 		//Crit & SuperPower
@@ -167,7 +166,7 @@ namespace Kapibara.RPS
 			set => _thorns.Value = value;
 		}
 
-		/// <summary>Energía actual en combate; no se persiste en disco.</summary>
+		/// <summary>Energía actual; persiste entre steps de un mismo nivel, se resetea a InitialEnergy al inicio de cada viaje.</summary>
 		[JsonIgnore]
 		public int CurrentEnergy
 		{
@@ -175,14 +174,7 @@ namespace Kapibara.RPS
 			set => _currentEnergy.Value = value;
 		}
 
-		/// <summary>Atributo de energía base máxima acumulable.</summary>
-		public StatAttribute BaseEnergy
-		{
-			get => _baseEnergy.Value;
-			set => _baseEnergy.Value = value;
-		}
-
-		/// <summary>Energía inicial al comienzo de un combate.</summary>
+		/// <summary>Energía con la que arranca el jugador al entrar a un nivel.</summary>
 		public int InitialEnergy
 		{
 			get => _initialEnergy.Value;
@@ -273,7 +265,6 @@ namespace Kapibara.RPS
 					_scissor.Value,
 					_defense.Value,
 					_thorns.Value,
-					_baseEnergy.Value,
 					_energyRecovery.Value,
 					_crit.Value,
 					_superpower.Value
@@ -330,10 +321,8 @@ namespace Kapibara.RPS
 			_thorns = new NAttribute(Stats.THORNS, 0);
 			_thorns.Value.AddModifier(new ScissorBonfireModifier(Stats.THORNS));
 			//Energy & Recovery
-			_currentEnergy = new NInt(0);
-			_baseEnergy = new NAttribute(Stats.ENERGY_BASE, 0);
-			_baseEnergy.Value.AddModifier(new ScissorBonfireModifier(Stats.ENERGY_BASE));
 			_initialEnergy = new NInt(GameConsts.COMBAT_MAX_ENERGY);
+			_currentEnergy = new NInt(GameConsts.COMBAT_MAX_ENERGY);
 			_energyRecovery = new NAttribute(Stats.ENERGY_RECOVERY, 5);
 			//Crit & SuperPower
 			_crit = new NAttribute(Stats.CRIT, 0);
@@ -359,7 +348,6 @@ namespace Kapibara.RPS
 				{ Stats.SCISSOR, _scissor },
 				{ Stats.DEFENSE, _defense },
 				{ Stats.THORNS, _thorns },
-				{ Stats.ENERGY_BASE, _baseEnergy },
 				{ Stats.ENERGY_RECOVERY, _energyRecovery },
 				{ Stats.CRIT, _crit },
 				{ Stats.SUPERPOWER, _superpower }
@@ -369,7 +357,7 @@ namespace Kapibara.RPS
 		[JsonConstructor]
 		public Player(string name, int level, int gold, int currentHealth, StatAttribute maxHealth, StatAttribute mentality, StatAttribute rock,
 			int rockCost, StatAttribute paper, int paperCost, StatAttribute scissor, int scissorCost, StatAttribute defense, int defenseCost, StatAttribute thorns,
-			int currentEnergy, StatAttribute baseEnergy, int initialEnergy, StatAttribute energyRecovery, StatAttribute crit, StatAttribute superpower,
+			int initialEnergy, StatAttribute energyRecovery, StatAttribute crit, StatAttribute superpower,
 			int attackItemLevel = 0, int healItemLevel = 0, int energyItemLevel = 0, List<int> unlockedStoryIds = null, List<int> libraryKillCounts = null)
 		{
 			_name = new NString(name);
@@ -395,9 +383,8 @@ namespace Kapibara.RPS
 			//Thorns
 			_thorns = new NAttribute(thorns);
 			//Energy & Recovery
-			_currentEnergy = new NInt(currentEnergy);
-			_baseEnergy = new NAttribute(baseEnergy);
 			_initialEnergy = new NInt(initialEnergy);
+			_currentEnergy = new NInt(initialEnergy);
 			_energyRecovery = new NAttribute(energyRecovery);
 			//Crit & SuperPower
 			_crit = new NAttribute(crit);
@@ -421,7 +408,6 @@ namespace Kapibara.RPS
 				{ Stats.SCISSOR, _scissor },
 				{ Stats.DEFENSE, _defense },
 				{ Stats.THORNS, _thorns },
-				{ Stats.ENERGY_BASE, _baseEnergy },
 				{ Stats.ENERGY_RECOVERY, _energyRecovery },
 				{ Stats.CRIT, _crit },
 				{ Stats.SUPERPOWER, _superpower }

@@ -9,7 +9,6 @@ namespace Kapibara.RPS
 	public class ScissorBonfireModLevel
 	{
 		private int _healthMod;
-		private int _energyMod;
 		private int _rockMod;
 		private int _paperMod;
 		private int _scissorsMod;
@@ -27,8 +26,7 @@ namespace Kapibara.RPS
 				{
 					case Stats.HEALTH:
 						return _healthMod;
-					case Stats.ENERGY_BASE:
-						return _energyMod;
+	
 					case Stats.ROCK:
 						return _rockMod;
 					case Stats.PAPER:
@@ -50,11 +48,10 @@ namespace Kapibara.RPS
 		}
 
 		[JsonConstructor]
-		public ScissorBonfireModLevel(int healthMod, int energyMod, int rockMod, int paperMod, int scissorsMod, int defenseMod, int thornsMod,
+		public ScissorBonfireModLevel(int healthMod, int rockMod, int paperMod, int scissorsMod, int defenseMod, int thornsMod,
 			int critMod, int superPowerMod)
 		{
 			_healthMod = healthMod;
-			_energyMod = energyMod;
 			_rockMod = rockMod;
 			_paperMod = paperMod;
 			_scissorsMod = scissorsMod;

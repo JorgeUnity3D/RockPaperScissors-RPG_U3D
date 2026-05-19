@@ -48,6 +48,7 @@ namespace Kapibara.RPS
 		private void OnTravelConfirmed(MapLevel level)
 		{
 			Debug.Log($"[TravelManager] OnTravelConfirmed() -> {level.Level}.{level.LevelName}");
+			AppContext.Player.CurrentEnergy = AppContext.Player.InitialEnergy;
 			AppContext.CombatContext = new CombatContext(level);
 			ServiceLocator.Instance.GetService<SceneService>().LoadScene(GameScenes.COMBAT);
 		}

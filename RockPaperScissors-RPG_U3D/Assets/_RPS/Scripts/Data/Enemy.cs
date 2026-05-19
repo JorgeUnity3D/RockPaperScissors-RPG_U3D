@@ -25,7 +25,6 @@ namespace Kapibara.RPS
 		public int                Superpower     { get; private set; }
 		public int                InitialEnergy  { get; private set; }
 		public int                EnergyRecovery { get; private set; }
-		public int                MaxEnergy      { get; private set; }
 		public int                Level          { get; private set; }
 		public int                RockProb       { get; private set; }
 		public int                PaperProb      { get; private set; }
@@ -81,11 +80,10 @@ namespace Kapibara.RPS
 			GoldMin        = data.GoldMin;
 			GoldMax        = data.GoldMax;
 			Languages      = data.Languages;
-			Level          = 1;
-			MaxEnergy      = GameConsts.COMBAT_MAX_ENERGY;
+			Level         = 1;
 
-			CurrentHealth   = MaxHealth;
-			CurrentEnergy   = MaxEnergy;
+			CurrentHealth  = MaxHealth;
+			CurrentEnergy  = data.InitialEnergy;
 			StoredMentality = Mentality;
 			CurrentAction   = Actions.NONE;
 			ThinkingAction  = Actions.NONE;
@@ -174,7 +172,7 @@ namespace Kapibara.RPS
 			CurrentHealth = Mathf.Max(0, CurrentHealth - damage);
 		}
 
-		public void RecoverEnergy()      => CurrentEnergy = Mathf.Min(MaxEnergy, CurrentEnergy + EnergyRecovery);
+		public void RecoverEnergy()      => CurrentEnergy = Mathf.Min(GameConsts.COMBAT_MAX_ENERGY, CurrentEnergy + EnergyRecovery);
 		public void PayActionEnergyCost() => CurrentEnergy -= ActionCost(CurrentAction);
 
 		public void ResetCombatState()

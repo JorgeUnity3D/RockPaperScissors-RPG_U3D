@@ -278,31 +278,37 @@ Before combat can be built, all data structures must be stable.
 2. **Implement `TravelManager.TravelToLevel()`**: deduct one horse use (gate behind count > 0), set selected level in `AppContext` or a `CombatContext`, load `GameScenes.MAP` or `GameScenes.COMBAT` via `SceneService`.
 3. **Add adjacency unlock display in `TravelUIController`**: grey out locked levels; unlock based on `MapLevel.IsAvailable`; set `IsAvailable=true` on adjacent levels when a level is cleared (requires combat first, but the display logic can be wired now).
 
-**Phase 3 Status (data complete as of 2026-05-10):**
+**Phase 3 Status — ✅ COMPLETE (2026-05-10 / 2026-05-19)**
 - ✅ Task 1 — step-based `MapStep` system replaces legacy `EnemyDataObject`. `EnemyScrObj` holds HP, probabilities, gold, languages. All 7 biomes fully populated in `MapLevels.asset`.
-- ❌ Task 2 — `TravelManager.TravelToLevel()` is still a stub. **This is the Phase 4 entry point.** Implement first: deduct horse use, store selected level's step list in `CombatContext`, load combat scene.
+- ✅ Task 2 — `TravelManager.OnTravelConfirmed()` deducts horse use (via `CreditsTimeCounterManager`), stores selected level in `CombatContext`, loads combat scene.
 - ⚠️ Task 3 — `TravelUIController` renders all levels; `IsAvailable` display is wired; unlock-on-clear (set adjacent `IsAvailable=true`) deferred to Phase 6 since it requires a combat-result event.
 
 ---
 
 ### Phase 4 — Combat Core (MVP)
 
-This is the largest chunk. Build the minimum version that produces a win/lose outcome.
+> ✅ COMPLETE — 2026-05-19
 
-1. **Create the Combat scene** and a `CombatManager : BaseManager`. Wire it in `GameManager.InitializeScene()`.
-2. **Bridge Player → combat**: write a `CombatContext` (plain C# class, not persistent) that copies stats from `AppContext.Player` at fight start. Do not extend `PlayerOld`. Discard `PlayerOld` for new combat.
-3. **Implement NPC data**: populate `NPCConfig` per the design doc — HP, 5 action probabilities (must sum to 100), gold min/max, gambit list placeholder, language(s). Store in `MapLevel` or a new `NPCScrObj`.
-4. **Implement action selection UI**: player picks Rock/Paper/Scissors/Defense/Energy from the bottom bar. NPC choice is simultaneous (hidden until resolution).
-5. **Implement NPC action selection** via weighted probability roll (`1D100` mapped to ranges). Skip Gambits for MVP.
-6. **Implement damage resolution** per the 8×8 matrix from doc section 8: compare actions, look up multiplier, roll variability (`1D(Level×0.16+4)` via `RNGGenerator.Roll1D`), apply multiplier, roll critical (`1D100 vs Crit attribute`).
-7. **Implement Thorns roll** per doc formula for Attack-vs-Defense matchup.
-8. **Implement round loop**: 10 rounds; end on HP ≤ 0; award gold from `NPCConfig.GoldMin`/`GoldMax`.
-9. **Implement training EXP award**: on round end, if player chose the stat matching `TrainingHouseModifier.IsTraining`, apply EXP per the doc's conditions table (Sin Daño x1.2 → +1, Sin Daño ≥2 → +2, Crítico → +1 additional).
-10. **Wire combat entry/exit**: `TravelManager.TravelToLevel()` → load combat scene → return to town on win or loss.
+Full combat loop playable: Town → Travel (credits deducted) → Combat scene → StepManager dispatches steps → CombatManager runs fight → result screen → return to Town with gold + training EXP persisted.
+
+1. ✅ Combat scene + `CombatManager : BaseManager` wired in `GameManager.InitializeScene()`.
+2. ✅ `CombatContext` (plain C#, not persistent) bridges `AppContext.Player` stats into combat. No `PlayerOld`.
+3. ✅ `EnemyScrObj` holds HP, 5 action probabilities, gold min/max, languages. Populated for all levels.
+4. ✅ Action selection UI — player picks Rock/Paper/Scissors/Defense/Energy from bottom bar.
+5. ✅ NPC action via weighted probability roll (`1D100` mapped to ranges).
+6. ✅ Damage resolution — 8×8 matrix, variability roll, critical roll vs `Crit` attribute.
+7. ✅ Thorns roll on Attack-vs-Defense matchup.
+8. ✅ Round loop — 10 rounds max; ends on HP ≤ 0; gold awarded from `EnemyScrObj`.
+9. ✅ Training EXP accumulated per round, applied at combat end, saved via `OnGameContextUpdated`.
+10. ✅ `GameManager.OnCombatFinished()` — advances to next step or returns to Town on final step / defeat.
+
+Architecture audit fixes (Blocks A–E) also complete as of 2026-05-19. See `ClaudeDocs/tasks/2026-05-18_fix-plan.md`.
 
 ---
 
 ### Phase 5 — Combat Features (Post-MVP)
+
+> 🚧 IN PROGRESS — started 2026-05-19
 
 Once basic combat works:
 
