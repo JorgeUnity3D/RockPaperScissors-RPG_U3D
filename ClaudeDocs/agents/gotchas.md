@@ -8,12 +8,6 @@
 
 ---
 
-## 2. Two Player classes coexist in one file
-
-`Player.cs` contains both `Player` (active, NAttribute-based) and `PlayerOld : Character` (legacy, flat int fields). `PlayerOld` is used by combat logic (`Character`, `Enemy`, `MentalityRollAgainst`). The active game saves `Player`, not `PlayerOld`. The two are unconnected — there is no conversion between them. Combat will need a bridge or a rewrite.
-
----
-
 ## 3. `_rectTransforms` is always null in BaseUIElement
 
 `RefreshLayoutGroupsImmediateAndRecursive()` is called on every `ShowCanvas()`, but `_rectTransforms` is a private field that is never assigned anywhere in code — no `GetComponentsInChildren`, no setter. The method silently returns `if (_rectTransforms == null)`. Layout groups are never rebuilt. If a controller depends on this for proper layout, it will silently fail.

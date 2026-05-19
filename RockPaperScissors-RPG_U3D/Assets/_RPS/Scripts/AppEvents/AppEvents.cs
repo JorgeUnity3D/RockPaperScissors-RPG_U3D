@@ -11,10 +11,6 @@ namespace Kapibara.RPS
 	{
 		/// <summary>Dispara el guardado de la partida a disco. Los managers lo invocan explícitamente tras operaciones que modifican el estado persistente.</summary>
 		public static UnityAction OnGameContextUpdated;
-		/// <summary>Se dispara cuando cambia el nivel del jugador.</summary>
-		public static UnityAction<int> OnLevelUpdated;
-		/// <summary>Se dispara cuando cambia el oro del jugador.</summary>
-		public static UnityAction<int> OnGoldUpdated;
 
 		/// <summary>Se dispara al finalizar la animación de introducción.</summary>
 		public static UnityAction OnIntroCompleted;
@@ -41,8 +37,6 @@ namespace Kapibara.RPS
 
 		/// <summary>Confirma el desbloqueo de un edificio tras pagar su coste.</summary>
 		public static UnityAction<TownData> OnConfirmUnlock;
-		/// <summary>Señal de pago del desbloqueo (uso futuro).</summary>
-		public static UnityAction<TownData> OnPayUnlock;
 		/// <summary>Cancela el proceso de desbloqueo de un edificio.</summary>
 		public static UnityAction OnCancelUnlock;
 
