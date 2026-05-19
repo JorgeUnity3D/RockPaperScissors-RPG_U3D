@@ -30,7 +30,7 @@ namespace Kapibara.RPS
 		}
 
 		[JsonIgnore]
-		public override int TotaModifier
+		public override int TotalModifier
 		{
 			get => IsUnlocked ? Modifier + (Level - 1) : 0;
 		}

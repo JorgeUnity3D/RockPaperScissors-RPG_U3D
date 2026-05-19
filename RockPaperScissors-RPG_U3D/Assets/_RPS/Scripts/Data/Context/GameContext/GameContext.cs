@@ -17,8 +17,8 @@ namespace Kapibara.RPS
 
 		//Generic Game Data
 		[SerializeField] private NString _gameName;
-		[SerializeField] private NString _timestamp;
-		[SerializeField] private NString _date;
+		[SerializeField] private NString _creationTimestamp;
+		[SerializeField] private NString _lastUpdateDate;
 		[SerializeField] private int _version;
 		//Player Data
 		[SerializeField] private NotificableField<Player> _player;
@@ -36,18 +36,18 @@ namespace Kapibara.RPS
 			set => _gameName.Value = value;
 		}
 
-		/// <summary>Marca de tiempo Unix de la última modificación.</summary>
-		public string Timestamp
+		/// <summary>Marca de tiempo Unix de creación de la partida.</summary>
+		public string CreationTimestamp
 		{
-			get => _timestamp.Value;
-			set => _timestamp.Value = value;
+			get => _creationTimestamp.Value;
+			set => _creationTimestamp.Value = value;
 		}
 
-		/// <summary>Fecha legible de la última modificación.</summary>
-		public string Date
+		/// <summary>Fecha legible de la última actualización.</summary>
+		public string LastUpdateDate
 		{
-			get => _date.Value;
-			set => _date.Value = value;
+			get => _lastUpdateDate.Value;
+			set => _lastUpdateDate.Value = value;
 		}
 
 		/// <summary>Versión del formato de guardado para migraciones futuras.</summary>
@@ -85,8 +85,8 @@ namespace Kapibara.RPS
 		public GameContext(string gameName, string playerName)
 		{
 			_gameName = new NString(gameName);
-			_timestamp = new NString(RPSTimestamp.GetTimestamp());
-			_date = new NString(RPSTimestamp.ConvertTimestampToDateTime(RPSTimestamp.GetTimestamp()).ToString(CultureInfo.InvariantCulture));
+			_creationTimestamp = new NString(RPSTimestamp.GetTimestamp());
+			_lastUpdateDate = new NString(RPSTimestamp.ConvertTimestampToDateTime(RPSTimestamp.GetTimestamp()).ToString(CultureInfo.InvariantCulture));
 			_version = 1;
 			_player = new NotificableField<Player> { Value = new Player(playerName) };
 			_townContext = new TownContext(new List<TownData>()
@@ -105,11 +105,11 @@ namespace Kapibara.RPS
 
 		// townContext: new saves. townData: backward compat with old saves that had the flat list.
 		[JsonConstructor]
-		public GameContext(string gameName, string timestamp, string date, Player player, TownContext townContext, List<TownData> townData, int version = 0)
+		public GameContext(string gameName, string creationTimestamp, string lastUpdateDate, Player player, TownContext townContext, List<TownData> townData, int version = 0)
 		{
 			_gameName = new NString(gameName);
-			_timestamp = new NString(timestamp);
-			_date = new NString(date);
+			_creationTimestamp = new NString(creationTimestamp);
+			_lastUpdateDate = new NString(lastUpdateDate);
 			_player = new NotificableField<Player> { Value = player };
 			_townContext = townContext ?? new TownContext(townData ?? new List<TownData>());
 			_version = version;

@@ -11,7 +11,7 @@ namespace Kapibara.RPS
 	public class LibraryModifier : BaseModifier
 	{
 		[JsonIgnore]
-		public override int TotaModifier
+		public override int TotalModifier
 		{
 			get => Modifier;
 		}

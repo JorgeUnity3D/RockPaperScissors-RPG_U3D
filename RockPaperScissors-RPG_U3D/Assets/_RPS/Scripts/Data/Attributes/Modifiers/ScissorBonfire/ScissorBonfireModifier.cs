@@ -11,7 +11,7 @@ namespace Kapibara.RPS
 	public class ScissorBonfireModifier : BaseModifier
 	{
 		[JsonIgnore]
-		public override int TotaModifier
+		public override int TotalModifier
 		{
 			get => Modifier;
 		}

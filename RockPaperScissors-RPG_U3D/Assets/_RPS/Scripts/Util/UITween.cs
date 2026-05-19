@@ -6,7 +6,7 @@ namespace Kapibara.Util
 	/// <summary>
 	/// Dirección de entrada para animaciones de deslizamiento.
 	/// </summary>
-	public enum SlideDirection { Left, Right, Up, Down }
+	public enum SlideDirection { LEFT, RIGHT, UP, DOWN }
 
 	/// <summary>
 	/// Utilidad estática de animaciones DOTween reutilizables para UI.
@@ -41,10 +41,10 @@ namespace Kapibara.Util
 			Vector2 origin = rt.anchoredPosition;
 			Vector2 offset = direction switch
 			{
-				SlideDirection.Left   => new Vector2(-distance, 0f),
-				SlideDirection.Right  => new Vector2( distance, 0f),
-				SlideDirection.Up     => new Vector2(0f,  distance),
-				SlideDirection.Down   => new Vector2(0f, -distance),
+				SlideDirection.LEFT   => new Vector2(-distance, 0f),
+				SlideDirection.RIGHT  => new Vector2( distance, 0f),
+				SlideDirection.UP     => new Vector2(0f,  distance),
+				SlideDirection.DOWN   => new Vector2(0f, -distance),
 				_                     => Vector2.zero
 			};
 			rt.anchoredPosition = origin + offset;

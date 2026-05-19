@@ -24,7 +24,7 @@ namespace Kapibara.RPS
         }
 
         /// <summary>Marca de tiempo de la partida activa.</summary>
-        public static string TimeStamp => _gameContext.Timestamp;
+        public static string CreationTimestamp => _gameContext.CreationTimestamp;
         /// <summary>Datos del jugador de la partida activa.</summary>
         public static Player Player => _gameContext.Player;
         /// <summary>Lista de todos los atributos del jugador.</summary>

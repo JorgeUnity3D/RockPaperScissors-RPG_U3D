@@ -58,7 +58,7 @@ namespace Kapibara.RPS
 			}
 			else
 			{
-				textMesh.text = modifier.TotaModifier.ToString();
+				textMesh.text = modifier.TotalModifier.ToString();
 				string statName = modifier.Stat.Name();
 				Transform modParent = textMesh.transform.parent;
 				string modName = statName + "_" + modParent.name.Replace("Label_Text", "");

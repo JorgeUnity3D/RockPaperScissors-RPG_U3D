@@ -115,7 +115,7 @@ namespace Kapibara.RPS
 			_statLevelText.text = "Lv. " +trainingHouseModifier.Level;
 			_statExperienceText.text = "Exp: " +trainingHouseModifier.Experience;
 			_statLevelProgressSlider.value = trainingHouseModifier.LevelProgress;
-			_statBonusText.text = "Bonus: " + trainingHouseModifier.TotaModifier; 
+			_statBonusText.text = "Bonus: " + trainingHouseModifier.TotalModifier;
 			_selectTrainingButton.AddListener(() =>
 			{
 				AppEvents.OnTrainingSelected?.Invoke(trainingHouseModifier);

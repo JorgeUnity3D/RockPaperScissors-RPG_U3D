@@ -78,7 +78,7 @@ namespace Kapibara.RPS
 
 		/// <summary>Valor efectivo que este modificador suma al atributo. Implementado por cada subclase.</summary>
 		[JsonIgnore]
-		public abstract int TotaModifier { get; }
+		public abstract int TotalModifier { get; }
 
 		#endregion
 	}

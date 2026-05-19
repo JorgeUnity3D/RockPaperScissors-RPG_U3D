@@ -18,7 +18,7 @@ namespace Kapibara.RPS
 		public List<SkillNode> UnlockedNodes => _unlockedNodes;
 
 		[JsonIgnore]
-		public override int TotaModifier
+		public override int TotalModifier
 		{
 			get => Modifier;
 		}

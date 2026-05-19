@@ -46,10 +46,10 @@ namespace Kapibara.RPS
         /// <summary>Actualiza la partida en disco actualizando además el campo Date con la fecha actual.</summary>
         public void UpdateSaveGame(GameContext gameContext)
         {
-	        Debug.Log($"[PersistenceService] SaveGame() ->");
+	        Debug.Log($"[PersistenceService] UpdateSaveGame() ->");
 	        string json = JsonConvert.SerializeObject(gameContext);
 	        JObject jsonObj = JsonConvert.DeserializeObject<JObject>(json);
-	        jsonObj["Date"] = RPSTimestamp.ConvertTimestampToDateTime(RPSTimestamp.GetTimestamp()).ToString(CultureInfo.InvariantCulture);
+	        jsonObj["LastUpdateDate"] = RPSTimestamp.ConvertTimestampToDateTime(RPSTimestamp.GetTimestamp()).ToString(CultureInfo.InvariantCulture);
 	        json = jsonObj.ToString();
 	        File.WriteAllText(Path.Combine(_saveDirectory, gameContext.GameName), json);
         }
@@ -60,33 +60,61 @@ namespace Kapibara.RPS
             return Directory.Exists(_saveDirectory) && Directory.GetFiles(_saveDirectory, "Game_*").Length > 0;
         }
 
-        /// <summary>Carga una partida por nombre de archivo e invoca el callback con el GameContext deserializado.</summary>
+        /// <summary>Carga una partida por nombre de archivo e invoca el callback con el GameContext deserializado, o null si el archivo no existe o está corrupto.</summary>
         public void LoadGame(string filename, UnityAction<GameContext> OnFinishCallback)
         {
             Debug.Log($"[PersistenceService] LoadGame() -> filename {filename}");
             string filePath = Path.Combine(_saveDirectory, filename);
-            if (File.Exists(filePath))
+            if (!File.Exists(filePath))
             {
-                string json = File.ReadAllText(filePath);
-                GameContext gameContext = JsonConvert.DeserializeObject<GameContext>(json);
-                OnFinishCallback?.Invoke(gameContext);
+                Debug.LogError($"[PersistenceService] LoadGame() -> File not found: {filename}");
+                OnFinishCallback?.Invoke(null);
+                return;
             }
+            string json = File.ReadAllText(filePath);
+            GameContext gameContext = DeserializeContext(json, filename);
+            OnFinishCallback?.Invoke(gameContext);
         }
 
-        /// <summary>Carga todos los archivos de partida (prefijo "Game_") e invoca el callback con la lista completa.</summary>
+        /// <summary>Carga todos los archivos de partida (prefijo "Game_") e invoca el callback con la lista completa. Los saves corruptos se omiten.</summary>
         public void LoadGameList(UnityAction<List<GameContext>> OnFinishCallback)
         {
             Debug.Log($"[PersistenceService] LoadGameList() -> ");
             List<string> allSaveFiles = new List<string>(Directory.GetFiles(_saveDirectory, "Game_*"));
             List<GameContext> allGameContexts = new List<GameContext>();
-
             foreach (string saveFile in allSaveFiles)
             {
                 string json = File.ReadAllText(saveFile);
-                GameContext gameContext = JsonConvert.DeserializeObject<GameContext>(json);
-                allGameContexts.Add(gameContext);
+                GameContext gameContext = DeserializeContext(json, saveFile);
+                if (gameContext != null)
+                    allGameContexts.Add(gameContext);
             }
             OnFinishCallback?.Invoke(allGameContexts);
+        }
+
+        /// <summary>Pre-valida el JSON y deserializa a GameContext. Devuelve null si el contenido está vacío, le faltan campos clave o está corrupto.</summary>
+        private GameContext DeserializeContext(string json, string filename)
+        {
+            if (string.IsNullOrWhiteSpace(json))
+            {
+                Debug.LogError($"[PersistenceService] DeserializeContext() -> Empty file: {filename}");
+                return null;
+            }
+            try
+            {
+                JObject jo = JObject.Parse(json);
+                if (jo["GameName"] == null || jo["Player"] == null || jo["TownContext"] == null)
+                {
+                    Debug.LogError($"[PersistenceService] DeserializeContext() -> Missing required fields: {filename}");
+                    return null;
+                }
+                return JsonConvert.DeserializeObject<GameContext>(json);
+            }
+            catch (JsonException e)
+            {
+                Debug.LogError($"[PersistenceService] DeserializeContext() -> Corrupted save ({filename}): {e.Message}");
+                return null;
+            }
         }
 
         /// <summary>Elimina el archivo de partida indicado del disco.</summary>

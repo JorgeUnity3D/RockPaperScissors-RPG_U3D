@@ -51,7 +51,7 @@ namespace Kapibara.RPS
 				int total = _attributeValue.Value;
 				foreach (BaseModifier modifier in _modifiers.Value)
 				{
-					total += modifier.TotaModifier;
+					total += modifier.TotalModifier;
 				}
 				return total;
 			}

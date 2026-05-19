@@ -367,14 +367,14 @@ namespace Kapibara.RPS
 		}
 
 		[JsonConstructor]
-		public Player(string name, int level, int currentGold, int currentHealth, StatAttribute maxHealth, StatAttribute mentality, StatAttribute rock,
+		public Player(string name, int level, int gold, int currentHealth, StatAttribute maxHealth, StatAttribute mentality, StatAttribute rock,
 			int rockCost, StatAttribute paper, int paperCost, StatAttribute scissor, int scissorCost, StatAttribute defense, int defenseCost, StatAttribute thorns,
 			int currentEnergy, StatAttribute baseEnergy, int initialEnergy, StatAttribute energyRecovery, StatAttribute crit, StatAttribute superpower,
-			int consumableItemDamage = 0, int consumableItemHeal = 0, int consumableItemEnergy = 0, List<int> unlockedStoryIds = null, List<int> libraryKillCounts = null)
+			int attackItemLevel = 0, int healItemLevel = 0, int energyItemLevel = 0, List<int> unlockedStoryIds = null, List<int> libraryKillCounts = null)
 		{
 			_name = new NString(name);
 			_level = new NInt(level);
-			_gold = new NInt(currentGold);
+			_gold = new NInt(gold);
 			//Health
 			_currentHealth = new NInt(currentHealth);
 			_maxHealth = new NAttribute(maxHealth);
@@ -403,9 +403,9 @@ namespace Kapibara.RPS
 			_crit = new NAttribute(crit);
 			_superpower = new NAttribute(superpower);
 			//Backpack
-			_attackItemLevel = new NInt(consumableItemDamage);
-			_healItemLevel   = new NInt(consumableItemHeal);
-			_energyItemLevel = new NInt(consumableItemEnergy);
+			_attackItemLevel = new NInt(attackItemLevel);
+			_healItemLevel   = new NInt(healItemLevel);
+			_energyItemLevel = new NInt(energyItemLevel);
 			//Theater
 			_unlockedStoryIds = unlockedStoryIds ?? new List<int> { 0 };
 			//Library

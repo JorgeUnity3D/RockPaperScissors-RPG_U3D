@@ -35,9 +35,8 @@ namespace Kapibara.Util.Serialization
 				case ModifierType.LIBRARY_MOD:
 					return JsonConvert.DeserializeObject<LibraryModifier>(jo.ToString(), SpecifiedSubclassConversion);
 				default:
-					throw new Exception();
+					throw new ArgumentOutOfRangeException(nameof(ModifierType), $"Unknown ModifierType value: {(ModifierType)jo["ModifierType"].Value<int>()}");
 			}
-			throw new NotImplementedException();
 		}
 
 		public override bool CanWrite

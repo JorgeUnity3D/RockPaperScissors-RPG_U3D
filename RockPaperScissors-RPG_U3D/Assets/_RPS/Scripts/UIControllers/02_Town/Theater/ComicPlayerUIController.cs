@@ -167,15 +167,15 @@ namespace Kapibara.RPS
 					break;
 				case VignetteAnimation.SLIDE_FROM_LEFT:
 					UITween.FadeIn(cg, GameConsts.COMIC_VIGNETTE_DURATION * 0.5f);
-					UITween.SlideFrom(rt, SlideDirection.Left, GameConsts.COMIC_SLIDE_DISTANCE, GameConsts.COMIC_VIGNETTE_DURATION);
+					UITween.SlideFrom(rt, SlideDirection.LEFT, GameConsts.COMIC_SLIDE_DISTANCE, GameConsts.COMIC_VIGNETTE_DURATION);
 					break;
 				case VignetteAnimation.SLIDE_FROM_RIGHT:
 					UITween.FadeIn(cg, GameConsts.COMIC_VIGNETTE_DURATION * 0.5f);
-					UITween.SlideFrom(rt, SlideDirection.Right, GameConsts.COMIC_SLIDE_DISTANCE, GameConsts.COMIC_VIGNETTE_DURATION);
+					UITween.SlideFrom(rt, SlideDirection.RIGHT, GameConsts.COMIC_SLIDE_DISTANCE, GameConsts.COMIC_VIGNETTE_DURATION);
 					break;
 				case VignetteAnimation.SLIDE_FROM_BOTTOM:
 					UITween.FadeIn(cg, GameConsts.COMIC_VIGNETTE_DURATION * 0.5f);
-					UITween.SlideFrom(rt, SlideDirection.Down, GameConsts.COMIC_SLIDE_DISTANCE, GameConsts.COMIC_VIGNETTE_DURATION);
+					UITween.SlideFrom(rt, SlideDirection.DOWN, GameConsts.COMIC_SLIDE_DISTANCE, GameConsts.COMIC_VIGNETTE_DURATION);
 					break;
 				case VignetteAnimation.ZOOM_IN:
 					UITween.FadeIn(cg, GameConsts.COMIC_VIGNETTE_DURATION * 0.5f);
