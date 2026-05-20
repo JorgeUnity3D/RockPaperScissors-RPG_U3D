@@ -9,7 +9,7 @@
     }
 
     public enum Languages {
-        //NONE,
+        COMMON,
         ORC,
         ELF,
         DWARF,

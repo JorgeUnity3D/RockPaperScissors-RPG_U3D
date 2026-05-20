@@ -8,6 +8,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3460809525840975755}
     m_Modifications:
+    - target: {fileID: 5935629384301513401, guid: 9fe66fd975c74db4fa1b14d3044892dd, type: 3}
+      propertyPath: _commonLanguage
+      value: 
+      objectReference: {fileID: 11400000, guid: e9d28c9b1deeed2f099cfccfde365ac1, type: 2}
+    - target: {fileID: 5935629384301513401, guid: 9fe66fd975c74db4fa1b14d3044892dd, type: 3}
+      propertyPath: _stoneSmithyScrObj
+      value: 
+      objectReference: {fileID: 11400000, guid: 7bb63a1c75dd0f7a0b2ccf8d0d34f43f, type: 2}
     - target: {fileID: 6039856661251762036, guid: 9fe66fd975c74db4fa1b14d3044892dd, type: 3}
       propertyPath: m_Name
       value: StepManager

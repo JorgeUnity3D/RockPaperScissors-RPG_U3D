@@ -30,7 +30,6 @@ namespace Kapibara.Util.Editor
 
 			root.AddComponent<GraphicRaycaster>();
 			root.AddComponent<CanvasGroup>();
-			root.AddComponent<CombatUIController>();
 
 			RectTransform rootRect = root.GetComponent<RectTransform>();
 			Stretch(rootRect);

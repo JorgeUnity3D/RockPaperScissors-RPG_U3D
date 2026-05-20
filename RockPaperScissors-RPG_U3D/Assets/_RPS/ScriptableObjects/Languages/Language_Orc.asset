@@ -22,7 +22,7 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   _data:
-    language: 0
+    language: 1
     words:
     - word: 1
       icon: {fileID: 7072420908752014796, guid: 5ce3d45ee413d667a821896b68c55780, type: 3}
@@ -34,3 +34,5 @@ MonoBehaviour:
       icon: {fileID: -9050506261184236702, guid: 5ce3d45ee413d667a821896b68c55780, type: 3}
     - word: 5
       icon: {fileID: -7694182991577264921, guid: 5ce3d45ee413d667a821896b68c55780, type: 3}
+    - word: 0
+      icon: {fileID: -575290118082851031, guid: 5ce3d45ee413d667a821896b68c55780, type: 3}

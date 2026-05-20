@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cebc5b9e212c692429a5dd7e0d16bf2f, type: 3}
-  m_Name: Language_Dwarf
-  m_EditorClassIdentifier: 
+  m_Name: Language_Common
+  m_EditorClassIdentifier: Assembly-CSharp::Kapibara.RPS.LanguageScrObj
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
@@ -22,17 +22,17 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   _data:
-    language: 3
+    language: 0
     words:
     - word: 1
-      icon: {fileID: 1611970466183296693, guid: 5ce3d45ee413d667a821896b68c55780, type: 3}
+      icon: {fileID: 2791260713720343506, guid: 1f9290f03740bbc44bba5549d3084e83, type: 3}
     - word: 2
-      icon: {fileID: 3204060552600179721, guid: 5ce3d45ee413d667a821896b68c55780, type: 3}
+      icon: {fileID: -7909878587242040874, guid: 1f9290f03740bbc44bba5549d3084e83, type: 3}
     - word: 3
-      icon: {fileID: -4422727704624733897, guid: 5ce3d45ee413d667a821896b68c55780, type: 3}
+      icon: {fileID: -3510992349643645261, guid: 1f9290f03740bbc44bba5549d3084e83, type: 3}
     - word: 4
-      icon: {fileID: 7792648754491992087, guid: 5ce3d45ee413d667a821896b68c55780, type: 3}
+      icon: {fileID: -6999268481027524508, guid: 1f9290f03740bbc44bba5549d3084e83, type: 3}
     - word: 5
-      icon: {fileID: -9042237875535731391, guid: 5ce3d45ee413d667a821896b68c55780, type: 3}
+      icon: {fileID: -7644457902405018056, guid: 1f9290f03740bbc44bba5549d3084e83, type: 3}
     - word: 0
       icon: {fileID: -575290118082851031, guid: 5ce3d45ee413d667a821896b68c55780, type: 3}

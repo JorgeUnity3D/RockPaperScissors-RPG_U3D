@@ -4,7 +4,7 @@ namespace Kapibara.RPS
 {
 	/// <summary>
 	/// Funciones puras de resolución de combate. Sin estado — todo via parámetros.
-	/// CombatManager orquesta el loop y llama a estas funciones para ambos lados (jugador y enemigo).
+	/// CombatStepManager orquesta el loop y llama a estas funciones para ambos lados (jugador y enemigo).
 	/// </summary>
 	public static class CombatResolver
 	{

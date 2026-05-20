@@ -3,24 +3,27 @@ using UnityEngine;
 namespace Kapibara.RPS
 {
 	/// <summary>
-	/// Gestiona el loop de un step de Tesoro. Muestra TreasureUIController, espera la acción RPS
-	/// del jugador, aplica el oro y dispara OnCombatFinished(true).
+	/// Gestiona el loop de un step de Tesoro. Muestra TreasureHUDUIController, espera la acción RPS
+	/// del jugador vía PlayerHUDUIController, aplica el oro y dispara OnCombatFinished(true).
 	/// </summary>
 	public class TreasureStepManager : BaseManager
 	{
 		private static readonly Actions[] RpsActions = { Actions.ROCK, Actions.PAPER, Actions.SCISSOR };
 
-		private TreasureUIController _treasureUI;
-		private Player               _player;
-		private int                  _goldReward;
-		private Actions              _treasureAction;
+		private TreasureHUDUIController _treasureHUD;
+		private PlayerHUDUIController   _playerHUD;
+		private Player                  _player;
+		private int                     _goldReward;
+		private Actions                 _treasureAction;
 
 		#region SETUP
 
 		public override void SetUp()
 		{
-			_treasureUI = ServiceLocator.Instance.GetService<UIService>().GetController<TreasureUIController>();
-			_player     = AppContext.Player;
+			UIService uiService = ServiceLocator.Instance.GetService<UIService>();
+			_treasureHUD = uiService.GetController<TreasureHUDUIController>();
+			_playerHUD   = uiService.GetController<PlayerHUDUIController>();
+			_player      = AppContext.Player;
 		}
 
 		protected override void Subscribe()   { }
@@ -37,9 +40,10 @@ namespace Kapibara.RPS
 
 			AppEvents.OnTreasureActionSelected += OnActionSelected;
 
-			_treasureUI.SetData(step.TreasureSprite, step.GoldAmount, _player.CurrentHealth, _player.MaxHealth.TotalValue);
-			_treasureUI.SetActionsInteractable(true);
-			_treasureUI.ShowCanvas();
+			_treasureHUD.SetData(step.TreasureSprite, step.GoldAmount);
+			_treasureHUD.ShowCanvas();
+
+			_playerHUD.SetTreasureActionsInteractable(true);
 
 			Debug.Log($"[TreasureStepManager] Initialize() -> gold:{_goldReward}  treasureRoll:{_treasureAction}");
 		}
@@ -54,8 +58,8 @@ namespace Kapibara.RPS
 			_player.Gold += finalGold;
 			Debug.Log($"[TreasureStepManager] player:{playerAction}  treasure:{_treasureAction}  x{multiplier}  gold:{finalGold}  total:{_player.Gold}");
 
-			_treasureUI.SetActionsInteractable(false);
-			_treasureUI.HideCanvas();
+			_playerHUD.SetTreasureActionsInteractable(false);
+			_treasureHUD.HideCanvas();
 
 			AppEvents.OnGameContextUpdated?.Invoke();
 			AppEvents.OnCombatFinished?.Invoke(true);

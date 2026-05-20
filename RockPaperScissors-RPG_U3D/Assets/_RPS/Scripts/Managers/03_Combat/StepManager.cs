@@ -4,23 +4,24 @@ using UnityEngine;
 namespace Kapibara.RPS
 {
 	/// <summary>
-	/// Punto de entrada de la escena Combat. Lee el tipo del step actual y delega a CombatManager,
-	/// TreasureStepManager o NPCStepManager. GameManager llama Initialize(); los sub-managers
-	/// disparan OnCombatFinished cuando terminan.
+	/// Punto de entrada de la escena Combat. Lee el tipo del step actual, inicializa PlayerHUDUIController
+	/// y delega a CombatStepManager, TreasureStepManager o NPCStepManager.
 	/// </summary>
 	public class StepManager : BaseManager
 	{
-		[SerializeField, ReadOnly] private CombatManager       _combatManager;
-		[SerializeField, ReadOnly] private TreasureStepManager _treasureStepManager;
-		[SerializeField, ReadOnly] private NPCStepManager      _npcStepManager;
+		[SerializeField, ReadOnly] private CombatStepManager         _combatManager;
+		[SerializeField, ReadOnly] private TreasureStepManager   _treasureStepManager;
+		[SerializeField, ReadOnly] private NPCStepManager        _npcStepManager;
+		[SerializeField, ReadOnly] private PlayerHUDUIController _playerHUD;
 
 		#region SETUP
 
 		public override void SetUp()
 		{
-			_combatManager       = GetComponentInChildren<CombatManager>();
+			_combatManager       = GetComponentInChildren<CombatStepManager>();
 			_treasureStepManager = GetComponentInChildren<TreasureStepManager>();
 			_npcStepManager      = GetComponentInChildren<NPCStepManager>();
+			_playerHUD           = ServiceLocator.Instance.GetService<UIService>().GetController<PlayerHUDUIController>();
 		}
 
 		protected override void Subscribe()   { }
@@ -42,14 +43,20 @@ namespace Kapibara.RPS
 			if (ctx.CurrentStepIndex == 0)
 				AppContext.Player.CurrentHealth = AppContext.Player.MaxHealth.TotalValue;
 
-			MapStep step = ctx.CurrentStep;
+			MapStep step   = ctx.CurrentStep;
+			Player  player = AppContext.Player;
 			Debug.Log($"[StepManager] Initialize() -> step {ctx.CurrentStepIndex}  type:{step.Type}");
+
+			_playerHUD.SetData(player.MaxHealth.TotalValue, GameConsts.COMBAT_MAX_ENERGY);
+			_playerHUD.RefreshBars(player.CurrentHealth, player.CurrentEnergy);
+			_playerHUD.SetStep(step.Type);
+			_playerHUD.ShowCanvas();
 
 			switch (step.Type)
 			{
 				case MapStepType.COMBAT:
 				case MapStepType.BOSS:
-					if (_combatManager == null) { Debug.LogError("[StepManager] CombatManager not found in children."); return; }
+					if (_combatManager == null) { Debug.LogError("[StepManager] CombatStepManager not found in children."); return; }
 					_combatManager.Initialize();
 					break;
 				case MapStepType.TREASURE:
