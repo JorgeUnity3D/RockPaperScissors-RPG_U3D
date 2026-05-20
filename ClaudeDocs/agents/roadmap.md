@@ -291,7 +291,7 @@ Before combat can be built, all data structures must be stable.
 
 Full combat loop playable: Town → Travel (credits deducted) → Combat scene → StepManager dispatches steps → CombatManager runs fight → result screen → return to Town with gold + training EXP persisted.
 
-1. ✅ Combat scene + `CombatManager : BaseManager` wired in `GameManager.InitializeScene()`.
+1. ✅ Combat scene + `CombatStepManager : BaseManager` wired in `GameManager.InitializeScene()`.
 2. ✅ `CombatContext` (plain C#, not persistent) bridges `AppContext.Player` stats into combat. No `PlayerOld`.
 3. ✅ `EnemyScrObj` holds HP, 5 action probabilities, gold min/max, languages. Populated for all levels.
 4. ✅ Action selection UI — player picks Rock/Paper/Scissors/Defense/Energy from bottom bar.
@@ -312,14 +312,17 @@ Architecture audit fixes (Blocks A–E) also complete as of 2026-05-19. See `Cla
 
 Once basic combat works:
 
-1. **Energy system**: add current-energy tracking to `CombatContext`; wire Energy action to charge per `EnergyRecovery`; gate Super attacks at energy = 100.
-2. **Mentality roll** (PJ reads NPC mind): implement variability + mentality formula; show/hide thought bubble and NPC language symbol.
-3. **Backpack consumables**: expose 3 item slots from `Player.Backpack` in combat UI; items are single-use per run (recharged by Smithy on next run).
-4. **NPC Gambits**: implement Primary → Secondary → Tertiary gambit evaluation on `NPCConfig`; Primary overrides mentality; Tertiary only fires when mentality roll succeeds.
-5. **Round 5 Caja Sorpresa**: random HP/energy event (Vida++/+, Energía++/+/--/-).
-6. **Round 10 Boss**: spawn `_isSpecialLevel` NPC; award ESCENA + gold on win; trigger Historia cutscene via `ComicPlayerUIController`.
-7. **Language system**: roll `1DN` (N = number of languages) when mentality succeeds; display NPC's chosen action in that NPC's symbol set.
-8. **Gold reward multipliers**: implement the reward table from doc section 8 (Superpoder kill → x2 reward, Extra cases).
+1. **Energy system**: ✅ DONE 2026-05-20 — model cleanup: BaseEnergy removed, CurrentEnergy persists between steps, InitialEnergy resets on travel, Enemy uses data.InitialEnergy.
+2. **Mentality roll + language system**: ✅ DONE (Phase 4) — `MentalityRollAgainst()`, thought bubble, `LanguageRoll()`, `GetActionIcon()` all implemented in `CombatStepManager`.
+3. **Player action selection — 2-step confirmation**: ✅ DONE (2026-05-20) — `_pendingAction` state in `PlayerHUDUIController`; first tap shows thought bubble with common language icon; second tap confirms and fires `OnCombatActionSelected`.
+4. **Enemy thought bubble on mentality roll**: shown every round during mentality phase. Win → enemy language icon. Lose → question mark sprite. Both cases call `ShowEnemyThoughtBubble(sprite)`. See investigation doc.
+5. **Common language for action bubbles**: ✅ DONE (2026-05-20) — `PlayerHUDUIController.SetCommonLanguage(Language)` wired; action bubbles use common language via `GetActionIconCommon()`; thought bubbles use enemy language (resolved in `CombatStepManager`).
+6. **Backpack consumables**: ✅ DONE (2026-05-20) — `OpenBackpack_Button` en combat panel abre `Backpack_Actions` group; Shuriken/Potion/Torch single-use por combate; efecto resuelto en `CombatStepManager.OnBackpackItemUsed()`; niveles desde `Player.XxxItemLevel`; valores desde `StoneSmithyScrObj.amountsPerLevel`.
+7. **NPC Gambits**: implement Primary → Secondary → Tertiary gambit evaluation; Primary overrides mentality; Tertiary only fires when mentality roll succeeds.
+8. **Round 5 Caja Sorpresa**: random HP/energy event (Vida++/+, Energía++/+/--/-).
+9. **Round 10 Boss**: spawn `_isSpecialLevel` NPC; award ESCENA + gold on win; trigger Historia cutscene via `ComicPlayerUIController`.
+10. **Gold reward multipliers**: implement the reward table from doc section 8 (Superpoder kill → x2 reward, Extra cases).
+11. **PauseMenuUIController**: settings button removed from `PlayerHUDUIController`; needs its own controller with at least a settings button. Deferred from Phase 5 wiring session.
 
 ---
 
@@ -342,7 +345,8 @@ Once basic combat works:
 4. **Tutorial combat**: high-stat demo player, guided UI overlays per doc.
 5. **Town visual polish**: animated NPCs (idle), animated gold bar increment/decrement, travel-use horse bar, backpack icon on map.
 6. **`_optionsButton` in `MainMenuUIController`**: hook it to show the Settings screen.
-7. **Debug menu (in-build testing panel)**: overlay screen accessible via a hidden gesture or dev flag; lets the tester manually trigger actions (add gold, set stat level, add EXP, skip to round N, unlock building, etc.) without needing Odin Inspector. Replaces the debug `[Button]` methods that currently only work in-editor. Scope: `DebugMenuManager` + `DebugMenuUIController`; gate behind `#if DEVELOPMENT_BUILD || UNITY_EDITOR` or a `GameConsts.DEBUG_ENABLED` bool.
+8. **Action bubble animation**: bubbles inflate proportionally to each side's effective power; larger bubble hits and destroys the smaller; tie = both pop. DOTween animation, no gameplay impact. See `ClaudeDocs/investigations/combat-design-clarifications.md` point 4.
+9. **Debug menu (in-build testing panel)**: overlay screen accessible via a hidden gesture or dev flag; lets the tester manually trigger actions (add gold, set stat level, add EXP, skip to round N, unlock building, etc.) without needing Odin Inspector. Replaces the debug `[Button]` methods that currently only work in-editor. Scope: `DebugMenuManager` + `DebugMenuUIController`; gate behind `#if DEVELOPMENT_BUILD || UNITY_EDITOR` or a `GameConsts.DEBUG_ENABLED` bool.
 
 ---
 

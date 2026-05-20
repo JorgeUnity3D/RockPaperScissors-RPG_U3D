@@ -78,10 +78,16 @@ namespace Kapibara.RPS
 		/// <summary>Se dispara al cerrar el lector de comic (ComicPlayerUIController). TheaterManager lo recibe para restaurar el estado del Theater.</summary>
 		public static UnityAction OnComicClosed;
 
+		/// <summary>Se dispara al pulsar el botón de ajustes durante el combate. PauseMenuUIController lo consume.</summary>
+		public static UnityAction OnSettingsRequested;
+
 		/// <summary>Se dispara cuando el jugador pulsa un botón de acción en combate.</summary>
 		public static UnityAction<Actions> OnCombatActionSelected;
 		/// <summary>Se dispara al terminar el combate. true = victoria, false = derrota.</summary>
 		public static UnityAction<bool> OnCombatFinished;
+
+		/// <summary>Se dispara cuando el jugador usa un consumible de la mochila durante el combate.</summary>
+		public static UnityAction<ItemType> OnBackpackItemUsed;
 
 		/// <summary>Se dispara cuando el jugador selecciona una acción RPS en un step de tesoro.</summary>
 		public static UnityAction<Actions> OnTreasureActionSelected;
