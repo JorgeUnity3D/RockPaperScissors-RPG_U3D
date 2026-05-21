@@ -72,6 +72,7 @@ namespace Kapibara.RPS
 		public const float COMBAT_BAR_ANIM         = 0.2f;
 		public const float COMBAT_BAR_GHOST_DELAY  = 0.2f;
 		public const float COMBAT_BAR_GHOST_DUR    = 0.35f;
+		public const float COMBAT_TREASURE_CHANCE  = 0.25f;
 
 		#endregion
 

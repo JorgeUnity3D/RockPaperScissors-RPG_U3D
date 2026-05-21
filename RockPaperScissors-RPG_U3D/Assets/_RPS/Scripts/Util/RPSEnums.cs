@@ -27,7 +27,8 @@
 		COMBAT,
 		BOSS,
 		TREASURE,
-		NPC_RESCUE
+		NPC_RESCUE,
+		SURPRISE_BOX
 	}
 
 	public enum EnemyId

@@ -126,8 +126,11 @@ namespace Kapibara.RPS
 			CombatContext ctx = AppContext.CombatContext;
 			if (playerWins && ctx != null)
 			{
+				if (ctx.CurrentStep.Type == MapStepType.BOSS)
+					ctx.SelectedLevel.SetCompleted();
+
 				int nextIndex = ctx.CurrentStepIndex + 1;
-				if (nextIndex < ctx.SelectedLevel.StepCount)
+				if (nextIndex < ctx.StepCount)
 				{
 					ctx.CurrentStepIndex = nextIndex;
 					Debug.Log($"[GameManager] OnCombatFinished() -> advancing to step {nextIndex} ({ctx.CurrentStep.Type})");

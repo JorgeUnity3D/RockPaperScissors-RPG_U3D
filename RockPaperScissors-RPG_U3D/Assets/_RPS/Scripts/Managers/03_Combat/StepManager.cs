@@ -67,6 +67,10 @@ namespace Kapibara.RPS
 					if (_npcStepManager == null) { Debug.LogError("[StepManager] NPCStepManager not found in children."); return; }
 					_npcStepManager.Initialize(step);
 					break;
+				case MapStepType.SURPRISE_BOX:
+					Debug.LogWarning("[StepManager] SURPRISE_BOX not yet implemented — advancing.");
+					AppEvents.OnCombatFinished?.Invoke(true);
+					break;
 				default:
 					Debug.LogError($"[StepManager] Unhandled step type: {step.Type}");
 					break;
