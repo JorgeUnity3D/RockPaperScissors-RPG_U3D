@@ -71,7 +71,7 @@ namespace Kapibara.RPS
 			}
 
 			_currentRound           = 0;
-			_playerHP               = _player.MaxHealth.TotalValue;
+			_playerHP               = _player.CurrentHealth;
 			_playerEnergy           = _player.CurrentEnergy;
 			_attackItemUsed         = false;
 			_healItemUsed           = false;
@@ -82,7 +82,14 @@ namespace Kapibara.RPS
 
 			_playerHUD.SetBackpackData(_player.AttackItemLevel, _player.HealItemLevel, _player.EnergyItemLevel);
 
-			EnemyData data = _context.CurrentStep.Enemy.Data;
+			EnemyScrObj enemyScrObj = _context.CurrentStep.Enemy;
+			if (enemyScrObj == null)
+			{
+				Debug.LogError("[CombatStepManager] CurrentStep.Enemy is null — cannot start combat. Check MapLevels SO.");
+				AppEvents.OnCombatFinished?.Invoke(false);
+				return;
+			}
+			EnemyData data = enemyScrObj.Data;
 			_enemy = new Enemy(data);
 			_enemy.LanguageRoll();
 
@@ -110,12 +117,12 @@ namespace Kapibara.RPS
 			_enemyHUD.HideBubbles();
 
 			Debug.Log($"[CombatStepManager] ─── Round {_currentRound} BEGIN ─── PlayerHP:{_playerHP}/{_player.MaxHealth.TotalValue}  Energy:{_playerEnergy}/{GameConsts.COMBAT_MAX_ENERGY}  │  EnemyHP:{_enemy.CurrentHealth}/{_enemy.MaxHealth}  Energy:{_enemy.CurrentEnergy}/{GameConsts.COMBAT_MAX_ENERGY}");
-			Debug.Log($"[CombatStepManager] Enemy rolled → CurrentAction:{_enemy.CurrentAction}  ThinkingAction:{_enemy.ThinkingAction}  StoredMentality:{_enemy.StoredMentality}");
+			Debug.Log($"[CombatStepManager] Enemy rolled → CurrentAction:{ColorAction(_enemy.CurrentAction)}  ThinkingAction:{ColorAction(_enemy.ThinkingAction)}  StoredMentality:{_enemy.StoredMentality}");
 
 			int mentalityResult = _enemy.MentalityRollAgainst(_player.Mentality.TotalValue);
 			if (mentalityResult <= 0)
 			{
-				Debug.Log($"[CombatStepManager] Mentality roll {mentalityResult} ≤ 0 → player reads enemy mind → {_enemy.ThinkingAction}");
+				Debug.Log($"[CombatStepManager] Mentality roll {mentalityResult} ≤ 0 → player reads enemy mind → {ColorAction(_enemy.ThinkingAction)}");
 				_enemyHUD.ShowEnemyThoughtBubble(GetActionIconEnemy(_enemy.ThinkingAction));
 				_enemy.ResetMentality();
 			}
@@ -131,7 +138,7 @@ namespace Kapibara.RPS
 
 		private void OnPlayerActionSelected(Actions playerAction)
 		{
-			Debug.Log($"[CombatStepManager] Player selected: {playerAction}");
+			Debug.Log($"[CombatStepManager] Player selected: {ColorAction(playerAction)}");
 			_playerHUD.SetCombatActionsInteractable(false);
 			ResolveRound(playerAction, _enemy.CurrentAction);
 		}
@@ -149,7 +156,7 @@ namespace Kapibara.RPS
 			bool playerIsSuper = _playerEnergy >= GameConsts.COMBAT_MAX_ENERGY && playerAction != Actions.ENERGY;
 			bool enemyIsSuper  = _enemy.CurrentEnergy >= GameConsts.COMBAT_MAX_ENERGY && enemyAction != Actions.ENERGY;
 
-			Debug.Log($"[CombatStepManager] RESOLVE  Player:{playerAction}{(playerIsSuper ? "(SUPER)" : "")}  vs  Enemy:{enemyAction}{(enemyIsSuper ? "(SUPER)" : "")}");
+			Debug.Log($"[CombatStepManager] RESOLVE  Player:{ColorAction(playerAction)}{(playerIsSuper ? "<color=#FFFFFF>(SUPER)</color>" : "")}  vs  Enemy:{ColorAction(enemyAction)}{(enemyIsSuper ? "<color=#FFFFFF>(SUPER)</color>" : "")}");
 
 			// ── Energy management ─────────────────────────────────────────────────
 			if (playerAction == Actions.ENERGY)
@@ -309,7 +316,9 @@ namespace Kapibara.RPS
 			AppEvents.OnGameContextUpdated?.Invoke();
 
 			_playerHUD.SetCombatActionsInteractable(false);
+			_playerHUD.HidePlayerBubbles();
 			_playerHUD.HideCanvas();
+			_enemyHUD.HideBubbles();
 			_enemyHUD.HideCanvas();
 
 			if (_resultUI == null)
@@ -435,6 +444,19 @@ namespace Kapibara.RPS
 
 			_pendingTrainingExp += exp;
 			Debug.Log($"[CombatStepManager] Training EXP → +{exp} this round  (mult:{multiplier} crit:{critBonus})  total pending:{_pendingTrainingExp}");
+		}
+
+		private static string ColorAction(Actions action)
+		{
+			switch (action)
+			{
+				case Actions.ROCK:    return "<color=#FF6666>ROCK</color>";
+				case Actions.PAPER:   return "<color=#66AAFF>PAPER</color>";
+				case Actions.SCISSOR: return "<color=#66FF88>SCISSOR</color>";
+				case Actions.DEFENSE: return "<color=#FFDD44>DEFENSE</color>";
+				case Actions.ENERGY:  return "<color=#44DDFF>ENERGY</color>";
+				default:              return $"<color=#AAAAAA>{action}</color>";
+			}
 		}
 
 		private static bool ActionMatchesTrainingStat(Actions action, Stats stat)

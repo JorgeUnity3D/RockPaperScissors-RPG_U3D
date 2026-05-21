@@ -863,7 +863,7 @@
         "useAndOpForSearchList": false,
         "searchList": [
             {
-                "searchString": "CombatManager",
+                "searchString": "CombatStepManager",
                 "searchType": "Exact",
                 "removeSearchStringFromLog": false,
                 "logTypeList": [
@@ -941,6 +941,54 @@
                 "isEnabled": true,
                 "collapsed": true,
                 "itemGUID": "cc000201-0000-0000-0000-000000000003"
+            },
+            {
+                "searchString": "StepManager",
+                "searchType": "Exact",
+                "removeSearchStringFromLog": false,
+                "logTypeList": [
+                    { "logType": "Log", "name": "Untitled", "isEnabled": true, "collapsed": false, "itemGUID": "dd000101-0000-0000-0000-000000000001" }
+                ],
+                "columnTypeList": [
+                    { "columnType": "Class", "name": "Untitled", "isEnabled": true, "collapsed": false, "itemGUID": "dd000101-0000-0000-0000-000000000002" }
+                ],
+                "sourceCodeList": [],
+                "name": "Untitled",
+                "isEnabled": true,
+                "collapsed": true,
+                "itemGUID": "dd000101-0000-0000-0000-000000000003"
+            },
+            {
+                "searchString": "NPCStepManager",
+                "searchType": "Exact",
+                "removeSearchStringFromLog": false,
+                "logTypeList": [
+                    { "logType": "Log", "name": "Untitled", "isEnabled": true, "collapsed": false, "itemGUID": "dd000201-0000-0000-0000-000000000001" }
+                ],
+                "columnTypeList": [
+                    { "columnType": "Class", "name": "Untitled", "isEnabled": true, "collapsed": false, "itemGUID": "dd000201-0000-0000-0000-000000000002" }
+                ],
+                "sourceCodeList": [],
+                "name": "Untitled",
+                "isEnabled": true,
+                "collapsed": true,
+                "itemGUID": "dd000201-0000-0000-0000-000000000003"
+            },
+            {
+                "searchString": "TreasureStepManager",
+                "searchType": "Exact",
+                "removeSearchStringFromLog": false,
+                "logTypeList": [
+                    { "logType": "Log", "name": "Untitled", "isEnabled": true, "collapsed": false, "itemGUID": "dd000301-0000-0000-0000-000000000001" }
+                ],
+                "columnTypeList": [
+                    { "columnType": "Class", "name": "Untitled", "isEnabled": true, "collapsed": false, "itemGUID": "dd000301-0000-0000-0000-000000000002" }
+                ],
+                "sourceCodeList": [],
+                "name": "Untitled",
+                "isEnabled": true,
+                "collapsed": true,
+                "itemGUID": "dd000301-0000-0000-0000-000000000003"
             }
         ],
         "iconLetter": {

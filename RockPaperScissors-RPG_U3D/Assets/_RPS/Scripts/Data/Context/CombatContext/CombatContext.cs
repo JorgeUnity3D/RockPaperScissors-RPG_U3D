@@ -36,7 +36,10 @@ namespace Kapibara.RPS
 			for (int i = 0; i < 4; i++)
 				steps.Add(GenerateCombatOrTreasure(level, ref treasureUsed));
 
-			steps.Add(new MapStep(MapStepType.BOSS, level.Boss));
+			if (level.Boss != null)
+				steps.Add(new MapStep(MapStepType.BOSS, level.Boss));
+			else
+				Debug.LogError($"[CombatContext] Level '{level.LevelName}' has no boss assigned — boss step skipped.");
 
 			if (!level.IsCompleted)
 				steps.Add(new MapStep(level.TargetBuilding, level.NpcSprite, level.NpcDialogueLines));
@@ -50,6 +53,12 @@ namespace Kapibara.RPS
 			{
 				treasureUsed = true;
 				return new MapStep(level.TreasureGoldAmount, level.TreasureSprite);
+			}
+
+			if (level.PossibleEnemies == null || level.PossibleEnemies.Count == 0)
+			{
+				Debug.LogError($"[CombatContext] Level '{level.LevelName}' has no enemies assigned — cannot generate combat step.");
+				return new MapStep(); // SURPRISE_BOX fallback — will be skipped immediately
 			}
 
 			EnemyScrObj enemy = level.PossibleEnemies[Random.Range(0, level.PossibleEnemies.Count)];

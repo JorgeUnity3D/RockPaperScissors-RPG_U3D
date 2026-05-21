@@ -1374,6 +1374,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43b56a73baf3d4b14a66813d4bcffc48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Kapibara.RPS.PlayerHUDUIController
+  _backgroundImage: {fileID: 5129639102565191197}
   _playerHPFill: {fileID: 1133206507046569662}
   _playerEnergyFill: {fileID: 418491038379528525}
   _playerHPGhost: {fileID: 2446357393832416386}
@@ -1400,7 +1401,7 @@ MonoBehaviour:
   _prevButton: {fileID: 7608659093548876626}
   _nextButton: {fileID: 3900776188021725260}
   _backpackActionsGroup: {fileID: 9112065518641356974}
-  _openBackpackButton: {fileID: 6883695382089788221}
+  _openBackpackButton: {fileID: 2010562791806548992}
   _shurikenButton: {fileID: 4938863775115443520}
   _potionButton: {fileID: 4045348402264390097}
   _torchButton: {fileID: 858447636170354170}
@@ -1680,14 +1681,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -6684475192863260856, guid: 0ca550bc406330a4493c8d901e3ea819, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2326,7 +2327,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.1, g: 0.1, b: 0.1, a: 1}
+  m_Color: {r: 0.6725826, g: 0.20426449, b: 0.5703499, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2622,7 +2623,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4622303491493892836
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3778,7 +3779,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.1, g: 0.1, b: 0.1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

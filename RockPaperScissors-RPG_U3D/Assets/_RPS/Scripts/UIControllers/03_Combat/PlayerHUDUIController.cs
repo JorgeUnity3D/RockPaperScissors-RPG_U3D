@@ -13,6 +13,9 @@ namespace Kapibara.RPS
 	/// </summary>
 	public class PlayerHUDUIController : UIController
 	{
+		[Header("Background")]
+		[SerializeField] private Image           _backgroundImage;
+
 		[Header("Player Bars")]
 		[SerializeField] private Image           _playerHPFill;
 		[SerializeField] private Image           _playerEnergyFill;
@@ -103,14 +106,19 @@ namespace Kapibara.RPS
 			_playerMaxHP     = playerMaxHP;
 			_playerMaxEnergy = playerMaxEnergy;
 
-			_playerHPFill.fillAmount     = 1f;
-			_playerEnergyFill.fillAmount = 1f;
+			_playerHPFill.rectTransform.anchorMax     = Vector2.one;
+			_playerEnergyFill.rectTransform.anchorMax = Vector2.one;
 
-			if (_playerHPGhost     != null) _playerHPGhost.fillAmount     = 1f;
-			if (_playerEnergyGhost != null) _playerEnergyGhost.fillAmount = 1f;
+			if (_playerHPGhost     != null) _playerHPGhost.rectTransform.anchorMax     = Vector2.one;
+			if (_playerEnergyGhost != null) _playerEnergyGhost.rectTransform.anchorMax = Vector2.one;
 
 			if (_playerHPText     != null) _playerHPText.text     = $"{playerMaxHP}/{playerMaxHP}";
 			if (_playerEnergyText != null) _playerEnergyText.text = $"{playerMaxEnergy}/{playerMaxEnergy}";
+		}
+
+		public void SetBackground(Sprite sprite)
+		{
+			if (_backgroundImage != null) _backgroundImage.sprite = sprite;
 		}
 
 		public void SetCommonLanguage(Language language)
@@ -153,6 +161,8 @@ namespace Kapibara.RPS
 			float hpFill     = _playerMaxHP     > 0 ? (float)currentHP     / _playerMaxHP     : 0f;
 			float energyFill = _playerMaxEnergy > 0 ? (float)currentEnergy / _playerMaxEnergy : 0f;
 
+			Debug.Log($"[PlayerHUDUIController] RefreshBars → HP:{currentHP}/{_playerMaxHP} ({hpFill:F2})  Energy:{currentEnergy}/{_playerMaxEnergy} ({energyFill:F2})  fillNull:{_playerEnergyFill == null}");
+
 			AnimateFill(_playerHPFill,     _playerHPGhost,     hpFill);
 			AnimateFill(_playerEnergyFill, _playerEnergyGhost, energyFill);
 
@@ -162,14 +172,19 @@ namespace Kapibara.RPS
 
 		private void AnimateFill(Image fill, Image ghost, float target)
 		{
-			fill.DOKill();
-			fill.DOFillAmount(target, GameConsts.COMBAT_BAR_ANIM).SetEase(Ease.OutQuad);
+			RectTransform fillRT = fill.rectTransform;
+			fillRT.DOKill();
+			fillRT.DOAnchorMax(new Vector2(target, 1f), GameConsts.COMBAT_BAR_ANIM)
+			      .SetEase(Ease.OutQuad)
+			      .SetLink(fill.gameObject);
 
 			if (ghost == null) return;
-			ghost.DOKill();
-			ghost.DOFillAmount(target, GameConsts.COMBAT_BAR_GHOST_DUR)
-			     .SetDelay(GameConsts.COMBAT_BAR_GHOST_DELAY)
-			     .SetEase(Ease.OutQuad);
+			RectTransform ghostRT = ghost.rectTransform;
+			ghostRT.DOKill();
+			ghostRT.DOAnchorMax(new Vector2(target, 1f), GameConsts.COMBAT_BAR_GHOST_DUR)
+			       .SetDelay(GameConsts.COMBAT_BAR_GHOST_DELAY)
+			       .SetEase(Ease.OutQuad)
+			       .SetLink(ghost.gameObject);
 		}
 
 		public void SetCombatActionsInteractable(bool interactable)
@@ -200,6 +215,7 @@ namespace Kapibara.RPS
 
 		public void ShowPlayerActionBubble(Sprite actionIcon, int debugDamage)
 		{
+			if (actionIcon == null) return;
 			_playerActionBubble.SetActive(true);
 			_playerActionIcon.sprite = actionIcon;
 			_playerDebugText.text    = debugDamage.ToString();

@@ -54,11 +54,11 @@ namespace Kapibara.RPS
 			_enemyMaxHP     = enemyMaxHP;
 			_enemyMaxEnergy = enemyMaxEnergy;
 
-			_enemyHPFill.fillAmount     = 1f;
-			_enemyEnergyFill.fillAmount = 1f;
+			_enemyHPFill.rectTransform.anchorMin     = Vector2.zero;
+			_enemyEnergyFill.rectTransform.anchorMin = Vector2.zero;
 
-			if (_enemyHPGhost     != null) _enemyHPGhost.fillAmount     = 1f;
-			if (_enemyEnergyGhost != null) _enemyEnergyGhost.fillAmount = 1f;
+			if (_enemyHPGhost     != null) _enemyHPGhost.rectTransform.anchorMin     = Vector2.zero;
+			if (_enemyEnergyGhost != null) _enemyEnergyGhost.rectTransform.anchorMin = Vector2.zero;
 
 			if (_enemyHPText     != null) _enemyHPText.text     = $"{enemyMaxHP}/{enemyMaxHP}";
 			if (_enemyEnergyText != null) _enemyEnergyText.text = $"{enemyMaxEnergy}/{enemyMaxEnergy}";
@@ -73,6 +73,8 @@ namespace Kapibara.RPS
 			float hpFill     = _enemyMaxHP     > 0 ? (float)currentHP     / _enemyMaxHP     : 0f;
 			float energyFill = _enemyMaxEnergy > 0 ? (float)currentEnergy / _enemyMaxEnergy : 0f;
 
+			Debug.Log($"[EnemyHUDUIController] RefreshBars → HP:{currentHP}/{_enemyMaxHP} ({hpFill:F2})  Energy:{currentEnergy}/{_enemyMaxEnergy} ({energyFill:F2})");
+
 			AnimateFill(_enemyHPFill,     _enemyHPGhost,     hpFill);
 			AnimateFill(_enemyEnergyFill, _enemyEnergyGhost, energyFill);
 
@@ -82,14 +84,19 @@ namespace Kapibara.RPS
 
 		private void AnimateFill(Image fill, Image ghost, float target)
 		{
-			fill.DOKill();
-			fill.DOFillAmount(target, GameConsts.COMBAT_BAR_ANIM).SetEase(Ease.OutQuad);
+			RectTransform fillRT = fill.rectTransform;
+			fillRT.DOKill();
+			fillRT.DOAnchorMin(new Vector2(1f - target, 0f), GameConsts.COMBAT_BAR_ANIM)
+			      .SetEase(Ease.OutQuad)
+			      .SetLink(fill.gameObject);
 
 			if (ghost == null) return;
-			ghost.DOKill();
-			ghost.DOFillAmount(target, GameConsts.COMBAT_BAR_GHOST_DUR)
-			     .SetDelay(GameConsts.COMBAT_BAR_GHOST_DELAY)
-			     .SetEase(Ease.OutQuad);
+			RectTransform ghostRT = ghost.rectTransform;
+			ghostRT.DOKill();
+			ghostRT.DOAnchorMin(new Vector2(1f - target, 0f), GameConsts.COMBAT_BAR_GHOST_DUR)
+			       .SetDelay(GameConsts.COMBAT_BAR_GHOST_DELAY)
+			       .SetEase(Ease.OutQuad)
+			       .SetLink(ghost.gameObject);
 		}
 
 		#endregion
@@ -98,6 +105,7 @@ namespace Kapibara.RPS
 
 		public void ShowEnemyActionBubble(Sprite actionIcon, int debugDamage)
 		{
+			if (actionIcon == null) return;
 			_enemyActionBubble.SetActive(true);
 			_enemyActionIcon.sprite = actionIcon;
 			_enemyDebugText.text    = debugDamage.ToString();
@@ -105,6 +113,7 @@ namespace Kapibara.RPS
 
 		public void ShowEnemyThoughtBubble(Sprite languageIcon)
 		{
+			if (languageIcon == null) return;
 			_enemyThoughtBubble.SetActive(true);
 			_enemyThoughtIcon.sprite = languageIcon;
 		}

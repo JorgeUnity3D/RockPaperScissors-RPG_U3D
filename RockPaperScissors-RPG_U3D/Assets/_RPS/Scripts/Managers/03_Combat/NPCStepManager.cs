@@ -37,6 +37,13 @@ namespace Kapibara.RPS
 			_dialogueLines    = step.NPCDialogueLines;
 			_currentLineIndex = 0;
 
+			if (_dialogueLines == null || _dialogueLines.Count == 0)
+			{
+				Debug.LogWarning("[NPCStepManager] Initialize() -> NPC dialogue lines are empty — completing step immediately.");
+				AppEvents.OnCombatFinished?.Invoke(true);
+				return;
+			}
+
 			AppEvents.OnNPCDialogueNext += OnNext;
 			AppEvents.OnNPCDialoguePrev += OnPrev;
 
@@ -44,6 +51,7 @@ namespace Kapibara.RPS
 			_npcHUD.SetDialogueLine(_dialogueLines[_currentLineIndex], _currentLineIndex % 2 == 1);
 			_npcHUD.ShowCanvas();
 
+			_playerHUD.HidePlayerBubbles();
 			_playerHUD.SetNPCPrevInteractable(false);
 
 			Debug.Log($"[NPCStepManager] Initialize() -> lines:{_dialogueLines.Count}");

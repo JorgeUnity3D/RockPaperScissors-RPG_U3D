@@ -116,7 +116,7 @@ namespace Kapibara.RPS
 				}
 				else
 				{
-					_creditTimeCounter.CreditsLeft++;
+					_creditTimeCounter.CreditsLeft = Mathf.Min(_creditTimeCounter.MaxCredits, _creditTimeCounter.CreditsLeft + 1);
 					AppEvents.OnCreditsUpdated?.Invoke(_creditTimeCounter.CreditsLeft);
 					if (_creditTimeCounter.CreditsAtMax)
 						_creditTimeCounter.TimeIsRunning = false;

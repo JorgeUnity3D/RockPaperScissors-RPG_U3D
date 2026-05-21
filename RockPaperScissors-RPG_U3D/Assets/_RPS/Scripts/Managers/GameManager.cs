@@ -129,12 +129,32 @@ namespace Kapibara.RPS
 				if (ctx.CurrentStep.Type == MapStepType.BOSS)
 					ctx.SelectedLevel.SetCompleted();
 
+				if (ctx.CurrentStep.Type == MapStepType.NPC_RESCUE)
+				{
+					TownMenu targetBuilding = ctx.CurrentStep.TargetBuilding;
+					List<TownData> townDatas = AppContext.GameContext?.TownData;
+					TownData townData = townDatas?.Find(td => td.TownMenu == targetBuilding);
+					if (townData != null)
+					{
+						townData.NpcUnlocked = true;
+						Debug.Log($"[GameManager] NPC rescued → {targetBuilding} unlocked.");
+					}
+					else
+					{
+						Debug.LogWarning($"[GameManager] NPC rescue: TownData not found for {targetBuilding}.");
+					}
+				}
+
 				int nextIndex = ctx.CurrentStepIndex + 1;
 				if (nextIndex < ctx.StepCount)
 				{
 					ctx.CurrentStepIndex = nextIndex;
 					Debug.Log($"[GameManager] OnCombatFinished() -> advancing to step {nextIndex} ({ctx.CurrentStep.Type})");
-					_sceneService.LoadScene(GameScenes.COMBAT);
+					StepManager stepManager = ServiceLocator.Instance.GetService<ManagerService>().GetManager<StepManager>();
+					if (stepManager != null)
+						stepManager.Initialize();
+					else
+						Debug.LogError("[GameManager] OnCombatFinished() -> StepManager not found.");
 					return;
 				}
 			}

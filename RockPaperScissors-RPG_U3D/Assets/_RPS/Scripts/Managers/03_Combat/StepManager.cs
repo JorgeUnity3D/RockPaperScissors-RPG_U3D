@@ -43,10 +43,14 @@ namespace Kapibara.RPS
 			if (ctx.CurrentStepIndex == 0)
 				AppContext.Player.CurrentHealth = AppContext.Player.MaxHealth.TotalValue;
 
+			CombatResultUIController resultUI = ServiceLocator.Instance.GetService<UIService>().GetController<CombatResultUIController>();
+			if (resultUI != null) resultUI.HideCanvas(0);
+
 			MapStep step   = ctx.CurrentStep;
 			Player  player = AppContext.Player;
 			Debug.Log($"[StepManager] Initialize() -> step {ctx.CurrentStepIndex}  type:{step.Type}");
 
+			_playerHUD.SetBackground(ctx.SelectedLevel.LevelPortrait);
 			_playerHUD.SetData(player.MaxHealth.TotalValue, GameConsts.COMBAT_MAX_ENERGY);
 			_playerHUD.RefreshBars(player.CurrentHealth, player.CurrentEnergy);
 			_playerHUD.SetStep(step.Type);
@@ -75,6 +79,16 @@ namespace Kapibara.RPS
 					Debug.LogError($"[StepManager] Unhandled step type: {step.Type}");
 					break;
 			}
+		}
+
+		#endregion
+
+		#region DEBUG
+
+		[Button("Skip Step")]
+		private void SkipStep()
+		{
+			AppEvents.OnCombatFinished?.Invoke(true);
 		}
 
 		#endregion

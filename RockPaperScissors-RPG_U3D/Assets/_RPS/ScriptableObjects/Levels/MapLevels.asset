@@ -35,7 +35,12 @@ MonoBehaviour:
     _treasureSprite: {fileID: -8972316498592229916, guid: 1f9290f03740bbc44bba5549d3084e83, type: 3}
     _targetBuilding: 7
     _npcSprite: {fileID: 6491680457769439068, guid: 5e5ccfa5b9a9dac45884a4e5919f085d, type: 3}
-    _npcDialogueLines: []
+    _npcDialogueLines:
+    - Oh! I can't believe you made it through the forest!
+    - These creatures ambushed me while I was gathering herbs.
+    - I've been hiding here for days, living off berries and rainwater.
+    - The trees twisted into labyrinths overnight... something is wrong with this place.
+    - Thank you. Let's go before the forest wakes again.
   - _level: 2
     _levelName: Desert
     _levelIcon: {fileID: 9170327630243124144, guid: 0ca550bc406330a4493c8d901e3ea819, type: 3}
@@ -49,7 +54,12 @@ MonoBehaviour:
     _treasureSprite: {fileID: -8972316498592229916, guid: 1f9290f03740bbc44bba5549d3084e83, type: 3}
     _targetBuilding: 5
     _npcSprite: {fileID: -8173045813343347067, guid: 5e5ccfa5b9a9dac45884a4e5919f085d, type: 3}
-    _npcDialogueLines: []
+    _npcDialogueLines:
+    - Water... please, I need water. The heat is unbearable.
+    - I followed a mirage for three days before those things caught me.
+    - The desert shifts at night. Nothing stays in the same place.
+    - I found ruins beneath the sand. Ancient symbols everywhere. This place is cursed.
+    - Just get me out of here. I never want to see sand again.
   - _level: 3
     _levelName: Ocean
     _levelIcon: {fileID: 3210994475073176143, guid: 0ca550bc406330a4493c8d901e3ea819, type: 3}
@@ -63,7 +73,12 @@ MonoBehaviour:
     _treasureSprite: {fileID: -8972316498592229916, guid: 1f9290f03740bbc44bba5549d3084e83, type: 3}
     _targetBuilding: 3
     _npcSprite: {fileID: -5974177904267531938, guid: 5e5ccfa5b9a9dac45884a4e5919f085d, type: 3}
-    _npcDialogueLines: []
+    _npcDialogueLines:
+    - The current dragged me down to these depths. I can barely breathe.
+    - Something enormous lives in the deep. I heard it moving below me.
+    - The creatures here aren't fish. They're... something else entirely.
+    - My boat is long gone. I've been clinging to this rock for days.
+    - Dry land. Please. I'll never complain about it again.
   - _level: 4
     _levelName: Frozen Mountain
     _levelIcon: {fileID: 1404248521807868572, guid: 0ca550bc406330a4493c8d901e3ea819, type: 3}
@@ -77,7 +92,12 @@ MonoBehaviour:
     _treasureSprite: {fileID: -8972316498592229916, guid: 1f9290f03740bbc44bba5549d3084e83, type: 3}
     _targetBuilding: 6
     _npcSprite: {fileID: -818841823584972384, guid: 5e5ccfa5b9a9dac45884a4e5919f085d, type: 3}
-    _npcDialogueLines: []
+    _npcDialogueLines:
+    - I can't feel my fingers anymore. How long have I been here?
+    - The storm hit without warning. I lost my guide somewhere in the blizzard.
+    - Those creatures move through the snow like they were born in it.
+    - I tried to climb down but the ice kept cracking under me.
+    - Warmth. I just want to feel warmth again. Thank you for coming.
   - _level: 5
     _levelName: Cave
     _levelIcon: {fileID: 5680673976619871293, guid: 0ca550bc406330a4493c8d901e3ea819, type: 3}
@@ -91,7 +111,12 @@ MonoBehaviour:
     _treasureSprite: {fileID: -8972316498592229916, guid: 1f9290f03740bbc44bba5549d3084e83, type: 3}
     _targetBuilding: 2
     _npcSprite: {fileID: 3597508830047154912, guid: 5e5ccfa5b9a9dac45884a4e5919f085d, type: 3}
-    _npcDialogueLines: []
+    _npcDialogueLines:
+    - I can't see a thing in here. Is someone there?
+    - I went in looking for ore and the tunnel collapsed behind me.
+    - There are things that live in the dark here. They don't have eyes.
+    - I followed the sound of dripping water for hours. It led me in circles.
+    - Light. I see light! You have no idea how good that looks right now.
   - _level: 6
     _levelName: Volcano
     _levelIcon: {fileID: -7969225410775572928, guid: 0ca550bc406330a4493c8d901e3ea819, type: 3}
@@ -105,7 +130,12 @@ MonoBehaviour:
     _treasureSprite: {fileID: -8972316498592229916, guid: 1f9290f03740bbc44bba5549d3084e83, type: 3}
     _targetBuilding: 1
     _npcSprite: {fileID: 4029466576895577280, guid: 5e5ccfa5b9a9dac45884a4e5919f085d, type: 3}
-    _npcDialogueLines: []
+    _npcDialogueLines:
+    - The heat... it's everywhere. Even the rocks glow red.
+    - I slipped and fell into a lower ledge. The lava is rising below me.
+    - Those creatures don't burn. They walk through the flames like it's nothing.
+    - I thought I found a safe path but the ground just... melted away.
+    - I owe you my life. Let's move before this whole mountain blows.
   - _level: 7
     _levelName: Void
     _levelIcon: {fileID: -1613414928997637167, guid: 0ca550bc406330a4493c8d901e3ea819, type: 3}
@@ -119,4 +149,9 @@ MonoBehaviour:
     _treasureSprite: {fileID: -8972316498592229916, guid: 1f9290f03740bbc44bba5549d3084e83, type: 3}
     _targetBuilding: 4
     _npcSprite: {fileID: 6730013578686099568, guid: 5e5ccfa5b9a9dac45884a4e5919f085d, type: 3}
-    _npcDialogueLines: []
+    _npcDialogueLines:
+    - Where am I? Is this real? Are YOU real?
+    - There's nothing here. No sky, no ground, just... nothing. And yet I'm standing.
+    - I heard voices pulling me in different directions. I stopped listening.
+    - Time doesn't work here. I've been here a minute and a lifetime at once.
+    - Take me back. Anywhere. Anywhere but here.

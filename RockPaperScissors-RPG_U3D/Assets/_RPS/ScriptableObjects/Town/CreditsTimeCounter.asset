@@ -24,4 +24,4 @@ MonoBehaviour:
   _data:
     _maxCredits: 5
     _hoursForACredit: 0.25
-    _creditsLeft: 5
+    _creditsLeft: 3
