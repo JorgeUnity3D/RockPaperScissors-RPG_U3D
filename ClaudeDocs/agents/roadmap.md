@@ -315,13 +315,13 @@ Once basic combat works:
 1. **Energy system**: ✅ DONE 2026-05-20 — model cleanup: BaseEnergy removed, CurrentEnergy persists between steps, InitialEnergy resets on travel, Enemy uses data.InitialEnergy.
 2. **Mentality roll + language system**: ✅ DONE (Phase 4) — `MentalityRollAgainst()`, thought bubble, `LanguageRoll()`, `GetActionIcon()` all implemented in `CombatStepManager`.
 3. **Player action selection — 2-step confirmation**: ✅ DONE (2026-05-20) — `_pendingAction` state in `PlayerHUDUIController`; first tap shows thought bubble with common language icon; second tap confirms and fires `OnCombatActionSelected`.
-4. **Enemy thought bubble on mentality roll**: shown every round during mentality phase. Win → enemy language icon. Lose → question mark sprite. Both cases call `ShowEnemyThoughtBubble(sprite)`. See investigation doc.
+4. **Enemy thought bubble on mentality roll**: ✅ DONE (2026-05-21) — Win → `GetActionIconEnemy(ThinkingAction)`; Lose → `GetActionIconCommon(Actions.NONE)` (= question mark, stored in all Language SOs under `Actions.NONE`). `Language.GetActionIcon` hardened with null guard + warning.
 5. **Common language for action bubbles**: ✅ DONE (2026-05-20) — `PlayerHUDUIController.SetCommonLanguage(Language)` wired; action bubbles use common language via `GetActionIconCommon()`; thought bubbles use enemy language (resolved in `CombatStepManager`).
 6. **Backpack consumables**: ✅ DONE (2026-05-20) — `OpenBackpack_Button` en combat panel abre `Backpack_Actions` group; Shuriken/Potion/Torch single-use por combate; efecto resuelto en `CombatStepManager.OnBackpackItemUsed()`; niveles desde `Player.XxxItemLevel`; valores desde `StoneSmithyScrObj.amountsPerLevel`.
 7. **NPC Gambits**: implement Primary → Secondary → Tertiary gambit evaluation; Primary overrides mentality; Tertiary only fires when mentality roll succeeds.
-8. **Round 5 Caja Sorpresa**: random HP/energy event (Vida++/+, Energía++/+/--/-).
+8. **Round 5 Caja Sorpresa**: ⚠️ Arquitectura lista (step 4 generado como `SURPRISE_BOX`, `StepManager` lo avanza como stub). Gameplay pendiente: seleccionar efecto aleatorio HP/energy y mostrarlo al jugador.
 9. **Round 10 Boss**: spawn `_isSpecialLevel` NPC; award ESCENA + gold on win; trigger Historia cutscene via `ComicPlayerUIController`.
-10. **Gold reward multipliers**: implement the reward table from doc section 8 (Superpoder kill → x2 reward, Extra cases).
+10. **Gold reward multipliers**: ✅ DONE (2026-05-21) — Superpoder kill → x2 gold. `_playerSuperKill` tracked in `CombatStepManager`; set when `playerIsSuper && _enemy.CurrentHealth <= 0` in Case 1 and Case 3a; applied in `EndCombat`.
 11. **PauseMenuUIController**: settings button removed from `PlayerHUDUIController`; needs its own controller with at least a settings button. Deferred from Phase 5 wiring session.
 
 ---

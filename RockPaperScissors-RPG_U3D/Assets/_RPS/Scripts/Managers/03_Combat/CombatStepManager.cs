@@ -27,6 +27,7 @@ namespace Kapibara.RPS
 		private bool _attackItemUsed;
 		private bool _healItemUsed;
 		private bool _energyItemUsed;
+		private bool _playerSuperKill;
 
 		private int                   _pendingTrainingExp;
 		private TrainingHouseModifier _activeTrainingModifier;
@@ -75,6 +76,7 @@ namespace Kapibara.RPS
 			_attackItemUsed         = false;
 			_healItemUsed           = false;
 			_energyItemUsed         = false;
+			_playerSuperKill        = false;
 			_pendingTrainingExp     = 0;
 			_activeTrainingModifier = FindActiveTrainingModifier();
 
@@ -200,6 +202,7 @@ namespace Kapibara.RPS
 				{
 					playerDamageDealt = playerEffective - enemyEffective;
 					_enemy.ReceiveDamage(playerDamageDealt);
+					if (playerIsSuper && _enemy.CurrentHealth <= 0) _playerSuperKill = true;
 					Debug.Log($"[CombatStepManager] Case 3: player breaks shield → enemy takes {playerDamageDealt}  EnemyHP:{_enemy.CurrentHealth}/{_enemy.MaxHealth}");
 				}
 				else
@@ -234,6 +237,7 @@ namespace Kapibara.RPS
 				{
 					playerDamageDealt = diff;
 					_enemy.ReceiveDamage(playerDamageDealt);
+					if (playerIsSuper && _enemy.CurrentHealth <= 0) _playerSuperKill = true;
 					Debug.Log($"[CombatStepManager] Case 1: player wins ({playerEffective} vs {enemyEffective}) → enemy takes {playerDamageDealt}  EnemyHP:{_enemy.CurrentHealth}/{_enemy.MaxHealth}");
 				}
 				else if (diff < 0)
@@ -292,8 +296,9 @@ namespace Kapibara.RPS
 			if (playerWins)
 			{
 				goldEarned = _enemy.RewardRoll();
+				if (_playerSuperKill) goldEarned *= 2;
 				_player.Gold += goldEarned;
-				Debug.Log($"[CombatStepManager] Victory → gold earned:{goldEarned}  totalGold:{_player.Gold}");
+				Debug.Log($"[CombatStepManager] Victory → gold earned:{goldEarned}{(_playerSuperKill ? " (x2 super kill)" : "")}  totalGold:{_player.Gold}");
 			}
 			else
 			{

@@ -12,8 +12,9 @@ namespace Kapibara.RPS {
         public List<LanguageAtlas> words;
 
         public Sprite GetActionIcon(Actions targetAction) {
-            Sprite icon = words.Find((la) => la.word == targetAction).icon;
-            return icon;
+            LanguageAtlas entry = words.Find(la => la.word == targetAction);
+            if (entry == null) { Debug.LogWarning($"[Language] No icon for {targetAction} in {language}"); return null; }
+            return entry.icon;
         }
     }
 
