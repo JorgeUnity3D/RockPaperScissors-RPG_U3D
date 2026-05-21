@@ -56,7 +56,8 @@ namespace Kapibara.RPS
 		{
 			Debug.Log($"[TownUIController] UpdateTownButton() -> townView: {townData.TownMenu}");
 			Button townButton = _townDictionary[townData.TownMenu];
-			townButton.GetComponent<Image>().sprite = townData.IsUnlocked ? townView.BuildingIcon : townView.NotBuiltIcon;
+			townButton.GetComponent<Image>().sprite  = townData.IsUnlocked ? townView.BuildingIcon : townView.NotBuiltIcon;
+			townButton.interactable = !townData.IsUnlocked || !townData.HasNpc || townData.NpcUnlocked;
 		}
 		
         #endregion
