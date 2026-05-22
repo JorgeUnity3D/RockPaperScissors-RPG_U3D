@@ -252,6 +252,10 @@ namespace Kapibara.Util.Editor
 			EditorGUILayout.PropertyField(_selectedLevelProp.FindPropertyRelative("_treasureSprite"),     new GUIContent("Sprite"));
 
 			GUILayout.Space(8f);
+			DrawSection("Boss Historia  (first run only)");
+			EditorGUILayout.PropertyField(_selectedLevelProp.FindPropertyRelative("_bossStory"), new GUIContent("Comic Story"));
+
+			GUILayout.Space(8f);
 			DrawSection("NPC Step  (first run only)");
 			EditorGUILayout.PropertyField(_selectedLevelProp.FindPropertyRelative("_targetBuilding"),   new GUIContent("Target Building"));
 			EditorGUILayout.PropertyField(_selectedLevelProp.FindPropertyRelative("_npcSprite"),        new GUIContent("NPC Sprite"));

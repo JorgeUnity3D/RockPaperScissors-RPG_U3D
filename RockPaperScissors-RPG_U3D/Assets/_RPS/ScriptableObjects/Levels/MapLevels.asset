@@ -33,13 +33,15 @@ MonoBehaviour:
     _boss: {fileID: 11400000, guid: 65b71cc206549660b8df28a2cbaa054b, type: 2}
     _treasureGoldAmount: 100
     _treasureSprite: {fileID: -8972316498592229916, guid: 1f9290f03740bbc44bba5549d3084e83, type: 3}
+    _bossStory: {fileID: 11400000, guid: e416524df1dddaf83a1e233fd7a70a79, type: 2}
     _targetBuilding: 7
     _npcSprite: {fileID: 6491680457769439068, guid: 5e5ccfa5b9a9dac45884a4e5919f085d, type: 3}
     _npcDialogueLines:
     - Oh! I can't believe you made it through the forest!
     - These creatures ambushed me while I was gathering herbs.
     - I've been hiding here for days, living off berries and rainwater.
-    - The trees twisted into labyrinths overnight... something is wrong with this place.
+    - The trees twisted into labyrinths overnight... something is wrong with this
+      place.
     - Thank you. Let's go before the forest wakes again.
   - _level: 2
     _levelName: Desert
@@ -52,6 +54,7 @@ MonoBehaviour:
     _boss: {fileID: 11400000, guid: 73a34d7749da42ee9fbd75c5bf045c5e, type: 2}
     _treasureGoldAmount: 200
     _treasureSprite: {fileID: -8972316498592229916, guid: 1f9290f03740bbc44bba5549d3084e83, type: 3}
+    _bossStory: {fileID: 11400000, guid: eb22bdd81beb6ab45ae58d3e4eaf4f81, type: 2}
     _targetBuilding: 5
     _npcSprite: {fileID: -8173045813343347067, guid: 5e5ccfa5b9a9dac45884a4e5919f085d, type: 3}
     _npcDialogueLines:
@@ -71,6 +74,7 @@ MonoBehaviour:
     _boss: {fileID: 11400000, guid: a9498374bcd24cc6833667d687228d33, type: 2}
     _treasureGoldAmount: 300
     _treasureSprite: {fileID: -8972316498592229916, guid: 1f9290f03740bbc44bba5549d3084e83, type: 3}
+    _bossStory: {fileID: 0}
     _targetBuilding: 3
     _npcSprite: {fileID: -5974177904267531938, guid: 5e5ccfa5b9a9dac45884a4e5919f085d, type: 3}
     _npcDialogueLines:
@@ -90,6 +94,7 @@ MonoBehaviour:
     _boss: {fileID: 11400000, guid: 5032e2e63b034c3f9c305c59687639bd, type: 2}
     _treasureGoldAmount: 400
     _treasureSprite: {fileID: -8972316498592229916, guid: 1f9290f03740bbc44bba5549d3084e83, type: 3}
+    _bossStory: {fileID: 0}
     _targetBuilding: 6
     _npcSprite: {fileID: -818841823584972384, guid: 5e5ccfa5b9a9dac45884a4e5919f085d, type: 3}
     _npcDialogueLines:
@@ -109,6 +114,7 @@ MonoBehaviour:
     _boss: {fileID: 11400000, guid: 4f4eca4220f34020a671b3d8f3b0048f, type: 2}
     _treasureGoldAmount: 500
     _treasureSprite: {fileID: -8972316498592229916, guid: 1f9290f03740bbc44bba5549d3084e83, type: 3}
+    _bossStory: {fileID: 0}
     _targetBuilding: 2
     _npcSprite: {fileID: 3597508830047154912, guid: 5e5ccfa5b9a9dac45884a4e5919f085d, type: 3}
     _npcDialogueLines:
@@ -128,6 +134,7 @@ MonoBehaviour:
     _boss: {fileID: 11400000, guid: 0dde302a809941b7b5dfd4037f46b94a, type: 2}
     _treasureGoldAmount: 600
     _treasureSprite: {fileID: -8972316498592229916, guid: 1f9290f03740bbc44bba5549d3084e83, type: 3}
+    _bossStory: {fileID: 0}
     _targetBuilding: 1
     _npcSprite: {fileID: 4029466576895577280, guid: 5e5ccfa5b9a9dac45884a4e5919f085d, type: 3}
     _npcDialogueLines:
@@ -147,6 +154,7 @@ MonoBehaviour:
     _boss: {fileID: 11400000, guid: 7843697fa615425ab1ded80d34da29dc, type: 2}
     _treasureGoldAmount: 700
     _treasureSprite: {fileID: -8972316498592229916, guid: 1f9290f03740bbc44bba5549d3084e83, type: 3}
+    _bossStory: {fileID: 0}
     _targetBuilding: 4
     _npcSprite: {fileID: 6730013578686099568, guid: 5e5ccfa5b9a9dac45884a4e5919f085d, type: 3}
     _npcDialogueLines:

@@ -147,17 +147,16 @@ namespace Kapibara.RPS
 
 					if (isFirstCompletion)
 					{
-						int storyIndex = ctx.SelectedLevel.StoryIndex;
-						if (storyIndex >= 0)
-							AppContext.Player.UnlockStory(storyIndex);
-
 						ComicStoryScrObj bossStory = ctx.SelectedLevel.BossStory;
 						if (bossStory != null)
 						{
+							if (bossStory.StoryId >= 0)
+								AppContext.Player.UnlockStory(bossStory.StoryId);
+
 							ComicPlayerUIController comicPlayer = ServiceLocator.Instance.GetService<UIService>().GetController<ComicPlayerUIController>();
 							if (comicPlayer != null)
 							{
-								Debug.Log($"[GameManager] Boss defeated (first time) → showing Historia (story {storyIndex})");
+								Debug.Log($"[GameManager] Boss defeated (first time) → showing Historia (storyId {bossStory.StoryId})");
 								_waitingForComic = true;
 								comicPlayer.SetData(bossStory);
 								return;

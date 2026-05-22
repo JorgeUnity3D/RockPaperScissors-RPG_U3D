@@ -21,6 +21,7 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
+  _storyId: 1
   _data:
     _title: Comic 1
     _thumbnail: {fileID: 8797648088622834891, guid: 03abc9512c2a87143b6653bb0c02902f, type: 3}

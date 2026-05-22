@@ -7,9 +7,9 @@ namespace Kapibara.Util.Editor
 {
 	/// <summary>
 	/// 3-panel editor for TheaterScrObj: Stories | Pages | Vignettes.
-	/// Menu: Kapibara/Theater Story Editor  —  also embeddable via DrawEmbedded().
+	/// Menu: Kapibara/Comic Editor  —  also embeddable via DrawEmbedded().
 	/// </summary>
-	public class TheaterEditorWindow : EditorWindow
+	public class ComicEditorWindow : EditorWindow
 	{
 		// ── State ──────────────────────────────────────────────────────────────────
 
@@ -20,6 +20,7 @@ namespace Kapibara.Util.Editor
 		private int                _selectedStoryIndex = -1;
 		private ComicStoryScrObj   _selectedStory;
 		private SerializedObject   _storySO;
+		private SerializedProperty _storyIdProp;
 		private SerializedProperty _titleProp;
 		private SerializedProperty _thumbnailProp;
 		private SerializedProperty _pagesProp;
@@ -56,10 +57,10 @@ namespace Kapibara.Util.Editor
 
 		// ── Menu ───────────────────────────────────────────────────────────────────
 
-		[MenuItem("Kapibara/Theater Story Editor")]
+		[MenuItem("Kapibara/Comic Editor")]
 		public static void Open()
 		{
-			TheaterEditorWindow window = GetWindow<TheaterEditorWindow>("Theater Editor");
+			ComicEditorWindow window = GetWindow<ComicEditorWindow>("Comic Editor");
 			window.minSize = new Vector2(700f, 460f);
 			window.Show();
 		}
@@ -182,6 +183,7 @@ namespace Kapibara.Util.Editor
 			{
 				EditorGUI.DrawRect(EditorGUILayout.GetControlRect(false, 1f), DividerColor);
 				GUILayout.Space(2f);
+				if (_storyIdProp   != null) EditorGUILayout.PropertyField(_storyIdProp,   new GUIContent("Story ID"));
 				if (_titleProp     != null) EditorGUILayout.PropertyField(_titleProp,     new GUIContent("Título"));
 				if (_thumbnailProp != null) EditorGUILayout.PropertyField(_thumbnailProp, new GUIContent("Miniatura"));
 			}
@@ -237,15 +239,17 @@ namespace Kapibara.Util.Editor
 
 			if (_selectedStory != null)
 			{
-				_storySO            = new SerializedObject(_selectedStory);
+				_storySO             = new SerializedObject(_selectedStory);
+				_storyIdProp         = _storySO.FindProperty("_storyId");
 				SerializedProperty d = _storySO.FindProperty("_data");
-				_titleProp          = d.FindPropertyRelative("_title");
-				_thumbnailProp      = d.FindPropertyRelative("_thumbnail");
-				_pagesProp          = d.FindPropertyRelative("_pages");
+				_titleProp           = d.FindPropertyRelative("_title");
+				_thumbnailProp       = d.FindPropertyRelative("_thumbnail");
+				_pagesProp           = d.FindPropertyRelative("_pages");
 			}
 			else
 			{
 				_storySO       = null;
+				_storyIdProp   = null;
 				_titleProp     = null;
 				_thumbnailProp = null;
 				_pagesProp     = null;
@@ -479,6 +483,7 @@ namespace Kapibara.Util.Editor
 			_selectedStoryIndex = -1;
 			_selectedStory      = null;
 			_storySO            = null;
+			_storyIdProp        = null;
 			_titleProp          = null;
 			_thumbnailProp      = null;
 			_pagesProp          = null;

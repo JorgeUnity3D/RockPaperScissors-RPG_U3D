@@ -44,7 +44,7 @@ namespace Kapibara.Util.Editor
 
 		private SubView              _subView         = SubView.None;
 		private MapLevelEditorWindow _mapLevelEdInst;
-		private TheaterEditorWindow  _theaterEdInst;
+		private ComicEditorWindow  _theaterEdInst;
 
 		// ── State ──────────────────────────────────────────────────────────────────
 
@@ -157,7 +157,7 @@ namespace Kapibara.Util.Editor
 				if (GUILayout.Button("← Back", EditorStyles.miniButton, GUILayout.Height(20f)))
 					CloseSubView();
 				GUILayout.Space(6f);
-				string subLabel = _subView == SubView.MapLevel ? "Map Level Editor" : "Theater Editor";
+				string subLabel = _subView == SubView.MapLevel ? "Map Level Editor" : "Comic Editor";
 				GUILayout.Label(subLabel, EditorStyles.boldLabel);
 			}
 			else
@@ -172,7 +172,7 @@ namespace Kapibara.Util.Editor
 				if (GUILayout.Button("Map Level Editor", EditorStyles.miniButton, GUILayout.Height(20f)))
 					OpenSubView(SubView.MapLevel);
 				GUILayout.Space(4f);
-				if (GUILayout.Button("Theater Editor", EditorStyles.miniButton, GUILayout.Height(20f)))
+				if (GUILayout.Button("Comic Editor", EditorStyles.miniButton, GUILayout.Height(20f)))
 					OpenSubView(SubView.Theater);
 			}
 
@@ -191,7 +191,7 @@ namespace Kapibara.Util.Editor
 			if (view == SubView.MapLevel && _mapLevelEdInst == null)
 				_mapLevelEdInst = CreateInstance<MapLevelEditorWindow>();
 			else if (view == SubView.Theater && _theaterEdInst == null)
-				_theaterEdInst = CreateInstance<TheaterEditorWindow>();
+				_theaterEdInst = CreateInstance<ComicEditorWindow>();
 		}
 
 		private void CloseSubView()
