@@ -254,6 +254,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3845846120565750641, guid: 334bffd64d3ca9ed890e6437fba30d20, type: 3}
+      propertyPath: _playerDialogueText
+      value: 
+      objectReference: {fileID: 9102407952825975035}
+    - target: {fileID: 3845846120565750641, guid: 334bffd64d3ca9ed890e6437fba30d20, type: 3}
+      propertyPath: _playerDialogueBubble
+      value: 
+      objectReference: {fileID: 5705356879498987260}
     - target: {fileID: 3893582992077995416, guid: 334bffd64d3ca9ed890e6437fba30d20, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -336,6 +344,22 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2009179947817612547, guid: 334bffd64d3ca9ed890e6437fba30d20, type: 3}
   m_PrefabInstance: {fileID: 1870231524304427283}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &5705356879498987260 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6258062238745714671, guid: 334bffd64d3ca9ed890e6437fba30d20, type: 3}
+  m_PrefabInstance: {fileID: 1870231524304427283}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &9102407952825975035 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7468756434243885544, guid: 334bffd64d3ca9ed890e6437fba30d20, type: 3}
+  m_PrefabInstance: {fileID: 1870231524304427283}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1001 &3289153912132594800
 PrefabInstance:
   m_ObjectHideFlags: 0

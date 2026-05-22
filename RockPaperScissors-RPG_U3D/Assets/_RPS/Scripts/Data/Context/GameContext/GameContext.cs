@@ -24,6 +24,9 @@ namespace Kapibara.RPS
 		[SerializeField] private NotificableField<Player> _player;
 		//Town Context
 		[SerializeField] private TownContext _townContext;
+		//Credits
+		private int    _creditsLeft          = 5;
+		private string _creditTimerExpiresUnix = "0";
 
 		#endregion
 
@@ -76,6 +79,20 @@ namespace Kapibara.RPS
 			set => _townContext.TownData = value;
 		}
 
+		/// <summary>Créditos de viaje disponibles. Persiste en el fichero de guardado.</summary>
+		public int CreditsLeft
+		{
+			get => _creditsLeft;
+			set => _creditsLeft = value;
+		}
+
+		/// <summary>Unix timestamp (segundos) en que expira el próximo crédito. "0" = timer parado.</summary>
+		public string CreditTimerExpiresUnix
+		{
+			get => _creditTimerExpiresUnix;
+			set => _creditTimerExpiresUnix = value;
+		}
+
 		#endregion
 
 	    #region CONSTRUCTORS
@@ -101,11 +118,13 @@ namespace Kapibara.RPS
 				new TownData(TownMenu.TRAVEL, true, false, false, false, false),
 				new TownData(TownMenu.HOUSE, true, false, false, false, false)
 			});
+			_creditsLeft           = 5;
+			_creditTimerExpiresUnix = "0";
 		}
 
 		// townContext: new saves. townData: backward compat with old saves that had the flat list.
 		[JsonConstructor]
-		public GameContext(string gameName, string creationTimestamp, string lastUpdateDate, Player player, TownContext townContext, List<TownData> townData, int version = 0)
+		public GameContext(string gameName, string creationTimestamp, string lastUpdateDate, Player player, TownContext townContext, List<TownData> townData, int version = 0, int creditsLeft = 5, string creditTimerExpiresUnix = "0")
 		{
 			_gameName = new NString(gameName);
 			_creationTimestamp = new NString(creationTimestamp);
@@ -113,6 +132,8 @@ namespace Kapibara.RPS
 			_player = new NotificableField<Player> { Value = player };
 			_townContext = townContext ?? new TownContext(townData ?? new List<TownData>());
 			_version = version;
+			_creditsLeft           = creditsLeft;
+			_creditTimerExpiresUnix = creditTimerExpiresUnix ?? "0";
 		}
 
 		#endregion

@@ -133,7 +133,9 @@ namespace Kapibara.RPS
 
 		public int MentalityRollAgainst(int playerMentality)
 		{
-			return CombatResolver.VariabilityRoll(Level) + StoredMentality - playerMentality;
+			int enemyRoll  = CombatResolver.VariabilityRoll(Level) + StoredMentality;
+			int playerRoll = CombatResolver.VariabilityRoll(Level) + playerMentality;
+			return enemyRoll - playerRoll;
 		}
 
 		public void IncreaseMentality()  => StoredMentality += MentalityMod;

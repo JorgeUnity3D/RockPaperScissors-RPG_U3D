@@ -52,7 +52,7 @@ namespace Kapibara.RPS
 
 		private void OnContinuePressed()
 		{
-			AppEvents.OnCombatFinished?.Invoke(_playerWins);
+			AppEvents.OnStepFinished?.Invoke(_playerWins);
 		}
 
 		#endregion

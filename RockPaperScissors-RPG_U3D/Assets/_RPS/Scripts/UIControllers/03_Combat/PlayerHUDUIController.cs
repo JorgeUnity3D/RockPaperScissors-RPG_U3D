@@ -51,6 +51,10 @@ namespace Kapibara.RPS
 		[SerializeField] private Button          _prevButton;
 		[SerializeField] private Button          _nextButton;
 
+		[Header("Actions - SurpriseBox")]
+		[SerializeField] private GameObject      _surpriseBoxActionsGroup;
+		[SerializeField] private Button          _surpriseBoxContinueButton;
+
 		[Header("Actions - Backpack")]
 		[SerializeField] private GameObject      _backpackActionsGroup;
 		[SerializeField] private Button          _openBackpackButton;
@@ -91,6 +95,8 @@ namespace Kapibara.RPS
 
 			_prevButton.onClick.AddListener(() => AppEvents.OnNPCDialoguePrev?.Invoke());
 			_nextButton.onClick.AddListener(() => AppEvents.OnNPCDialogueNext?.Invoke());
+
+			_surpriseBoxContinueButton.onClick.AddListener(() => AppEvents.OnSurpriseBoxCollected?.Invoke());
 
 			_openBackpackButton.onClick.AddListener(OpenBackpack);
 			_closeBackpackButton.onClick.AddListener(CloseBackpack);
@@ -133,6 +139,7 @@ namespace Kapibara.RPS
 			_backpackActionsGroup.SetActive(false);
 			_treasureActionsGroup.SetActive(stepType == MapStepType.TREASURE);
 			_npcActionsGroup.SetActive(stepType == MapStepType.NPC_RESCUE);
+			_surpriseBoxActionsGroup.SetActive(stepType == MapStepType.SURPRISE_BOX);
 		}
 
 		public void SetBackpackData(int attackLevel, int healLevel, int energyLevel)

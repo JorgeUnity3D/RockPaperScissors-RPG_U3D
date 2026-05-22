@@ -34,7 +34,7 @@ namespace Kapibara.RPS
 			AppEvents.OnConfirmNewGame      += ConfirmNewGame;
 			AppEvents.OnConfirmLoadGame     += LoadSelectedGame;
 			AppEvents.OnConfirmDeleteGame   += DeleteSelectedGame;
-			AppEvents.OnCombatFinished      += OnCombatFinished;
+			AppEvents.OnStepFinished        += OnStepFinished;
 			AppEvents.OnGameContextUpdated  += UpdateSaveGame;
 		}
 
@@ -46,7 +46,7 @@ namespace Kapibara.RPS
 			AppEvents.OnConfirmNewGame      -= ConfirmNewGame;
 			AppEvents.OnConfirmLoadGame     -= LoadSelectedGame;
 			AppEvents.OnConfirmDeleteGame   -= DeleteSelectedGame;
-			AppEvents.OnCombatFinished      -= OnCombatFinished;
+			AppEvents.OnStepFinished        -= OnStepFinished;
 			AppEvents.OnGameContextUpdated  -= UpdateSaveGame;
 		}
 
@@ -119,21 +119,29 @@ namespace Kapibara.RPS
 			_persistenceService.DeleteGame(gameContext.GameName);
 		}
 
-		private void OnCombatFinished(bool playerWins)
+		private void OnStepFinished(bool playerWins)
 		{
-			Debug.Log($"[GameManager] OnCombatFinished() -> playerWins={playerWins}");
+			Debug.Log($"[GameManager] OnStepFinished() -> playerWins={playerWins}");
 
 			CombatContext ctx = AppContext.CombatContext;
-			if (playerWins && ctx != null)
+
+			if (ctx == null)
+			{
+				// Viene del botón Continue del result UI — ir a Town
+				_sceneService.LoadScene(GameScenes.TOWN);
+				return;
+			}
+
+			if (playerWins)
 			{
 				if (ctx.CurrentStep.Type == MapStepType.BOSS)
 					ctx.SelectedLevel.SetCompleted();
 
 				if (ctx.CurrentStep.Type == MapStepType.NPC_RESCUE)
 				{
-					TownMenu targetBuilding = ctx.CurrentStep.TargetBuilding;
-					List<TownData> townDatas = AppContext.GameContext?.TownData;
-					TownData townData = townDatas?.Find(td => td.TownMenu == targetBuilding);
+					TownMenu       targetBuilding = ctx.CurrentStep.TargetBuilding;
+					List<TownData> townDatas      = AppContext.GameContext?.TownData;
+					TownData       townData        = townDatas?.Find(td => td.TownMenu == targetBuilding);
 					if (townData != null)
 					{
 						townData.NpcUnlocked = true;
@@ -149,18 +157,36 @@ namespace Kapibara.RPS
 				if (nextIndex < ctx.StepCount)
 				{
 					ctx.CurrentStepIndex = nextIndex;
-					Debug.Log($"[GameManager] OnCombatFinished() -> advancing to step {nextIndex} ({ctx.CurrentStep.Type})");
+					Debug.Log($"[GameManager] OnStepFinished() -> advancing to step {nextIndex} ({ctx.CurrentStep.Type})");
 					StepManager stepManager = ServiceLocator.Instance.GetService<ManagerService>().GetManager<StepManager>();
 					if (stepManager != null)
 						stepManager.Initialize();
 					else
-						Debug.LogError("[GameManager] OnCombatFinished() -> StepManager not found.");
+						Debug.LogError("[GameManager] OnStepFinished() -> StepManager not found.");
 					return;
 				}
 			}
 
+			ShowLevelResult(ctx, playerWins);
+		}
+
+		private void ShowLevelResult(CombatContext ctx, bool playerWins)
+		{
+			int totalGold = ctx.TotalGoldEarned;
+			int totalExp  = ctx.TotalTrainingExp;
 			AppContext.CombatContext = null;
-			_sceneService.LoadScene(GameScenes.TOWN);
+
+			CombatResultUIController resultUI = ServiceLocator.Instance.GetService<UIService>().GetController<CombatResultUIController>();
+			if (resultUI == null)
+			{
+				Debug.LogError("[GameManager] ShowLevelResult() -> CombatResultUIController not found.");
+				_sceneService.LoadScene(GameScenes.TOWN);
+				return;
+			}
+
+			Debug.Log($"[GameManager] ShowLevelResult() -> win:{playerWins}  gold:{totalGold}  exp:{totalExp}");
+			resultUI.SetData(playerWins, totalGold, totalExp);
+			resultUI.ShowCanvas();
 		}
 
 		private void UpdateSaveGame()

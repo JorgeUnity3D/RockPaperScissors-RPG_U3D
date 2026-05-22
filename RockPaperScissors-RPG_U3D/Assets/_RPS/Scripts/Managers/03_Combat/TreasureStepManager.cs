@@ -56,13 +56,14 @@ namespace Kapibara.RPS
 			int   finalGold  = Mathf.RoundToInt(_goldReward * multiplier);
 
 			_player.Gold += finalGold;
+			AppContext.CombatContext?.AddGold(finalGold);
 			Debug.Log($"[TreasureStepManager] player:{playerAction}  treasure:{_treasureAction}  x{multiplier}  gold:{finalGold}  total:{_player.Gold}");
 
 			_playerHUD.SetTreasureActionsInteractable(false);
 			_treasureHUD.HideCanvas();
 
 			AppEvents.OnGameContextUpdated?.Invoke();
-			AppEvents.OnCombatFinished?.Invoke(true);
+			AppEvents.OnStepFinished?.Invoke(true);
 		}
 
 		private float GetRewardMultiplier(Actions player, Actions treasure)

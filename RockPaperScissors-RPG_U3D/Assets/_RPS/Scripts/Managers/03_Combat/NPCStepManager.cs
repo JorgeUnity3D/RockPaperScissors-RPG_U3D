@@ -5,7 +5,7 @@ namespace Kapibara.RPS
 {
 	/// <summary>
 	/// Gestiona el loop de un step de NPC. Muestra NPCHUDUIController, navega por las líneas de diálogo
-	/// vía PlayerHUDUIController (Prev/Next) y dispara OnCombatFinished(true) al pasar la última.
+	/// vía PlayerHUDUIController (Prev/Next) y dispara OnStepFinished(true) al pasar la última.
 	/// </summary>
 	public class NPCStepManager : BaseManager
 	{
@@ -40,7 +40,7 @@ namespace Kapibara.RPS
 			if (_dialogueLines == null || _dialogueLines.Count == 0)
 			{
 				Debug.LogWarning("[NPCStepManager] Initialize() -> NPC dialogue lines are empty — completing step immediately.");
-				AppEvents.OnCombatFinished?.Invoke(true);
+				AppEvents.OnStepFinished?.Invoke(true);
 				return;
 			}
 
@@ -68,7 +68,7 @@ namespace Kapibara.RPS
 
 				Debug.Log($"[NPCStepManager] Dialogue finished.");
 				_npcHUD.HideCanvas();
-				AppEvents.OnCombatFinished?.Invoke(true);
+				AppEvents.OnStepFinished?.Invoke(true);
 				return;
 			}
 

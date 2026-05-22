@@ -10,10 +10,9 @@ namespace Kapibara.RPS
 	/// </summary>
 	public class CombatStepManager : BaseManager
 	{
-		[SerializeField, ReadOnly] private PlayerHUDUIController     _playerHUD;
-		[SerializeField, ReadOnly] private EnemyHUDUIController      _enemyHUD;
-		[SerializeField, ReadOnly] private CombatResultUIController  _resultUI;
-		[SerializeField]           private LanguageScrObj            _commonLanguage;
+		[SerializeField, ReadOnly] private PlayerHUDUIController _playerHUD;
+		[SerializeField, ReadOnly] private EnemyHUDUIController _enemyHUD;
+		[SerializeField]           private LanguageScrObj       _commonLanguage;
 		[SerializeField]           private StoneSmithyScrObj         _stoneSmithyScrObj;
 
 		private Player        _player;
@@ -39,7 +38,6 @@ namespace Kapibara.RPS
 			UIService uiService = ServiceLocator.Instance.GetService<UIService>();
 			_playerHUD = uiService.GetController<PlayerHUDUIController>();
 			_enemyHUD  = uiService.GetController<EnemyHUDUIController>();
-			_resultUI  = uiService.GetController<CombatResultUIController>();
 			_player    = AppContext.Player;
 			_context   = AppContext.CombatContext;
 
@@ -86,7 +84,7 @@ namespace Kapibara.RPS
 			if (enemyScrObj == null)
 			{
 				Debug.LogError("[CombatStepManager] CurrentStep.Enemy is null — cannot start combat. Check MapLevels SO.");
-				AppEvents.OnCombatFinished?.Invoke(false);
+				AppEvents.OnStepFinished?.Invoke(false);
 				return;
 			}
 			EnemyData data = enemyScrObj.Data;
@@ -299,13 +297,13 @@ namespace Kapibara.RPS
 			_player.CurrentHealth = _playerHP;
 			_player.CurrentEnergy = _playerEnergy;
 
-			int goldEarned = 0;
 			if (playerWins)
 			{
-				goldEarned = _enemy.RewardRoll();
+				int goldEarned = _enemy.RewardRoll();
 				if (_playerSuperKill) goldEarned *= 2;
 				_player.Gold += goldEarned;
-				Debug.Log($"[CombatStepManager] Victory → gold earned:{goldEarned}{(_playerSuperKill ? " (x2 super kill)" : "")}  totalGold:{_player.Gold}");
+				AppContext.CombatContext?.AddGold(goldEarned);
+				Debug.Log($"[CombatStepManager] Victory → gold:{goldEarned}{(_playerSuperKill ? " (x2 super kill)" : "")}  total:{_player.Gold}");
 			}
 			else
 			{
@@ -313,6 +311,7 @@ namespace Kapibara.RPS
 			}
 
 			ApplyPendingTrainingExp();
+			AppContext.CombatContext?.AddTrainingExp(_pendingTrainingExp);
 			AppEvents.OnGameContextUpdated?.Invoke();
 
 			_playerHUD.SetCombatActionsInteractable(false);
@@ -321,15 +320,7 @@ namespace Kapibara.RPS
 			_enemyHUD.HideBubbles();
 			_enemyHUD.HideCanvas();
 
-			if (_resultUI == null)
-			{
-				Debug.LogError("[CombatStepManager] EndCombat() -> _resultUI is null.");
-				AppEvents.OnCombatFinished?.Invoke(playerWins);
-				return;
-			}
-
-			_resultUI.SetData(playerWins, goldEarned, _pendingTrainingExp);
-			_resultUI.ShowCanvas();
+			AppEvents.OnStepFinished?.Invoke(playerWins);
 		}
 
 		#endregion

@@ -169,10 +169,8 @@ Listed in priority order.
 **Bug #3 — `_rectTransforms` is always null in `BaseUIElement`** ✅ FIXED 2026-03-21
 - Removed cached list; `RefreshLayoutGroupsImmediateAndRecursive()` now calls `GetComponentsInChildren<RectTransform>()` directly on each show.
 
-**Bug #9 — `TrainingHouseModifier.IsTraining` is transient state stored in persistent data**
-- Toggling which stat is selected for training triggers a full disk write. This is UI state living in the save file. When combat EXP is wired, the flag will be correct but the save writes will be excessive.
-- Fix: consider a non-serialized bool or a separate in-memory tracking structure for "currently selected" state.
-- **File:** `TrainingHouseModifier.cs`
+**Bug #9 — `TrainingHouseModifier.IsTraining` is transient state stored in persistent data** ✅ NOT A BUG
+- `NotificableField` solo dispara `OnValueChanged` para UI observers. El disco se escribe únicamente cuando un manager invoca `AppEvents.OnGameContextUpdated` explícitamente. No hay escrituras excesivas.
 
 **Bug #10 — `NAttribute` constructor adds modifiers that Player constructor may silently replace**
 - `NAttribute(Stats, int)` adds `TrainingHouseModifier` + `PaperTreeModifier`. Player constructor then calls `AddModifier(new ScissorBonfireModifier(...))`. `AddModifier` replaces by type — if NAttribute ever adds ScissorBonfireModifier too, only the Player version survives. Currently safe, but fragile if NAttribute is changed.

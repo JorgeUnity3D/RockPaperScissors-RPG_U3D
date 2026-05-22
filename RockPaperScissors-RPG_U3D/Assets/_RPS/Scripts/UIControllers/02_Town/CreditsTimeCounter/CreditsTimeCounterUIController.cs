@@ -1,4 +1,4 @@
-﻿using Kapibara.UI;
+using Kapibara.UI;
 using Sirenix.OdinInspector;
 using System;
 using System.Collections.Generic;
@@ -17,8 +17,7 @@ namespace Kapibara.RPS
 		[SerializeField] private GameObject _timeCounterHolder;
 		[SerializeField] private TextMeshProUGUI _timeCounterText;
 		[Header("DEBUG")]
-		[SerializeField, ReadOnly] private CreditTimeCounter _creditTimeCounter;
-
+		[SerializeField, ReadOnly] private int _maxCredits;
 
 		#region UNITY_LIFECYCLE
 
@@ -44,29 +43,29 @@ namespace Kapibara.RPS
 			AppEvents.OnTimeUpdated    += SetTimeCounterUI;
 		}
 
-		public void SetData(CreditTimeCounter creditTimeCounter)
+		public void SetData(int creditsLeft, int maxCredits, float timeLeftSecs)
 		{
-			Debug.Log($"[CreditsTimeCounterUIController] SetData() -> ");
-			_creditTimeCounter = creditTimeCounter;
+			Debug.Log($"[CreditsTimeCounterUIController] SetData() -> credits:{creditsLeft}/{maxCredits}");
+			_maxCredits = maxCredits;
+			SetCreditsUI(creditsLeft);
+			if (timeLeftSecs > 0f) SetTimeCounterUI(timeLeftSecs);
 		}
 
 		#endregion
 
 		#region CONTROL
+
 		private void SetCreditsUI(int creditsLeft)
 		{
 			for (int i = 0; i < _credits.Count; i++)
 			{
-				_credits[i].sprite = creditsLeft == 0 ?
-										_usedCredit : i < creditsLeft ?
-											_unusedCredit : _usedCredit;
+				_credits[i].sprite = i < creditsLeft ? _unusedCredit : _usedCredit;
 			}
-			_timeCounterHolder.SetActive(!_creditTimeCounter.CreditsAtMax);
+			_timeCounterHolder.SetActive(creditsLeft < _maxCredits);
 		}
 
 		private void SetTimeCounterUI(float timeToDisplay)
 		{
-			//Debug.Log($"[CreditsTimeCounterUIController] SetTimeCounterUI() -> ");
 			TimeSpan t = TimeSpan.FromSeconds(timeToDisplay);
 			_timeCounterText.text = string.Format("{0:00}:{1:00}:{2:00}", t.Hours, t.Minutes, t.Seconds);
 		}

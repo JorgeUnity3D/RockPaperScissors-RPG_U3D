@@ -15,6 +15,11 @@ namespace Kapibara.RPS
 		public List<MapStep> GeneratedSteps   { get; private set; }
 		public MapStep       CurrentStep      => GeneratedSteps[CurrentStepIndex];
 		public int           StepCount        => GeneratedSteps.Count;
+		public int           TotalGoldEarned  { get; private set; }
+		public int           TotalTrainingExp { get; private set; }
+
+		public void AddGold(int amount)        { TotalGoldEarned  += amount; }
+		public void AddTrainingExp(int amount) { TotalTrainingExp += amount; }
 
 		public CombatContext(MapLevel level)
 		{

@@ -83,8 +83,10 @@ namespace Kapibara.RPS
 
 		/// <summary>Se dispara cuando el jugador pulsa un botón de acción en combate.</summary>
 		public static UnityAction<Actions> OnCombatActionSelected;
-		/// <summary>Se dispara al terminar el combate. true = victoria, false = derrota.</summary>
-		public static UnityAction<bool> OnCombatFinished;
+		/// <summary>Se dispara al terminar un step. true = victoria/completado, false = derrota.</summary>
+		public static UnityAction<bool> OnStepFinished;
+		/// <summary>Se dispara cuando el jugador recoge el premio de la Caja Sorpresa.</summary>
+		public static UnityAction OnSurpriseBoxCollected;
 
 		/// <summary>Se dispara cuando el jugador usa un consumible de la mochila durante el combate.</summary>
 		public static UnityAction<ItemType> OnBackpackItemUsed;

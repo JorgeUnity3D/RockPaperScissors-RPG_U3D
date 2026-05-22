@@ -9,10 +9,11 @@ namespace Kapibara.RPS
 	/// </summary>
 	public class StepManager : BaseManager
 	{
-		[SerializeField, ReadOnly] private CombatStepManager         _combatManager;
+		[SerializeField, ReadOnly] private CombatStepManager      _combatManager;
 		[SerializeField, ReadOnly] private TreasureStepManager   _treasureStepManager;
 		[SerializeField, ReadOnly] private NPCStepManager        _npcStepManager;
-		[SerializeField, ReadOnly] private PlayerHUDUIController _playerHUD;
+		[SerializeField, ReadOnly] private SurpriseBoxStepManager _surpriseBoxManager;
+		[SerializeField, ReadOnly] private PlayerHUDUIController  _playerHUD;
 
 		#region SETUP
 
@@ -21,6 +22,7 @@ namespace Kapibara.RPS
 			_combatManager       = GetComponentInChildren<CombatStepManager>();
 			_treasureStepManager = GetComponentInChildren<TreasureStepManager>();
 			_npcStepManager      = GetComponentInChildren<NPCStepManager>();
+			_surpriseBoxManager  = GetComponentInChildren<SurpriseBoxStepManager>();
 			_playerHUD           = ServiceLocator.Instance.GetService<UIService>().GetController<PlayerHUDUIController>();
 		}
 
@@ -72,8 +74,8 @@ namespace Kapibara.RPS
 					_npcStepManager.Initialize(step);
 					break;
 				case MapStepType.SURPRISE_BOX:
-					Debug.LogWarning("[StepManager] SURPRISE_BOX not yet implemented — advancing.");
-					AppEvents.OnCombatFinished?.Invoke(true);
+					if (_surpriseBoxManager == null) { Debug.LogError("[StepManager] SurpriseBoxStepManager not found in children."); return; }
+					_surpriseBoxManager.Initialize();
 					break;
 				default:
 					Debug.LogError($"[StepManager] Unhandled step type: {step.Type}");
@@ -88,7 +90,7 @@ namespace Kapibara.RPS
 		[Button("Skip Step")]
 		private void SkipStep()
 		{
-			AppEvents.OnCombatFinished?.Invoke(true);
+			AppEvents.OnStepFinished?.Invoke(true);
 		}
 
 		#endregion
