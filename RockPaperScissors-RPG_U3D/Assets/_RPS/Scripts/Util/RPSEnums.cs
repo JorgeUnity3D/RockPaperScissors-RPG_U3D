@@ -43,6 +43,25 @@
 		ENEMY_7,
 	}
 
+	public enum GambitType
+	{
+		PRIMARY,    // antes de action roll Y mentality roll; obligatorio; cancela el resto
+		SECONDARY,  // antes de action roll; puede ser sobreescrito por tertiary
+		TERTIARY    // tras mentality roll; solo actúa cuando el enemigo lee la mente del jugador
+	}
+
+	public enum GambitCondition
+	{
+		ALWAYS,              // siempre se activa
+		ENERGY_ZERO,         // CurrentEnergy == 0
+		ENERGY_BELOW,        // CurrentEnergy < threshold
+		HP_BELOW_PERCENT,    // CurrentHealth < MaxHealth * hpPercent
+		ROUND_EQUALS,        // currentRound == threshold
+		ROUND_GE,            // currentRound >= threshold
+		PLAYER_ACTION_IS,    // playerAction == matchAction  (solo Tertiary)
+		PLAYER_ACTION_IS_NOT // playerAction != matchAction  (solo Tertiary)
+	}
+
 	/// <summary>Animación de entrada de una viñeta al revelarse en el lector de comic.</summary>
 	public enum VignetteAnimation
 	{

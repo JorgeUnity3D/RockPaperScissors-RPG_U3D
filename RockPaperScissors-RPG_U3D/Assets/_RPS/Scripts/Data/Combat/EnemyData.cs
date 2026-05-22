@@ -54,6 +54,9 @@ namespace Kapibara.RPS
 		[Header("Languages")]
 		[SerializeField] private List<LanguageScrObj> _languages;
 
+		[Header("Gambits")]
+		[SerializeField] private List<GambitScrObj> _gambits;
+
 		public EnemyId Id               => _id;
 		public string Name              => _name;
 		public Sprite Portrait          => _portrait;
@@ -81,5 +84,6 @@ namespace Kapibara.RPS
 		public int GoldMin              => _goldMin;
 		public int GoldMax              => _goldMax;
 		public List<LanguageScrObj> Languages => _languages;
+		public List<GambitScrObj>  Gambits   => _gambits;
 	}
 }

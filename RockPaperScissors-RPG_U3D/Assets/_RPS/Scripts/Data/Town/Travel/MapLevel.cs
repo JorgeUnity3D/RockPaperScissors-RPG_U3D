@@ -21,6 +21,10 @@ namespace Kapibara.RPS
 		[SerializeField] private int    _treasureGoldAmount;
 		[SerializeField] private Sprite _treasureSprite;
 
+		[Header("Boss Historia")]
+		[SerializeField] private ComicStoryScrObj _bossStory;
+		[SerializeField] private int              _storyIndex = -1;
+
 		[Header("NPC Step")]
 		[SerializeField] private TownMenu     _targetBuilding;
 		[SerializeField] private Sprite       _npcSprite;
@@ -35,6 +39,8 @@ namespace Kapibara.RPS
 		public EnemyScrObj       Boss              => _boss;
 		public int               TreasureGoldAmount => _treasureGoldAmount;
 		public Sprite            TreasureSprite    => _treasureSprite;
+		public ComicStoryScrObj  BossStory         => _bossStory;
+		public int               StoryIndex        => _storyIndex;
 		public TownMenu          TargetBuilding    => _targetBuilding;
 		public Sprite            NpcSprite         => _npcSprite;
 		public List<string>      NpcDialogueLines  => _npcDialogueLines;

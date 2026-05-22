@@ -12,6 +12,7 @@ namespace Kapibara.RPS
 	public class SurpriseBoxHUDUIController : UIController
 	{
 		[Header("Content")]
+		[SerializeField] private Image           _boxImage;
 		[SerializeField] private Image           _effectIcon;
 		[SerializeField] private TextMeshProUGUI _effectLabel;
 

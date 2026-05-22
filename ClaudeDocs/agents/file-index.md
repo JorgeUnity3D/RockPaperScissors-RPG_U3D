@@ -37,7 +37,7 @@ Root: `Assets/_RPS/`
 | File | Description |
 |---|---|
 | `Character.cs` | Abstract base with all flat combat fields and roll methods (DamageRoll, CritRoll, ThornsRoll, CompareActionsAndSetMultiplier); used by Enemy and PlayerOld only |
-| `Enemy.cs` | Concrete enemy with probability-based `ActionRoll()`, `ActionRollAgainst()`, mentality tracking, and gold reward system |
+| `Enemy.cs` | Runtime enemy: `ActionRoll()`, `SetAction()`, `MentalityRollAgainst()` (dual-sided), mentality tracking, gambit list, gold reward |
 | `Item.cs` | Data class for items (type, no behavior) |
 | `LanguageWords.cs` | Dialogue/language data container |
 
@@ -73,6 +73,14 @@ Root: `Assets/_RPS/`
 |---|---|
 | `IconsScrObj.cs` | ScriptableObject holding icon sprites |
 
+### Data/Combat/
+
+| File | Description |
+|---|---|
+| `Combat/EnemyData.cs` | Design-time enemy config: stats, probabilities, costs, rewards, languages, gambit list |
+| `Combat/EnemyScrObj.cs` | ScriptableObject wrapping `EnemyData` |
+| `Combat/GambitScrObj.cs` | Shareable NPC behavior rule: type (PRIMARY/SECONDARY/TERTIARY), condition, result action; `Evaluate(Enemy, round, playerAction)` |
+
 ### Data/Town/
 
 | File | Description |
@@ -84,7 +92,7 @@ Root: `Assets/_RPS/`
 | `PaperTree/PaperTreeNode.cs` | Single skill tree node (SkillNode enum key + modifier data) |
 | `PaperTree/PaperTreeSkillTree.cs` | Container for `List<PaperTreeNode>` |
 | `PaperTree/PaperTreeScrObj.cs` | ScriptableObject for the skill tree definition |
-| `TimeCounter/CreditTimeCounter.cs` | Time-tracking data for credits counter mechanic |
+| `TimeCounter/CreditTimeCounter.cs` | Config-only credit counter data (MaxCredits, HoursForACredit); mutable state lives in GameContext |
 | `TimeCounter/CreditsTimeCounterScrObj.cs` | ScriptableObject wrapper for credit time counter |
 | `Travel/MapLevel.cs` | Level definition: level number, name, steps, reward, sprites, enemy list, availability flags |
 | `Travel/MapLevelScrObj.cs` | ScriptableObject wrapping map level data |
@@ -110,6 +118,11 @@ Root: `Assets/_RPS/`
 | `02_Town/CreditsTimeCounterManager.cs` | Credits time counter location manager |
 | `02_Town/StablesManager.cs` | Stables location manager |
 | `02_Town/StoneSmithyManager.cs` | Stone smithy location manager |
+| `03_Combat/StepManager.cs` | Dispatches each `MapStep` to the appropriate sub-manager (Combat/Treasure/NPC/SurpriseBox); sets level background; Skip Step debug button |
+| `03_Combat/CombatStepManager.cs` | Orchestrates the combat round loop: gambit evaluation (Primary→Secondary→ActionRoll, Tertiary after mentality), damage resolution via `CombatResolver`, HP/energy tracking, training EXP, gold accumulation |
+| `03_Combat/TreasureStepManager.cs` | Manages treasure steps: action selection, gold reward, accumulates to CombatContext |
+| `03_Combat/NPCStepManager.cs` | Manages NPC rescue dialogue steps |
+| `03_Combat/SurpriseBoxStepManager.cs` | Manages Surprise Box steps: random HP or energy effect, shows SurpriseBoxHUDUIController |
 
 ---
 
@@ -242,7 +255,7 @@ Root: `Assets/_RPS/`
 | `DontDestroyOnLoad.cs` | MonoBehaviour that calls `DontDestroyOnLoad(gameObject)` in Awake |
 | `RNGGenerator.cs` | `Roll1D(max)`, `RandomBetween(min,max)`, `RandomEnumValue<T>()`; uses Unix timestamp as seed |
 | `RPSTimestamp.cs` | Unix timestamp get/convert utilities |
-| `RPSEnums.cs` | `Actions`, `Languages`, `ItemType`, `EnemyId` enums |
+| `RPSEnums.cs` | `Actions`, `Languages`, `ItemType`, `MapStepType`, `EnemyId`, `GambitType`, `GambitCondition`, `VignetteAnimation`, `ComicPageLayout` enums |
 | `RPSEditorConst.cs` | Editor-only string constants |
 | `SerializedDictionary/UnitySerializedDictionary.cs` | Serializable dictionary base for Unity inspector |
 | `Editor/DataEditorWindow.cs` | Custom EditorWindow for data inspection |

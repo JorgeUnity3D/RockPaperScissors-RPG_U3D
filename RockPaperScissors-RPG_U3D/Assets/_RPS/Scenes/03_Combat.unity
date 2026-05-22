@@ -748,13 +748,37 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5807771189627421204, guid: 1ba6b67b5683812fb8f4435cf144f806, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5807771189627421204, guid: 1ba6b67b5683812fb8f4435cf144f806, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5807771189627421204, guid: 1ba6b67b5683812fb8f4435cf144f806, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5807771189627421204, guid: 1ba6b67b5683812fb8f4435cf144f806, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5807771189627421204, guid: 1ba6b67b5683812fb8f4435cf144f806, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5807771189627421204, guid: 1ba6b67b5683812fb8f4435cf144f806, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5861251059136601004, guid: 1ba6b67b5683812fb8f4435cf144f806, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7155286697668261082, guid: 1ba6b67b5683812fb8f4435cf144f806, type: 3}
       propertyPath: m_Name
-      value: Combat_UIService
+      value: Level_UIService
       objectReference: {fileID: 0}
     - target: {fileID: 7845749678530575289, guid: 1ba6b67b5683812fb8f4435cf144f806, type: 3}
       propertyPath: m_IsActive

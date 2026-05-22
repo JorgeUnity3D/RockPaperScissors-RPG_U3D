@@ -17,6 +17,8 @@ namespace Kapibara.RPS
 		[SerializeField, ReadOnly] private SceneService _sceneService;
 		[SerializeField, ReadOnly] private GameContext _gameContext;
 
+		private bool _waitingForComic;
+
         #region SETUP
 
 		public override void SetUp()
@@ -35,6 +37,7 @@ namespace Kapibara.RPS
 			AppEvents.OnConfirmLoadGame     += LoadSelectedGame;
 			AppEvents.OnConfirmDeleteGame   += DeleteSelectedGame;
 			AppEvents.OnStepFinished        += OnStepFinished;
+			AppEvents.OnComicClosed         += OnComicClosed;
 			AppEvents.OnGameContextUpdated  += UpdateSaveGame;
 		}
 
@@ -47,6 +50,7 @@ namespace Kapibara.RPS
 			AppEvents.OnConfirmLoadGame     -= LoadSelectedGame;
 			AppEvents.OnConfirmDeleteGame   -= DeleteSelectedGame;
 			AppEvents.OnStepFinished        -= OnStepFinished;
+			AppEvents.OnComicClosed         -= OnComicClosed;
 			AppEvents.OnGameContextUpdated  -= UpdateSaveGame;
 		}
 
@@ -134,12 +138,42 @@ namespace Kapibara.RPS
 
 			if (playerWins)
 			{
-				if (ctx.CurrentStep.Type == MapStepType.BOSS)
+				MapStep step = ctx.CurrentStep;
+
+				if (step.Type == MapStepType.BOSS)
+				{
+					bool isFirstCompletion = !ctx.SelectedLevel.IsCompleted;
 					ctx.SelectedLevel.SetCompleted();
 
-				if (ctx.CurrentStep.Type == MapStepType.NPC_RESCUE)
+					if (isFirstCompletion)
+					{
+						int storyIndex = ctx.SelectedLevel.StoryIndex;
+						if (storyIndex >= 0)
+							AppContext.Player.UnlockStory(storyIndex);
+
+						ComicStoryScrObj bossStory = ctx.SelectedLevel.BossStory;
+						if (bossStory != null)
+						{
+							ComicPlayerUIController comicPlayer = ServiceLocator.Instance.GetService<UIService>().GetController<ComicPlayerUIController>();
+							if (comicPlayer != null)
+							{
+								Debug.Log($"[GameManager] Boss defeated (first time) → showing Historia (story {storyIndex})");
+								_waitingForComic = true;
+								comicPlayer.SetData(bossStory);
+								return;
+							}
+							Debug.LogWarning("[GameManager] BossStory assigned but ComicPlayerUIController not found in scene.");
+						}
+					}
+					else
+					{
+						Debug.Log("[GameManager] Boss defeated (level already completed) → skipping Historia.");
+					}
+				}
+
+				if (step.Type == MapStepType.NPC_RESCUE)
 				{
-					TownMenu       targetBuilding = ctx.CurrentStep.TargetBuilding;
+					TownMenu       targetBuilding = step.TargetBuilding;
 					List<TownData> townDatas      = AppContext.GameContext?.TownData;
 					TownData       townData        = townDatas?.Find(td => td.TownMenu == targetBuilding);
 					if (townData != null)
@@ -168,6 +202,31 @@ namespace Kapibara.RPS
 			}
 
 			ShowLevelResult(ctx, playerWins);
+		}
+
+		private void OnComicClosed()
+		{
+			if (!_waitingForComic) return;
+			_waitingForComic = false;
+
+			CombatContext ctx = AppContext.CombatContext;
+			if (ctx == null) return;
+
+			int nextIndex = ctx.CurrentStepIndex + 1;
+			if (nextIndex < ctx.StepCount)
+			{
+				ctx.CurrentStepIndex = nextIndex;
+				Debug.Log($"[GameManager] OnComicClosed() -> advancing to step {nextIndex} ({ctx.CurrentStep.Type})");
+				StepManager stepManager = ServiceLocator.Instance.GetService<ManagerService>().GetManager<StepManager>();
+				if (stepManager != null)
+					stepManager.Initialize();
+				else
+					Debug.LogError("[GameManager] OnComicClosed() -> StepManager not found.");
+			}
+			else
+			{
+				ShowLevelResult(ctx, true);
+			}
 		}
 
 		private void ShowLevelResult(CombatContext ctx, bool playerWins)

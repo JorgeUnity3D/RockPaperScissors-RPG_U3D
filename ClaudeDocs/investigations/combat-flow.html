@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>RPS RPG — Combat Flow</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #0f1117; color: #e0e0e0; font-family: 'Segoe UI', sans-serif; font-size: 13px; padding: 32px; }
+
+  h1 { color: #fff; font-size: 18px; margin-bottom: 6px; }
+  .subtitle { color: #666; font-size: 12px; margin-bottom: 32px; }
+
+  /* Legend */
+  .legend { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 32px; }
+  .leg { display: flex; align-items: center; gap: 6px; font-size: 11px; }
+  .leg-dot { width: 12px; height: 12px; border-radius: 3px; }
+
+  /* Flow column */
+  .flow { display: flex; flex-direction: column; align-items: center; gap: 0; }
+
+  /* Nodes */
+  .node {
+    border-radius: 8px;
+    padding: 10px 16px;
+    text-align: center;
+    position: relative;
+    min-width: 220px;
+    max-width: 320px;
+    line-height: 1.5;
+  }
+  .node .label { font-weight: 600; font-size: 12px; margin-bottom: 2px; }
+  .node .detail { font-size: 11px; opacity: 0.8; }
+  .node .event { font-size: 10px; font-style: italic; opacity: 0.7; margin-top: 4px; }
+
+  /* Colors by type */
+  .mgr   { background: #1a3a5c; border: 1px solid #2e6da4; }
+  .ui    { background: #1a4a2e; border: 1px solid #2e9457; }
+  .evt   { background: #4a3a0a; border: 1px solid #c9921a; }
+  .data  { background: #3a1a5c; border: 1px solid #8e4ad4; }
+  .scene { background: #4a1a1a; border: 1px solid #c94444; }
+  .loop  { background: #1a3a4a; border: 1px solid #2e8aa4; }
+  .result{ background: #2a2a2a; border: 1px solid #666; }
+
+  /* Arrow */
+  .arrow { width: 2px; background: #444; height: 20px; margin: 0 auto; position: relative; }
+  .arrow::after {
+    content: '';
+    position: absolute;
+    bottom: -6px; left: -4px;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 7px solid #444;
+  }
+  .arrow.evt-arrow { background: #c9921a; }
+  .arrow.evt-arrow::after { border-top-color: #c9921a; }
+  .arrow.scene-arrow { background: #c94444; }
+  .arrow.scene-arrow::after { border-top-color: #c94444; }
+
+  .arrow-label {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 10px;
+    color: #c9921a;
+    white-space: nowrap;
+  }
+
+  /* Steps row */
+  .steps-row {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+    margin: 8px 0;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 900px;
+  }
+  .step-box {
+    border-radius: 6px;
+    padding: 8px 12px;
+    text-align: center;
+    font-size: 11px;
+    min-width: 90px;
+  }
+  .step-combat  { background: #1a3a5c; border: 1px solid #2e6da4; }
+  .step-boss    { background: #4a1a1a; border: 1px solid #c94444; }
+  .step-surprise{ background: #4a3a0a; border: 1px solid #c9921a; }
+  .step-npc     { background: #1a4a2e; border: 1px solid #2e9457; }
+  .step-treasure{ background: #3a1a5c; border: 1px solid #8e4ad4; }
+
+  .step-num { font-weight: 700; font-size: 14px; display: block; margin-bottom: 2px; }
+
+  /* Branch section */
+  .branch-container {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    margin: 8px 0;
+    max-width: 900px;
+    width: 100%;
+    justify-content: center;
+  }
+  .branch {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    min-width: 160px;
+  }
+  .branch-title {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #888;
+    margin-bottom: 6px;
+  }
+
+  /* Combat loop detail */
+  .loop-box {
+    border-radius: 8px;
+    border: 1px solid #2e8aa4;
+    background: #0d1f2a;
+    padding: 14px 18px;
+    max-width: 380px;
+    width: 100%;
+  }
+  .loop-box .loop-title { color: #2e8aa4; font-weight: 700; font-size: 12px; margin-bottom: 10px; }
+  .loop-row { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 8px; }
+  .loop-icon { font-size: 14px; flex-shrink: 0; width: 20px; text-align: center; }
+  .loop-text { font-size: 11px; line-height: 1.5; }
+  .loop-event { color: #c9921a; font-size: 10px; }
+  .loop-repeat { border-top: 1px dashed #2e8aa4; margin-top: 8px; padding-top: 8px; font-size: 10px; color: #2e8aa4; text-align: center; }
+
+  /* Routing box */
+  .routing-box {
+    border-radius: 8px;
+    border: 1px solid #666;
+    background: #191919;
+    padding: 14px 18px;
+    max-width: 520px;
+    width: 100%;
+  }
+  .routing-box .rt { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 8px; font-size: 11px; line-height: 1.5; }
+  .rt-cond { color: #c9921a; font-weight: 700; min-width: 130px; flex-shrink: 0; }
+  .rt-action { color: #aaa; }
+  .rt-action span { color: #2e9457; }
+
+  /* Section label */
+  .section-label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #444;
+    margin: 20px 0 10px;
+    text-align: center;
+    width: 100%;
+  }
+
+  hr.divider { border: none; border-top: 1px solid #222; margin: 20px 0; width: 100%; max-width: 700px; }
+
+  .wide-arrow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    width: 100%;
+    max-width: 400px;
+  }
+</style>
+</head>
+<body>
+
+<h1>RPS RPG — Combat Flow</h1>
+<p class="subtitle">Desde que el jugador pulsa un nivel hasta que vuelve a Town</p>
+
+<div class="legend">
+  <div class="leg"><div class="leg-dot" style="background:#2e6da4"></div> Manager</div>
+  <div class="leg"><div class="leg-dot" style="background:#2e9457"></div> UIController</div>
+  <div class="leg"><div class="leg-dot" style="background:#c9921a"></div> AppEvent</div>
+  <div class="leg"><div class="leg-dot" style="background:#8e4ad4"></div> Data / Context</div>
+  <div class="leg"><div class="leg-dot" style="background:#c94444"></div> Scene / crítico</div>
+</div>
+
+<div class="flow">
+
+  <!-- TOWN -->
+  <div class="node ui">
+    <div class="label">🏙️ TravelUIController (Town)</div>
+    <div class="detail">Jugador pulsa botón de nivel</div>
+  </div>
+  <div class="arrow evt-arrow" style="height:16px;position:relative">
+    <span class="arrow-label">OnTravelRequested(MapLevel)</span>
+  </div>
+
+  <!-- Credits -->
+  <div class="node mgr">
+    <div class="label">🐴 CreditsTimeCounterManager</div>
+    <div class="detail">Valida créditos &gt; 0 · descuenta 1</div>
+    <div class="event">→ OnTravelConfirmed(MapLevel)</div>
+  </div>
+  <div class="arrow" style="height:16px"></div>
+
+  <!-- TravelManager -->
+  <div class="node mgr">
+    <div class="label">🗺️ TravelManager</div>
+    <div class="detail">Player.CurrentEnergy = InitialEnergy<br>AppContext.CombatContext = new CombatContext(level)</div>
+  </div>
+  <div class="arrow scene-arrow" style="height:16px;position:relative">
+    <span class="arrow-label" style="color:#c94444">LoadScene(COMBAT)</span>
+  </div>
+
+  <!-- Scene loads -->
+  <div class="node scene">
+    <div class="label">⚡ GameManager.InitializeScene(COMBAT)</div>
+    <div class="detail">→ StepManager.Initialize()</div>
+  </div>
+  <div class="arrow" style="height:16px"></div>
+
+  <!-- StepManager -->
+  <div class="node mgr" style="max-width:420px">
+    <div class="label">📋 StepManager.Initialize()</div>
+    <div class="detail">PlayerHUD: SetBackground · SetData · RefreshBars · SetStep · ShowCanvas<br>Lee CurrentStep.Type → despacha ↓</div>
+  </div>
+  <div class="arrow" style="height:10px"></div>
+
+  <!-- Steps row -->
+  <div class="section-label">Steps generados por CombatContext</div>
+  <div class="steps-row">
+    <div class="step-box step-combat"><span class="step-num">1–4</span>COMBAT<br><small>o TREASURE</small></div>
+    <div class="step-box step-surprise"><span class="step-num">5</span>SURPRISE<br>BOX</div>
+    <div class="step-box step-combat"><span class="step-num">6–9</span>COMBAT<br><small>o TREASURE</small></div>
+    <div class="step-box step-boss"><span class="step-num">10</span>BOSS</div>
+    <div class="step-box step-npc"><span class="step-num">11*</span>NPC<br>RESCUE<br><small>*si !completed</small></div>
+  </div>
+  <div class="arrow" style="height:10px"></div>
+
+  <!-- 4 branches -->
+  <div class="section-label">Sub-managers por tipo de step</div>
+  <div class="branch-container">
+
+    <div class="branch">
+      <div class="branch-title" style="color:#2e6da4">COMBAT / BOSS</div>
+      <div class="node mgr" style="min-width:140px; font-size:11px">
+        <div class="label">CombatStepManager</div>
+        <div class="detail">Crea Enemy · LanguageRoll<br>EnemyHUD.SetData/Show<br>BeginRound()</div>
+      </div>
+    </div>
+
+    <div class="branch">
+      <div class="branch-title" style="color:#8e4ad4">TREASURE</div>
+      <div class="node data" style="min-width:140px; font-size:11px">
+        <div class="label">TreasureStepManager</div>
+        <div class="detail">TreasureHUD.Show<br>Jugador elige acción<br>OnTreasureActionSelected<br>AddGold() · OnStepFinished</div>
+      </div>
+    </div>
+
+    <div class="branch">
+      <div class="branch-title" style="color:#c9921a">SURPRISE BOX</div>
+      <div class="node evt" style="min-width:140px; font-size:11px">
+        <div class="label">SurpriseBoxStepManager</div>
+        <div class="detail">Elige HP o Energy<br>Aplica efecto al player<br>SurpriseBoxHUD.Show<br>Continue → OnStepFinished</div>
+      </div>
+    </div>
+
+    <div class="branch">
+      <div class="branch-title" style="color:#2e9457">NPC RESCUE</div>
+      <div class="node ui" style="min-width:140px; font-size:11px">
+        <div class="label">NPCStepManager</div>
+        <div class="detail">NPCHUD con diálogo<br>Jugador avanza líneas<br>OnNPCDialogueNext/Prev<br>OnStepFinished al final</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="arrow" style="height:10px"></div>
+  <div class="section-label">Loop de combate (COMBAT / BOSS)</div>
+
+  <!-- Combat loop -->
+  <div class="loop-box">
+    <div class="loop-title">⚔️ CombatStepManager — Round loop</div>
+
+    <div class="loop-row">
+      <div class="loop-icon">1️⃣</div>
+      <div class="loop-text">
+        <strong>PRIMARY gambits?</strong> → SetAction + muestra bubble<br>
+        Salta mentality roll y secondary
+      </div>
+    </div>
+    <div class="loop-row">
+      <div class="loop-icon">2️⃣</div>
+      <div class="loop-text">
+        <strong>SECONDARY gambits?</strong> → SetAction<br>
+        Si no → ActionRoll() (prob ponderada por energía)
+      </div>
+    </div>
+    <div class="loop-row">
+      <div class="loop-icon">3️⃣</div>
+      <div class="loop-text">
+        <strong>MentalityRoll:</strong> enemyRoll vs playerRoll<br>
+        Gana enemigo → <em>enemyReadsMind = true</em> · bubble con ❓<br>
+        Gana jugador → bubble con icono real del enemy
+      </div>
+    </div>
+    <div class="loop-row">
+      <div class="loop-icon">🎮</div>
+      <div class="loop-text">
+        PlayerHUD.SetCombatActionsInteractable(true)<br>
+        <span class="loop-event">→ Jugador pulsa acción → OnCombatActionSelected(action)</span>
+      </div>
+    </div>
+    <div class="loop-row">
+      <div class="loop-icon">4️⃣</div>
+      <div class="loop-text">
+        <strong>TERTIARY gambits</strong> (si enemyReadsMind) → contraacción<br>
+        ResolveRound: daño, energía, barras, bubbles de resultado<br>
+        WaitForSeconds → CheckCombatEnd()
+      </div>
+    </div>
+    <div class="loop-repeat">
+      🔁 &nbsp;HP &gt; 0 y rondas &lt; 10 → BeginRound() &nbsp;&nbsp;|&nbsp;&nbsp; sino → EndCombat(playerWins)
+    </div>
+  </div>
+
+  <div class="arrow" style="height:16px"></div>
+
+  <!-- EndCombat -->
+  <div class="node mgr" style="max-width:380px">
+    <div class="label">EndCombat(playerWins)</div>
+    <div class="detail">Player.CurrentHealth/Energy persistidos<br>Si gana: RewardRoll() · AddGold() · ×2 si SuperKill<br>ApplyPendingTrainingExp()<br>PlayerHUD/EnemyHUD HideCanvas</div>
+    <div class="event">→ OnStepFinished(playerWins)</div>
+  </div>
+
+  <div class="arrow evt-arrow" style="height:16px"></div>
+
+  <!-- GameManager routing -->
+  <div class="section-label">GameManager.OnStepFinished — routing</div>
+  <div class="routing-box">
+    <div class="rt">
+      <div class="rt-cond">ctx == null</div>
+      <div class="rt-action">Viene del botón Continue → <span>LoadScene(TOWN)</span></div>
+    </div>
+    <div class="rt">
+      <div class="rt-cond">Pierde</div>
+      <div class="rt-action"><span>ShowLevelResult(false)</span></div>
+    </div>
+    <div class="rt">
+      <div class="rt-cond">Gana · step = BOSS</div>
+      <div class="rt-action">SetCompleted() · UnlockStory(N)<br>Si BossStory asignado → <span>ComicPlayerUIController.SetData()</span> y espera OnComicClosed<br>Si no → avanza step</div>
+    </div>
+    <div class="rt">
+      <div class="rt-cond">Gana · step = NPC</div>
+      <div class="rt-action">TownData.NpcUnlocked = true → avanza step</div>
+    </div>
+    <div class="rt">
+      <div class="rt-cond">Gana · más steps</div>
+      <div class="rt-action">ctx.CurrentStepIndex++ → <span>StepManager.Initialize()</span></div>
+    </div>
+    <div class="rt">
+      <div class="rt-cond">Gana · último step</div>
+      <div class="rt-action"><span>ShowLevelResult(true)</span></div>
+    </div>
+  </div>
+
+  <div class="arrow" style="height:10px"></div>
+
+  <!-- Historia branch -->
+  <div class="branch-container" style="max-width:600px">
+    <div class="branch" style="flex:1">
+      <div class="branch-title" style="color:#c94444">Si hay BossStory</div>
+      <div class="node scene" style="min-width:0;width:100%;font-size:11px">
+        <div class="label">📖 ComicPlayerUIController</div>
+        <div class="detail">Historia completa página a página<br>Jugador pulsa Close</div>
+        <div class="event">→ OnComicClosed</div>
+      </div>
+      <div class="arrow" style="height:12px"></div>
+      <div class="node mgr" style="min-width:0;width:100%;font-size:11px">
+        <div class="label">GameManager.OnComicClosed()</div>
+        <div class="detail">Más steps → StepManager.Initialize()<br>Fin → ShowLevelResult(true)</div>
+      </div>
+    </div>
+    <div class="branch" style="flex:1">
+      <div class="branch-title" style="color:#2e9457">Sin BossStory / resto de wins</div>
+      <div class="node result" style="min-width:0;width:100%;font-size:11px">
+        <div class="label">🏁 ShowLevelResult()</div>
+        <div class="detail">CombatResultUIController.SetData(win, gold, exp)<br>CombatContext = null<br>Jugador pulsa Continue</div>
+        <div class="event">→ OnStepFinished(false) [ctx null]</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="arrow scene-arrow" style="height:16px;position:relative">
+    <span class="arrow-label" style="color:#c94444">LoadScene(TOWN)</span>
+  </div>
+
+  <div class="node scene">
+    <div class="label">🏙️ Town scene</div>
+    <div class="detail">TownManager.Initialize()</div>
+  </div>
+
+</div>
+</body>
+</html>

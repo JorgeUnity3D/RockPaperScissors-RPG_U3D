@@ -35,6 +35,7 @@ namespace Kapibara.RPS
 		public int                GoldMin        { get; private set; }
 		public int                GoldMax        { get; private set; }
 		public List<LanguageScrObj> Languages    { get; private set; }
+		public List<GambitScrObj>  Gambits      { get; private set; }
 
 		#endregion
 
@@ -80,6 +81,7 @@ namespace Kapibara.RPS
 			GoldMin        = data.GoldMin;
 			GoldMax        = data.GoldMax;
 			Languages      = data.Languages;
+			Gambits        = data.Gambits ?? new System.Collections.Generic.List<GambitScrObj>();
 			Level         = 1;
 
 			CurrentHealth  = MaxHealth;
@@ -129,6 +131,12 @@ namespace Kapibara.RPS
 			Actions chosen = (Actions)ponderatedActions[UnityEngine.Random.Range(0, ponderatedActions.Count)];
 			CurrentAction  = chosen;
 			ThinkingAction = chosen;
+		}
+
+		public void SetAction(Actions action)
+		{
+			CurrentAction  = action;
+			ThinkingAction = action;
 		}
 
 		public int MentalityRollAgainst(int playerMentality)

@@ -30,6 +30,7 @@ namespace Kapibara.RPS
 
 		private int                   _pendingTrainingExp;
 		private TrainingHouseModifier _activeTrainingModifier;
+		private bool                  _enemyReadsMind;
 
 		#region SETUP
 
@@ -110,34 +111,89 @@ namespace Kapibara.RPS
 		private void BeginRound()
 		{
 			_currentRound++;
-			_enemy.ActionRoll();
+			_enemyReadsMind = false;
 			_playerHUD.HidePlayerBubbles();
 			_enemyHUD.HideBubbles();
 
 			Debug.Log($"[CombatStepManager] ─── Round {_currentRound} BEGIN ─── PlayerHP:{_playerHP}/{_player.MaxHealth.TotalValue}  Energy:{_playerEnergy}/{GameConsts.COMBAT_MAX_ENERGY}  │  EnemyHP:{_enemy.CurrentHealth}/{_enemy.MaxHealth}  Energy:{_enemy.CurrentEnergy}/{GameConsts.COMBAT_MAX_ENERGY}");
-			Debug.Log($"[CombatStepManager] Enemy rolled → CurrentAction:{ColorAction(_enemy.CurrentAction)}  ThinkingAction:{ColorAction(_enemy.ThinkingAction)}  StoredMentality:{_enemy.StoredMentality}");
 
+			// ── Gambits PRIMARY ───────────────────────────────────────────────────
+			GambitScrObj primary = EvaluateGambits(GambitType.PRIMARY);
+			if (primary != null)
+			{
+				_enemy.SetAction(primary.ResultAction);
+				Debug.Log($"[CombatStepManager] PRIMARY gambit fired → {ColorAction(primary.ResultAction)} (mentality roll skipped)");
+				_enemyHUD.ShowEnemyThoughtBubble(GetActionIconEnemy(_enemy.ThinkingAction));
+				_playerHUD.SetCombatActionsInteractable(true);
+				return;
+			}
+
+			// ── Gambits SECONDARY o ActionRoll ───────────────────────────────────
+			GambitScrObj secondary = EvaluateGambits(GambitType.SECONDARY);
+			if (secondary != null)
+			{
+				_enemy.SetAction(secondary.ResultAction);
+				Debug.Log($"[CombatStepManager] SECONDARY gambit fired → {ColorAction(secondary.ResultAction)}");
+			}
+			else
+			{
+				_enemy.ActionRoll();
+			}
+
+			Debug.Log($"[CombatStepManager] Enemy action → {ColorAction(_enemy.ThinkingAction)}  StoredMentality:{_enemy.StoredMentality}");
+
+			// ── Mentality roll ────────────────────────────────────────────────────
 			int mentalityResult = _enemy.MentalityRollAgainst(_player.Mentality.TotalValue);
 			if (mentalityResult <= 0)
 			{
-				Debug.Log($"[CombatStepManager] Mentality roll {mentalityResult} ≤ 0 → player reads enemy mind → {ColorAction(_enemy.ThinkingAction)}");
+				Debug.Log($"[CombatStepManager] Mentality {mentalityResult} ≤ 0 → player reads mind → {ColorAction(_enemy.ThinkingAction)}");
 				_enemyHUD.ShowEnemyThoughtBubble(GetActionIconEnemy(_enemy.ThinkingAction));
 				_enemy.ResetMentality();
 			}
 			else
 			{
-				Debug.Log($"[CombatStepManager] Mentality roll {mentalityResult} > 0 → enemy conceals thought");
+				Debug.Log($"[CombatStepManager] Mentality {mentalityResult} > 0 → enemy reads player mind");
 				_enemyHUD.ShowEnemyThoughtBubble(GetActionIconCommon(Actions.NONE));
 				_enemy.IncreaseMentality();
+				_enemyReadsMind = true;
 			}
 
 			_playerHUD.SetCombatActionsInteractable(true);
+		}
+
+		/// <summary>
+		/// Devuelve un gambit activo del tipo indicado, elegido al azar entre todos los que cumplen condición.
+		/// playerAction solo es relevante para GambitType.TERTIARY.
+		/// </summary>
+		private GambitScrObj EvaluateGambits(GambitType type, Actions playerAction = Actions.NONE)
+		{
+			System.Collections.Generic.List<GambitScrObj> matches = new System.Collections.Generic.List<GambitScrObj>();
+			foreach (GambitScrObj gambit in _enemy.Gambits)
+			{
+				if (gambit == null || gambit.Type != type) continue;
+				if (gambit.Evaluate(_enemy, _currentRound, playerAction))
+					matches.Add(gambit);
+			}
+			if (matches.Count == 0) return null;
+			return matches[UnityEngine.Random.Range(0, matches.Count)];
 		}
 
 		private void OnPlayerActionSelected(Actions playerAction)
 		{
 			Debug.Log($"[CombatStepManager] Player selected: {ColorAction(playerAction)}");
 			_playerHUD.SetCombatActionsInteractable(false);
+
+			// ── Gambits TERTIARY (solo si el enemigo ganó el mentality roll) ──────
+			if (_enemyReadsMind)
+			{
+				GambitScrObj tertiary = EvaluateGambits(GambitType.TERTIARY, playerAction);
+				if (tertiary != null)
+				{
+					_enemy.SetAction(tertiary.ResultAction);
+					Debug.Log($"[CombatStepManager] TERTIARY gambit fired! Enemy reads {ColorAction(playerAction)} → switches to {ColorAction(tertiary.ResultAction)}");
+				}
+			}
+
 			ResolveRound(playerAction, _enemy.CurrentAction);
 		}
 

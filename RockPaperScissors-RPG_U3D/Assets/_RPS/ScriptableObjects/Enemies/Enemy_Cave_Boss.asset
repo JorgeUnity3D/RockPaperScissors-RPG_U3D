@@ -51,3 +51,11 @@ MonoBehaviour:
     _languages:
     - {fileID: 11400000, guid: 9eb60e1965966ae438e9f1f8862bff77, type: 2}
     - {fileID: 11400000, guid: 59f3f3307691d5a4a9b90d062e7e74d6, type: 2}
+    _gambits:
+    - {fileID: 11400000, guid: 665b4b9f29694481bf5afb6b8de0cdb0, type: 2}
+    - {fileID: 11400000, guid: 052737c6f95c42798b2d5bced60a5b56, type: 2}
+    - {fileID: 11400000, guid: 1182a278643f4b44b8e270b1ccaf0f1b, type: 2}
+    - {fileID: 11400000, guid: c989fd8e7e2348b7914a909176145b48, type: 2}
+    - {fileID: 11400000, guid: c946e32f936b4f9981c41db5f5db3e1f, type: 2}
+    - {fileID: 11400000, guid: 9aa5f8e4b2c9484f93b2dcadb771a1a2, type: 2}
+    - {fileID: 11400000, guid: af5ea10dfd0748c7b85f29aa5f225977, type: 2}

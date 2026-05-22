@@ -22,6 +22,7 @@ namespace Kapibara.Util.Editor
 		private static readonly AssetCategory[] s_categories =
 		{
 			new AssetCategory { Group = "ENEMIES", Label = "Enemies",        AssetType = typeof(EnemyScrObj),              Folder = "Enemies",      DefaultName = "Enemy"              },
+			new AssetCategory { Group = "ENEMIES", Label = "Gambits",        AssetType = typeof(GambitScrObj),             Folder = "Enemies/Gambits", DefaultName = "Gambit"           },
 			new AssetCategory { Group = "ENEMIES", Label = "Languages",      AssetType = typeof(LanguageScrObj),           Folder = "Languages",    DefaultName = "Language"           },
 			new AssetCategory { Group = "LEVELS",  Label = "Map Levels",     AssetType = typeof(MapLevelScrObj),           Folder = "Levels",       DefaultName = "MapLevels"          },
 			new AssetCategory { Group = "PLAYER",  Label = "Stat Icons",     AssetType = typeof(IconsScrObj),              Folder = "Player",       DefaultName = "StatIcons"          },

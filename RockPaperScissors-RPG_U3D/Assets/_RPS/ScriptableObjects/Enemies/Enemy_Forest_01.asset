@@ -50,3 +50,7 @@ MonoBehaviour:
     _goldMax: 15
     _languages:
     - {fileID: 11400000, guid: 8f07e65fa5c083ec1bc9b552dac6a33a, type: 2}
+    _gambits:
+    - {fileID: 11400000, guid: 665b4b9f29694481bf5afb6b8de0cdb0, type: 2}
+    - {fileID: 11400000, guid: 1182a278643f4b44b8e270b1ccaf0f1b, type: 2}
+    - {fileID: 11400000, guid: c946e32f936b4f9981c41db5f5db3e1f, type: 2}
