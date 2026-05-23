@@ -1,0 +1,21 @@
+OVDF v1.1
+Kapibara.RPS.EnemyData, Assembly-CSharp
+
+# $Nh382F9DDFgNKSANZVSLhu
+Position: $root:1
++ [Sirenix.OdinInspector.ColumnGroupAttribute]
+
+# $6HupV3516fDuEQvws4G2nM
+Position: $Nh382F9DDFgNKSANZVSLhu:0
++ [Sirenix.OdinInspector.ColumnGroupAttribute+ColumnSubGroupAttribute]
+
+# $PsfB2RZsZPdddJNteCxADo
+Position: $Nh382F9DDFgNKSANZVSLhu:1
++ [Sirenix.OdinInspector.ColumnGroupAttribute+ColumnSubGroupAttribute]
+
+# _portrait
+Position: $PsfB2RZsZPdddJNteCxADo:0
++ [Sirenix.OdinInspector.PreviewFieldAttribute]
+
+# _name
+Position: $6HupV3516fDuEQvws4G2nM:0

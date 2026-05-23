@@ -1,0 +1,68 @@
+OVDF v1.1
+Kapibara.RPS.TownView, Assembly-CSharp
+
+# $SvXf9QVhwSn2T67MKdMPJo
+Position: $root:2
++ [Sirenix.OdinInspector.ColumnGroupAttribute]
+
+# $WrDMuthR5kW4L4BvnKSrA6
+Position: $SvXf9QVhwSn2T67MKdMPJo:0
++ [Sirenix.OdinInspector.ColumnGroupAttribute+ColumnSubGroupAttribute]
+
+# "Icons"
+Position: $WrDMuthR5kW4L4BvnKSrA6:0
+
+# $TyfCqnP3Dr34u9xZ7tp9pj
+Position: "Icons":0
++ [Sirenix.OdinInspector.ColumnGroupAttribute]
+
+# $6j32GUjEth4DJHngZ3Rjkt
+Position: $TyfCqnP3Dr34u9xZ7tp9pj:0
++ [Sirenix.OdinInspector.ColumnGroupAttribute+ColumnSubGroupAttribute]
+
+# $D8XKmU284yKVBaPqUL2MwD
+Position: $TyfCqnP3Dr34u9xZ7tp9pj:1
++ [Sirenix.OdinInspector.ColumnGroupAttribute+ColumnSubGroupAttribute]
+
+# $5bouoo6pCetYPSmAAH6P57
+Position: $root:0
++ [Sirenix.OdinInspector.ColumnGroupAttribute]
+
+# $GbFQRpLSBXyKXF9PkZXKfh
+Position: $5bouoo6pCetYPSmAAH6P57:1
++ [Sirenix.OdinInspector.ColumnGroupAttribute+ColumnSubGroupAttribute]
+	Size = Auto
+
+# $Rf8mM4kWRTRBKzTLFr5py8
+Position: $GbFQRpLSBXyKXF9PkZXKfh:0
++ [Sirenix.OdinInspector.ColumnGroupAttribute]
+
+# $W6bhJrescJGFNuGewsgEet
+Position: $Rf8mM4kWRTRBKzTLFr5py8:0
++ [Sirenix.OdinInspector.ColumnGroupAttribute+ColumnSubGroupAttribute]
+
+# $Nd6tJey2UFwX5rQZSSe3Mv
+Position: $Rf8mM4kWRTRBKzTLFr5py8:1
++ [Sirenix.OdinInspector.ColumnGroupAttribute+ColumnSubGroupAttribute]
+
+# _notBuiltIcon
+Position: $D8XKmU284yKVBaPqUL2MwD:0
+
+# _buildingIcon
+Position: $6j32GUjEth4DJHngZ3Rjkt:0
+
+# _npcIcon
+Position: $6j32GUjEth4DJHngZ3Rjkt:1
++ [Sirenix.OdinInspector.ShowIfAttribute]
+	Condition = "HasNpc"
+
+# _npcNotFoundIcon
+Position: $D8XKmU284yKVBaPqUL2MwD:1
++ [Sirenix.OdinInspector.ShowIfAttribute]
+	Condition = "HasNpc"
+
+# _hasNpc
+Position: $Nd6tJey2UFwX5rQZSSe3Mv:0
+
+# _townMenu
+Position: $W6bhJrescJGFNuGewsgEet:0
