@@ -26,9 +26,8 @@ namespace Kapibara.RPS
             base.Awake();
             _saveDirectory = Path.Combine(Application.persistentDataPath, _subfolder);
             if (!Directory.Exists(_saveDirectory))
-            {
                 Directory.CreateDirectory(_saveDirectory);
-            }
+            Debug.Log($"[PersistenceService] Save directory: {_saveDirectory}");
         }
 
         #endregion

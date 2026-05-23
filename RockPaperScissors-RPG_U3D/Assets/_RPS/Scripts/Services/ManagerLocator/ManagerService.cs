@@ -31,9 +31,8 @@ namespace Kapibara.RPS
 			Debug.Log($"[ManagerService] GetManagers() -> ");
 			_managers = new List<BaseManager>(GetComponentsInChildren<BaseManager>());
 			_sceneManagers = new ManagerDictionary();
-			foreach (BaseManager sceneManager in _managers) {
+			foreach (BaseManager sceneManager in _managers)
 				_sceneManagers.Add(sceneManager.GetType(), sceneManager);
-			}
 		}
 
 		/// <summary>Devuelve el manager del tipo T, buscando también subtipos si no hay coincidencia exacta.</summary>

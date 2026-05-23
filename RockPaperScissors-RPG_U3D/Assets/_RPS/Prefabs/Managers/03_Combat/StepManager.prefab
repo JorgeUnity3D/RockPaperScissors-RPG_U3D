@@ -187,7 +187,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5168393012951341989, guid: 16b4203cec3bdc1f0b6fcf47c70584b5, type: 3}
       propertyPath: m_Name
-      value: TreasureBoxStepManager
+      value: SurpriseBoxManager
       objectReference: {fileID: 0}
     - target: {fileID: 6862010412553015875, guid: 16b4203cec3bdc1f0b6fcf47c70584b5, type: 3}
       propertyPath: m_LocalPosition.x

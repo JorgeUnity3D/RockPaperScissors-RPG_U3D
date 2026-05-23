@@ -30,10 +30,30 @@ namespace Kapibara.RPS
 		public override void Initialize()
 		{
 			Debug.Log($"[CreditsTimeCounterManager] Initialize() -> ");
+			InitializeCreditsIfNew();
 			ApplyElapsedTime();
 			RefreshUI();
 			if (HasActiveTimer())
 				StartTick();
+		}
+
+		private void InitializeCreditsIfNew()
+		{
+			GameContext ctx = AppContext.GameContext;
+			if (ctx == null || ctx.CreditsLeft >= 0) return;
+
+			int startingCredits = _creditsTimeCounterScrObj.Data.StartingCredits;
+			int maxCredits      = _creditsTimeCounterScrObj.Data.MaxCredits;
+			ctx.CreditsLeft = startingCredits;
+
+			if (startingCredits < maxCredits)
+			{
+				long secsPerCredit             = (long)_creditsTimeCounterScrObj.Data.HoursForACreditInSeconds;
+				ctx.CreditTimerExpiresUnix     = (DateTimeOffset.UtcNow.ToUnixTimeSeconds() + secsPerCredit).ToString();
+			}
+
+			Debug.Log($"[CreditsTimeCounterManager] New game — credits initialized to {ctx.CreditsLeft}/{maxCredits}");
+			AppEvents.OnGameContextUpdated?.Invoke();
 		}
 
 		protected override void Subscribe()

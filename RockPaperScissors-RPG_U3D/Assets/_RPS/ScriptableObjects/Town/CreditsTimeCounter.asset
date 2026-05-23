@@ -22,6 +22,6 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   _data:
+    _startingCredits: 3
     _maxCredits: 5
-    _hoursForACredit: 0.25
-    _creditsLeft: 3
+    _hoursForACredit: 0.01

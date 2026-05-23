@@ -9,11 +9,15 @@ namespace Kapibara.RPS
 	/// </summary>
 	public class StepManager : BaseManager
 	{
-		[SerializeField, ReadOnly] private CombatStepManager      _combatManager;
-		[SerializeField, ReadOnly] private TreasureStepManager   _treasureStepManager;
-		[SerializeField, ReadOnly] private NPCStepManager        _npcStepManager;
+		[SerializeField, ReadOnly] private CombatStepManager       _combatManager;
+		[SerializeField, ReadOnly] private TreasureStepManager    _treasureStepManager;
+		[SerializeField, ReadOnly] private NPCStepManager         _npcStepManager;
 		[SerializeField, ReadOnly] private SurpriseBoxStepManager _surpriseBoxManager;
-		[SerializeField, ReadOnly] private PlayerHUDUIController  _playerHUD;
+		[SerializeField, ReadOnly] private PlayerHUDUIController   _playerHUD;
+		[SerializeField, ReadOnly] private EnemyHUDUIController    _enemyHUD;
+		[SerializeField, ReadOnly] private TreasureHUDUIController _treasureHUD;
+		[SerializeField, ReadOnly] private NPCHUDUIController      _npcHUD;
+		[SerializeField, ReadOnly] private SurpriseBoxHUDUIController _surpriseBoxHUD;
 
 		#region SETUP
 
@@ -23,7 +27,13 @@ namespace Kapibara.RPS
 			_treasureStepManager = GetComponentInChildren<TreasureStepManager>();
 			_npcStepManager      = GetComponentInChildren<NPCStepManager>();
 			_surpriseBoxManager  = GetComponentInChildren<SurpriseBoxStepManager>();
-			_playerHUD           = ServiceLocator.Instance.GetService<UIService>().GetController<PlayerHUDUIController>();
+
+			UIService uiService  = ServiceLocator.Instance.GetService<UIService>();
+			_playerHUD           = uiService.GetController<PlayerHUDUIController>();
+			_enemyHUD            = uiService.GetController<EnemyHUDUIController>();
+			_treasureHUD         = uiService.GetController<TreasureHUDUIController>();
+			_npcHUD              = uiService.GetController<NPCHUDUIController>();
+			_surpriseBoxHUD      = uiService.GetController<SurpriseBoxHUDUIController>();
 		}
 
 		protected override void Subscribe()   { }
@@ -47,6 +57,11 @@ namespace Kapibara.RPS
 
 			CombatResultUIController resultUI = ServiceLocator.Instance.GetService<UIService>().GetController<CombatResultUIController>();
 			if (resultUI != null) resultUI.HideCanvas(0);
+
+			_enemyHUD?.HideCanvas(0);
+			_treasureHUD?.HideCanvas(0);
+			_npcHUD?.HideCanvas(0);
+			_surpriseBoxHUD?.HideCanvas(0);
 
 			MapStep step   = ctx.CurrentStep;
 			Player  player = AppContext.Player;

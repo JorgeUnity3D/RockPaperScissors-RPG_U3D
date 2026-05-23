@@ -25,7 +25,7 @@ namespace Kapibara.RPS
 		//Town Context
 		[SerializeField] private TownContext _townContext;
 		//Credits
-		private int    _creditsLeft          = 5;
+		private int    _creditsLeft          = -1;
 		private string _creditTimerExpiresUnix = "0";
 
 		#endregion
@@ -118,7 +118,7 @@ namespace Kapibara.RPS
 				new TownData(TownMenu.TRAVEL, true, false, false, false, false),
 				new TownData(TownMenu.HOUSE, true, false, false, false, false)
 			});
-			_creditsLeft           = 5;
+			_creditsLeft           = -1;
 			_creditTimerExpiresUnix = "0";
 		}
 

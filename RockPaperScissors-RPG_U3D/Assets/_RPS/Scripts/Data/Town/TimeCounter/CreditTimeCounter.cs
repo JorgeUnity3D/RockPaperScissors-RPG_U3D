@@ -7,9 +7,11 @@ namespace Kapibara.RPS
 	[Serializable]
 	public class CreditTimeCounter
 	{
+		[SerializeField] private int   _startingCredits = 5;
 		[SerializeField] private int   _maxCredits      = 5;
 		[SerializeField] private float _hoursForACredit = 0.25f;
 
+		public int   StartingCredits          => _startingCredits;
 		public int   MaxCredits               => _maxCredits;
 		public float HoursForACredit          => _hoursForACredit;
 		public float HoursForACreditInSeconds => _hoursForACredit * 3600f;
