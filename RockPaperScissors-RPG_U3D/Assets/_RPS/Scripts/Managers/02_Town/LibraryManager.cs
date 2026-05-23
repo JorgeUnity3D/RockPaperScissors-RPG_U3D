@@ -1,12 +1,12 @@
+using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Kapibara.RPS
 {
 	/// <summary>
-	/// Manager de la Biblioteca. Lee la config de quests del ScriptableObject e inyecta
-	/// el progreso del jugador para mostrar el estado de cada quest.
-	/// Kill tracking requiere combat (Phase 4); por ahora todos los contadores son 0.
+	/// Manager de la Biblioteca. Materializa las quests en GameContext la primera vez que se abre
+	/// (solo si el NPC está rescatado). El tracking de kills y las recompensas viven en GameManager.
 	/// </summary>
 	public class LibraryManager : BaseManager, ITownBuilding
 	{
@@ -14,7 +14,6 @@ namespace Kapibara.RPS
 		[SerializeField] private LibraryScrObj _libraryScrObj;
 		[Header("DEBUG")]
 		[SerializeField, ReadOnly] private LibraryUIController _libraryUIController;
-		[SerializeField, ReadOnly] private Player _player;
 
 		#region SETUP
 
@@ -22,18 +21,11 @@ namespace Kapibara.RPS
 		{
 			Debug.Log($"[LibraryManager] SetUp() -> ");
 			_libraryUIController = ServiceLocator.Instance.GetService<UIService>().GetController<LibraryUIController>();
-			_player = AppContext.Player;
 		}
 
-		protected override void Subscribe()
-		{
-			Debug.Log($"[LibraryManager] Subscribe() -> Nothing to subscribe!");
-		}
+		protected override void Subscribe() { }
 
-		protected override void UnSubscribe()
-		{
-			Debug.Log($"[LibraryManager] UnSubscribe() -> Nothing to unsubscribe!");
-		}
+		protected override void UnSubscribe() { }
 
 		#endregion
 
@@ -42,7 +34,64 @@ namespace Kapibara.RPS
 		public void OnMenuOpen()
 		{
 			Debug.Log($"[LibraryManager] OnMenuOpen() -> ");
-			_libraryUIController.SetData(_libraryScrObj.Data, _player.LibraryKillCounts);
+			MaterializeIfNeeded();
+			List<LibraryQuestProgress> quests = AppContext.GameContext.LibraryQuests;
+			_libraryUIController.SetData(quests, GetUnlockedPageCount(quests));
+		}
+
+		private void MaterializeIfNeeded()
+		{
+			List<LibraryQuestProgress> quests = AppContext.GameContext.LibraryQuests;
+			if (quests.Count > 0) return;
+
+			TownData libraryTownData = AppContext.TownData.Find(td => td.TownMenu == TownMenu.LIBRARY);
+			if (libraryTownData == null || !libraryTownData.NpcUnlocked) return;
+
+			List<LibraryPageData> pages = _libraryScrObj.Data.Pages;
+			for (int pageIndex = 0; pageIndex < pages.Count; pageIndex++)
+			{
+				foreach (LibraryQuestData quest in pages[pageIndex].Quests)
+				{
+					if (quest.TargetEnemy == null) continue;
+					quests.Add(new LibraryQuestProgress(
+						quest.TargetEnemy.Data.Id,
+						quest.TargetEnemy.Data.Name,
+						quest.TargetKills,
+						quest.RewardStat,
+						quest.RewardAmount,
+						pageIndex
+					));
+				}
+			}
+
+			Debug.Log($"[LibraryManager] Materialized {quests.Count} quests.");
+			AppEvents.OnGameContextUpdated?.Invoke();
+		}
+
+		private int GetUnlockedPageCount(List<LibraryQuestProgress> quests)
+		{
+			if (quests.Count == 0) return 0;
+
+			int totalPages = 0;
+			foreach (LibraryQuestProgress quest in quests)
+				if (quest.PageIndex + 1 > totalPages) totalPages = quest.PageIndex + 1;
+
+			int unlockedCount = 1;
+			for (int pageIndex = 0; pageIndex < totalPages - 1; pageIndex++)
+			{
+				bool allComplete = true;
+				foreach (LibraryQuestProgress quest in quests)
+				{
+					if (quest.PageIndex == pageIndex && !quest.IsCompleted)
+					{
+						allComplete = false;
+						break;
+					}
+				}
+				if (!allComplete) break;
+				unlockedCount++;
+			}
+			return unlockedCount;
 		}
 
 		#endregion

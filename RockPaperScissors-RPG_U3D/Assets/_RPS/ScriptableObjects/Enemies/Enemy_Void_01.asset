@@ -22,7 +22,7 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   _data:
-    _id: 0
+    _id: void-knight
     _name: Void Knight
     _portrait: {fileID: -5582043908450876262, guid: 843efc42f3a37f105b8aa54c09864735, type: 3}
     _maxHealth: 30

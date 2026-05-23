@@ -58,7 +58,7 @@ Root: `Assets/_RPS/`
 | File | Description |
 |---|---|
 | `AppContext/AppContext.cs` | Static global accessor for current `GameContext`, `Player`, `Attributes`, `TownData` |
-| `GameContext/GameContext.cs` | Serializable save state: game name, timestamp, date, `Player`, `List<TownData>` |
+| `GameContext/GameContext.cs` | Serializable save state: game name, timestamp, date, `Player`, `List<TownData>`, `List<LibraryQuestProgress>` |
 | `Player/Player.cs` | Active player data model using NAttribute/NInt for all stats; also contains legacy `PlayerOld : Character` at bottom of same file |
 
 ### Data/Dictionaries/
@@ -77,7 +77,7 @@ Root: `Assets/_RPS/`
 
 | File | Description |
 |---|---|
-| `Combat/EnemyData.cs` | Design-time enemy config: stats, probabilities, costs, rewards, languages, gambit list |
+| `Combat/EnemyData.cs` | Design-time enemy config: string `_id` slug, stats, probabilities, costs, rewards, languages, gambit list |
 | `Combat/EnemyScrObj.cs` | ScriptableObject wrapping `EnemyData` |
 | `Combat/GambitScrObj.cs` | Shareable NPC behavior rule: type (PRIMARY/SECONDARY/TERTIARY), condition, result action; `Evaluate(Enemy, round, playerAction)` |
 
@@ -88,7 +88,9 @@ Root: `Assets/_RPS/`
 | `TownData.cs` | Per-location save state: `TownMenu` key, name, message, level, experience, cost, unlock flags, NPC flags |
 | `TownView.cs` | Visual config for a town location (name, sprite, color — data for display only) |
 | `TownViewScrObj.cs` | ScriptableObject wrapping `List<TownView>` |
-| `Library/LibraryQuest.cs` | Quest data: target enemy, kill count, reward attribute (stub — no public API) |
+| `Library/LibraryQuestData.cs` | Quest definition SO data: `EnemyScrObj` target, kill count, reward stat + amount; used only at materialization time |
+| `Library/LibraryQuestProgress.cs` | Runtime quest state (serialized in `GameContext.LibraryQuests`): `_enemyId` string, kill counts, completion flag, page index |
+| `Library/LibraryQuest.cs` | Legacy stub — superseded by `LibraryQuestData` + `LibraryQuestProgress` |
 | `PaperTree/PaperTreeNode.cs` | Single skill tree node (SkillNode enum key + modifier data) |
 | `PaperTree/PaperTreeSkillTree.cs` | Container for `List<PaperTreeNode>` |
 | `PaperTree/PaperTreeScrObj.cs` | ScriptableObject for the skill tree definition |
@@ -113,7 +115,7 @@ Root: `Assets/_RPS/`
 | `02_Town/PaperTreeManager.cs` | Passes player attributes + skill tree SO to PaperTreeUIController |
 | `02_Town/HouseManager.cs` | Player statistics display manager |
 | `02_Town/TravelManager.cs` | Map/encounter selection manager |
-| `02_Town/LibraryManager.cs` | Library location manager (partially implemented) |
+| `02_Town/LibraryManager.cs` | Library manager: materializes quests into `GameContext` on first open (`MaterializeIfNeeded`), passes progress list to UIController |
 | `02_Town/TheaterManager.cs` | Theater/comic viewer manager |
 | `02_Town/CreditsTimeCounterManager.cs` | Credits time counter location manager |
 | `02_Town/StablesManager.cs` | Stables location manager |

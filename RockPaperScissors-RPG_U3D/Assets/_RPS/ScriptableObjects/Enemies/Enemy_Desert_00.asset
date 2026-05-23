@@ -22,7 +22,7 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   _data:
-    _id: 0
+    _id: desert-crawler
     _name: Sand Crawler
     _portrait: {fileID: -6110654770045648411, guid: 843efc42f3a37f105b8aa54c09864735, type: 3}
     _maxHealth: 12

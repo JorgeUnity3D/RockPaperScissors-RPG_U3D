@@ -31,21 +31,20 @@ namespace Kapibara.RPS
 		#region CONTROL
 
 		/// <summary>
-		/// Instancia una tarjeta por cada quest de todas las páginas.
-		/// killCounts está indexado por posición plana de quest (igual que Player._libraryKillCounts).
+		/// Instancia una tarjeta por cada quest visible.
+		/// quests proviene de GameContext.LibraryQuests — ya materializado.
+		/// unlockedPageCount determina qué páginas se muestran.
 		/// </summary>
-		public void SetData(LibraryData libraryData, List<int> killCounts)
+		public void SetData(List<LibraryQuestProgress> quests, int unlockedPageCount)
 		{
-			int questIndex = 0;
-			foreach (LibraryPageData page in libraryData.Pages)
+			foreach (Transform child in _cardContainer)
+				Destroy(child.gameObject);
+
+			foreach (LibraryQuestProgress quest in quests)
 			{
-				foreach (LibraryQuestData quest in page.Quests)
-				{
-					int kills = questIndex < killCounts.Count ? killCounts[questIndex] : 0;
-					LibraryQuestCard card = Instantiate(_questCardPrefab, _cardContainer);
-					card.SetData(quest, kills);
-					questIndex++;
-				}
+				if (quest.PageIndex >= unlockedPageCount) continue;
+				LibraryQuestCard card = Instantiate(_questCardPrefab, _cardContainer);
+				card.SetData(quest);
 			}
 		}
 

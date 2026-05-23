@@ -24,6 +24,8 @@ namespace Kapibara.RPS
 		[SerializeField] private NotificableField<Player> _player;
 		//Town Context
 		[SerializeField] private TownContext _townContext;
+		//Library Quests
+		[SerializeField] private List<LibraryQuestProgress> _libraryQuests;
 		//Credits
 		private int    _creditsLeft          = -1;
 		private string _creditTimerExpiresUnix = "0";
@@ -79,6 +81,9 @@ namespace Kapibara.RPS
 			set => _townContext.TownData = value;
 		}
 
+		/// <summary>Quests de la Biblioteca materializadas al activar el edificio. Vacío hasta que el NPC es rescatado.</summary>
+		public List<LibraryQuestProgress> LibraryQuests => _libraryQuests;
+
 		/// <summary>Créditos de viaje disponibles. Persiste en el fichero de guardado.</summary>
 		public int CreditsLeft
 		{
@@ -118,13 +123,14 @@ namespace Kapibara.RPS
 				new TownData(TownMenu.TRAVEL, true, false, false, false),
 				new TownData(TownMenu.HOUSE, true, false, false, false)
 			});
+			_libraryQuests          = new List<LibraryQuestProgress>();
 			_creditsLeft           = -1;
 			_creditTimerExpiresUnix = "0";
 		}
 
 		// townContext: new saves. townData: backward compat with old saves that had the flat list.
 		[JsonConstructor]
-		public GameContext(string gameName, string creationTimestamp, string lastUpdateDate, Player player, TownContext townContext, List<TownData> townData, int version = 0, int creditsLeft = 5, string creditTimerExpiresUnix = "0")
+		public GameContext(string gameName, string creationTimestamp, string lastUpdateDate, Player player, TownContext townContext, List<TownData> townData, int version = 0, int creditsLeft = 5, string creditTimerExpiresUnix = "0", List<LibraryQuestProgress> libraryQuests = null)
 		{
 			_gameName = new NString(gameName);
 			_creationTimestamp = new NString(creationTimestamp);
@@ -134,6 +140,7 @@ namespace Kapibara.RPS
 			_version = version;
 			_creditsLeft           = creditsLeft;
 			_creditTimerExpiresUnix = creditTimerExpiresUnix ?? "0";
+			_libraryQuests          = libraryQuests ?? new List<LibraryQuestProgress>();
 		}
 
 		#endregion

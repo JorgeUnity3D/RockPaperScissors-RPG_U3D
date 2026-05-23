@@ -50,8 +50,6 @@ namespace Kapibara.RPS
 		[SerializeField] private NInt _energyItemLevel;
 		//Theater
 		[SerializeField] private List<int> _unlockedStoryIds;
-		//Library
-		[SerializeField] private List<int> _libraryKillCounts;
 
 		//Helpers
 		[JsonIgnore] private Dictionary<Stats, NAttribute> _statAttributes;
@@ -224,12 +222,6 @@ namespace Kapibara.RPS
 		}
 
 		/// <summary>
-		/// Kill counts por quest de la Biblioteca, indexados por posición plana (todas las páginas aplanadas en orden).
-		/// Valores en 0 hasta que combat esté implementado (Phase 4).
-		/// </summary>
-		public List<int> LibraryKillCounts => _libraryKillCounts;
-
-		/// <summary>
 		/// IDs de las historias desbloqueadas en el Theater. La historia 0 está disponible desde el inicio.
 		/// No asumas orden secuencial — el jugador puede desbloquear rutas no contiguas.
 		/// Usa UnlockStory() para añadir entradas; IsStoryUnlocked() para consultar.
@@ -335,8 +327,6 @@ namespace Kapibara.RPS
 			_energyItemLevel = new NInt(0);
 			//Theater
 			_unlockedStoryIds = new List<int> { 0 };
-			//Library
-			_libraryKillCounts = new List<int>();
 
 			//Helpers
 			_statAttributes = new Dictionary<Stats, NAttribute>
@@ -358,7 +348,7 @@ namespace Kapibara.RPS
 		public Player(string name, int level, int gold, int currentHealth, StatAttribute maxHealth, StatAttribute mentality, StatAttribute rock,
 			int rockCost, StatAttribute paper, int paperCost, StatAttribute scissor, int scissorCost, StatAttribute defense, int defenseCost, StatAttribute thorns,
 			int initialEnergy, StatAttribute energyRecovery, StatAttribute crit, StatAttribute superpower,
-			int attackItemLevel = 0, int healItemLevel = 0, int energyItemLevel = 0, List<int> unlockedStoryIds = null, List<int> libraryKillCounts = null)
+			int attackItemLevel = 0, int healItemLevel = 0, int energyItemLevel = 0, List<int> unlockedStoryIds = null)
 		{
 			_name = new NString(name);
 			_level = new NInt(level);
@@ -395,8 +385,6 @@ namespace Kapibara.RPS
 			_energyItemLevel = new NInt(energyItemLevel);
 			//Theater
 			_unlockedStoryIds = unlockedStoryIds ?? new List<int> { 0 };
-			//Library
-			_libraryKillCounts = libraryKillCounts ?? new List<int>();
 
 			//Helpers
 			_statAttributes = new Dictionary<Stats, NAttribute>

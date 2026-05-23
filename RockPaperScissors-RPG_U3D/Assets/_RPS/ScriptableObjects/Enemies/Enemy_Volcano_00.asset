@@ -22,7 +22,7 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   _data:
-    _id: 0
+    _id: volcano-sprite
     _name: Lava Sprite
     _portrait: {fileID: 4733236076421836986, guid: 843efc42f3a37f105b8aa54c09864735, type: 3}
     _maxHealth: 18

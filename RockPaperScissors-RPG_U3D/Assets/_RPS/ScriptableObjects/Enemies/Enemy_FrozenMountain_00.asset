@@ -22,7 +22,7 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   _data:
-    _id: 0
+    _id: frozen-imp
     _name: Frost Imp
     _portrait: {fileID: -8245479547354485185, guid: 843efc42f3a37f105b8aa54c09864735, type: 3}
     _maxHealth: 13

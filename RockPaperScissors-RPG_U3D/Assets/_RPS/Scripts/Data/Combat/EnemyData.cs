@@ -12,7 +12,7 @@ namespace Kapibara.RPS
 	public class EnemyData
 	{
 		[Header("Identity")]
-		[SerializeField] private EnemyId _id;
+		[SerializeField] private string  _id;
 		[SerializeField] private string  _name;
 		[SerializeField] private Sprite  _portrait;
 
@@ -57,7 +57,7 @@ namespace Kapibara.RPS
 		[Header("Gambits")]
 		[SerializeField] private List<GambitScrObj> _gambits;
 
-		public EnemyId Id               => _id;
+		public string Id                => _id;
 		public string Name              => _name;
 		public Sprite Portrait          => _portrait;
 		public int MaxHealth            => _maxHealth;

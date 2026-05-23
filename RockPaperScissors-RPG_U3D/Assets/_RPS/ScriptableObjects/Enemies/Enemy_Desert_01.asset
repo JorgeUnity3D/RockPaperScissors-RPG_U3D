@@ -22,7 +22,7 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   _data:
-    _id: 0
+    _id: desert-golem
     _name: Desert Golem
     _portrait: {fileID: -8583424898737625535, guid: 843efc42f3a37f105b8aa54c09864735, type: 3}
     _maxHealth: 17

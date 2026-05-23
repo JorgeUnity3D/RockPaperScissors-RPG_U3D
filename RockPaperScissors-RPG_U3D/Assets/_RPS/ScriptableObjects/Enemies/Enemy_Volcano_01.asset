@@ -22,7 +22,7 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   _data:
-    _id: 0
+    _id: volcano-brute
     _name: Magma Brute
     _portrait: {fileID: 7349637577870631442, guid: 843efc42f3a37f105b8aa54c09864735, type: 3}
     _maxHealth: 28

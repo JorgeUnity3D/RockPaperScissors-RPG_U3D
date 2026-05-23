@@ -140,6 +140,9 @@ namespace Kapibara.RPS
 			{
 				MapStep step = ctx.CurrentStep;
 
+				if ((step.Type == MapStepType.COMBAT || step.Type == MapStepType.BOSS) && step.Enemy != null)
+					ProcessLibraryKills(step.Enemy.Data.Id);
+
 				if (step.Type == MapStepType.BOSS)
 				{
 					bool isFirstCompletion = !ctx.SelectedLevel.IsCompleted;
@@ -245,6 +248,60 @@ namespace Kapibara.RPS
 			Debug.Log($"[GameManager] ShowLevelResult() -> win:{playerWins}  gold:{totalGold}  exp:{totalExp}");
 			resultUI.SetData(playerWins, totalGold, totalExp);
 			resultUI.ShowCanvas();
+		}
+
+		private void ProcessLibraryKills(string enemyId)
+		{
+			List<LibraryQuestProgress> quests = AppContext.GameContext?.LibraryQuests;
+			if (quests == null || quests.Count == 0) return;
+
+			bool changed = false;
+			foreach (LibraryQuestProgress quest in quests)
+			{
+				if (quest.EnemyId != enemyId || quest.IsCompleted) continue;
+				if (quest.CurrentKills >= quest.TargetKills) continue;
+
+				quest.CurrentKills++;
+				changed = true;
+
+				if (quest.CurrentKills >= quest.TargetKills)
+				{
+					quest.IsCompleted = true;
+					ApplyLibraryReward(quest);
+					AddLibraryExp(1);
+				}
+			}
+
+			if (changed)
+				AppEvents.OnGameContextUpdated?.Invoke();
+		}
+
+		private void ApplyLibraryReward(LibraryQuestProgress quest)
+		{
+			Player player = AppContext.Player;
+			if (player == null) return;
+			StatAttribute attribute = player.Attributes.Find(a => a.Stat == quest.RewardStat);
+			if (attribute == null) return;
+			LibraryModifier modifier = attribute.GetModifier<LibraryModifier>();
+			if (modifier == null) return;
+			modifier.Modifier += quest.RewardAmount;
+			Debug.Log($"[GameManager] Library quest complete — +{quest.RewardAmount} {quest.RewardStat}");
+		}
+
+		private void AddLibraryExp(int amount)
+		{
+			TownData libraryData = AppContext.TownData?.Find(td => td.TownMenu == TownMenu.LIBRARY);
+			if (libraryData == null) return;
+			libraryData.Experience += amount;
+			int maxLevel = GameConsts.TRAINING_EXP_PER_LEVEL.Count - 1;
+			while (libraryData.Level < maxLevel &&
+			       libraryData.Experience >= GameConsts.TRAINING_EXP_PER_LEVEL[libraryData.Level])
+			{
+				libraryData.Level++;
+			}
+			if (libraryData.Level >= maxLevel)
+				libraryData.Experience = Mathf.Min(libraryData.Experience, GameConsts.TRAINING_EXP_PER_LEVEL[maxLevel]);
+			AppEvents.OnBuildingExpUpdated?.Invoke(TownMenu.LIBRARY);
 		}
 
 		private void UpdateSaveGame()

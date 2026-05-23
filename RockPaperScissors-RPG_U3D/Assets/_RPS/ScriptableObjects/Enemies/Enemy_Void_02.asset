@@ -10,44 +10,44 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 971eb246421c5f94f9c1209bfa370109, type: 3}
-  m_Name: Enemy_Desert_Boss
+  m_Name: Enemy_Void_02
   m_EditorClassIdentifier: Assembly-CSharp::Kapibara.RPS.EnemyScrObj
   serializationData:
     SerializedFormat: 2
-    SerializedBytes: 
+    SerializedBytes:
     ReferencedUnityObjects: []
-    SerializedBytesString: 
+    SerializedBytesString:
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
   _data:
-    _id: desert-boss
-    _name: Dune Warlord
-    _portrait: {fileID: 6863312911260529401, guid: 5d60c13e1f8d7879c90718ac7f894b3f, type: 3}
-    _maxHealth: 28
-    _mentality: 1
-    _rock: 10
-    _paper: 4
-    _scissor: 3
-    _defense: 8
-    _thorns: 4
-    _crit: 2
-    _superpower: 0
+    _id: void-entity
+    _name: Null Entity
+    _portrait: {fileID: -2288085907734351700, guid: 5d60c13e1f8d7879c90718ac7f894b3f, type: 3}
+    _maxHealth: 25
+    _mentality: 10
+    _rock: 5
+    _paper: 6
+    _scissor: 6
+    _defense: 4
+    _thorns: 2
+    _crit: 5
+    _superpower: 15
     _initialEnergy: 10
-    _energyRecovery: 4
+    _energyRecovery: 12
     _rockCost: 10
     _paperCost: 10
     _scissorCost: 10
     _defenseCost: 10
-    _rockProb: 50
-    _paperProb: 10
-    _scissorProb: 5
-    _defenseProb: 30
-    _energyProb: 5
-    _mentalityMod: 1
-    _goldMin: 25
-    _goldMax: 40
+    _rockProb: 20
+    _paperProb: 20
+    _scissorProb: 20
+    _defenseProb: 5
+    _energyProb: 35
+    _mentalityMod: 3
+    _goldMin: 45
+    _goldMax: 68
     _languages:
-    - {fileID: 11400000, guid: 9eb60e1965966ae438e9f1f8862bff77, type: 2}
-    - {fileID: 11400000, guid: 59f3f3307691d5a4a9b90d062e7e74d6, type: 2}
+    - {fileID: 11400000, guid: 8f07e65fa5c083ec1bc9b552dac6a33a, type: 2}
+    _gambits: []

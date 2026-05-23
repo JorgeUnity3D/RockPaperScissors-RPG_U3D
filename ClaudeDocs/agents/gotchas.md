@@ -20,9 +20,9 @@
 
 ---
 
-## 5. `BaseModifierConverter` doesn't handle `LibraryModifier`
+## 5. `BaseModifierConverter` doesn't handle `LibraryModifier` — ✅ FIXED 2026-05-24
 
-The switch in `BaseModifierConverter.ReadJson` covers `TRAININGHOUSE_MOD`, `PAPERTREE_MOD`, `SCISSORBONFIRE_MOD`, and hits `default: throw new Exception()`. `LIBRARY_MOD = 3` is defined in `ModifierType` and `GameConsts.ATTRIBUTE_TYPE_VALUE` but missing from the converter. Loading any save that contains a serialized `LibraryModifier` will throw an unhandled exception.
+`LIBRARY_MOD` case added to `BaseModifierConverter.ReadJson`. Deserializes as `LibraryModifier` correctly. Old saves without a LibraryModifier load fine; saves with one no longer throw.
 
 ---
 

@@ -22,7 +22,7 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   _data:
-    _id: 1
+    _id: cave-troll
     _name: Cave Troll
     _portrait: {fileID: 2925835854707207079, guid: 843efc42f3a37f105b8aa54c09864735, type: 3}
     _maxHealth: 25

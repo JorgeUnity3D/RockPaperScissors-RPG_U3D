@@ -22,7 +22,7 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   _data:
-    _id: 0
+    _id: ocean-shaman
     _name: Tide Shaman
     _portrait: {fileID: 3174213229076479155, guid: 843efc42f3a37f105b8aa54c09864735, type: 3}
     _maxHealth: 13

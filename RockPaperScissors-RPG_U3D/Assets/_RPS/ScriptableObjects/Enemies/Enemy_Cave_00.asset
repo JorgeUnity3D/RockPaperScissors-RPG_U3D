@@ -22,7 +22,7 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   _data:
-    _id: 0
+    _id: cave-bat
     _name: Cave Bat
     _portrait: {fileID: 194062433656301813, guid: 843efc42f3a37f105b8aa54c09864735, type: 3}
     _maxHealth: 15

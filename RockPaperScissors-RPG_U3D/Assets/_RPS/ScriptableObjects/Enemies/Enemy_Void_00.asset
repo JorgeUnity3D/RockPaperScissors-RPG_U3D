@@ -22,7 +22,7 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   _data:
-    _id: 0
+    _id: void-wraith
     _name: Void Wraith
     _portrait: {fileID: -8211495812308594706, guid: 843efc42f3a37f105b8aa54c09864735, type: 3}
     _maxHealth: 20

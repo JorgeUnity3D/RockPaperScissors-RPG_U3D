@@ -31,18 +31,6 @@
 		SURPRISE_BOX
 	}
 
-	public enum EnemyId
-	{
-		ENEMY_0,
-		ENEMY_1,
-		ENEMY_2,
-		ENEMY_3,
-		ENEMY_4,
-		ENEMY_5,
-		ENEMY_6,
-		ENEMY_7,
-	}
-
 	public enum GambitType
 	{
 		PRIMARY,    // antes de action roll Y mentality roll; obligatorio; cancela el resto

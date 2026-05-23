@@ -22,9 +22,9 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   _data:
-    _id: 0
+    _id: volcano-boss
     _name: Infernal Titan
-    _portrait: {fileID: -1067249927, guid: 03abc9512c2a87143b6653bb0c02902f, type: 3}
+    _portrait: {fileID: 4099138830792909329, guid: 5d60c13e1f8d7879c90718ac7f894b3f, type: 3}
     _maxHealth: 48
     _mentality: 3
     _rock: 16
