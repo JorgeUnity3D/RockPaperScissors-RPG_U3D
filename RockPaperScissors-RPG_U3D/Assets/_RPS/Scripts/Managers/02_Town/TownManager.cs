@@ -25,6 +25,7 @@ namespace Kapibara.RPS
 		[SerializeField, ReadOnly] private InMenuUIController _inMenuUIController;
 
 		private BaseUIElement _currentTownUIController;
+		private TownMenu      _currentOpenMenu;
 
 		#region SETUP
 
@@ -49,6 +50,7 @@ namespace Kapibara.RPS
 			AppEvents.OnOpenTownMenu += OpenTownMenu;
 			AppEvents.OnBackFromTownMenu += BackFromTownMenu;
 			AppEvents.OnConfirmUnlock += UnlockTownMenu;
+			AppEvents.OnBuildingExpUpdated += OnBuildingExpUpdated;
 		}
 
 		protected override void UnSubscribe()
@@ -58,6 +60,7 @@ namespace Kapibara.RPS
 			AppEvents.OnOpenTownMenu -= OpenTownMenu;
 			AppEvents.OnBackFromTownMenu -= BackFromTownMenu;
 			AppEvents.OnConfirmUnlock -= UnlockTownMenu;
+			AppEvents.OnBuildingExpUpdated -= OnBuildingExpUpdated;
 		}
 
 		#endregion
@@ -95,6 +98,17 @@ namespace Kapibara.RPS
 		private void GoToTownMenu(TownData townData, TownView townView)
 		{
 			Debug.Log($"[TownManager] GoToTownMenu() -> TownView: {townData.TownMenu}");
+
+			_currentOpenMenu = townData.TownMenu;
+
+			if (townView.HasNpc && !townData.NpcUnlocked)
+			{
+				_currentTownUIController = null;
+				_inMenuUIController.ShowCanvas();
+				_inMenuUIController.SetData(townData, townView);
+				return;
+			}
+
 			TownMenu townMenu = townData.TownMenu;
 			BaseManager targetManager = _managerService.GetManager(townMenu);
 			_currentTownUIController = _uiService.GetController(townMenu);
@@ -124,8 +138,18 @@ namespace Kapibara.RPS
 		private void BackFromTownMenu()
 		{
 			Debug.Log($"[TownManager] BackFromTownMenu() -> ");
-			_currentTownUIController.HideCanvas();
+			_currentTownUIController?.HideCanvas();
 			_inMenuUIController.HideCanvas();
+			_currentOpenMenu = default;
+		}
+
+		private void OnBuildingExpUpdated(TownMenu townMenu)
+		{
+			if (townMenu != _currentOpenMenu) return;
+			TownData townData = _townData.Find(td => td.TownMenu == townMenu);
+			TownView townView = _townViews.Find(tv => tv.TownMenu == townMenu);
+			if (townData != null && townView != null)
+				_inMenuUIController.SetData(townData, townView);
 		}
 
 		private void UnlockTownMenu(TownData townData)

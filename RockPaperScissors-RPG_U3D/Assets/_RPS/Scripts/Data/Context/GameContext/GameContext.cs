@@ -115,8 +115,8 @@ namespace Kapibara.RPS
 				new TownData(TownMenu.STONE_SMITHY),
 				new TownData(TownMenu.THEATER),
 				new TownData(TownMenu.TRAINING_HOUSE),
-				new TownData(TownMenu.TRAVEL, true, false, false, false, false),
-				new TownData(TownMenu.HOUSE, true, false, false, false, false)
+				new TownData(TownMenu.TRAVEL, true, false, false, false),
+				new TownData(TownMenu.HOUSE, true, false, false, false)
 			});
 			_creditsLeft           = -1;
 			_creditTimerExpiresUnix = "0";

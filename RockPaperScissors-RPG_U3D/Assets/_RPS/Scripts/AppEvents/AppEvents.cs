@@ -56,6 +56,8 @@ namespace Kapibara.RPS
 		public static UnityAction<float> OnTimeUpdated;
 		/// <summary>Se dispara cuando cambia la cantidad de créditos disponibles.</summary>
 		public static UnityAction<int> OnCreditsUpdated;
+		/// <summary>Un edificio ha ganado EXP o subido de nivel. TownManager lo consume para refrescar InMenuUIController si ese edificio está abierto.</summary>
+		public static UnityAction<TownMenu> OnBuildingExpUpdated;
 		/// <summary>El jugador pulsa "Ver anuncio" en Stables. StablesManager lo consume para ganar 1 crédito.</summary>
 		public static UnityAction OnWatchAd;
 		/// <summary>El jugador pulsa "Comprar juego" en Stables. StablesManager lo consume (IAP placeholder).</summary>
@@ -84,6 +86,9 @@ namespace Kapibara.RPS
 		public static UnityAction OnOptionsRequested;
 		/// <summary>El jugador pulsa Exit en el menú de pausa. PauseManager lo consume para abandonar el nivel.</summary>
 		public static UnityAction OnCombatExited;
+
+		/// <summary>El jugador pulsa un nodo del árbol de habilidades. PaperTreeManager lo consume para validar y ejecutar la compra.</summary>
+		public static UnityAction<PaperTreeNode> OnPaperTreeNodeSelected;
 
 		/// <summary>Se dispara cuando el jugador pulsa un botón de acción en combate.</summary>
 		public static UnityAction<Actions> OnCombatActionSelected;

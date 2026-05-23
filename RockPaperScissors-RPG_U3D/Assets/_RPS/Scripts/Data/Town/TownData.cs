@@ -20,7 +20,6 @@ namespace Kapibara.RPS
 		private NInt _experience;
 		private NInt _cost;
 		private NBool _isUnlocked;
-		private NBool _hasNpc;
 		private NBool _npcUnlocked;
 		private NBool _hasLevel;
 		private NBool _hasTimeCounter;
@@ -78,12 +77,6 @@ namespace Kapibara.RPS
 			set => _isUnlocked.Value = value;
 		}
 
-		/// <summary>True si el menú de este edificio tiene un NPC asociado. Se activa al construir el edificio.</summary>
-		public bool HasNpc
-		{
-			get => _hasNpc.Value;
-			set => _hasNpc.Value = value;
-		}
 		/// <summary>True si el NPC de este edificio ha sido rescatado durante un combate. Se activa por evento de nivel.</summary>
 		public bool NpcUnlocked
 		{
@@ -122,7 +115,7 @@ namespace Kapibara.RPS
 		#region CONSTRUCTORS
 
 		[JsonConstructor]
-		public TownData(TownMenu townMenu, string name, string message, int level, int experience, int cost, bool isUnlocked, bool hasNpc,
+		public TownData(TownMenu townMenu, string name, string message, int level, int experience, int cost, bool isUnlocked,
 			bool npcUnlocked, bool hasLevel, bool hasTimeCounter)
 		{
 			_townMenu = townMenu;
@@ -132,13 +125,12 @@ namespace Kapibara.RPS
 			_experience = new NInt(experience);
 			_cost = new NInt(cost);
 			_isUnlocked = new NBool(isUnlocked);
-			_hasNpc = new NBool(hasNpc);
 			_npcUnlocked = new NBool(npcUnlocked);
 			_hasLevel = new NBool(hasLevel);
 			_hasTimeCounter = new NBool(hasTimeCounter);
 		}
 
-		public TownData(TownMenu townMenu, bool isUnlocked = false, bool hasNpc = true, bool npcUnlocked = false, bool hasLevel = true,
+		public TownData(TownMenu townMenu, bool isUnlocked = false, bool npcUnlocked = false, bool hasLevel = true,
 			bool hasTimeCounter = true)
 		{
 			_townMenu = townMenu;
@@ -146,7 +138,6 @@ namespace Kapibara.RPS
 			_message = new NString($"This is {this.TownMenu.ToString()}");
 			_isUnlocked = new NBool(isUnlocked);
 			_cost = new NInt(10);
-			_hasNpc = new NBool(hasNpc);
 			_npcUnlocked = new NBool(npcUnlocked);
 			_hasLevel = new NBool(hasLevel);
 			_level = new NInt(1);

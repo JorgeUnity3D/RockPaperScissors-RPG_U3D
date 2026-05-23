@@ -20,7 +20,10 @@ namespace Kapibara.RPS
 		[SerializeField] private GameObject _menuNPCHolder;
 		[SerializeField] private TextMeshProUGUI _menuNPCText;
 		[SerializeField] private Image _menuNPCImage;
-		
+		[SerializeField] private GameObject _blockedPanel;
+		[SerializeField] private GameObject _levelHolder;
+		[SerializeField] private GameObject _experienceProgressHolder;
+
 		#region UNITY_LIFECYCLE
 
 		private void Awake()
@@ -47,7 +50,11 @@ namespace Kapibara.RPS
 			_menuNameText.text = townData.Name;
 			_menuLevelText.text = townData.Level.ToString();
 			_menuLevelSlider.value = townData.LevelProgress;
-			_menuNPCHolder.SetActive(townData.HasNpc);
+			bool npcBlocked = townView.HasNpc && !townData.NpcUnlocked;
+			_blockedPanel.SetActive(npcBlocked);
+			_levelHolder.SetActive(!npcBlocked);
+			_experienceProgressHolder.SetActive(!npcBlocked);
+			_menuNPCHolder.SetActive(townView.HasNpc);
 			_menuNPCText.text = townData.Message + (townData.NpcUnlocked ? "" : " but there's no NPC here!");
 			_menuNPCImage.sprite = townData.NpcUnlocked ? townView.NPCIcon : townView.NPCNotFoundIcon;
 		}

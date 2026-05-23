@@ -423,9 +423,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c80f881083ced324c8002b9d859ed563, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon: {fileID: 3863361472294134654}
-  selectionOverlay: {fileID: 4849916476580028688}
-  levelText: {fileID: 2088238647886451657}
+  _icon: {fileID: 0}
+  _selectionOverlay: {fileID: 0}
+  _levelText: {fileID: 0}
 --- !u!1 &1106484683873390848
 GameObject:
   m_ObjectHideFlags: 0
@@ -735,9 +735,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c80f881083ced324c8002b9d859ed563, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon: {fileID: 2730586682660171455}
-  selectionOverlay: {fileID: 8764526949353935375}
-  levelText: {fileID: 3969964771641835524}
+  _icon: {fileID: 0}
+  _selectionOverlay: {fileID: 0}
+  _levelText: {fileID: 0}
 --- !u!1 &2747302397466432021
 GameObject:
   m_ObjectHideFlags: 0
@@ -1181,9 +1181,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c80f881083ced324c8002b9d859ed563, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon: {fileID: 9194780844955405894}
-  selectionOverlay: {fileID: 9157959036108040294}
-  levelText: {fileID: 6665584986693071862}
+  _icon: {fileID: 0}
+  _selectionOverlay: {fileID: 0}
+  _levelText: {fileID: 0}
 --- !u!1 &5459259961158661357
 GameObject:
   m_ObjectHideFlags: 0
@@ -1823,6 +1823,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
+  m_UseReflectionProbes: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0

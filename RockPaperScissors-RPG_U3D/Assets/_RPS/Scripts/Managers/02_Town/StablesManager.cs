@@ -66,16 +66,19 @@ namespace Kapibara.RPS
 			Debug.Log($"[StablesManager] BuyGame() -> TODO: IAP not implemented.");
 		}
 
-		/// <summary>
-		/// Añade EXP al edificio establo, capado al techo del nivel actual.
-		/// Level-up del edificio diferido a Phase 6.
-		/// </summary>
 		private void AddStablesExp(int amount)
 		{
-			int levelCeiling = GameConsts.TRAINING_EXP_PER_LEVEL[_stablesData.Level];
-			int newExp = _stablesData.Experience + amount;
-			_stablesData.Experience = newExp < levelCeiling ? newExp : levelCeiling;
+			_stablesData.Experience += amount;
+			int maxLevel = GameConsts.TRAINING_EXP_PER_LEVEL.Count - 1;
+			while (_stablesData.Level < maxLevel &&
+			       _stablesData.Experience >= GameConsts.TRAINING_EXP_PER_LEVEL[_stablesData.Level])
+			{
+				_stablesData.Level++;
+			}
+			if (_stablesData.Level >= maxLevel)
+				_stablesData.Experience = Mathf.Min(_stablesData.Experience, GameConsts.TRAINING_EXP_PER_LEVEL[maxLevel]);
 			AppEvents.OnGameContextUpdated?.Invoke();
+			AppEvents.OnBuildingExpUpdated?.Invoke(TownMenu.STABLES);
 		}
 
 		#endregion

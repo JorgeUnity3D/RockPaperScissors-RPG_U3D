@@ -326,12 +326,12 @@ Once basic combat works:
 
 ### Phase 6 — Progression Loop Completion
 
-1. **4-state building visuals** in `TownUIController`: distinguish unbuilt / purchased-no-NPC / purchased-with-NPC from `TownData.IsUnlocked` + `TownData.NpcUnlocked`. Animate NPCs on the map.
-2. **NPC rescue pipeline**: on boss defeat, set `TownData.NpcUnlocked = true` for the corresponding location (Nivel 1 → Training House NPC, etc., per the unlock table in doc section 10). This enables the building's full mechanic.
+1. ✅ **4-state building visuals** (2026-05-23): `HasNpc` movido de `TownData` a `TownView` (dato estático de diseño). `TownUIController`: botones siempre interactables, routing delegado a `TownManager`. Estado 3 (construido, NPC no rescatado): `InMenuUIController` muestra `_blockedPanel` + oculta `_levelBackgroundImage` y `_levelProgressHolder`; `TownManager` no abre el controller real del edificio. Estado 4 (NPC rescatado): flujo normal.
+2. ✅ **NPC rescue pipeline** (ya implementado en Phase 5): `GameManager.OnStepFinished` maneja `MapStepType.NPC_RESCUE` → `townData.NpcUnlocked = true` para el `step.TargetBuilding`. Solo requiere que los `MapLevel` tengan steps `NPC_RESCUE` con `TargetBuilding` configurado en el SO.
 3. **Paper Tree node purchasing**: implement `SelectPaperTreeButton()` in `PaperTreeUIController` — deduct gold, add `SkillNode` to `PaperTreeModifier.UnlockedNodes`, refresh the stat's `PaperTreeModifier.Modifier`, re-render the tree.
 4. **Library quest tracking**: hook combat's NPC-defeat event into `LibraryQuest` kill count; award stat bonus on quest card completion; unlock next page when all cards on a page are done.
-5. **Theater story progression**: llamar `AppContext.Player.UnlockStory(storyId)` al derrotar un jefe; el ID corresponde al índice de la historia en `TheaterScrObj.Stories`.
-6. **Stables building level-up + InMenuUIController reactivo**: `WatchAd` ya incrementa `TownData(STABLES).Experience`. Implementar level-up real (cada 10 EXP → `Level++`) y conectar `InMenuUIController` para que el Slider se actualice en tiempo real vía `AppEvents.OnBuildingExpUpdated(TownMenu)` → `TownManager` → `InMenuUIController.RefreshLevel(float)`. Ver nota en sección "InMenuUIController" de este doc.
+5. ✅ **Theater story progression** (ya implementado en Phase 5): `GameManager.OnStepFinished` → boss defeat (first time) → `AppContext.Player.UnlockStory(bossStory.StoryId)`. Requiere `BossStory` asignado en cada `MapLevel`.
+6. ✅ **Stables level-up + InMenuUIController reactivo** (2026-05-23): `AddStablesExp` implementa level-up real con while loop + cap en nivel máximo. `AppEvents.OnBuildingExpUpdated(TownMenu)` añadido como evento genérico — cualquier manager lo dispara al modificar EXP/Level. `TownManager` suscribe, trackea `_currentOpenMenu`, y refresca `InMenuUIController.SetData()` solo si el edificio abierto coincide.
 
 ---
 

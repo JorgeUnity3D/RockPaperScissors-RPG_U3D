@@ -62,7 +62,7 @@ namespace Kapibara.RPS
 			_paperTreeNode = paperTreeNode;
 			_unlockedIcon = statIcon;
 			_iconImage.sprite = _paperTreeNode.IsUnlocked ? _unlockedIcon : _lockedIcon;
-			_button.AddListener(() => OnClickAction?.Invoke(_paperTreeNode));
+			_button.AddListener(() => OnClickAction?.Invoke(_paperTreeNode), true);
 		}	
 
 		#endregion

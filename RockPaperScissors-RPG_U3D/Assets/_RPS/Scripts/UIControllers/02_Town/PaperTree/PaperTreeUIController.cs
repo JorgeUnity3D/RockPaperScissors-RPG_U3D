@@ -131,7 +131,7 @@ namespace Kapibara.RPS
 
 		private void SelectPaperTreeButton(PaperTreeNode selectedNode)
 		{
-			
+			AppEvents.OnPaperTreeNodeSelected?.Invoke(selectedNode);
 		}
 
 		#endregion

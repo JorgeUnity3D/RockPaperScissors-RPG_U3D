@@ -13,6 +13,7 @@ namespace Kapibara.RPS
 		[SerializeField] private PaperTreeScrObj _paperTreeScrObj;
 		[Header("DEBUG")]
 		[SerializeField, ReadOnly] private Player _player;
+		[SerializeField, ReadOnly] private TownData _paperTreeData;
 		[SerializeField, ReadOnly] private PaperTreeUIController _paperTreeUIController;
 		
 		#region SETUP
@@ -22,16 +23,17 @@ namespace Kapibara.RPS
 			Debug.Log($"[PaperTreeManager] SetUp() -> ");
 			_paperTreeUIController = ServiceLocator.Instance.GetService<UIService>().GetController<PaperTreeUIController>();
 			_player = AppContext.Player;
+			_paperTreeData = AppContext.TownData.Find(t => t.TownMenu == TownMenu.PAPER_TREE);
 		}
 
 		protected override void Subscribe()
 		{
-			Debug.Log($"[PaperTreeManager] Subscribe() ->  Nothing to subscribe!");
+			AppEvents.OnPaperTreeNodeSelected += OnPaperTreeNodeSelected;
 		}
-		
+
 		protected override void UnSubscribe()
 		{
-			Debug.Log($"[PaperTreeManager] UnSubscribe() ->  Nothing to unsubscribe!");
+			AppEvents.OnPaperTreeNodeSelected -= OnPaperTreeNodeSelected;
 		}
 
         #endregion
@@ -49,6 +51,39 @@ namespace Kapibara.RPS
 		{
 			Stats.ROCK, Stats.PAPER, Stats.SCISSOR, Stats.DEFENSE, Stats.ENERGY_RECOVERY
 		};
+
+		private void OnPaperTreeNodeSelected(PaperTreeNode node)
+		{
+			if (node.IsUnlocked || !node.CanUnlock || _player.Gold < node.Cost) return;
+
+			StatAttribute attribute = _player.Attributes.Find(a => a.Stat == node.Stats);
+			if (attribute == null) return;
+			PaperTreeModifier modifier = attribute.GetModifier<PaperTreeModifier>();
+			if (modifier == null) return;
+
+			_player.Gold = Mathf.Max(0, _player.Gold - node.Cost);
+			modifier.UnlockedNodes.Add(node.NodeID);
+			modifier.Modifier += node.Modifier;
+
+			AddPaperTreeExp(1);
+			RestoreNodeState();
+			_paperTreeUIController.SetData(_player.Attributes, _paperTreeScrObj, _player.Gold);
+			AppEvents.OnGameContextUpdated?.Invoke();
+		}
+
+		private void AddPaperTreeExp(int amount)
+		{
+			_paperTreeData.Experience += amount;
+			int maxLevel = GameConsts.TRAINING_EXP_PER_LEVEL.Count - 1;
+			while (_paperTreeData.Level < maxLevel &&
+			       _paperTreeData.Experience >= GameConsts.TRAINING_EXP_PER_LEVEL[_paperTreeData.Level])
+			{
+				_paperTreeData.Level++;
+			}
+			if (_paperTreeData.Level >= maxLevel)
+				_paperTreeData.Experience = Mathf.Min(_paperTreeData.Experience, GameConsts.TRAINING_EXP_PER_LEVEL[maxLevel]);
+			AppEvents.OnBuildingExpUpdated?.Invoke(TownMenu.PAPER_TREE);
+		}
 
 		private void RestoreNodeState()
 		{
