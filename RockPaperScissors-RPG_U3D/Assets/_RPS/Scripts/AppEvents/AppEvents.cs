@@ -80,6 +80,10 @@ namespace Kapibara.RPS
 
 		/// <summary>Se dispara al pulsar el botón de ajustes durante el combate. PauseMenuUIController lo consume.</summary>
 		public static UnityAction OnSettingsRequested;
+		/// <summary>El jugador pulsa Options en el menú de pausa. PauseManager lo consume.</summary>
+		public static UnityAction OnOptionsRequested;
+		/// <summary>El jugador pulsa Exit en el menú de pausa. PauseManager lo consume para abandonar el nivel.</summary>
+		public static UnityAction OnCombatExited;
 
 		/// <summary>Se dispara cuando el jugador pulsa un botón de acción en combate.</summary>
 		public static UnityAction<Actions> OnCombatActionSelected;
