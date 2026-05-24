@@ -13,6 +13,7 @@ namespace Kapibara.RPS
     /// </summary>
     public class IntroManager : BaseManager
     {
+        [Header("DEBUG")]
         [SerializeField, ReadOnly] private UIService _uiService;
         [SerializeField, ReadOnly] private SceneService _sceneService;
         [SerializeField, ReadOnly] private IntroUIController _introUIController;

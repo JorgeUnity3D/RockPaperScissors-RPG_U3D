@@ -8,7 +8,6 @@ namespace Kapibara.RPS
 {
     public class NewGameUIController : UIController
     {
-        [Header("UI")]
         [Header("New Game")]
         [SerializeField] private TMP_InputField _gamenameInput;
         [SerializeField] private Button _confirmNewGameButton;

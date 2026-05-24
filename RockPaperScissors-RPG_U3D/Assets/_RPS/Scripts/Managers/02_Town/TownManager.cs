@@ -10,10 +10,11 @@ namespace Kapibara.RPS
 	/// </summary>
 	public class TownManager : BaseManager
 	{
-		[SerializeField] private TownViewScrObj _townViewScrObj;
+		private TownViewScrObj _townViewScrObj;
+
+		[Header("DEBUG")]
 		[SerializeField, ReadOnly] private List<TownData> _townData;
 		[SerializeField, ReadOnly] private List<TownView> _townViews;
-
 		[SerializeField, ReadOnly] private UIService _uiService;
 		[SerializeField, ReadOnly] private ManagerService _managerService;
 		[SerializeField, ReadOnly] private CreditsTimeCounterManager _creditsTimeCounterManager;
@@ -39,6 +40,7 @@ namespace Kapibara.RPS
 			_unlockMenuUIController = _uiService.GetController<UnlockMenuUIController>();
 			_townUIController = _uiService.GetController<TownUIController>();
 			_inMenuUIController = _uiService.GetController<InMenuUIController>();
+			_townViewScrObj = ServiceLocator.Instance.GetService<StaticDataService>().TownViews;
 			_townData = AppContext.TownData;
 			_townViews = _townViewScrObj.Data;
 		}

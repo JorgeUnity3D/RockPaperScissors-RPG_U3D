@@ -9,6 +9,8 @@ namespace Kapibara.RPS
 	/// </summary>
 	public class NPCStepManager : BaseManager
 	{
+		private TownViewScrObj _townViewScrObj;
+
 		private NPCHUDUIController    _npcHUD;
 		private PlayerHUDUIController _playerHUD;
 		private Player                _player;
@@ -20,6 +22,7 @@ namespace Kapibara.RPS
 		public override void SetUp()
 		{
 			UIService uiService = ServiceLocator.Instance.GetService<UIService>();
+			_townViewScrObj = ServiceLocator.Instance.GetService<StaticDataService>().TownViews;
 			_npcHUD    = uiService.GetController<NPCHUDUIController>();
 			_playerHUD = uiService.GetController<PlayerHUDUIController>();
 			_player    = AppContext.Player;
@@ -47,7 +50,9 @@ namespace Kapibara.RPS
 			AppEvents.OnNPCDialogueNext += OnNext;
 			AppEvents.OnNPCDialoguePrev += OnPrev;
 
-			_npcHUD.SetData(step.NPCSprite);
+			TownView townView  = _townViewScrObj.Data.Find(tv => tv.TownMenu == step.TargetBuilding);
+			Sprite   npcSprite = townView != null ? townView.NPCIcon : null;
+			_npcHUD.SetData(npcSprite);
 			_npcHUD.SetDialogueLine(_dialogueLines[_currentLineIndex], _currentLineIndex % 2 == 1);
 			_npcHUD.ShowCanvas();
 

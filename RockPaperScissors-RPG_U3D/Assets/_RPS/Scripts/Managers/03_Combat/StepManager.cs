@@ -9,6 +9,7 @@ namespace Kapibara.RPS
 	/// </summary>
 	public class StepManager : BaseManager
 	{
+		[Header("DEBUG")]
 		[SerializeField, ReadOnly] private CombatStepManager       _combatManager;
 		[SerializeField, ReadOnly] private TreasureStepManager    _treasureStepManager;
 		[SerializeField, ReadOnly] private NPCStepManager         _npcStepManager;

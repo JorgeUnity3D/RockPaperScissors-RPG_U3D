@@ -11,7 +11,6 @@ namespace Kapibara.RPS
 		[SerializeField] private int          _goldAmount;        // Treasure
 		[SerializeField] private Sprite       _treasureSprite;    // Treasure
 		[SerializeField] private TownMenu     _targetBuilding;    // NpcRescue
-		[SerializeField] private Sprite       _npcSprite;         // NpcRescue
 		[SerializeField] private List<string> _npcDialogueLines;  // NpcRescue
 
 		public MapStepType  Type             => _type;
@@ -19,7 +18,6 @@ namespace Kapibara.RPS
 		public int          GoldAmount       => _goldAmount;
 		public Sprite       TreasureSprite   => _treasureSprite;
 		public TownMenu     TargetBuilding   => _targetBuilding;
-		public Sprite       NPCSprite        => _npcSprite;
 		public List<string> NPCDialogueLines => _npcDialogueLines;
 
 		public MapStep(MapStepType type, EnemyScrObj enemy)
@@ -35,12 +33,11 @@ namespace Kapibara.RPS
 			_treasureSprite = treasureSprite;
 		}
 
-		public MapStep(TownMenu targetBuilding, Sprite npcSprite, List<string> npcDialogueLines)
+		public MapStep(TownMenu targetBuilding, List<string> npcDialogueLines)
 		{
-			_type              = MapStepType.NPC_RESCUE;
-			_targetBuilding    = targetBuilding;
-			_npcSprite         = npcSprite;
-			_npcDialogueLines  = npcDialogueLines;
+			_type             = MapStepType.NPC_RESCUE;
+			_targetBuilding   = targetBuilding;
+			_npcDialogueLines = npcDialogueLines;
 		}
 
 		public MapStep()

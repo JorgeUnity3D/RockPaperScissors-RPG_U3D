@@ -13,6 +13,7 @@ namespace Kapibara.RPS
 	/// </summary>
 	public class GameManager : BaseManager
 	{
+		[Header("DEBUG")]
 		[SerializeField, ReadOnly] private PersistenceService _persistenceService;
 		[SerializeField, ReadOnly] private SceneService _sceneService;
 		[SerializeField, ReadOnly] private GameContext _gameContext;

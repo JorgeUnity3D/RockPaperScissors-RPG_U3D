@@ -10,10 +10,11 @@ namespace Kapibara.RPS
 	/// </summary>
 	public class CombatStepManager : BaseManager
 	{
+		[Header("DEBUG")]
 		[SerializeField, ReadOnly] private PlayerHUDUIController _playerHUD;
 		[SerializeField, ReadOnly] private EnemyHUDUIController _enemyHUD;
-		[SerializeField]           private LanguageScrObj       _commonLanguage;
-		[SerializeField]           private StoneSmithyScrObj         _stoneSmithyScrObj;
+		private LanguageScrObj    _commonLanguage;
+		private StoneSmithyScrObj _stoneSmithyScrObj;
 
 		private Player        _player;
 		private CombatContext _context;
@@ -36,6 +37,10 @@ namespace Kapibara.RPS
 
 		public override void SetUp()
 		{
+			StaticDataService data = ServiceLocator.Instance.GetService<StaticDataService>();
+			_commonLanguage    = data.CommonLanguage;
+			_stoneSmithyScrObj = data.StoneSmithyItems;
+
 			UIService uiService = ServiceLocator.Instance.GetService<UIService>();
 			_playerHUD = uiService.GetController<PlayerHUDUIController>();
 			_enemyHUD  = uiService.GetController<EnemyHUDUIController>();

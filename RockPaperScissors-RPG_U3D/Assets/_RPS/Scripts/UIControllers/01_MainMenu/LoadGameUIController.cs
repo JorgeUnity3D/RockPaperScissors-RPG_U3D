@@ -9,7 +9,6 @@ namespace Kapibara.RPS
 {
 	public class LoadGameUIController : UIController
 	{
-		[Header("UI")]
 		[Header("Load Game")]
 		[SerializeField] private Transform _gameButtonsHolder;
 		[SerializeField] private GameContextButton _gameContextButtonPrefab;

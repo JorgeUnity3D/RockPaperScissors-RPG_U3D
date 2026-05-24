@@ -8,8 +8,8 @@ namespace Kapibara.RPS
 	/// </summary>
 	public class TravelManager : BaseManager, ITownBuilding
 	{
-		[Header("DATA")]
-		[SerializeField] private MapLevelScrObj _mapLevelScrObj;
+		private MapLevelScrObj _mapLevelScrObj;
+
 		[Header("DEBUG")]
 		[SerializeField, ReadOnly] private Player _player;
 		[SerializeField, ReadOnly] private TravelUIController _travelUIController;
@@ -19,6 +19,7 @@ namespace Kapibara.RPS
 		public override void SetUp()
 		{
 			Debug.Log($"[TravelManager] SetUp() -> ");
+			_mapLevelScrObj = ServiceLocator.Instance.GetService<StaticDataService>().MapLevels;
 			_travelUIController = ServiceLocator.Instance.GetService<UIService>().GetController<TravelUIController>();
 			_player             = AppContext.Player;
 		}

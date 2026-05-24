@@ -258,7 +258,6 @@ namespace Kapibara.Util.Editor
 			GUILayout.Space(8f);
 			DrawSection("NPC Step  (first run only)");
 			EditorGUILayout.PropertyField(_selectedLevelProp.FindPropertyRelative("_targetBuilding"),   new GUIContent("Target Building"));
-			EditorGUILayout.PropertyField(_selectedLevelProp.FindPropertyRelative("_npcSprite"),        new GUIContent("NPC Sprite"));
 			EditorGUILayout.PropertyField(_selectedLevelProp.FindPropertyRelative("_npcDialogueLines"), new GUIContent("Dialogue Lines"), true);
 
 			GUILayout.Space(8f);

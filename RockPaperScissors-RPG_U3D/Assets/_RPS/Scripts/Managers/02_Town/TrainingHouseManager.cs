@@ -9,8 +9,8 @@ namespace Kapibara.RPS
 	/// </summary>
 	public class TrainingHouseManager : BaseManager, ITownBuilding
 	{
+		[Header("DEBUG")]
 		[SerializeField, ReadOnly] private List<StatAttribute> _trainingAttributes;
-		
 		[SerializeField, ReadOnly] private TrainingHouseUIController _trainingHouseUIController;
 		
 		#region SETUP

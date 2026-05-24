@@ -13,7 +13,6 @@ namespace Kapibara.RPS
 	/// </summary>
 	public class TrainingHouseUIController : UIController
 	{
-		[Header("UI")]
 		[Header("Stats Buttons")]
 		[SerializeField] private TrainingDictionary _trainingDictionary;
 		[Header("Stat Info")]
@@ -33,6 +32,7 @@ namespace Kapibara.RPS
 		[SerializeField] private Button _unlockStatButton;
 		[Header("Icons")]
 		[SerializeField] private IconsScrObj _iconsScrObj;
+		[Header("DEBUG")]
 		[SerializeField, ReadOnly] private IconsDictionary _icons;
 
 		private Dictionary<Stats, bool> _canAffordByStats;

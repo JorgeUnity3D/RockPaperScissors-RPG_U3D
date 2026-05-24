@@ -12,7 +12,7 @@ namespace Kapibara.RPS
 	/// </summary>
 	public class TheaterManager : BaseManager, ITownBuilding
 	{
-		[SerializeField] private TheaterScrObj _theaterScrObj;
+		private TheaterScrObj _theaterScrObj;
 
 		[Header("DEBUG")]
 		[SerializeField, ReadOnly] private TheaterUIController _theaterUIController;
@@ -23,6 +23,7 @@ namespace Kapibara.RPS
 		public override void SetUp()
 		{
 			Debug.Log("[TheaterManager] SetUp()");
+			_theaterScrObj = ServiceLocator.Instance.GetService<StaticDataService>().TheaterData;
 			UIService uiService = ServiceLocator.Instance.GetService<UIService>();
 			_theaterUIController    = uiService.GetController<TheaterUIController>();
 			_comicPlayerUIController = uiService.GetController<ComicPlayerUIController>();

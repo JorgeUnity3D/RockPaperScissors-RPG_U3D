@@ -9,8 +9,8 @@ namespace Kapibara.RPS
 	/// </summary>
 	public class PaperTreeManager : BaseManager, ITownBuilding
 	{
-		[Header("UI")]
-		[SerializeField] private PaperTreeScrObj _paperTreeScrObj;
+		private PaperTreeScrObj _paperTreeScrObj;
+
 		[Header("DEBUG")]
 		[SerializeField, ReadOnly] private Player _player;
 		[SerializeField, ReadOnly] private TownData _paperTreeData;
@@ -21,6 +21,7 @@ namespace Kapibara.RPS
 		public override void SetUp()
 		{
 			Debug.Log($"[PaperTreeManager] SetUp() -> ");
+			_paperTreeScrObj = ServiceLocator.Instance.GetService<StaticDataService>().PaperTreeSkillTrees;
 			_paperTreeUIController = ServiceLocator.Instance.GetService<UIService>().GetController<PaperTreeUIController>();
 			_player = AppContext.Player;
 			_paperTreeData = AppContext.TownData.Find(t => t.TownMenu == TownMenu.PAPER_TREE);

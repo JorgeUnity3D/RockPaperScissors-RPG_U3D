@@ -26,7 +26,6 @@ namespace Kapibara.RPS
 
 		[Header("NPC Step")]
 		[SerializeField] private TownMenu     _targetBuilding;
-		[SerializeField] private Sprite       _npcSprite;
 		[SerializeField] private List<string> _npcDialogueLines;
 
 		public int               Level             => _level;
@@ -40,7 +39,6 @@ namespace Kapibara.RPS
 		public Sprite            TreasureSprite    => _treasureSprite;
 		public ComicStoryScrObj  BossStory         => _bossStory;
 		public TownMenu          TargetBuilding    => _targetBuilding;
-		public Sprite            NpcSprite         => _npcSprite;
 		public List<string>      NpcDialogueLines  => _npcDialogueLines;
 
 		private bool _isCompleted;

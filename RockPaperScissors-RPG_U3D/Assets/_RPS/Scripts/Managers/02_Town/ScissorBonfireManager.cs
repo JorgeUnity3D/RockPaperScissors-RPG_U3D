@@ -9,9 +9,9 @@ namespace Kapibara.RPS
 	/// </summary>
 	public class ScissorBonfireManager : BaseManager, ITownBuilding
 	{
+		[Header("DEBUG")]
 		[SerializeField, ReadOnly] private Player _player;
 		[SerializeField, ReadOnly] private List<StatAttribute> _levelAttributes;
-
 		[SerializeField, ReadOnly] private ScissorsBonfireUIController _scissorsBonfireUIController;
 		
 		#region SETUP

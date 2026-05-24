@@ -13,7 +13,6 @@ namespace Kapibara.RPS
 	/// </summary>
 	public class ScissorsBonfireUIController : UIController
 	{
-		[Header("UI")]
 		[Header("Level Holder")]
 		[SerializeField] private TextMeshProUGUI _currentLevelText;
 		[SerializeField] private TextMeshProUGUI _nextLevelText;

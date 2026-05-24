@@ -11,8 +11,7 @@ namespace Kapibara.RPS
 	/// </summary>
 	public class CreditsTimeCounterManager : BaseManager
 	{
-		[Header("DATA")]
-		[SerializeField] private CreditsTimeCounterScrObj _creditsTimeCounterScrObj;
+		private CreditsTimeCounterScrObj _creditsTimeCounterScrObj;
 		[Header("DEBUG")]
 		[SerializeField, ReadOnly] private CreditsTimeCounterUIController _creditsTimeCounterUIController;
 
@@ -24,6 +23,7 @@ namespace Kapibara.RPS
 		public override void SetUp()
 		{
 			Debug.Log($"[CreditsTimeCounterManager] SetUp() -> ");
+			_creditsTimeCounterScrObj = ServiceLocator.Instance.GetService<StaticDataService>().CreditsTimeCounter;
 			_creditsTimeCounterUIController = ServiceLocator.Instance.GetService<UIService>().GetController<CreditsTimeCounterUIController>();
 		}
 

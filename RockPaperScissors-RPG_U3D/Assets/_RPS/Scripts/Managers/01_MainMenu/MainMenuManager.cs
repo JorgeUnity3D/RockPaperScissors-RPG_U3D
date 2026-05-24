@@ -10,6 +10,7 @@ namespace Kapibara.RPS
 	/// </summary>
 	public class MainMenuManager : BaseManager
 	{
+		[Header("DEBUG")]
 		[SerializeField, ReadOnly] private UIService _uiService;
 		[SerializeField, ReadOnly] private PersistenceService _persistenceService;
 		[SerializeField, ReadOnly] private MainMenuUIController _mainMenuUIController;

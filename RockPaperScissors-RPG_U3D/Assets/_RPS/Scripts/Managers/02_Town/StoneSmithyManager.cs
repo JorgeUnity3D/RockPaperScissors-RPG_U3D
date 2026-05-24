@@ -11,8 +11,8 @@ namespace Kapibara.RPS
 	/// </summary>
 	public class StoneSmithyManager : BaseManager, ITownBuilding
 	{
-		[Header("DATA")]
-		[SerializeField] private StoneSmithyScrObj _stoneSmithyScrObj;
+		private StoneSmithyScrObj _stoneSmithyScrObj;
+
 		[Header("DEBUG")]
 		[SerializeField, ReadOnly] private StoneSmithyUIController _stoneSmithyUIController;
 		[SerializeField, ReadOnly] private Player _player;
@@ -26,6 +26,7 @@ namespace Kapibara.RPS
 		public override void SetUp()
 		{
 			Debug.Log($"[StoneSmithyManager] SetUp() -> ");
+			_stoneSmithyScrObj = ServiceLocator.Instance.GetService<StaticDataService>().StoneSmithyItems;
 			_stoneSmithyUIController = ServiceLocator.Instance.GetService<UIService>().GetController<StoneSmithyUIController>();
 			_player = AppContext.Player;
 		}

@@ -9,8 +9,8 @@ namespace Kapibara.RPS
 	/// </summary>
 	public class HouseManager : BaseManager, ITownBuilding
 	{
+		[Header("DEBUG")]
 		[SerializeField, ReadOnly] private Player _player;
-		
 		[SerializeField, ReadOnly] private HouseUIController _houseUIController;
 		
 		#region SETUP

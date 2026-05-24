@@ -46,6 +46,58 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _subfolder: games
   _saveDirectory: 
+--- !u!1 &2075719251180500026
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6998848458284847074}
+  - component: {fileID: 1118959203957509849}
+  m_Layer: 0
+  m_Name: StaticDataService
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6998848458284847074
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2075719251180500026}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 995.1629, y: 519.3988, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8323101222998639172}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1118959203957509849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2075719251180500026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4a5b6c7e8f90112a3b4c5d6e7f80129, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Kapibara.RPS.StaticDataService
+  _townViews: {fileID: 11400000, guid: 4e92c4f196c953c4b834ee7d15164409, type: 2}
+  _libraryQuests: {fileID: 11400000, guid: 742c773241981c330ab3c454db9c0b87, type: 2}
+  _creditsTimeCounter: {fileID: 11400000, guid: fa503e4cf2ee17845968d674b44615df, type: 2}
+  _theaterData: {fileID: 11400000, guid: 9ec57528c0cb3668c8e37d6c9778e45e, type: 2}
+  _stoneSmithyItems: {fileID: 11400000, guid: 7bb63a1c75dd0f7a0b2ccf8d0d34f43f, type: 2}
+  _paperTreeSkillTrees: {fileID: 11400000, guid: b5b7ee9fb6e50f544ae6c7ac7140cea5, type: 2}
+  _mapLevels: {fileID: 11400000, guid: d6ce862f1097c084d8b0962d14d572a3, type: 2}
+  _commonLanguage: {fileID: 11400000, guid: e9d28c9b1deeed2f099cfccfde365ac1, type: 2}
 --- !u!1 &3470824504347100507
 GameObject:
   m_ObjectHideFlags: 0
@@ -124,6 +176,7 @@ Transform:
   - {fileID: 2404732562550699631}
   - {fileID: 6816466270271922271}
   - {fileID: 92391135318708756}
+  - {fileID: 6998848458284847074}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6398713770585678765
@@ -187,9 +240,9 @@ MonoBehaviour:
   _gameContext:
     _gameName:
       _value: 
-    _timestamp:
+    _creationTimestamp:
       _value: 
-    _date:
+    _lastUpdateDate:
       _value: 
     _version: 0
     _player:
@@ -247,11 +300,6 @@ MonoBehaviour:
               _value: 0
         _currentEnergy:
           _value: 0
-        _baseEnergy:
-          _value:
-            _stat: 0
-            _attributeValue:
-              _value: 0
         _initialEnergy:
           _value: 0
         _energyRecovery:
@@ -275,10 +323,11 @@ MonoBehaviour:
           _value: 0
         _energyItemLevel:
           _value: 0
-        _unlockedStoriesCount:
-          _value: 0
-  _runTest: 0
-  _runCleanTest: 0
+        _unlockedStoryIds: 
+    _townContext:
+      _townData:
+        _value: []
+    _libraryQuests: []
 --- !u!1 &8691608084394693821
 GameObject:
   m_ObjectHideFlags: 0

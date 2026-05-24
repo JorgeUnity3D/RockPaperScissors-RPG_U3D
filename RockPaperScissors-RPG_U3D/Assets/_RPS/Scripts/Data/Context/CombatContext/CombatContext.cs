@@ -53,7 +53,7 @@ namespace Kapibara.RPS
 				Debug.LogError($"[CombatContext] Level '{level.LevelName}' has no boss assigned — boss step skipped.");
 
 			if (!level.IsCompleted)
-				steps.Add(new MapStep(level.TargetBuilding, level.NpcSprite, level.NpcDialogueLines));
+				steps.Add(new MapStep(level.TargetBuilding, level.NpcDialogueLines));
 
 			return steps;
 		}

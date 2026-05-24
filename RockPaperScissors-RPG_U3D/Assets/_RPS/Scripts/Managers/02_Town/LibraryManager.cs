@@ -10,8 +10,7 @@ namespace Kapibara.RPS
 	/// </summary>
 	public class LibraryManager : BaseManager, ITownBuilding
 	{
-		[Header("DATA")]
-		[SerializeField] private LibraryScrObj _libraryScrObj;
+		private LibraryScrObj _libraryScrObj;
 		[Header("DEBUG")]
 		[SerializeField, ReadOnly] private LibraryUIController _libraryUIController;
 
@@ -20,6 +19,7 @@ namespace Kapibara.RPS
 		public override void SetUp()
 		{
 			Debug.Log($"[LibraryManager] SetUp() -> ");
+			_libraryScrObj = ServiceLocator.Instance.GetService<StaticDataService>().LibraryQuests;
 			_libraryUIController = ServiceLocator.Instance.GetService<UIService>().GetController<LibraryUIController>();
 		}
 

@@ -11,7 +11,8 @@ namespace Kapibara.RPS
 		[SerializeField] private Transform        _questPageContent;
 		[SerializeField] private Transform        _hiddenPageContent;
 		[SerializeField] private LibraryQuestCard _questCardPrefab;
-		[SerializeField] private List<Button>     _pageButtons;
+		[SerializeField] private Button           _pageButtonPrefab;
+		[SerializeField] private Transform        _pageButtonContainer;
 
 		private List<List<LibraryQuestCard>> _cardsByPage = new List<List<LibraryQuestCard>>();
 		private int                          _currentPage = -1;
@@ -30,11 +31,6 @@ namespace Kapibara.RPS
 		public override void SetUp()
 		{
 			HideCanvas(0);
-			for (int i = 0; i < _pageButtons.Count; i++)
-			{
-				int pageIndex = i;
-				_pageButtons[i].onClick.AddListener(() => ShowPage(pageIndex));
-			}
 		}
 
 		#endregion
@@ -47,6 +43,9 @@ namespace Kapibara.RPS
 				foreach (LibraryQuestCard card in page)
 					Destroy(card.gameObject);
 			_cardsByPage.Clear();
+
+			foreach (Transform child in _pageButtonContainer)
+				Destroy(child.gameObject);
 
 			int totalPages = 0;
 			foreach (LibraryQuestProgress quest in quests)
@@ -62,8 +61,12 @@ namespace Kapibara.RPS
 				_cardsByPage[quest.PageIndex].Add(card);
 			}
 
-			for (int i = 0; i < _pageButtons.Count; i++)
-				_pageButtons[i].gameObject.SetActive(i < unlockedPageCount);
+			for (int i = 0; i < unlockedPageCount; i++)
+			{
+				int pageIndex = i;
+				Button btn = Instantiate(_pageButtonPrefab, _pageButtonContainer);
+				btn.onClick.AddListener(() => ShowPage(pageIndex));
+			}
 
 			_currentPage = -1;
 			ShowPage(0);
