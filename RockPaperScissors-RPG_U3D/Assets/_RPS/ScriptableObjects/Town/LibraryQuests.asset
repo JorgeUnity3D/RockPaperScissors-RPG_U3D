@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Kapibara.RPS.LibraryScrObj
   serializationData:
     SerializedFormat: 2
-    SerializedBytes: 
+    SerializedBytes:
     ReferencedUnityObjects: []
-    SerializedBytesString: 
+    SerializedBytesString:
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
@@ -24,7 +24,36 @@ MonoBehaviour:
   _data:
     _pages:
     - _quests:
-      - _enemyId: 0
-        _targetKills: 0
+      - _targetEnemy: {fileID: 11400000, guid: ef6523a57f000600abb5e70e13fa24a3, type: 2}
+        _targetKills: 3
+        _rewardStat: 2
+        _rewardAmount: 1
+      - _targetEnemy: {fileID: 11400000, guid: cabbad3a921a8a438bbed9a791c48126, type: 2}
+        _targetKills: 3
+        _rewardStat: 3
+        _rewardAmount: 1
+      - _targetEnemy: {fileID: 11400000, guid: a3f1e28c9b4d5e67890abc12def34501, type: 2}
+        _targetKills: 2
+        _rewardStat: 1
+        _rewardAmount: 1
+      - _targetEnemy: {fileID: 11400000, guid: 65b71cc206549660b8df28a2cbaa054b, type: 2}
+        _targetKills: 1
         _rewardStat: 0
-        _rewardAmount: 0
+        _rewardAmount: 2
+    - _quests:
+      - _targetEnemy: {fileID: 11400000, guid: bb4194550d8240df80f202ccc1029621, type: 2}
+        _targetKills: 3
+        _rewardStat: 4
+        _rewardAmount: 1
+      - _targetEnemy: {fileID: 11400000, guid: 6d686ad954d64fad94a5e0297175d303, type: 2}
+        _targetKills: 3
+        _rewardStat: 5
+        _rewardAmount: 1
+      - _targetEnemy: {fileID: 11400000, guid: b4a2f19d0c5e6f78901bcd23ef045612, type: 2}
+        _targetKills: 2
+        _rewardStat: 9
+        _rewardAmount: 1
+      - _targetEnemy: {fileID: 11400000, guid: 73a34d7749da42ee9fbd75c5bf045c5e, type: 2}
+        _targetKills: 1
+        _rewardStat: 0
+        _rewardAmount: 2

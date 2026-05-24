@@ -29,6 +29,21 @@ namespace Kapibara.RPS
 
 		#endregion
 
+		#region DEBUG
+
+#if UNITY_EDITOR
+		[Button("Simulate NPC Rescued")]
+		private void Debug_SimulateNpcRescued()
+		{
+			TownData libraryTownData = AppContext.TownData?.Find(td => td.TownMenu == TownMenu.LIBRARY);
+			if (libraryTownData == null) { Debug.Log("[LibraryManager] No TownData for LIBRARY found."); return; }
+			libraryTownData.NpcUnlocked = true;
+			Debug.Log("[LibraryManager] NpcUnlocked set to true for LIBRARY.");
+		}
+#endif
+
+		#endregion
+
 		#region CONTROL
 
 		public void OnMenuOpen()
