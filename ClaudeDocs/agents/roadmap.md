@@ -99,64 +99,51 @@ The entire combat pipeline is unimplemented at the manager/scene level. The lega
 
 | Doc Feature | Status |
 |---|---|
-| Buildings purchasable with gold | ⚠️ `TownData.IsUnlocked` works; gold deducted on confirm; visual update on `TownUIController` fires; 4-state building visual (unbuilt / built / built-no-NPC / built+NPC) not implemented |
-| `TownData.HasNpc` / `NpcUnlocked` fields | ✅ Fields exist in `TownData`; not yet set by any game event |
-| 10-level map with adjacency unlocks | ❌ `MapLevel._isAvailable` flag exists; no adjacency logic; no unlock-on-clear |
+| Buildings purchasable with gold | ✅ Completo — `TownData.IsUnlocked`, gold deducted, 4-state building visual (unbuilt/built/built-no-NPC/built+NPC) implementado en Phase 6 |
+| `TownData.HasNpc` / `NpcUnlocked` fields | ✅ `NpcUnlocked = true` seteado por `GameManager.OnStepFinished` al resolver un `MapStepType.NPC_RESCUE` |
+| 10-level map with adjacency unlocks | ❌ `MapLevel._isAvailable` es read-only property; nunca se setea a `true` desde `GameManager` ni ningún otro script — unlock-on-clear no implementado |
 | Level clear → unlock adjacent level | ❌ Not implemented |
-| Level clear → unlock town NPC | ❌ Not implemented |
-| Boss Final (after level 10) | ❌ Not implemented |
+| Level clear → unlock town NPC | ✅ Implementado via `MapStepType.NPC_RESCUE` en `GameManager.OnStepFinished` |
+| Boss Final (after level 10) | ❌ No existe código para un boss separado post-nivel 10 |
 | Tutorial combat | ❌ Not implemented |
-| CreditsTimeCounter / Caballos | ✅ `CreditsTimeCounterManager` gestiona créditos (= caballos) con recarga por tiempo; `EarnCredit()` y `UseCredit()` existen; `CreditsTimeCounterUIController` los muestra vía `Update()` polling; `StablesManager` llama `EarnCredit()` al ver anuncio (Phase 2 ✅); `TravelManager` debe llamar `UseCredit()` al viajar (Phase 3 ❌) |
+| CreditsTimeCounter / Caballos | ✅ Completo — `CreditsTimeCounterManager` suscribe a `AppEvents.OnTravelRequested`; llama `UseCredit()` y solo entonces dispara `OnTravelConfirmed`; timer offline funciona con Unix timestamps; `StablesManager` llama `EarnCredit()` al ver anuncio |
 
 ---
 
 ## 2. Partially Implemented — Needs Completion
 
-### Training House
-- **What works:** stat unlock (deducts gold, sets `IsUnlocked=true` on `TrainingHouseModifier`), stat selection (`IsTraining=true` on one modifier at a time).
-- **What's missing:** EXP gain per round during combat; auto-select-next on exit when stat is completed; the UI level progress bar is display only.
-- **Files:** `TrainingHouseManager.cs`, `TrainingHouseModifier.cs`, `TrainingHouseUIController.cs`, `TrainingButton.cs`
+### Training House ⚠️ Parcial
+- **What works:** stat unlock (gold deducted, `IsUnlocked=true`), stat selection (`IsTraining=true` on one modifier), EXP gain per combat round acumulado en `CombatStepManager` y aplicado al salir.
+- **What's missing:** Auto-select-next — `TrainingHouseManager` no suscribe a `AppEvents.OnTrainingLevelUpdated`; cuando un stat se completa (llega a nivel máximo) el jugador tiene que seleccionar manualmente el siguiente.
+- **Files:** `TrainingHouseManager.cs`, `TrainingHouseModifier.cs`, `TrainingHouseUIController.cs`
 
-### Scissor Bonfire
-- **What works:** gold deduction, player level increment, `SCISSOR_MODS` delta applied to all `ScissorBonfireModifier` instances; crash at level 10 is now guarded (returns with a `Debug.LogWarning` instead of throwing).
-- **What's missing:** `SCISSOR_MODS` only has 10 entries (indices 0–9); the guard means level-ups stop at level 10. More entries need to be designed and added. Building-level-up every 10 player levels not tracked.
+### Scissor Bonfire ⚠️ Parcial
+- **What works:** Gold deduction, player level increment, `SCISSOR_MODS` delta aplicado a todos los `ScissorBonfireModifier`; crash en nivel 10 guardado.
+- **What's missing:** `SCISSOR_MODS` tiene 10 entradas (índices 0–9) — el guard detiene los level-ups en nivel 10 (necesita más datos de diseño). Building-level-up separado del jugador (cada 10 niveles de jugador) nunca trackeado.
 - **Files:** `ScissorBonfireManager.cs`, `GameConsts.cs`
 
-### Paper Tree
-- **What works:** 5-tab graph renders node buttons and colored connector lines; line colors reflect node state (unlocked / can-afford / cannot-afford / locked); `SetUpSkillNodes()` calls `paperTreeButton.SetUp()` on each node.
-- **What's missing:** `SelectPaperTreeButton()` is an empty callback — clicking a node does nothing; node purchase (gold deduction, modifier update) not wired; `PaperTreeModifier.SkillTreeData` is still a single `bool` with no per-node tracking (Gotcha #15 unresolved).
-- **Files:** `PaperTreeManager.cs`, `PaperTreeUIController.cs`, `PaperTreeModifier.cs`, `PaperTreeButton.cs`, `PaperTreeNode.cs`
+### Paper Tree ✅ DONE (Phase 6)
+- `PaperTreeManager.OnPaperTreeNodeSelected` valida, deduce oro, actualiza `UnlockedNodes` + `Modifier`, acumula EXP. `PaperTreeButton` dispara el evento. `PaperTreeModifier` usa `List<string> UnlockedNodes` (no el bool antiguo).
 
-### Travel
-- **What works:** `TravelUIController` renders level buttons from `MapLevelScrObj`; clicking a level shows portrait + name + travel button; `TravelManager` wires the callback chain correctly.
-- **What's missing:** `TravelManager.TravelToLevel()` is an empty stub — no scene load, no travel-use deduction, no encounter launch; `MapLevel._levelEnemies` uses legacy `EnemyDataObject` (Gotcha #14); no adjacency/unlock display.
-- **Files:** `TravelManager.cs`, `TravelUIController.cs`, `MapLevel.cs`
+### Travel ✅ DONE (Phase 3/4)
+- `TravelUIController` renderiza niveles; `CreditsTimeCounterManager` intercepta `OnTravelRequested`, llama `UseCredit()`, dispara `OnTravelConfirmed`; `TravelManager` carga la escena de combate.
+- **Pendiente:** unlock-on-clear de niveles adyacentes (ver sección Progresión).
 
-### Theater ✅ Implementado (wiring Inspector pendiente)
-- **What works:** `TheaterManager` completo (`SetUp`, `Subscribe`, `Initialize`, `PlayStory`); `TheaterUIController.SetData(stories, unlockedStoryIds)` instancia `StoryButton` por historia; `ComicPlayerUIController` reescrito — usa `List<ComicLayoutEntry>` (busca prefab por enum, no por índice), 7 layouts incluyendo `Six_Grid`. `Player.UnlockedStoryIds` es `List<int>` con `IsStoryUnlocked(int)` y `UnlockStory(int)`.
-- **What's missing:** Wiring Inspector: `ComicPlayer_UIController` prefab necesita `_closeButton`, `_pageContainer` y los 7 `ComicLayoutEntry`. Prefabs de layout a crear con `Kapibara/UI/Create Comic Layouts`.
-- **Files:** `TheaterManager.cs`, `TheaterUIController.cs`, `ComicPlayerUIController.cs`, `ComicLayoutEntry.cs`, `Player.cs`
+### Theater ✅ DONE — wiring Inspector pendiente (dev)
+- `TheaterManager`, `TheaterUIController`, `ComicPlayerUIController` con 7 layouts implementados. `Player.UnlockedStoryIds` con `IsStoryUnlocked(int)` y `UnlockStory(int)`. Boss defeat dispara Historia via `GameManager`.
+- **Pendiente dev:** asignar en Inspector `_closeButton`, `_pageContainer` y los 7 `ComicLayoutEntry` en el prefab `ComicPlayer_UIController`.
 
-### Library
-- **What works:** `LibraryUIController` exists; `LibraryModifier` now correctly deserializes (Bug #5 FIXED in `BaseModifierConverter`).
-- **What's missing:** `LibraryManager.cs` is a bare `MonoBehaviour` stub with `Start()` and `Update()` only — not even `BaseManager`; not wired in `ManagerService`; `LibraryQuest` has no public kill-count API; no quest tracking, no page progression, no stat bonus on completion.
-- **Files:** `LibraryManager.cs`, `LibraryUIController.cs`, `LibraryQuest.cs`, `LibraryModifier.cs`
+### Library ✅ DONE (Phase 6)
+- `LibraryManager` extiende `BaseManager`, wired en `ManagerService`. Quest state en `GameContext.LibraryQuests`. Kill tracking en `GameManager.ProcessLibraryKills(string enemyId)`. Bonus de stat aplicado en completion via `LibraryModifier.Modifier +=`.
 
-### House (Stats Display)
-- **What works:** Fully functional as a display panel. `HouseUIController.SetData()` iterates `Enum.GetValues(typeof(Stats))` and instantiates a `HouseStat` row per stat; `RefreshData()` updates all rows. All 11 `Stats` enum values are shown.
-- **What's missing:** The 4 cost stats (`RockCost`, `PaperCost`, `ScissorCost`, `DefenseCost`) are not displayed — they are `NInt` fields outside the enum/attribute system.
-- **Files:** `HouseManager.cs`, `HouseUIController.cs`, `HouseStat.cs`
+### House ✅ DONE
+- `HouseUIController.SetData()` itera todos los `Stats` enum e instancia un `HouseStat` por stat. Los 4 cost stats (`RockCost` etc.) no se muestran — son `NInt` fuera del sistema de atributos; omisión aceptada.
 
-### CreditsTimeCounter
-- **What works:** Timer ticks via `Update()`; credits increment when timer expires; `EarnCredit()` and `UseCredit()` public methods exist and are correct; `CreditsTimeCounterUIController` polls `CreditTimeCounter` via `Update()` and renders the credit icons directly (no AppEvents needed). `CreditsTimeCounterManager` suscribe a `AppEvents.OnEarnCredit` (añadido en Phase 2).
-- **What's missing:** `UseCredit()` is not yet called from `TravelManager` (Phase 3).
-- **Architecture note:** Credits = caballos/horses. `CreditsTimeCounterManager` owns the credit count and time recharge. `StablesManager` is the IAP/monetisation UI: `WatchAd_Button` → `AppEvents.OnEarnCredit` + stables EXP; `BuyGame_Button` → IAP placeholder (Phase 7). `TravelManager` calls `UseCredit()` on travel (Phase 3).
-- **Files:** `CreditsTimeCounterManager.cs`, `CreditsTimeCounterUIController.cs`, `CreditTimeCounter.cs`, `CreditsTimeCounterScrObj.cs`
+### CreditsTimeCounter ✅ DONE
+- Timer con Unix timestamps offline. `OnTravelRequested` → `UseCredit()` → `OnTravelConfirmed`. `StablesManager.WatchAd` → `EarnCredit()`. Timer coroutine recarga créditos automáticamente.
 
-### InMenuUIController (HUD de edificio)
-- **What works:** `TownManager` llama `SetData(TownData, TownView)` al abrir cualquier edificio; muestra nombre, nivel, `LevelProgress` (Slider), NPC info y botón Back.
-- **What's missing:** `SetData` se llama una sola vez al entrar. Si un manager modifica `TownData.Experience` en runtime (ej. `StablesManager.WatchAd`), el Slider no se actualiza reactivamente — el jugador ve el valor actualizado sólo la próxima vez que abre el edificio. Solución pendiente: añadir `AppEvents.OnBuildingExpUpdated(TownMenu)` → `TownManager` suscribe → llama `_inMenuUIController.RefreshLevel(float)` (nuevo método a añadir). Aplica a cualquier edificio con EXP en runtime.
-- **Files:** `InMenuUIController.cs`, `TownManager.cs`
+### InMenuUIController ✅ DONE (Phase 6)
+- `TownManager` suscribe a `AppEvents.OnBuildingExpUpdated(TownMenu)` y llama `_inMenuUIController.SetData()` si el edificio abierto coincide. Reactivo en runtime.
 
 ---
 
@@ -181,37 +168,32 @@ Listed in priority order.
 **Bug #2 — Two Player classes, no bridge** ✅ FIXED (Phase 4)
 - `PlayerOld` eliminated. Combat uses `CombatContext` built from `AppContext.Player` directly.
 
-**Bug #14 — `MapLevel._levelEnemies` references legacy `EnemyDataObject`**
-- `EnemyDataObject` is in `_oldScriptables/` and is not connected to the active `Enemy` or `Player` data models. The travel/combat pipeline cannot use `MapLevel` enemy lists as-is.
-- **File:** `MapLevel.cs`, `EnemyDataObject.cs`
+**Bug #14 — `MapLevel._levelEnemies` references legacy `EnemyDataObject`** ✅ FIXED (Phase 3)
+- Reemplazado por sistema `MapStep` con `EnemyScrObj`. `EnemyDataObject` obsoleto.
 
 ### P2 — Blocks specific location menus
 
+**Bug #6 — `ManagerService.GetManager(TownMenu)` returns null for 4 locations** ✅ FIXED
+- `ManagerService` ahora wirea los 9 edificios via switch expression. Verificado en código.
 
-**Bug #6 — `ManagerService.GetManager(TownMenu)` returns null for 4 locations**
-- LIBRARY, STABLES, STONE_SMITHY, THEATER are commented out. Even when `IsUnlocked=true`, `TownManager.GoToTownMenu()` exits early on null manager.
-- Fix: uncomment/add the missing cases once those managers are ready.
-- **File:** `ManagerService.cs`
+**Bug — `LibraryManager` is not a `BaseManager`** ✅ FIXED (Phase 6)
+- `LibraryManager` extiende `BaseManager`, namespace `Kapibara.RPS`, `SetUp`/`Subscribe`/`Initialize` implementados.
 
-**Bug (new) — `LibraryManager` is not a `BaseManager`**
-- `LibraryManager.cs` is a bare `MonoBehaviour` with only `Start()` and `Update()`. It has no namespace, no `SetUp()`, no `Initialize()`. Even if wired in `ManagerService`, calling `Initialize()` on it would fail or do nothing.
-- Fix: rewrite `LibraryManager` to extend `BaseManager` in `Kapibara.RPS` namespace, following the pattern of `HouseManager` or `PaperTreeManager`.
-- **File:** `LibraryManager.cs`
-
-**Bug (new) — `StablesManager.cs` and `StoneSmithyManager.cs` do not exist on disk**
-- Files are referenced by name in documentation and `ManagerService` (commented out), but no `.cs` files were found. The `StablesUIController` and `StoneSmithyUIController` + `StoneSmithyButton` exist.
-- Fix: create these manager classes before wiring them in `ManagerService`.
+**Bug — `StablesManager.cs` and `StoneSmithyManager.cs` do not exist on disk** ✅ FIXED
+- Ambos archivos existen en `Scripts/Managers/02_Town/`. Verificado.
 
 ### P3 — Silent failures, fragile state
 
 **Bug #7 — `SingletonMonoBehaviour` does not call `DontDestroyOnLoad`**
-- `ServiceLocator` persists only because the `GameCore` prefab presumably handles it externally. If `ServiceLocator` appears in a non-persistent scene without an explicit `DontDestroyOnLoad` component, it will be destroyed on scene load.
+- `ServiceLocator` persiste gracias a `GameCore` prefab en escena persistente. Riesgo teórico; no urgente.
 - **File:** `SingletonMonoBehaviour.cs`
 
-**Bug #15 — `PaperTreeModifier.SkillTreeData` is a single `bool`**
-- The tree has 12 `SkillNode` enum values across 5 tabs. Only one bool is stored per modifier. Per-node purchased state is not tracked anywhere on the save model.
-- Fix: replace `bool SkillTreeData` with `List<SkillNode> UnlockedNodes` (or `HashSet<SkillNode>`) on `PaperTreeModifier`, and update the serializer.
-- **File:** `PaperTreeModifier.cs`, `BaseModifierConverter.cs`
+**Bug #10 — `NAttribute` constructor adds modifiers that Player constructor may silently replace**
+- Actualmente seguro, pero frágil si `NAttribute` añade algún día `ScissorBonfireModifier`.
+- **File:** `NAttribute.cs`, `Player.cs`
+
+**Bug #15 — `PaperTreeModifier.SkillTreeData` is a single `bool`** ✅ FIXED (Phase 6)
+- Reemplazado por `List<string> UnlockedNodes` en `PaperTreeModifier`. Serializer actualizado.
 
 **Bug (new) — `TravelManager.cs` imports `UnityEditor` namespace** ✅ FIXED 2026-03-21
 - Directive removed (done during XML doc pass).
@@ -306,7 +288,7 @@ Architecture audit fixes (Blocks A–E) also complete as of 2026-05-19. See `Cla
 
 ### Phase 5 — Combat Features (Post-MVP)
 
-> 🚧 IN PROGRESS — started 2026-05-19
+> ✅ COMPLETE — 2026-05-24
 
 Once basic combat works:
 
@@ -316,11 +298,11 @@ Once basic combat works:
 4. **Enemy thought bubble on mentality roll**: ✅ DONE (2026-05-21) — Win → `GetActionIconEnemy(ThinkingAction)`; Lose → `GetActionIconCommon(Actions.NONE)` (= question mark, stored in all Language SOs under `Actions.NONE`). `Language.GetActionIcon` hardened with null guard + warning.
 5. **Common language for action bubbles**: ✅ DONE (2026-05-20) — `PlayerHUDUIController.SetCommonLanguage(Language)` wired; action bubbles use common language via `GetActionIconCommon()`; thought bubbles use enemy language (resolved in `CombatStepManager`).
 6. **Backpack consumables**: ✅ DONE (2026-05-20) — `OpenBackpack_Button` en combat panel abre `Backpack_Actions` group; Shuriken/Potion/Torch single-use por combate; efecto resuelto en `CombatStepManager.OnBackpackItemUsed()`; niveles desde `Player.XxxItemLevel`; valores desde `StoneSmithyScrObj.amountsPerLevel`.
-7. **NPC Gambits**: implement Primary → Secondary → Tertiary gambit evaluation; Primary overrides mentality; Tertiary only fires when mentality roll succeeds.
-8. **Round 5 Caja Sorpresa**: ⚠️ Arquitectura lista (step 4 generado como `SURPRISE_BOX`, `StepManager` lo avanza como stub). Gameplay pendiente: seleccionar efecto aleatorio HP/energy y mostrarlo al jugador.
-9. **Round 10 Boss**: spawn `_isSpecialLevel` NPC; award ESCENA + gold on win; trigger Historia cutscene via `ComicPlayerUIController`.
+7. **NPC Gambits**: ✅ DONE (2026-05-24) — `EvaluateGambits(PRIMARY)` en `BeginRound()` salta mentality si activa; SECONDARY sustituye `ActionRoll()` si activa; TERTIARY se evalúa en `OnPlayerActionSelected` solo si `_enemyReadsMind`.
+8. **Round 5 Caja Sorpresa**: ✅ DONE (2026-05-24) — `SurpriseBoxStepManager.Initialize()` selecciona efecto aleatorio HP/energía y lo muestra via `SurpriseBoxHUDUIController`. `OnSurpriseBoxCollected` avanza el step.
+9. **Round 10 Boss**: ✅ DONE (2026-05-24) — `StepManager` rutea `MapStepType.BOSS` a `_combatManager`. `GameManager.OnStepFinished` detecta victoria de boss, llama `UnlockStory()` y `comicPlayer.SetData(bossStory)`.
 10. **Gold reward multipliers**: ✅ DONE (2026-05-21) — Superpoder kill → x2 gold. `_playerSuperKill` tracked in `CombatStepManager`; set when `playerIsSuper && _enemy.CurrentHealth <= 0` in Case 1 and Case 3a; applied in `EndCombat`.
-11. **PauseMenuUIController**: settings button removed from `PlayerHUDUIController`; needs its own controller with at least a settings button. Deferred from Phase 5 wiring session.
+11. **PauseMenuUIController**: ✅ DONE (2026-05-24) — Overlay con settings/resume/options/exit. `PauseManager` suscribe a `OnCombatExited` → `OnStepFinished(false)`.
 
 ---
 
@@ -328,7 +310,7 @@ Once basic combat works:
 
 1. ✅ **4-state building visuals** (2026-05-23): `HasNpc` movido de `TownData` a `TownView` (dato estático de diseño). `TownUIController`: botones siempre interactables, routing delegado a `TownManager`. Estado 3 (construido, NPC no rescatado): `InMenuUIController` muestra `_blockedPanel` + oculta `_levelBackgroundImage` y `_levelProgressHolder`; `TownManager` no abre el controller real del edificio. Estado 4 (NPC rescatado): flujo normal.
 2. ✅ **NPC rescue pipeline** (ya implementado en Phase 5): `GameManager.OnStepFinished` maneja `MapStepType.NPC_RESCUE` → `townData.NpcUnlocked = true` para el `step.TargetBuilding`. Solo requiere que los `MapLevel` tengan steps `NPC_RESCUE` con `TargetBuilding` configurado en el SO.
-3. **Paper Tree node purchasing**: implement `SelectPaperTreeButton()` in `PaperTreeUIController` — deduct gold, add `SkillNode` to `PaperTreeModifier.UnlockedNodes`, refresh the stat's `PaperTreeModifier.Modifier`, re-render the tree.
+3. ✅ **Paper Tree node purchasing** (2026-05-23): `OnPaperTreeNodeSelected` en `PaperTreeManager` valida, deduce oro, actualiza `UnlockedNodes` + `Modifier`, acumula EXP del edificio. `PaperTreeUIController.SelectPaperTreeButton` dispara el evento.
 4. ✅ **Library quest tracking** (2026-05-24): Full redesign — quest state materialized into `GameContext.LibraryQuests` (`List<LibraryQuestProgress>`) when Library NPC rescued. Kill tracking moved to persistent `GameManager.ProcessLibraryKills(string enemyId)` — called from `OnStepFinished`, no cross-scene event dependency. `LibraryManager` only materializes + displays; `LibraryQuestCard` renders `LibraryQuestProgress`. Page progression: page N unlocks when all quests on page N-1 are completed. `AppEvents.OnEnemyDefeated` removed (was never consumed). `Player.LibraryKillCounts` removed. Stat bonus applied immediately on completion via `ApplyLibraryReward` → `LibraryModifier.Modifier +=`. EnemyData now has `string _id` slug (stable, localizable key) replacing old enum integer. 7 new `_02` enemies added (one per biome). `Enemies_01` atlas assigned to all `_02` and Boss enemies.
 5. ✅ **Theater story progression** (ya implementado en Phase 5): `GameManager.OnStepFinished` → boss defeat (first time) → `AppContext.Player.UnlockStory(bossStory.StoryId)`. Requiere `BossStory` asignado en cada `MapLevel`.
 6. ✅ **Stables level-up + InMenuUIController reactivo** (2026-05-23): `AddStablesExp` implementa level-up real con while loop + cap en nivel máximo. `AppEvents.OnBuildingExpUpdated(TownMenu)` añadido como evento genérico — cualquier manager lo dispara al modificar EXP/Level. `TownManager` suscribe, trackea `_currentOpenMenu`, y refresca `InMenuUIController.SetData()` solo si el edificio abierto coincide.
