@@ -32,8 +32,13 @@ namespace Kapibara.RPS
 		{
 			// 8 combat steps; on completed levels, one random position becomes Treasure
 			List<MapStep> combatSteps = new List<MapStep>();
+			EnemyScrObj lastEnemy = null;
 			for (int i = 0; i < 8; i++)
-				combatSteps.Add(GenerateCombat(level));
+			{
+				MapStep step = GenerateCombat(level, lastEnemy);
+				combatSteps.Add(step);
+				lastEnemy = step.Enemy;
+			}
 
 			if (level.IsCompleted && level.TreasureGoldAmount > 0)
 			{
@@ -58,14 +63,22 @@ namespace Kapibara.RPS
 			return steps;
 		}
 
-		private static MapStep GenerateCombat(MapLevel level)
+		private static MapStep GenerateCombat(MapLevel level, EnemyScrObj lastEnemy)
 		{
 			if (level.PossibleEnemies == null || level.PossibleEnemies.Count == 0)
 			{
 				Debug.LogError($"[CombatContext] Level '{level.LevelName}' has no enemies assigned — cannot generate combat step.");
 				return new MapStep();
 			}
-			return new MapStep(MapStepType.COMBAT, level.PossibleEnemies[Random.Range(0, level.PossibleEnemies.Count)]);
+
+			List<EnemyScrObj> pool = level.PossibleEnemies;
+			if (lastEnemy != null && pool.Count > 1)
+			{
+				List<EnemyScrObj> filtered = new List<EnemyScrObj>(pool);
+				filtered.Remove(lastEnemy);
+				return new MapStep(MapStepType.COMBAT, filtered[Random.Range(0, filtered.Count)]);
+			}
+			return new MapStep(MapStepType.COMBAT, pool[Random.Range(0, pool.Count)]);
 		}
 	}
 }

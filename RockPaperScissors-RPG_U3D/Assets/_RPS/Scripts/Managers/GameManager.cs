@@ -151,14 +151,26 @@ namespace Kapibara.RPS
 
 					if (isFirstCompletion)
 					{
+						int nextLevel = ctx.SelectedLevel.Level + 1;
+						List<int> unlocked = AppContext.GameContext.UnlockedLevelIndexes;
+						if (!unlocked.Contains(nextLevel))
+						{
+							unlocked.Add(nextLevel);
+							Debug.Log($"[GameManager] Level {ctx.SelectedLevel.Level} cleared → level {nextLevel} unlocked.");
+						}
+
+						List<int> completed = AppContext.GameContext.CompletedLevelIndexes;
+						if (!completed.Contains(ctx.SelectedLevel.Level))
+							completed.Add(ctx.SelectedLevel.Level);
+
 						ComicStoryScrObj bossStory = ctx.SelectedLevel.BossStory;
+						if (bossStory != null && bossStory.StoryId >= 0)
+							AppContext.Player.UnlockStory(bossStory.StoryId);
+
+						AppEvents.OnGameContextUpdated?.Invoke();
+
 						if (bossStory != null)
 						{
-							if (bossStory.StoryId >= 0)
-								AppContext.Player.UnlockStory(bossStory.StoryId);
-
-							AppEvents.OnGameContextUpdated?.Invoke();
-
 							ComicPlayerUIController comicPlayer = ServiceLocator.Instance.GetService<UIService>().GetController<ComicPlayerUIController>();
 							if (comicPlayer != null)
 							{
@@ -167,7 +179,7 @@ namespace Kapibara.RPS
 								comicPlayer.SetData(bossStory);
 								return;
 							}
-							Debug.LogWarning("[GameManager] BossStory assigned but ComicPlayerUIController not found in scene.");
+							Debug.Log("[GameManager] BossStory assigned but ComicPlayerUIController not found in scene.");
 						}
 					}
 					else

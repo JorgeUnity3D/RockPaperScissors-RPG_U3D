@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -43,6 +44,16 @@ namespace Kapibara.RPS
 		public void OnMenuOpen()
 		{
 			Debug.Log($"[TravelManager] OnMenuOpen() -> ");
+			List<int> unlocked  = AppContext.GameContext.UnlockedLevelIndexes;
+			List<int> completed = AppContext.GameContext.CompletedLevelIndexes;
+			foreach (MapLevel level in _mapLevelScrObj.Data)
+			{
+				level.ResetCompleted();
+				if (!level.IsAvailable && unlocked.Contains(level.Level))
+					level.SetAvailable();
+				if (completed.Contains(level.Level))
+					level.SetCompleted();
+			}
 			_travelUIController.SetData(_player.Attributes, _mapLevelScrObj);
 		}
 

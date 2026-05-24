@@ -31,6 +31,7 @@ namespace Kapibara.UI
 		{
 			foreach (Tab tab in _tabs)
 			{
+				if (tab.TabButton == null || tab.TabContent == null) { Debug.LogError($"[UITabsController] Tab on {gameObject.name} has missing references — check Inspector."); continue; }
 				tab.TabButton.AddListener(() => ShowTab(tab.TabContent), true);
 			}
 		}
@@ -53,6 +54,7 @@ namespace Kapibara.UI
 		{
 			foreach (Tab tab in _tabs)
 			{
+				if (tab.TabContent == null) continue;
 				tab.TabContent.HideCanvas();
 			}
 		}

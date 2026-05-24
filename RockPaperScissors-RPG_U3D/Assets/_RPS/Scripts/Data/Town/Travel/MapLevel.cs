@@ -32,7 +32,7 @@ namespace Kapibara.RPS
 		public string            LevelName         => _levelName;
 		public Sprite            LevelIcon         => _levelIcon;
 		public Sprite            LevelPortrait     => _levelPortrait;
-		public bool              IsAvailable       => _isAvailable;
+		public bool              IsAvailable       => _isAvailable || _isRuntimeAvailable;
 		public List<EnemyScrObj> PossibleEnemies   => _possibleEnemies;
 		public EnemyScrObj       Boss              => _boss;
 		public int               TreasureGoldAmount => _treasureGoldAmount;
@@ -44,5 +44,9 @@ namespace Kapibara.RPS
 		private bool _isCompleted;
 		public bool  IsCompleted => _isCompleted;
 		public void  SetCompleted() => _isCompleted = true;
+		public void  ResetCompleted() => _isCompleted = false;
+
+		private bool _isRuntimeAvailable;
+		public void  SetAvailable() => _isRuntimeAvailable = true;
 	}
 }

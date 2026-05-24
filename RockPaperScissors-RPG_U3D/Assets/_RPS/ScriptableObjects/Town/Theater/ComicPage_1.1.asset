@@ -22,8 +22,23 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   _data:
-    _layout: 0
+    _layout: 6
     _vignettes:
     - _sprite: {fileID: -676278753, guid: feabcbba63b5e4444bb58667d3814d43, type: 3}
       _dialogText: Diag. 0
+      _animation: 0
+    - _sprite: {fileID: -1007483195, guid: feabcbba63b5e4444bb58667d3814d43, type: 3}
+      _dialogText: Diag. 1
+      _animation: 1
+    - _sprite: {fileID: -386417463, guid: feabcbba63b5e4444bb58667d3814d43, type: 3}
+      _dialogText: Diag. 2
+      _animation: 2
+    - _sprite: {fileID: -1788564106, guid: feabcbba63b5e4444bb58667d3814d43, type: 3}
+      _dialogText: Diag. 3
+      _animation: 3
+    - _sprite: {fileID: 1704451343, guid: feabcbba63b5e4444bb58667d3814d43, type: 3}
+      _dialogText: Diag. 4
+      _animation: 4
+    - _sprite: {fileID: 1377419196, guid: feabcbba63b5e4444bb58667d3814d43, type: 3}
+      _dialogText: Diag. 5
       _animation: 0

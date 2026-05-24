@@ -74,6 +74,11 @@ namespace Kapibara.RPS
 			_playerHUD.SetStep(step.Type);
 			_playerHUD.ShowCanvas();
 
+			_playerHUD.ShowStepLog(GetStepLogText(step, ctx.CurrentStepIndex), () => InitializeStepContent(step));
+		}
+
+		private void InitializeStepContent(MapStep step)
+		{
 			switch (step.Type)
 			{
 				case MapStepType.COMBAT:
@@ -97,6 +102,21 @@ namespace Kapibara.RPS
 					Debug.LogError($"[StepManager] Unhandled step type: {step.Type}");
 					break;
 			}
+		}
+
+		private string GetStepLogText(MapStep step, int stepIndex)
+		{
+			string typeName;
+			switch (step.Type)
+			{
+				case MapStepType.COMBAT:       typeName = "Combat";       break;
+				case MapStepType.BOSS:         typeName = "Boss";         break;
+				case MapStepType.TREASURE:     typeName = "Treasure";     break;
+				case MapStepType.SURPRISE_BOX: typeName = "Surprise Box"; break;
+				case MapStepType.NPC_RESCUE:   typeName = "Rescue";       break;
+				default:                       typeName = string.Empty;   break;
+			}
+			return $"Step {stepIndex + 1}: {typeName}";
 		}
 
 		#endregion

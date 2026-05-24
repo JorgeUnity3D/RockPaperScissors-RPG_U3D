@@ -37,7 +37,7 @@ namespace Kapibara.RPS
 
 		#region CONTROL
 
-		public void SetData(List<LibraryQuestProgress> quests, int unlockedPageCount)
+		public void SetData(List<LibraryQuestProgress> quests)
 		{
 			foreach (List<LibraryQuestCard> page in _cardsByPage)
 				foreach (LibraryQuestCard card in page)
@@ -61,7 +61,7 @@ namespace Kapibara.RPS
 				_cardsByPage[quest.PageIndex].Add(card);
 			}
 
-			for (int i = 0; i < unlockedPageCount; i++)
+			for (int i = 0; i < totalPages; i++)
 			{
 				int pageIndex = i;
 				Button btn = Instantiate(_pageButtonPrefab, _pageButtonContainer);

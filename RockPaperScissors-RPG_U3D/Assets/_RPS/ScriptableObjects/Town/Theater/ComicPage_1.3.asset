@@ -29,4 +29,4 @@ MonoBehaviour:
       _animation: 0
     - _sprite: {fileID: -1007483195, guid: feabcbba63b5e4444bb58667d3814d43, type: 3}
       _dialogText: Diag. 1
-      _animation: 0
+      _animation: 4

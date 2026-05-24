@@ -50,8 +50,7 @@ namespace Kapibara.RPS
 		{
 			Debug.Log($"[LibraryManager] OnMenuOpen() -> ");
 			MaterializeIfNeeded();
-			List<LibraryQuestProgress> quests = AppContext.GameContext.LibraryQuests;
-			_libraryUIController.SetData(quests, GetUnlockedPageCount(quests));
+			_libraryUIController.SetData(AppContext.GameContext.LibraryQuests);
 		}
 
 		private void MaterializeIfNeeded()
@@ -83,32 +82,6 @@ namespace Kapibara.RPS
 			AppEvents.OnGameContextUpdated?.Invoke();
 		}
 
-		private int GetUnlockedPageCount(List<LibraryQuestProgress> quests)
-		{
-			if (quests.Count == 0) return 0;
-
-			int totalPages = 0;
-			foreach (LibraryQuestProgress quest in quests)
-				if (quest.PageIndex + 1 > totalPages) totalPages = quest.PageIndex + 1;
-
-			int unlockedCount = 1;
-			for (int pageIndex = 0; pageIndex < totalPages - 1; pageIndex++)
-			{
-				bool allComplete = true;
-				foreach (LibraryQuestProgress quest in quests)
-				{
-					if (quest.PageIndex == pageIndex && !quest.IsCompleted)
-					{
-						allComplete = false;
-						break;
-					}
-				}
-				if (!allComplete) break;
-				unlockedCount++;
-			}
-			return unlockedCount;
-		}
-
-		#endregion
+#endregion
 	}
 }

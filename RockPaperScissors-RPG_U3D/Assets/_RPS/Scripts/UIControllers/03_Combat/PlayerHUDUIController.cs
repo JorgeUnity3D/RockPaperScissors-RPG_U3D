@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using Kapibara.UI;
 using TMPro;
@@ -55,6 +56,10 @@ namespace Kapibara.RPS
 		[SerializeField] private GameObject      _surpriseBoxActionsGroup;
 		[SerializeField] private Button          _surpriseBoxContinueButton;
 
+		[Header("Step Log")]
+		[SerializeField] private CanvasGroup     _stepLogGroup;
+		[SerializeField] private TextMeshProUGUI _stepLogText;
+
 		[Header("Actions - Backpack")]
 		[SerializeField] private GameObject      _backpackActionsGroup;
 		[SerializeField] private Button          _openBackpackButton;
@@ -105,6 +110,20 @@ namespace Kapibara.RPS
 			_torchButton.onClick.AddListener(   () => OnItemPressed(ItemType.TORCH));
 
 			HidePlayerBubbles();
+		}
+
+		public void ShowStepLog(string text, Action onComplete)
+		{
+			if (_stepLogGroup == null) { onComplete?.Invoke(); return; }
+			_stepLogGroup.alpha = 0f;
+			if (_stepLogText != null) _stepLogText.text = text;
+
+			DOTween.Sequence()
+			       .Append(_stepLogGroup.DOFade(1f, GameConsts.STEP_LOG_FADE_DUR))
+			       .AppendInterval(GameConsts.STEP_LOG_HOLD_DUR)
+			       .Append(_stepLogGroup.DOFade(0f, GameConsts.STEP_LOG_FADE_DUR))
+			       .OnComplete(() => onComplete?.Invoke())
+			       .SetLink(_stepLogGroup.gameObject);
 		}
 
 		public void SetData(int playerMaxHP, int playerMaxEnergy)

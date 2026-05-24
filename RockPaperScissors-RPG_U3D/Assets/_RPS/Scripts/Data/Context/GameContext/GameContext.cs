@@ -29,6 +29,9 @@ namespace Kapibara.RPS
 		//Credits
 		private int    _creditsLeft          = -1;
 		private string _creditTimerExpiresUnix = "0";
+		//Map
+		private List<int> _unlockedLevelIndexes;
+		private List<int> _completedLevelIndexes;
 
 		#endregion
 
@@ -84,6 +87,12 @@ namespace Kapibara.RPS
 		/// <summary>Quests de la Biblioteca materializadas al activar el edificio. Vacío hasta que el NPC es rescatado.</summary>
 		public List<LibraryQuestProgress> LibraryQuests => _libraryQuests;
 
+		/// <summary>Niveles desbloqueados en runtime via victoria de boss. Complementa el flag IsAvailable del ScriptableObject.</summary>
+		public List<int> UnlockedLevelIndexes => _unlockedLevelIndexes;
+
+		/// <summary>Niveles cuyo boss ha sido derrotado al menos una vez. Fuente de verdad para MapLevel.IsCompleted.</summary>
+		public List<int> CompletedLevelIndexes => _completedLevelIndexes;
+
 		/// <summary>Créditos de viaje disponibles. Persiste en el fichero de guardado.</summary>
 		public int CreditsLeft
 		{
@@ -124,13 +133,15 @@ namespace Kapibara.RPS
 				new TownData(TownMenu.HOUSE, true, false, false, false)
 			});
 			_libraryQuests          = new List<LibraryQuestProgress>();
-			_creditsLeft           = -1;
+			_creditsLeft            = -1;
 			_creditTimerExpiresUnix = "0";
+			_unlockedLevelIndexes   = new List<int>();
+			_completedLevelIndexes  = new List<int>();
 		}
 
 		// townContext: new saves. townData: backward compat with old saves that had the flat list.
 		[JsonConstructor]
-		public GameContext(string gameName, string creationTimestamp, string lastUpdateDate, Player player, TownContext townContext, List<TownData> townData, int version = 0, int creditsLeft = 5, string creditTimerExpiresUnix = "0", List<LibraryQuestProgress> libraryQuests = null)
+		public GameContext(string gameName, string creationTimestamp, string lastUpdateDate, Player player, TownContext townContext, List<TownData> townData, int version = 0, int creditsLeft = 5, string creditTimerExpiresUnix = "0", List<LibraryQuestProgress> libraryQuests = null, List<int> unlockedLevelIndexes = null, List<int> completedLevelIndexes = null)
 		{
 			_gameName = new NString(gameName);
 			_creationTimestamp = new NString(creationTimestamp);
@@ -138,9 +149,11 @@ namespace Kapibara.RPS
 			_player = new NotificableField<Player> { Value = player };
 			_townContext = townContext ?? new TownContext(townData ?? new List<TownData>());
 			_version = version;
-			_creditsLeft           = creditsLeft;
+			_creditsLeft            = creditsLeft;
 			_creditTimerExpiresUnix = creditTimerExpiresUnix ?? "0";
 			_libraryQuests          = libraryQuests ?? new List<LibraryQuestProgress>();
+			_unlockedLevelIndexes   = unlockedLevelIndexes ?? new List<int>();
+			_completedLevelIndexes  = completedLevelIndexes ?? new List<int>();
 		}
 
 		#endregion

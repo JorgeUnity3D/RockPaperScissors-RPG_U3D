@@ -72,6 +72,8 @@ namespace Kapibara.RPS
 		public const float COMBAT_BAR_ANIM         = 0.2f;
 		public const float COMBAT_BAR_GHOST_DELAY  = 0.2f;
 		public const float COMBAT_BAR_GHOST_DUR    = 0.35f;
+		public const float STEP_LOG_FADE_DUR       = 0.35f;
+		public const float STEP_LOG_HOLD_DUR       = 0.8f;
 		public const float COMBAT_TREASURE_CHANCE      = 0.25f;
 		public const float SURPRISE_BOX_HEAL_PERCENT   = 0.3f;
 		public const int   SURPRISE_BOX_ENERGY_AMOUNT  = 30;
