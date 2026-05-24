@@ -130,15 +130,6 @@ namespace Kapibara.RPS
 		{
 			_playerMaxHP     = playerMaxHP;
 			_playerMaxEnergy = playerMaxEnergy;
-
-			_playerHPFill.rectTransform.anchorMax     = Vector2.one;
-			_playerEnergyFill.rectTransform.anchorMax = Vector2.one;
-
-			if (_playerHPGhost     != null) _playerHPGhost.rectTransform.anchorMax     = Vector2.one;
-			if (_playerEnergyGhost != null) _playerEnergyGhost.rectTransform.anchorMax = Vector2.one;
-
-			if (_playerHPText     != null) _playerHPText.text     = $"{playerMaxHP}/{playerMaxHP}";
-			if (_playerEnergyText != null) _playerEnergyText.text = $"{playerMaxEnergy}/{playerMaxEnergy}";
 		}
 
 		public void SetBackground(Sprite sprite)
