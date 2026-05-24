@@ -36,7 +36,6 @@ MonoBehaviour:
     _treasureSprite: {fileID: -8972316498592229916, guid: 1f9290f03740bbc44bba5549d3084e83, type: 3}
     _bossStory: {fileID: 11400000, guid: e416524df1dddaf83a1e233fd7a70a79, type: 2}
     _targetBuilding: 7
-    _npcSprite: {fileID: 6491680457769439068, guid: 5e5ccfa5b9a9dac45884a4e5919f085d, type: 3}
     _npcDialogueLines:
     - Oh! I can't believe you made it through the forest!
     - These creatures ambushed me while I was gathering herbs.
@@ -57,8 +56,7 @@ MonoBehaviour:
     _treasureGoldAmount: 200
     _treasureSprite: {fileID: -8972316498592229916, guid: 1f9290f03740bbc44bba5549d3084e83, type: 3}
     _bossStory: {fileID: 11400000, guid: eb22bdd81beb6ab45ae58d3e4eaf4f81, type: 2}
-    _targetBuilding: 5
-    _npcSprite: {fileID: -8173045813343347067, guid: 5e5ccfa5b9a9dac45884a4e5919f085d, type: 3}
+    _targetBuilding: 1
     _npcDialogueLines:
     - Water... please, I need water. The heat is unbearable.
     - I followed a mirage for three days before those things caught me.
@@ -79,7 +77,6 @@ MonoBehaviour:
     _treasureSprite: {fileID: -8972316498592229916, guid: 1f9290f03740bbc44bba5549d3084e83, type: 3}
     _bossStory: {fileID: 0}
     _targetBuilding: 3
-    _npcSprite: {fileID: -5974177904267531938, guid: 5e5ccfa5b9a9dac45884a4e5919f085d, type: 3}
     _npcDialogueLines:
     - The current dragged me down to these depths. I can barely breathe.
     - Something enormous lives in the deep. I heard it moving below me.
@@ -100,7 +97,6 @@ MonoBehaviour:
     _treasureSprite: {fileID: -8972316498592229916, guid: 1f9290f03740bbc44bba5549d3084e83, type: 3}
     _bossStory: {fileID: 0}
     _targetBuilding: 6
-    _npcSprite: {fileID: -818841823584972384, guid: 5e5ccfa5b9a9dac45884a4e5919f085d, type: 3}
     _npcDialogueLines:
     - I can't feel my fingers anymore. How long have I been here?
     - The storm hit without warning. I lost my guide somewhere in the blizzard.
@@ -121,7 +117,6 @@ MonoBehaviour:
     _treasureSprite: {fileID: -8972316498592229916, guid: 1f9290f03740bbc44bba5549d3084e83, type: 3}
     _bossStory: {fileID: 0}
     _targetBuilding: 2
-    _npcSprite: {fileID: 3597508830047154912, guid: 5e5ccfa5b9a9dac45884a4e5919f085d, type: 3}
     _npcDialogueLines:
     - I can't see a thing in here. Is someone there?
     - I went in looking for ore and the tunnel collapsed behind me.
@@ -142,7 +137,6 @@ MonoBehaviour:
     _treasureSprite: {fileID: -8972316498592229916, guid: 1f9290f03740bbc44bba5549d3084e83, type: 3}
     _bossStory: {fileID: 0}
     _targetBuilding: 1
-    _npcSprite: {fileID: 4029466576895577280, guid: 5e5ccfa5b9a9dac45884a4e5919f085d, type: 3}
     _npcDialogueLines:
     - The heat... it's everywhere. Even the rocks glow red.
     - I slipped and fell into a lower ledge. The lava is rising below me.
@@ -163,7 +157,6 @@ MonoBehaviour:
     _treasureSprite: {fileID: -8972316498592229916, guid: 1f9290f03740bbc44bba5549d3084e83, type: 3}
     _bossStory: {fileID: 0}
     _targetBuilding: 4
-    _npcSprite: {fileID: 6730013578686099568, guid: 5e5ccfa5b9a9dac45884a4e5919f085d, type: 3}
     _npcDialogueLines:
     - Where am I? Is this real? Are YOU real?
     - There's nothing here. No sky, no ground, just... nothing. And yet I'm standing.
