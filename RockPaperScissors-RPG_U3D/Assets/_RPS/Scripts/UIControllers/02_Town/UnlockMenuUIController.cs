@@ -65,7 +65,6 @@ namespace Kapibara.RPS
 		private void CancelUnlockButton()
 		{
 			Debug.Log($"[UnlockMenuUIController] CancelUnlockButton() -> ");
-			AppEvents.OnCancelUnlock?.Invoke();
 			Close();
 		}
 

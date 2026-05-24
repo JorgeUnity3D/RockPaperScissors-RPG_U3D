@@ -37,8 +37,6 @@ namespace Kapibara.RPS
 
 		/// <summary>Confirma el desbloqueo de un edificio tras pagar su coste.</summary>
 		public static UnityAction<TownData> OnConfirmUnlock;
-		/// <summary>Cancela el proceso de desbloqueo de un edificio.</summary>
-		public static UnityAction OnCancelUnlock;
 
 		/// <summary>Notifica que el jugador ha seleccionado una estadística para entrenar.</summary>
 		public static UnityAction<TrainingHouseModifier> OnTrainingSelected;
@@ -80,8 +78,6 @@ namespace Kapibara.RPS
 		/// <summary>Se dispara al cerrar el lector de comic (ComicPlayerUIController). TheaterManager lo recibe para restaurar el estado del Theater.</summary>
 		public static UnityAction OnComicClosed;
 
-		/// <summary>Se dispara al pulsar el botón de ajustes durante el combate. PauseMenuUIController lo consume.</summary>
-		public static UnityAction OnSettingsRequested;
 		/// <summary>El jugador pulsa Options en el menú de pausa. PauseManager lo consume.</summary>
 		public static UnityAction OnOptionsRequested;
 		/// <summary>El jugador pulsa Exit en el menú de pausa. PauseManager lo consume para abandonar el nivel.</summary>

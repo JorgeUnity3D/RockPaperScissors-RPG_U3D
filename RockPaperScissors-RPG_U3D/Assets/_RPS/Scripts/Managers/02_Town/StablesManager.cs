@@ -22,6 +22,8 @@ namespace Kapibara.RPS
 			Debug.Log($"[StablesManager] SetUp() -> ");
 			_stablesUIController = ServiceLocator.Instance.GetService<UIService>().GetController<StablesUIController>();
 			_stablesData = AppContext.TownData.Find(t => t.TownMenu == TownMenu.STABLES);
+			if (_stablesData == null)
+				Debug.Log("[StablesManager] SetUp() -> TownData entry for STABLES not found.");
 		}
 
 		protected override void Subscribe()
@@ -68,6 +70,7 @@ namespace Kapibara.RPS
 
 		private void AddStablesExp(int amount)
 		{
+			if (_stablesData == null) return;
 			_stablesData.Experience += amount;
 			int maxLevel = GameConsts.TRAINING_EXP_PER_LEVEL.Count - 1;
 			while (_stablesData.Level < maxLevel &&

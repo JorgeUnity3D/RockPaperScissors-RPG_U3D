@@ -239,7 +239,6 @@ namespace Kapibara.RPS
 		{
 			if (_unlockedStoryIds.Contains(storyId)) return;
 			_unlockedStoryIds.Add(storyId);
-			AppEvents.OnGameContextUpdated?.Invoke();
 		}
 
 		/// <summary>Lista plana de todos los StatAttribute del jugador para iteración genérica. Crea una nueva lista en cada acceso — no llamar en hot paths.</summary>

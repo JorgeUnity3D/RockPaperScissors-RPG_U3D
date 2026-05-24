@@ -69,6 +69,8 @@ namespace Kapibara.RPS
 		private void UpgradeAttack()
 		{
 			Debug.Log($"[StoneSmithyManager] UpgradeAttack() -> ");
+			int maxLevel = _stoneSmithyScrObj.Data.attackItem.amountsPerLevel.Count;
+			if (_player.AttackItemLevel >= maxLevel) { Debug.Log("[StoneSmithyManager] Attack item already at max level."); return; }
 			if (!TrySpendGold(GetUpgradeCost(_player.AttackItemLevel))) return;
 			_player.AttackItemLevel++;
 			_attackItem.level = _player.AttackItemLevel;
@@ -79,6 +81,8 @@ namespace Kapibara.RPS
 		private void UpgradeHeal()
 		{
 			Debug.Log($"[StoneSmithyManager] UpgradeHeal() -> ");
+			int maxLevel = _stoneSmithyScrObj.Data.healItem.amountsPerLevel.Count;
+			if (_player.HealItemLevel >= maxLevel) { Debug.Log("[StoneSmithyManager] Heal item already at max level."); return; }
 			if (!TrySpendGold(GetUpgradeCost(_player.HealItemLevel))) return;
 			_player.HealItemLevel++;
 			_healItem.level = _player.HealItemLevel;
@@ -89,6 +93,8 @@ namespace Kapibara.RPS
 		private void UpgradeEnergy()
 		{
 			Debug.Log($"[StoneSmithyManager] UpgradeEnergy() -> ");
+			int maxLevel = _stoneSmithyScrObj.Data.energyItem.amountsPerLevel.Count;
+			if (_player.EnergyItemLevel >= maxLevel) { Debug.Log("[StoneSmithyManager] Energy item already at max level."); return; }
 			if (!TrySpendGold(GetUpgradeCost(_player.EnergyItemLevel))) return;
 			_player.EnergyItemLevel++;
 			_energyItem.level = _player.EnergyItemLevel;

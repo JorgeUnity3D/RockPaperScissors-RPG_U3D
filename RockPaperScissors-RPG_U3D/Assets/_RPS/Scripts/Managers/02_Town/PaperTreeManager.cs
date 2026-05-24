@@ -25,6 +25,8 @@ namespace Kapibara.RPS
 			_paperTreeUIController = ServiceLocator.Instance.GetService<UIService>().GetController<PaperTreeUIController>();
 			_player = AppContext.Player;
 			_paperTreeData = AppContext.TownData.Find(t => t.TownMenu == TownMenu.PAPER_TREE);
+			if (_paperTreeData == null)
+				Debug.Log("[PaperTreeManager] SetUp() -> TownData entry for PAPER_TREE not found.");
 		}
 
 		protected override void Subscribe()
@@ -74,6 +76,7 @@ namespace Kapibara.RPS
 
 		private void AddPaperTreeExp(int amount)
 		{
+			if (_paperTreeData == null) return;
 			_paperTreeData.Experience += amount;
 			int maxLevel = GameConsts.TRAINING_EXP_PER_LEVEL.Count - 1;
 			while (_paperTreeData.Level < maxLevel &&

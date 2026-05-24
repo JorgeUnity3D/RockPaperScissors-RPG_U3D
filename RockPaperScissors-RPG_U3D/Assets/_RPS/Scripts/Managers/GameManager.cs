@@ -157,6 +157,8 @@ namespace Kapibara.RPS
 							if (bossStory.StoryId >= 0)
 								AppContext.Player.UnlockStory(bossStory.StoryId);
 
+							AppEvents.OnGameContextUpdated?.Invoke();
+
 							ComicPlayerUIController comicPlayer = ServiceLocator.Instance.GetService<UIService>().GetController<ComicPlayerUIController>();
 							if (comicPlayer != null)
 							{
