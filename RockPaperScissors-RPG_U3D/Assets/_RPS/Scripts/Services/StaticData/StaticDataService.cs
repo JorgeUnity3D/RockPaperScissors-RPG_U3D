@@ -22,6 +22,9 @@ namespace Kapibara.RPS
 		[Header("Map")]
 		[SerializeField] private MapLevelScrObj           _mapLevels;
 
+		[Header("Player")]
+		[SerializeField] private IconsScrObj              _statIcons;
+
 		[Header("Combat")]
 		[SerializeField] private LanguageScrObj           _commonLanguage;
 
@@ -32,6 +35,7 @@ namespace Kapibara.RPS
 		public StoneSmithyScrObj        StoneSmithyItems    => _stoneSmithyItems;
 		public PaperTreeScrObj          PaperTreeSkillTrees => _paperTreeSkillTrees;
 		public MapLevelScrObj           MapLevels           => _mapLevels;
+		public IconsScrObj              StatIcons           => _statIcons;
 		public LanguageScrObj           CommonLanguage      => _commonLanguage;
 	}
 }

@@ -40,11 +40,12 @@ namespace Kapibara.Util.Editor
 
 		// ── Sub-view ───────────────────────────────────────────────────────────────
 
-		private enum SubView { None, MapLevel, Theater }
+		private enum SubView { None, MapLevel, Theater, PaperTree }
 
-		private SubView              _subView         = SubView.None;
-		private MapLevelEditorWindow _mapLevelEdInst;
-		private ComicEditorWindow  _theaterEdInst;
+		private SubView               _subView         = SubView.None;
+		private MapLevelEditorWindow  _mapLevelEdInst;
+		private ComicEditorWindow     _theaterEdInst;
+		private PaperTreeEditorWindow _paperTreeEdInst;
 
 		// ── State ──────────────────────────────────────────────────────────────────
 
@@ -157,7 +158,9 @@ namespace Kapibara.Util.Editor
 				if (GUILayout.Button("← Back", EditorStyles.miniButton, GUILayout.Height(20f)))
 					CloseSubView();
 				GUILayout.Space(6f);
-				string subLabel = _subView == SubView.MapLevel ? "Map Level Editor" : "Comic Editor";
+				string subLabel = _subView == SubView.MapLevel ? "Map Level Editor"
+				                : _subView == SubView.Theater  ? "Comic Editor"
+				                : "Paper Tree Editor";
 				GUILayout.Label(subLabel, EditorStyles.boldLabel);
 			}
 			else
@@ -174,6 +177,9 @@ namespace Kapibara.Util.Editor
 				GUILayout.Space(4f);
 				if (GUILayout.Button("Comic Editor", EditorStyles.miniButton, GUILayout.Height(20f)))
 					OpenSubView(SubView.Theater);
+				GUILayout.Space(4f);
+				if (GUILayout.Button("Paper Tree Editor", EditorStyles.miniButton, GUILayout.Height(20f)))
+					OpenSubView(SubView.PaperTree);
 			}
 
 			GUILayout.Space(10f);
@@ -188,10 +194,9 @@ namespace Kapibara.Util.Editor
 		private void OpenSubView(SubView view)
 		{
 			_subView = view;
-			if (view == SubView.MapLevel && _mapLevelEdInst == null)
-				_mapLevelEdInst = CreateInstance<MapLevelEditorWindow>();
-			else if (view == SubView.Theater && _theaterEdInst == null)
-				_theaterEdInst = CreateInstance<ComicEditorWindow>();
+			if (view == SubView.MapLevel  && _mapLevelEdInst  == null) _mapLevelEdInst  = CreateInstance<MapLevelEditorWindow>();
+			if (view == SubView.Theater   && _theaterEdInst   == null) _theaterEdInst   = CreateInstance<ComicEditorWindow>();
+			if (view == SubView.PaperTree && _paperTreeEdInst == null) _paperTreeEdInst = CreateInstance<PaperTreeEditorWindow>();
 		}
 
 		private void CloseSubView()
@@ -201,16 +206,16 @@ namespace Kapibara.Util.Editor
 
 		private void DrawSubView(float w, float h)
 		{
-			if (_subView == SubView.MapLevel && _mapLevelEdInst != null)
-				_mapLevelEdInst.DrawEmbedded(w, h);
-			else if (_subView == SubView.Theater && _theaterEdInst != null)
-				_theaterEdInst.DrawEmbedded(w, h);
+			if (_subView == SubView.MapLevel  && _mapLevelEdInst  != null) _mapLevelEdInst.DrawEmbedded(w, h);
+			if (_subView == SubView.Theater   && _theaterEdInst   != null) _theaterEdInst.DrawEmbedded(w, h);
+			if (_subView == SubView.PaperTree && _paperTreeEdInst != null) _paperTreeEdInst.DrawEmbedded(w, h);
 		}
 
 		private void DestroySubViewInstances()
 		{
-			if (_mapLevelEdInst != null) { DestroyImmediate(_mapLevelEdInst); _mapLevelEdInst = null; }
-			if (_theaterEdInst  != null) { DestroyImmediate(_theaterEdInst);  _theaterEdInst  = null; }
+			if (_mapLevelEdInst  != null) { DestroyImmediate(_mapLevelEdInst);  _mapLevelEdInst  = null; }
+			if (_theaterEdInst   != null) { DestroyImmediate(_theaterEdInst);   _theaterEdInst   = null; }
+			if (_paperTreeEdInst != null) { DestroyImmediate(_paperTreeEdInst); _paperTreeEdInst = null; }
 		}
 
 		// ── Category Panel ─────────────────────────────────────────────────────────

@@ -13,11 +13,9 @@ namespace Kapibara.RPS
 		[SerializeField] private SkillNode _nodeID;
 		[SerializeField] private Stats _stat;
 		[SerializeField] private int _modifier;
-		[SerializeField] private bool _isUnlocked;
 		[SerializeField] private int _cost;
 		[NonSerialized] private List<PaperTreeNode> _nextNodes;
 		[NonSerialized] private List<PaperTreeNode> _previousNodes;
-		[NonSerialized] private List<SkillNode> _previousNodesIDs;
 		[SerializeField] private List<SkillNode> _nextNodesIDs;
 
 		/// <summary>Identificador único del nodo en el árbol.</summary>
@@ -40,20 +38,10 @@ namespace Kapibara.RPS
 			set => _modifier = value;
 		}
 
-		/// <summary>True si el jugador ya compró este nodo.</summary>
-		public bool IsUnlocked
-		{
-			get => _isUnlocked;
-			set => _isUnlocked = value;
-		}
-
 		/// <summary>True si todos los nodos previos están desbloqueados y este puede comprarse.</summary>
-		public bool CanUnlock
+		public bool CanUnlock(List<SkillNode> unlockedNodes)
 		{
-			get
-			{
-				return _previousNodes.TrueForAll(ptn => ptn.IsUnlocked);
-			}
+			return _previousNodes.TrueForAll(pn => unlockedNodes.Contains(pn.NodeID));
 		}
 
 		/// <summary>Coste en oro para desbloquear este nodo.</summary>
@@ -80,34 +68,31 @@ namespace Kapibara.RPS
 			get => _nextNodesIDs;
 		}
 
-		/// <summary>IDs de los nodos padres; se rellenan durante SetUp() por los propios hijos.</summary>
-		public List<SkillNode> PreviousNodesIDs
-		{
-			get => _previousNodesIDs;
-		}
-
 		public PaperTreeNode()
 		{
-			_isUnlocked = false;
 			_modifier = 1;
 			_cost = 10;
 			_nextNodesIDs = new List<SkillNode>();
 			_nextNodes = new List<PaperTreeNode>();
 			_previousNodes = new List<PaperTreeNode>();
-			_previousNodesIDs = new List<SkillNode>();
 		}
 
-		/// <summary>Enlaza las referencias de nodos siguientes y registra este nodo como padre de sus hijos.</summary>
+		/// <summary>Limpia los links de runtime. Llamado por PaperTreeScrObj.OnEnable() antes de reconstruir.</summary>
+		public void ClearLinks()
+		{
+			_nextNodes.Clear();
+			_previousNodes.Clear();
+		}
+
+		/// <summary>Enlaza referencias de nodos siguientes y registra este nodo como padre de sus hijos.</summary>
 		public void SetUp(List<PaperTreeNode> allNodes)
 		{
 			foreach (SkillNode nextNodeID in _nextNodesIDs)
 			{
-				if (allNodes.Exists(ptn => ptn.NodeID == nextNodeID))
-				{
-					PaperTreeNode nextNode = allNodes.Find(ptn => ptn.NodeID == nextNodeID);
-					nextNode.PreviousNodes.Add(this);
-					_nextNodes.Add(nextNode);
-				}
+				PaperTreeNode nextNode = allNodes.Find(ptn => ptn.NodeID == nextNodeID);
+				if (nextNode == null) continue;
+				nextNode.PreviousNodes.Add(this);
+				_nextNodes.Add(nextNode);
 			}
 		}
 	}

@@ -97,6 +97,7 @@ MonoBehaviour:
   _stoneSmithyItems: {fileID: 11400000, guid: 7bb63a1c75dd0f7a0b2ccf8d0d34f43f, type: 2}
   _paperTreeSkillTrees: {fileID: 11400000, guid: b5b7ee9fb6e50f544ae6c7ac7140cea5, type: 2}
   _mapLevels: {fileID: 11400000, guid: d6ce862f1097c084d8b0962d14d572a3, type: 2}
+  _statIcons: {fileID: 11400000, guid: da797344179e1374b902b9d88d5652d6, type: 2}
   _commonLanguage: {fileID: 11400000, guid: e9d28c9b1deeed2f099cfccfde365ac1, type: 2}
 --- !u!1 &3470824504347100507
 GameObject:
@@ -301,7 +302,10 @@ MonoBehaviour:
         _currentEnergy:
           _value: 0
         _initialEnergy:
-          _value: 0
+          _value:
+            _stat: 0
+            _attributeValue:
+              _value: 0
         _energyRecovery:
           _value:
             _stat: 0

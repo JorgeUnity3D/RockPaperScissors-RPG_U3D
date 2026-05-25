@@ -56,12 +56,12 @@ namespace Kapibara.RPS
 
 		#region SETUP
 
-		/// <summary>Asigna el nodo, el icono de la estadística y el callback al pulsar el botón.</summary>
-		public void SetUp(PaperTreeNode paperTreeNode, Sprite statIcon, UnityAction<PaperTreeNode> OnClickAction)
+		/// <summary>Asigna el nodo, el icono de la estadística, el estado de desbloqueo y el callback al pulsar el botón.</summary>
+		public void SetUp(PaperTreeNode paperTreeNode, Sprite statIcon, bool isUnlocked, UnityAction<PaperTreeNode> OnClickAction)
 		{
 			_paperTreeNode = paperTreeNode;
 			_unlockedIcon = statIcon;
-			_iconImage.sprite = _paperTreeNode.IsUnlocked ? _unlockedIcon : _lockedIcon;
+			_iconImage.sprite = isUnlocked ? _unlockedIcon : _lockedIcon;
 			_button.AddListener(() => OnClickAction?.Invoke(_paperTreeNode), true);
 		}	
 

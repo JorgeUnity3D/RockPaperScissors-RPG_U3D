@@ -13,7 +13,6 @@ namespace Kapibara.RPS
 	{
 
 		[Header("UI")]
-		[SerializeField] private IconsScrObj _iconsScrObj;
 		[SerializeField] private GameObject _linePrefab;
 		[SerializeField] private List<Color> _lineColors;
 		[SerializeField] private List<PaperTreeButton> _rockPaperTreeButtons;
@@ -21,13 +20,8 @@ namespace Kapibara.RPS
 		[SerializeField] private List<PaperTreeButton> _scissorsPaperTreeButtons;
 		[SerializeField] private List<PaperTreeButton> _defensePaperTreeButtons;
 		[SerializeField] private List<PaperTreeButton> _energyRecPaperTreeButtons;
-		[Header("DEBUG")]
-		[SerializeField, ReadOnly] private List<PaperTreeNode> _rockSkillTree;
-		[SerializeField, ReadOnly] private List<PaperTreeNode> _paperSkillTree;
-		[SerializeField, ReadOnly] private List<PaperTreeNode> _scissorsSkillTree;
-		[SerializeField, ReadOnly] private List<PaperTreeNode> _defenseSkillTree;
-		[SerializeField, ReadOnly] private List<PaperTreeNode> _energyRecSkillTree;
-		[SerializeField, ReadOnly] private IconsDictionary _icons;
+
+		private IconsDictionary _icons;
 
 		#region UNITY_LIFECYCLE
 
@@ -44,87 +38,74 @@ namespace Kapibara.RPS
 		{
 			Debug.Log($"[PaperTreeUIController] SetUp() -> ");
 			HideCanvas(0);
-			_icons = _iconsScrObj.Data;
 		}
 
-		/// <summary>Carga los datos del árbol ya restaurados y construye la UI de habilidades. Llamar tras RestoreNodeState en el manager.</summary>
-		public void SetData(List<StatAttribute> attributes, PaperTreeScrObj paperTreeScrObj, int playerGold)
+		public void SetData(List<StatAttribute> attributes, PaperTreeScrObj paperTreeScrObj, IconsDictionary icons, int playerGold)
 		{
 			Debug.Log($"[PaperTreeUIController] SetData() -> ");
-			_rockSkillTree      = paperTreeScrObj[Stats.ROCK];
-			_paperSkillTree     = paperTreeScrObj[Stats.PAPER];
-			_scissorsSkillTree  = paperTreeScrObj[Stats.SCISSOR];
-			_defenseSkillTree   = paperTreeScrObj[Stats.DEFENSE];
-			_energyRecSkillTree = paperTreeScrObj[Stats.ENERGY_RECOVERY];
-			SetUpPaperTreeUI(_rockPaperTreeButtons,      _rockSkillTree,      playerGold);
-			SetUpPaperTreeUI(_paperPaperTreeButtons,     _paperSkillTree,     playerGold);
-			SetUpPaperTreeUI(_scissorsPaperTreeButtons,  _scissorsSkillTree,  playerGold);
-			SetUpPaperTreeUI(_defensePaperTreeButtons,   _defenseSkillTree,   playerGold);
-			SetUpPaperTreeUI(_energyRecPaperTreeButtons, _energyRecSkillTree, playerGold);
+			_icons = icons;
+			SetUpTree(attributes, paperTreeScrObj, Stats.ROCK,            _rockPaperTreeButtons,      playerGold);
+			SetUpTree(attributes, paperTreeScrObj, Stats.PAPER,           _paperPaperTreeButtons,     playerGold);
+			SetUpTree(attributes, paperTreeScrObj, Stats.SCISSOR,         _scissorsPaperTreeButtons,  playerGold);
+			SetUpTree(attributes, paperTreeScrObj, Stats.DEFENSE,         _defensePaperTreeButtons,   playerGold);
+			SetUpTree(attributes, paperTreeScrObj, Stats.ENERGY_RECOVERY, _energyRecPaperTreeButtons, playerGold);
 		}
 
 		#endregion
 
 		#region CONTROL
 
-		private void SetUpPaperTreeUI(List<PaperTreeButton> paperTreeButtons, List<PaperTreeNode> paperTreeSkillTree, int playerGold)
+		private void SetUpTree(List<StatAttribute> attributes, PaperTreeScrObj scrObj, Stats stat, List<PaperTreeButton> buttons, int playerGold)
 		{
-			SetUpSkillNodes(paperTreeButtons, paperTreeSkillTree);
-			SetUpSkillTreeLines(paperTreeButtons, paperTreeSkillTree, playerGold);
+			StatAttribute attribute = attributes.Find(a => a.Stat == stat);
+			List<SkillNode> unlockedNodes = attribute?.GetModifier<PaperTreeModifier>()?.UnlockedNodes ?? new List<SkillNode>();
+			List<PaperTreeNode> tree = scrObj[stat];
+			SetUpSkillNodes(buttons, tree, unlockedNodes);
+			SetUpSkillTreeLines(buttons, tree, unlockedNodes, playerGold);
 		}
 
-		private void SetUpSkillNodes(List<PaperTreeButton> paperTreeButtons, List<PaperTreeNode> paperTreeSkillTree)
+		private void SetUpSkillNodes(List<PaperTreeButton> buttons, List<PaperTreeNode> tree, List<SkillNode> unlockedNodes)
 		{
-			Debug.Log($"[PaperTreeUIController] SetSkillTreeUI() -> ");
-			foreach (PaperTreeNode paperTreeNode in paperTreeSkillTree)
+			foreach (PaperTreeNode node in tree)
 			{
-				PaperTreeButton paperTreeButton = paperTreeButtons.Find(ptn => ptn.NodeID == paperTreeNode.NodeID);
-				Stats currentStat = paperTreeNode.Stats;
-				Sprite icon = _icons[currentStat];
-				paperTreeButton.SetUp(paperTreeNode, icon, SelectPaperTreeButton);
-				paperTreeNode.SetUp(paperTreeSkillTree);
+				PaperTreeButton btn = buttons.Find(b => b.NodeID == node.NodeID);
+				if (btn == null) continue;
+				bool isUnlocked = unlockedNodes.Contains(node.NodeID);
+				btn.SetUp(node, _icons[node.Stats], isUnlocked, SelectPaperTreeButton);
 			}
 		}
 
-		private void SetUpSkillTreeLines(List<PaperTreeButton> paperTreeButtons, List<PaperTreeNode> paperTreeSkillTree, int playerGold)
+		private void SetUpSkillTreeLines(List<PaperTreeButton> buttons, List<PaperTreeNode> tree, List<SkillNode> unlockedNodes, int playerGold)
 		{
-			Debug.Log($"[PaperTreeUIController] SetUpSkillTreeLines() -> ");
-
-			Transform parentPanel = paperTreeButtons[0].transform.parent;
+			Transform parentPanel = buttons[0].transform.parent;
 			parentPanel.DestroyChildren<PaperTreeLine>();
 
-			foreach (PaperTreeNode currentNode in paperTreeSkillTree)
+			foreach (PaperTreeNode currentNode in tree)
 			{
-				PaperTreeButton currentPaperTreeButton = paperTreeButtons.Find(ptb => ptb.NodeID == currentNode.NodeID);
-				Vector3 pointA = currentPaperTreeButton.ExitPoint;
+				PaperTreeButton currentBtn = buttons.Find(b => b.NodeID == currentNode.NodeID);
+				if (currentBtn == null) continue;
+				Vector3 pointA = currentBtn.ExitPoint;
+				bool currentUnlocked = unlockedNodes.Contains(currentNode.NodeID);
+
 				foreach (PaperTreeNode nextNode in currentNode.NextNodes)
 				{
-					PaperTreeButton nextPaperTreeButton = paperTreeButtons.Find(ptb => ptb.NodeID == nextNode.NodeID);
-					Vector3 pointB = nextPaperTreeButton.EntryPoint;
-					PaperTreeLine paperTreeLine = Instantiate(_linePrefab, parentPanel).GetComponent<PaperTreeLine>();
-					paperTreeLine.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
-					paperTreeLine.SetPosition(pointA, pointB);
+					PaperTreeButton nextBtn = buttons.Find(b => b.NodeID == nextNode.NodeID);
+					if (nextBtn == null) continue;
+					Vector3 pointB = nextBtn.EntryPoint;
+					PaperTreeLine line = Instantiate(_linePrefab, parentPanel).GetComponent<PaperTreeLine>();
+					line.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+					line.SetPosition(pointA, pointB);
+
 					Color lineColor;
-					if (nextNode.IsUnlocked && currentNode.IsUnlocked)
-					{
+					bool nextUnlocked = unlockedNodes.Contains(nextNode.NodeID);
+					if (nextUnlocked && currentUnlocked)
 						lineColor = _lineColors[0];
-					}
-					else if (nextNode.CanUnlock)
-					{
-						if (playerGold >= nextNode.Cost)
-						{
-							lineColor = _lineColors[1];
-						}
-						else
-						{
-							lineColor = _lineColors[2];
-						}
-					}
+					else if (nextNode.CanUnlock(unlockedNodes))
+						lineColor = playerGold >= nextNode.Cost ? _lineColors[1] : _lineColors[2];
 					else
-					{
 						lineColor = _lineColors[3];
-					}
-					paperTreeLine.SetStatus(lineColor);
+
+					line.SetStatus(lineColor);
 				}
 			}
 		}

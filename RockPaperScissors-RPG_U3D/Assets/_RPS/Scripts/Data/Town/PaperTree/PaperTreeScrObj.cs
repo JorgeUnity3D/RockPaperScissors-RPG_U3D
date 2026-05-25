@@ -15,7 +15,23 @@ namespace Kapibara.RPS
 		[SerializeField] private List<PaperTreeNode> _scissorsSkillTree;
 		[SerializeField] private List<PaperTreeNode> _defenseSkillTree;
 		[SerializeField] private List<PaperTreeNode> _energyRecoverySkillTree;
-		
+
+		private void OnEnable()
+		{
+			BuildLinks(_rockSkillTree);
+			BuildLinks(_paperSkillTree);
+			BuildLinks(_scissorsSkillTree);
+			BuildLinks(_defenseSkillTree);
+			BuildLinks(_energyRecoverySkillTree);
+		}
+
+		private void BuildLinks(List<PaperTreeNode> tree)
+		{
+			if (tree == null) return;
+			foreach (PaperTreeNode node in tree) node.ClearLinks();
+			foreach (PaperTreeNode node in tree) node.SetUp(tree);
+		}
+
 		//indexer operator this[] overload
 		public List<PaperTreeNode> this[Stats stat]
 		{

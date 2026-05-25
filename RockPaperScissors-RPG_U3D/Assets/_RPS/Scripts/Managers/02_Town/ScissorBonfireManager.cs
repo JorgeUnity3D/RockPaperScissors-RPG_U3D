@@ -90,11 +90,49 @@ namespace Kapibara.RPS
 		private void GetLevelUpData(int level, out int cost, out bool canAfford, out ScissorBonfireModLevel statVariations)
 		{
 			bool hasData = level < GameConsts.SCISSOR_MODS.Count;
-			cost = hasData ? GameConsts.LEVEL_PRICES_AUX[level - 1] : 0;
-			canAfford = hasData && AppContext.Player.Gold >= cost;
+			cost          = hasData ? GameConsts.LEVEL_PRICES_AUX[level] : 0;
+			canAfford     = hasData && AppContext.Player.Gold >= cost;
 			statVariations = hasData ? GameConsts.SCISSOR_MODS[level] : null;
 		}
-		
+
+		#endregion
+
+		#region DEBUG
+
+		[FoldoutGroup("DEBUG"), Button("Force Level Up")]
+		private void Debug_ForceLevelUp()
+		{
+			int levelIndex = AppContext.Player.Level;
+			if (levelIndex >= GameConsts.SCISSOR_MODS.Count)
+			{
+				Debug.Log("[ScissorBonfireManager] Already at max level.");
+				return;
+			}
+			AppContext.Player.Level++;
+			List<StatAttribute> attributes = AppContext.Player.Attributes.FindAll(att => att.GetModifier<ScissorBonfireModifier>() != null);
+			attributes.ForEach(att =>
+			{
+				att.GetModifier<ScissorBonfireModifier>().Level = AppContext.Player.Level;
+				att.GetModifier<ScissorBonfireModifier>().Modifier += GameConsts.SCISSOR_MODS[levelIndex][att.Stat];
+			});
+			AppEvents.OnGameContextUpdated?.Invoke();
+			Debug.Log($"[ScissorBonfireManager] Force level up → level {AppContext.Player.Level}");
+		}
+
+		[FoldoutGroup("DEBUG"), Button("Reset Level")]
+		private void Debug_ResetLevel()
+		{
+			AppContext.Player.Level = 1;
+			List<StatAttribute> attributes = AppContext.Player.Attributes.FindAll(att => att.GetModifier<ScissorBonfireModifier>() != null);
+			attributes.ForEach(att =>
+			{
+				att.GetModifier<ScissorBonfireModifier>().Level    = 1;
+				att.GetModifier<ScissorBonfireModifier>().Modifier = 0;
+			});
+			AppEvents.OnGameContextUpdated?.Invoke();
+			Debug.Log("[ScissorBonfireManager] Level reset to 1.");
+		}
+
 		#endregion
 	}
 }

@@ -11,228 +11,238 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b0a0e3839b4acab44bb05cdf01c71144, type: 3}
   m_Name: PaperTreeSkillTrees
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier:
   serializationData:
     SerializedFormat: 2
-    SerializedBytes: 
+    SerializedBytes:
     ReferencedUnityObjects: []
-    SerializedBytesString: 
+    SerializedBytesString:
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
   _rockSkillTree:
-  - _nodeID: 0
+  - _nodeID: 101
     _stat: 2
     _modifier: 1
-    _isUnlocked: 1
     _cost: 10
-    _nextNodesIDs: 0100000002000000
-  - _nodeID: 1
+    _nextNodesIDs:
+    - 102
+    - 103
+  - _nodeID: 102
     _stat: 0
     _modifier: 2
-    _isUnlocked: 0
     _cost: 10
-    _nextNodesIDs: 0300000004000000
-  - _nodeID: 2
+    _nextNodesIDs:
+    - 104
+    - 105
+  - _nodeID: 103
     _stat: 2
     _modifier: 2
-    _isUnlocked: 0
     _cost: 10
-    _nextNodesIDs: 05000000
-  - _nodeID: 3
+    _nextNodesIDs:
+    - 105
+    - 106
+  - _nodeID: 104
     _stat: 2
     _modifier: 3
-    _isUnlocked: 0
     _cost: 10
-    _nextNodesIDs: 06000000
-  - _nodeID: 4
+    _nextNodesIDs:
+    - 107
+  - _nodeID: 105
     _stat: 0
     _modifier: 3
-    _isUnlocked: 0
     _cost: 0
-    _nextNodesIDs: 06000000
-  - _nodeID: 5
+    _nextNodesIDs:
+    - 107
+  - _nodeID: 106
     _stat: 2
     _modifier: 3
-    _isUnlocked: 0
     _cost: 10
-    _nextNodesIDs: 06000000
-  - _nodeID: 6
+    _nextNodesIDs:
+    - 107
+  - _nodeID: 107
     _stat: 2
     _modifier: 5
-    _isUnlocked: 0
     _cost: 10
-    _nextNodesIDs: 
+    _nextNodesIDs: []
   _paperSkillTree:
-  - _nodeID: 0
+  - _nodeID: 201
     _stat: 3
     _modifier: 1
-    _isUnlocked: 1
     _cost: 10
-    _nextNodesIDs: 0100000002000000
-  - _nodeID: 1
+    _nextNodesIDs:
+    - 202
+    - 203
+  - _nodeID: 202
     _stat: 0
     _modifier: 2
-    _isUnlocked: 1
     _cost: 10
-    _nextNodesIDs: 0300000004000000
-  - _nodeID: 2
+    _nextNodesIDs:
+    - 204
+    - 205
+  - _nodeID: 203
     _stat: 3
     _modifier: 2
-    _isUnlocked: 1
     _cost: 10
-    _nextNodesIDs: 0400000005000000
-  - _nodeID: 3
+    _nextNodesIDs:
+    - 205
+    - 206
+  - _nodeID: 204
     _stat: 3
     _modifier: 3
-    _isUnlocked: 0
     _cost: 10000
-    _nextNodesIDs: 06000000
-  - _nodeID: 4
+    _nextNodesIDs:
+    - 207
+  - _nodeID: 205
     _stat: 0
     _modifier: 3
-    _isUnlocked: 0
     _cost: 0
-    _nextNodesIDs: 06000000
-  - _nodeID: 5
+    _nextNodesIDs:
+    - 207
+  - _nodeID: 206
     _stat: 3
     _modifier: 3
-    _isUnlocked: 0
     _cost: 10
-    _nextNodesIDs: 06000000
-  - _nodeID: 6
+    _nextNodesIDs:
+    - 207
+  - _nodeID: 207
     _stat: 10
     _modifier: 5
-    _isUnlocked: 0
     _cost: 10
-    _nextNodesIDs: 
+    _nextNodesIDs: []
   _scissorsSkillTree:
-  - _nodeID: 0
+  - _nodeID: 301
     _stat: 4
     _modifier: 1
-    _isUnlocked: 1
     _cost: 10
-    _nextNodesIDs: 0100000002000000
-  - _nodeID: 1
+    _nextNodesIDs:
+    - 302
+    - 303
+  - _nodeID: 302
     _stat: 4
     _modifier: 2
-    _isUnlocked: 1
     _cost: 10
-    _nextNodesIDs: 0300000004000000
-  - _nodeID: 2
+    _nextNodesIDs:
+    - 304
+    - 305
+  - _nodeID: 303
     _stat: 9
     _modifier: 2
-    _isUnlocked: 1
     _cost: 10
-    _nextNodesIDs: 05000000
-  - _nodeID: 3
+    _nextNodesIDs:
+    - 305
+    - 306
+  - _nodeID: 304
     _stat: 4
     _modifier: 3
-    _isUnlocked: 1
     _cost: 10
-    _nextNodesIDs: 06000000
-  - _nodeID: 4
+    _nextNodesIDs:
+    - 307
+  - _nodeID: 305
     _stat: 0
     _modifier: 3
-    _isUnlocked: 1
     _cost: 0
-    _nextNodesIDs: 06000000
-  - _nodeID: 5
+    _nextNodesIDs:
+    - 307
+  - _nodeID: 306
     _stat: 4
     _modifier: 3
-    _isUnlocked: 0
     _cost: 10
-    _nextNodesIDs: 06000000
-  - _nodeID: 6
+    _nextNodesIDs:
+    - 307
+  - _nodeID: 307
     _stat: 10
     _modifier: 5
-    _isUnlocked: 0
     _cost: 10
-    _nextNodesIDs: 
+    _nextNodesIDs: []
   _defenseSkillTree:
-  - _nodeID: 0
+  - _nodeID: 401
     _stat: 5
     _modifier: 1
-    _isUnlocked: 1
     _cost: 10
-    _nextNodesIDs: 0100000002000000
-  - _nodeID: 1
+    _nextNodesIDs:
+    - 402
+    - 403
+  - _nodeID: 402
     _stat: 0
     _modifier: 2
-    _isUnlocked: 1
     _cost: 10
-    _nextNodesIDs: 0300000004000000
-  - _nodeID: 2
+    _nextNodesIDs:
+    - 404
+    - 405
+  - _nodeID: 403
     _stat: 5
     _modifier: 2
-    _isUnlocked: 0
     _cost: 10
-    _nextNodesIDs: 05000000
-  - _nodeID: 3
+    _nextNodesIDs:
+    - 405
+    - 406
+  - _nodeID: 404
     _stat: 0
     _modifier: 3
-    _isUnlocked: 0
     _cost: 10
-    _nextNodesIDs: 06000000
-  - _nodeID: 4
+    _nextNodesIDs:
+    - 407
+  - _nodeID: 405
     _stat: 5
     _modifier: 3
-    _isUnlocked: 0
     _cost: 0
-    _nextNodesIDs: 06000000
-  - _nodeID: 5
+    _nextNodesIDs:
+    - 407
+  - _nodeID: 406
     _stat: 9
     _modifier: 3
-    _isUnlocked: 0
     _cost: 10
-    _nextNodesIDs: 06000000
-  - _nodeID: 6
+    _nextNodesIDs:
+    - 407
+  - _nodeID: 407
     _stat: 6
     _modifier: 5
-    _isUnlocked: 0
     _cost: 10
-    _nextNodesIDs: 
+    _nextNodesIDs: []
   _energyRecoverySkillTree:
-  - _nodeID: 0
+  - _nodeID: 501
     _stat: 8
     _modifier: 1
-    _isUnlocked: 1
     _cost: 10
-    _nextNodesIDs: 0100000002000000
-  - _nodeID: 1
+    _nextNodesIDs:
+    - 502
+    - 503
+  - _nodeID: 502
     _stat: 9
     _modifier: 2
-    _isUnlocked: 1
     _cost: 10
-    _nextNodesIDs: 0300000004000000
-  - _nodeID: 2
+    _nextNodesIDs:
+    - 504
+    - 505
+  - _nodeID: 503
     _stat: 8
     _modifier: 2
-    _isUnlocked: 1
     _cost: 10
-    _nextNodesIDs: 05000000
-  - _nodeID: 3
+    _nextNodesIDs:
+    - 505
+    - 506
+  - _nodeID: 504
     _stat: 8
     _modifier: 3
-    _isUnlocked: 1
     _cost: 10
-    _nextNodesIDs: 06000000
-  - _nodeID: 4
+    _nextNodesIDs:
+    - 507
+  - _nodeID: 505
     _stat: 9
     _modifier: 3
-    _isUnlocked: 1
     _cost: 0
-    _nextNodesIDs: 06000000
-  - _nodeID: 5
+    _nextNodesIDs:
+    - 507
+  - _nodeID: 506
     _stat: 8
     _modifier: 3
-    _isUnlocked: 1
     _cost: 10
-    _nextNodesIDs: 06000000
-  - _nodeID: 6
+    _nextNodesIDs:
+    - 507
+  - _nodeID: 507
     _stat: 10
     _modifier: 5
-    _isUnlocked: 1
     _cost: 10
-    _nextNodesIDs: 
+    _nextNodesIDs: []

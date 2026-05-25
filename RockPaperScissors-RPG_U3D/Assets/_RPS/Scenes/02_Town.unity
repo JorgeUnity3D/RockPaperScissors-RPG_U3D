@@ -2099,15 +2099,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5975164879555604946, guid: fed47db856a210d41888c13c99783fa8, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.423
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5975164879555604946, guid: fed47db856a210d41888c13c99783fa8, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5975164879555604946, guid: fed47db856a210d41888c13c99783fa8, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.423
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6011183567051893832, guid: fed47db856a210d41888c13c99783fa8, type: 3}
       propertyPath: m_AnchorMax.y
@@ -2307,15 +2307,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6951194549420683399, guid: fed47db856a210d41888c13c99783fa8, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.423
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6951194549420683399, guid: fed47db856a210d41888c13c99783fa8, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6951194549420683399, guid: fed47db856a210d41888c13c99783fa8, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.423
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6966785235880796885, guid: fed47db856a210d41888c13c99783fa8, type: 3}
       propertyPath: m_AnchorMax.y
@@ -2709,6 +2709,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8878527747035634464, guid: fed47db856a210d41888c13c99783fa8, type: 3}
+      propertyPath: _townDictionary.valueData.Array.data[0].Button
+      value: 
+      objectReference: {fileID: 582613945}
+    - target: {fileID: 8878527747035634464, guid: fed47db856a210d41888c13c99783fa8, type: 3}
+      propertyPath: _townDictionary.valueData.Array.data[0].NpcObject
+      value: 
+      objectReference: {fileID: 582613944}
     - target: {fileID: 8896834099649489362, guid: fed47db856a210d41888c13c99783fa8, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2794,6 +2802,22 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fed47db856a210d41888c13c99783fa8, type: 3}
+--- !u!1 &582613944 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7205369299779643768, guid: fed47db856a210d41888c13c99783fa8, type: 3}
+  m_PrefabInstance: {fileID: 582613943}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &582613945 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 886864222630290453, guid: fed47db856a210d41888c13c99783fa8, type: 3}
+  m_PrefabInstance: {fileID: 582613943}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &830941927
 GameObject:
   m_ObjectHideFlags: 0
