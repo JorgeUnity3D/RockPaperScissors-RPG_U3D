@@ -49,7 +49,7 @@ namespace Kapibara.RPS
 			}
 			_storyButtons.Clear();
 
-			for (int i = 0; i < stories.Count; i++)
+			for (int i = stories.Count - 1; i >= 0; i--)
 			{
 				int index = i;
 				bool isUnlocked = unlockedStoryIds.Contains(i);

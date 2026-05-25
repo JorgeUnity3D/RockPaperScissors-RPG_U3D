@@ -151,17 +151,25 @@ namespace Kapibara.RPS
 
 					if (isFirstCompletion)
 					{
-						int nextLevel = ctx.SelectedLevel.Level + 1;
-						List<int> unlocked = AppContext.GameContext.UnlockedLevelIndexes;
-						if (!unlocked.Contains(nextLevel))
-						{
-							unlocked.Add(nextLevel);
-							Debug.Log($"[GameManager] Level {ctx.SelectedLevel.Level} cleared → level {nextLevel} unlocked.");
-						}
-
 						List<int> completed = AppContext.GameContext.CompletedLevelIndexes;
 						if (!completed.Contains(ctx.SelectedLevel.Level))
 							completed.Add(ctx.SelectedLevel.Level);
+
+						List<int> unlocked = AppContext.GameContext.UnlockedLevelIndexes;
+						MapLevelScrObj mapLevels = ServiceLocator.Instance.GetService<StaticDataService>().MapLevels;
+						foreach (MapLevel level in mapLevels.Data)
+						{
+							if (level.RequiredLevels.Count == 0) continue;
+							if (unlocked.Contains(level.Level)) continue;
+							bool allMet = true;
+							foreach (int req in level.RequiredLevels)
+								if (!completed.Contains(req)) { allMet = false; break; }
+							if (allMet)
+							{
+								unlocked.Add(level.Level);
+								Debug.Log($"[GameManager] Requirements met → level {level.Level} ({level.LevelName}) unlocked.");
+							}
+						}
 
 						ComicStoryScrObj bossStory = ctx.SelectedLevel.BossStory;
 						if (bossStory != null && bossStory.StoryId >= 0)

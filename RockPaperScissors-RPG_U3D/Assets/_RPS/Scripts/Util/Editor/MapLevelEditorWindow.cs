@@ -153,21 +153,21 @@ namespace Kapibara.Util.Editor
 			{
 				EditorGUI.DrawRect(EditorGUILayout.GetControlRect(false, 1f), DividerColor);
 				GUILayout.Space(2f);
-				EditorGUILayout.PropertyField(_selectedLevelProp.FindPropertyRelative("_level"),       new GUIContent("Number"));
-				EditorGUILayout.PropertyField(_selectedLevelProp.FindPropertyRelative("_levelName"),   new GUIContent("Name"));
-				EditorGUILayout.PropertyField(_selectedLevelProp.FindPropertyRelative("_isAvailable"), new GUIContent("Available"));
+				EditorGUILayout.PropertyField(_selectedLevelProp.FindPropertyRelative("_level"),         new GUIContent("Number"));
+				EditorGUILayout.PropertyField(_selectedLevelProp.FindPropertyRelative("_levelName"),     new GUIContent("Name"));
+				EditorGUILayout.PropertyField(_selectedLevelProp.FindPropertyRelative("_requiredLevels"), new GUIContent("Requires"), true);
 			}
 		}
 
 		private void DrawLevelRow(int i)
 		{
-			SerializedProperty lp       = _levelsProp.GetArrayElementAtIndex(i);
-			SerializedProperty nameProp = lp.FindPropertyRelative("_levelName");
-			SerializedProperty availProp = lp.FindPropertyRelative("_isAvailable");
+			SerializedProperty lp        = _levelsProp.GetArrayElementAtIndex(i);
+			SerializedProperty nameProp  = lp.FindPropertyRelative("_levelName");
+			SerializedProperty reqsProp  = lp.FindPropertyRelative("_requiredLevels");
 			bool selected = i == _selectedLevelIndex;
 
 			string label = !string.IsNullOrEmpty(nameProp.stringValue) ? nameProp.stringValue : $"Level {i + 1}";
-			string avail = availProp.boolValue ? "+" : "-";
+			string avail = reqsProp.arraySize == 0 ? "★" : $"[{reqsProp.arraySize}]";
 
 			Rect rowRect = EditorGUILayout.GetControlRect(false, ROW_H);
 			if (selected) EditorGUI.DrawRect(rowRect, SelectedBg);
@@ -199,7 +199,7 @@ namespace Kapibara.Util.Editor
 			SerializedProperty np = _levelsProp.GetArrayElementAtIndex(_levelsProp.arraySize - 1);
 			np.FindPropertyRelative("_level").intValue        = _levelsProp.arraySize;
 			np.FindPropertyRelative("_levelName").stringValue = $"Level {_levelsProp.arraySize}";
-			np.FindPropertyRelative("_isAvailable").boolValue = false;
+			np.FindPropertyRelative("_requiredLevels").ClearArray();
 			_assetSO.ApplyModifiedProperties();
 			EditorUtility.SetDirty(_asset);
 			Repaint();
@@ -236,6 +236,10 @@ namespace Kapibara.Util.Editor
 			_detailScroll = EditorGUILayout.BeginScrollView(_detailScroll);
 			GUILayout.Space(6f);
 
+			DrawSection("Unlock Requirements");
+			EditorGUILayout.PropertyField(_selectedLevelProp.FindPropertyRelative("_requiredLevels"), new GUIContent("Required Levels  (empty = start available)"), true);
+
+			GUILayout.Space(8f);
 			DrawSection("Visuals");
 			EditorGUILayout.PropertyField(_selectedLevelProp.FindPropertyRelative("_levelIcon"),     new GUIContent("Icon"));
 			EditorGUILayout.PropertyField(_selectedLevelProp.FindPropertyRelative("_levelPortrait"), new GUIContent("Portrait"));

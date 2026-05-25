@@ -59,5 +59,32 @@ namespace Kapibara.Util
 			rt.localScale = Vector3.one * fromScale;
 			return rt.DOScale(Vector3.one, duration).SetDelay(delay).SetEase(Ease.OutBack);
 		}
+
+		/// <summary>
+		/// Desplaza el RectTransform desde su posición actual hasta un offset en la dirección indicada.
+		/// Inverso de SlideFrom.
+		/// </summary>
+		public static Tween SlideTo(RectTransform rt, SlideDirection direction, float distance, float duration, float delay = 0f)
+		{
+			Vector2 origin = rt.anchoredPosition;
+			Vector2 offset = direction switch
+			{
+				SlideDirection.LEFT   => new Vector2(-distance, 0f),
+				SlideDirection.RIGHT  => new Vector2( distance, 0f),
+				SlideDirection.UP     => new Vector2(0f,  distance),
+				SlideDirection.DOWN   => new Vector2(0f, -distance),
+				_                     => Vector2.zero
+			};
+			return rt.DOAnchorPos(origin + offset, duration).SetDelay(delay);
+		}
+
+		/// <summary>
+		/// Anima el RectTransform desde escala 1 hasta toScale con aceleración (InCubic).
+		/// </summary>
+		public static Tween ZoomOut(RectTransform rt, float toScale, float duration, float delay = 0f)
+		{
+			rt.localScale = Vector3.one;
+			return rt.DOScale(Vector3.one * toScale, duration).SetDelay(delay).SetEase(Ease.InCubic);
+		}
 	}
 }

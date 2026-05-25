@@ -61,7 +61,7 @@ namespace Kapibara.RPS
 				_cardsByPage[quest.PageIndex].Add(card);
 			}
 
-			for (int i = 0; i < totalPages; i++)
+			for (int i = totalPages - 1; i >= 0; i--)
 			{
 				int pageIndex = i;
 				Button btn = Instantiate(_pageButtonPrefab, _pageButtonContainer);

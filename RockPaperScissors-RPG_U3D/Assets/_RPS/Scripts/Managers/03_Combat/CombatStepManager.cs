@@ -493,9 +493,19 @@ namespace Kapibara.RPS
 			else if (multiplier >= 1.2f) exp = 1;
 
 			if (critBonus > 0) exp++;
+			if (exp <= 0) return;
 
 			_pendingTrainingExp += exp;
-			Debug.Log($"[CombatStepManager] Training EXP → +{exp} this round  (mult:{multiplier} crit:{critBonus})  total pending:{_pendingTrainingExp}");
+
+			int levelBefore = _activeTrainingModifier.Level;
+			_activeTrainingModifier.Experience += exp;
+			AppEvents.OnTrainingExpUpdated?.Invoke();
+			if (_activeTrainingModifier.Level > levelBefore)
+			{
+				Debug.Log($"[CombatStepManager] Training LEVEL UP mid-combat! {_activeTrainingModifier.Stat} {levelBefore} → {_activeTrainingModifier.Level}");
+				AppEvents.OnTrainingLevelUpdated?.Invoke();
+			}
+			Debug.Log($"[CombatStepManager] Training EXP → +{exp} applied immediately  (mult:{multiplier} crit:{critBonus})  total this combat:{_pendingTrainingExp}");
 		}
 
 		private static string ColorAction(Actions action)
@@ -525,16 +535,7 @@ namespace Kapibara.RPS
 		private void ApplyPendingTrainingExp()
 		{
 			if (_activeTrainingModifier == null || _pendingTrainingExp <= 0) return;
-
-			int levelBefore = _activeTrainingModifier.Level;
-			_activeTrainingModifier.Experience += _pendingTrainingExp;
-			AppEvents.OnTrainingExpUpdated?.Invoke();
-			if (_activeTrainingModifier.Level > levelBefore)
-			{
-				Debug.Log($"[CombatStepManager] Training LEVEL UP! {_activeTrainingModifier.Stat} {levelBefore} → {_activeTrainingModifier.Level}");
-				AppEvents.OnTrainingLevelUpdated?.Invoke();
-			}
-			Debug.Log($"[CombatStepManager] Training EXP applied → stat:{_activeTrainingModifier.Stat}  +{_pendingTrainingExp}EXP  level:{_activeTrainingModifier.Level}");
+			Debug.Log($"[CombatStepManager] Training session end → stat:{_activeTrainingModifier.Stat}  total EXP:{_pendingTrainingExp}  final level:{_activeTrainingModifier.Level}");
 		}
 
 		#endregion

@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using DG.Tweening;
 using Kapibara.UI;
 using Kapibara.Util;
 using UnityEngine;
@@ -32,11 +34,13 @@ namespace Kapibara.RPS
 		private ComicStoryScrObj _currentStory;
 		private int _currentPageIndex;
 		private int _currentVignetteIndex;
+		private bool _isExiting;
 
 		private GameObject _currentPageInstance;
-		private List<CanvasGroup> _slotGroups;
-		private List<RectTransform> _slotRects;
-		private List<VignetteAnimation> _slotAnimations;
+		private List<CanvasGroup>            _slotGroups;
+		private List<RectTransform>          _slotRects;
+		private List<VignetteAnimation>      _slotAnimations;
+		private List<VignetteExitAnimation>  _slotExitAnimations;
 
 
 		#region UNITY_LIFECYCLE
@@ -100,9 +104,10 @@ namespace Kapibara.RPS
 
 			_currentPageInstance = Instantiate(layoutPrefab, _pageContainer);
 
-			_slotGroups    = new List<CanvasGroup>();
-			_slotRects     = new List<RectTransform>();
-			_slotAnimations = new List<VignetteAnimation>();
+			_slotGroups         = new List<CanvasGroup>();
+			_slotRects          = new List<RectTransform>();
+			_slotAnimations     = new List<VignetteAnimation>();
+			_slotExitAnimations = new List<VignetteExitAnimation>();
 
 			for (int i = 0; i < page.Vignettes.Count; i++)
 			{
@@ -129,6 +134,7 @@ namespace Kapibara.RPS
 				_slotGroups.Add(cg);
 				_slotRects.Add(slot.GetComponent<RectTransform>());
 				_slotAnimations.Add(page.Vignettes[i].Animation);
+				_slotExitAnimations.Add(page.Vignettes[i].ExitAnimation);
 			}
 
 			_currentVignetteIndex = -1;
@@ -136,6 +142,8 @@ namespace Kapibara.RPS
 
 		private void OnNext()
 		{
+			if (_isExiting) return;
+
 			_currentVignetteIndex++;
 
 			if (_currentVignetteIndex < _slotGroups.Count)
@@ -144,14 +152,78 @@ namespace Kapibara.RPS
 				return;
 			}
 
-			_currentPageIndex++;
-			if (_currentPageIndex < _currentStory.Data.Pages.Count)
+			_isExiting = true;
+			_nextButton.interactable = false;
+
+			ExitPage(() =>
 			{
-				ShowPage(_currentPageIndex);
-				return;
+				_isExiting = false;
+				_currentPageIndex++;
+				if (_currentPageIndex < _currentStory.Data.Pages.Count)
+				{
+					ShowPage(_currentPageIndex);
+					_nextButton.interactable = true;
+				}
+				else
+				{
+					Close();
+				}
+			});
+		}
+
+		private void ExitPage(Action onComplete)
+		{
+			float maxDuration = 0f;
+			for (int i = 0; i < _slotGroups.Count; i++)
+			{
+				float dur = ExitSlot(i);
+				if (dur > maxDuration) maxDuration = dur;
 			}
 
-			Close();
+			if (maxDuration <= 0f) { onComplete?.Invoke(); return; }
+			DOVirtual.DelayedCall(maxDuration, () => onComplete?.Invoke()).SetLink(gameObject);
+		}
+
+		private float ExitSlot(int index)
+		{
+			CanvasGroup          cg   = _slotGroups[index];
+			RectTransform        rt   = _slotRects[index];
+			VignetteExitAnimation anim = _slotExitAnimations[index];
+
+			switch (anim)
+			{
+				case VignetteExitAnimation.FADE_OUT:
+					UITween.FadeOut(cg, GameConsts.COMIC_VIGNETTE_DURATION);
+					return GameConsts.COMIC_VIGNETTE_DURATION;
+
+				case VignetteExitAnimation.SLIDE_TO_LEFT:
+					UITween.FadeOut(cg, GameConsts.COMIC_VIGNETTE_DURATION * 0.5f);
+					UITween.SlideTo(rt, SlideDirection.LEFT,  GameConsts.COMIC_SLIDE_DISTANCE, GameConsts.COMIC_VIGNETTE_DURATION);
+					return GameConsts.COMIC_VIGNETTE_DURATION;
+
+				case VignetteExitAnimation.SLIDE_TO_RIGHT:
+					UITween.FadeOut(cg, GameConsts.COMIC_VIGNETTE_DURATION * 0.5f);
+					UITween.SlideTo(rt, SlideDirection.RIGHT, GameConsts.COMIC_SLIDE_DISTANCE, GameConsts.COMIC_VIGNETTE_DURATION);
+					return GameConsts.COMIC_VIGNETTE_DURATION;
+
+				case VignetteExitAnimation.SLIDE_TO_TOP:
+					UITween.FadeOut(cg, GameConsts.COMIC_VIGNETTE_DURATION * 0.5f);
+					UITween.SlideTo(rt, SlideDirection.UP,   GameConsts.COMIC_SLIDE_DISTANCE, GameConsts.COMIC_VIGNETTE_DURATION);
+					return GameConsts.COMIC_VIGNETTE_DURATION;
+
+				case VignetteExitAnimation.SLIDE_TO_BOTTOM:
+					UITween.FadeOut(cg, GameConsts.COMIC_VIGNETTE_DURATION * 0.5f);
+					UITween.SlideTo(rt, SlideDirection.DOWN, GameConsts.COMIC_SLIDE_DISTANCE, GameConsts.COMIC_VIGNETTE_DURATION);
+					return GameConsts.COMIC_VIGNETTE_DURATION;
+
+				case VignetteExitAnimation.ZOOM_OUT:
+					UITween.FadeOut(cg, GameConsts.COMIC_VIGNETTE_DURATION * 0.5f);
+					UITween.ZoomOut(rt, 0f, GameConsts.COMIC_VIGNETTE_DURATION);
+					return GameConsts.COMIC_VIGNETTE_DURATION;
+
+				default:
+					return 0f;
+			}
 		}
 
 		private void AnimateSlot(int index)

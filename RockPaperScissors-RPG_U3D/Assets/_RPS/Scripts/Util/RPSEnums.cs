@@ -60,6 +60,18 @@
 		ZOOM_IN
 	}
 
+	/// <summary>Animación de salida de una viñeta cuando la página completa avanza a la siguiente.</summary>
+	public enum VignetteExitAnimation
+	{
+		NONE,
+		FADE_OUT,
+		SLIDE_TO_LEFT,
+		SLIDE_TO_RIGHT,
+		SLIDE_TO_TOP,
+		SLIDE_TO_BOTTOM,
+		ZOOM_OUT
+	}
+
 	/// <summary>
 	/// Layout de una página de comic. Determina el prefab de layout instanciado por ComicPlayerUIController.
 	/// El índice enum debe coincidir con la posición en el array _layoutPrefabs del controlador (7 elementos, índices 0-6).

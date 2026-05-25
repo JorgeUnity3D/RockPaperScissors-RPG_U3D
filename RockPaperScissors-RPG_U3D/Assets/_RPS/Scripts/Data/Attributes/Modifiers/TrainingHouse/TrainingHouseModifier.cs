@@ -29,6 +29,41 @@ namespace Kapibara.RPS
 			set => _isTraining.Value = value;
 		}
 
+		/// <summary>Nivel actual; al asignarlo sincroniza la experiencia al umbral del nivel.</summary>
+		public override int Level
+		{
+			get => _level.Value;
+			set
+			{
+				if (value < 1) return;
+				_level.Value = value;
+				_experience.Value = GameConsts.TRAINING_EXP_PER_LEVEL[_level.Value - 1];
+			}
+		}
+
+		/// <summary>Experiencia acumulada; sube de nivel automáticamente al llegar al umbral.</summary>
+		public override int Experience
+		{
+			get => _experience.Value;
+			set
+			{
+				_experience.Value = value;
+				while (_level.Value < GameConsts.TRAINING_EXP_PER_LEVEL.Count - 1 && LevelProgress >= 1f)
+					_level.Value++;
+			}
+		}
+
+		/// <summary>Progreso normalizado [0,1] dentro del nivel actual.</summary>
+		public float LevelProgress
+		{
+			get
+			{
+				float levelBase = GameConsts.TRAINING_EXP_PER_LEVEL[_level.Value - 1];
+				float levelTop  = GameConsts.TRAINING_EXP_PER_LEVEL[_level.Value];
+				return (_experience.Value - levelBase) / (levelTop - levelBase);
+			}
+		}
+
 		[JsonIgnore]
 		public override int TotalModifier
 		{

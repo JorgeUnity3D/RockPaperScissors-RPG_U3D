@@ -2,9 +2,9 @@
 
 ---
 
-## 1. Every NotificableField assignment triggers a disk write
+## 1. NotificableField does NOT auto-save — saves are explicit
 
-`NotificableField<T>.Value` setter calls `AppEvents.OnGameContextUpdated?.Invoke()` unconditionally on any value change. `GameManager` subscribes `PersistenceService.UpdateSaveGame` to `OnGameContextUpdated`. This means setting `Player.Gold -= 10` → full JSON serialization + file write, synchronously on the main thread. There is no batching, no dirty flag, no frame deferral. Hot paths (e.g., combat that changes health per action) will hammer the disk.
+`NotificableField<T>.Value` setter only fires `OnValueChanged` (a local `UnityAction<T>` for UI listeners). It does NOT call `AppEvents.OnGameContextUpdated`. Disk writes only happen when a manager explicitly invokes `AppEvents.OnGameContextUpdated?.Invoke()` (e.g., `CombatStepManager.EndCombat`, `TrainingHouseManager` after unlock). This means assigning `Player.Gold -= 10` alone writes nothing to disk — only the explicit save trigger does. Hot paths like per-round combat stat updates are safe.
 
 ---
 
@@ -46,7 +46,7 @@ The switch returns `null` for `LIBRARY`, `STABLES`, `STONE_SMITHY`, and `THEATER
 
 ## 9. `TrainingHouseModifier` `IsTraining` flag is stored inside the modifier (and serialized)
 
-`IsTraining` is on `TrainingHouseModifier` (a `NBool` field, part of the data model). Since `NotificableField` changes fire `OnGameContextUpdated`, toggling the "is currently selected for training" UI state triggers a save. This is transient UI state living in persistent data — it will serialize the last-selected training stat to the save file.
+`IsTraining` is on `TrainingHouseModifier` (a `NBool` field, part of the data model). This is transient UI state living in persistent data — the last-selected training stat will be serialized to the save file on the next explicit save. This is intentional: the save acts as a "resume training" feature between sessions.
 
 ---
 

@@ -10,12 +10,14 @@ namespace Kapibara.RPS
 	[Serializable]
 	public class ComicVignetteData
 	{
-		[SerializeField] private Sprite _sprite;
-		[SerializeField] private string _dialogText;
-		[SerializeField] private VignetteAnimation _animation;
+		[SerializeField] private Sprite              _sprite;
+		[SerializeField] private string              _dialogText;
+		[SerializeField] private VignetteAnimation     _animation;
+		[SerializeField] private VignetteExitAnimation _exitAnimation;
 
-		public Sprite Sprite => _sprite;
-		public string DialogText => _dialogText;
-		public VignetteAnimation Animation => _animation;
+		public Sprite               Sprite         => _sprite;
+		public string               DialogText     => _dialogText;
+		public VignetteAnimation    Animation      => _animation;
+		public VignetteExitAnimation ExitAnimation => _exitAnimation;
 	}
 }

@@ -26,7 +26,7 @@ MonoBehaviour:
     _levelName: Forest
     _levelIcon: {fileID: -6684475192863260856, guid: 0ca550bc406330a4493c8d901e3ea819, type: 3}
     _levelPortrait: {fileID: -1343518637512107228, guid: 84a630beaed1dc46d94f91b22a6cc1e3, type: 3}
-    _isAvailable: 1
+    _requiredLevels: 
     _possibleEnemies:
     - {fileID: 11400000, guid: ef6523a57f000600abb5e70e13fa24a3, type: 2}
     - {fileID: 11400000, guid: cabbad3a921a8a438bbed9a791c48126, type: 2}
@@ -47,7 +47,7 @@ MonoBehaviour:
     _levelName: Desert
     _levelIcon: {fileID: 9170327630243124144, guid: 0ca550bc406330a4493c8d901e3ea819, type: 3}
     _levelPortrait: {fileID: 9170327630243124144, guid: 0ca550bc406330a4493c8d901e3ea819, type: 3}
-    _isAvailable: 0
+    _requiredLevels: 01000000
     _possibleEnemies:
     - {fileID: 11400000, guid: bb4194550d8240df80f202ccc1029621, type: 2}
     - {fileID: 11400000, guid: 6d686ad954d64fad94a5e0297175d303, type: 2}
@@ -67,7 +67,7 @@ MonoBehaviour:
     _levelName: Ocean
     _levelIcon: {fileID: 3210994475073176143, guid: 0ca550bc406330a4493c8d901e3ea819, type: 3}
     _levelPortrait: {fileID: 3210994475073176143, guid: 0ca550bc406330a4493c8d901e3ea819, type: 3}
-    _isAvailable: 0
+    _requiredLevels: 01000000
     _possibleEnemies:
     - {fileID: 11400000, guid: be2e2e841ce748ef9fdf2f39f4788f53, type: 2}
     - {fileID: 11400000, guid: 1218a5e2e9184edb89c9229d4ef7a0e8, type: 2}
@@ -87,7 +87,7 @@ MonoBehaviour:
     _levelName: Frozen Mountain
     _levelIcon: {fileID: 1404248521807868572, guid: 0ca550bc406330a4493c8d901e3ea819, type: 3}
     _levelPortrait: {fileID: 1404248521807868572, guid: 0ca550bc406330a4493c8d901e3ea819, type: 3}
-    _isAvailable: 0
+    _requiredLevels: 0200000003000000
     _possibleEnemies:
     - {fileID: 11400000, guid: 7e2d353f933c49cf8f90f42793be4953, type: 2}
     - {fileID: 11400000, guid: 35b4bfe11086441d9f13b685de46c5ee, type: 2}
@@ -107,7 +107,7 @@ MonoBehaviour:
     _levelName: Cave
     _levelIcon: {fileID: 5680673976619871293, guid: 0ca550bc406330a4493c8d901e3ea819, type: 3}
     _levelPortrait: {fileID: 5680673976619871293, guid: 0ca550bc406330a4493c8d901e3ea819, type: 3}
-    _isAvailable: 0
+    _requiredLevels: 04000000
     _possibleEnemies:
     - {fileID: 11400000, guid: 52b20da6892e45e89733c2d69b9e2514, type: 2}
     - {fileID: 11400000, guid: 03d0757d577f472abfbc0b94fcadfbdf, type: 2}
@@ -127,7 +127,7 @@ MonoBehaviour:
     _levelName: Volcano
     _levelIcon: {fileID: -7969225410775572928, guid: 0ca550bc406330a4493c8d901e3ea819, type: 3}
     _levelPortrait: {fileID: -7969225410775572928, guid: 0ca550bc406330a4493c8d901e3ea819, type: 3}
-    _isAvailable: 0
+    _requiredLevels: 05000000
     _possibleEnemies:
     - {fileID: 11400000, guid: 202d3572aeab450ca86894ce4e0c2481, type: 2}
     - {fileID: 11400000, guid: 36e5f7c75e6246a08729395e8ccdab2a, type: 2}
@@ -147,7 +147,7 @@ MonoBehaviour:
     _levelName: Void
     _levelIcon: {fileID: -1613414928997637167, guid: 0ca550bc406330a4493c8d901e3ea819, type: 3}
     _levelPortrait: {fileID: -1613414928997637167, guid: 0ca550bc406330a4493c8d901e3ea819, type: 3}
-    _isAvailable: 0
+    _requiredLevels: 06000000
     _possibleEnemies:
     - {fileID: 11400000, guid: bcc7210fda794a72a8c611488a13e36e, type: 2}
     - {fileID: 11400000, guid: f23d379d7ac14fc2a04da7bc4bdb24b2, type: 2}

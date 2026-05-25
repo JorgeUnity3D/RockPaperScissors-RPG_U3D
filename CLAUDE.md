@@ -99,7 +99,7 @@ Scene flow: `Intro → MainMenu → Town` (Map/Combat unimplemented).
 ### Key Patterns to Follow
 - New managers: extend `BaseManager`, override `SetUp()`, `Subscribe()`, `UnSubscribe()`, `Initialize()`.
 - New UI controllers: extend `UIController`, override `SetUp()`.
-- New data fields on Player/TownData: use `NotificableField<T>` wrappers (NInt, NBool, NString, NFloat, NAttribute). **Every assignment fires a disk write — do not use in hot loops.**
+- New data fields on Player/TownData: use `NotificableField<T>` wrappers (NInt, NBool, NString, NFloat, NAttribute). Assignments fire `OnValueChanged` (local UI event only — NOT a disk write). Disk writes only happen on explicit `AppEvents.OnGameContextUpdated` invocations.
 - New modifiers: extend `BaseModifier`, add a `ModifierType` entry, and add a case to `BaseModifierConverter.ReadJson()` or deserialization will throw.
 - Static game data: ScriptableObjects in `_RPS/ScriptableObjects/`.
 

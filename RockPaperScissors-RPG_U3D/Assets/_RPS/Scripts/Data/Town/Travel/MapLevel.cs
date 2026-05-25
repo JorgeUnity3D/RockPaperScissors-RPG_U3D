@@ -11,7 +11,7 @@ namespace Kapibara.RPS
 		[SerializeField] private string           _levelName;
 		[SerializeField] private Sprite           _levelIcon;
 		[SerializeField] private Sprite           _levelPortrait;
-		[SerializeField] private bool             _isAvailable;
+		[SerializeField] private List<int>        _requiredLevels;
 
 		[Header("Enemies")]
 		[SerializeField] private List<EnemyScrObj> _possibleEnemies;
@@ -32,7 +32,8 @@ namespace Kapibara.RPS
 		public string            LevelName         => _levelName;
 		public Sprite            LevelIcon         => _levelIcon;
 		public Sprite            LevelPortrait     => _levelPortrait;
-		public bool              IsAvailable       => _isAvailable || _isRuntimeAvailable;
+		public List<int>         RequiredLevels    => _requiredLevels;
+		public bool              IsAvailable       => _requiredLevels.Count == 0 || _isRuntimeAvailable;
 		public List<EnemyScrObj> PossibleEnemies   => _possibleEnemies;
 		public EnemyScrObj       Boss              => _boss;
 		public int               TreasureGoldAmount => _treasureGoldAmount;
