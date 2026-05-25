@@ -32,6 +32,7 @@ namespace Kapibara.RPS
 		private int                   _pendingTrainingExp;
 		private TrainingHouseModifier _activeTrainingModifier;
 		private bool                  _enemyReadsMind;
+		private bool                  _playerWonMentalityRoll;
 
 		#region SETUP
 
@@ -149,7 +150,8 @@ namespace Kapibara.RPS
 
 			// ── Mentality roll ────────────────────────────────────────────────────
 			int mentalityResult = _enemy.MentalityRollAgainst(_player.Mentality.TotalValue);
-			if (mentalityResult <= 0)
+			_playerWonMentalityRoll = mentalityResult <= 0;
+			if (_playerWonMentalityRoll)
 			{
 				Debug.Log($"[CombatStepManager] Mentality {mentalityResult} ≤ 0 → player reads mind → {ColorAction(_enemy.ThinkingAction)}");
 				_enemyHUD.ShowEnemyThoughtBubble(GetActionIconEnemy(_enemy.ThinkingAction));
@@ -210,6 +212,8 @@ namespace Kapibara.RPS
 			int   enemyCritBonus    = 0;
 			float playerMult        = 0f;
 			float enemyMult         = 0f;
+			bool  shieldHeld        = false;
+			int   thornsDealt       = 0;
 
 			// ── Super check BEFORE energy changes ────────────────────────────────
 			bool playerIsSuper = _playerEnergy >= GameConsts.COMBAT_MAX_ENERGY && playerAction != Actions.ENERGY;
@@ -280,9 +284,9 @@ namespace Kapibara.RPS
 			{
 				if (_player.Thorns.TotalValue > 0)
 				{
-					int thorns = CombatResolver.ThornsRoll(_player.Thorns.TotalValue, enemyMult, enemyCritBonus, _player.Level);
-					_enemy.ReceiveDamage(thorns);
-					Debug.Log($"[CombatStepManager] Thorns → {thorns} reflected  EnemyHP:{_enemy.CurrentHealth}/{_enemy.MaxHealth}");
+					thornsDealt = CombatResolver.ThornsRoll(_player.Thorns.TotalValue, enemyMult, enemyCritBonus, _player.Level);
+					_enemy.ReceiveDamage(thornsDealt);
+					Debug.Log($"[CombatStepManager] Thorns → {thornsDealt} reflected  EnemyHP:{_enemy.CurrentHealth}/{_enemy.MaxHealth}");
 				}
 
 				if (enemyEffective > playerEffective)
@@ -293,6 +297,7 @@ namespace Kapibara.RPS
 				}
 				else
 				{
+					shieldHeld = true;
 					Debug.Log($"[CombatStepManager] Case 3: player shield holds ({playerEffective} ≥ {enemyEffective}) → no damage");
 				}
 			}
@@ -319,7 +324,7 @@ namespace Kapibara.RPS
 			}
 
 			_enemy.ResetCombatState();
-			AccumulateTrainingExp(playerAction, playerMult, playerCritBonus, enemyDamageDealt);
+			AccumulateTrainingExp(playerAction, playerMult, playerCritBonus, enemyDamageDealt, playerIsSuper, shieldHeld, thornsDealt);
 
 			// ── Update UI ─────────────────────────────────────────────────────────
 			_playerHUD.RefreshBars(_playerHP, _playerEnergy);
@@ -476,24 +481,67 @@ namespace Kapibara.RPS
 			return null;
 		}
 
-		private void AccumulateTrainingExp(Actions playerAction, float multiplier, int critBonus, int enemyDamageDealt)
+		private void AccumulateTrainingExp(Actions playerAction, float multiplier, int critBonus, int enemyDamageDealt, bool playerIsSuper, bool shieldHeld, int thornsDealt)
 		{
 			if (_activeTrainingModifier == null) return;
-			if (!ActionMatchesTrainingStat(playerAction, _activeTrainingModifier.Stat)) return;
-
-			bool tookNoDamage = enemyDamageDealt == 0;
-			if (!tookNoDamage)
-			{
-				Debug.Log($"[CombatStepManager] Training EXP → skipped (took {enemyDamageDealt} damage this round)");
-				return;
-			}
 
 			int exp = 0;
-			if      (multiplier >= 2f)   exp = 2;
-			else if (multiplier >= 1.2f) exp = 1;
 
-			if (critBonus > 0) exp++;
-			if (exp <= 0) return;
+			switch (_activeTrainingModifier.Stat)
+			{
+				case Stats.HEALTH:
+					if (_playerHP <= 0) return;
+					exp = 1;
+					break;
+
+				case Stats.INITIAL_ENERGY:
+					if (_playerHP <= 0) return;
+					exp = 1;
+					break;
+
+				case Stats.MENTALITY:
+					if (!_playerWonMentalityRoll) return;
+					exp = 1;
+					break;
+
+				case Stats.DEFENSE:
+					if (!shieldHeld) return;
+					exp = 1;
+					break;
+
+				case Stats.THORNS:
+					if (thornsDealt <= 0) return;
+					exp = 1;
+					break;
+
+				case Stats.ENERGY_RECOVERY:
+					if (playerAction != Actions.ENERGY) return;
+					exp = 1;
+					break;
+
+				case Stats.CRIT:
+					if (critBonus <= 0) return;
+					exp = 1;
+					break;
+
+				case Stats.SUPERPOWER:
+					if (!playerIsSuper) return;
+					exp = 1;
+					break;
+
+				default:
+					if (!ActionMatchesTrainingStat(playerAction, _activeTrainingModifier.Stat)) return;
+					if (enemyDamageDealt > 0)
+					{
+						Debug.Log($"[CombatStepManager] Training EXP → skipped (took {enemyDamageDealt} damage this round)");
+						return;
+					}
+					if      (multiplier >= 2f)   exp = 2;
+					else if (multiplier >= 1.2f) exp = 1;
+					if (critBonus > 0) exp++;
+					if (exp <= 0) return;
+					break;
+			}
 
 			_pendingTrainingExp += exp;
 

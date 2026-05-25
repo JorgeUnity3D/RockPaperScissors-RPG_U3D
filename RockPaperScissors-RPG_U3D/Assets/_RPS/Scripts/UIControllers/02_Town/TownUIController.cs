@@ -28,10 +28,10 @@ namespace Kapibara.RPS
 		public override void SetUp()
 		{
 			Debug.Log($"[TownUIController] SetUp() -> ");
-			foreach (KeyValuePair<TownMenu, Button> entry in _townDictionary)
+			foreach (KeyValuePair<TownMenu, TownButtonEntry> entry in _townDictionary)
 			{
 				TownMenu townMenu = entry.Key;
-				Button townButton = entry.Value;
+				Button townButton = entry.Value.Button;
 				townButton.AddListener(() =>
 				{
 					OpenTownMenu(townMenu);
@@ -51,13 +51,16 @@ namespace Kapibara.RPS
 			}
 		}
 
-		/// <summary>Actualiza el sprite de un botón concreto según su estado de desbloqueo.</summary>
+		/// <summary>Actualiza el sprite de un botón concreto y la visibilidad del NPC según el estado actual.</summary>
 		public void UpdateTownButton(TownData townData, TownView townView)
 		{
 			Debug.Log($"[TownUIController] UpdateTownButton() -> townView: {townData.TownMenu}");
-			Button townButton = _townDictionary[townData.TownMenu];
-			townButton.GetComponent<Image>().sprite = townData.IsUnlocked ? townView.BuildingIcon : townView.NotBuiltIcon;
-			townButton.interactable = true;
+			TownButtonEntry entry = _townDictionary[townData.TownMenu];
+			entry.Button.GetComponent<Image>().sprite = townData.IsUnlocked ? townView.BuildingIcon : townView.NotBuiltIcon;
+			entry.Button.interactable = true;
+
+			if (entry.NpcObject != null)
+				entry.NpcObject.SetActive(townView.HasNpc && townData.NpcUnlocked);
 		}
 		
         #endregion

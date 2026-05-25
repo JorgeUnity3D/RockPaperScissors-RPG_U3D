@@ -52,7 +52,7 @@ namespace Kapibara.RPS
 			for (int i = stories.Count - 1; i >= 0; i--)
 			{
 				int index = i;
-				bool isUnlocked = unlockedStoryIds.Contains(i);
+				bool isUnlocked = unlockedStoryIds.Contains(stories[i].StoryId);
 				StoryButton storyButton = Instantiate(_storyButtonPrefab, _storiesHolder).GetComponent<StoryButton>();
 				storyButton.SetUp(stories[i], isUnlocked, () => AppEvents.OnStorySelected?.Invoke(index));
 				_storyButtons.Add(storyButton);

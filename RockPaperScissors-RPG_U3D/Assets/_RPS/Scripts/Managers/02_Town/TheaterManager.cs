@@ -65,9 +65,9 @@ namespace Kapibara.RPS
 				return;
 			}
 
-			if (!AppContext.Player.IsStoryUnlocked(index))
+			if (!AppContext.Player.IsStoryUnlocked(stories[index].StoryId))
 			{
-				Debug.LogWarning($"[TheaterManager] PlayStory() -> historia {index} bloqueada.");
+				Debug.LogWarning($"[TheaterManager] PlayStory() -> historia {index} (storyId {stories[index].StoryId}) bloqueada.");
 				return;
 			}
 
@@ -77,6 +77,51 @@ namespace Kapibara.RPS
 		private void OnComicClosed()
 		{
 			Debug.Log("[TheaterManager] OnComicClosed() -> comic cerrado, Theater permanece visible.");
+		}
+
+		#endregion
+
+		#region DEBUG
+
+		[FoldoutGroup("DEBUG")]
+		[ValueDropdown("GetDebugStoryOptions")]
+		[SerializeField] private int _debugStoryIndex;
+
+		private IEnumerable<ValueDropdownItem> GetDebugStoryOptions()
+		{
+			List<ComicStoryScrObj> stories = _theaterScrObj?.Data;
+			if (stories == null || stories.Count == 0)
+			{
+				yield return new ValueDropdownItem("(no stories)", 0);
+				yield break;
+			}
+			for (int i = 0; i < stories.Count; i++)
+			{
+				ComicStoryScrObj story = stories[i];
+				bool isUnlocked = AppContext.Player != null && AppContext.Player.IsStoryUnlocked(story.StoryId);
+				string label = $"[{i}] id:{story.StoryId}  {story.Data.Title}{(isUnlocked ? "  ✓" : "")}";
+				yield return new ValueDropdownItem(label, i);
+			}
+		}
+
+		[FoldoutGroup("DEBUG"), Button("Unlock Story")]
+		private void Debug_UnlockStory()
+		{
+			List<ComicStoryScrObj> stories = _theaterScrObj?.Data;
+			if (stories == null || _debugStoryIndex >= stories.Count) return;
+			ComicStoryScrObj story = stories[_debugStoryIndex];
+			AppContext.Player.UnlockStory(story.StoryId);
+			AppEvents.OnGameContextUpdated?.Invoke();
+			Debug.Log($"[TheaterManager] Unlocked story [{_debugStoryIndex}] id:{story.StoryId} — {story.Data.Title}");
+		}
+
+		[FoldoutGroup("DEBUG"), Button("Lock All Stories")]
+		private void Debug_LockAllStories()
+		{
+			AppContext.Player.UnlockedStoryIds.Clear();
+			AppContext.Player.UnlockStory(0);
+			AppEvents.OnGameContextUpdated?.Invoke();
+			Debug.Log("[TheaterManager] All stories locked except id:0.");
 		}
 
 		#endregion

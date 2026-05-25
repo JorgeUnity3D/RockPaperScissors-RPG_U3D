@@ -31,16 +31,73 @@ namespace Kapibara.RPS
 
 		#region DEBUG
 
-#if UNITY_EDITOR
-		[Button("Simulate NPC Rescued")]
-		private void Debug_SimulateNpcRescued()
+		[FoldoutGroup("DEBUG")]
+		[ValueDropdown("GetDebugQuestOptions")]
+		[SerializeField] private int _debugQuestIndex;
+
+		private IEnumerable<ValueDropdownItem> GetDebugQuestOptions()
 		{
-			TownData libraryTownData = AppContext.TownData?.Find(td => td.TownMenu == TownMenu.LIBRARY);
-			if (libraryTownData == null) { Debug.Log("[LibraryManager] No TownData for LIBRARY found."); return; }
-			libraryTownData.NpcUnlocked = true;
-			Debug.Log("[LibraryManager] NpcUnlocked set to true for LIBRARY.");
+			List<LibraryQuestProgress> quests = AppContext.GameContext?.LibraryQuests;
+			if (quests == null || quests.Count == 0)
+			{
+				yield return new ValueDropdownItem("(no quests)", 0);
+				yield break;
+			}
+			for (int i = 0; i < quests.Count; i++)
+			{
+				LibraryQuestProgress q = quests[i];
+				string label = $"[{i}] {q.EnemyDisplayName}  {q.CurrentKills}/{q.TargetKills}";
+				if (q.IsCompleted) label += "  ✓";
+				yield return new ValueDropdownItem(label, i);
+			}
 		}
-#endif
+
+		[FoldoutGroup("DEBUG"), Button("Add Progress")]
+		private void Debug_AddProgress()
+		{
+			List<LibraryQuestProgress> quests = AppContext.GameContext.LibraryQuests;
+			if (quests == null || quests.Count == 0) { Debug.Log("[LibraryManager] No quests materialized."); return; }
+			if (_debugQuestIndex >= quests.Count) { Debug.Log("[LibraryManager] Quest index out of range."); return; }
+			LibraryQuestProgress quest = quests[_debugQuestIndex];
+			if (quest.IsCompleted) { Debug.Log($"[LibraryManager] Quest [{_debugQuestIndex}] already completed."); return; }
+			quest.CurrentKills = Mathf.Min(quest.CurrentKills + 1, quest.TargetKills);
+			_libraryUIController.SetData(quests);
+			AppEvents.OnGameContextUpdated?.Invoke();
+			Debug.Log($"[LibraryManager] [{_debugQuestIndex}] {quest.EnemyDisplayName} — {quest.CurrentKills}/{quest.TargetKills}");
+		}
+
+		[FoldoutGroup("DEBUG"), Button("Complete Quest")]
+		private void Debug_CompleteQuest()
+		{
+			List<LibraryQuestProgress> quests = AppContext.GameContext.LibraryQuests;
+			if (quests == null || quests.Count == 0) { Debug.Log("[LibraryManager] No quests materialized."); return; }
+			if (_debugQuestIndex >= quests.Count) { Debug.Log("[LibraryManager] Quest index out of range."); return; }
+			LibraryQuestProgress quest = quests[_debugQuestIndex];
+			if (quest.IsCompleted) { Debug.Log($"[LibraryManager] Quest [{_debugQuestIndex}] already completed."); return; }
+			quest.CurrentKills = quest.TargetKills;
+			quest.IsCompleted  = true;
+			Player player = AppContext.Player;
+			StatAttribute attribute = player.Attributes.Find(a => a.Stat == quest.RewardStat);
+			if (attribute != null)
+			{
+				LibraryModifier modifier = attribute.GetModifier<LibraryModifier>();
+				if (modifier != null)
+				{
+					modifier.Modifier += quest.RewardAmount;
+					Debug.Log($"[LibraryManager] Quest complete — +{quest.RewardAmount} {quest.RewardStat}");
+				}
+			}
+			_libraryUIController.SetData(quests);
+			AppEvents.OnGameContextUpdated?.Invoke();
+		}
+
+		[FoldoutGroup("DEBUG"), Button("Reset Quests")]
+		private void Debug_ResetQuests()
+		{
+			AppContext.GameContext.LibraryQuests.Clear();
+			Debug.Log("[LibraryManager] All quests cleared.");
+			AppEvents.OnGameContextUpdated?.Invoke();
+		}
 
 		#endregion
 

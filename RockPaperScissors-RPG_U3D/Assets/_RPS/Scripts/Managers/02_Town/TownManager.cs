@@ -170,5 +170,31 @@ namespace Kapibara.RPS
 		}
 
 		#endregion
+
+		#region DEBUG
+
+		[FoldoutGroup("DEBUG"), Button("Buy Building")]
+		private void Debug_BuyBuilding(TownMenu townMenu)
+		{
+			TownData townData = _townData.Find(td => td.TownMenu == townMenu);
+			if (townData == null) return;
+			townData.IsUnlocked = true;
+			TownView townView = _townViews.Find(tv => tv.TownMenu == townMenu);
+			_townUIController.UpdateTownButton(townData, townView);
+			AppEvents.OnGameContextUpdated?.Invoke();
+		}
+
+		[FoldoutGroup("DEBUG"), Button("Rescue NPC")]
+		private void Debug_RescueNpc(TownMenu townMenu)
+		{
+			TownData townData = _townData.Find(td => td.TownMenu == townMenu);
+			if (townData == null) return;
+			townData.NpcUnlocked = true;
+			TownView townView = _townViews.Find(tv => tv.TownMenu == townMenu);
+			_townUIController.UpdateTownButton(townData, townView);
+			AppEvents.OnGameContextUpdated?.Invoke();
+		}
+
+		#endregion
 	}
 }
