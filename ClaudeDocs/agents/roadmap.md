@@ -30,11 +30,11 @@
 | Travel / Viajar | `TravelManager` | `TravelUIController` | ✅ | ⚠️ Level buttons + preview panel render; `TravelToLevel()` is an empty stub — does not load combat scene or deduct travel uses |
 | Stables / Establos | `StablesManager` | `StablesUIController` | ✅ | ❌ Skeleton only; `StablesUIController` has no fields or logic |
 | Training House | `TrainingHouseManager` | `TrainingHouseUIController` | ✅ | ⚠️ Unlock + selection work; EXP gain from combat is missing; auto-select-next-on-exit not implemented |
-| Stone Smithy | `StoneSmithyManager` | `StoneSmithyUIController` | ❌ null | ❌ No `StoneSmithyManager.cs` file exists on disk; `StoneSmithyButton` exists |
+| Stone Smithy | `StoneSmithyManager` | `StoneSmithyUIController` | ✅ | ✅ Upgrade logic (Attack/Heal/Energy), gold deduction `(level+1)×STONE_SMITHY_COST_PER_LEVEL`, max-level guard. Building-level-up every 10 player levels not tracked. |
 | Scissor Bonfire | `ScissorBonfireManager` | `ScissorsBonfireUIController` | ✅ | ⚠️ Level-up gold deduction + stat delta works; level-10 crash is FIXED (early-return guard added); building level-up every 10 player levels not tracked |
-| Paper Tree | `PaperTreeManager` | `PaperTreeUIController` | ✅ | ⚠️ 5-tab graph renders with colored lines; node buttons are set up via `SelectPaperTreeButton()` callback, but the callback body is empty — node purchase not wired; `PaperTreeModifier.SkillTreeData` is still a single bool (Gotcha #15 unresolved) |
+| Paper Tree | `PaperTreeManager` | `PaperTreeUIController` | ✅ | ✅ Full node purchase: gold deduction, `UnlockedNodes` (`List<SkillNode>`), modifier stack, building EXP. `SkillNode` enum redesigned to tree-coded values R1=101…E7=507. Cross-stat modifier bug fixed via `GetTreeStat(nodeID)` (Phase 8). |
 | Theater | `TheaterManager` | `TheaterUIController` | ✅ | ⚠️ Manager + UI implementados; `ComicPlayerUIController` reescrito con `List<ComicLayoutEntry>` y 7 layouts (incluyendo `Six_Grid`); wiring de prefabs en Inspector pendiente (dev) |
-| Library | `LibraryManager` | `LibraryUIController` | ❌ null | ❌ `LibraryManager.cs` is a bare `MonoBehaviour` stub — not even `BaseManager`; no namespace, no `SetUp`, no `Initialize`; `LibraryModifier` is now correctly wired in `BaseModifierConverter` (Bug #5 FIXED) |
+| Library | `LibraryManager` | `LibraryUIController` | ✅ | ✅ Full quest system: materialization on NPC rescue, kill tracking via `GameManager.ProcessLibraryKills`, page progression (page N unlocks when N-1 complete), stat bonus on completion via `LibraryModifier.Modifier +=`. |
 | House (stats display) | `HouseManager` | `HouseUIController` | ✅ | ✅ Iterates all 11 `Stats` enum values via `Enum.GetValues`, instantiates `HouseStat` prefab per stat, displays `TotalValue` + icon |
 
 ---
@@ -122,8 +122,8 @@ The entire combat pipeline is unimplemented at the manager/scene level. The lega
 - **What's missing:** `SCISSOR_MODS` tiene 10 entradas (índices 0–9) — el guard detiene los level-ups en nivel 10 (necesita más datos de diseño). Building-level-up separado del jugador (cada 10 niveles de jugador) nunca trackeado.
 - **Files:** `ScissorBonfireManager.cs`, `GameConsts.cs`
 
-### Paper Tree ✅ DONE (Phase 6)
-- `PaperTreeManager.OnPaperTreeNodeSelected` valida, deduce oro, actualiza `UnlockedNodes` + `Modifier`, acumula EXP. `PaperTreeButton` dispara el evento. `PaperTreeModifier` usa `List<string> UnlockedNodes` (no el bool antiguo).
+### Paper Tree ✅ DONE (Phase 6 + Phase 8)
+- `PaperTreeManager.OnPaperTreeNodeSelected` valida, deduce oro, actualiza `UnlockedNodes` + `Modifier`, acumula EXP. `PaperTreeButton` dispara el evento. `PaperTreeModifier` usa `List<SkillNode> UnlockedNodes`. `SkillNode` enum rediseñado a valores tree-coded (R1=101…E7=507). Bug de cross-stat modifier corregido con `GetTreeStat(nodeID)` que deriva el árbol del hundreds digit del NodeID.
 
 ### Travel ✅ DONE (Phase 3/4)
 - `TravelUIController` renderiza niveles; `CreditsTimeCounterManager` intercepta `OnTravelRequested`, llama `UseCredit()`, dispara `OnTravelConfirmed`; `TravelManager` carga la escena de combate.
@@ -246,7 +246,7 @@ Before combat can be built, all data structures must be stable.
 ### Phase 2 — Wire the Four Blocked Town Menus
 
 1. **Stables (`StablesManager.Initialize()`)** ✅ DONE 2026-03-21: IAP/monetisation UI sobre el sistema de créditos de `CreditsTimeCounterManager`. `WatchAd_Button` → `EarnCredit()` + `TownData(STABLES).Experience++` + actualiza progress bar. `BuyGame_Button` → placeholder TODO. No se añaden campos nuevos al modelo de datos. Level-up del edificio diferido a Phase 6.
-2. **Stone Smithy (`StoneSmithyManager.Initialize()`)**: show 3 consumable slots from `Player.Backpack`; wire `StoneSmithyButton` to upgrade cost/level formula from doc (level×N gold).
+2. **Stone Smithy (`StoneSmithyManager.Initialize()`)** ✅ DONE: 3 consumable slots (Attack/Heal/Energy) desde `Player.XxxItemLevel`; `StoneSmithyButton` conectado via `AppEvents.OnUpgradeXxx`; fórmula `(nivel+1)×STONE_SMITHY_COST_PER_LEVEL`; max-level guard.
 3. **Theater (`TheaterManager.Initialize()`)** ✅ DONE 2026-03-21: Manager + UI implementados. Wiring prefabs en Inspector pendiente (dev). Ver sección Theater arriba.
 4. **Library (`LibraryManager.Initialize()`)**: load `LibraryQuest` list; render quests as locked/unstarted for now. Kill tracking requires combat; wire the display and leave the counter at zero until Phase 4.
 
@@ -342,3 +342,18 @@ Once basic combat works:
 | 5 — Combat features | Large | Full design-spec combat |
 | 6 — Progression loop | Medium | Meaningful long-term progression |
 | 7 — Polish | Variable | Ship quality |
+| 8 — Debug & Tooling | Small | In-build testability |
+
+---
+
+### Phase 8 — Debug Tooling & SkillNode Refactor
+
+> Initiated 2026-05-25 / 2026-05-26
+
+1. ✅ **SkillNode enum redesigned** — 12 entradas opacas (`SKT_01`…`SKT_12`) sustituidas por 35 tree-coded: `R1=101…R7=107, P1=201…P7=207, S1=301…S7=307, D1=401…D7=407, E1=501…E7=507`. Hundreds digit = árbol, units digit = nodo.
+2. ✅ **PaperTree full refactor** — `IsUnlocked` eliminado del nodo (era estado mutable en un SO compartido); `_nextNodes`/`_previousNodes` acumulación bug corregido (build en `PaperTreeScrObj.OnEnable`); cross-stat modifier bug corregido con `GetTreeStat(nodeID)`.
+3. ✅ **PaperTreeEditorWindow** — nueva ventana editor 3-panel: tabs de árbol, lista de nodos, detalle. Embebible en RPSDatabaseWindow. `SafeEnumName` guard para NodeIDs stale. `AddNode()` con default ID inteligente.
+4. ✅ **Debug buttons** — LibraryManager, TheaterManager, ScissorBonfireManager, StoneSmithyManager, PaperTreeManager: todos con `[Button]` de Odin para forzar estados sin pasar por la UI.
+5. ✅ **LoggerService** — servicio persistente que intercepta `Application.logMessageReceived` y escribe `RPSLogs/rpslog-yyyymmdd-hhmm.txt` con timestamps, nivel de log y stack trace en errores.
+6. ✅ **DebugService** — servicio persistente con operaciones de debug centralizadas (oro, nivel, items, PaperTree, stories, library, edificios). Diseñado para ser conducido por `DebugUIController` (UI pendiente de prefab).
+7. ⚠️ **DebugUIController** — skeleton creado; prefab y botones pendientes de asignar en Inspector.
